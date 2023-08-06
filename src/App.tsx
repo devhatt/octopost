@@ -1,11 +1,17 @@
+import { useState } from 'react';
+
 import scss from './App.module.scss';
 
-function App() {
+interface ITest {
+  sim: string;
+}
+
+function App(role: ITest) {
+  const [sim, setSim] = useState('');
+
   return (
-    <div className={scss.teste}>
-      <p>
-        Hello World! SIM?
-      </p>
+    <div className={scss.teste} id="asdasdas" onClick={() => setSim('ali')}>
+      <p>Hello World! SIM?</p> {role.sim} {sim}
     </div>
   );
 }
