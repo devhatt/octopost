@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "~config/*": ["src/config/*"],
+      "~pages/*": ["src/pages/*"],
+      "~components/*": ["src/components/*"],
+      "~styles/*": ["src/styles/*"],
+      "~store/*": ["src/store/*"],
+      "~snippets/*": ["src/snippets/*"],
+      "~interfaces/*": ["src/interfaces/*"],
+      "~services/*": ["src/services/*"],
+      "~constants/*": ["src/constants/*"],
+      "~utils/*": ["src/utils/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~types/*": ["src/types/*"],
+      "~enums/*": ["src/enums/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
