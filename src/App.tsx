@@ -1,6 +1,8 @@
+import scss from './App.module.scss';
+
 function App() {
   return (
-    <div className='App'>
+    <div className={scss.teste}>
       <p>
         Hello World! SIM?
       </p>

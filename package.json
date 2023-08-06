@@ -41,8 +41,10 @@
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.1",
+    "sass": "^1.64.2",
     "stylelint": "^15.10.2",
     "stylelint-config-sass-guidelines": "^10.0.0",
+    "stylelint-order": "^6.0.3",
     "typescript": "^5.0.4",
     "wait-on": "^7.0.1"
   },
