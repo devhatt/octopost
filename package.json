@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "octopost",
   "version": "0.1.0",
   "private": true,
   "main": "build/electron/main.js",
@@ -58,7 +58,7 @@
     "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir"
   },
   "build": {
-    "productName": "productName",
+    "productName": "octopost",
     "mac": {
       "target": {
         "target": "default",
