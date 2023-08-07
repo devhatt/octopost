@@ -11,6 +11,7 @@ function App(role: ITest) {
 
   const ali = (opa: string) => {
     setSim(opa);
+    console.log('BAANANA');
   };
 
   return (
