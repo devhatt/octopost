@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Testinho from '~components/Testinho/Testinho';
 
 import scss from './App.module.scss';
-
-import Home from './pages/home/';
 
 interface ITest {
   sim: string;
@@ -19,12 +16,7 @@ function App(role: ITest) {
   };
 
   return (
-    <div className={scss.teste} id="#" onClick={() => ali('oi')}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+    <div className={scss.teste} id="asdasdas" onClick={() => ali('oi')}>
       <p>Hello World! SIM?</p> {role.sim} {sim}
       <Testinho />
     </div>
