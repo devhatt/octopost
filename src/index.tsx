@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App sim="ad" />
+    <App sim="nao" />
   </React.StrictMode>
 );
