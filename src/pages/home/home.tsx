@@ -1,4 +1,6 @@
-import scss from './index.module.scss';
+import CharacterCountdown from '../components/CharacterCountDown/CharacterCountDown';
+
+import scss from './home.module.scss';
 
 const Home = () => {
   return (
