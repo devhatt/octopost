@@ -1,0 +1,22 @@
+.TextCopy {
+  border: 1px solid #2e7ce1;
+  padding: 8px;
+  border-radius: 6px;
+  
+  margin-top:20px;
+  font-size: 14px;
+  font-weight: normal;
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: default;
+  user-select: text; /* Para permitir a seleção de texto */
+  white-space: pre-wrap; /* Para manter quebras de linha */
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

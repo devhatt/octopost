@@ -1,26 +1,31 @@
-/* normalize.css */
-/* Zera margens e preenchimentos */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, figure, hr {
   margin: 0;
   padding: 0;
 }
 
-/* Define a fonte padrão para evitar diferenças entre navegadores */
 body {
   font-family: Arial, sans-serif;
 }
 
-/* Define o tamanho da caixa de elementos para incluir preenchimento e borda */
+
 *, ::before, ::after {
   box-sizing: border-box;
 }
 
 .Home {
+  display: grid;
+  color: #f2f2f2;
+}
+
+.NavBar {
   display: flex;
+  flex-direction:row;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 50px;
   background-color: rgb(117, 31, 245);
-  color: #f2f2f2;
+  
 }
 
 .Logo {
@@ -30,3 +35,18 @@ body {
   margin-left: 10px;
 }
 
+.SectionContainer {
+  display: grid;
+  justify-self: center;
+  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 10px; 
+  width: 60vw;
+  height: full;
+  margin-top: 100px;
+  background-color: rgb(138, 151, 251);
+}
+.Sections{
+  display: flex;
+  justify-content: space-around;
+}

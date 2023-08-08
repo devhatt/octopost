@@ -17,7 +17,7 @@ const CharacterCountdown: React.FC<ICharacterCountdownProps> = ({
   };
 
   return (
-    <div>
+    <div className="">
       <textarea
         value={text}
         onChange={handleChange}

@@ -8,7 +8,7 @@ import '~styles/base.scss';
 
 function App() {
   return (
-    <div className={scss.teste}>
+    <div className={scss.App}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
