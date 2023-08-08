@@ -19,7 +19,7 @@
     "paths": {
       "~config/*": ["src/config/*"],
       "~pages/*": ["src/pages/*"],
-      "~components/*": ["src/components/*"],
+      "~components/*": ["src/pages/components/*"],
       "~styles/*": ["src/styles/*"],
       "~store/*": ["src/store/*"],
       "~snippets/*": ["src/snippets/*"],

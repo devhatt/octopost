@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Textarea.scss';
 
 interface ITextAreaProps {
   value: string;
@@ -13,10 +14,8 @@ function CustomTextArea({ value }: ITextAreaProps) {
 
   return (
     <textarea
+      className="textArea"
       value={inputValue}
-      placeholder="Digite algo..."
-      rows={4}
-      cols={50}
       onChange={handleInputChange}
     />
   );
