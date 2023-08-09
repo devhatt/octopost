@@ -4,16 +4,12 @@ interface ICharacterCountdownProps {
   maxLength: number;
 }
 
-const CharacterCountdown: React.FC<ICharacterCountdownProps> = ({
-  maxLength,
-}) => {
+const CharacterCountdown: React.FC<ICharacterCountdownProps> = (props) => {
   const [text, setText] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = event.target.value;
-    if (newText.length <= maxLength) {
-      setText(newText);
-    }
+    if (newText.length <= props.maxLength) setText(newText);
   };
 
   return (
@@ -21,10 +17,10 @@ const CharacterCountdown: React.FC<ICharacterCountdownProps> = ({
       <textarea
         value={text}
         onChange={handleChange}
-        maxLength={maxLength}
-        placeholder={`Digite até ${maxLength} caracteres`}
+        maxLength={props.maxLength}
+        placeholder={`Digite até ${props.maxLength} caracteres`}
       />
-      <p>{maxLength - text.length} caracteres restantes</p>
+      <span>{props.maxLength - text.length} caracteres restantes</span>
     </>
   );
 };

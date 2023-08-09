@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import CharacterCountdown from '../components/CharacterCountDown/CharacterCountDown';
+import CharacterLimit from '../components/CharacterLimit/CharacterLimit';
 
 import scss from './home.module.scss';
 
@@ -23,8 +23,8 @@ const Home = () => {
 
       <section className={scss.SectionContainer}>
         <div className={scss.Sections}>
-          <div className="">
-            <CharacterCountdown maxLength={140} />
+          <div>
+            <CharacterLimit maxLength={140} />
           </div>
 
           <div>
