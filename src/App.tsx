@@ -1,21 +1,11 @@
-import { useState } from 'react';
+import MainScreen from './pages/Main/Main';
 
 import scss from './App.module.scss';
 
-interface ITest {
-  sim: string;
-}
-
-function App(role: ITest) {
-  const [sim, setSim] = useState('');
-
-  const ali = (opa: string) => {
-    setSim(opa);
-  };
-
+function App() {
   return (
-    <div className={scss.teste} id="asdasdas" onClick={() => ali('oi')}>
-      <p>Hello World! SIM?</p> {role.sim} {sim}
+    <div className={scss.teste} id="asdasdas">
+      <MainScreen />
     </div>
   );
 }
