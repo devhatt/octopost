@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import Testinho from '~components/Testinho/Testinho';
 
+import CustomTextArea from './pages/components/textArea/Textarea';
+
 import scss from './App.module.scss';
 
 interface ITest {
@@ -19,6 +21,7 @@ function App(role: ITest) {
     <div className={scss.teste} id="asdasdas" onClick={() => ali('oi')}>
       <p>Hello World! SIM?</p> {role.sim} {sim}
       <Testinho />
+      <CustomTextArea value="Digite algo..." />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './Textarea.scss';
+
+import scss from './Textarea.module.scss';
 
 interface ITextAreaProps {
   value: string;
@@ -14,7 +15,7 @@ function CustomTextArea({ value }: ITextAreaProps) {
 
   return (
     <textarea
-      className="textArea"
+      className={scss.textArea}
       value={inputValue}
       onChange={handleInputChange}
     />
