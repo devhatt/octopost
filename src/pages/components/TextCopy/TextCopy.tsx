@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
-interface ITextCopyProps {
-  text: string;
-}
+import { ITextCopyProps } from './TextCopy.types';
 
 const TextCopy: React.FC<ITextCopyProps> = (props) => {
   const [text, setText] = useState('');

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
-interface ICharacterCountdownProps {
-  maxLength: number;
-}
+import { ICharacterLimitProps } from './CharacterLimit.types';
 
-const CharacterCountdown: React.FC<ICharacterCountdownProps> = (props) => {
+const CharacterCountdown: React.FC<ICharacterLimitProps> = (props) => {
   const [text, setText] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

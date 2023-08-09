@@ -1,4 +1,19 @@
-body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, figure, hr {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+figure,
+hr {
   margin: 0;
   padding: 0;
 }
@@ -7,8 +22,9 @@ body {
   font-family: Arial, sans-serif;
 }
 
-
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
@@ -19,19 +35,18 @@ body {
 
 .navBar {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 50px;
+  height: 5rem;
   background-color: rgb(117, 31, 245);
-  
 }
 
 .logo {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   margin-left: 10rem;
 }
 
@@ -40,10 +55,10 @@ body {
   justify-self: center;
   align-items: center;
   grid-template-columns: 1fr;
-  gap: 10px; 
+  gap: 10px;
   width: 60vw;
   height: 100vh;
-  margin-top: 100px;
+  margin-top: 10rem;
   background-color: rgb(138, 151, 251);
 }
 
