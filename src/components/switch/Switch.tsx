@@ -5,17 +5,19 @@ interface ISwitch {
   setChecked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Switch: React.FC<ISwitch> = ({ checked, setChecked }) => {
+function Switch(props: ISwitch) {
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(ev.target.checked);
+    props.setChecked(ev.target.checked);
   };
 
   return (
     <input
       className={scss.input}
-      checked={checked}
+      checked={props.checked}
       onChange={handleCheck}
       type="checkbox"
     />
   );
-};
+}
+
+export default Switch;
