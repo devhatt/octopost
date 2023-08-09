@@ -1,0 +1,21 @@
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    max-width: 800px;
+  }
+  .button {
+    border: 1px solid black;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background-color: #add8e6;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: white;
+    }
+  }
+  
