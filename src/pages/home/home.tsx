@@ -21,8 +21,8 @@ const Home = () => {
         <div className={scss.gridTabs} />
       </div>
 
-      <section className={scss.SectionContainer}>
-        <div className={scss.Sections}>
+      <section className={scss.sectionContainer}>
+        <div className={scss.sections}>
           <div>
             <CharacterLimit maxLength={140} />
           </div>
