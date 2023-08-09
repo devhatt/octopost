@@ -15,23 +15,23 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "~config/*": ["src/config/*"],
-      "~pages/*": ["src/pages/*"],
-      "~components/*": ["src/components/*"],
-      "~styles/*": ["src/styles/*"],
-      "~store/*": ["src/store/*"],
-      "~snippets/*": ["src/snippets/*"],
-      "~interfaces/*": ["src/interfaces/*"],
-      "~services/*": ["src/services/*"],
-      "~constants/*": ["src/constants/*"],
-      "~utils/*": ["src/utils/*"],
-      "~hooks/*": ["src/hooks/*"],
-      "~types/*": ["src/types/*"],
-      "~enums/*": ["src/enums/*"]
+      "~config/*": ["config/*"],
+      "~pages/*": ["pages/*"],
+      "~components/*": ["components/*"],
+      "~styles/*": ["styles/*"],
+      "~store/*": ["store/*"],
+      "~snippets/*": ["snippets/*"],
+      "~interfaces/*": ["interfaces/*"],
+      "~services/*": ["services/*"],
+      "~constants/*": ["constants/*"],
+      "~utils/*": ["utils/*"],
+      "~hooks/*": ["hooks/*"],
+      "~types/*": ["types/*"],
+      "~enums/*": ["enums/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
