@@ -17,7 +17,7 @@ const CharacterCountdown: React.FC<ICharacterCountdownProps> = ({
   };
 
   return (
-    <div className="">
+    <>
       <textarea
         value={text}
         onChange={handleChange}
@@ -25,7 +25,7 @@ const CharacterCountdown: React.FC<ICharacterCountdownProps> = ({
         placeholder={`Digite até ${maxLength} caracteres`}
       />
       <p>{maxLength - text.length} caracteres restantes</p>
-    </div>
+    </>
   );
 };
 

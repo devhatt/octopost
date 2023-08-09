@@ -8,8 +8,8 @@ const TextCopy: React.FC<ITextCopyProps> = (props) => {
   const [text, setText] = useState('');
   const [isEdited, setIsEdited] = useState(false);
 
-  const updateText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
+  const updateText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(event.target.value);
     setIsEdited(true);
   };
 
