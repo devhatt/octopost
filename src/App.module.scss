@@ -1,3 +1,49 @@
 .teste {
   background-color: rgb(244, 123, 123);
 }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid rgb(21, 233, 169);
+  padding: 4px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.2fr) 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    'switches input'
+    'switches tabs';
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.gridSwitches {
+  grid-area: switches;
+  border: 4px solid red;
+}
+
+.gridInput {
+  grid-area: input;
+  border: 4px solid blue;
+}
+
+.gridTabs {
+  grid-area: tabs;
+  border: 4px solid yellow;
+}
