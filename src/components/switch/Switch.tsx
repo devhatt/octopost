@@ -1,9 +1,6 @@
 import scss from './Swith.module.scss';
 
-interface ISwitch {
-  checked: boolean;
-  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ISwitch } from './Switch.types';
 
 function Switch(props: ISwitch) {
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
