@@ -18,6 +18,7 @@
     content: '';
     position: absolute;
     left: 0;
+    right: 50%;
     transition: all 250ms;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -28,6 +29,6 @@
   
   &:checked[type="checkbox"]:before {
     right: 0;
-    left: auto;
+    left: 50%;
   }
 }
