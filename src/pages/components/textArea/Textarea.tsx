@@ -1,16 +1,26 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import scss from './Textarea.module.scss';
 
-interface ITextAreaProps {
-  value: string;
-}
+import ITextAreaProps from './TextArea.types';
 
-function CustomTextArea({ value }: ITextAreaProps) {
-  const [inputValue, setInputValue] = useState(value);
+function CustomTextArea(props: ITextAreaProps) {
+  const [inputValue, setInputValue] = useState(props.value);
+  const [clicked, setClicked] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputValue(event?.target.value);
+    if (!clicked) {
+      setInputValue(event.target.value);
+    } else {
+      setInputValue(event?.target.value);
+    }
+  };
+
+  const handleFocus = () => {
+    if (!clicked) {
+      setClicked(true);
+      setInputValue('');
+    }
   };
 
   return (
@@ -18,8 +28,9 @@ function CustomTextArea({ value }: ITextAreaProps) {
       className={scss.textArea}
       value={inputValue}
       onChange={handleInputChange}
+      onFocus={handleFocus}
     />
   );
-}
+};
 
 export default CustomTextArea;
