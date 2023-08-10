@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { ICharacterLimitProps } from './CharacterLimit.types';
 
-const CharacterCountdown: React.FC<ICharacterLimitProps> = (props) => {
+function CharacterLimit(props: ICharacterLimitProps) {
   const [text, setText] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,6 +21,6 @@ const CharacterCountdown: React.FC<ICharacterLimitProps> = (props) => {
       <span>{props.maxLength - text.length} caracteres restantes</span>
     </>
   );
-};
+}
 
-export default CharacterCountdown;
+export default CharacterLimit;

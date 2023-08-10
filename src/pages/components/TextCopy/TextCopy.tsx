@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { ITextCopyProps } from './TextCopy.types';
 
-const TextCopy: React.FC<ITextCopyProps> = (props) => {
+function TextCopy(props: ITextCopyProps) {
   const [text, setText] = useState('');
   const [isEdited, setIsEdited] = useState(false);
 
@@ -14,6 +14,6 @@ const TextCopy: React.FC<ITextCopyProps> = (props) => {
   return (
     <textarea value={isEdited ? text : props.text} onChange={updateText} />
   );
-};
+}
 
 export default TextCopy;

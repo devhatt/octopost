@@ -17,27 +17,25 @@ const Home = () => {
     <div className={scss.mainContainer}>
       <div className={scss.gridContainer}>
         <div className={scss.gridSwitches} />
-        <div className={scss.gridInput} />
-        <div className={scss.gridTabs} />
-      </div>
+        <div className={scss.gridInput}>
+          <div className={scss.sections}>
+            <div>
+              <CharacterLimit maxLength={140} />
+            </div>
 
-      <section className={scss.sectionContainer}>
-        <div className={scss.sections}>
-          <div>
-            <CharacterLimit maxLength={140} />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              value={inputText}
-              onChange={handleInputChange}
-              placeholder="Texto a ser replicado"
-            />
-            <TextCopy text={inputText} />
+            <div>
+              <input
+                type="text"
+                value={inputText}
+                onChange={handleInputChange}
+                placeholder="Texto a ser replicado"
+              />
+              <TextCopy text={inputText} />
+            </div>
           </div>
         </div>
-      </section>
+        <div className={scss.gridTabs} />
+      </div>
     </div>
   );
 };

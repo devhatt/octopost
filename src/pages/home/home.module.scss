@@ -1,33 +1,3 @@
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-dl,
-dd,
-ol,
-ul,
-figure,
-hr {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
 .home {
   display: grid;
   color: #f2f2f2;
@@ -50,19 +20,38 @@ body {
   margin-left: 10rem;
 }
 
-.sectionContainer {
-  display: grid;
-  justify-self: center;
-  align-items: center;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  width: 60vw;
+.mainContainer {
+  width: 100vw;
   height: 100vh;
-  margin-top: 10rem;
-  background-color: rgb(138, 151, 251);
+  justify-content: center;
+  align-items: center;
+  border: 4px solid rgb(21, 233, 169);
+  padding: 4px;
 }
 
-.sections {
-  display: flex;
-  justify-content: space-around;
+.gridContainer {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.2fr) 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    'switches input'
+    'switches tabs';
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.gridSwitches {
+  grid-area: switches;
+  border: 4px solid red;
+}
+
+.gridInput {
+  grid-area: input;
+  border: 4px solid blue;
+}
+
+.gridTabs {
+  grid-area: tabs;
+  border: 4px solid yellow;
 }

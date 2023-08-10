@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home/home';
 
-import scss from './app.module.scss';
+import scss from './App.module.scss';
 
-import '~styles/base.scss';
+import './styles/base.scss';
 
 function App() {
   return (
@@ -17,4 +17,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
