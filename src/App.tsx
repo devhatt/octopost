@@ -4,6 +4,8 @@ import Testinho from '~components/Testinho/Testinho';
 
 import scss from './App.module.scss';
 
+import './styles/base.scss';
+
 interface ITest {
   sim: string;
 }
