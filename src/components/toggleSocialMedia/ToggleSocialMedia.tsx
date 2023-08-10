@@ -5,7 +5,7 @@ import Switch from '~components/Switch/Switch';
 import scss from './ToggleSocialMedia.module.scss';
 
 import { ITogleSocialMedia } from './ToggleSocialMedia.types';
-
+// teste
 function ToggleSocialMedia(props: ITogleSocialMedia) {
   const [checked, setChecked] = useState(false);
 

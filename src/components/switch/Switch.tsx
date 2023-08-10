@@ -1,7 +1,7 @@
 import scss from './Swith.module.scss';
 
 import { ISwitch } from './Switch.types';
-
+// teste
 function Switch(props: ISwitch) {
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
     props.setChecked(ev.target.checked);
