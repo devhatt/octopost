@@ -1,29 +1,26 @@
-import React, { useRef } from 'react';
+import { useState } from 'react';
 
 import scss from './InputImage.module.scss';
 
 function InputImage() {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [imageSelected, setImageSelected] = useState(null);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-    if (selectedFile) {
-      // eslint-disable-next-line no-console
-      console.log('dados imagem', selectedFile);
-    }
-  };
+  function handleFileChange(event: any) {
+    const selectedImage = event.target.files[0];
+    setImageSelected(selectedImage);
+    // eslint desabilitado aqui para mostrar dados da imagem durante o desenvolvimento
+    // eslint-disable-next-line no-console
+    console.log('imagem', selectedImage);
+  }
 
   return (
     <div>
-      <input
-        className={scss.hiden}
-        type="file"
-        ref={inputRef}
-        onChange={handleInputChange}
-      />
-      <button className={scss.image} onClick={() => inputRef.current?.click()}>
-        Selecionar Imagem
-      </button>
+      <div className={scss.button}>
+        <input type="file" onChange={handleFileChange} />{' '}
+      </div>
+      {imageSelected && (
+        <img src={URL.createObjectURL(imageSelected)} alt="Imagem" />
+      )}
     </div>
   );
 }

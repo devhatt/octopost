@@ -1,10 +1,10 @@
-.image {
-    display: inline-block;
+.button {
+    display: inline;
     padding: 1rem 1rem;
-    background-color: #3498db;
-    color: white;
+    background-color: #1a4764;
+    color: #ffffff;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   
@@ -13,6 +13,4 @@
     }
   }
 
-.hiden {
-    display: none 
-}
+  
