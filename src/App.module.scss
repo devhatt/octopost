@@ -1,3 +1,35 @@
-.teste {
-  background-color: rgb(244, 129, 129);
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  border: 0.4rem solid rgb(21, 233, 169);
+  padding: 0.4rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.2fr) 1fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    'switches input'
+    'switches tabs';
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.gridSwitches {
+  grid-area: switches;
+  border: 0.4rem solid red;
+}
+
+.gridInput {
+  grid-area: input;
+  border: 0.4rem solid blue;
+}
+
+.gridTabs {
+  grid-area: tabs;
+  border: 0.4rem solid yellow;
 }

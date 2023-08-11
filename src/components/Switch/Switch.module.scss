@@ -1,0 +1,34 @@
+.input {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  outline: none;
+  background: #c3c3c3;
+  border-radius: 50px;
+  appearance: none;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  
+  &:checked[type="checkbox"] {
+    background: #1e1e1e;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 50%;
+    transition: all 250ms;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    scale: 1.1;
+    padding: 0.8rem;
+    border-radius: 50%;
+  }
+  
+  &:checked[type="checkbox"]:before {
+    right: 0;
+    left: 50%;
+  }
+}

@@ -32,6 +32,6 @@
       "~enums/*": ["enums/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "electron/**/*"],
   "exclude": ["node_modules"]
 }
