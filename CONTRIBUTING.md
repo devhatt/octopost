@@ -28,7 +28,7 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 7. **Commits Significativos:** Faça commits significativos e com mensagens claras. Utilizando comando abaixo e seguindo as instruções o commit ficara no padrão utilizado no projeto.
 
 ```bash
-		git commit
+    git commit
 ```
 
 1. **Atualize a Documentação:** Se necessário, atualize a documentação relevante para refletir suas mudanças.
