@@ -13,15 +13,17 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 
    ```
 
-3. **Crie uma Branch:** Crie uma branch para trabalhar nas suas alterações:
+3. **Crie uma Branch:** Crie uma branch a partir da develop para trabalhar nas suas alterações:
 
    ```bash
+   git checkout develop
+   git reset --hard upstream/develop
    git checkout -b nome-da-sua-branch
 
    ```
 
 4. **Faça Alterações:** Faça as alterações desejadas no código, documentação, ou outros recursos.
-5. Código: Siga o Style guide [octopost/STYLEGUIDE.md at master · Alecell/octopost (github.com)](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
+5. **Código:** Siga o Style guide [octopost/STYLEGUIDE.md at master · Alecell/octopost (github.com)](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
 6. **Testes:** Certifique-se de que todas as mudanças são testadas e não introduzem erros.
 7. **Commits Significativos:** Faça commits significativos e com mensagens claras. Utilizando comando abaixo e seguindo as instruções o commit ficara no padrão utilizado no projeto.
 
@@ -37,13 +39,13 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 
    ```
 
-3. **Criação de Pull Request (PR):** Abra um Pull Request descrevendo suas alterações e fornecendo contexto sobre o que foi feito.
+3. **Criação de Pull Request (PR):** Abra um Pull Request pelo o seu fork para o repositorio do octopost na branch develop, descrevendo suas alterações e fornecendo contexto sobre o que foi feito.
 4. **Revisão de Código:** A equipe de mantenedores do projeto irá revisar o seu PR. Esteja disposto a fazer ajustes se necessário.
 5. **Merge e Fechamento:** Após a revisão bem-sucedida, suas alterações serão mescladas à branch principal. Seu PR será fechado.
 
 ## Diretrizes de Contribuição
 
-- **Estilo de Código:** Siga as convenções de estilo de código existentes no projeto.
+- **Estilo de Código:** Siga as convenções de estilo de código existentes no projeto.[Style Guide](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
 - **Documentação:** Sempre atualize a documentação para refletir mudanças significativas.
 - **Testes:** Certifique-se de que suas alterações não quebram testes existentes. Se necessário, adicione novos testes.
 - **Tamanho das Pull Requests:** PRs menores são mais fáceis de revisar e mesclar. Tente manter o escopo de suas contribuições relativamente pequeno.
