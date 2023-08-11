@@ -1,7 +1,7 @@
 import { IPreview } from './Preview.types';
 
 function Preview(props: IPreview) {
-  return <div>{props.previewText}</div>;
+  return <p>{props.previewText}</p>;
 }
 
 export default Preview;
