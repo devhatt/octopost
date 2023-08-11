@@ -1,10 +1,6 @@
 import { create } from 'zustand';
 
-interface IPostsStore {
-  postsQuantity: number;
-  increase: (by: number) => void;
-  reset: () => void;
-}
+import { IPostsStore } from './usePostsStore.types';
 
 export const usePostsStore = create<IPostsStore>()((set) => ({
   postsQuantity: 0,
