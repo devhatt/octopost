@@ -42,9 +42,11 @@ Manter um estilo de código consistente é crucial para a legibilidade e manuten
 
 ## **Contato**
 
-Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em contato com nossa comunidade em nosso [Discord](http://discord.gg/fhutDfuDa9).
+Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em contato com nossa equipe em nosso [Discord](http://discord.gg/fhutDfuDa9).
 
+## **License**
 
+Atente-se a nossa [Lincença de Distribuição](https://github.com/Alecell/octopost/blob/master/LICENSE).
 ---
 
 Obrigado pelo seu interesse no OctoPost! Esperamos suas contribuições e esperamos que você aproveite o aplicativo tanto quanto nós gostamos de construí-lo.
