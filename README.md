@@ -42,7 +42,8 @@ Manter um estilo de código consistente é crucial para a legibilidade e manuten
 
 ## **Contato**
 
-Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em contato com nossa equipe em nosso [Discord](http://discord.gg/fhutDfuDa9).
+Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em contato com nossa comunidade em nosso [Discord](http://discord.gg/fhutDfuDa9).
+
 
 ---
 
