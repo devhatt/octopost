@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import CharacterLimit from '~components/CharacterLimit/CharacterLimit';
+import Testinho from '~components/Testinho/Testinho';
 import TextCopy from '~components/TextCopy/TextCopy';
 
 import scss from './home.module.scss';
@@ -33,6 +34,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <Testinho />
         <div className={scss.gridTabs} />
       </div>
     </div>
