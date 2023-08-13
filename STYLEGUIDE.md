@@ -62,126 +62,88 @@ Reference Style Guide
 
 ## Criando componentes
 
-- Todos os componentes serão criados em **`funções normais`**, `arrow functions`  **apenas** dentro dos componentes
+Todos os componentes serão criados em **`funções normais`**, `arrow functions`  **apenas** dentro dos componentes
 
-```
-// bom 
+```ts
+// Bom 
 function Component(props: IProps) {
-	const handleSomething = () => {
-		// ...
-	}
-
-	return (
-		// ...
-	)
+	const handleSomething = () => { /* ... */ }
+	return ( /* ... */ )
 }
 
-// PESSIMO
+// Ruim
 const Component = (props: IProps) => {
-	const handleSomething = () => {
-		// ...
-	}
-	
-	return (
-		// ...
-	)
+	const handleSomething = () => { /* ... */ }
+	return ( /* ... */ )
 }
 
-// PIOR AINDA
+// Ruim
 const Component = (props: IProps) => {
-	function handleSomething() {
-		// ...
-	}
-	
-	return (
-		// ...
-	)
+	function handleSomething() { /* ... */ }
+	return ( /* ... */ )
 } 
 ```
 
 ## Exportando arquivos
 
-- Iremos usar **SEMPRE** `export default` nos componentes
+Iremos usar **SEMPRE** `export default` nos componentes
 
-```
-// ruim
-export function Component(props: IProps) {
-	return (
-		// ...
-	)
-}
-
-// bom 
+```ts
+// Bom 
 function Component(props: IProps) {
-	return (
-		// ...
-	)
+	return ( /* ... */ )
 }
 
 export default Component 
 
-// ruim 
+// Ruim
+export function Component(props: IProps) {
+	return ( /* ... */ )
+}
+
+// Ruim 
 function Component(props: IProps) {
-	const handleSomething = () => {
-		// ...
-	}
-
-	return (
-		// ...
-	)
+	const handleSomething = () => { /* ... */ }
+	return ( /* ... */ )
 }
 ```
 
-- Tirando os componentes, não iremos usar export default
+Com excessão dos componentes, não iremos usar export default
 
-```
-// ruim
-Interface IProps {
-	// ...
-}
+```ts
+// Bom
+export interface IProps { /* ... */ }
 
-export default IProps
-
-// bom
-export Interface IProps {
-	// ...
-}
+// Ruim
+interface IProps { /* ... */ }
+export default IProps;
 ```
 
-- Isso também vale para `custom hooks`
+Isso também vale para `custom hooks`
 
-```
-// ruim
-const useHook = () => {
-	// ...
-}
+```ts
+// Bom
+export const useHook = () => { /* ... */ }
 
+// Ruim
+const useHook = () => { /* ... */ }
 export default useHook
-
-// bom
-export const useHook = () => {
-	// ...
-}
 ```
 
 ## Custom hooks
 
-- Se precisar criar um custom hook, use `arrow functions`
+Se precisar criar um custom hook, use `arrow functions`
 
-```
-// bom
-export const useHook = () => {
-	// ...
-}
+```ts
+// Bom
+export const useHook = () => { /* ... */ }
 
-// ruim
-export function useHook() {
-	// ...
-}
+// Ruim
+export function useHook() { /* ... */ }
 ```
 
-## Arquivos em PascalCase 
-- Iremos seguir o padrão PascalCase que consiste em nomear todas as palavras com a primeira letra maiúscula
+## Componentes em PascalCase 
+Iremos seguir o padrão PascalCase que consiste em nomear todas as palavras com a primeira letra maiúscula.
 
 ```
 ├─ components
@@ -190,92 +152,79 @@ export function useHook() {
 
 ## Nomeando coisas
 
-- Tirando componentes e interfaces, iremos utilizar `camelCase` para nomear tudo.
+Tirando componentes e interfaces, iremos utilizar `camelCase` para nomear tudo.
 
-```
-// bom
-const handleSomething = () => {
-		// ...
-}
+```ts
+// Bom
+const handleSomething = () => { /* ... */ }
 
-// ruim
-const HandleSomething = () => {
-		// ...
-}
+// Ruim
+const HandleSomething = () => { /* ... */ }
 
-// horripilante
-const handle_something = () => {
-		// ...
-}
+// Ruim
+const handle_something = () => { /* ... */ }
 ```
 
-- Isso Inclue props de componentes
+Isso Inclue props de componentes
 
-```
+```ts
 <MyComponent
 	isHandsome
 	name="hxsggsz"
 />
 ```
 
-- Se a prop é uma string sempre passe entre aspas, única excessão é se você for usar `template string`
+Se a prop é uma string sempre passe entre aspas, única excessão é se você for usar `template string`
 
-```
-// bom
+```ts
+// Bom
 <MyComponent
 	isHandsome
 	name="hxsggsz"
 />
 
-// ruim
+// Ruim
 <MyComponent
 	isHandsome
 	name={"hxsggsz"}
 />
-
-// bom
-<MyComponent name={`${name} is handsome?`} />
 ```
 
-- Oculte parâmetros que sempre serão `true`
+Oculte parâmetros que sempre serão `true`
 
-```
-// ruim
-<button isLoading={true}>teste<button>
-
-// bom
+```ts
+// Bom
 <button isLoading>teste<button>
+
+// Ruim
+<button isLoading={true}>teste<button>
 ```
 
 ## Class component
 
-- Nosso projeto está sendo feito inteiramente com `programação funcional`, então apenas use `functional components` :
+Nosso projeto está sendo feito inteiramente com `programação funcional`, então apenas use `functional components` *(salvo excessões bem excessíveis)*:
 
-```
-// ruim
+```ts
+// Bom
+function Component(props: IProps) { /* ... */ }
+
+export default Component
+
+// Ruim
 class Component extends React.Component {
   // ...
   render() {
-    return (
-      // ...;
-    )
+    return ( /* ... */ )
   }
 }
-
-// bom!!11
-function Component(props: IProps) {
-// ...
-}
-
-export default Component
 ```
 
 ## Estilizando componentes
 
-- Estamos utilizando scss modules para estilização, ele tem umas diferenças do css normal
+Estamos utilizando `scss modules` para estilização, ele tem umas diferenças do css normal
 
-```
-// bom
+```scss
+// Bom
 .button {
 	/* seu css aqui */
 	&:hover {
@@ -283,100 +232,101 @@ export default Component
 	}
 }
 
-// ruim
-.button {
-	/* seu css aqui */
-}
-
-.button:hover {
-	/* seu css de hover aqui*/
-}
+// Ruim
+.button { /* seu css aqui */ }
+.button:hover { /* seu css de hover aqui*/ }
 ```
 
-- use scss modules sempre
+use `scss modules` sempre
 
-```
-// ruim
+```tsx
+// Bom
+import scss from "./Component.module.scss"
+
+function Component(props: IProps) {
+	return <div className={scss.style} />;
+}
+
+// Ruim
 import "./Component.scss"
 
 function Component(props: IProps) {
-	return (
-		<div className="style" />
-	)
-}
-
-// bom
-import scss from "./Component.module.scss"
-
-function Component(props: IProps) {
-	return (
-		<div className={scss.style} />
-	)
+	return <div className="style" />;
 }
 ```
 
-- Evite inline-css, sempre crie uma classe para estilizar
+Evite _inline-css_, sempre crie uma classe para estilizar.
+_Existem excessões em que é precisa usar `inline styles`, mas são casos específicos e estarão atrelados a apenas uma propriedade_
 
-```
-// bom
+```tsx
+// Bom
 import scss from "./Component.module.scss"
 
 function Component(props: IProps) {
-	return (
-		<div className={scss.style} />
-	)
+	return <div className={scss.style} />;
 }
 
-// ruim
+// Ruim
 function Component(props: IProps) {
-	return (
-		<div style={{ color: "#fff" }} />
-	)
+	return <div style={{ color: "#fff" }} />;
 }
 ```
 ## Tipando componentes
 
-- Priorize `Interfaces` no lugar de `Types` , ambos servem para fazer a mesma coisa, mas estamos seguindo o padrão de Interfaces
+Priorize `Interfaces` no lugar de `Types` , ambos servem para fazer a mesma coisa, mas estamos seguindo o padrão de interfaces
 
-```
-// bom
-Interface IProps {
-	// ...
-}
+```ts
+// Bom
+interface IProps { /* ... */ }
 
-// ruim
-Type IProps = {
-	// ...
-}
+// Ruim
+type IProps = { /* ... */ }
 ```
 
-- Use o Prefixo `ITypes` na hora da criação de interfaces
+Use o Prefixo `I` na hora da criação de interfaces.
 
+```ts
+// Bom
+interface IProps { /* ... */ }
+
+// Ruim
+interface PropTypes { /* ... */ }
 ```
-// bom
-Interface IProps {
-	// ...
-}
 
-// ruim
-Interface PropTypes {
-	// ...
-}
+Use o Prefixo `T` na hora da criação de tipos.
+
+```ts
+// Bom
+type TProps = { /* ... */ }
+
+// Ruim
+type PropTypes = { /* ... */ }
+```
+
+Use o Prefixo `E` na hora da criação de enums.
+
+```ts
+// Bom
+enum ECoisas = { /* ... */ }
+
+// Ruim
+type Coisas = { /* ... */ }
 ```
 
 ## Testes unitários
 
-- Tente ser o mais claro para descrever seus testes, descreva a ação que você vai fazer como `describe()` e use o `it()`  para descrever a ação esperada do teste. Siga esse padrão:
+Tente ser o mais claro para descrever seus testes, descreva a ação que você vai fazer como `describe()` e use o `it()`  para descrever a ação esperada do teste. Siga esse padrão:
+_Evite a palavra "should" seguida do `it`, faça sua sentença ser hiperativa, como "it has", "it renders", "it fails" e etc. Isso serve pra evitar que toda descrição de um teste inicie por "should"._
 
-```
+```ts
 describe('MyButtonComponent', () => {
   describe('when initialize', () => {
-    it('should show the button on screen', () => {
+    it('shows the button on screen', () => {
       // ...
     });
 
     describe('when click', () => {
-      it('should call the handleButton function ', () => {
+      it('calls the handleButton function ', () => {
         // ...
       });
     });
@@ -386,20 +336,20 @@ describe('MyButtonComponent', () => {
 
 ## Alt em imagens
 
-- SEMPRE coloque o atributo `alt` quando for usar alguma imagem no projeto, é bom por causa do `SEO` (mesmo que esse projeto não seja web) e acessibilidade.
+SEMPRE coloque o atributo `alt` quando for usar alguma imagem no projeto, é bom por causa do `SEO` (mesmo que esse projeto não seja web) e acessibilidade.
 
-```
-// bom
+```tsx
+// Bom 
 <img src={image} alt="me and my dog" />
 
-// ruim
+// Ruim
 <img src={image} />
 ```
 
-- Evite usar o prefixo `image` ou `picture` porque os leitores de tela ja adicionam esse prefixo na hora de ler o `alt` então ficaria duplicado
+Evite usar o prefixo `image` ou `picture` porque os leitores de tela ja adicionam esse prefixo na hora de ler o `alt` então ficaria duplicado
 
-```
-// ruim
+```tsx
+// Ruim
 <img src={image} alt="image about me and my dog" />
 ```
 ## Estrutura de pastas do projeto
@@ -407,23 +357,32 @@ describe('MyButtonComponent', () => {
 ```
 
 ├─ public
-│  ├─ arquivos de imagens aqui 
+│  ├─ coisas de fato publicas como robots.txt, favicons, sitemap.xml e etc.
 ├─ src
 │  ├─ App.tsx
-|  |  ├─ arquivo de rotas
+|  |  ├─ Root provider
 │  ├─ components
-|  |  ├─ todos os componentes aqui
+|  |  ├─ Componentes de alta usabilidade
 │  ├─ hooks
-|  |  ├─ Custom Hooks ficarão aqui
+|  |  ├─ Hooks customizados de alta reusabilidade
 │  ├─ pages
-|  |  ├─ todas as paginas do projeto aqui
-│  ├─ stores
-|  |  ├─ lugar onde ficará todas as stores de Estados Globais do Zustand
+|  |  ├─ Páginas da aplicação
+│  ├─ store
+|  |  ├─ Store geral da aplicação
 │  ├─ styles
-|  |  ├─ estado global aqui
+|  |  ├─ Estilos globais
 │  ├─ utils
-|  |  ├─ arquivos utils do projeto aqui
-
+|  |  ├─ Funções/classes de alta reusabilidade
+│  ├─ services
+|  |  ├─ Serviços externos a aplicação
+│  ├─ config
+|  |  ├─ Configurações de módulos
+│  ├─ snippets
+|  |  ├─ Snippets usados na aplicação
+│  ├─ interfaces
+|  |  ├─ Interfaces que não são relativas a um módulo específico
+│  ├─ constants
+|  |  ├─ Constantes que não são relativas a um módulo específico
+│  ├─ enums
+|  |  ├─ Enums que não são relativos a um módulo específico
 ```
-
-}
