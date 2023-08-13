@@ -1,3 +1,25 @@
+.home {
+  display: grid;
+  color: #f2f2f2;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 5rem;
+  background-color: rgb(117, 31, 245);
+}
+
+.logo {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 10rem;
+}
+
 .mainContainer {
   width: 100vw;
   height: 100vh;
@@ -14,7 +36,7 @@
   grid-template-areas:
     'switches input'
     'switches tabs';
-  gap: 1rem;
+  gap: 10px;
   height: 100%;
   width: 100%;
 }

@@ -1,26 +1,19 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Testinho from '~components/Testinho/Testinho';
+import Home from './pages/home/home';
 
 import scss from './App.module.scss';
 
 import './styles/base.scss';
 
-interface ITest {
-  sim: string;
-}
-
-function App(role: ITest) {
-  const [sim, setSim] = useState('');
-
-  const ali = (opa: string) => {
-    setSim(opa);
-  };
-
+function App() {
   return (
-    <div className={scss.teste} id="asdasdas" onClick={() => ali('oi')}>
-      <p>Hello World! SIM?</p> {role.sim} {sim}
-      <Testinho />
+    <div className={scss.app}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
