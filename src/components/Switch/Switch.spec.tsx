@@ -5,7 +5,7 @@ import Switch from './Switch';
 
 describe('Switch', () => {
   describe('when initialize', () => {
-    it('should render the switch off', () => {
+    it('render the switch off when checked={false}', () => {
       render(<Switch checked={false} setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
@@ -14,7 +14,7 @@ describe('Switch', () => {
       expect(switchComponent).toBeInTheDocument();
     });
 
-    it('should render the switch off', () => {
+    it('render the switch on when checked={true}', () => {
       render(<Switch checked={true} setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
