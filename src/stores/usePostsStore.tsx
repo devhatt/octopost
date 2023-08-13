@@ -4,7 +4,7 @@ import { IPostsStore } from './usePostsStore.types';
 
 export const usePostsStore = create<IPostsStore>()((set) => ({
   postsQuantity: 0,
-  increase: (by) =>
-    set((state) => ({ postsQuantity: state.postsQuantity + by })),
+  increase: (increaseBy) =>
+    set((state) => ({ postsQuantity: state.postsQuantity + increaseBy })),
   reset: () => set({ postsQuantity: 0 }),
 }));
