@@ -4,13 +4,6 @@
   "private": true,
   "main": "build/electron/main.js",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^20.4.8",
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
     "electron-devtools-installer": "^3.2.0",
     "electron-reload": "^2.0.0-alpha.1",
     "react": "^18.2.0",
