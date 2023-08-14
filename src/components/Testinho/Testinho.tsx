@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 const Testinho = ({ name = 'World' }) => {
   return (
     <div>
