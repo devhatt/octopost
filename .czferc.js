@@ -129,8 +129,7 @@ module.exports = {
     ];
   },
   commitMessage({ answers }) {
-    const scope = answers.scope ? `(${answers.scope})` : '';
-    const head = `${answers.type}${scope}: ${answers.subject}`;
+    const head = `${answers.type}: ${answers.subject}`;
     const body = answers.body ? answers.body : '';
     const breaking = answers.breaking
       ? `BREAKING CHANGE: ${answers.breaking}`
