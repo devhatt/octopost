@@ -1,17 +1,19 @@
-import { network } from './TabberNetworks';
+import { ITabberProps } from './type';
 
 import scss from './Tabber.module.scss';
 
-function Tabber() {
-  return (
-    <div className={scss.social}>
-      {network.map((networkItem) => (
-        <div className={scss.button} key={networkItem.id}>
-          {networkItem.id}
-        </div>
-      ))}
-    </div>
-  );
+function Tabber(props: ITabberProps) {
+  const { networkList } = props;
+
+  const renderNetwork = () => {
+    return networkList.map((networkItem) => (
+      <div className={scss.button} key={networkItem.id}>
+        {networkItem.id}
+      </div>
+    ));
+  };
+
+  return <div className={scss.social}>{renderNetwork()}</div>;
 }
 
 export default Tabber;

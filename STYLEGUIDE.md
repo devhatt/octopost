@@ -2,24 +2,26 @@
 
 Reference Style Guide
 
-  - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
-  - [Airbnb](https://github.com/airbnb/javascript/tree/master)
+- [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+- [Airbnb](https://github.com/airbnb/javascript/tree/master)
 
 ## Sumário:
 
-1.  [Regras básicas](#regras-basicas)
-2.  [Estrutura de componentes](#estrutura-de-componentes)
-3.  [Criando componentes](#criando-componentes)
-4.  [Exportando arquivos](#exportando-arquivos)
-5.  [Custom hooks](#custom-hooks)
-6.  [Arquivos em PascalCase](#arquivos-em-pascalcase)
-7.  [Nomeando coisas](#nomeando-coisas)
-8.  [Class Component](#class-component)
-9.  [Estilizando componentes](#estilizando-componentes)
-10. [Tipando componentes](#tipando-componentes)
-11. [Testes unitários](#testes-unitários)
-12. [Alt em imagens](#alt-em-imagens)
-13. [Estruturas de pastas](#estrutura-de-pastas)
+- [DevHat JavaScript/React Style Guide() {](#devhat-javascriptreact-style-guide-)
+  - [Sumário:](#sumário)
+  - [Regras básicas](#regras-básicas)
+  - [Estrutura de componentes](#estrutura-de-componentes)
+  - [Criando componentes](#criando-componentes)
+  - [Exportando arquivos](#exportando-arquivos)
+  - [Custom hooks](#custom-hooks)
+  - [Componentes em PascalCase](#componentes-em-pascalcase)
+  - [Nomeando coisas](#nomeando-coisas)
+  - [Class component](#class-component)
+  - [Estilizando componentes](#estilizando-componentes)
+  - [Tipando componentes](#tipando-componentes)
+  - [Testes unitários](#testes-unitários)
+  - [Alt em imagens](#alt-em-imagens)
+  - [Estrutura de pastas do projeto](#estrutura-de-pastas-do-projeto)
 
 <a name="regras-basicas"></a>
 <a name="estrutura-de-componentes"></a>

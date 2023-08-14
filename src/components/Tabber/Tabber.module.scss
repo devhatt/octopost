@@ -1,19 +1,19 @@
 .social {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.7rem;
+}
+
+.button {
+  border: 1px solid #000000;
+  font-weight: bold;
+  border-radius: 7px;
+  padding: 0.5rem;
+  background-color: #add8e6;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ffffff;
   }
-  .button {
-    border: 1px solid rgb(0, 0, 0);
-    font-weight: bold;
-    border-radius: 0.25rem;
-    padding: 0.25rem;
-    background-color: #add8e6;
-    transition: background-color 0.2s;
-  
-    &:hover {
-      background-color: rgb(255, 255, 255);
-    }
-  }
-  
+}
