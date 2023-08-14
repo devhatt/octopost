@@ -4,7 +4,7 @@ import Testinho from './Testinho';
 
 describe('testinhoComponent', () => {
   describe('when no props is passed', () => {
-    it('render with de default value', () => {
+    it('renders with de default value', () => {
       const { getByRole } = render(<Testinho />);
       const linkElement = getByRole('heading', { level: 1 });
       expect(linkElement.textContent).toBe('Hello, World!');
