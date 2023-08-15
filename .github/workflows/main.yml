@@ -15,21 +15,24 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - name: code checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Code checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install and build
-      - run: yarn install && yarn build
+      - name: Install and build
+        run: |
+          yarn install
+          yarn build
 
-      - name: jest tests
-      - run: yarn test --watchAll=fals
+      - name: Run Jest tests
+        run: yarn test --watchAll=false
 
-      - name: lint tests
-      - run: yarn lint
+      - name: Lint tests
+        run: yarn lint
 
-      - name: stylelint tests
-      - run: yarn stylelint
+      - name: Stylelint tests
+        run: yarn stylelint
