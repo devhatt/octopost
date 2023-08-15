@@ -1,4 +1,4 @@
-import scss from './Swith.module.scss';
+import scss from './Switch.module.scss';
 
 import { ISwitch } from './Switch.types';
 
