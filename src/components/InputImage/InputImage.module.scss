@@ -1,16 +1,25 @@
 .button {
-    display: inline;
-    padding: 1rem 1rem;
-    background-color: #1a4764;
-    color: #ffffff;
-    border: none;
-    border-radius: 1rem;
+  background-color: transparent;
+  color: #1a4764;
+  border: none;
+  transition: color 0.3s ease;
+
+  .icon {
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #2980b9;
-    }
   }
 
-  
+  &:hover {
+    color: #2980b9;
+  }
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+
+.hiden {
+  display: none;
+}
