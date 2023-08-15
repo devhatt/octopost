@@ -55,7 +55,8 @@
     "electron:build": "yarn build && tsc -p electron && electron-builder",
     "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
-    "stylelint": "stylelint \"**/*.scss\""
+    "stylelint": "stylelint \"**/*.scss\"",
+    "ladle": "ladle serve"
   },
   "build": {
     "productName": "octopost",
