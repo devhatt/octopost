@@ -1,3 +1,3 @@
 export interface IPreview {
-  previewText: string;
+  children: React.ReactNode;
 }
