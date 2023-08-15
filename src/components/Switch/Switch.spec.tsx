@@ -5,7 +5,7 @@ import Switch from './Switch';
 
 describe('Switch', () => {
   describe('when initialize', () => {
-    it('render the switch off when checked={false}', () => {
+    it('renders the switch off when checked={false}', () => {
       render(<Switch checked={false} setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
@@ -14,7 +14,7 @@ describe('Switch', () => {
       expect(switchComponent).toBeInTheDocument();
     });
 
-    it('render the switch on when checked={true}', () => {
+    it('renders the switch on when checked={true}', () => {
       render(<Switch checked={true} setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
@@ -25,7 +25,7 @@ describe('Switch', () => {
   });
 
   describe('when click', () => {
-    it('should call the setChecked function', async () => {
+    it('calls the setChecked function', async () => {
       const setCheckedMock = jest.fn();
       render(<Switch checked={true} setChecked={setCheckedMock} />);
 
