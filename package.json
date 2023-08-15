@@ -54,7 +54,8 @@
     "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
     "electron:build": "yarn build && tsc -p electron && electron-builder",
     "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "stylelint": "stylelint \"**/*.scss\""
   },
   "build": {
     "productName": "octopost",

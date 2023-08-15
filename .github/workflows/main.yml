@@ -22,4 +22,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: yarn install && yarn build && yarn test --watchAll=false && yarn lint
+      - name: install and build
+      - run: yarn install && yarn build
+
+      - name: jest tests
+      - run: yarn test --watchAll=fals
+
+      - name: lint tests
+      - run: yarn lint
+
+      - name: stylelint tests
+      - run: yarn stylelint
