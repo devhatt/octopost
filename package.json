@@ -3,6 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "main": "build/electron/main.js",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject",
+    "lint": "eslint 'src/**/*.{ts,tsx}' 'electron/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' 'electron/**/*.ts'",
+    "test": "react-app-rewired test",
+    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "yarn build && tsc -p electron && electron-builder",
+    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
+    "prepare": "husky install",
+    "stylelint": "stylelint \"**/*.scss\"",
+    "ladle": "ladle serve"
+  },
   "dependencies": {
     "electron-devtools-installer": "^3.2.0",
     "electron-reload": "^2.0.0-alpha.1",
@@ -12,8 +26,9 @@
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "@ladle/react": "^2.17.2",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@ladle/react": "^2.17.2",
+    "@playwright/test": "^1.37.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -42,22 +57,8 @@
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5.1.6",
-    "zustand": "^4.4.1",
-    "wait-on": "^7.0.1"
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "eject": "react-app-rewired eject",
-    "lint": "eslint 'src/**/*.{ts,tsx}' 'electron/**/*.ts'",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}' 'electron/**/*.ts'",
-    "test": "react-app-rewired test",
-    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && tsc -p electron && electron-builder",
-    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
-    "prepare": "husky install",
-    "stylelint": "stylelint \"**/*.scss\"",
-    "ladle": "ladle serve"
+    "wait-on": "^7.0.1",
+    "zustand": "^4.4.1"
   },
   "build": {
     "productName": "octopost",
