@@ -57,9 +57,9 @@
 }
 
 .gridInput {
+  display: flex;
   grid-area: input;
-
-  border: 0.4rem solid rgb(0, 30, 255);
+  border: 0.4rem solid rgb(159, 16, 207);
 }
 
 .gridTabs {

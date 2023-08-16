@@ -1,0 +1,17 @@
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.input {
+  width: 30%;
+}
+
+.copyTextContainer {
+  justify-content: center;
+  width: 30%;
+  height: 50%;
+}
