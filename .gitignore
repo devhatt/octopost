@@ -126,3 +126,14 @@ dist
 # TernJS port file
 .tern-port
 project_structure.md
+
+# Ignored e2e testing folders
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
