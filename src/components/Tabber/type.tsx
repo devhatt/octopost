@@ -1,7 +1,10 @@
-export interface INetworkItem {
+import { ReactNode } from 'react';
+
+export interface ISocialItem {
   id: string;
 }
 
 export interface ITabberProps {
-  networkList: INetworkItem[];
+  socialList: ISocialItem[];
+  children: ReactNode;
 }

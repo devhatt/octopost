@@ -1,13 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import Tabber from './Tabber';
+
 import networkListMock from './data';
+
+import Tabber from './Tabber';
 
 describe('Tabber', () => {
   it('renders network buttons', () => {
-    render(<Tabber networkList={networkListMock} />);
+    render(<Tabber socialList={networkListMock} children={''} />);
 
-    networkListMock.forEach((networkItem) => {
-      const button = screen.getByText(networkItem.id);
+    networkListMock.forEach((socialItem) => {
+      const button = screen.getByText(socialItem.id);
       expect(button).toBeInTheDocument();
     });
   });

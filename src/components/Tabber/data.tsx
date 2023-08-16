@@ -1,6 +1,6 @@
-import { INetworkItem } from './type';
+import { ISocialItem } from './type';
 
-const networkListMock: INetworkItem[] = [
+const networkListMock: ISocialItem[] = [
   {
     id: 'facebook',
   },
