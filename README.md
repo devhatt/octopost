@@ -37,11 +37,11 @@ Para começar com o OctoPost, siga estes passos:
 
 Recebemos contribuições da comunidade para tornar o OctoPost ainda melhor!
 
-Para instruções mais detalhadas, consulte o **[Guia de Contribuição](https://github.com/Alecell/octopost/blob/develop/CONTRIBUTING.md)**.
+Para instruções mais detalhadas, consulte o **[Guia de Contribuição](https://github.com/Alecell/octopost/blob/master/CONTRIBUTING.md)**.
 
 ## **Código de Conduta**
 
-O OctoPost segue um Código de Conduta para garantir um ambiente respeitoso e inclusivo para todos os contribuidores. Leia e entenda o nosso **[Código de Conduta](https://github.com/Alecell/octopost/blob/develop/CODE_OF_CONDUCT.md)**.
+O OctoPost segue um Código de Conduta para garantir um ambiente respeitoso e inclusivo para todos os contribuidores. Leia e entenda o nosso **[Código de Conduta](https://github.com/Alecell/octopost/blob/master/CODE_OF_CONDUCT.md)**.
 
 ## **Guia de Estilo**
 
