@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import scss from '~components/TextCopy/TextCopy.module.scss';
+
 import { ITextCopyProps } from './TextCopy.types';
 
 function TextCopy(props: ITextCopyProps) {
@@ -12,7 +14,11 @@ function TextCopy(props: ITextCopyProps) {
   };
 
   return (
-    <textarea value={isEdited ? text : props.text} onChange={updateText} />
+    <textarea
+      className={scss.textCopy}
+      value={isEdited ? text : props.text}
+      onChange={updateText}
+    />
   );
 }
 
