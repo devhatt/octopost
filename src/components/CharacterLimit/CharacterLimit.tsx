@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import scss from '~components/CharacterLimit/CharacterLimit.module.scss';
 
 import { ICharacterLimitProps } from './CharacterLimit.types';
 
 function CharacterLimit(props: ICharacterLimitProps) {
-  const [text, setText] = useState('');
-
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newText = event.target.value;
-    if (newText.length <= props.maxLength) setText(newText);
-  };
+  const remainingCharacters = props.maxLength - props.value.length;
+  const percentageFilled = (props.value.length / props.maxLength) * 100;
 
   return (
-    <>
-      <textarea
-        value={text}
-        onChange={handleChange}
-        maxLength={props.maxLength}
-        placeholder={`Digite até ${props.maxLength} caracteres`}
-      />
-      <span>{props.maxLength - text.length} caracteres restantes</span>
-    </>
+    <div className={scss.characterLimit}>
+      <span className={scss.remainingCharacters}>{remainingCharacters}</span>
+      <div className={scss.circle}>
+        <div
+          className={scss.fill}
+          style={{ width: `${percentageFilled}%` }}
+        ></div>
+      </div>
+    </div>
   );
 }
 
