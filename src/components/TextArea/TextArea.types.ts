@@ -1,3 +1,3 @@
 export interface ICustomTextAreaProps {
-  onTextChange?: (newText: string) => void;
+  onTextChange: (newText: string) => void;
 }
