@@ -1,8 +1,9 @@
 .inputContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
@@ -11,12 +12,13 @@
 
 .footer {
   position: absolute;
-  bottom: 13px;
   right: 15px;
+  bottom: 13px;
 }
 
 .copyTextContainer {
-  justify-content: center;
   width: 30%;
   height: 50%;
+
+  justify-content: center;
 }
