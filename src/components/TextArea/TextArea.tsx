@@ -21,7 +21,6 @@ function CustomTextArea({ onTextChange }: ICustomTextAreaProps) {
         onChange={handleInputChange}
         placeholder="Digite algo aqui..."
       />
-      <div className={scss.textAreaFooter}></div>
     </div>
   );
 }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
 import CharacterLimit from '~components/CharacterLimit/CharacterLimit';
-import scss from '~components/InputMaster/InputMaster.module.scss';
+import scss from '~components/ComposerEditor/ComposerEditor.module.scss';
 import CustomTextArea from '~components/TextArea/TextArea';
-import TextCopy from '~components/TextCopy/TextCopy';
 
-const InputMaster = () => {
+const ComposerEditor = () => {
   const [inputText, setInputText] = useState('');
 
   const handleInputChange = (newText: string) => {
@@ -14,15 +13,15 @@ const InputMaster = () => {
 
   return (
     <div className={scss.inputContainer}>
-      <div className={scss.input}>
+      <div className={scss.wrapper}>
         <CustomTextArea onTextChange={handleInputChange} />
-        <CharacterLimit maxLength={140} value={inputText} />
-      </div>
-      <div className={scss.copyTextContainer}>
-        <TextCopy text={inputText} />
+
+        <div className={scss.footer}>
+          <CharacterLimit maxLength={140} value={inputText} />
+        </div>
       </div>
     </div>
   );
 };
 
-export default InputMaster;
+export default ComposerEditor;
