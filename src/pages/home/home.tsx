@@ -1,4 +1,4 @@
-import InputMaster from '~components/InputMaster/InputMaster';
+import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 
 import scss from './home.module.scss';
 
@@ -8,7 +8,7 @@ const Home = () => {
       <div className={scss.gridContainer}>
         <div className={scss.gridSwitches} />
         <div className={scss.gridInput}>
-          <InputMaster />
+          <ComposerEditor />
         </div>
         <div className={scss.gridTabs} />
       </div>
