@@ -1,17 +1,19 @@
 .button {
-  background-color: transparent;
   color: #1a4764;
-  border: none;
+
+  background-color: transparent;
+
   transition: color 0.3s ease;
+
+  &:hover {
+    color: #2980b9;
+  }
 
   .icon {
     width: 24px;
     height: 24px;
-    cursor: pointer;
-  }
 
-  &:hover {
-    color: #2980b9;
+    cursor: pointer;
   }
 }
 
