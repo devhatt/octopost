@@ -1,10 +1,17 @@
 # OctoPost: Aplicativo All-in-One para Redes Sociais
 
-![https://img.shields.io/badge/Electron-13.1-blueviolet](https://img.shields.io/badge/Electron-blueviolet)![https://img.shields.io/badge/TypeScript-blue](https://img.shields.io/badge/TypeScript-blue)![https://img.shields.io/badge/SCSS-orange](https://img.shields.io/badge/SCSS-orange)
+[![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-green?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Jest](https://img.shields.io/badge/Jest-red?logo=jest&logoColor=white)](https://jestjs.io/)
+[![React](https://img.shields.io/badge/React-blue?logo=react&logoColor=white)](https://reactjs.org/)
+[![Sass](https://img.shields.io/badge/Sass-FF69B4?logo=sass&logoColor=white)](https://sass-lang.com/)
+[![GitHub Commit Activity (Week)](https://img.shields.io/github/commit-activity/w/Alecell/octopost)](https://github.com/Alecell/octopost/pulse)
+[![GitHub Contributors](https://img.shields.io/github/contributors/Alecell/octopost)](https://github.com/Alecell/octopost/contributors)
+[![GitHub stars](https://img.shields.io/github/stars/Alecell/octopost.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Alecell/octopost/stargazers/)
+[![Discord Server](https://img.shields.io/discord/308323056592486420?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/9f5BZ7yD)
+[![Twitter Follow](https://img.shields.io/twitter/follow/alecell_?style=social)](https://twitter.com/alecell_)
 --
-
-
-
 
 Bem-vindo ao OctoPost! O OctoPost é um aplicativo de redes sociais único que permite aos usuários fazerem publicações em várias plataformas de mídia social, tudo dentro de uma única interface unificada. Este documento README irá guiá-lo através das informações básicas sobre o projeto, seu propósito e como contribuir de forma eficaz.
 
@@ -30,11 +37,11 @@ Para começar com o OctoPost, siga estes passos:
 
 Recebemos contribuições da comunidade para tornar o OctoPost ainda melhor!
 
-Para instruções mais detalhadas, consulte o **[Guia de Contribuição](https://github.com/Alecell/octopost/blob/develop/CONTRIBUTING.md)**.
+Para instruções mais detalhadas, consulte o **[Guia de Contribuição](https://github.com/Alecell/octopost/blob/master/CONTRIBUTING.md)**.
 
 ## **Código de Conduta**
 
-O OctoPost segue um Código de Conduta para garantir um ambiente respeitoso e inclusivo para todos os contribuidores. Leia e entenda o nosso **[Código de Conduta](https://github.com/Alecell/octopost/blob/develop/CODE_OF_CONDUCT.md)**.
+O OctoPost segue um Código de Conduta para garantir um ambiente respeitoso e inclusivo para todos os contribuidores. Leia e entenda o nosso **[Código de Conduta](https://github.com/Alecell/octopost/blob/master/CODE_OF_CONDUCT.md)**.
 
 ## **Guia de Estilo**
 
@@ -46,7 +53,6 @@ Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em co
 
 ## **License**
 
-Atente-se a nossa [Lincença de Distribuição](https://github.com/Alecell/octopost/blob/master/LICENSE).
----
+## Atente-se a nossa [Lincença de Distribuição](https://github.com/Alecell/octopost/blob/master/LICENSE).
 
 Obrigado pelo seu interesse no OctoPost! Esperamos suas contribuições e esperamos que você aproveite o aplicativo tanto quanto nós gostamos de construí-lo.
