@@ -8,24 +8,13 @@
 .textArea {
   box-sizing: border-box;
   width: 100%;
-  height: 5rem;
+  min-height: 4rem;
   max-height: 10rem;
-  resize: none;
+  resize: vertical;
   border-radius: 0.3rem;
   background-color: rgb(250, 250, 250);
   border: 1px solid rgb(219, 193, 255);
   overflow-y: auto;
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding: 0.6rem;
-}
-
-.textAreaFooter {
-  display: flex;
-  height: 0.8rem;
-  justify-content: flex-end;
-  font-size: 0.6rem;
-  padding: 0.2rem;
-  margin-bottom: 0.12rem;
-  background-color: rgba(235, 235, 235, 0.179);
-  border-radius: 0.5rem;
 }

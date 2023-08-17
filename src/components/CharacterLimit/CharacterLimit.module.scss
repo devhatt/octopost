@@ -1,15 +1,14 @@
 .characterLimit {
   display: flex;
   align-items: center;
-  gap: 5px;
-  color: #fff;
+  gap: 0.5rem;
+  color: #000000;
 }
 
 .circle {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-
   background-color: #80ffa6;
   overflow: hidden;
   position: relative;
@@ -20,7 +19,6 @@
   height: 100%;
   background-color: #ff2a00;
   width: 0;
-
   position: absolute;
   transition: width 0.3s ease-in-out;
 }
