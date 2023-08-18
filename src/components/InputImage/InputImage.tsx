@@ -26,15 +26,15 @@ function InputImage() {
     <img src={URL.createObjectURL(imageSelected)} alt="Imagem" />
   );
 
-  const icon = (
+  const iconInputImage = (
     <svg
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      viewBox="0 0 24 24"
+      viewBox="0 0 22 22"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className={scss.icon}
     >
       <path
         strokeLinecap="round"
@@ -45,10 +45,10 @@ function InputImage() {
   );
 
   return (
-    <div>
+    <div className={scss.imageInputed}>
       <div className={scss.button}>
-        <div className={scss.icon} onClick={handleImageIconClick}>
-          {icon}
+        <div className={scss.iconInputImage} onClick={handleImageIconClick}>
+          {iconInputImage}
         </div>
         <input
           role="imageInput"
@@ -58,7 +58,7 @@ function InputImage() {
           onChange={handleFileChange}
         />
       </div>
-      {imageElement}
+      <div> {imageElement}</div>
     </div>
   );
 }

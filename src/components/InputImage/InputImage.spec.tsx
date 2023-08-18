@@ -1,19 +1,24 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import InputImage from './InputImage';
 
-test('render the icon', () => {
-  render(<InputImage />);
-  const icon = screen.getByRole('img');
-  expect(icon).toBeInTheDocument();
-});
+describe('InputImage', () => {
+  it('renders the icon', () => {
+    render(<InputImage />);
+    const icon = screen.getByRole('img');
+    expect(icon).toBeInTheDocument();
+  });
 
-test('clicking icon trigger file input', () => {
-  render(<InputImage />);
+  describe('when clicking the icon', () => {
+    it('triggers the file input', () => {
+      render(<InputImage />);
 
-  const icon = screen.getByRole('img');
-  userEvent.click(icon);
+      const icon = screen.getByRole('img');
+      userEvent.click(icon);
 
-  const input = screen.getByRole('imageInput');
-  expect(input).toHaveAttribute('type', 'file');
+      const input = screen.getByRole('imageInput');
+      expect(input).toHaveAttribute('type', 'file');
+    });
+  });
 });

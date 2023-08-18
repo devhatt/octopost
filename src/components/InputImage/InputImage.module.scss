@@ -10,11 +10,12 @@
   }
 
   .icon {
-    width: 24px;
-    height: 24px;
+    width: 2rem;
+    height: 2rem;
 
     cursor: pointer;
-  }
+}
+
 }
 
 img {
@@ -24,4 +25,12 @@ img {
 
 .hiden {
   display: none;
+}
+
+.imageInputed {
+  display: flex;
+ direction: row;
+
+align-items: center;
+justify-content: center;
 }

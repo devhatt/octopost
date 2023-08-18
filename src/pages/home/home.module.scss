@@ -61,6 +61,15 @@
   grid-area: input;
 
   border: 0.4rem solid rgb(159, 16, 207);
+
+  .imageInput {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+  }
 }
 
 .gridTabs {
