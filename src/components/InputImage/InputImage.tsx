@@ -23,7 +23,7 @@ function InputImage() {
   };
 
   const imageElement = imageSelected && (
-    <img src={URL.createObjectURL(imageSelected)} alt="Imagem" />
+    <img src={URL.createObjectURL(imageSelected)} alt="InputImage" />
   );
 
   const iconInputImage = (
@@ -58,7 +58,7 @@ function InputImage() {
           onChange={handleFileChange}
         />
       </div>
-      <div> {imageElement}</div>
+      <div>{imageElement}</div>
     </div>
   );
 }
