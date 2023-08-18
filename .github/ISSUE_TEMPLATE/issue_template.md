@@ -1,6 +1,14 @@
+---
+name: Issue
+about: Create a new issue to help us improve Octopost
+title: ''
+labels: needs triage
+assignees: ''
+---
+
 ## [Issue Title]
 
-_label: [tag1, tag2] 
+_label: [tag1, tag2]
 <br>
 assignees: [assignee_username]_
 
@@ -18,7 +26,7 @@ assignees: [assignee_username]_
     <b>Steps to Reproduce</b>
   </summary>
 
-  [If applicable, provide detailed steps to reproduce the issue.]
+[If applicable, provide detailed steps to reproduce the issue.]
 
 </details>
 
