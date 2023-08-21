@@ -1,0 +1,11 @@
+{
+	"it Jest": {
+		"prefix": "it",
+		"body": [
+			"it('$1', () => {",
+			"  $2",
+			"});"
+		],
+		"description": "it Jest"
+	}
+}
