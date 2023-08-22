@@ -1,4 +1,4 @@
-Issue: 
+Closes 
 
 <details open> 
   <summary>
