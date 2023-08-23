@@ -7,6 +7,33 @@
 
   font-size: 1.6rem;
 
+  border: 1px solid #cbc4cf;
+
+  background-color: #000;
+
   background-color: #f5eff4;
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.2rem 1.2rem 0 0;
+
+  .titleContainer {
+    display: flex;
+    gap: 0.4rem;
+
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 1.4rem;
+
+    padding: 0.4rem;
+
+    position: relative;
+
+    background-color: #7033e0;
+    border-radius: 1.2rem 1.2rem 0 0;
+
+    .dotSvg {
+      width: 2.4rem;
+    }
+  }
 }
