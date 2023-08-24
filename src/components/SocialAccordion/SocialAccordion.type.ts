@@ -1,5 +1,6 @@
 export interface ISocialAccordion {
   socialMediaName: string;
+  isError: boolean;
   accountList: IAccountList[];
 }
 

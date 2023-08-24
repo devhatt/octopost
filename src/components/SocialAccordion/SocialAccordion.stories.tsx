@@ -21,6 +21,7 @@ const accountList = [
 export const SocicialAccordionComponent: Story<ISocialAccordion> = (props) => {
   return (
     <SocialAccordion
+      isError={props.isError}
       accountList={props.accountList}
       socialMediaName={props.socialMediaName}
     />
@@ -29,5 +30,6 @@ export const SocicialAccordionComponent: Story<ISocialAccordion> = (props) => {
 
 SocicialAccordionComponent.args = {
   socialMediaName: 'Facebook',
+  isError: false,
   accountList,
 };

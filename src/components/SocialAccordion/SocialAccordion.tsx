@@ -31,8 +31,14 @@ function SocialAccordion(props: ISocialAccordion) {
           </div>
 
           <div className={scss.accordionInfo}>
-            <span>{props.accountList.length}+</span>
-            <p>{isOpen ? 'open' : 'closed'}</p>
+            {props.isError ? (
+              <span className={scss.error}>error!!!!</span>
+            ) : (
+              <>
+                <span>{props.accountList.length}+</span>
+                <p>{isOpen ? 'open' : 'closed'}</p>
+              </>
+            )}
           </div>
         </header>
       </button>
