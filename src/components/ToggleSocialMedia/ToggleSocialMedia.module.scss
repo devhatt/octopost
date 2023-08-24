@@ -3,9 +3,23 @@
 
   align-items: center;
   justify-content: space-between;
+
+  padding: 0.8rem;
+
+  border-bottom: 1px solid #CAC4D0;
 }
 
-.socialMedia {
-  font-size: 1.6rem;
-  font-weight: 600;
+.accountInfo {
+  display: flex;
+  gap: 0.8rem;
+
+  align-items: center;
+
+  .button {
+    all: unset;
+  }  
+  
+  .text {
+    font-size: 1.4rem;
+  }
 }

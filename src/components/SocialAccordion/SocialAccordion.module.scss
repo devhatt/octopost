@@ -1,0 +1,58 @@
+.wrapper {
+  button {
+    all: unset;
+    width: 100%;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  
+  padding: 0 1.6rem;
+  
+  border: 1px solid #CBC4CF;
+}
+
+
+.socialInfo, .accordionInfo {
+  display: flex;
+
+  align-items: center;
+} 
+
+.socialInfo {
+  gap: 1.6rem;
+
+  p {
+    color: #7033E0;
+    font-size: 1.6rem;
+  }
+}
+
+.accordionInfo {
+  gap: 0.8rem;
+
+  span {
+    color: #49454E;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+}
+
+
+.list {
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}

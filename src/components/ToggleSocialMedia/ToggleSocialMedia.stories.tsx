@@ -2,16 +2,21 @@ import type { Story } from '@ladle/react';
 
 import ToggleSocialMedia from './ToggleSocialMedia';
 
-export const ToggleSocialMediaComponent: Story<{
-  socialMedia: string;
-}> = ({ socialMedia }) => {
+import { ITogleSocialMedia } from './ToggleSocialMedia.types';
+
+export const ToggleSocialMediaComponent: Story<ITogleSocialMedia> = (props) => {
   return (
     <div style={{ maxWidth: '20rem' }}>
-      <ToggleSocialMedia socialMedia={socialMedia} />
+      <ToggleSocialMedia
+        accountImage={props.accountImage}
+        accountName={props.accountName}
+      />
     </div>
   );
 };
 
 ToggleSocialMediaComponent.args = {
-  socialMedia: 'Reddit',
+  accountImage:
+    'https://pbs.twimg.com/profile_images/1539832609315987456/vaTzT3Co_400x400.jpg',
+  accountName: 'Jhon doe',
 };

@@ -1,3 +1,4 @@
 export interface ITogleSocialMedia {
-  socialMedia: string;
+  accountName: string;
+  accountImage: string;
 }

@@ -1,0 +1,23 @@
+.userImage {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+}
+
+.userImagePlaceholder {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  background-color: #EADDFF;
+  border-radius: 50%;
+
+  .initialLetter {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}
