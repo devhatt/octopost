@@ -16,24 +16,23 @@
   align-items: center;
   justify-content: space-between;
 
-  
   padding: 0 1.6rem;
-  
-  border: 1px solid #CBC4CF;
+
+  border: 1px solid #cbc4cf;
 }
 
-
-.socialInfo, .accordionInfo {
+.socialInfo,
+.accordionInfo {
   display: flex;
 
   align-items: center;
-} 
+}
 
 .socialInfo {
   gap: 1.6rem;
 
   p {
-    color: #7033E0;
+    color: #7033e0;
     font-size: 1.6rem;
   }
 }
@@ -42,12 +41,11 @@
   gap: 0.8rem;
 
   span {
-    color: #49454E;
+    color: #49454e;
     font-size: 1.1rem;
     font-weight: 500;
   }
 }
-
 
 .list {
   padding: 0;
