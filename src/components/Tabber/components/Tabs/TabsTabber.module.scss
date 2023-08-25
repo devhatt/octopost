@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center; /* Adicionado para alinhamento horizontal */
+
+  color: var(--m-3-sys-light-primary, #868687);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  cursor: pointer;
+  letter-spacing: 0.00625rem;
+
+  &:hover {
+    background-color: #6adafb;
+  }
+
+  &.selected {
+    color: var(--m-3-sys-light-primary, #7033e0);
+
+    border-bottom: 0.2rem solid currentColor;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    padding: 0.75rem 0.5rem;
+  }
+}
