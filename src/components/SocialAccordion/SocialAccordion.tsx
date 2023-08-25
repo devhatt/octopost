@@ -23,7 +23,12 @@ function SocialAccordion(props: ISocialAccordion) {
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className={scss.wrapper}>
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+      <button
+        id="btn-accordion"
+        aria-expanded={isOpen}
+        aria-controls="content-accordion"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
         <header className={scss.header}>
           <div className={scss.socialInfo}>
             <img className={scss.icon} src={test} />
@@ -45,11 +50,14 @@ function SocialAccordion(props: ISocialAccordion) {
       <AnimatePresence>
         {isOpen && (
           <motion.ul
-            initial="collapsed"
-            animate="expanded"
+            role="listitem"
             exit="collapsed"
-            variants={accordionVariants}
+            animate="expanded"
+            initial="collapsed"
             className={scss.list}
+            id="content-accordion"
+            variants={accordionVariants}
+            aria-labelledby="btn-accordion"
           >
             {props.accountList.map((accounts) => (
               <motion.li key={accounts.id}>

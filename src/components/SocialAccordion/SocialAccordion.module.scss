@@ -8,6 +8,7 @@
 
     &:focus {
       outline: 2px solid #7033e0;
+      border-radius: 0.4rem;
     }
   }
 
@@ -51,7 +52,7 @@
 
   span {
     color: #49454e;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
 
