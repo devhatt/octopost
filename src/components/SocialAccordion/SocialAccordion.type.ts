@@ -4,7 +4,7 @@ export interface ISocialAccordion {
   accountList: IAccountList[];
 }
 
-interface IAccountList {
+export interface IAccountList {
   id: string | number;
   username: string;
   image: string;

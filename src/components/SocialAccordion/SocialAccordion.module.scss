@@ -1,7 +1,15 @@
 .wrapper {
   button {
-    all: unset;
     width: 100%;
+
+    border: 0;
+
+    background: none;
+
+    &:focus {
+      outline: 2px solid #7033e0;
+    }
+    
   }
 
   .icon {
