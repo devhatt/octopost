@@ -12,7 +12,7 @@ describe('UserImage', () => {
     it('renders with initial name letter if no image', () => {
       render(<UserImage accountName="fulano" image="" />);
       expect(screen.getByText(/f/i)).toBeInTheDocument();
-      expect(screen.getByAltText(/profile user/i)).not.toBeInTheDocument();
+      expect(screen.queryByAltText(/profile user/i)).not.toBeInTheDocument();
     });
   });
 });
