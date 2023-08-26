@@ -5,8 +5,6 @@ import scss from './UserImage.module.scss';
 import { IUserImage } from './UserImage.type';
 
 function UserImage(props: IUserImage) {
-  // if account have two words it will show two letters on screen
-  // in this way will show the first one
   const getInitialLetter = useMemo(() => {
     return props.accountName
       .split(' ')
