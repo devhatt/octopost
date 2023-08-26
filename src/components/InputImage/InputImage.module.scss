@@ -1,0 +1,35 @@
+.button {
+  color: #1a4764;
+
+  background-color: transparent;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #2980b9;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+
+    cursor: pointer;
+  }
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+
+.hiden {
+  display: none;
+}
+
+.imageInputed {
+  display: flex;
+  direction: row;
+
+  align-items: center;
+  justify-content: center;
+}
