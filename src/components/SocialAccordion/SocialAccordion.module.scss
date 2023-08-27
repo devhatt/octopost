@@ -5,11 +5,7 @@
     border: 0;
 
     background: none;
-
-    &:focus {
-      outline: 2px solid #7033e0;
-      border-radius: 0.4rem;
-    }
+    outline-color: #7033e0;
   }
 
   .icon {

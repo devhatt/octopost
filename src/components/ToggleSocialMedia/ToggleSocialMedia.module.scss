@@ -16,7 +16,10 @@
   align-items: center;
 
   .button {
-    all: unset;
+    background: none;
+    outline-color: #7033e0;
+
+    cursor: pointer;
   }
 
   .text {
