@@ -6,7 +6,7 @@ import ToggleSocialMedia from '../ToggleSocialMedia/ToggleSocialMedia';
 
 import scss from './SocialAccordion.module.scss';
 
-import imagePlaceholderForIcon from '../../../assets/logo.png';
+import imagePlaceholderForIcon from '../../assets/logo.png';
 
 import { ISocialAccordion } from './SocialAccordion.type';
 
