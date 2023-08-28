@@ -3,9 +3,9 @@
   flex-direction: row;
 
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 
-  color:  #868687;
+  color: #868687;
   font-size: 0.875rem;
   line-height: 1.25rem;
 
@@ -17,7 +17,7 @@
   }
 
   &.selected {
-    color:  #7033e0;
+    color: #7033e0;
 
     border-bottom: 2px solid currentColor;
   }
