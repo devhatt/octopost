@@ -2,13 +2,13 @@ import { ITabsTabberProps } from '~components/Tabber/Tabber.types';
 
 import scss from './TabsTabber.module.scss';
 
-function TabsTabber({ socialItem, selectedTab, onTabClick }: ITabsTabberProps) {
-  const { id } = socialItem;
-  const isSelected = id === selectedTab;
-  const tabButtonClasses = `${scss.button} ${isSelected ? scss.selected : ''}`;
+function TabsTabber(props: ITabsTabberProps) {
+  const tabButtonClasses = `${scss.button} ${
+    props.socialItem.id === props.selectedTab ? scss.selected : ''
+  }`;
 
   const handleTabClick = () => {
-    onTabClick(id);
+    props.onTabClick(props.socialItem.id);
   };
 
   const svgPlaceholder = (
@@ -24,7 +24,7 @@ function TabsTabber({ socialItem, selectedTab, onTabClick }: ITabsTabberProps) {
   return (
     <div className={tabButtonClasses} onClick={handleTabClick}>
       <div className={scss.icon}>{svgPlaceholder}</div>
-      {id}
+      {props.socialItem.id}
     </div>
   );
 }
