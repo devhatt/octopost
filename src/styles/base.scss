@@ -1,6 +1,8 @@
 @import '~normalize.css/normalize.css';
+@import './global';
 
 html,
 body {
+  font-family: $mainFont;
   font-size: 62.5%;
 }
