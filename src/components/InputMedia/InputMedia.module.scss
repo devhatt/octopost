@@ -1,0 +1,49 @@
+@use '../../styles/global';
+
+.button,
+.buttonSelected {
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  transition: color 0.3s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: global.$hovering;
+  }
+}
+
+.button {
+  width: 72px;
+  height: 72px;
+
+  border: 2px dotted global.$baseColor;
+}
+
+.buttonSelected {
+  width: 104px;
+  height: 104px;
+
+  border: 2px dotted global.$tertiaryPurple;
+}
+
+.hidden {
+  display: none;
+}
+
+.imagePlaceholder,
+.imageSelected {
+  object-fit: cover;
+}
+
+.imageSelected {
+  overflow: hidden;
+  aspect-ratio: 4 / 4;
+}
