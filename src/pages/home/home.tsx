@@ -1,3 +1,5 @@
+import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
+
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 
@@ -12,7 +14,9 @@ const Home = () => {
           <div className={scss.gridSwitches}>
             <Sidebar />
           </div>
-          <div className={scss.gridInput}></div>
+          <div className={scss.gridInput}>
+            <ComposerEditor />
+          </div>
           <div className={scss.gridTabs} />
         </div>
       </div>

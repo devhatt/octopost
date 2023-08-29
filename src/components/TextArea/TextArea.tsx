@@ -15,6 +15,9 @@ function CustomTextArea(props: ICustomTextAreaProps) {
 
   return (
     <div className={scss.textAreaContainer}>
+      <div className={scss.mainTitle}>
+        <span>Main Content</span>
+      </div>
       <textarea
         className={scss.textArea}
         value={inputValue}
