@@ -1,12 +1,11 @@
 .input {
-  width: 48px;
-  height: 28px;
+  width: 52px;
+  height: 32px;
 
   position: relative;
 
   background: #c3c3c3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  outline: none;
   outline: none;
   border-radius: 50px;
 
@@ -14,28 +13,42 @@
   appearance: none;
 
   &::before {
-    padding: 0.8rem;
+    padding: 1rem;
 
     position: absolute;
     right: 50%;
     left: 0;
 
-    background: #fff;
+    background: $secondaryGray;
+    background-image: url('../../../assets/disableIcon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
 
     transition: all 250ms;
 
     content: '';
-    scale: 1.1;
+    scale: 0.75;
+  }
+
+  &:active::before {
+    transform: scale(0.5);
   }
 
   &:checked[type='checkbox'] {
-    background: #1e1e1e;
+    background: $secondaryPurple;
   }
 
   &:checked[type='checkbox']::before {
     right: 0;
-    left: 50%;
+    left: 38%;
+
+    background-image: url('../../../assets/checkIcon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px;
   }
 }
