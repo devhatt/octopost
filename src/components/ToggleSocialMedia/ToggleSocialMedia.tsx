@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import Switch from '~components/Switch/Switch';
-
+import Switch from '../Switch/Switch';
 import UserImage from './components/UserImage/UserImage';
 
 import scss from './ToggleSocialMedia.module.scss';
