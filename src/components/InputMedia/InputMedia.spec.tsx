@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import InputImage from './InputImage';
+import InputMedia from './InputMedia';
 
-describe('InputImage', () => {
+describe('InputMedia', () => {
   it('renders the icon', () => {
-    render(<InputImage />);
+    render(<InputMedia />);
     const icon = screen.getByRole('img');
     expect(icon).toBeInTheDocument();
   });
 
   describe('when clicking the icon', () => {
     it('triggers the file input', () => {
-      render(<InputImage />);
+      render(<InputMedia />);
 
       const icon = screen.getByRole('img');
       userEvent.click(icon);
