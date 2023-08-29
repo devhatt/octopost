@@ -6,7 +6,7 @@
 
   padding: 0.8rem;
 
-  border-bottom: 1px solid #cac4d0;
+  border-bottom: 1px solid $primaryGray;
 }
 
 .accountInfo {
@@ -17,7 +17,7 @@
 
   .button {
     background: none;
-    outline-color: #7033e0;
+    outline-color: $secondaryPurple;
 
     cursor: pointer;
   }

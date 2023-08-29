@@ -6,7 +6,7 @@ import ToggleSocialMedia from '../ToggleSocialMedia/ToggleSocialMedia';
 
 import scss from './SocialAccordion.module.scss';
 
-import imagePlaceholderForIcon from '../../assets/logo.png';
+import iconPlaceholderForIcon from './assets/facebook.svg';
 
 import { ISocialAccordion } from './SocialAccordion.type';
 
@@ -31,7 +31,7 @@ function SocialAccordion(props: ISocialAccordion) {
       >
         <header className={scss.header}>
           <div className={scss.socialInfo}>
-            <img className={scss.icon} src={imagePlaceholderForIcon} />
+            <img className={scss.icon} src={iconPlaceholderForIcon} />
             <p>{props.socialMediaName}</p>
           </div>
 
