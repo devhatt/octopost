@@ -15,7 +15,6 @@
   .icon {
     width: 24px;
     height: 24px;
-
   }
 }
 
@@ -26,16 +25,16 @@
   justify-content: space-between;
 
   padding: 0 1.6rem;
-  
+
   border: 1px solid $primaryGray;
-  
+
   cursor: pointer;
 }
 
 .socialInfo,
 .accordionInfo {
   display: flex;
-  
+
   align-items: center;
 }
 
