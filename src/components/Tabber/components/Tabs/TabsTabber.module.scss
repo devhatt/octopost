@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #868687;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  cursor: pointer;
+  letter-spacing: 0.00625rem;
+
+  &:hover {
+    background-color: #dce2e4;
+  }
+
+  &.selected {
+    color: #7033e0;
+
+    border-bottom: 2px solid currentColor;
+  }
+
+  .icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    padding: 0.8rem 0.6rem;
+  }
+}
