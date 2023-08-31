@@ -9,10 +9,10 @@ function Switch(props: ISwitch) {
     props.setChecked(ev.target.checked);
   };
 
-  const hasErro = true;
+  const hasError = true;
 
   const inputClasses = classNames(scss.input, {
-    [scss.error]: hasErro,
+    [scss.error]: hasError,
   });
 
   return (
