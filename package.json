@@ -104,5 +104,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^~components(.*)$": "<rootDir>/src/components$1"
+    }
   }
 }
