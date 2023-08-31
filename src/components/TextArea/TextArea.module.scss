@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@import '../../styles/base';
 
 .textAreaContainer {
   width: 100%;
@@ -26,7 +26,6 @@
 
     padding: 2.6rem 1.6rem;
     border: 1px solid $primaryGray;
-    box-sizing: border-box;
 
     background-color: $primaryWhite;
   }

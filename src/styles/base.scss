@@ -1,6 +1,10 @@
 @import '~normalize.css/normalize.css';
 @import './global';
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   font-family: $mainFont;
