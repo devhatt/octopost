@@ -1,16 +1,7 @@
 @import '../../styles/global';
 
 .wrapper {
-  font-family: $mainFont;
-
-  button {
-    width: 100%;
-
-    border: 0;
-
-    background: none;
-    outline-color: $secondaryPurple;
-  }
+  overflow: hidden;
 
   .icon {
     width: 24px;
@@ -58,13 +49,5 @@
 
   .error {
     color: $secondaryRed;
-  }
-}
-
-.list {
-  padding: 0;
-
-  li {
-    list-style-type: none;
   }
 }

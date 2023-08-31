@@ -11,13 +11,17 @@ function UserImage(props: IUserImage) {
       .map((letters) => letters[0].toLocaleUpperCase());
   }, [props.accountName]);
 
-  return props.image !== '' ? (
+  const renderProfileImage = () => (
     <img className={scss.userImage} src={props.image} alt="profile user" />
-  ) : (
+  );
+
+  const renderImagePlaceholder = () => (
     <div className={scss.userImagePlaceholder}>
       <span className={scss.initialLetter}>{getInitialLetter[0]}</span>
     </div>
   );
+
+  return props.image !== '' ? renderProfileImage() : renderImagePlaceholder();
 }
 
 export default UserImage;

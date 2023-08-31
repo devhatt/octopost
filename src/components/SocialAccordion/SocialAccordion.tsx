@@ -12,22 +12,60 @@ import { ISocialAccordion } from './SocialAccordion.type';
 
 const accordionVariants = {
   expanded: {
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', stiffness: 300, damping: 24 },
+    height: 'auto',
+    transition: { duration: 0.3 },
   },
-  collapsed: { opacity: 0, y: -100, transition: { duration: 0.2 } },
+  collapsed: { height: 0, transition: { duration: 0.3 } },
 };
 
 function SocialAccordion(props: ISocialAccordion) {
   const [isOpen, setIsOpen] = useState(true);
+
+  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
+
+  const openLabel = isOpen ? 'open' : 'closed';
+
+  const renderError = () => <span className={scss.error}>error!!!!</span>;
+
+  const renderAccountQuantity = () => (
+    <>
+      <span>{props.accountList.length}+</span>
+      <p>{openLabel}</p>
+    </>
+  );
+
+  const renderAccordionMap = () =>
+    props.accountList.map((accounts) => (
+      <li key={accounts.id}>
+        <ToggleSocialMedia
+          accountName={accounts.username}
+          accountImage={accounts.image}
+        />
+      </li>
+    ));
+
+  const renderAccordionContent = () => (
+    <motion.ul
+      role="listitem"
+      exit="collapsed"
+      animate="expanded"
+      initial="collapsed"
+      className={scss.list}
+      id="content-accordion"
+      variants={accordionVariants}
+      aria-labelledby="btn-accordion"
+    >
+      {renderAccordionMap()}
+    </motion.ul>
+  );
+
   return (
     <div className={scss.wrapper}>
       <button
         id="btn-accordion"
         aria-expanded={isOpen}
+        onClick={handleOpenAccordion}
         aria-controls="content-accordion"
-        onClick={() => setIsOpen((prev) => !prev)}
       >
         <header className={scss.header}>
           <div className={scss.socialInfo}>
@@ -36,40 +74,11 @@ function SocialAccordion(props: ISocialAccordion) {
           </div>
 
           <div className={scss.accordionInfo}>
-            {props.isError ? (
-              <span className={scss.error}>error!!!!</span>
-            ) : (
-              <>
-                <span>{props.accountList.length}+</span>
-                <p>{isOpen ? 'open' : 'closed'}</p>
-              </>
-            )}
+            {props.error ? renderError() : renderAccountQuantity()}
           </div>
         </header>
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.ul
-            role="listitem"
-            exit="collapsed"
-            animate="expanded"
-            initial="collapsed"
-            className={scss.list}
-            id="content-accordion"
-            variants={accordionVariants}
-            aria-labelledby="btn-accordion"
-          >
-            {props.accountList.map((accounts) => (
-              <motion.li key={accounts.id}>
-                <ToggleSocialMedia
-                  accountName={accounts.username}
-                  accountImage={accounts.image}
-                />
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-      </AnimatePresence>
+      <AnimatePresence>{isOpen && renderAccordionContent()}</AnimatePresence>
     </div>
   );
 }
