@@ -1,11 +1,18 @@
+@import '../../styles/global';
+
 .input {
-  width: 52px;
-  height: 32px;
+  width: 48px;
+  height: 28px;
+
+  color: $secondaryGray;
 
   position: relative;
 
-  background: #c3c3c3;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: $primaryGray;
+  box-shadow:
+    0 0 5px,
+    0 0 0 2px;
+
   outline: none;
   border-radius: 50px;
 
@@ -13,42 +20,51 @@
   appearance: none;
 
   &::before {
-    padding: 1rem;
+    width: 28px;
+    height: 28px;
 
     position: absolute;
     right: 50%;
     left: 0;
 
-    background: $secondaryGray;
+    background: currentColor;
     background-image: url('../../../assets/disableIcon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px;
 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
-    transition: all 250ms;
+    transition: all 300ms;
 
     content: '';
-    scale: 0.75;
+    scale: 0.85;
   }
 
   &:active::before {
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
 
   &:checked[type='checkbox'] {
+    color: $secondaryPurple;
+
     background: $secondaryPurple;
   }
 
   &:checked[type='checkbox']::before {
-    right: 0;
-    left: 38%;
+    left: 41%;
 
+    background: $primaryWhite;
     background-image: url('../../../assets/checkIcon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
   }
+}
+
+.error {
+  color: $secondaryRed;
+
+  background: $primaryWhite;
 }
