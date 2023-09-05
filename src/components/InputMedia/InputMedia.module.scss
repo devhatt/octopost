@@ -1,35 +1,43 @@
-.button {
-  color: #1a4764;
+@import '../../styles/global';
 
-  background-color: transparent;
+.button {
+  width: 104px;
+  height: 104px;
+
+  display: grid;
+  
+  place-items: center;
+
+  border: 2px dotted $tertiaryPurple;
+
+  position: relative;
 
   transition: color 0.3s ease;
 
+  cursor: pointer;
+
+  &[data-variant='true'] {
+    max-width: 72px;
+    height: 72px;
+
+    border: 2px dotted $baseColor;
+  }
+
   &:hover {
-    color: #2980b9;
+    background-color: $hovering;
   }
-
-  .icon {
-    width: 2rem;
-    height: 2rem;
-
-    cursor: pointer;
-  }
-}
-
-img {
-  max-width: 50%;
-  height: auto;
 }
 
 .hidden {
   display: none;
 }
 
-.imageInputed {
-  display: flex;
-  direction: row;
+.imagePlaceholder {
+  max-width: 72px;
+  max-height: 72px;
+}
 
-  align-items: center;
-  justify-content: center;
+.imageInputed {
+  width: 100%;
+  height: 100%;
 }
