@@ -21,9 +21,9 @@ const accordionVariants = {
 function SocialAccordion(props: ISocialAccordion) {
   const [isOpen, setIsOpen] = useState(true);
 
-  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
-
   const openLabel = isOpen ? 'open' : 'closed';
+
+  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
 
   const renderError = () => <span className={scss.error}>error!!!!</span>;
 

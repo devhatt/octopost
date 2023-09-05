@@ -21,7 +21,7 @@ function UserImage(props: IUserImage) {
     </div>
   );
 
-  return props.image !== '' ? renderProfileImage() : renderImagePlaceholder();
+  return props.image ? renderProfileImage() : renderImagePlaceholder();
 }
 
 export default UserImage;
