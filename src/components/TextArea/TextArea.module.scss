@@ -1,26 +1,32 @@
+@import '../../styles/base';
+
 .textAreaContainer {
-  font-size: 1rem;
-
-  padding: 0.12rem;
-
-  background-color: rgb(105, 53, 203);
-  border-radius: 0.3rem;
-}
-
-.textArea {
   width: 100%;
-  min-height: 4rem;
-  max-height: 10rem;
-  overflow-y: auto;
 
-  font-size: 1rem;
+  border-radius: 1.2rem 1.2rem 0 0;
 
-  padding: 0.6rem;
-  border: 1px solid rgb(219, 193, 255);
-  box-sizing: border-box;
+  .mainTitle {
+    color: $primaryWhite;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
 
-  background-color: rgb(250, 250, 250);
-  border-radius: 0.3rem;
+    padding: 1.8rem 2.4rem;
 
-  resize: vertical;
+    background-color: $secondaryPurple;
+    border-radius: 1.2rem 1.2rem 0 0;
+  }
+
+  .textArea {
+    width: 100%;
+    min-height: 20rem;
+
+    color: $secondaryGray;
+
+    font-size: 1.6rem;
+
+    padding: 2.6rem 1.6rem;
+    border: 1px solid $primaryGray;
+
+    background-color: $primaryWhite;
+  }
 }

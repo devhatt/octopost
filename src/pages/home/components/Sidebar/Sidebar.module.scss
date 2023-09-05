@@ -1,5 +1,9 @@
+@import '../../../../styles/global';
+
 .sidebar {
   width: 100%;
+
+  font-family: $mainFont;
 
   font-size: 1.6rem;
 
@@ -22,7 +26,7 @@
 
     position: relative;
 
-    background-color: #7033e0;
+    background-color: $secondaryPurple;
     border-radius: 1.2rem 1.2rem 0 0;
 
     .dotSvg {

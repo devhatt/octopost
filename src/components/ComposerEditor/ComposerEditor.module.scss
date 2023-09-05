@@ -1,9 +1,10 @@
+@import '../../styles/global';
+
 .inputContainer {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
 }
 
 .wrapper {
@@ -11,9 +12,11 @@
 }
 
 .footer {
+  font-size: 1.2rem;
+
   position: absolute;
-  right: 15px;
   bottom: 13px;
+  left: 15px;
 }
 
 .copyTextContainer {
