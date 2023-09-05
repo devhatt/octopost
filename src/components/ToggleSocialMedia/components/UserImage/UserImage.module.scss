@@ -1,0 +1,25 @@
+@import '../../../../styles/global';
+
+.userImage {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+}
+
+.userImagePlaceholder {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  background-color: $primaryPurple;
+  border-radius: 50%;
+
+  .initialLetter {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}

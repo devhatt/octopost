@@ -1,11 +1,30 @@
+@import '../../styles/global';
+
 .wrapper {
   display: flex;
 
   align-items: center;
   justify-content: space-between;
+
+  padding: 0.8rem 0.8rem 0.8rem 1.6rem;
+
+  border-bottom: 1px solid $primaryGray;
 }
 
-.socialMedia {
-  font-size: 1.6rem;
-  font-weight: 600;
+.accountInfo {
+  display: flex;
+  gap: 0.8rem;
+
+  align-items: center;
+
+  .button {
+    background: none;
+    outline-color: $secondaryPurple;
+
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: 1.4rem;
+  }
 }

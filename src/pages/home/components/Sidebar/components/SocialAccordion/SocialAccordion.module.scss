@@ -1,0 +1,53 @@
+@import '../../styles/global';
+
+.wrapper {
+  overflow: hidden;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 1.6rem;
+
+  border: 1px solid $primaryGray;
+
+  cursor: pointer;
+}
+
+.socialInfo,
+.accordionInfo {
+  display: flex;
+
+  align-items: center;
+}
+
+.socialInfo {
+  gap: 1rem;
+
+  p {
+    color: $secondaryPurple;
+    font-size: 1.6rem;
+  }
+}
+
+.accordionInfo {
+  gap: 0.8rem;
+
+  span {
+    color: $tertiaryGray;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .error {
+    color: $secondaryRed;
+  }
+}
