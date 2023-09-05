@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-import ToggleSocialMedia from '../ToggleSocialMedia/ToggleSocialMedia';
+import ToggleSocialMedia from '~components/ToggleSocialMedia/ToggleSocialMedia';
 
 import scss from './SocialAccordion.module.scss';
 
