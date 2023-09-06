@@ -1,0 +1,30 @@
+@import '../../styles/global';
+
+.searchClueContainer {
+  display: flex;
+  gap: 0.8rem;
+
+  align-items: center;
+  justify-content: space-around;
+
+  font-family: $mainFont;
+  color: $primaryWhite;
+  font-size: 1.4rem;
+
+  margin: 0.8rem 0;
+  padding: 0.4rem 0.8rem 0.4rem 1.6rem;
+
+  background-color: $secondaryPurple;
+  box-shadow: 0 1px 3px 0 #0000004d;
+  border-radius: 4px;
+
+  .clearButton {
+    color: $primaryPurple;
+
+    border: 0;
+
+    background-color: transparent;
+
+    cursor: pointer;
+  }
+}
