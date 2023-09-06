@@ -10,7 +10,8 @@ import { IInputMedia } from './InputMedia.types';
 function InputMedia(props: IInputMedia) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [imageSelected, setImageSelected] = useState('');
+  const [mediaType, setMediaType] = useState('');
+  const [mediaSelected, setMediaSelected] = useState('');
 
   const handleInputClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -23,7 +24,13 @@ function InputMedia(props: IInputMedia) {
 
     const fileType = files[0].type;
     if (fileType.includes('image') || fileType.includes('video')) {
-      setImageSelected(URL.createObjectURL(files[0]));
+      setMediaSelected(URL.createObjectURL(files[0]));
+
+      const mediaType = fileType.match('(image|video)');
+
+      if (!mediaType) return;
+
+      setMediaType(mediaType[0]);
       // Mostrando informações da imagem durante o desenvolvimento
       // eslint-disable-next-line no-console
       console.log('imagem', files[0]);
@@ -38,9 +45,14 @@ function InputMedia(props: IInputMedia) {
     />
   );
 
-  const renderImage = () => (
-    <img alt="selected" className={scss.imageInputed} src={imageSelected} />
-  );
+  const renderMedia = () =>
+    mediaType === 'image' ? (
+      <img alt="selected" className={scss.imageInputed} src={mediaSelected} />
+    ) : (
+      <video controls className={scss.imageInputed}>
+        <source src={mediaSelected} />
+      </video>
+    );
 
   return (
     <button
@@ -57,7 +69,7 @@ function InputMedia(props: IInputMedia) {
         onChange={handleFileChange}
       />
 
-      {imageSelected ? renderImage() : renderEmptyImagePlaceholder()}
+      {mediaSelected ? renderMedia() : renderEmptyImagePlaceholder()}
     </button>
   );
 }
