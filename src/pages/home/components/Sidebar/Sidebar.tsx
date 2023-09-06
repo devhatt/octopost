@@ -9,7 +9,14 @@ function Sidebar() {
         <img src={dotSvg} className={scss.dotSvg} />
         <p>Select Social Media</p>
       </div>
-      Item 1
+      <div className={scss.itemsContainer}>
+        Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+        Item 1 <br /> Item2 <br />
+        Item 1 <br /> Item2 <br />
+        Item 1 <br /> Item2 <br />
+        Item 1 <br /> Item2 <br />
+        Item 1 <br /> Item2 <br />
+      </div>
     </aside>
   );
 }
