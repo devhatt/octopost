@@ -45,7 +45,7 @@
     'switches input'
     'switches tabs';
   grid-template-rows: 1fr 2fr;
-  grid-template-columns: clamp(24.4rem, 21%, 28.8rem) 1fr;
+  grid-template-columns: 28.4rem 1fr;
   gap: 10px;
 }
 
