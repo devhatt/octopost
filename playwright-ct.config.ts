@@ -28,7 +28,7 @@ export default defineConfig({
     ctPort: 3100,
   },
 
-  testMatch: '**/*.ct.spec.ts',
+  testMatch: '**/*.ct.spec.tsx',
 
   /* Configure projects for major browsers */
   projects: [
