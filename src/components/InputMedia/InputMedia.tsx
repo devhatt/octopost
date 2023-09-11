@@ -50,7 +50,11 @@ function InputMedia() {
 
   const renderMedia = () =>
     mediaType === 'image' ? (
-      <img alt="selected" className={scss.imageInputed} src={mediaSelected} />
+      <img
+        src={mediaSelected}
+        alt="selected image"
+        className={scss.imageInputed}
+      />
     ) : (
       <video controls className={scss.imageInputed}>
         <source src={mediaSelected} />
@@ -61,8 +65,8 @@ function InputMedia() {
     <button className={inputClasses} onClick={handleInputClick}>
       <input
         type="file"
+        id="imageInput"
         ref={fileInputRef}
-        role="imageInput"
         className={scss.hidden}
         accept="image/*, video/*"
         onChange={handleFileChange}
