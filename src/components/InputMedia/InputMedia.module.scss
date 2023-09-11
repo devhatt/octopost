@@ -1,14 +1,14 @@
 @import '../../styles/global';
 
 .button {
-  width: 104px;
-  height: 104px;
+  width: 72px;
+  height: 72px;
 
   display: grid;
 
   place-items: center;
-
-  border: 2px dotted $tertiaryPurple;
+  
+  border: 2px dotted $baseColor;
 
   position: relative;
 
@@ -16,16 +16,16 @@
 
   cursor: pointer;
 
-  &[data-variant='true'] {
-    max-width: 72px;
-    height: 72px;
-
-    border: 2px dotted $baseColor;
-  }
-
   &:hover {
     background-color: $hovering;
   }
+}
+
+.selected {
+  width: 104px;
+  height: 104px;
+
+  border: 2px dotted $tertiaryPurple;
 }
 
 .hidden {

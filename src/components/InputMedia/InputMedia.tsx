@@ -1,17 +1,20 @@
 import { useRef, useState } from 'react';
 
+import classNames from 'classnames';
+
 import scss from './InputMedia.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
-import emptyInputPurple from './assets/imageEmptyPurple.svg';
 
-import { IInputMedia } from './InputMedia.types';
-
-function InputMedia(props: IInputMedia) {
+function InputMedia() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [mediaType, setMediaType] = useState('');
   const [mediaSelected, setMediaSelected] = useState('');
+
+  const inputClasses = classNames(scss.button, {
+    [scss.selected]: mediaSelected,
+  });
 
   const handleInputClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -41,7 +44,7 @@ function InputMedia(props: IInputMedia) {
     <img
       alt="selected"
       className={scss.imagePlaceholder}
-      src={props.variant ? emptyInputGrey : emptyInputPurple}
+      src={emptyInputGrey}
     />
   );
 
@@ -55,11 +58,7 @@ function InputMedia(props: IInputMedia) {
     );
 
   return (
-    <button
-      className={scss.button}
-      onClick={handleInputClick}
-      data-variant={props.variant}
-    >
+    <button className={inputClasses} onClick={handleInputClick}>
       <input
         type="file"
         ref={fileInputRef}
