@@ -12,8 +12,8 @@ $buttonSpacing: 0.8rem;
   color: $primaryWhite;
   font-size: 1.4rem;
 
-  margin: 0.8rem 0;
-  padding: 0.9rem 1.6rem;
+  margin: 0.8rem 1.2rem;
+  padding: 1.2rem 1.6rem;
 
   background-color: $secondaryPurple;
   box-shadow: 0 1px 3px 0 #0000004d;
@@ -30,6 +30,8 @@ $buttonSpacing: 0.8rem;
   }
 
   .clearButton {
+    width: 30%;
+
     color: $primaryPurple;
     line-height: 0.8;
 

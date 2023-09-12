@@ -9,20 +9,16 @@ function Sidebar() {
         <span>Select Social Media</span>
       </div>
       <div className={scss.sidebarMain}>
-        <SearchClue value="Facebook" label="Searching for" />
+        <SearchClue value="value" label="Searching for" />
         <div className={scss.itemsContainer}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
         </div>
       </div>
     </aside>
