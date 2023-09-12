@@ -17,7 +17,7 @@ describe('InputMedia', () => {
       const icon = screen.getByRole('img');
       userEvent.click(icon);
 
-      const input = screen.getByRole('imageInput');
+      const input = screen.getByTestId('imageInput');
       expect(input).toHaveAttribute('type', 'file');
     });
   });

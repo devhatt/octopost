@@ -65,7 +65,7 @@ function InputMedia() {
     <button className={inputClasses} onClick={handleInputClick}>
       <input
         type="file"
-        id="imageInput"
+        data-testid="imageInput"
         ref={fileInputRef}
         className={scss.hidden}
         accept="image/*, video/*"

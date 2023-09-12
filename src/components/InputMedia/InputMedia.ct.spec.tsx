@@ -7,7 +7,7 @@ test.describe('InputMedia', () => {
     test('changes the image', async ({ mount }) => {
       const component = await mount(<InputMedia />);
       await component
-        .locator('#imageInput')
+        .getByTestId('imageInput')
         .setInputFiles('src/assets/logo.png');
       await expect(component.getByAltText(/selected image/i)).toBeVisible();
     });
@@ -16,7 +16,7 @@ test.describe('InputMedia', () => {
       test('doesnt select the file', async ({ mount }) => {
         const component = await mount(<InputMedia />);
         await component
-          .locator('#imageInput')
+          .getByTestId('imageInput')
           .setInputFiles('public/robots.txt');
         await expect(component.getByAltText(/selected image/i)).toBeHidden();
       });
