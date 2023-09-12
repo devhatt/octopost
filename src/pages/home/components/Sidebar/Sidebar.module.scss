@@ -33,4 +33,24 @@
       width: 2.4rem;
     }
   }
+
+  .itemsContainer {
+    max-height: 50rem;
+    overflow-y: auto;
+
+    margin-right: 0.1rem;
+
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+
+      border: 0;
+
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $secondaryGray;
+      border-radius: 8px;
+    }
+  }
 }
