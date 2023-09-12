@@ -13,7 +13,7 @@ function InputMedia() {
   const [mediaSelected, setMediaSelected] = useState('');
 
   const inputClasses = classNames(scss.button, {
-    [scss.selected]: mediaSelected,
+    [scss.buttonSelected]: mediaSelected,
   });
 
   const handleInputClick = () => {
@@ -34,17 +34,14 @@ function InputMedia() {
       if (!mediaType) return;
 
       setMediaType(mediaType[0]);
-      // Mostrando informações da imagem durante o desenvolvimento
-      // eslint-disable-next-line no-console
-      console.log('imagem', files[0]);
     }
   };
 
   const renderEmptyImagePlaceholder = () => (
     <img
-      alt="selected"
-      className={scss.imagePlaceholder}
       src={emptyInputGrey}
+      alt="image placeholder"
+      className={scss.imagePlaceholder}
     />
   );
 
@@ -53,10 +50,10 @@ function InputMedia() {
       <img
         src={mediaSelected}
         alt="selected image"
-        className={scss.imageInputed}
+        className={scss.imageSelected}
       />
     ) : (
-      <video controls className={scss.imageInputed}>
+      <video controls className={scss.imageSelected}>
         <source src={mediaSelected} />
       </video>
     );

@@ -1,16 +1,15 @@
 @import '../../styles/global';
 
-.button {
-  width: 72px;
-  height: 72px;
+.button,
+.buttonSelected {
+  overflow: hidden;
 
-  display: grid;
+  display: flex;
 
-  place-items: center;
+  align-items: center;
+  justify-content: center;
 
-  border: 2px dotted $baseColor;
-
-  position: relative;
+  padding: 0;
 
   transition: color 0.3s ease;
 
@@ -21,7 +20,14 @@
   }
 }
 
-.selected {
+.button {
+  width: 72px;
+  height: 72px;
+
+  border: 2px dotted $baseColor;
+}
+
+.buttonSelected {
   width: 104px;
   height: 104px;
 
@@ -32,12 +38,12 @@
   display: none;
 }
 
-.imagePlaceholder {
-  max-width: 72px;
-  max-height: 72px;
+.imagePlaceholder,
+.imageSelected {
+  object-fit: cover;
 }
 
-.imageInputed {
-  width: 100%;
-  height: 100%;
+.imageSelected {
+  overflow: hidden;
+  aspect-ratio: 4 / 4;
 }
