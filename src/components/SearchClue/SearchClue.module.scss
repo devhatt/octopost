@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@use '../../styles/global';
 $buttonSpacing: 0.8rem;
 
 .searchClueContainer {
@@ -8,14 +8,14 @@ $buttonSpacing: 0.8rem;
   align-items: center;
   justify-content: space-between;
 
-  font-family: $mainFont;
-  color: $primaryWhite;
+  font-family: global.$mainFont;
+  color: global.$primaryWhite;
   font-size: 1.4rem;
 
   margin: 0.8rem 1.2rem;
   padding: 1.2rem 1.6rem;
 
-  background-color: $secondaryPurple;
+  background-color: global.$secondaryPurple;
   box-shadow: 0 1px 3px 0 #0000004d;
   border-radius: 4px;
 
@@ -32,7 +32,7 @@ $buttonSpacing: 0.8rem;
   .clearButton {
     width: 30%;
 
-    color: $primaryPurple;
+    color: global.$primaryPurple;
     line-height: 0.8;
 
     margin: -$buttonSpacing;
@@ -46,9 +46,9 @@ $buttonSpacing: 0.8rem;
     cursor: pointer;
 
     &:hover {
-      color: $primaryWhite;
+      color: global.$primaryWhite;
 
-      background-color: rgba($primaryWhite, 0.2);
+      background-color: rgba(global.$primaryWhite, 0.2);
     }
   }
 }
