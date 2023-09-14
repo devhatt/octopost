@@ -1,27 +1,25 @@
-import scss from './Sidebar.module.scss';
+import SearchClue from '~components/SearchClue/SearchClue';
 
-import dotSvg from './images/dot.svg';
+import scss from './Sidebar.module.scss';
 
 function Sidebar() {
   return (
     <aside className={scss.sidebar}>
       <div className={scss.titleContainer}>
-        <img src={dotSvg} className={scss.dotSvg} />
-        <p>Select Social Media</p>
+        <span>Select Social Media</span>
       </div>
-      <div className={scss.itemsContainer}>
-        Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
-        Item 1 <br /> Item2 <br />
+      <div className={scss.sidebarMain}>
+        <SearchClue value="value" label="Searching for" />
+        <div className={scss.itemsContainer}>
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+        </div>
       </div>
     </aside>
   );

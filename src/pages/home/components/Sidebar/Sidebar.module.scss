@@ -1,9 +1,9 @@
-@import '../../../../styles/global';
+@use '../../../../styles/global';
 
 .sidebar {
   width: 100%;
 
-  font-family: $mainFont;
+  font-family: global.$mainFont;
 
   font-size: 1.6rem;
 
@@ -15,22 +15,37 @@
 
   .titleContainer {
     display: flex;
-    gap: 0.4rem;
+    gap: 2.1rem;
 
     align-items: center;
 
     color: #fff;
     font-size: 1.4rem;
+    line-height: 1;
 
-    padding: 0.4rem;
+    padding: 2.1rem;
 
     position: relative;
 
-    background-color: $secondaryPurple;
+    background-color: global.$secondaryPurple;
     border-radius: 1.2rem 1.2rem 0 0;
 
+    &::before {
+      width: 8px;
+      height: 8px;
+
+      display: block;
+
+      margin-bottom: 2px;
+
+      background-color: global.$primaryWhite;
+      border-radius: 50%;
+
+      content: '';
+    }
+
     .dotSvg {
-      width: 2.4rem;
+      width: 3.4rem;
     }
   }
 
@@ -49,8 +64,12 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: $secondaryGray;
+      background: global.$secondaryGray;
       border-radius: 8px;
+    }
+
+    .sidebarMain {
+      padding: 0 1.2rem;
     }
   }
 }
