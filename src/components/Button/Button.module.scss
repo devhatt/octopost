@@ -1,0 +1,254 @@
+﻿@import '../../styles/global';
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.textButton {
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 100px;
+  width: fit-content;
+
+  font-family: $mainFont;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: 0.0063rem;
+  text-transform: capitalize;
+
+  img,
+  svg {
+    width: 0.875rem;
+  }
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.2);
+    width: 10%;
+
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  &:active::before {
+    transition: transform 800ms;
+    transform: scale(20);
+    opacity: 1;
+  }
+}
+
+@mixin text($color, $hover) {
+  color: $color;
+
+  &:hover {
+    color: $color;
+    background-color: $hover;
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+@mixin container($bg, $color, $hover) {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+  background-color: $bg;
+  color: $color;
+
+  &:hover {
+    background-color: $hover;
+    box-shadow:
+      0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+@mixin outlined($color, $border, $hover) {
+  border: 1px solid $border;
+  color: $color;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+.textButton {
+  &.text {
+    &.primary {
+      @include text($secondaryPurple, $primaryPurple);
+    }
+    &.secondary {
+      @include text($primaryWhite, rgba(255, 255, 255, 0.15));
+    }
+
+    &.disabled {
+      @include text($primaryGray, $primaryGray);
+      &:hover {
+        background: none;
+        background-color: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.container {
+    &.primary {
+      @include container($secondaryPurple, $primaryWhite, $tertiaryPurple);
+    }
+    &.secondary {
+      @include container($primaryWhite, $secondaryPurple, $primaryPurple);
+    }
+
+    &.disabled {
+      @include container($primaryGray, $secondaryGray, $secondaryGray);
+      &:hover {
+        background: none;
+        background-color: $primaryGray;
+        cursor: not-allowed;
+      }
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &.disableElevation,
+    &.disableElevation:hover {
+      box-shadow: none;
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      @include outlined($secondaryPurple, $secondaryGray, $primaryPurple);
+    }
+    &.secondary {
+      @include outlined(
+        $primaryWhite,
+        $primaryWhite,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+
+    &.disabled {
+      @include outlined($primaryGray, $primaryGray, rgba(255, 255, 255, 0.15));
+      &:hover {
+        background: none;
+        background-color: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.circleButton {
+  width: fit-content;
+  border-radius: 50%;
+  aspect-ratio: 1;
+
+  img,
+  svg {
+    width: 0.625rem;
+  }
+
+  &.text {
+    &.primary {
+      @include text($secondaryPurple, $primaryPurple);
+    }
+    &.secondary {
+      @include text($primaryWhite, rgba(255, 255, 255, 0.15));
+    }
+
+    &.disabled {
+      @include text($primaryGray, $primaryGray);
+      &:hover {
+        background: none;
+        background-color: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &.container {
+    &.primary {
+      @include container($secondaryPurple, $primaryWhite, $tertiaryPurple);
+    }
+    &.secondary {
+      @include container(
+        $primaryWhite,
+        $secondaryPurple,
+        rgba(255, 255, 255, 0.75)
+      );
+    }
+
+    &.disabled {
+      @include container($primaryGray, $secondaryGray, $secondaryGray);
+      &:hover {
+        background: none;
+        background-color: $primaryGray;
+        cursor: not-allowed;
+      }
+    }
+
+    &.primary,
+    &.secondary {
+      box-shadow: none;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      @include outlined($secondaryGray, $secondaryGray, $primaryPurple);
+    }
+    &.secondary {
+      @include outlined(
+        $primaryWhite,
+        $primaryWhite,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+
+    &.disabled {
+      @include outlined($primaryGray, $primaryGray, rgba(255, 255, 255, 0.15));
+      &:hover {
+        background: none;
+        background-color: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
