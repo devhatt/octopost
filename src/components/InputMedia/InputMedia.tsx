@@ -6,7 +6,9 @@ import scss from './InputMedia.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
 
-function InputMedia() {
+import { IInputMedia } from './InputMedia.types';
+
+function InputMedia(props: IInputMedia) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [mediaType, setMediaType] = useState('');
@@ -28,6 +30,7 @@ function InputMedia() {
     const fileType = files[0].type;
     if (fileType.includes('image') || fileType.includes('video')) {
       setMediaSelected(URL.createObjectURL(files[0]));
+      props.onChange(files[0]);
 
       const mediaType = fileType.match('(image|video)');
 
