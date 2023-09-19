@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 0;
+  padding: 0 0 0 0.5rem;
 
   transition: color 0.3s ease;
 
@@ -21,15 +21,15 @@
 }
 
 .button {
-  width: 72px;
-  height: 72px;
+  width: 7.2rem;
+  height: 7.2rem;
 
   border: 2px dotted global.$baseColor;
 }
 
 .buttonSelected {
-  width: 104px;
-  height: 104px;
+  width: 10.4rem;
+  height: 10.4rem;
 
   border: 2px dotted global.$tertiaryPurple;
 }

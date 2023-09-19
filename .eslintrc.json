@@ -1,14 +1,8 @@
 {
-  "extends": [
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": [
-    "prettier",
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-import-helpers"],
   "rules": {
-    "prettier/prettier": ["error",{"endOfLine": "auto"}],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-console": "error",
 
     "import-helpers/order-imports": [
@@ -20,17 +14,17 @@
           "/^next/",
           "module",
           [
-              "/^\\~interfaces/",
-              "/^\\~store/",
-              "/^\\~snippets/",
-              "/^\\~hooks/",
-              "/^\\~services/",
-              "/^\\~transformers/",
-              "/^\\~constants/",
-              "/^\\~utils/",
-              "/^\\~enums/",
-              "/^\\~types/",
-              "/^\\~config/"
+            "/^\\~interfaces/",
+            "/^\\~store/",
+            "/^\\~snippets/",
+            "/^\\~hooks/",
+            "/^\\~services/",
+            "/^\\~transformers/",
+            "/^\\~constants/",
+            "/^\\~utils/",
+            "/^\\~enums/",
+            "/^\\~types/",
+            "/^\\~config/"
           ],
           "/^(\\.|\\.\\.)(\\/[a-z]{1}\\w+)*$/",
           "/^\\~components/",
@@ -83,6 +77,12 @@
       "rules": {
         "no-console": "off",
         "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.tsx"],
+      "rules": {
+        "no-console": "off"
       }
     }
   ]

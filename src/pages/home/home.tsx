@@ -21,6 +21,7 @@ const Home = () => {
             <ComposerEditor />
             <MainComposer />
           </div>
+
           <div className={scss.gridTabs} />
         </div>
         <SavBar />

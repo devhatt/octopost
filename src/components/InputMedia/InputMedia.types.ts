@@ -1,7 +1,9 @@
-export interface IInputMedia {
-  onChange: (media: File) => void;
+export interface IMedia {
+  file: File;
+  id: string;
 }
 
-export interface IInputMediaTestWrapper {
-  onChange: (mediaName: string) => void;
+export interface IInputMediaProps {
+  files?: File[];
+  onChange: (media: IMedia[]) => void;
 }
