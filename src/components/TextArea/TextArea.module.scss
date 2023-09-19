@@ -1,4 +1,4 @@
-@import '../../styles/base';
+@use '../../styles/base';
 
 .textAreaContainer {
   width: 100%;
@@ -6,13 +6,13 @@
   border-radius: 1.2rem 1.2rem 0 0;
 
   .mainTitle {
-    color: $primaryWhite;
+    color: global.$primaryWhite;
     font-size: 2.2rem;
     line-height: 2.8rem;
 
     padding: 1.8rem 2.4rem;
 
-    background-color: $secondaryPurple;
+    background-color: global.$secondaryPurple;
     border-radius: 1.2rem 1.2rem 0 0;
   }
 
@@ -20,13 +20,13 @@
     width: 100%;
     min-height: 20rem;
 
-    color: $secondaryGray;
+    color: global.$secondaryGray;
 
     font-size: 1.6rem;
 
     padding: 2.6rem 1.6rem;
-    border: 1px solid $primaryGray;
+    border: 1px solid global.$primaryGray;
 
-    background-color: $primaryWhite;
+    background-color: global.$primaryWhite;
   }
 }

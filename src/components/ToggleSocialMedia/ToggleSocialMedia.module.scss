@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@use '../../styles/global';
 
 .wrapper {
   display: flex;
@@ -8,7 +8,7 @@
 
   padding: 0.8rem 0.8rem 0.8rem 1.6rem;
 
-  border-bottom: 1px solid $primaryGray;
+  border-bottom: 1px solid global.$primaryGray;
 }
 
 .accountInfo {
@@ -19,7 +19,7 @@
 
   .button {
     background: none;
-    outline-color: $secondaryPurple;
+    outline-color: global.$secondaryPurple;
 
     cursor: pointer;
   }

@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@use '../../styles/global';
 
 .characterLimit {
   display: flex;
@@ -6,7 +6,7 @@
 
   align-items: center;
 
-  color: $secondaryGray;
+  color: global.$secondaryGray;
   font-size: 1.2rem;
 }
 
