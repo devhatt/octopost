@@ -12,12 +12,11 @@
 }
 
 .footer {
-  font-size: 1.2rem;
+  display: flex;
 
-  position: absolute;
-  bottom: 13px;
-  left: 15px;
+  padding: 1.6rem;
 }
+
 
 .copyTextContainer {
   width: 30%;

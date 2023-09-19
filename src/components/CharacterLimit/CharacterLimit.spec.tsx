@@ -9,9 +9,7 @@ describe('CharacterLimit', () => {
     );
 
     const remainingCharacters = container.querySelector('.remainingCharacters');
-    const fill = container.querySelector('.fill');
 
     expect(remainingCharacters).toBeInTheDocument();
-    expect(fill).toBeInTheDocument();
   });
 });

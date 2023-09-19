@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import CharacterLimit from '~components/CharacterLimit/CharacterLimit';
+import CharacterLimitMainText from '~components/CharacterLimitMainText/CharacterLimitMainText';
+import { networkListMock } from '~components/CharacterLimitMainText/networkListMock';
 import CustomTextArea from '~components/TextArea/TextArea';
 
 import scss from './ComposerEditor.module.scss';
@@ -18,7 +19,10 @@ const ComposerEditor = () => {
         <CustomTextArea onTextChange={handleInputChange} />
 
         <div className={scss.footer}>
-          <CharacterLimit maxLength={140} value={inputText} />
+          <CharacterLimitMainText
+            value={inputText}
+            socialList={networkListMock}
+          ></CharacterLimitMainText>
         </div>
       </div>
     </div>

@@ -10,25 +10,4 @@
   font-size: 1.2rem;
 }
 
-.circle {
-  width: 0.7rem;
-  height: 0.7rem;
-  overflow: hidden;
 
-  position: relative;
-
-  background-color: #80ffa6;
-  border-radius: 50%;
-}
-
-.fill {
-  width: 0;
-  height: 100%;
-
-  position: absolute;
-
-  background-color: #ff2a00;
-
-  transition: all;
-  transition: width 0.3s ease-in-out;
-}
