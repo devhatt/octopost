@@ -1,5 +1,7 @@
-@import '~normalize.css/normalize.css';
 @use './global';
+
+@import '~normalize.css/normalize.css';
+
 
 * {
   box-sizing: border-box;
@@ -17,7 +19,7 @@ button {
   border: 0;
 
   background: none;
-  outline-color: $secondaryPurple;
+  outline-color: global.$secondaryPurple;
 }
 
 ul {
