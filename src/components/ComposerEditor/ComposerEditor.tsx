@@ -22,7 +22,7 @@ const ComposerEditor = () => {
           <CharacterLimitMainText
             value={inputText}
             socialList={networkListMock}
-          ></CharacterLimitMainText>
+          />
         </div>
       </div>
     </div>

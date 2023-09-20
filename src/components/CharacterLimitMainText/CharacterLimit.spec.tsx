@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { networkListMock } from './networkListMock'; // Importe os dados mock da rede social
+import { networkListMock } from './networkListMock';
 
 import CharacterLimitMainText from './CharacterLimitMainText';
 
