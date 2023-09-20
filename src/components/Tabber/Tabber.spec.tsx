@@ -40,14 +40,12 @@ describe('TabsTabber Component', () => {
       }
 
       render(
-        <div>
-          <TabsTabber
-            key={socialItem.id}
-            socialItem={socialItem}
-            selectedTab={selectedTab}
-            onTabClick={handleTabClick}
-          />
-        </div>
+        <TabsTabber
+          key={socialItem.id}
+          socialItem={socialItem}
+          selectedTab={selectedTab}
+          onTabClick={handleTabClick}
+        />
       );
     });
   });
