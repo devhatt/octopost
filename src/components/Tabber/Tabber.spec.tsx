@@ -5,7 +5,7 @@ import { networkListMock } from './networkListMock';
 import TabsTabber from './components/Tabs/TabsTabber';
 
 describe('TabsTabber Component', () => {
-  it('render all social networks in the component', () => {
+  it('renders all social networks in the component', () => {
     render(
       <div>
         {networkListMock.map((socialItem) => (
@@ -25,7 +25,7 @@ describe('TabsTabber Component', () => {
     });
   });
 
-  it('change the state when clicked', () => {
+  it('changes the state when clicked', () => {
     networkListMock.forEach((socialItem) => {
       let selectedTab = '';
 
