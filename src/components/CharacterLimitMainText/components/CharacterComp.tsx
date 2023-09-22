@@ -13,7 +13,8 @@ function CharacterComp(props: ICharacterLimitMainTextProps) {
   return props.socialList.map((socialItem: ISocialItem) => (
     <div key={socialItem.id} className={`social-item-${socialItem.id}`}>
       <div className={scss.unit}>
-        <img src={Placeholder} /> {/* adicionar svg por map aqui futuramente */}
+        <img src={Placeholder} />
+        {/* adicionar svg por map aqui futuramente */}
         <CharacterLimit maxLength={socialItem.maxLength} value={props.value} />
       </div>
     </div>
