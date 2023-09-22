@@ -1,12 +1,9 @@
 @use '../../../styles/global.scss';
 
 .unit {
-    display: flex;
-    gap: 0.1rem;
+  display: flex;
+  gap: 0.1rem;
 
-    font-family: global.$mainFont;
-    font-size: 62.5%;
-
-  }
-  
-  
+  font-family: global.$mainFont;
+  font-size: 62.5%;
+}
