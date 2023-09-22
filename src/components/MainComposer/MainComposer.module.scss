@@ -1,0 +1,88 @@
+@use '../../styles/global';
+
+.wrapper {
+  width: 100%;
+}
+
+.innerHeader {
+  padding: 0.1rem 2.4rem; /* 10 / 10 = 1rem */
+  border: 0.1rem solid global.$primaryGray; /* 1 / 10 = 0.1rem */
+  border-bottom: 0;
+
+  background-color: global.$secondaryPurple;
+  border-radius: 2rem 2rem 0 0; /* 20 / 10 = 2rem */
+}
+
+.innerHeader div p {
+  font-family: Roboto;
+  color: global.$primaryWhite;
+  font-size: 2.2rem; /* 22 / 10 = 2.2rem */
+  font-weight: 400;
+  font-style: normal;
+  line-height: 2.8rem; /* 28 / 10 = 2.8rem */
+}
+
+.innerHeader div p::before {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  display: inline-block;
+
+  float: left;
+
+  margin-top: 0.7rem;
+  margin-right: 1rem;
+
+  background-color: global.$primaryWhite;
+  border-radius: 50%;
+
+  content: '';
+}
+
+.innerHeader div p::after {
+  width: 2rem;
+  height: 0.5rem;
+
+  display: inline-block;
+
+  float: right;
+
+  margin-top: 0.7rem;
+  margin-left: 1rem;
+
+  background-color: global.$primaryWhite;
+
+  content: '';
+}
+
+.content {
+  padding: 2.4rem 1.6rem;
+  border: 0.1rem solid global.$primaryGray;
+
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.textInput textarea {
+  width: 100%;
+  height: 15rem;
+
+  font-size: 1.6rem;
+
+  margin-bottom: 2.4rem;
+  border: 0;
+  box-sizing: border-box;
+
+  resize: none;
+}
+
+.contentBotTop {
+  font-size: 1.6rem;
+
+  border-bottom: 0.1rem solid global.$primaryGray;
+}
+
+.contentBotBot {
+  font-size: 1.6rem;
+
+  margin-bottom: 2.4rem;
+}
