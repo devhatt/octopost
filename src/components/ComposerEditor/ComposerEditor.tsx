@@ -18,11 +18,11 @@ const ComposerEditor = () => {
       <div className={scss.wrapper}>
         <CustomTextArea onTextChange={handleInputChange} />
 
-        <div className={scss.footer}>
+        <div>
           <CharacterLimitMainText
             value={inputText}
             socialList={networkListMock}
-          />
+          ></CharacterLimitMainText>
         </div>
       </div>
     </div>

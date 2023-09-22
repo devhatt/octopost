@@ -1,23 +1,18 @@
-import CharacterLimit from '~components/CharacterLimit/CharacterLimit';
+import CharacterComp from './components/CharacterComp';
 
 import scss from './CharacterLimit.module.scss';
 
-import Placeholder from './images/Placeholder.svg';
-
-import {
-  ICharacterLimitMainTextProps,
-  ISocialItem,
-} from './CharacterLimitMainText.types';
+import { ICharacterLimitMainTextProps } from './CharacterLimitMainText.types';
 
 function CharacterLimitMainText(props: ICharacterLimitMainTextProps) {
-  return props.socialList.map((socialItem: ISocialItem) => (
-    <div key={socialItem.id} className={`social-item-${socialItem.id}`}>
-      <div className={scss.social}>
-        <img src={Placeholder} /> {/* adicionar svg por map aqui futuramente */}
-        <CharacterLimit maxLength={socialItem.maxLength} value={props.value} />
-      </div>
+  return (
+    <div className={scss.compost}>
+      <CharacterComp
+        value={props.value}
+        socialList={props.socialList}
+      ></CharacterComp>
     </div>
-  ));
+  );
 }
 
 export default CharacterLimitMainText;
