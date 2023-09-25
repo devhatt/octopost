@@ -5,64 +5,52 @@ import scss from '~components/Button/Button.module.scss';
 import { ITextButtonProps, ICircleButtonProps } from './Button.types';
 
 function Button(props: ITextButtonProps | ICircleButtonProps) {
-  const RenderTextButton = () => {
-    const {
-      disableElevation,
-      className,
-      children,
-      disabled,
-      onClick,
-      variant,
-      color,
-      type,
-    } = props as ITextButtonProps;
-
+  const RenderTextButton = (props: ITextButtonProps) => {
     const classes: string = classNames(
-      className,
+      props.className,
       scss.textButton,
-      scss[`${color ? color : 'primary'}`],
-      scss[`${variant ? variant : 'text'}`],
-      scss[`${disabled ? 'disabled' : ''}`],
-      scss[`${disableElevation ? 'disableElevation' : ''}`]
+      scss[`${props.color ? props.color : 'primary'}`],
+      scss[`${props.variant ? props.variant : 'text'}`],
+      scss[`${props.disabled ? 'disabled' : ''}`],
+      scss[`${props.disableElevation ? 'disableElevation' : ''}`]
     );
 
     return (
       <button
-        type={type ? type : 'button'}
+        type={props.type ? props.type : 'button'}
         className={classes}
-        disabled={disabled}
-        onClick={onClick}
+        disabled={props.disabled}
+        onClick={props.onClick}
       >
-        {children}
+        {props.children}
       </button>
     );
   };
 
-  const RenderCircleButton = () => {
-    const { className, disabled, variant, color, type, onClick, icon } =
-      props as ICircleButtonProps;
-
+  const RenderCircleButton = (props: ICircleButtonProps) => {
     const classes: string = classNames(
-      className,
+      props.className,
       scss.circleButton,
-      scss[`${color ? color : 'primary'}`],
-      scss[`${variant ? variant : 'text'}`],
-      scss[`${disabled ? 'disabled' : ''}`]
+      scss[`${props.color ? props.color : 'primary'}`],
+      scss[`${props.variant ? props.variant : 'text'}`],
+      scss[`${props.disabled ? 'disabled' : ''}`]
     );
 
     return (
       <button
-        type={type ? type : 'button'}
+        type={props.type ? props.type : 'button'}
         className={classes}
-        disabled={disabled}
-        onClick={onClick}
+        disabled={props.disabled}
+        onClick={props.onClick}
       >
-        {icon}
+        {props.icon}
       </button>
     );
   };
 
-  return 'circle' in props ? RenderCircleButton() : RenderTextButton();
+  return 'circle' in props
+    ? RenderCircleButton(props)
+    : RenderTextButton(props);
 }
 
 export default Button;
