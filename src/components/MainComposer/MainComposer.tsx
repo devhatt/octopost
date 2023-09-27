@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 
 import scss from './MainComposer.module.scss';
 
@@ -12,7 +12,7 @@ function MainComposer() {
       </div>
       <div className={scss.content}>
         <div className={scss.textInput}>
-          <textarea placeholder="Enter your text and links"></textarea>
+          <ComposerEditor />
         </div>
         <div className={scss.contentBot}>
           <div className={scss.contentBotTop}>
