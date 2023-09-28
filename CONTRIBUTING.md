@@ -13,7 +13,10 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 
    ```
 
-3. **Crie uma Branch:** Crie uma branch a partir da develop para trabalhar nas suas alterações:
+3. **Pegue uma Issue:** Para instruções mais detalhadas, acesse **[Pegando uma Issue](https://github.com/Alecell/octopost/blob/master/FLOWISSUE.md/)**.
+
+
+4. **Crie uma Branch:** Crie uma branch a partir da develop para trabalhar nas suas alterações:
 
    ```bash
    git checkout develop
@@ -22,10 +25,10 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 
    ```
 
-4. **Faça Alterações:** Faça as alterações desejadas no código, documentação, ou outros recursos.
-5. **Código:** Siga o Style guide [octopost/STYLEGUIDE.md at master · Alecell/octopost (github.com)](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
-6. **Testes:** Certifique-se de que todas as mudanças são testadas e não introduzem erros.
-7. **Commits Significativos:** Faça commits significativos e com mensagens claras. Utilizando comando abaixo e seguindo as instruções o commit ficara no padrão utilizado no projeto.
+5. **Faça Alterações:** Faça as alterações desejadas no código, documentação, ou outros recursos.
+6. **Código:** Siga o Style guide [octopost/STYLEGUIDE.md at master · Alecell/octopost (github.com)](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
+7. **Testes:** Certifique-se de que todas as mudanças são testadas e não introduzem erros.
+8. **Commits Significativos:** Faça commits significativos e com mensagens claras. Utilizando comando abaixo e seguindo as instruções o commit ficara no padrão utilizado no projeto.
 
 ```bash
     git commit
