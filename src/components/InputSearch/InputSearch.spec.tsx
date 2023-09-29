@@ -7,16 +7,16 @@ import InputSearch from './InputSearch';
 // Mock das props
 const mockProps = {
   name: 'testInput',
-  placeholder: 'Test Placeholder',
   type: 'text',
-  readonly: false,
   value: '',
-  onFocus: jest.fn(),
+  required: false,
+  placeholder: 'Test Placeholder',
   errorMessage: 'Test Error Message',
+  readonly: false,
   errors: false,
+  onFocus: jest.fn(),
+  handleClear: jest.fn(),
   onChange: jest.fn(),
-  onClear: jest.fn(),
-  handleClear: true,
 };
 
 test('renders InputSearch component', () => {

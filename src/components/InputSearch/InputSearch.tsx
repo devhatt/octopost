@@ -19,6 +19,7 @@ export default function InputSearch(props: IInputProps) {
   const [value, setValue] = useState('');
 
   const handleClear = () => {
+    if (props.handleClear) props.handleClear();
     setValue('');
   };
 
