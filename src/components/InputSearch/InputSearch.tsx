@@ -34,7 +34,7 @@ export default function InputSearch(props: IInputProps) {
     setIsFocused(true);
   };
 
-  const onInputBlur = (e) => {
+  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(e.target.value.length !== 0);
   };
 
