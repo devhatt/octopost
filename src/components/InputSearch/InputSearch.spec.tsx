@@ -14,6 +14,9 @@ const mockProps = {
   onFocus: jest.fn(),
   errorMessage: 'Test Error Message',
   errors: false,
+  onChange: jest.fn(),
+  onClear: jest.fn(),
+  handleClear: true,
 };
 
 test('renders InputSearch component', () => {
