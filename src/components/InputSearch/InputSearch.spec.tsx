@@ -33,7 +33,9 @@ test('renders InputSearch component', () => {
 
 test('handles input value correctly', () => {
   const { getByPlaceholderText } = render(<InputSearch {...mockProps} />);
-  const inputElement = getByPlaceholderText('Test Placeholder');
+  const inputElement = getByPlaceholderText(
+    'Test Placeholder'
+  ) as HTMLInputElement;
 
   fireEvent.change(inputElement, { target: { value: 'Test Value' } });
 
@@ -60,7 +62,9 @@ test('clears input value on clear button click', () => {
   const { getByPlaceholderText, getByTestId } = render(
     <InputSearch {...mockProps} />
   );
-  const inputElement = getByPlaceholderText('Test Placeholder');
+  const inputElement = getByPlaceholderText(
+    'Test Placeholder'
+  ) as HTMLInputElement;
   const clearButton = getByTestId('clear-button');
 
   fireEvent.change(inputElement, { target: { value: 'Test Value' } });
