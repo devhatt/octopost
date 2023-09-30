@@ -1,4 +1,4 @@
-import CharacterComp from './components/CharacterComp';
+import CharacterComp from './components/CharacterComp/CharacterComp';
 
 import scss from './CharacterLimit.module.scss';
 

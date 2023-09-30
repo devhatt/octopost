@@ -5,8 +5,9 @@ import CharacterLimit from './CharacterLimit';
 export const CharacterLimitComponent: Story<{
   maxLength: number;
   value: string;
-}> = ({ maxLength, value }) => (
-  <CharacterLimit maxLength={maxLength} value={value} />
+  id: string;
+}> = ({ maxLength, value, id }) => (
+  <CharacterLimit maxLength={maxLength} value={value} id={id} />
 );
 
 CharacterLimitComponent.args = {

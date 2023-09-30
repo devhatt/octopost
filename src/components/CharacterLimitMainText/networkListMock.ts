@@ -22,7 +22,7 @@ export const networkListMock: ISocialItem[] = [
     maxLength: 50,
   },
   {
-    id: 'youtube',
+    id: 'threads',
     maxLength: 500,
   },
 ];
