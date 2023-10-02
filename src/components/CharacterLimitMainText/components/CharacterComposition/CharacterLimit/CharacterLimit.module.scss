@@ -1,7 +1,7 @@
 @use '~styles/global.scss';
 
 .specificFill {
-  fill: #fff !important;
+  fill: global.$primaryWhite !important;
 }
 
 .characterLimit {
@@ -15,7 +15,7 @@
   font-size: 1.2rem;
 
   &.exceeded {
-    color: #f30505;
+    color: global.$secondaryRed;
     font-weight: bold;
    
   }
@@ -26,10 +26,6 @@
   gap: 0.5rem;
 
   &.exceeded svg path {
-    fill: #dfdfdf;
-
-    
-    
+    fill: global.$primaryGray;
   }
 }
-

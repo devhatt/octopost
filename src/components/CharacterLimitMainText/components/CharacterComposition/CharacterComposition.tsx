@@ -5,18 +5,16 @@ import {
   ISocialItem,
 } from '../../CharacterLimitMainText.types';
 
-function CharacterComp(props: ICharacterLimitMainTextProps) {
+function CharacterComposition(props: ICharacterLimitMainTextProps) {
   return props.socialList.map((socialItem: ISocialItem) => (
     <div key={socialItem.id} className={`social-item-${socialItem.id}`}>
-      <div>
-        <CharacterLimit
-          maxLength={socialItem.maxLength}
-          value={props.value}
-          id={socialItem.id}
-        />
-      </div>
+      <CharacterLimit
+        maxLength={socialItem.maxLength}
+        value={props.value}
+        id={socialItem.id}
+      />
     </div>
   ));
 }
 
-export default CharacterComp;
+export default CharacterComposition;
