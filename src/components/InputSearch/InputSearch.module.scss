@@ -18,9 +18,9 @@
   color: $secondaryGray;
   font-size: 1.4rem;
 
-  margin-top: 30px;
+  margin-top: 3rem;
 
-  margin-bottom: 24px;
+  margin-bottom: 2.4rem;
   letter-spacing: 0;
 
   &.containerError {
@@ -65,7 +65,7 @@
         color: $secondaryPurple;
         font-size: 1rem;
 
-        transform: translate3d(-37px, -26px, 0);
+        transform: translate3d(-32px, -26px, 0);
       }
 
       &.labelError {
@@ -83,7 +83,7 @@
       color: #000;
       font-size: 1.1rem;
 
-      padding: 16px 40px;
+      padding: 1.6rem 4rem;
       border: 0;
       box-sizing: border-box;
 
@@ -101,7 +101,7 @@
     }
 
     .fieldset {
-      padding: 0 8px;
+      padding: 0 0.8rem;
       border: 1px solid currentColor;
 
       position: absolute;
@@ -148,7 +148,7 @@
         .legendTitle {
           font-size: 1rem;
 
-          padding: 0 2px;
+          padding: 0 0.2rem;
         }
       }
     }
@@ -162,7 +162,7 @@
 
     align-items: center;
 
-    padding-left: 15px;
+    padding-left: 1.5rem;
   }
 
   .iconRight {
@@ -173,7 +173,7 @@
 
     align-items: center;
 
-    padding-right: 15px;
+    padding-right: 1.5rem;
 
     z-index: 11;
 
@@ -192,14 +192,14 @@
     color: currentColor;
     font-weight: normal;
 
-    margin: 5px 0 0 5px;
+    margin: 0.5rem 0 0 0.5rem;
 
     .errorMessage {
       color: $secondaryRed;
       text-align: start;
       font-size: 1.1rem;
 
-      margin-bottom: -1px;
+      margin-bottom: -0.1rem;
     }
   }
 }
