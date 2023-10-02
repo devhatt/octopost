@@ -1,5 +1,7 @@
+@use './global';
+
 @import '~normalize.css/normalize.css';
-@import './global';
+
 
 * {
   box-sizing: border-box;
@@ -7,7 +9,7 @@
 
 html,
 body {
-  font-family: $mainFont;
+  font-family: global.$mainFont;
   font-size: 62.5%;
 }
 
@@ -17,7 +19,7 @@ button {
   border: 0;
 
   background: none;
-  outline-color: $secondaryPurple;
+  outline-color: global.$secondaryPurple;
 }
 
 ul {
