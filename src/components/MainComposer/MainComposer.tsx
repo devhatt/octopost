@@ -6,8 +6,8 @@ function MainComposer() {
   return (
     <div className={scss.wrapper}>
       <div className={scss.innerHeader}>
-        <div>
-          <p>Main Content</p>
+        <div className={scss.mainContent}>
+          <p className={scss.mainText}>Main Content</p>
         </div>
       </div>
       <div className={scss.content}>
