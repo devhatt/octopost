@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import classNames from 'classnames';
+
 import scss from './InputSearch.module.scss';
 
 import alertIcon from './assets/alertIcon.svg';
@@ -17,6 +19,14 @@ export default function InputSearch(props: IInputProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const [value, setValue] = useState('');
+
+  const IconAlert = () => {
+    return <img className={scss.icon} src={alertIcon} />;
+  };
+
+  const IconRight = () => {
+    return <img src={rightIcon} />;
+  };
 
   const handleClear = () => {
     if (props.handleClear) props.handleClear();
@@ -52,9 +62,9 @@ export default function InputSearch(props: IInputProps) {
   }
 
   return (
-    <div className={containerClass.join(' ')}>
+    <div className={classNames(containerClass)}>
       <div className={scss.inputWrapper}>
-        <label htmlFor={props.name} className={labelClass.join(' ')}>
+        <label htmlFor={props.name} className={classNames(labelClass)}>
           {props.placeholder}
         </label>
         <div className={scss.iconLeft}>
@@ -66,7 +76,7 @@ export default function InputSearch(props: IInputProps) {
           type={props.type}
           id={props.name}
           name={props.name}
-          className={inputClass.join(' ')}
+          className={classNames(inputClass)}
           placeholder={props.placeholder}
           onBlur={(e) => onInputBlur(e)}
           onFocus={onInputFocus}
@@ -79,15 +89,11 @@ export default function InputSearch(props: IInputProps) {
           data-testid="clear-button"
           onClick={handleClear}
         >
-          {props.errors ? (
-            <img className={scss.icon} src={alertIcon} />
-          ) : (
-            <img src={rightIcon} />
-          )}
+          {props.errors ? <IconAlert /> : <IconRight />}
         </div>
 
-        <fieldset eria-hidden="true" className={fieldsetClass.join(' ')}>
-          <legend className={legendClass.join(' ')}>
+        <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
+          <legend className={classNames(legendClass)}>
             <span className={scss.legendTitle}>{props.placeholder}</span>
           </legend>
         </fieldset>

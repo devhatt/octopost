@@ -4,7 +4,6 @@ import { render, fireEvent } from '@testing-library/react';
 
 import InputSearch from './InputSearch';
 
-// Mock das props
 const mockProps = {
   name: 'testInput',
   type: 'text',
