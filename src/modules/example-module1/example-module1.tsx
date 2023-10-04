@@ -24,5 +24,5 @@ export class ExampleModule1 implements IOctoModule {
   name = 'Example Module 1';
   icon = icon;
   postModes = postModes;
-  services = Service;
+  services = new Service();
 }

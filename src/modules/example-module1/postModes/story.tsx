@@ -17,5 +17,8 @@ export const story: IPostMode = {
       maxFileSize: 10,
       mediaQtyLimit: 2,
     },
+    text: {
+      maxLength: 200,
+    },
   },
 };
