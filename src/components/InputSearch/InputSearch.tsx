@@ -39,8 +39,8 @@ export default function InputSearch(props: IInputProps) {
     </div>
   );
 
-  const onInputFocus = () => {
-    if (props.onFocus) props.onFocus();
+  const onInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (props.onFocus) props.onFocus(event);
     setIsFocused(true);
   };
 
@@ -48,7 +48,10 @@ export default function InputSearch(props: IInputProps) {
     setIsFocused(e.target.value.length !== 0);
   };
 
-  if (isFocused || props.value?.length > 0) {
+  if (
+    isFocused ||
+    (typeof props.value === 'string' && props.value.length > 0)
+  ) {
     fieldsetClass.push(scss.fieldsetFocus);
     legendClass.push(scss.legendFocus);
     labelClass.push(scss.labelAnimate);
