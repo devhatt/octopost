@@ -9,10 +9,10 @@ function Button(props: ITextButtonProps | ICircleButtonProps) {
     const classes: string = classNames(
       props.className,
       scss.textButton,
-      scss[`${props.color ? props.color : 'primary'}`],
-      scss[`${props.variant ? props.variant : 'text'}`],
-      scss[`${props.disabled ? 'disabled' : ''}`],
-      scss[`${props.disableElevation ? 'disableElevation' : ''}`]
+      scss[`${props.variant || 'text'}`],
+      scss[`${props.color || 'primary'}`],
+      scss[`${props.disabled ? 'disabled' : null}`],
+      scss[`${props.disableElevation ? 'disableElevation' : null}`]
     );
 
     return (
@@ -31,14 +31,14 @@ function Button(props: ITextButtonProps | ICircleButtonProps) {
     const classes: string = classNames(
       props.className,
       scss.circleButton,
-      scss[`${props.color ? props.color : 'primary'}`],
-      scss[`${props.variant ? props.variant : 'text'}`],
-      scss[`${props.disabled ? 'disabled' : ''}`]
+      scss[`${props.variant || 'text'}`],
+      scss[`${props.color || 'primary'}`],
+      scss[`${props.disabled ? 'disabled' : null}`]
     );
 
     return (
       <button
-        type={props.type ? props.type : 'button'}
+        type={props.type || 'button'}
         className={classes}
         disabled={props.disabled}
         onClick={props.onClick}
