@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import {
-  FacebookSVG,
-  GithubSVG,
-  InstagramSVG,
-  LinkedinSVG,
-  ThreadsSVG,
-  TwitterSVG,
-} from './images/exports';
+import scss from './CharacterLimit.module.scss';
 
-import scss from '../CharacterLimit/CharacterLimit.module.scss';
+import { IModuleProps } from '../CharacterLimitMainText.types';
 
-import { ICharacterLimitProps } from './CharacterLimit.types';
-
-function CharacterLimit(props: ICharacterLimitProps) {
+function CharacterLimit(props: IModuleProps) {
   const [counterZero, setCounterZero] = useState(false);
   const remainingCharacters = props.maxLength - props.value.length;
 
@@ -35,18 +26,9 @@ function CharacterLimit(props: ICharacterLimitProps) {
     ? `${scss.characterLimit} ${scss.exceeded}`
     : scss.characterLimit;
 
-  const SocialMediaIcon = {
-    facebook: FacebookSVG,
-    github: GithubSVG,
-    instagram: InstagramSVG,
-    linkedin: LinkedinSVG,
-    threads: ThreadsSVG,
-    twitter: TwitterSVG,
-  }[props.id];
-
   return (
     <div className={svgColor}>
-      {SocialMediaIcon && <SocialMediaIcon />}
+      {props.svg}
       <div className={characterLimitClass}>
         <span>{remainingCharacters}</span>
       </div>

@@ -1,8 +1,10 @@
 export interface ICharacterLimitMainTextProps {
-  value: string;
-  socialList: ISocialItem[];
+  module: IModuleProps[];
 }
-export interface ISocialItem {
+
+export interface IModuleProps {
   id: string;
   maxLength: number;
+  svg: React.ReactNode; // Altere o tipo para React.ReactNode
+  value: string;
 }
