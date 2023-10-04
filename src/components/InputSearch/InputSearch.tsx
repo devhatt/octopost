@@ -75,7 +75,7 @@ export default function InputSearch(props: IInputProps) {
         </div>
         <input
           required
-          readOnly={props.readonly}
+          readOnly={props.readOnly}
           type={props.type}
           id={props.name}
           name={props.name}
