@@ -29,8 +29,8 @@ export interface ITextValidator {
 
 export interface IMediaValidator {
   media: {
-    maxSize: number;
-    mediaLimit: number;
+    maxFileSize: number;
+    mediaQtyLimit: number;
 
     ar: TAspectRatio[];
     allowedFormats: TMediaFormats[];
