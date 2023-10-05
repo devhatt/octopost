@@ -5,6 +5,6 @@ export interface ICharacterLimitMainTextProps {
 export interface IModuleProps {
   id: string;
   maxLength: number;
-  svg: React.ReactNode; // Altere o tipo para React.ReactNode
+  svg: React.ReactNode;
   value: string;
 }
