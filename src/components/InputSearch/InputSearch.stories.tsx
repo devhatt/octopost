@@ -18,6 +18,6 @@ InputSearchComponent.args = {
   name: 'Input Search',
   placeholder: 'Search Social Media',
   required: true,
-  errors: false,
+  error: false,
   errorMessage: 'Erro no campo de entrada',
 };

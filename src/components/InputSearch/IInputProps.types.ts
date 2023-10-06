@@ -1,7 +1,7 @@
 import { HTMLProps } from 'react';
 
 export interface IInputProps extends HTMLProps<HTMLInputElement> {
-  errors?: boolean;
+  error?: boolean;
   errorMessage?: string;
   handleClear: () => void;
 }

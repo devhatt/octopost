@@ -58,7 +58,7 @@ export default function InputSearch(props: IInputProps) {
     containerClass.push(scss.containerFocus);
   }
 
-  if (props.errors) {
+  if (props.error) {
     fieldsetClass.push(scss.fieldsetError);
     containerClass.push(scss.containerError);
     labelClass.push(scss.labelError);
@@ -92,7 +92,7 @@ export default function InputSearch(props: IInputProps) {
           data-testid="clear-button"
           onClick={handleClear}
         >
-          {props.errors ? <IconAlert /> : <IconRight />}
+          {props.error ? <IconAlert /> : <IconRight />}
         </div>
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
@@ -101,7 +101,7 @@ export default function InputSearch(props: IInputProps) {
           </legend>
         </fieldset>
       </div>
-      {props.errors && renderErrorMessage()}
+      {props.error && renderErrorMessage()}
     </div>
   );
 }
