@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@use '../../styles/global';
 
 .button,
 .buttonSelected {
@@ -16,7 +16,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: $hovering;
+    background-color: global.$hovering;
   }
 }
 
@@ -24,14 +24,14 @@
   width: 72px;
   height: 72px;
 
-  border: 2px dotted $baseColor;
+  border: 2px dotted global.$baseColor;
 }
 
 .buttonSelected {
   width: 104px;
   height: 104px;
 
-  border: 2px dotted $tertiaryPurple;
+  border: 2px dotted global.$tertiaryPurple;
 }
 
 .hidden {
