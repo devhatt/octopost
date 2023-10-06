@@ -12,7 +12,7 @@ const mockProps = {
   placeholder: 'Test Placeholder',
   errorMessage: 'Test Error Message',
   readonly: false,
-  errors: false,
+  error: false,
   onFocus: jest.fn(),
   handleClear: jest.fn(),
   onChange: jest.fn(),
@@ -52,7 +52,7 @@ describe('InputSearch component', () => {
   });
 
   it('displays error message when errors prop is true', () => {
-    const { getByText } = render(<InputSearch {...mockProps} errors={true} />);
+    const { getByText } = render(<InputSearch {...mockProps} error={true} />);
 
     const errorMessage = getByText('Test Error Message');
     expect(errorMessage).toBeInTheDocument();
