@@ -10,7 +10,6 @@ function CharacterLimit(props: IModuleProps) {
   const [counterZero, setCounterZero] = useState(false);
   const remainingCharacters = props.maxLength - props.value.length;
 
-  //create event here
   useEffect(() => {
     setCounterZero(remainingCharacters < 0);
   }, [remainingCharacters]);
