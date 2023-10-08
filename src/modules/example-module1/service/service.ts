@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IPublishResponse, IService } from 'modules/types';
+
+import { TGenericObject } from '~types/object';
 function fakeApiCall(data: unknown, delay = 1000) {
   // Simulate an API call with a delay using a Promise
   return new Promise((resolve) => {
@@ -13,7 +15,7 @@ export class Service implements IService {
   async publish(
     text: string,
     image: File[],
-    customOpts: string
+    customOpts: TGenericObject
   ): Promise<IPublishResponse> {
     try {
       const response = await fakeApiCall(

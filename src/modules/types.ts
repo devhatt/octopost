@@ -11,7 +11,7 @@ export interface IService {
   publish: (
     text: string,
     image: File[],
-    customOpts: string // tem q ser any, deixei assim pq de linter
+    customOpts: TGenericObject
   ) => Promise<IPublishResponse>;
 }
 
