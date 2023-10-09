@@ -1,4 +1,4 @@
-@use '~/styles/global';
+@use '../../styles/global';
 
 @mixin apply-color($color) {
   &.containerFocus {

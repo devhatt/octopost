@@ -48,20 +48,28 @@ export default function InputSearch(props: IInputProps) {
     setIsFocused(e.target.value.length !== 0);
   };
 
-  if (
-    isFocused ||
-    (typeof props.value === 'string' && props.value.length > 0)
-  ) {
+  const handleFocusedStyles = () => {
     fieldsetClass.push(scss.fieldsetFocus);
     legendClass.push(scss.legendFocus);
     labelClass.push(scss.labelAnimate);
     containerClass.push(scss.containerFocus);
-  }
+  };
 
-  if (props.error) {
+  const handleErrorStyles = () => {
     fieldsetClass.push(scss.fieldsetError);
     containerClass.push(scss.containerError);
     labelClass.push(scss.labelError);
+  };
+
+  if (
+    isFocused ||
+    (typeof props.value === 'string' && props.value.length > 0)
+  ) {
+    handleFocusedStyles();
+  }
+
+  if (props.error) {
+    handleErrorStyles();
   }
 
   return (
