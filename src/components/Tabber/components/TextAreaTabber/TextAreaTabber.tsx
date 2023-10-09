@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import CharacterLimit from '~components/CharacterLimit/CharacterLimit';
 import { ITabsTabberProps } from '~components/Tabber/Tabber.types';
 
 import scss from './TextAreaTabber.module.scss';
@@ -11,6 +10,8 @@ function TextAreaTabber({ socialItem, selectedTab }: ITabsTabberProps) {
   const [inputValue, setInputValue] = useState(
     'texto clonado, passar props aqui'
   );
+  /* component provisório, deletar após criação do novo */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayedText, setDisplayedText] = useState('');
 
   const handleTextAreaChange = (
@@ -31,8 +32,6 @@ function TextAreaTabber({ socialItem, selectedTab }: ITabsTabberProps) {
         onChange={handleTextAreaChange}
         placeholder="Digite algo aqui..."
       />
-
-      <CharacterLimit maxLength={140} value={displayedText} />
     </div>
   );
 }
