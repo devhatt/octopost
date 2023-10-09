@@ -55,6 +55,7 @@ function InputMedia(props: IInputMediaProps) {
     if (props.files[0].type.includes('image')) {
       return props.files.map((file, index) => (
         <img
+          data-testid="test"
           key={index}
           src={URL.createObjectURL(file)}
           alt={`selected image ${index}`}

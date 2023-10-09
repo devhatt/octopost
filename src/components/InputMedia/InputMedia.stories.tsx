@@ -2,12 +2,12 @@ import type { Story } from '@ladle/react';
 
 import InputMedia from './InputMedia';
 
-import { IInputMedia } from './InputMedia.types';
+import { IInputMediaProps } from './InputMedia.types';
 
-export const InputMediaComponent: Story<IInputMedia> = (props) => {
+export const InputMediaComponent: Story<IInputMediaProps> = (props) => {
   return <InputMedia onChange={props.onChange} />;
 };
 
 InputMediaComponent.args = {
-  onChange: (media) => alert(`image selected ${media.name}`),
+  onChange: (media) => alert(`image selected ${media[0].file.name}`),
 };

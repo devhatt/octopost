@@ -7,3 +7,7 @@ export interface IInputMediaProps {
   files?: File[];
   onChange: (media: IMedia[]) => void;
 }
+
+export interface IInputMediaTestWrapper {
+  onChange: (media: string) => void;
+}
