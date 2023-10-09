@@ -1,0 +1,205 @@
+@use '../../styles/global';
+
+@mixin apply-color($color) {
+  &.containerFocus {
+    color: $color;
+  }
+
+  .inputWrapper {
+    .label {
+      &.labelAnimate {
+        color: $color;
+      }
+    }
+  }
+}
+
+.container {
+  color: global.$secondaryGray;
+  font-size: 1.4rem;
+
+  margin-top: 3rem;
+
+  margin-bottom: 2.4rem;
+  letter-spacing: 0;
+
+  &.containerError {
+    color: global.$secondaryRed;
+  }
+
+  &.containerFocus {
+    color: global.$secondaryPurple;
+  }
+
+  &.containerFilled {
+    color: #34495e;
+  }
+
+  .inputWrapper {
+    width: 288px;
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    .label {
+      color: currentColor;
+      font-size: 1.1rem;
+
+      position: absolute;
+      top: 17px;
+      left: 51px;
+
+      transform: translate3d(0, 0, 0);
+
+      transition: all 0.2s ease-in-out;
+
+      pointer-events: none;
+
+      &.labelAnimate {
+        color: global.$secondaryPurple;
+        font-size: 1rem;
+
+        transform: translate3d(-32px, -26px, 0);
+      }
+
+      &.labelError {
+        color: global.$secondaryRed;
+      }
+
+      &.labelFilled {
+        color: global.$secondaryGray;
+      }
+    }
+
+    .input {
+      width: 100%;
+
+      color: #000;
+      font-size: 1.1rem;
+
+      padding: 1.6rem 4rem;
+      border: 0;
+      box-sizing: border-box;
+
+      position: absolute;
+
+      background: none;
+
+      &:focus {
+        outline: 0;
+      }
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    .fieldset {
+      padding: 0 0.8rem;
+      border: 1px solid currentColor;
+
+      position: absolute;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      border-radius: 4px;
+
+      pointer-events: none;
+
+      &.fieldsetFocus {
+        border: 2px solid;
+      }
+
+      &.fieldsetError {
+        border: 2px solid global.$secondaryRed;
+      }
+
+      .legend {
+        width: auto;
+        max-width: 0.01px;
+        height: 11px;
+
+        display: block;
+
+        text-align: left;
+
+        padding: 0;
+
+        transition: max-width 50ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+        visibility: hidden;
+
+        &.legendFocus {
+          max-width: 100%;
+        }
+
+        &.legendFilled {
+          width: auto;
+        }
+
+        .legendTitle {
+          font-size: 1rem;
+
+          padding: 0 0.2rem;
+        }
+      }
+    }
+  }
+
+  .iconLeft {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 1.5rem;
+  }
+
+  .iconRight {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-right: 1.5rem;
+
+    z-index: 11;
+
+    &:hover {
+      transform: scale(0.96);
+
+      cursor: pointer;
+    }
+  }
+
+  .errorWrapper {
+    display: flex;
+
+    align-items: center;
+
+    color: currentColor;
+    font-weight: normal;
+
+    margin: 0.5rem 0 0 0.5rem;
+
+    .errorMessage {
+      color: global.$secondaryRed;
+      text-align: start;
+      font-size: 1.1rem;
+
+      margin-bottom: -0.1rem;
+    }
+  }
+}
