@@ -1,0 +1,317 @@
+﻿@use '../../styles/global';
+
+button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+
+  background-color: transparent;
+
+  transition:
+    background 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  cursor: pointer;
+}
+
+.textButton {
+  width: fit-content;
+  overflow: hidden;
+
+  gap: 0.5rem;
+
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 1.25rem;
+
+  padding: 0.625rem 1.5rem;
+
+  position: relative;
+
+  border-radius: 100px;
+
+  isolation: isolate;
+
+  &::before {
+    width: 10%;
+
+    margin: auto;
+
+    position: absolute;
+    z-index: -1;
+
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    border-radius: 50%;
+
+    content: '';
+
+    inset: 0;
+    aspect-ratio: 1;
+  }
+
+  &:active::before {
+    transform: scale(20);
+    opacity: 1;
+
+    transition: transform 800ms;
+  }
+
+  img,
+  svg {
+    width: 0.875rem;
+  }
+}
+
+@mixin text($color, $hover) {
+  color: $color;
+
+  &:hover {
+    color: $color;
+
+    background-color: $hover;
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+@mixin container($bg, $color, $hover) {
+  color: $color;
+
+  background-color: $bg;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: $hover;
+    box-shadow:
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+@mixin outlined($color, $border, $hover) {
+  color: $color;
+
+  border: 1px solid $border;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  svg,
+  path {
+    fill: $color;
+  }
+}
+
+.textButton {
+  &.text {
+    &.primary {
+      @include text(global.$secondaryPurple, global.$primaryPurple);
+    }
+
+    &.secondary {
+      @include text(global.$primaryWhite, rgba(255, 255, 255, 0.15));
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: transparent;
+
+        cursor: not-allowed;
+      }
+      @include text(global.$primaryGray, global.$primaryGray);
+    }
+  }
+
+  &.container {
+    &.primary {
+      @include container(
+        global.$secondaryPurple,
+        global.$primaryWhite,
+        global.$tertiaryPurple
+      );
+    }
+
+    &.secondary {
+      @include container(
+        global.$primaryWhite,
+        global.$secondaryPurple,
+        global.$primaryPurple
+      );
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: global.$primaryGray;
+
+        cursor: not-allowed;
+      }
+      @include container(
+        global.$primaryGray,
+        global.$secondaryGray,
+        global.$secondaryGray
+      );
+    }
+
+    &.disabled,
+    &.disabled:hover,
+    &.disableElevation,
+    &.disableElevation:hover {
+      box-shadow: none;
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      @include outlined(
+        global.$secondaryPurple,
+        global.$secondaryGray,
+        global.$primaryPurple
+      );
+    }
+
+    &.secondary {
+      @include outlined(
+        global.$primaryWhite,
+        global.$primaryWhite,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: transparent;
+
+        cursor: not-allowed;
+      }
+      @include outlined(
+        global.$primaryGray,
+        global.$primaryGray,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+  }
+}
+
+.circleButton {
+  width: fit-content;
+
+  border-radius: 50%;
+  aspect-ratio: 1;
+
+  &.text {
+    &.primary {
+      @include text(global.$secondaryPurple, global.$primaryPurple);
+    }
+
+    &.secondary {
+      @include text(global.$primaryWhite, rgba(255, 255, 255, 0.15));
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: transparent;
+
+        cursor: not-allowed;
+      }
+      @include text(global.$primaryGray, global.$primaryGray);
+    }
+  }
+
+  &.container {
+    &.primary {
+      @include container(
+        global.$secondaryPurple,
+        global.$primaryWhite,
+        global.$tertiaryPurple
+      );
+    }
+
+    &.secondary {
+      @include container(
+        global.$primaryWhite,
+        global.$secondaryPurple,
+        rgba(255, 255, 255, 0.75)
+      );
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: global.$primaryGray;
+
+        cursor: not-allowed;
+      }
+      @include container(
+        global.$primaryGray,
+        global.$secondaryGray,
+        global.$secondaryGray
+      );
+    }
+
+    &.primary,
+    &.secondary {
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.outlined {
+    &.primary {
+      @include outlined(
+        global.$secondaryGray,
+        global.$secondaryGray,
+        global.$primaryPurple
+      );
+    }
+
+    &.secondary {
+      @include outlined(
+        global.$primaryWhite,
+        global.$primaryWhite,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+
+    &.disabled {
+      &:hover {
+        background: none;
+        background-color: transparent;
+
+        cursor: not-allowed;
+      }
+      @include outlined(
+        global.$primaryGray,
+        global.$primaryGray,
+        rgba(255, 255, 255, 0.15)
+      );
+    }
+  }
+
+  img,
+  svg {
+    width: 0.625rem;
+  }
+}

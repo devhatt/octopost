@@ -1,4 +1,4 @@
-@import '../../../../styles/global';
+@use '../../../../styles/global';
 
 .userImage {
   width: 40px;
@@ -15,7 +15,7 @@
 
   place-items: center;
 
-  background-color: $primaryPurple;
+  background-color: global.$primaryPurple;
   border-radius: 50%;
 
   .initialLetter {

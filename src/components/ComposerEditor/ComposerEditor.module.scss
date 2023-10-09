@@ -1,4 +1,4 @@
-@import '../../styles/global';
+@use '~styles/global';
 
 .inputContainer {
   width: 100%;
@@ -9,14 +9,6 @@
 
 .wrapper {
   position: relative;
-}
-
-.footer {
-  font-size: 1.2rem;
-
-  position: absolute;
-  bottom: 13px;
-  left: 15px;
 }
 
 .copyTextContainer {
