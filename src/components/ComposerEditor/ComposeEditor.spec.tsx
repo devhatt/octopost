@@ -6,7 +6,7 @@ const placeholderText = 'Digite algo aqui...';
 
 describe('ComposeEditor', () => {
   describe('when render component', () => {
-    it('successfully renders', () => {
+    it('successfully renders with a TextArea', () => {
       const { getByPlaceholderText } = render(<ComposerEditor />);
       const textArea = getByPlaceholderText(placeholderText);
 
