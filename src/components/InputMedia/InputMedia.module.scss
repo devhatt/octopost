@@ -29,7 +29,7 @@
   width: 10.4rem;
   height: 10.4rem;
 
-  border: 2px dotted global.$tertiaryPurple;
+  border: 2px solid global.$tertiaryPurple;
 }
 
 .hidden {
@@ -44,4 +44,13 @@
 .imageSelected {
   overflow: hidden;
   aspect-ratio: 4 / 4;
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(70%);
+  }
 }

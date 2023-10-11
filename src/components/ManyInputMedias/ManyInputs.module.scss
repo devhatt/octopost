@@ -2,35 +2,25 @@
 
 .manyMediaContainer {
   display: grid;
-  grid-template-columns: repeat(10, 10.4rem);
-  grid-auto-rows: 10rem;
+  grid-template-columns: repeat(10, minmax(10.4rem, auto));
+
   gap: 1.4rem;
+
+  align-items: center;
+
+  justify-content: center;
 
   .imageGroup {
     width: 10.4rem;
-    height: 10.4rem;
 
     position: relative;
 
     background-color: global.$tertiaryWhite;
 
     &:hover {
-      img {
-        transform: scale(1.1);
-        filter: brightness(70%);
-      }
-
       .removeButton {
         opacity: 1;
       }
-    }
-
-    img {
-      width: 100%;
-
-      transition:
-        filter 0.3s ease,
-        transform 0.3s ease;
     }
 
     .removeButton {

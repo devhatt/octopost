@@ -13,7 +13,7 @@ function InputMedia(props: IInputMediaProps) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const inputClasses = classNames(scss.button, {
-    [scss.buttonSelected]: props.files && props.files.length > 0,
+    [scss.buttonSelected]: props.files,
   });
 
   const handleInputClick = () => {
@@ -47,34 +47,27 @@ function InputMedia(props: IInputMediaProps) {
     />
   );
 
-  const renderMedia = () => {
-    if (!props.files || props.files.length === 0) {
-      return null;
-    }
+  const renderImage = (file: File) => (
+    <img
+      data-testid={`image ${file.name}`}
+      src={URL.createObjectURL(file)}
+      alt="uploaded image"
+      className={scss.imageSelected}
+    />
+  );
 
-    if (props.files[0].type.includes('image')) {
-      return props.files.map((file, index) => (
-        <img
-          data-testid="test"
-          key={index}
-          src={URL.createObjectURL(file)}
-          alt={`selected image ${index}`}
-          className={scss.imageSelected}
-        />
-      ));
-    } else {
-      return (
-        <video controls className={scss.imageSelected}>
-          {props.files.map((file, index) => (
-            <source
-              key={index}
-              src={URL.createObjectURL(file)}
-              type={file.type}
-            />
-          ))}
-        </video>
-      );
-    }
+  const renderVideo = (file: File) => (
+    <video controls className={scss.imageSelected}>
+      <source src={URL.createObjectURL(file)} type={file.type} />
+    </video>
+  );
+
+  const renderMedia = () => {
+    if (!props.files) return;
+
+    return props.files.type.includes('image')
+      ? renderImage(props.files)
+      : renderVideo(props.files);
   };
 
   return (
@@ -88,9 +81,7 @@ function InputMedia(props: IInputMediaProps) {
         onChange={handleFileChange}
         multiple
       />
-      {props.files && props.files.length > 0
-        ? renderMedia()
-        : renderEmptyImagePlaceholder()}
+      {props.files ? renderMedia() : renderEmptyImagePlaceholder()}
     </button>
   );
 }

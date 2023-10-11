@@ -8,12 +8,11 @@ function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps) {
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
         <InputMedia
-          files={[media.file]}
+          files={media.file}
           onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
         <button
           className={scss.removeButton}
-          data-testid="removeButton"
           onClick={() => onRemove(media.id)}
         >
           X

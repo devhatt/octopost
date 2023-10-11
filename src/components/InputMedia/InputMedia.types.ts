@@ -4,7 +4,7 @@ export interface IMedia {
 }
 
 export interface IInputMediaProps {
-  files?: File[];
+  files?: File;
   onChange: (media: IMedia[]) => void;
 }
 
