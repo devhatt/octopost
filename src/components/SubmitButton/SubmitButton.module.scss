@@ -1,23 +1,27 @@
 @use '../../styles/global';
 
-.buttonBox {
-  width: 84px;
+.buttonWrapper {
+  width: 30rem;
 
   display: flex;
-  gap: 20px;
+  gap: 0.8rem;
 }
 
-.submitButtonPostNow {
-  color: global.$secondaryPurple;
+.submitButtonPostNow,
+.submitButtonPostLater {
   font-size: 1.6rem;
 
-  padding: 1.6rem 3.2rem;
+  padding: 1rem 0.2rem;
   border: 0.1rem solid global.$secondaryGray;
 
   background-color: global.$primaryWhite;
   border-radius: 3rem;
 
   cursor: pointer;
+}
+
+.submitButtonPostNow {
+  color: global.$secondaryPurple;
 }
 
 .submitButtonPostNow:hover {
@@ -30,15 +34,8 @@
 
 .submitButtonPostLater {
   color: global.$primaryWhite;
-  font-size: 1.6rem;
-
-  padding: 1.6rem 3.2rem;
-  border: 0.1rem solid global.$secondaryGray;
 
   background-color: global.$secondaryPurple;
-  border-radius: 3rem;
-
-  cursor: pointer;
 }
 
 .submitButtonPostLater:hover {

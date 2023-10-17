@@ -1,5 +1,4 @@
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
-import SubmitButton from '~components/SubmitButton/SubmitButton';
 
 import scss from './MainComposer.module.scss';
 
@@ -21,7 +20,6 @@ function MainComposer() {
           </div>
           <div className={scss.contentBotBot}>
             <h2>content-bot-bot</h2>
-            <SubmitButton />
           </div>
         </div>
       </div>
