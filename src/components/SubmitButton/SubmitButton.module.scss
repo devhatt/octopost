@@ -1,0 +1,50 @@
+@use '../../styles/global';
+
+.buttonBox {
+  width: 84px;
+
+  display: flex;
+  gap: 20px;
+}
+
+.submitButtonPostNow {
+  color: global.$secondaryPurple;
+  font-size: 1.6rem;
+
+  padding: 1.6rem 3.2rem;
+  border: 0.1rem solid global.$secondaryGray;
+
+  background-color: global.$primaryWhite;
+  border-radius: 3rem;
+
+  cursor: pointer;
+}
+
+.submitButtonPostNow:hover {
+  color: global.$primaryWhite;
+
+  background-color: global.$secondaryPurple;
+
+  transition: 0.3s;
+}
+
+.submitButtonPostLater {
+  color: global.$primaryWhite;
+  font-size: 1.6rem;
+
+  padding: 1.6rem 3.2rem;
+  border: 0.1rem solid global.$secondaryGray;
+
+  background-color: global.$secondaryPurple;
+  border-radius: 3rem;
+
+  cursor: pointer;
+}
+
+.submitButtonPostLater:hover {
+  color: global.$secondaryPurple;
+
+  background-color: global.$primaryWhite;
+
+  transition: 0.3s;
+}
