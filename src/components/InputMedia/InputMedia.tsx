@@ -49,9 +49,8 @@ function InputMedia(props: IInputMediaProps) {
 
   const renderImage = (file: File) => (
     <img
-      data-testid={`image ${file.name}`}
       src={URL.createObjectURL(file)}
-      alt="uploaded image"
+      alt={`uploaded image ${file.name}`}
       className={scss.imageSelected}
     />
   );

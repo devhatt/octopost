@@ -11,7 +11,9 @@ test.describe('ManyInputs', () => {
         .getByTestId('imageInput')
         .setInputFiles('src/assets/logo.png');
 
-      await expect(component.getByTestId('image logo.png')).toBeVisible();
+      await expect(
+        component.getByAltText('uploaded image logo.png')
+      ).toBeVisible();
     });
 
     test('upload two images', async ({ mount }) => {
@@ -21,8 +23,12 @@ test.describe('ManyInputs', () => {
         .getByTestId('imageInput')
         .setInputFiles(['src/assets/logo.png', 'src/assets/imagetest.jpg']);
 
-      await expect(component.getByTestId('image logo.png')).toBeVisible();
-      await expect(component.getByTestId('image imagetest.jpg')).toBeVisible();
+      await expect(
+        component.getByAltText('uploaded image logo.png')
+      ).toBeVisible();
+      await expect(
+        component.getByAltText('uploaded image imagetest.jpg')
+      ).toBeVisible();
     });
 
     test.describe('when the file is diferent from image or video', () => {
@@ -45,10 +51,15 @@ test.describe('ManyInputs', () => {
           .getByTestId('imageInput')
           .setInputFiles('src/assets/logo.png');
 
-        await expect(component.getByTestId('image logo.png')).toBeVisible();
+        await expect(
+          component.getByAltText('uploaded image logo.png')
+        ).toBeVisible();
 
         await component.getByRole('button', { name: 'X' }).click();
-        await expect(component.getByTestId('image logo.png')).not.toBeVisible();
+
+        await expect(
+          component.getByAltText('uploaded image logo.png')
+        ).not.toBeVisible();
       });
     });
   });

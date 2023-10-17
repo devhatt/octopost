@@ -12,6 +12,7 @@ function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps) {
           onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
         <button
+          area-label="Close"
           className={scss.removeButton}
           onClick={() => onRemove(media.id)}
         >
