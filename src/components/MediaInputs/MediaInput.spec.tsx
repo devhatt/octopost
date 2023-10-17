@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 
-import ManyMediaInputs from './ManyInputs';
+import MediaInputs from './MediaInput';
 
-describe('manyMediaInputs', () => {
-  it('renders the many media inputs', () => {
-    render(<ManyMediaInputs />);
+describe('MediaInputs', () => {
+  it('renders the  media inputs', () => {
+    render(<MediaInputs />);
 
     const manyMediaComponent = screen.getAllByTestId('manyMediaInputs');
     expect(manyMediaComponent.length).toBeGreaterThan(0);

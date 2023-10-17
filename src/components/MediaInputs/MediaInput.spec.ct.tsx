@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 
-import ManyMediaInputs from './ManyInputs';
+import ManyMediaInputs from './MediaInput';
 
 test.describe('ManyInputs', () => {
   test.describe('when click on input', () => {

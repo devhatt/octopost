@@ -1,4 +1,4 @@
-import scss from '../ManyInputs.module.scss';
+import scss from '../MediaInput.module.scss';
 
 import InputMedia from '../../InputMedia/InputMedia';
 import { IMediaGroupProps } from './MediaGroup.types';

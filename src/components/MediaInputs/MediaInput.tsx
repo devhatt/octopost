@@ -5,9 +5,9 @@ import { IMedia } from '~components/InputMedia/InputMedia.types';
 import InputMedia from '../InputMedia/InputMedia';
 import MediaGroup from './MediaGroup/MediaGroup';
 
-import scss from './ManyInputs.module.scss';
+import scss from './MediaInput.module.scss';
 
-function ManyMediaInputs() {
+function MediaInputs() {
   const [medias, setMedias] = useState<IMedia[]>([]);
 
   const addMedia = (files: IMedia[]) => {
@@ -51,4 +51,4 @@ function ManyMediaInputs() {
   );
 }
 
-export default ManyMediaInputs;
+export default MediaInputs;

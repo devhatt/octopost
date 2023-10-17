@@ -1,7 +1,7 @@
 import type { Story } from '@ladle/react';
 
-import ManyMediaInputs from './ManyInputs';
+import MediaInputs from './MediaInput';
 
 export const ManyMediaInputsComponent: Story = () => {
-  return <ManyMediaInputs />;
+  return <MediaInputs />;
 };
