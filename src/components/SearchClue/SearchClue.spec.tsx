@@ -6,6 +6,7 @@ describe('searchClue component', () => {
   const props = {
     value: 'value example',
     label: 'label example',
+    setValue: jest.fn(),
   };
 
   const { getByText } = render(<SearchClue {...props} />);

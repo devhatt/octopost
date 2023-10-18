@@ -18,8 +18,6 @@ export default function InputSearch(props: IInputProps) {
   const containerClass = [scss.container];
   const [isFocused, setIsFocused] = useState(false);
 
-  const [value, setValue] = useState('');
-
   const IconAlert = () => {
     return <img className={scss.icon} src={alertIcon} />;
   };
@@ -30,7 +28,11 @@ export default function InputSearch(props: IInputProps) {
 
   const handleClear = () => {
     if (props.handleClear) props.handleClear();
-    setValue('');
+    props.setValue('');
+  };
+
+  const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.setValue(e.target.value);
   };
 
   const renderErrorMessage = () => (
@@ -91,8 +93,8 @@ export default function InputSearch(props: IInputProps) {
           placeholder={props.placeholder}
           onBlur={(e) => onInputBlur(e)}
           onFocus={onInputFocus}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={props.value}
+          onChange={handleValue}
         />
 
         <div

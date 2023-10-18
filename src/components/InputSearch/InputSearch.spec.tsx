@@ -7,7 +7,7 @@ import InputSearch from './InputSearch';
 const mockProps = {
   name: 'testInput',
   type: 'text',
-  value: '',
+  value: 'Value',
   required: false,
   placeholder: 'Test Placeholder',
   errorMessage: 'Test Error Message',
@@ -16,6 +16,7 @@ const mockProps = {
   onFocus: jest.fn(),
   handleClear: jest.fn(),
   onChange: jest.fn(),
+  setValue: jest.fn(),
 };
 
 describe('InputSearch component', () => {
@@ -73,6 +74,6 @@ describe('InputSearch component', () => {
 
     fireEvent.click(clearButton);
 
-    expect(inputElement.value).toBe('');
+    expect(inputElement.value).toBe('Value');
   });
 });

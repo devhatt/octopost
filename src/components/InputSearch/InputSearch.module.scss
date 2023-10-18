@@ -36,7 +36,7 @@
   }
 
   .inputWrapper {
-    width: 288px;
+    width: 283px;
     height: 56px;
 
     display: flex;
@@ -49,11 +49,11 @@
 
     .label {
       color: currentColor;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
 
       position: absolute;
-      top: 17px;
-      left: 51px;
+      top: 19px;
+      left: 50px;
 
       transform: translate3d(0, 0, 0);
 
@@ -65,7 +65,7 @@
         color: global.$secondaryPurple;
         font-size: 1rem;
 
-        transform: translate3d(-32px, -26px, 0);
+        transform: translate3d(-36px, -24.5px, 0);
       }
 
       &.labelError {
@@ -155,30 +155,30 @@
   }
 
   .iconLeft {
+    position: absolute;
+    left: 15px;
     width: 20px;
     height: 20px;
 
     display: flex;
 
     align-items: center;
-
-    padding-left: 1.5rem;
   }
 
   .iconRight {
+    position: absolute;
+    right: 15px;
     width: 20px;
     height: 20px;
 
     display: flex;
 
     align-items: center;
-
-    padding-right: 1.5rem;
 
     z-index: 11;
 
     &:hover {
-      transform: scale(0.96);
+      transform: scale(0.94);
 
       cursor: pointer;
     }
