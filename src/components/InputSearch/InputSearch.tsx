@@ -97,13 +97,15 @@ export default function InputSearch(props: IInputProps) {
           onChange={handleValue}
         />
 
-        <div
-          className={scss.iconRight}
-          data-testid="clear-button"
-          onClick={handleClear}
-        >
-          {props.error ? <IconAlert /> : <IconRight />}
-        </div>
+        {props.value?.length ? (
+          <div
+            className={scss.iconRight}
+            data-testid="clear-button"
+            onClick={handleClear}
+          >
+            {props.error ? <IconAlert /> : <IconRight />}
+          </div>
+        ) : null}
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
