@@ -1,6 +1,6 @@
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
-import SaveBar from '~components/SaveBar/SaveBar';
+import SavBar from '~components/SavBar/SavBar';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -23,7 +23,7 @@ const Home = () => {
           </div>
           <div className={scss.gridTabs} />
         </div>
-        <SaveBar />
+        <SavBar />
       </div>
     </>
   );

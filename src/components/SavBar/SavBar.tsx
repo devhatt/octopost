@@ -1,8 +1,8 @@
 import SubmitButton from '~components/SubmitButton/SubmitButton';
 
-import scss from './SaveBar.module.scss';
+import scss from './SavBar.module.scss';
 
-function SaveBar() {
+function SavBar() {
   return (
     <div className={scss.savBarWrapper}>
       <a href="/">+ Save as draft</a>
@@ -11,4 +11,4 @@ function SaveBar() {
   );
 }
 
-export default SaveBar;
+export default SavBar;
