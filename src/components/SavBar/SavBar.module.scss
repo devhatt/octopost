@@ -1,0 +1,23 @@
+@use '../../styles/global';
+
+.savBarWrapper {
+  max-width: 101rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+
+  margin-bottom: 3.2rem;
+
+  padding: 2rem;
+
+  a {
+    color: global.$secondaryPurple;
+    font-weight: 400;
+    text-decoration: none;
+  }
+}
