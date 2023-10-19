@@ -3,6 +3,12 @@ import userEvent from '@testing-library/user-event';
 
 import InputMedia from './InputMedia';
 
+jest.mock('nanoid', () => {
+  return {
+    nanoid: jest.fn(() => 'sua-string-especifica-aqui'),
+  };
+});
+
 describe('InputMedia', () => {
   it('renders the icon', () => {
     render(<InputMedia onChange={() => {}} />);
