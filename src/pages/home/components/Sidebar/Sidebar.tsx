@@ -8,7 +8,6 @@ import scss from './Sidebar.module.scss';
 function Sidebar() {
   const [value, setValue] = useState('');
 
-  const handleClear = () => {};
   return (
     <aside className={scss.sidebar}>
       <div className={scss.titleContainer}>
@@ -16,7 +15,6 @@ function Sidebar() {
       </div>
       <div className={scss.sidebarMain}>
         <InputSearch
-          handleClear={handleClear}
           value={value}
           setValue={setValue}
           placeholder="Search for social media"

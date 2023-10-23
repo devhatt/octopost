@@ -26,8 +26,18 @@ export default function InputSearch(props: IInputProps) {
     return <img src={rightIcon} />;
   };
 
+  const divIcons = () => (
+    <div
+      className={scss.iconRight}
+      data-testid="clear-button"
+      onClick={handleClear}
+    >
+      {props.error ? <IconAlert /> : <IconRight />}
+    </div>
+  );
+
   const handleClear = () => {
-    if (props.handleClear) props.handleClear();
+    // if (props.handleClear) props.handleClear();
     props.setValue('');
   };
 
@@ -63,10 +73,7 @@ export default function InputSearch(props: IInputProps) {
     labelClass.push(scss.labelError);
   };
 
-  if (
-    isFocused ||
-    (typeof props.value === 'string' && props.value.length > 0)
-  ) {
+  if (isFocused || (typeof props.value === 'string' && props.value)) {
     handleFocusedStyles();
   }
 
@@ -97,15 +104,7 @@ export default function InputSearch(props: IInputProps) {
           onChange={handleValue}
         />
 
-        {props.value?.length ? (
-          <div
-            className={scss.iconRight}
-            data-testid="clear-button"
-            onClick={handleClear}
-          >
-            {props.error ? <IconAlert /> : <IconRight />}
-          </div>
-        ) : null}
+        {props.value && divIcons()}
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
