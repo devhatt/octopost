@@ -37,7 +37,6 @@ export default function InputSearch(props: IInputProps) {
   );
 
   const handleClear = () => {
-    // if (props.handleClear) props.handleClear();
     props.setValue('');
   };
 
