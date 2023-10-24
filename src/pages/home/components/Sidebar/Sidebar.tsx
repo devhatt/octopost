@@ -1,15 +1,13 @@
 import { useRef, useState } from 'react';
 
-import InputSearch, {
-  TInputComponent,
-} from '~components/InputSearch/InputSearch';
+import InputSearch from '~components/InputSearch/InputSearch';
+import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import SearchClue from '~components/SearchClue/SearchClue';
 
 import scss from './Sidebar.module.scss';
 
 function Sidebar() {
   const [value, setValue] = useState('');
-
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   return (
@@ -19,8 +17,7 @@ function Sidebar() {
       </div>
       <div className={scss.sidebarMain}>
         <InputSearch
-          value={value}
-          setValue={setValue}
+          onChange={(value) => setValue(value as string)}
           placeholder="Search for social media"
           ref={inputSearchRef}
           error={false}
@@ -29,7 +26,6 @@ function Sidebar() {
         {value && (
           <SearchClue
             clearInput={inputSearchRef.current?.clearInput}
-            setValue={setValue}
             value={value}
             label="Searching for"
           />

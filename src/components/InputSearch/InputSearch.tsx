@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, useImperativeHandle, useState } from 'react';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -8,15 +8,11 @@ import alertIcon from './assets/alertIcon.svg';
 import leftIcon from './assets/leftIcon.svg';
 import rightIcon from './assets/rightIcon.svg';
 
-import { IInputProps } from './IInputProps.types';
+import { TInputProps, TInputComponentRef } from './InputSearch.types';
 
-export type TInputComponent = {
-  clearInput: () => void;
-};
+function InputSearch(props: TInputProps, ref: TInputComponentRef) {
+  const [value, setValue] = useState('');
 
-export type TInputComponentRef = ForwardedRef<TInputComponent>;
-
-function InputSearch(props: IInputProps, ref: TInputComponentRef) {
   const labelClass = [scss.label];
   const inputClass = [scss.input];
   const legendClass = [scss.legend];
@@ -43,11 +39,13 @@ function InputSearch(props: IInputProps, ref: TInputComponentRef) {
   );
 
   const handleClear = () => {
-    props.setValue('');
+    props.onChange && props.onChange('');
+    setValue('');
   };
 
   const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.setValue(e.target.value);
+    props.onChange && props.onChange(e.target.value);
+    setValue(e.target.value);
   };
 
   const renderErrorMessage = () => (
@@ -78,7 +76,7 @@ function InputSearch(props: IInputProps, ref: TInputComponentRef) {
     labelClass.push(scss.labelError);
   };
 
-  if (isFocused || (typeof props.value === 'string' && props.value)) {
+  if (isFocused || (typeof value === 'string' && value)) {
     handleFocusedStyles();
   }
 
@@ -109,11 +107,11 @@ function InputSearch(props: IInputProps, ref: TInputComponentRef) {
           placeholder={props.placeholder}
           onBlur={(e) => onInputBlur(e)}
           onFocus={onInputFocus}
-          value={props.value}
+          value={value}
           onChange={handleValue}
         />
 
-        {props.value && divIcons()}
+        {value && divIcons()}
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
