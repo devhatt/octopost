@@ -10,13 +10,13 @@ import rightIcon from './assets/rightIcon.svg';
 
 import { IInputProps } from './IInputProps.types';
 
-export type TQuadrado = {
+export type TInputComponent = {
   clearInput: () => void;
 };
 
-export type TBolinha = ForwardedRef<TQuadrado>;
+export type TInputComponentRef = ForwardedRef<TInputComponent>;
 
-function InputSearch(props: IInputProps, ref: TBolinha) {
+function InputSearch(props: IInputProps, ref: TInputComponentRef) {
   const labelClass = [scss.label];
   const inputClass = [scss.input];
   const legendClass = [scss.legend];
