@@ -6,8 +6,11 @@ function SearchClue(props: ISearchClueProps) {
   const { label } = props;
 
   const handleClearClick = () => {
-    props.setValue('');
+    if (props.clearInput) {
+      props.clearInput();
+    }
   };
+
   return (
     <div className={scss.searchClueContainer}>
       <span className={scss.spanSearchClue}>

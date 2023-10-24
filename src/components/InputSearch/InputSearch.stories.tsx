@@ -11,7 +11,9 @@ export default {
   component: InputSearch,
 };
 
-const Template: Story<IInputProps> = (args) => <InputSearch {...args} />;
+const Template: Story<IInputProps> = (args) => (
+  <InputSearch {...args} ref={undefined} />
+);
 
 export const InputSearchComponent = Template.bind({});
 InputSearchComponent.args = {

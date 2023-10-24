@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ForwardedRef, forwardRef, useImperativeHandle, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -10,7 +10,13 @@ import rightIcon from './assets/rightIcon.svg';
 
 import { IInputProps } from './IInputProps.types';
 
-export default function InputSearch(props: IInputProps) {
+export type TQuadrado = {
+  clearInput: () => void;
+};
+
+export type TBolinha = ForwardedRef<TQuadrado>;
+
+function InputSearch(props: IInputProps, ref: TBolinha) {
   const labelClass = [scss.label];
   const inputClass = [scss.input];
   const legendClass = [scss.legend];
@@ -80,6 +86,10 @@ export default function InputSearch(props: IInputProps) {
     handleErrorStyles();
   }
 
+  useImperativeHandle(ref, () => ({
+    clearInput: handleClear,
+  }));
+
   return (
     <div className={classNames(containerClass)}>
       <div className={scss.inputWrapper}>
@@ -115,3 +125,5 @@ export default function InputSearch(props: IInputProps) {
     </div>
   );
 }
+
+export default forwardRef(InputSearch);
