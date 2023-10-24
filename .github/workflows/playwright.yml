@@ -20,7 +20,7 @@ jobs:
     - name: Run Playwright tests
       run: yarn playwright test
     - name: Run Playwright Components tests
-      run: yarn playwright test-ct
+      run: yarn test-ct
     - uses: actions/upload-artifact@v3
       if: always()
       with:
