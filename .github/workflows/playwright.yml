@@ -19,6 +19,8 @@ jobs:
       run: yarn playwright install --with-deps
     - name: Run Playwright tests
       run: yarn playwright test
+   - name: Run Playwright Components tests
+      run: yarn playwright test-ct
     - uses: actions/upload-artifact@v3
       if: always()
       with:
