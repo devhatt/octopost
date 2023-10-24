@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
 
-import InputSearch, { TQuadrado } from '~components/InputSearch/InputSearch';
+import InputSearch, {
+  TInputComponent,
+} from '~components/InputSearch/InputSearch';
 import SearchClue from '~components/SearchClue/SearchClue';
 
 import scss from './Sidebar.module.scss';
@@ -8,7 +10,7 @@ import scss from './Sidebar.module.scss';
 function Sidebar() {
   const [value, setValue] = useState('');
 
-  const inputSearchRef = useRef<TQuadrado | null>(null);
+  const inputSearchRef = useRef<TInputComponent | null>(null);
 
   return (
     <aside className={scss.sidebar}>
