@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import SocialAccordion from './SocialAccordion';
@@ -12,6 +12,8 @@ const mockList: IAccountList[] = [
     username: 'jhon doe',
   },
 ];
+
+jest.spyOn(window, 'scrollTo');
 
 describe('SocialAccordion', () => {
   describe('when initilize', () => {
@@ -58,7 +60,7 @@ describe('SocialAccordion', () => {
       const openAccordion = screen.getByText(/facebook/i);
 
       expect(screen.getByText(/jhon doe/i)).toBeInTheDocument();
-      userEvent.click(openAccordion);
+      await act(async () => userEvent.click(openAccordion));
       await waitFor(() =>
         expect(screen.queryByText(/jhon doe/i)).not.toBeInTheDocument()
       );

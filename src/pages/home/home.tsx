@@ -1,5 +1,6 @@
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
+import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
 
 import Header from './components/Header/Header';
@@ -20,7 +21,9 @@ const Home = () => {
           <div className={scss.gridInput}>
             <ComposerEditor />
             <MainComposer />
+            <MediaInputs />
           </div>
+
           <div className={scss.gridTabs} />
         </div>
         <SavBar />

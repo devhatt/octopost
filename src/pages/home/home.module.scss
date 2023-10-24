@@ -55,6 +55,7 @@
 
 .gridInput {
   display: flex;
+  flex-direction: column;
   grid-area: input;
 }
 
