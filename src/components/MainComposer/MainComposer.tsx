@@ -1,8 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
+import '../../i18n';
 
 import scss from './MainComposer.module.scss';
 
 function MainComposer() {
+  const { t } = useTranslation();
+
   return (
     <div className={scss.wrapper}>
       <div className={scss.innerHeader}>
@@ -20,6 +25,7 @@ function MainComposer() {
           </div>
           <div className={scss.contentBotBot}>
             <h2>content-bot-bot</h2>
+            <p>{t('We have a lot of work')}</p>
           </div>
         </div>
       </div>
