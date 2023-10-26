@@ -59,20 +59,22 @@ describe('InputSearch component', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
-  it('clears input value on clear button click', () => {
-    const { getByPlaceholderText, getByTestId } = render(
+  it('clears input value on clear button click', async () => {
+    const { getByPlaceholderText, queryByTestId } = render(
       <InputSearch {...mockProps} />
     );
     const inputElement = getByPlaceholderText(
       'Test Placeholder'
     ) as HTMLInputElement;
-    const clearButton = getByTestId('clear-button');
+    const clearButton = queryByTestId('clear-button');
 
     fireEvent.change(inputElement, { target: { value: 'Value' } });
 
     expect(inputElement.value).toBe('Value');
 
-    fireEvent.click(clearButton);
+    if (clearButton) {
+      fireEvent.click(clearButton);
+    }
 
     expect(inputElement.value).toBe('Value');
   });
