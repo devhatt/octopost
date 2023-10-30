@@ -66,16 +66,14 @@ describe('InputSearch component', () => {
     const inputElement = getByPlaceholderText(
       'Test Placeholder'
     ) as HTMLInputElement;
-    const clearButton = queryByTestId('clear-button');
 
     fireEvent.change(inputElement, { target: { value: 'Value' } });
 
-    expect(inputElement.value).toBe('Value');
-
-    if (clearButton) {
-      fireEvent.click(clearButton);
-    }
+    const clearButton = queryByTestId('clear-button') as HTMLButtonElement;
 
     expect(inputElement.value).toBe('Value');
+    fireEvent.click(clearButton);
+
+    expect(inputElement.value).toBe('');
   });
 });

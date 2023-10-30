@@ -28,7 +28,7 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
     return <img src={rightIcon} />;
   };
 
-  const divIcons = () => (
+  const handleIcons = () => (
     <div
       className={scss.iconRight}
       data-testid="clear-button"
@@ -111,7 +111,7 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
           onChange={handleValue}
         />
 
-        {value && divIcons()}
+        {value && handleIcons()}
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
