@@ -12,7 +12,6 @@ const Home = () => {
   return (
     <>
       <Header />
-
       <div className={scss.mainContainer}>
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>

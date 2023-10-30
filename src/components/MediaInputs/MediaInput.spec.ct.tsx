@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 
-import ManyMediaInputs from './MediaInput';
+import MediaInputs from './MediaInput';
 
 test.describe('ManyInputs', () => {
   test.describe('when click on input', () => {
     test('upload the image', async ({ mount }) => {
-      const component = await mount(<ManyMediaInputs />);
+      const component = await mount(<MediaInputs />);
 
       await component
         .getByTestId('imageInput')
@@ -17,7 +17,7 @@ test.describe('ManyInputs', () => {
     });
 
     test('upload two images', async ({ mount }) => {
-      const component = await mount(<ManyMediaInputs />);
+      const component = await mount(<MediaInputs />);
 
       await component
         .getByTestId('imageInput')
@@ -35,7 +35,7 @@ test.describe('ManyInputs', () => {
       test('doesnt select the file', async ({ mount }) => {
         const mediaSelected: string | null = null;
 
-        const component = await mount(<ManyMediaInputs />);
+        const component = await mount(<MediaInputs />);
         await component
           .getByTestId('imageInput')
           .setInputFiles('public/robots.txt');
@@ -45,7 +45,7 @@ test.describe('ManyInputs', () => {
 
     test.describe('when add img and click on remove button', () => {
       test('remove image', async ({ mount }) => {
-        const component = await mount(<ManyMediaInputs />);
+        const component = await mount(<MediaInputs />);
 
         await component
           .getByTestId('imageInput')
