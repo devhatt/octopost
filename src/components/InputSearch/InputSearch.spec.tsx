@@ -7,7 +7,7 @@ import InputSearch from './InputSearch';
 const mockProps = {
   name: 'testInput',
   type: 'text',
-  value: '',
+  value: 'Value',
   required: false,
   placeholder: 'Test Placeholder',
   errorMessage: 'Test Error Message',
@@ -16,6 +16,7 @@ const mockProps = {
   onFocus: jest.fn(),
   handleClear: jest.fn(),
   onChange: jest.fn(),
+  setValue: jest.fn(),
 };
 
 describe('InputSearch component', () => {
@@ -58,19 +59,19 @@ describe('InputSearch component', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
-  it('clears input value on clear button click', () => {
-    const { getByPlaceholderText, getByTestId } = render(
+  it('clears input value on clear button click', async () => {
+    const { getByPlaceholderText, queryByTestId } = render(
       <InputSearch {...mockProps} />
     );
     const inputElement = getByPlaceholderText(
       'Test Placeholder'
     ) as HTMLInputElement;
-    const clearButton = getByTestId('clear-button');
 
     fireEvent.change(inputElement, { target: { value: 'Value' } });
 
-    expect(inputElement.value).toBe('Value');
+    const clearButton = queryByTestId('clear-button') as HTMLButtonElement;
 
+    expect(inputElement.value).toBe('Value');
     fireEvent.click(clearButton);
 
     expect(inputElement.value).toBe('');

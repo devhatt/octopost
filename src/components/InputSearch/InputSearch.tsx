@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -8,17 +8,17 @@ import alertIcon from './assets/alertIcon.svg';
 import leftIcon from './assets/leftIcon.svg';
 import rightIcon from './assets/rightIcon.svg';
 
-import { IInputProps } from './IInputProps.types';
+import { TInputProps, TInputComponentRef } from './InputSearch.types';
 
-export default function InputSearch(props: IInputProps) {
+function InputSearch(props: TInputProps, ref: TInputComponentRef) {
+  const [value, setValue] = useState('');
+
   const labelClass = [scss.label];
   const inputClass = [scss.input];
   const legendClass = [scss.legend];
   const fieldsetClass = [scss.fieldset];
   const containerClass = [scss.container];
   const [isFocused, setIsFocused] = useState(false);
-
-  const [value, setValue] = useState('');
 
   const IconAlert = () => {
     return <img className={scss.icon} src={alertIcon} />;
@@ -28,9 +28,24 @@ export default function InputSearch(props: IInputProps) {
     return <img src={rightIcon} />;
   };
 
+  const handleIcons = () => (
+    <div
+      className={scss.iconRight}
+      data-testid="clear-button"
+      onClick={handleClear}
+    >
+      {props.error ? <IconAlert /> : <IconRight />}
+    </div>
+  );
+
   const handleClear = () => {
-    if (props.handleClear) props.handleClear();
+    props.onChange && props.onChange('');
     setValue('');
+  };
+
+  const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.onChange && props.onChange(e.target.value);
+    setValue(e.target.value);
   };
 
   const renderErrorMessage = () => (
@@ -61,16 +76,17 @@ export default function InputSearch(props: IInputProps) {
     labelClass.push(scss.labelError);
   };
 
-  if (
-    isFocused ||
-    (typeof props.value === 'string' && props.value.length > 0)
-  ) {
+  if (isFocused || (typeof value === 'string' && value)) {
     handleFocusedStyles();
   }
 
   if (props.error) {
     handleErrorStyles();
   }
+
+  useImperativeHandle(ref, () => ({
+    clearInput: handleClear,
+  }));
 
   return (
     <div className={classNames(containerClass)}>
@@ -92,16 +108,10 @@ export default function InputSearch(props: IInputProps) {
           onBlur={(e) => onInputBlur(e)}
           onFocus={onInputFocus}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleValue}
         />
 
-        <div
-          className={scss.iconRight}
-          data-testid="clear-button"
-          onClick={handleClear}
-        >
-          {props.error ? <IconAlert /> : <IconRight />}
-        </div>
+        {value && handleIcons()}
 
         <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
@@ -113,3 +123,5 @@ export default function InputSearch(props: IInputProps) {
     </div>
   );
 }
+
+export default forwardRef(InputSearch);
