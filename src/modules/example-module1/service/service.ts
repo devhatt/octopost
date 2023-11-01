@@ -14,8 +14,8 @@ function fakeApiCall(data: unknown, delay = 1000) {
 export class Service implements IService {
   async publish(
     text: string,
-    image: File[],
-    customOpts: TGenericObject
+    images?: File[],
+    customOpts?: TGenericObject
   ): Promise<IPublishResponse> {
     try {
       const response = await fakeApiCall(

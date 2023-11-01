@@ -10,9 +10,14 @@ export interface IPublishResponse {
 export interface IService {
   publish: (
     text: string,
-    image: File[],
-    customOpts: TGenericObject
+    images?: File[],
+    customOpts?: TGenericObject
   ) => Promise<IPublishResponse>;
+}
+
+export interface ICreatePost {
+  text: string;
+  images?: File[];
 }
 
 export type TAspectRatio = `${number}:${number}`;

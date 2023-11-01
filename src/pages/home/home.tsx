@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+
+import { TwitterService } from 'modules/twitter/service/service';
+
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
@@ -9,6 +13,11 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 const Home = () => {
+  const s = new TwitterService();
+  useEffect(() => {
+    s.publish('agora vai?');
+  }, []);
+
   return (
     <>
       <Header />

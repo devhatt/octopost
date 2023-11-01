@@ -8,6 +8,9 @@
     "outDir": "../build",
     "rootDir": "../",
     "noEmitOnError": true,
-    "typeRoots": ["node_modules/@types", "./types"]
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ]
   }
 }
