@@ -1,3 +1,3 @@
-export interface IComponentPreviewProps {
+export interface IPreviewContainerProps {
   preview: React.ReactNode;
 }

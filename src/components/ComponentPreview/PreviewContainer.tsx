@@ -1,8 +1,8 @@
 import scss from './PreviewContainer.module.scss';
 
-import { IComponentPreviewProps } from './PreviewContainer.types';
+import { IPreviewContainerProps } from './PreviewContainer.types';
 
-const PreviewContainer = (props: IComponentPreviewProps) => {
+const PreviewContainer = (props: IPreviewContainerProps) => {
   return <section className={scss.container}>{props.preview}</section>;
 };
 
