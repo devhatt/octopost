@@ -1,11 +1,13 @@
 import { Story } from '@ladle/react';
 
-import ComponentPreview from './PreviewContainer';
+import Preview from '~components/Preview/Preview';
 
-export const ComponentPreviewStories: Story = () => {
+import PreviewContainer from './PreviewContainer';
+
+export const PreviewContainerStories: Story = () => {
   return (
     <div>
-      <ComponentPreview />
+      <PreviewContainer preview={<Preview children="Preview Imaginário" />} />
     </div>
   );
 };
