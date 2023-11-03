@@ -1,5 +1,4 @@
 import PreviewContainer from '~components/ComponentPreview/PreviewContainer';
-import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import Preview from '~components/Preview/Preview';
@@ -20,7 +19,6 @@ const Home = () => {
             <Sidebar />
           </div>
           <div className={scss.gridInput}>
-            <ComposerEditor />
             <MainComposer />
             <MediaInputs />
           </div>
