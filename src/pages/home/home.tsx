@@ -1,6 +1,8 @@
+import PreviewContainer from '~components/ComponentPreview/PreviewContainer';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
+import Preview from '~components/Preview/Preview';
 import SavBar from '~components/SavBar/SavBar';
 
 import Header from './components/Header/Header';
@@ -24,6 +26,11 @@ const Home = () => {
           </div>
 
           <div className={scss.gridTabs} />
+          <div className={scss.flexSelect}>
+            <PreviewContainer
+              preview={<Preview children="Preview Imaginário" />}
+            />
+          </div>
         </div>
         <SavBar />
       </div>
