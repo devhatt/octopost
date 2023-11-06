@@ -25,6 +25,7 @@ const Home = () => {
 
           <div className={scss.gridTabs} />
           <div className={scss.flexSelect}>
+            <div className={scss.contentContainer}></div>
             <PreviewContainer
               preview={<Preview children="Preview Imaginário" />}
             />

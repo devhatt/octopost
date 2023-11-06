@@ -65,6 +65,19 @@
 
 .flexSelect {
   grid-area: tabs;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  display: flex;
 
   font-size: 4rem;
+}
+
+.contentContainer {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: medium;
 }
