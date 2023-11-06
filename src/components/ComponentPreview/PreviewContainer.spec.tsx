@@ -7,9 +7,9 @@ const title = <h1 data-testid="custom-element"> teste </h1>;
 describe('PreviewContainer', () => {
   describe('when initialized', () => {
     it('renders the element preview inside the container', () => {
-      render(<PreviewContainer preview={title} />);
+      render(<PreviewContainer children={title} />);
 
-      const titleComponent = screen.getByTestId('custom-element');
+      const titleComponent = screen.getByText('teste');
       expect(titleComponent).toBeInTheDocument();
     });
   });

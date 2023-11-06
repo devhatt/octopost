@@ -27,7 +27,7 @@ const Home = () => {
           <div className={scss.flexSelect}>
             <div className={scss.contentContainer}></div>
             <PreviewContainer
-              preview={<Preview children="Preview Imaginário" />}
+              children={<Preview children="Preview Imaginário" />}
             />
           </div>
         </div>
