@@ -64,20 +64,20 @@
 }
 
 .flexSelect {
-  grid-area: tabs;
-  justify-content: space-between;
-  align-items: flex-start;
-
   display: flex;
+  grid-area: tabs;
+
+  align-items: flex-start;
+  justify-content: space-between;
 
   font-size: 4rem;
 }
 
 .contentContainer {
-
   display: flex;
+
   align-items: center;
   justify-content: center;
-  
+
   font-size: medium;
 }
