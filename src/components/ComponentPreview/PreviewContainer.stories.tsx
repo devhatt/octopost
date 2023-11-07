@@ -8,7 +8,7 @@ export const PreviewContainerStories: Story = () => {
   return (
     <div>
       <PreviewContainer>
-        <Preview children="Preview Imaginário" />
+        <Preview>Preview Imaginário</Preview>
       </PreviewContainer>
     </div>
   );
