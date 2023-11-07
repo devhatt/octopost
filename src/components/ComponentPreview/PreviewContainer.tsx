@@ -3,7 +3,7 @@ import scss from './PreviewContainer.module.scss';
 import { IPreviewContainerProps } from './PreviewContainer.types';
 
 const PreviewContainer = (props: IPreviewContainerProps) => {
-  return <section className={scss.container}>{props.children}</section>;
+  return <div className={scss.container}>{props.children}</div>;
 };
 
 export default PreviewContainer;
