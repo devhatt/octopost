@@ -7,7 +7,9 @@ import PreviewContainer from './PreviewContainer';
 export const PreviewContainerStories: Story = () => {
   return (
     <div>
-      <PreviewContainer children={<Preview children="Preview Imaginário" />} />
+      <PreviewContainer>
+        <Preview children="Preview Imaginário" />
+      </PreviewContainer>
     </div>
   );
 };
