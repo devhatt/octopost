@@ -1,0 +1,18 @@
+@use '../../styles/global';
+
+.container {
+  width: 54.2rem;
+  height: 69.7rem;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 4.2rem 1.6rem;
+
+  background-color: global.$tertiaryWhite;
+
+  border-radius: 12px;
+}
