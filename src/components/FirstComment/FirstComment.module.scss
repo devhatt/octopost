@@ -1,0 +1,75 @@
+@use '../../styles/global' as *;
+
+.label {
+  display: flex;
+  flex-flow: row nowrap;
+
+  align-items: center;
+
+  font-family: $mainFont;
+
+  color: $secondaryPurple;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+
+  column-gap: 8px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.input {
+  display: inline-block;
+
+  padding: 7px !important;
+  border: 2px solid $tertiaryGray;
+
+  position: relative;
+
+  background-color: $primaryWhite;
+  border-radius: 3px;
+
+  cursor: inherit;
+  appearance: none;
+
+  &:active,
+  &:checked:active {
+    border-color: $secondaryPurple;
+  }
+
+  &:checked {
+    border-color: $secondaryPurple;
+
+    background-color: $secondaryPurple;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+
+      display: block;
+
+      margin: -1px;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      background-image: url('./assets/check.svg');
+
+      content: '';
+    }
+  }
+}
+
+.text {
+  text-align: justify;
+}
+
+.textNotMultiline {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

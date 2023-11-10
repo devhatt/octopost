@@ -1,3 +1,4 @@
+import FirstComment from '~components/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
@@ -19,6 +20,13 @@ const Home = () => {
           <div className={scss.gridInput}>
             <MainComposer />
             <MediaInputs />
+            <FirstComment
+              multine={false}
+              labelProps={{ style: { maxWidth: 150 } }}
+            >
+              Id laboris quis veniam minim qui officia amet non labore anim
+              excepteur quis sint.Esse ex aute voluptate qui velit ipsum.
+            </FirstComment>
           </div>
           <div className={scss.gridTabs} />
         </div>
