@@ -1,0 +1,21 @@
+name: Auto-assign on comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check for "EU QUERO!!!" comment
+      if: contains(github.event.comment.body, 'EU QUERO!!!')
+      run: |
+        # Extract the commenter's username
+        commenter=$(jq -r .comment.user.login $GITHUB_EVENT_PATH)
+        
+        # Add the commenter as an assignee to the issue using a Personal Access Token
+        echo "Assigning $commenter to the issue..."
+        curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -d "{\"assignees\": [\"$commenter\"]}" \
+          "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/assignees"
