@@ -3,8 +3,6 @@ import { act } from 'react-dom/test-utils';
 
 import ErrorBoundary from './ErrorBoundary';
 
-// import { TBoundaryProps } from './ErrorBoundary.types';
-
 describe('ErrorBoundary', () => {
   let shouldThrow = true;
   let valueToThrow: Error;
