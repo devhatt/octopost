@@ -5,7 +5,7 @@ type TBoundaryProps = {
 
 type TErrorBoundaryState = {
   hasError: boolean;
-  error: null;
+  error: Error | null;
 };
 
 export type { TBoundaryProps, TErrorBoundaryState };
