@@ -1,50 +1,34 @@
-import { createRoot } from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
 
 import ErrorBoundary from './ErrorBoundary';
 
 describe('ErrorBoundary', () => {
-  let shouldThrow = true;
-  let valueToThrow: Error;
-  describe('when initialize', () => {
+  describe('when initializer', () => {
     it('render children', () => {
-      const container = document.createElement('div');
-      const root = createRoot(container);
-      act(() => {
-        root.render(
-          <ErrorBoundary fallBack={<div>Error</div>}>
-            <div>Content</div>
-          </ErrorBoundary>
-        );
-      });
-      expect(container.textContent).toBe('Content');
+      render(
+        <ErrorBoundary fallBack={<div>Error</div>}>
+          <div>Content</div>
+        </ErrorBoundary>
+      );
+      const content = screen.getByText('Content');
+      expect(content).toBeInTheDocument();
     });
   });
 
-  interface IPropsWithChildren {
-    children?: React.ReactNode;
-  }
-
-  function MaybeThrows({ children }: IPropsWithChildren) {
-    if (shouldThrow) {
-      throw valueToThrow;
-    }
-    return children;
-  }
+  const ThrowErrorComponent = ({ error }: { error: Error }) => {
+    throw error;
+  };
 
   describe('when error', () => {
-    it('render "fallBack" element', () => {
-      shouldThrow = true;
-      const container = document.createElement('div');
-      const root = createRoot(container);
-      act(() => {
-        root.render(
-          <ErrorBoundary fallBack={<div>Error</div>}>
-            <MaybeThrows>Content</MaybeThrows>
-          </ErrorBoundary>
-        );
-      });
-      expect(container.textContent).toBe('Error');
+    const error = new Error('Error');
+    it('render "fallback" element', () => {
+      // shouldThrow = true;
+      render(
+        <ErrorBoundary fallBack={<div>Error</div>}>
+          <ThrowErrorComponent error={error} />
+        </ErrorBoundary>
+      );
+      expect(screen.getByText('Error')).toBeInTheDocument();
     });
   });
 });
