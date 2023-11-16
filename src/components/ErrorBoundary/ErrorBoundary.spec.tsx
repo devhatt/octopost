@@ -22,7 +22,6 @@ describe('ErrorBoundary', () => {
   describe('when error', () => {
     const error = new Error('Error');
     it('render "fallback" element', () => {
-      // shouldThrow = true;
       render(
         <ErrorBoundary fallBack={<div>Error</div>}>
           <ThrowErrorComponent error={error} />
