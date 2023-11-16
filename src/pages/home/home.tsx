@@ -1,4 +1,4 @@
-import Checkbox from '~components/Checkbox';
+import FirstComment from '~components/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
@@ -20,9 +20,7 @@ const Home = () => {
           <div className={scss.gridInput}>
             <MainComposer />
             <MediaInputs />
-            <Checkbox multine={false} variant="button">
-              First Comment
-            </Checkbox>
+            <FirstComment />
           </div>
           <div className={scss.gridTabs} />
         </div>
