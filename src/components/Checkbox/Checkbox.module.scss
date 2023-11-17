@@ -11,7 +11,7 @@
   color: $secondaryPurple;
 
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   font-weight: 500;
 
   column-gap: 0.5rem;
@@ -21,8 +21,8 @@
 }
 
 .input {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 2rem;
+  height: 2rem;
 
   display: block;
 
@@ -48,16 +48,18 @@
     background-color: $secondaryPurple;
 
     &::after {
-      width: 1.125rem;
-      height: 1.125rem;
+      width: 100%;
+      height: 100%;
 
       display: block;
-
       position: absolute;
       top: 0;
       left: 0;
 
       background-image: url('./assets/check.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
 
       content: '';
     }
