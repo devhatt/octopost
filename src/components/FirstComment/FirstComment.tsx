@@ -8,7 +8,7 @@ import styles from './FirstComment.module.scss';
 
 import { TFirstCommentProps } from './FirstComment.types';
 
-export function FirstComment({ ...props }: TFirstCommentProps) {
+export function FirstComment(props: TFirstCommentProps) {
   const [isOpen, setOpen] = useState(false);
 
   return (
