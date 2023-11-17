@@ -12,30 +12,25 @@ function computeVariants(duration: number) {
   };
 }
 
-export default function Accordion({
-  className,
-  duration = 0.3,
-  isOpen,
-  content,
-  header,
-  ...props
-}: TAccordionProps) {
+function Accordion(props: TAccordionProps) {
   return (
-    <section className={classNames(className, styles.container)} {...props}>
-      <header className={styles.header}>{header}</header>
+    <section className={classNames(props.className, styles.container)}>
+      <header className={styles.header}>{props.header}</header>
       <AnimatePresence>
-        {isOpen && (
+        {props.isOpen && (
           <motion.div
             exit="collapsed"
             animate="expanded"
             initial="collapsed"
             className={styles.content}
-            variants={computeVariants(duration)}
+            variants={computeVariants(props.duration ?? 0.3)}
           >
-            {content}
+            {props.content}
           </motion.div>
         )}
       </AnimatePresence>
     </section>
   );
 }
+
+export default Accordion;
