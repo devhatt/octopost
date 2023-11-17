@@ -1,4 +1,4 @@
-import { ChangeEventHandler, forwardRef } from 'react';
+import { ChangeEventHandler } from 'react';
 
 import classNames from 'classnames';
 
@@ -6,10 +6,7 @@ import styles from './Checkbox.module.scss';
 
 import { TCheckboxProps } from './Checkbox.types';
 
-const Checkbox = forwardRef<HTMLInputElement, TCheckboxProps>(function Checkbox(
-  { children, labelProps, className, onChange, style, ...props },
-  ref
-) {
+function Checkbox({ children, className, onChange, ...props }: TCheckboxProps) {
   const handleChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { checked },
   }) => {
@@ -17,21 +14,16 @@ const Checkbox = forwardRef<HTMLInputElement, TCheckboxProps>(function Checkbox(
   };
 
   return (
-    <label
-      {...labelProps}
-      style={style}
-      className={classNames(styles.container, className)}
-    >
+    <label className={classNames(styles.container, className)}>
       <input
         type="checkbox"
-        ref={ref}
         onChange={handleChange}
-        className={classNames(styles.input)}
+        className={styles.input}
         {...props}
       />
-      <span className={classNames(styles.text)}>{children}</span>
+      <span className={styles.text}>{children}</span>
     </label>
   );
-});
+}
 
 export default Checkbox;
