@@ -6,22 +6,15 @@ import styles from './Checkbox.module.scss';
 
 import { TCheckboxProps } from './Checkbox.types';
 
-function Checkbox({ children, className, onChange, ...props }: TCheckboxProps) {
+function Checkbox(props: TCheckboxProps) {
   const handleChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { checked },
-  }) => {
-    if (onChange) onChange(checked);
-  };
+  }) => props.onChange(checked);
 
   return (
-    <label className={classNames(styles.container, className)}>
-      <input
-        type="checkbox"
-        onChange={handleChange}
-        className={styles.input}
-        {...props}
-      />
-      <span className={styles.text}>{children}</span>
+    <label className={classNames(styles.container, props.className)}>
+      <input type="checkbox" onChange={handleChange} className={styles.input} />
+      <span className={styles.text}>{props.children}</span>
     </label>
   );
 }
