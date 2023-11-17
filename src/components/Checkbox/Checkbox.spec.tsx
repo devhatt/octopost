@@ -5,12 +5,20 @@ import Checkbox from './Checkbox';
 
 import type { TCheckboxProps } from './Checkbox.types';
 
-describe('Checkbox', () => {
-  const makeSut = ({ ...props }: Partial<TCheckboxProps>) => {
-    return render(<Checkbox {...props} />);
-  };
+const makeSut = ({
+  onChange = jest.fn(),
+  checked = false,
+  ...props
+}: Partial<TCheckboxProps>) => {
+  return render(
+    <Checkbox checked={checked} onChange={onChange} {...props}>
+      checkbox
+    </Checkbox>
+  );
+};
 
-  it('should call [onChange] when checkbox be clicked', async () => {
+describe('Checkbox', () => {
+  it('call [onChange] when checkbox be clicked', async () => {
     const onChange = jest.fn();
 
     makeSut({ onChange });
