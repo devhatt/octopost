@@ -12,24 +12,19 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-describe('Accordion', () => {
-  const makeSut = ({
-    renderHeader = () => <div>header</div>,
-    renderContent = () => <div>content</div>,
-    isOpen = false,
-    ...props
-  }: Partial<TAccordionProps>) => {
-    return render(
-      <Accordion
-        isOpen={isOpen}
-        renderHeader={renderHeader}
-        renderContent={renderContent}
-        {...props}
-      />
-    );
-  };
+const makeSut = ({
+  header = <div>header</div>,
+  content = <div>content</div>,
+  isOpen = false,
+  ...props
+}: Partial<TAccordionProps>) => {
+  return render(
+    <Accordion isOpen={isOpen} header={header} content={content} {...props} />
+  );
+};
 
-  it('should not render body when [isOpen] is false', async () => {
+describe('Accordion', () => {
+  it('not render body when [isOpen] is false', () => {
     makeSut({ isOpen: false });
 
     const content = screen.queryByText('content');
@@ -37,10 +32,10 @@ describe('Accordion', () => {
     expect(content).not.toBeInTheDocument();
   });
 
-  it('should render body when [isOpen] is true', async () => {
+  it('render body when [isOpen] is true', () => {
     makeSut({ isOpen: true });
 
-    const content = screen.queryByText('content');
+    const content = screen.getByText('content');
 
     expect(content).toBeVisible();
   });
