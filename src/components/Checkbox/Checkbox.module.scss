@@ -11,22 +11,22 @@
   color: $secondaryPurple;
 
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
 
-  column-gap: 8px;
+  column-gap: 0.5rem;
 
   cursor: pointer;
   user-select: none;
 }
 
 .input {
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
 
   display: block;
 
-  padding: 7px !important;
+  padding: 0.438rem !important;
   border: 2px solid $tertiaryGray;
 
   position: relative;
@@ -48,12 +48,10 @@
     background-color: $secondaryPurple;
 
     &::after {
-      width: 18px;
-      height: 18px;
+      width: 1.125rem;
+      height: 1.125rem;
 
       display: block;
-
-      margin: -1px;
 
       position: absolute;
       top: 0;
