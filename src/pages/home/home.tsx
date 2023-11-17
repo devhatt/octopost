@@ -1,4 +1,4 @@
-import FirstComment from '~components/FirstComment';
+import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
