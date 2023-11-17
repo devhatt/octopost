@@ -13,7 +13,12 @@ function Checkbox(props: TCheckboxProps) {
 
   return (
     <label className={classNames(styles.container, props.className)}>
-      <input type="checkbox" onChange={handleChange} className={styles.input} />
+      <input
+        type="checkbox"
+        onChange={handleChange}
+        className={styles.input}
+        checked={props.checked}
+      />
       <span className={styles.text}>{props.children}</span>
     </label>
   );
