@@ -16,16 +16,13 @@ export default function Accordion({
   className,
   duration = 0.3,
   isOpen,
-  renderContent,
-  renderHeader,
+  content,
+  header,
   ...props
 }: TAccordionProps) {
-  const contentElement = renderContent();
-  const headerElement = renderHeader();
-
   return (
     <section className={classNames(className, styles.container)} {...props}>
-      <header className={styles.header}>{headerElement}</header>
+      <header className={styles.header}>{header}</header>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -35,7 +32,7 @@ export default function Accordion({
             className={styles.content}
             variants={computeVariants(duration)}
           >
-            {contentElement}
+            {content}
           </motion.div>
         )}
       </AnimatePresence>

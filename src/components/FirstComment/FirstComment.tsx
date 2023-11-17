@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Accordion from '../Accordion';
-import Checkbox from '../Checkbox';
+import Accordion from '../Accordion/Accordion';
+import Checkbox from '../Checkbox/Checkbox';
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 
 import styles from './FirstComment.module.scss';
@@ -16,7 +16,7 @@ export function FirstComment({ ...props }: TFirstCommentProps) {
       duration={0.5}
       className={styles.container}
       isOpen={isOpen}
-      renderHeader={() => (
+      header={
         <Checkbox
           className={styles.checkbox}
           checked={isOpen}
@@ -24,12 +24,12 @@ export function FirstComment({ ...props }: TFirstCommentProps) {
         >
           First Comment
         </Checkbox>
-      )}
-      renderContent={() => (
+      }
+      content={
         <div className={styles.textarea}>
           <ComposerEditor />
         </div>
-      )}
+      }
       {...props}
     />
   );

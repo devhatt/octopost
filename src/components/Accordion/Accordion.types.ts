@@ -1,8 +1,9 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-export type TAccordionProps = ComponentPropsWithoutRef<'div'> & {
+export type TAccordionProps = {
+  className?: string;
   duration?: number;
   isOpen: boolean;
-  renderContent: () => ReactNode;
-  renderHeader: () => ReactNode;
+  content: ReactNode;
+  header: ReactNode;
 };
