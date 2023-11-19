@@ -5,6 +5,10 @@ import FirstComment from './FirstComment';
 
 import type { TFirstCommentProps } from './FirstComment.types';
 
+const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
+  return render(<FirstComment {...props} />);
+};
+
 beforeEach(() => {
   window.scrollTo = jest.fn();
 });
@@ -14,19 +18,17 @@ afterEach(() => {
 });
 
 describe('FirstComment', () => {
-  const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
-    return render(<FirstComment {...props} />);
-  };
+  describe('when checkbox is marked', () => {
+    it('open Accordion', async () => {
+      makeSut({});
 
-  it('should open Accordion when checkbox is marked', async () => {
-    makeSut({});
+      const input = screen.getByRole('checkbox');
 
-    const input = screen.getByRole('checkbox');
+      await userEvent.click(input);
 
-    await userEvent.click(input);
+      const textarea = screen.getByPlaceholderText('Digite algo aqui...');
 
-    const textarea = screen.getByPlaceholderText('Digite algo aqui...');
-
-    expect(textarea).toBeVisible();
+      expect(textarea).toBeVisible();
+    });
   });
 });

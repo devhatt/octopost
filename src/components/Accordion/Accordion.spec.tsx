@@ -24,19 +24,23 @@ const makeSut = ({
 };
 
 describe('Accordion', () => {
-  it('not render body when [isOpen] is false', () => {
-    makeSut({ isOpen: false });
+  describe('when isOpen is false', () => {
+    it('body cannot render', () => {
+      makeSut({ isOpen: false });
 
-    const content = screen.queryByText('content');
+      const content = screen.queryByText('content');
 
-    expect(content).not.toBeInTheDocument();
+      expect(content).not.toBeInTheDocument();
+    });
   });
 
-  it('render body when [isOpen] is true', () => {
-    makeSut({ isOpen: true });
+  describe('when isOpen is true', () => {
+    it('body can render', () => {
+      makeSut({ isOpen: true });
 
-    const content = screen.getByText('content');
+      const content = screen.getByText('content');
 
-    expect(content).toBeVisible();
+      expect(content).toBeVisible();
+    });
   });
 });

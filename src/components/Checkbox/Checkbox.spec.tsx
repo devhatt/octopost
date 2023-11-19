@@ -18,15 +18,17 @@ const makeSut = ({
 };
 
 describe('Checkbox', () => {
-  it('call [onChange] when checkbox be clicked', async () => {
-    const onChange = jest.fn();
+  describe('when checkbox be clicked', () => {
+    it('call [onChange] ', async () => {
+      const onChange = jest.fn();
 
-    makeSut({ onChange });
+      makeSut({ onChange });
 
-    const input = screen.getByRole('checkbox');
+      const input = screen.getByRole('checkbox');
 
-    await userEvent.click(input);
+      await userEvent.click(input);
 
-    expect(onChange).toHaveBeenCalledWith(true);
+      expect(onChange).toHaveBeenCalledWith(true);
+    });
   });
 });
