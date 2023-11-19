@@ -9,7 +9,7 @@ export const AccordionStories: Story<TAccordionProps> = (props) => {
     <Accordion
       {...props}
       duration={0.3}
-      isOpen={true}
+      isOpen
       header={<button>Click to open!</button>}
       content={
         <div>
