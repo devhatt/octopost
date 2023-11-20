@@ -1,13 +1,11 @@
 @use './global';
-
-// @import '~normalize.css/normalize.css';
 @import '../../node_modules/normalize.css/normalize.css';
 
 * {
   box-sizing: border-box;
 }
 
-html{
+html {
   font-family: global.$mainFont;
   font-size: 62.5%;
 }
