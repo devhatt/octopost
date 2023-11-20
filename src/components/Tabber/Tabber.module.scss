@@ -1,7 +1,32 @@
 .social {
   display: flex;
+  flex-direction: column;
 
   justify-content: flex-start;
 
   padding: 1.6rem;
+}
+
+.tabberContainer {
+  width: fit-content;
+
+  display: flex;
+}
+
+.flexSelect {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentContainer {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 4rem;
+
+  font-size: medium;
 }
