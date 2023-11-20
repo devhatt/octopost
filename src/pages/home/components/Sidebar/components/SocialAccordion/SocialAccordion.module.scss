@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '../../../../../../styles/global';
 
 .wrapper {
   overflow: hidden;
@@ -33,7 +33,7 @@
   gap: 1rem;
 
   p {
-    color: $secondaryPurple;
+    color: global.$secondaryPurple;
     font-size: 1.6rem;
   }
 }
@@ -42,12 +42,12 @@
   gap: 0.8rem;
 
   span {
-    color: $tertiaryGray;
+    color: global.$tertiaryGray;
     font-size: 1.2rem;
     font-weight: 500;
   }
 
   .error {
-    color: $secondaryRed;
+    color: global.$secondaryRed;
   }
 }
