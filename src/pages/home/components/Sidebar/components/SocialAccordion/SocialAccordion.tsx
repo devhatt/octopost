@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
-import Accordion from '~components/Accordion/Accordion';
-import ToggleSocialMedia from '~components/ToggleSocialMedia/ToggleSocialMedia';
-
 import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
+import Accordion from '../../../../../../components/Accordion/Accordion';
+import ToggleSocialMedia from '../../../../../../components/ToggleSocialMedia/ToggleSocialMedia';
 import { ISocialAccordion } from './SocialAccordion.type';
 
 function SocialAccordion(props: ISocialAccordion) {
