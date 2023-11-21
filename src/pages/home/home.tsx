@@ -1,3 +1,4 @@
+import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
@@ -19,6 +20,7 @@ const Home = () => {
           <div className={scss.gridInput}>
             <MainComposer />
             <MediaInputs />
+            <FirstComment />
           </div>
           <div className={scss.gridTabs} />
         </div>
