@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  z-index: 1000;
+
+  background-color: #0004;
+  inset: 0;
+}
