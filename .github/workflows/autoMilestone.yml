@@ -1,0 +1,30 @@
+name: Auto-assign milestone on issue creation
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  auto-assign-milestone:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check for issue creation
+      run: |
+        # Extract the milestone name you want to assign
+        milestone="primeira página"
+        
+        # Add the milestone to the issue
+        echo "Assigning milestone $milestone to the issue..."
+        curl -X PATCH -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -d "{\"milestone\": \"$milestone\"}" \
+          "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}"
+    - name: Add a comment to the issue
+      run: |
+        # Comment to be added
+        comment="### Obrigado por abrir a issue\n### Verifique os nossos guidelines:\n- [Código de conduta](https://github.com/Alecell/octopost/blob/master/CODE_OF_CONDUCT.md)\n- [Contribuição](https://github.com/Alecell/octopost/blob/master/CONTRIBUTING.md)\n- [Guia de Estilo](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)" 
+        
+        # Add the comment to the issue
+        echo "Adding comment to the issue..."
+        curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -d "{\"body\": \"$comment\"}" \
+          "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments"

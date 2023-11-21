@@ -32,12 +32,31 @@ Para começar com o OctoPost, siga estes passos:
 1. Clonar o repositório: **`git clone https://github.com/Alecell/octopost.git`**
 2. Instalar as dependências: **`yarn`**
 3. Iniciar o aplicativo: **`yarn start`**
+4. Instalar as extensões:
+
+- **`ESLint`**
+- **`Stylelint`**
+- **`Prettier`**
 
 ## **Contribuição**
 
 Recebemos contribuições da comunidade para tornar o OctoPost ainda melhor!
 
 Para instruções mais detalhadas, consulte o **[Guia de Contribuição](https://github.com/Alecell/octopost/blob/master/CONTRIBUTING.md)**.
+
+## **Cargos**
+
+Em nosso [servidor do discord](https://discord.gg/9f5BZ7yD), temos várias opções de cargos, que você poderá adquirir participando do servidor e subindo de level, contribuindo com o projeto.
+
+**Distribuição dos cargos**
+
+- **`Octopost`** → Entrar no servidor e pegar o cargo;
+- **`Torttinho`** → User que participa minimamente do servidor;
+- **`Hattinho`** → Participante ativo do servidor, está contribuindo no projeto e pegando tasks;
+- **`De capa`** → Dev com experiência, já trabalha na área e está ajudando e participando do projeto;
+- **`Hatter `** → Participante aprovado na seleção feita pelo Alecell e está envolvido ativamente no projeto;
+- **`Bolha `** → Dev influente e conhecido da bolha dev e participa do servidor;
+- **`Dono do parquinho `** → Auto-explicativo. Idealizador do projeto e com poderes especiais.
 
 ## **Código de Conduta**
 

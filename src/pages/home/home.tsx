@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
+import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import Portal from '~components/Portal/Portal';
@@ -32,6 +33,7 @@ const Home = () => {
               isOpen={URLSearchParams.get('isModalOpen') !== null}
               onClickOutside={handleCloseModal}
             ></Portal>
+            <FirstComment />
           </div>
           <div className={scss.gridTabs} />
         </div>

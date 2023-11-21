@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '../../../../../../styles/global' as *;
 
 .wrapper {
   overflow: hidden;
@@ -17,7 +17,7 @@
 
   padding: 0 1.6rem;
 
-  border: 1px solid global.$primaryGray;
+  border: 1px solid $primaryGray;
 
   cursor: pointer;
 }
