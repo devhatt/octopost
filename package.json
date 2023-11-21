@@ -1,6 +1,10 @@
 {
   "name": "octopost",
   "version": "0.1.0",
+  "engines": {
+    "node": "18.18.2"
+  },
+  "packageManager":"yarn@1.22.19",
   "private": true,
   "main": "build/electron/main.js",
   "scripts": {
