@@ -1,22 +1,28 @@
 import { useRef, useState } from 'react';
 
+import AccordionTab from '~components/AccordionTab/AccordionTab';
+import Button from '~components/Button/Button';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
+import Portal from '~components/Portal/Portal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
-import scss from './Sidebar.module.scss';
+import styles from './Sidebar.module.scss';
 
 function Sidebar() {
   const [value, setValue] = useState('');
+  const [isOpen, setOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
+  const handleOpenModal = () => {
+    setOpen((isOpen) => !isOpen);
+  };
+
   return (
-    <aside className={scss.sidebar}>
-      <div className={scss.titleContainer}>
-        <span>Select Social Media</span>
-      </div>
-      <div className={scss.sidebarMain}>
+    <AccordionTab title="Select Social Media" hideCloseButton>
+      <div className={styles.content}>
         <InputSearch
+          className={styles.searchBar}
           onChange={(value) => setValue(value as string)}
           placeholder="Search for social media"
           ref={inputSearchRef}
@@ -31,7 +37,7 @@ function Sidebar() {
           />
         )}
 
-        <div className={scss.itemsContainer}>
+        <div className={styles.items}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
@@ -41,8 +47,20 @@ function Sidebar() {
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
         </div>
+
+        <Button
+          onClick={handleOpenModal}
+          className={styles.newAccountButton}
+          variant="container"
+        >
+          New Account
+        </Button>
+
+        <Portal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
+          <div className={styles.modalContent}>Octopost</div>
+        </Portal>
       </div>
-    </aside>
+    </AccordionTab>
   );
 }
 

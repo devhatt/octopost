@@ -1,9 +1,15 @@
-@use '../../../../styles/global';
+@use '../../../../styles/global' as *;
 
-.sidebar {
+.container {
   width: 100%;
 
-  font-family: global.$mainFont;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: stretch;
+
+  font-family: $mainFont;
 
   font-size: 1.6rem;
 
@@ -12,64 +18,93 @@
   background-color: #f5eff4;
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.1);
   border-radius: 1.2rem 1.2rem 0 0;
+}
 
-  .titleContainer {
-    display: flex;
-    gap: 2.1rem;
+.header {
+  width: 100%;
 
-    align-items: center;
+  display: flex;
+  gap: 2.1rem;
 
-    color: #fff;
-    font-size: 1.4rem;
-    line-height: 1;
+  align-items: center;
 
-    padding: 2.1rem;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
 
-    position: relative;
+  padding: 2.1rem;
 
-    background-color: global.$secondaryPurple;
-    border-radius: 1.2rem 1.2rem 0 0;
+  position: relative;
 
-    &::before {
-      width: 8px;
-      height: 8px;
+  background-color: $secondaryPurple;
+  border-radius: 1.2rem 1.2rem 0 0;
 
-      display: block;
+  &::before {
+    width: 8px;
+    height: 8px;
 
-      margin-bottom: 2px;
+    display: block;
 
-      background-color: global.$primaryWhite;
-      border-radius: 50%;
+    margin-bottom: 2px;
 
-      content: '';
-    }
+    background-color: $primaryWhite;
+    border-radius: 50%;
 
-    .dotSvg {
-      width: 3.4rem;
-    }
+    content: '';
   }
 
-  .itemsContainer {
-    max-height: 50rem;
-    overflow-y: auto;
-
-    margin-right: 0.1rem;
-
-    &::-webkit-scrollbar {
-      width: 0.4rem;
-
-      border: 0;
-
-      background: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: global.$secondaryGray;
-      border-radius: 8px;
-    }
-
-    .sidebarMain {
-      padding: 0 1.2rem;
-    }
+  .dotSvg {
+    width: 3.4rem;
   }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 1rem;
+}
+
+.searchBar {
+  max-width: 10px;
+}
+
+.items {
+  width: 100%;
+  max-height: 50rem;
+  overflow-y: auto;
+
+  margin-right: 0.1rem;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+
+    border: 0;
+
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $secondaryGray;
+    border-radius: 8px;
+  }
+}
+
+.newAccountButton {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 4rem;
+}
+
+// TODO: remove when define we create modal design;
+.modalContent {
+  padding: 5rem;
+
+  background-color: $primaryWhite;
+
+  box-shadow: 3px 3px 3px #0003;
+
+  border-radius: 5px;
 }
