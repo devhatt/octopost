@@ -10,7 +10,7 @@ import '../../i18n';
 import scss from './MainComposer.module.scss';
 
 function MainComposer() {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
   const { t } = useTranslation();
 
   return (
