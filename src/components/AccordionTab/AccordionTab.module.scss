@@ -23,8 +23,9 @@
   display: flex;
   flex-flow: row nowrap;
 
-  justify-content: space-between;
   align-items: center;
+
+  justify-content: space-between;
 
   color: $primaryWhite;
   font-size: 1.4rem;
