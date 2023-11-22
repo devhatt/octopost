@@ -53,7 +53,7 @@ function Sidebar() {
           className={styles.newAccountButton}
           variant="container"
         >
-          New Account
+          + &ensp; New Account
         </Button>
 
         <Portal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
