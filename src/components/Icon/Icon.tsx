@@ -1,6 +1,8 @@
-import scss from './iconFont.module.scss';
+import classNames from 'classnames';
 
-import { IIconProps } from './iconFont.types';
+import scss from './icon.module.scss';
+
+import { IIconProps } from './icon.types';
 
 const icons: Record<IIconProps['icon'], string> = {
   at: scss.iAt,
@@ -28,9 +30,9 @@ const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {
   const iconColors = color ? colors[color] : '';
   const IconSizes = size ? sizes[size] : '';
 
-  return (
-    <span className={`${IconIcons} ${IconSizes} ${iconColors} ${className}`} />
-  );
+  const iconClasses = classNames(IconIcons, IconSizes, iconColors, className);
+
+  return <span data-testid="icon-element" className={iconClasses} />;
 };
 
 export default Icon;
