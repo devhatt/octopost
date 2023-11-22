@@ -14,7 +14,7 @@ function Sidebar() {
   const [isOpen, setOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
-  const handleOpenModal = () => {
+  const handleToggleModal = () => {
     setOpen((isOpen) => !isOpen);
   };
 
@@ -49,7 +49,7 @@ function Sidebar() {
         </div>
 
         <Button
-          onClick={handleOpenModal}
+          onClick={handleToggleModal}
           className={styles.newAccountButton}
           variant="container"
         >
