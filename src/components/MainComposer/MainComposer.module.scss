@@ -1,67 +1,13 @@
 @use '../../styles/global';
 
-.wrapper {
-  width: 100%;
-}
-
-.innerHeader {
-  padding: 1rem 3rem;
-  border: 0.1rem solid global.$primaryGray;
-  border-bottom: 0;
-
-  background-color: global.$secondaryPurple;
-  border-radius: 2rem 2rem 0 0;
-}
-
-.innerHeader .mainContent {
-  .mainText {
-    color: global.$primaryWhite;
-    font-size: 2.2rem;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 2.8rem;
-  }
-
-  .mainText::before {
-    width: 1.5rem;
-    height: 1.5rem;
-
-    display: inline-block;
-
-    float: left;
-
-    margin-top: 0.7rem;
-
-    margin-right: 1rem;
-
-    background-color: global.$primaryWhite;
-    border-radius: 50%;
-
-    content: '';
-  }
-
-  .mainText::after {
-    width: 2rem;
-    height: 0.5rem;
-
-    display: inline-block;
-
-    float: right;
-
-    margin-top: 1.4rem;
-    margin-left: 1rem;
-
-    background-color: global.$primaryWhite;
-
-    content: '';
-  }
+.header {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  column-gap: 1rem;
 }
 
 .content {
   padding: 2.4rem 1.6rem;
-  border: 0.1rem solid global.$primaryGray;
-
-  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .textInput textarea {
