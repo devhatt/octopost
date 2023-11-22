@@ -1,35 +1,16 @@
+/* eslint-disable no-undef */
 import { app, BrowserWindow } from 'electron';
-import * as isDev from 'electron-is-dev';
-import * as path from 'path';
 
-function createWindow() {
+app.whenReady().then(() => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-    },
+    title: 'Main window',
   });
 
-  win.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`
-  );
-
-  win.webContents.openDevTools();
-}
-
-app.whenReady().then(createWindow);
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+  // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    // Load your file
+    win.loadFile('dist/index.html');
   }
 });

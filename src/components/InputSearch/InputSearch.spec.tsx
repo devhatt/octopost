@@ -13,10 +13,10 @@ const mockProps = {
   errorMessage: 'Test Error Message',
   readonly: false,
   error: false,
-  onFocus: jest.fn(),
-  handleClear: jest.fn(),
-  onChange: jest.fn(),
-  setValue: jest.fn(),
+  onFocus: vi.fn(),
+  handleClear: vi.fn(),
+  onChange: vi.fn(),
+  setValue: vi.fn(),
 };
 
 describe('InputSearch component', () => {

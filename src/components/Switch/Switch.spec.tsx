@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
 import Switch from './Switch';
 
 describe('Switch', () => {
@@ -26,7 +25,7 @@ describe('Switch', () => {
 
   describe('when click', () => {
     it('calls the setChecked function', async () => {
-      const setCheckedMock = jest.fn();
+      const setCheckedMock = vi.fn();
       render(<Switch checked={true} setChecked={setCheckedMock} />);
 
       const switchComponent = screen.getByRole('checkbox');
