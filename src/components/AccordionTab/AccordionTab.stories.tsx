@@ -6,7 +6,7 @@ import AccordionTab from './AccordionTab';
 
 import { TAccordionTabProps } from './AccordionTab.types';
 
-export const CheckboxStories: Story<TAccordionTabProps> = (props) => {
+export const AccordionTabStories: Story<TAccordionTabProps> = (props) => {
   const [isOpen, setOpen] = useState(true);
 
   return (
