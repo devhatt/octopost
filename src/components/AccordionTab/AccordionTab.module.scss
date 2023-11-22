@@ -52,10 +52,18 @@
 }
 
 .closeButton {
-  width: 40px;
-  height: 40px;
+  width: min-content;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 
   color: $primaryWhite;
   font-size: 4rem;
   font-weight: 900;
+
+  margin-right: 2rem;
+
+  cursor: pointer;
 }
