@@ -4,6 +4,14 @@ import AccordionTab from './AccordionTab';
 
 import type { TAccordionTabProps } from './AccordionTab.types';
 
+beforeEach(() => {
+  window.scrollTo = jest.fn();
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 const makeSut = (props: Partial<TAccordionTabProps>) => {
   return render(<AccordionTab {...props} />);
 };
