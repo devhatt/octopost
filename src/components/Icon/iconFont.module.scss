@@ -3,7 +3,6 @@
 
 @font-face {
   font-family: 'icomoon';
-  //   src: url('icomoon.eot');
   src:
     url('./fonts/icomoon.eot') format('embedded-opentype'),
     url('./fonts/icomoon.ttf') format('truetype'),
@@ -73,8 +72,6 @@
   }
 }
 
-// sizes
-
 span.small {
   font-size: 0.75rem;
 }
@@ -87,12 +84,14 @@ span.large {
   font-size: 2rem;
 }
 
-// colors
-
 .active {
   color: global.$secondaryPurple;
 }
 
-.unActive {
+.disable {
   color: global.$secondaryGray;
+}
+
+.error {
+  color: global.$secondaryRed;
 }

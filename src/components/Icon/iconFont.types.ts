@@ -1,6 +1,6 @@
 export interface IIconProps {
-  icon: 'at' | 'emote' | 'hashtag' | 'link' | 'pin' | 'Gpt' | 'Canva';
+  icon: 'at' | 'emote' | 'hashtag' | 'link' | 'pin' | 'gpt' | 'canva';
   size?: 'small' | 'large';
-  color?: 'active' | 'unActive';
+  color?: 'active' | 'disabled';
   className?: string;
 }

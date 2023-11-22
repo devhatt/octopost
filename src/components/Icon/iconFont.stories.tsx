@@ -1,9 +1,9 @@
-// import { Story } from '@ladle/react';
+import { Story } from '@ladle/react';
 
-// import IconFont from './IconFont';
+import Icon from './Icon';
 
-// export const iconFont: Story = () => (
-//   <div>
-//     <IconFont />
-//   </div>
-// );
+export const iconFont: Story = () => (
+  <div>
+    <Icon icon="at" color="active" size="large" />
+  </div>
+);

@@ -8,8 +8,8 @@ const icons: Record<IIconProps['icon'], string> = {
   hashtag: scss.iHashtag,
   link: scss.iLink,
   pin: scss.iPin,
-  Gpt: scss.iGpt,
-  Canva: scss.iCanva,
+  gpt: scss.iGpt,
+  canva: scss.iCanva,
 };
 
 const sizes = {
@@ -19,7 +19,8 @@ const sizes = {
 
 const colors = {
   active: scss.active,
-  unActive: scss.unActive,
+  disabled: scss.disabled,
+  error: scss.error,
 };
 
 const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {

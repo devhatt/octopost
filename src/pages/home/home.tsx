@@ -1,5 +1,5 @@
 import FirstComment from '~components/FirstComment/FirstComment';
-import Icon from '~components/Icon/IconFont';
+import Icon from '~components/Icon/Icon';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
@@ -13,12 +13,10 @@ const Home = () => {
   return (
     <>
       <Header />
-
-      <Icon icon="Gpt" size="large" color="active" />
-
       <div className={scss.mainContainer}>
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>
+            <Icon icon="link" size="large" color="active" />
             <Sidebar />
           </div>
           <div className={scss.gridInput}>
