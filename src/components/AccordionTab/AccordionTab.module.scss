@@ -24,6 +24,7 @@
   flex-flow: row nowrap;
 
   justify-content: space-between;
+  align-items: center;
 
   color: $primaryWhite;
   font-size: 1.4rem;
@@ -35,6 +36,18 @@
 
   background-color: $secondaryPurple;
   border-radius: 1.2rem 1.2rem 0 0;
+
+  &::before {
+    font-size: 1em;
+
+    margin-right: 1rem;
+
+    content: '⬤';
+  }
+}
+
+.headerTitle {
+  flex-grow: 1;
 }
 
 .closeButton {

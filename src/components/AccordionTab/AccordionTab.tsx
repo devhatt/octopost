@@ -11,20 +11,30 @@ function AccordionTab(props: TAccordionTabProps) {
     if (props.onChangeOpen) props.onChangeOpen(!props.isOpen);
   };
 
+  const renderHeader = () => {
+    const children = (
+      <>
+        <p className={styles.headerTitle}>{props.title}</p>
+        {!props.hideCloseButton && (
+          <button onClick={handleClose} className={styles.closeButton}>
+            -
+          </button>
+        )}
+      </>
+    );
+
+    if (props.renderHeader !== undefined) {
+      return props.renderHeader({ className: styles.header, children });
+    }
+
+    return <div className={styles.header}>{children}</div>;
+  };
+
   return (
     <Accordion
       className={classNames(styles.container, props.className)}
       isOpen={props.isOpen ?? true}
-      header={
-        <div className={styles.header}>
-          <p>{props.title}</p>
-          {!props.hideCloseButton && (
-            <button onClick={handleClose} className={styles.closeButton}>
-              -
-            </button>
-          )}
-        </div>
-      }
+      header={renderHeader()}
       content={props.children}
     />
   );
