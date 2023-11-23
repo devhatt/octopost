@@ -21,10 +21,10 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `
-              @use "./src/styles/global.scss";
-              @use "./src/styles/base.scss";
-            `,
+        // additionalData: `
+        //       @use "./src/styles/global.scss";
+        //       @use "./src/styles/base.scss";
+        //     `,
       },
     },
   },
