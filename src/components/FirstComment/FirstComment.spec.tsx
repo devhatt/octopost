@@ -10,11 +10,13 @@ const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
 };
 
 beforeEach(() => {
-  window.scrollTo = jest.fn();
+  // https://github.com/vitest-dev/vitest/issues/4223
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  window.scrollTo = vi.fn<any>();
 });
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('FirstComment', () => {

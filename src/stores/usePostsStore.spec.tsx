@@ -5,7 +5,7 @@ import { usePostsStore } from './usePostsStore';
 
 import { myCustomCreate, storeResetFns } from './__mocks__/zunstandMock';
 
-jest.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
+vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
 
 describe('usePostsStore', () => {
   afterEach(() => {

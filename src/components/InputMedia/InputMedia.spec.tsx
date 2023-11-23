@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event';
 
 import InputMedia from './InputMedia';
 
-jest.mock('nanoid', () => {
+vi.mock('nanoid', () => {
   return {
-    nanoid: jest.fn(() => 'sua-string-especifica-aqui'),
+    nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
   };
 });
 

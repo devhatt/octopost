@@ -6,7 +6,7 @@ import Checkbox from './Checkbox';
 import type { TCheckboxProps } from './Checkbox.types';
 
 const makeSut = ({
-  onChange = jest.fn(),
+  onChange = vi.fn(),
   checked = false,
   ...props
 }: Partial<TCheckboxProps>) => {
@@ -19,8 +19,8 @@ const makeSut = ({
 
 describe('Checkbox', () => {
   describe('when checkbox be clicked', () => {
-    it('call [onChange] ', async () => {
-      const onChange = jest.fn();
+    it('call [onChange]', async () => {
+      const onChange = vi.fn();
 
       makeSut({ onChange });
 
