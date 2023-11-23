@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "productName": "octopost",
+  "mac": {
+    "target": {
+      "target": "default",
+      "arch": [
+        "universal"
+      ]
+    },
+    "category": "public.app-category.productivity"
+  },
+  "extends": null,
+  "files": [
+    "dist/**/*",
+    "dist-electron",
+    "package.json"
+  ],
+  "directories": {
+    "buildResources": "assets"
+  }
+}

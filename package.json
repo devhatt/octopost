@@ -6,7 +6,7 @@
   },
   "packageManager": "yarn@1.22.19",
   "private": true,
-  "main": "build/electron/main.js",
+  "main": "dist-electron/main.js",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -17,7 +17,7 @@
     "test:ct": "yarn test-ct",
     "test:e2e": "playwright test",
     "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && tsc -p electron && electron-builder",
+    "electron:build": "yarn build && electron-builder --windows --config electron-builder.json",
     "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
@@ -28,6 +28,8 @@
     "classnames": "^2.3.2",
     "electron-devtools-installer": "^3.2.0",
     "electron-reload": "^2.0.0-alpha.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-vitest": "^0.3.10",
     "framer-motion": "^10.16.1",
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
@@ -81,25 +83,6 @@
     "vitest": "^0.34.6",
     "wait-on": "^7.0.1",
     "zustand": "^4.4.1"
-  },
-  "build": {
-    "productName": "octopost",
-    "mac": {
-      "target": {
-        "target": "default",
-        "arch": [
-          "universal"
-        ]
-      },
-      "category": "public.app-category.productivity"
-    },
-    "extends": null,
-    "files": [
-      "build/**/*"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    }
   },
   "browserslist": {
     "production": [
