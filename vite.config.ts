@@ -18,6 +18,16 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+              @use "./src/styles/global.scss";
+              @use "./src/styles/base.scss";
+            `,
+      },
+    },
+  },
   resolve: {
     alias: {
       '~styles/global.scss': path.join(__dirname, 'src/styles/global.scss'),
