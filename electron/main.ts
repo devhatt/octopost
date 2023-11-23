@@ -1,16 +1,45 @@
-/* eslint-disable no-undef */
 import { app, BrowserWindow } from 'electron';
+import path from 'path';
 
-app.whenReady().then(() => {
-  const win = new BrowserWindow({
-    title: 'Main window',
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
+process.env.DIST = path.join(__dirname, '../dist');
+process.env.VITE_PUBLIC = app.isPackaged
+  ? process.env.DIST
+  : path.join(process.env.DIST, '../public');
+
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+  process.exit(0);
+}
+
+let win: BrowserWindow | null;
+
+function createWindow() {
+  win = new BrowserWindow({
+    icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
+    webPreferences: {
+      preload: path.join(__dirname, './preload.js'),
+    },
   });
 
-  // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
+  // Test active push message to Renderer-process.
+  win.webContents.on('did-finish-load', () => {
+    win?.webContents.send('main-process-message', new Date().toLocaleString());
+  });
+
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    win.webContents.openDevTools();
   } else {
-    // Load your file
-    win.loadFile('dist/index.html');
+    // win.loadFile('dist/index.html')
+    win.loadFile(path.join(process.env.DIST, 'index.html'));
   }
+}
+
+app.on('window-all-closed', () => {
+  app.quit();
+  win = null;
 });
+
+app.whenReady().then(createWindow);
