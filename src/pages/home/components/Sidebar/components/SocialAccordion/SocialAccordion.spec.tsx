@@ -5,6 +5,12 @@ import SocialAccordion from './SocialAccordion';
 
 import { IAccountList } from './SocialAccordion.type';
 
+beforeEach(() => {
+  // https://github.com/vitest-dev/vitest/issues/4223
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  window.scrollTo = vi.fn<any>();
+});
+
 const mockList: IAccountList[] = [
   {
     id: '123',
