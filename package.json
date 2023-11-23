@@ -4,7 +4,7 @@
   "engines": {
     "node": "18.18.2"
   },
-  "packageManager":"yarn@1.22.19",
+  "packageManager": "yarn@1.22.19",
   "private": true,
   "main": "build/electron/main.js",
   "scripts": {
@@ -22,7 +22,8 @@
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
     "ladle": "ladle serve",
-    "test-ct": "playwright test -c playwright-ct.config.ts"
+    "test-ct": "playwright test -c playwright-ct.config.ts",
+    "commit": "git-cz"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -41,6 +42,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
     "@ladle/react": "^2.17.2",
     "@playwright/experimental-ct-react": "^1.37.0",
     "@playwright/test": "^1.37.0",
@@ -56,6 +59,7 @@
     "commitizen": "^4.3.0",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "cz-format-extension": "^1.5.1",
     "electron": "^24.1.2",
     "electron-builder": "^24.0.0",
@@ -114,5 +118,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
