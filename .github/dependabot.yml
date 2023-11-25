@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - directory: '/'
+    package-ecosystem: 'npm'
+    schedule:
+      interval: 'weekly'
+      time: '06:00'
+    open-pull-requests-limit: 5
+    versioning-strategy: increase
+    groups:
+      all-minor-updates:
+        update-types: ['minor', 'patch']
