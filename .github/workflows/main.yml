@@ -28,7 +28,7 @@ jobs:
           yarn install
           yarn build
 
-      - name: Run Jest tests
+      - name: Run Vitest tests
         run: yarn test --watch=false
 
       - name: Lint tests
