@@ -29,7 +29,7 @@ jobs:
           yarn build
 
       - name: Run Jest tests
-        run: yarn test --watchAll=false
+        run: yarn test --watch=false
 
       - name: Lint tests
         run: yarn lint
