@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 /.yarn
+/.yarnrc
 /.pnp
 .pnp.js
 
