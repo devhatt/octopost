@@ -18,7 +18,7 @@ import scss from './App.module.scss';
 import './styles/base.scss';
 
 Sentry.init({
-  dsn: 'https://bd204ec3d8157e7eb3c2fd1c1d010610@o4506298178404352.ingest.sentry.io/4506298185154560',
+  dsn: process.env.REACT_APP_SENTRY_KEY,
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.reactRouterV6Instrumentation(
