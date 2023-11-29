@@ -7,6 +7,7 @@
     "jsx": "react-jsx",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "noEmit": true,
@@ -30,6 +31,7 @@
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
+
     /* Linting */
     "strict": true,
     "target": "ES2020",
