@@ -2,9 +2,10 @@
   "name": "octopost",
   "version": "0.1.0",
   "engines": {
-    "node": "18.18.2"
+    "node": "18.18.2",
+    "yarn": "^1"
   },
-  "packageManager":"yarn@1.22.19",
+  "packageManager": "yarn@1.22.19",
   "private": true,
   "main": "build/electron/main.js",
   "scripts": {
@@ -25,6 +26,7 @@
     "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
+    "@sentry/react": "^7.81.1",
     "classnames": "^2.3.2",
     "electron-devtools-installer": "^3.2.0",
     "electron-reload": "^2.0.0-alpha.1",
