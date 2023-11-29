@@ -1,0 +1,32 @@
+name: Create Branch on Assignment
+
+on:
+  issues:
+    types:
+      - assigned
+
+permissions:
+  contents: write
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+    - name: Create Branch
+      run: |
+        ISSUE_NUMBER=$(echo ${{ github.event.issue.number }})
+        BRANCH_NAME="issue-${ISSUE_NUMBER}"
+        git checkout -b $BRANCH_NAME
+        git push origin $BRANCH_NAME
+
+    - name: Notify Success
+      run: echo "Branch created successfully!"
