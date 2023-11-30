@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import AccordionTab from './AccordionTab';
 
 beforeEach(() => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   window.scrollTo = vi.fn<any>();
 });
 
