@@ -13,8 +13,8 @@
   border: 1px solid #cbc4cf;
 
   background-color: $primaryWhite;
-  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.1);
-  border-radius: 1.2rem 1.2rem 0 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 17px 17px 0 0;
 }
 
 .header {
@@ -36,10 +36,10 @@
   position: relative;
 
   background-color: $secondaryPurple;
-  border-radius: 1.2rem 1.2rem 0 0;
+  border-radius: 17px 17px 0 0;
 
   &::before {
-    font-size: 1em;
+    font-size: 1.5rem;
 
     margin-right: 1rem;
 

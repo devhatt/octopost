@@ -1,17 +1,11 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 type TOnChangeOpen = (newIsOpen: boolean) => void;
 
-type TRenderHeader = (props: {
-  className?: string;
-  children: ReactNode;
-}) => ReactNode;
-
 export type TAccordionTabProps = PropsWithChildren<{
   title?: string;
-  isOpen?: boolean;
   className?: string;
-  onChangeOpen?: TOnChangeOpen;
+  isOpen?: boolean;
   hideCloseButton?: boolean;
-  renderHeader?: TRenderHeader;
+  onChangeOpen?: TOnChangeOpen;
 }>;
