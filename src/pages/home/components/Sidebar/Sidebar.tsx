@@ -7,7 +7,7 @@ import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Portal from '~components/Portal/Portal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
-import styles from './Sidebar.module.scss';
+import scss from './Sidebar.module.scss';
 
 function Sidebar() {
   const [value, setValue] = useState('');
@@ -20,9 +20,9 @@ function Sidebar() {
 
   return (
     <AccordionTab title="Select Social Media" hideCloseButton>
-      <div className={styles.content}>
+      <div className={scss.content}>
         <InputSearch
-          className={styles.searchBar}
+          className={scss.searchBar}
           onChange={(value) => setValue(value as string)}
           placeholder="Search for social media"
           ref={inputSearchRef}
@@ -37,7 +37,7 @@ function Sidebar() {
           />
         )}
 
-        <div className={styles.items}>
+        <div className={scss.items}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
@@ -50,14 +50,14 @@ function Sidebar() {
 
         <Button
           onClick={handleToggleModal}
-          className={styles.newAccountButton}
+          className={scss.newAccountButton}
           variant="container"
         >
           + &ensp; New Account
         </Button>
 
         <Portal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
-          <div className={styles.modalContent}>Octopost</div>
+          <div className={scss.modalContent}>Octopost</div>
         </Portal>
       </div>
     </AccordionTab>
