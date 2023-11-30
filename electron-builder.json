@@ -4,18 +4,12 @@
   "mac": {
     "target": {
       "target": "default",
-      "arch": [
-        "universal"
-      ]
+      "arch": ["universal"]
     },
     "category": "public.app-category.productivity"
   },
   "extends": null,
-  "files": [
-    "dist/**/*",
-    "dist-electron",
-    "package.json"
-  ],
+  "files": ["dist/**/*", "dist-electron", "package.json"],
   "directories": {
     "buildResources": "assets"
   }
