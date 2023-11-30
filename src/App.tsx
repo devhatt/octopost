@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   createRoutesFromChildren,
   matchRoutes,

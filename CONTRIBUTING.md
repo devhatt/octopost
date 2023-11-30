@@ -46,6 +46,16 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 4. **Revisão de Código:** A equipe de mantenedores do projeto irá revisar o seu PR. Esteja disposto a fazer ajustes se necessário.
 5. **Merge e Fechamento:** Após a revisão bem-sucedida, suas alterações serão mescladas à branch principal. Seu PR será fechado.
 
+## Gerando Builds do Electron para Windows do Linux
+
+Se você por algum motivo precisa buildar a aplicação (gerar um .exe) a partir do linux, será necessário instalar as dependências necessárias:
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install wine32
+```
+
 ## Diretrizes de Contribuição
 
 - **Estilo de Código:** Siga as convenções de estilo de código existentes no projeto.[Style Guide](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
