@@ -1,35 +1,47 @@
 import { app, BrowserWindow } from 'electron';
-import * as isDev from 'electron-is-dev';
-import * as path from 'path';
+import path from 'path';
+
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
+process.env.DIST = path.join(__dirname, '../dist');
+process.env.VITE_PUBLIC = app.isPackaged
+  ? process.env.DIST
+  : path.join(process.env.DIST, '../public');
+
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+  process.exit(0);
+}
+
+let win: BrowserWindow | null;
 
 function createWindow() {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+  win = new BrowserWindow({
+    icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
+      preload: path.join(__dirname, './preload.js'),
       nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
-  win.loadURL(
-    isDev
-      ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`
-  );
+  // Test active push message to Renderer-process.
+  win.webContents.on('did-finish-load', () => {
+    win?.webContents.send('main-process-message', new Date().toLocaleString());
+  });
 
-  win.webContents.openDevTools();
+  if (process.env.VITE_DEV_SERVER_URL) {
+    win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    win.webContents.openDevTools();
+  } else {
+    // win.loadFile('dist/index.html')
+    win.loadFile(path.join(process.env.DIST, 'index.html'));
+  }
 }
 
-app.whenReady().then(createWindow);
-
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  app.quit();
+  win = null;
 });
 
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
-});
+app.whenReady().then(createWindow);

@@ -2,9 +2,9 @@ import { render, screen } from '@testing-library/react';
 
 import MediaInputs from './MediaInput';
 
-jest.mock('nanoid', () => {
+vi.mock('nanoid', () => {
   return {
-    nanoid: jest.fn(() => 'sua-string-especifica-aqui'),
+    nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
   };
 });
 
