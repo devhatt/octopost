@@ -3,11 +3,11 @@ import { render, screen } from '@testing-library/react';
 import AccordionTab from './AccordionTab';
 
 beforeEach(() => {
-  window.scrollTo = jest.fn();
+  window.scrollTo = vi.fn<any>();
 });
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('AccordionTab', () => {
