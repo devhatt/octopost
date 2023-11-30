@@ -4,6 +4,7 @@ import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import '../../i18n';
 
 import scss from './MainComposer.module.scss';
+import MediaInputs from '~components/MediaInputs/MediaInput';
 
 function MainComposer() {
   const { t } = useTranslation();
@@ -24,6 +25,9 @@ function MainComposer() {
             <h2>content-bot-top</h2>
           </div>
           <div className={scss.contentBotBot}>
+            <div className={scss.mainComposerInputMedia}>
+              <MediaInputs />
+            </div>
             <h2>content-bot-bot</h2>
             <p>{t('We have a lot of work')}</p>
           </div>
