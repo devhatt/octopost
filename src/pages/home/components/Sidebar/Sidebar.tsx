@@ -4,7 +4,7 @@ import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
-import Portal from '~components/Portal/Portal';
+import Modal from '~components/Modal/Modal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
 import scss from './Sidebar.module.scss';
@@ -62,9 +62,9 @@ function Sidebar() {
           + &ensp; New Account
         </Button>
 
-        <Portal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
-          <div className={scss.modalContent}>Octopost</div>
-        </Portal>
+        <Modal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
+          Octopost
+        </Modal>
       </div>
     </AccordionTab>
   );
