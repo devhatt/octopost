@@ -4,11 +4,11 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import styles from './Portal.module.scss';
+import scss from './Modal.module.scss';
 
-import { type TPortalProps } from './Portal.types';
+import { type TModalProps } from './Modal.types';
 
-function Portal(props: TPortalProps) {
+function Modal(props: TModalProps) {
   useEffect(() => {
     if (props.isOpen) {
       document.body.style.overflow = 'hidden';
@@ -26,10 +26,12 @@ function Portal(props: TPortalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={classNames(styles.container, props.className)}
+          className={classNames(scss.container, props.className)}
           onClick={props.onClickOutside}
         >
-          <div onClick={(e) => e.stopPropagation()}>{props.children}</div>
+          <div onClick={(e) => e.stopPropagation()}>
+            <div className={scss.modalContent}>{props.children}</div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>,
@@ -37,4 +39,4 @@ function Portal(props: TPortalProps) {
   );
 }
 
-export default Portal;
+export default Modal;

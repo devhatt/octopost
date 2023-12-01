@@ -1,0 +1,28 @@
+@use '~styles/global.scss' as *;
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  z-index: 1000;
+
+  background-color: #0004;
+  inset: 0;
+}
+
+// TODO: remove when define we create modal design;
+.modalContent {
+  padding: 5rem;
+
+  background-color: $primaryWhite;
+
+  box-shadow: 3px 3px 3px #0003;
+
+  border-radius: 5px;
+}

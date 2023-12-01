@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { Story } from '@ladle/react';
 
-import Portal from './Portal';
+import Portal from './Modal';
 
-export const PortalStories: Story = () => {
+export const ModalStories: Story = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (

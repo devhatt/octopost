@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 
-import Portal from './Portal';
+import Modal from './Modal';
 
-describe('Portal', () => {
+describe('Modal', () => {
   describe('when [isOpen] is true', () => {
     it('renders children', () => {
-      render(<Portal isOpen>content</Portal>);
+      render(<Modal isOpen>content</Modal>);
 
       const content = screen.getByText('content');
 
@@ -15,7 +15,7 @@ describe('Portal', () => {
 
   describe('when [isOpen] is false', () => {
     it('not renders children', () => {
-      render(<Portal isOpen={false}>content</Portal>);
+      render(<Modal isOpen={false}>content</Modal>);
 
       const titleComponent = screen.queryByText('content');
       expect(titleComponent).not.toBeInTheDocument();
