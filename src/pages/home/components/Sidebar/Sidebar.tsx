@@ -18,6 +18,18 @@ function Sidebar() {
     setOpen((isOpen) => !isOpen);
   };
 
+  const renderSearchClue = () => {
+    if (!value) return null;
+
+    return (
+      <SearchClue
+        clearInput={inputSearchRef.current?.clearInput}
+        value={value}
+        label="Searching for"
+      />
+    );
+  };
+
   return (
     <AccordionTab title="Select Social Media" hideCloseButton>
       <div className={scss.content}>
@@ -29,13 +41,7 @@ function Sidebar() {
           error={false}
         />
 
-        {value && (
-          <SearchClue
-            clearInput={inputSearchRef.current?.clearInput}
-            value={value}
-            label="Searching for"
-          />
-        )}
+        {renderSearchClue()}
 
         <div className={scss.items}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
