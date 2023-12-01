@@ -16,7 +16,7 @@ function Portal(props: TPortalProps) {
     }
 
     document.body.style.overflow = 'auto';
-  });
+  }, [props.isOpen]);
 
   return createPortal(
     <AnimatePresence>
