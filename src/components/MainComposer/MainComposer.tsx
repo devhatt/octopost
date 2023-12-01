@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import '../../i18n';
+import MediaInputs from '~components/MediaInputs/MediaInput';
 
 import scss from './MainComposer.module.scss';
-import MediaInputs from '~components/MediaInputs/MediaInput';
 
 function MainComposer() {
   const { t } = useTranslation();
