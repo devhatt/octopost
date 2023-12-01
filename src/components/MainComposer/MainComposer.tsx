@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import MediaInputs from '~components/MediaInputs/MediaInput';
-
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
+import MediaInputs from '../MediaInputs/MediaInput';
 
 import '../../i18n';
 
