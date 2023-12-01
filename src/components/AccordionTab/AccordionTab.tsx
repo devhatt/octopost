@@ -20,16 +20,18 @@ function AccordionTab(props: TAccordionTabProps) {
     );
   };
 
+  const renderHeader = () => (
+    <div className={styles.header}>
+      <p className={styles.headerTitle}>{props.title}</p>
+      {renderCloseButton()}
+    </div>
+  );
+
   return (
     <Accordion
       className={classNames(styles.container, props.className)}
       isOpen={props.isOpen ?? true}
-      header={
-        <div className={styles.header}>
-          <p className={styles.headerTitle}>{props.title}</p>
-          {renderCloseButton()}
-        </div>
-      }
+      header={renderHeader()}
       content={props.children}
     />
   );
