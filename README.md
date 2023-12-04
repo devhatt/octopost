@@ -30,7 +30,7 @@ O OctoPost foi projetado para simplificar o processo de compartilhamento de cont
 
 Para começar com o OctoPost, siga estes passos:
 
-1. Clonar o repositório: **`git clone https://github.com/devhatt/octopost`**
+1. Clonar o repositório: **`git clone https://github.com/devhatt/octopost.git`**
 2. Instalar as dependências: **`pnpm install`**
 3. Iniciar o aplicativo: **`pnpm start`**
 4. Instalar as extensões: [Octopost Extension Pack](https://marketplace.visualstudio.com/items?itemName=DevHat.octopost-extension-pack)
