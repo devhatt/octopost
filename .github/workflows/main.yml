@@ -28,13 +28,14 @@ jobs:
         with:
           version: latest
 
-      - name: Install and build
-        run: |
-          pnpm install
-          pnpm build
+      - name: Install
+        run: pnpm install
 
       - name: Run Vitest tests
-        run: pnpm test --watch=false
+        run: pnpm test --silent
+
+      - name: Build
+        run: pnpm build
 
       - name: Lint tests
         run: pnpm lint
