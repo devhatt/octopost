@@ -1,23 +1,63 @@
-import PreviewContainer from '~components/ComponentPreview/PreviewContainer';
-import Preview from '~components/Preview/Preview';
+﻿import { useState } from 'react';
 
-import RenderNetwork from './components/TabberCompose/RenderNetwork';
+import classNames from 'classnames';
+import { nanoid } from 'nanoid';
 
-import scss from './Tabber.module.scss';
+import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 
-import { ITabberProps } from './Tabber.types';
+import scss from '~components/Tabber/Tabber.module.scss';
 
-function Tabber(props: ITabberProps) {
+import Tabs from './Tabs/Tabs';
+
+import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
+
+function Tabber() {
+  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
+  const [currentTab, setCurrentTab] = useState(socialNetworks[0]);
+  const [currentPostMode, setCurrentPostMode] = useState(0);
+
+  const handleCurrentTab = (socialNetwork: TSocialNetworks) => {
+    setCurrentTab(socialNetwork);
+    setCurrentPostMode(0);
+  };
+
+  const renderPostModes = () =>
+    currentTab.postModes.map((postMode, index) => (
+      <span
+        key={index}
+        className={classNames(
+          scss.postModeTitle,
+          currentPostMode === index ? scss.active : null
+        )}
+        onClick={() => setCurrentPostMode(index)}
+      >
+        {postMode.name}
+      </span>
+    ));
+
+  const renderPreviewComponent = () =>
+    currentTab.postModes.map((postMode, index) =>
+      index === currentPostMode ? (
+        <postMode.previewComponent
+          text={`${postMode.name} Placeholder`}
+          key={nanoid()}
+        />
+      ) : null
+    );
+
   return (
-    <div className={scss.social}>
-      <div className={scss.tabberContainer}>
-        <RenderNetwork socialList={props.socialList} />
-      </div>
-      <div className={scss.flexSelect}>
-        <div className={scss.contentContainer}>Content Imaginário</div>
-        <PreviewContainer>
-          <Preview>Preview Imaginário</Preview>
-        </PreviewContainer>
+    <div>
+      <Tabs
+        handleCurrentTab={handleCurrentTab}
+        socialNetworks={socialNetworks}
+        currentTab={currentTab}
+      />
+      <div className={scss.gridContainer}>
+        <div className={scss.postModesContainer}>
+          <div className={scss.postModesHeader}>{renderPostModes()}</div>
+          <div className={scss.postModesBody}></div>
+        </div>
+        <div className={scss.previewContainer}>{renderPreviewComponent()}</div>
       </div>
     </div>
   );
