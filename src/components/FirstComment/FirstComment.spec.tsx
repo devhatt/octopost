@@ -9,16 +9,6 @@ const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
   return render(<FirstComment {...props} />);
 };
 
-beforeEach(() => {
-  // https://github.com/vitest-dev/vitest/issues/4223
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  window.scrollTo = vi.fn<any>();
-});
-
-afterEach(() => {
-  vi.clearAllMocks();
-});
-
 describe('FirstComment', () => {
   describe('when checkbox is marked', () => {
     it('open Accordion', async () => {
