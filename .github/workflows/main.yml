@@ -25,14 +25,14 @@ jobs:
 
       - name: Install and build
         run: |
-          yarn install
-          yarn build
+          pnpm install
+          pnpm build
 
       - name: Run Vitest tests
-        run: yarn test --watch=false
+        run: pnpm test --watch=false
 
       - name: Lint tests
-        run: yarn lint
+        run: pnpm lint
 
       - name: Stylelint tests
-        run: yarn stylelint
+        run: pnpm stylelint
