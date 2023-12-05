@@ -28,7 +28,7 @@ jobs:
         with:
           version: latest
 
-      - name: Install
+      - name: Install dependencies
         run: pnpm install
 
       - name: Run Vitest tests
