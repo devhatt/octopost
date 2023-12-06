@@ -19,8 +19,6 @@ function Sidebar() {
   };
 
   const renderSearchClue = () => {
-    if (!value) return null;
-
     return (
       <SearchClue
         clearInput={inputSearchRef.current?.clearInput}
@@ -41,7 +39,7 @@ function Sidebar() {
           error={false}
         />
 
-        {renderSearchClue()}
+        {!value && renderSearchClue()}
 
         <div className={scss.items}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
