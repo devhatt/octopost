@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
+import MediaInputs from '~components/MediaInputs/MediaInput';
 import '~i18n';
 
 import scss from './MainComposer.module.scss';
@@ -22,6 +23,9 @@ function MainComposer() {
             <h2>content-bot-top</h2>
           </div>
           <div className={scss.contentBotBot}>
+            <div className={scss.mainComposerInputMedia}>
+              <MediaInputs />
+            </div>
             <h2>content-bot-bot</h2>
             <p>{t('We have a lot of work')}</p>
           </div>

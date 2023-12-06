@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '~styles/global.scss';
 
 .header {
   font-size: 2rem;
@@ -35,4 +35,11 @@
   font-size: 1.6rem;
 
   margin-bottom: 2.4rem;
+}
+
+.mainComposerInputMedia {
+  display: flex;
+  gap: 3.2rem;
+
+  margin-top: 2.4rem;
 }

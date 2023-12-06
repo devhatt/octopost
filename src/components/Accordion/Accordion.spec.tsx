@@ -4,12 +4,6 @@ import Accordion from './Accordion';
 
 import type { TAccordionProps } from './Accordion.types';
 
-beforeEach(() => {
-  // https://github.com/vitest-dev/vitest/issues/4223
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  window.scrollTo = vi.fn<any>();
-});
-
 afterEach(() => {
   vi.clearAllMocks();
 });
