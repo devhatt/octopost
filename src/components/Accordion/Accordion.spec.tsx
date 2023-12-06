@@ -4,12 +4,8 @@ import Accordion from './Accordion';
 
 import type { TAccordionProps } from './Accordion.types';
 
-beforeEach(() => {
-  window.scrollTo = jest.fn();
-});
-
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 const makeSut = ({

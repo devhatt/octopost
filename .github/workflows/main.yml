@@ -23,16 +23,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install and build
-        run: |
-          yarn install
-          yarn build
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
 
-      - name: Run Jest tests
-        run: yarn test --watchAll=false
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Vitest tests
+        run: pnpm test --silent
+
+      - name: Build
+        run: pnpm build
 
       - name: Lint tests
-        run: yarn lint
+        run: pnpm lint
 
       - name: Stylelint tests
-        run: yarn stylelint
+        run: pnpm stylelint

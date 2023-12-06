@@ -1,20 +1,19 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import AccordionTab from '~components/AccordionTab/AccordionTab';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
-import '../../i18n';
+import MediaInputs from '~components/MediaInputs/MediaInput';
+import '~i18n';
 
 import scss from './MainComposer.module.scss';
 
 function MainComposer() {
+  const [isOpen, setOpen] = useState(true);
   const { t } = useTranslation();
 
   return (
-    <div className={scss.wrapper}>
-      <div className={scss.innerHeader}>
-        <div className={scss.mainContent}>
-          <p className={scss.mainText}>Main Content</p>
-        </div>
-      </div>
+    <AccordionTab isOpen={isOpen} onChangeOpen={setOpen} title="Main Content">
       <div className={scss.content}>
         <div className={scss.textInput}>
           <ComposerEditor />
@@ -24,12 +23,15 @@ function MainComposer() {
             <h2>content-bot-top</h2>
           </div>
           <div className={scss.contentBotBot}>
+            <div className={scss.mainComposerInputMedia}>
+              <MediaInputs />
+            </div>
             <h2>content-bot-bot</h2>
             <p>{t('We have a lot of work')}</p>
           </div>
         </div>
       </div>
-    </div>
+    </AccordionTab>
   );
 }
 

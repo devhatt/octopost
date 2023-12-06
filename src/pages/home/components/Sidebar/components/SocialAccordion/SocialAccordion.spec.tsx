@@ -13,7 +13,7 @@ const mockList: IAccountList[] = [
   },
 ];
 
-jest.spyOn(window, 'scrollTo');
+vi.spyOn(window, 'scrollTo');
 
 describe('SocialAccordion', () => {
   describe('when initilize', () => {

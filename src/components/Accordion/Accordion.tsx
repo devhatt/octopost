@@ -15,7 +15,7 @@ function computeVariants(duration: number) {
 function Accordion(props: TAccordionProps) {
   return (
     <section className={classNames(props.className, styles.container)}>
-      <header className={styles.header}>{props.header}</header>
+      <div className={styles.header}>{props.header}</div>
       <AnimatePresence>
         {props.isOpen && (
           <motion.div

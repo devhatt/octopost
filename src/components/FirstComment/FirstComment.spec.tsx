@@ -9,14 +9,6 @@ const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
   return render(<FirstComment {...props} />);
 };
 
-beforeEach(() => {
-  window.scrollTo = jest.fn();
-});
-
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('FirstComment', () => {
   describe('when checkbox is marked', () => {
     it('open Accordion', async () => {

@@ -3,7 +3,7 @@ import { render, fireEvent, screen, act } from '@testing-library/react';
 import CustomTextArea from './TextArea';
 
 describe('CustomTextArea', () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
   it('renders the component textarea', () => {
     render(<CustomTextArea onTextChange={mockOnChange} />);
 
