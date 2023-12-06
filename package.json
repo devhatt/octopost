@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "engines": {
     "node": "18.18.2",
-    "yarn": "^1"
+    "pnpm": "^8"
   },
   "packageManager": "yarn@1.22.19",
   "private": true,
