@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "engines": {
     "node": "18.18.2",
-    "yarn": "^1"
+    "pnpm": "^8"
   },
   "packageManager": "yarn@1.22.19",
   "private": true,
@@ -25,7 +25,8 @@
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
     "ladle": "ladle serve",
-    "test-ct": "playwright test -c playwright-ct.config.ts"
+    "test-ct": "playwright test -c playwright-ct.config.ts",
+    "commit": "git-cz"
   },
   "dependencies": {
     "@sentry/react": "^7.81.1",
@@ -49,6 +50,9 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cz-commitlint": "^18.4.3",
     "@ladle/react": "^4.0.1",
     "@playwright/experimental-ct-react": "^1.40.0",
     "@playwright/test": "^1.40.0",
@@ -65,7 +69,6 @@
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "cz-format-extension": "^1.5.1",
     "electron": "^24.1.2",
     "electron-builder": "^24.9.1",
     "electron-is-dev": "^2.0.0",
@@ -99,5 +102,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   }
 }
