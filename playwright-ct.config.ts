@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+
+import viteConfig from './vite.config.ts';
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -28,6 +31,7 @@ export default defineConfig({
     ctPort: 3100,
     ctViteConfig: {
       plugins: [tsconfigPaths()],
+      resolve: viteConfig.resolve,
     },
   },
 
