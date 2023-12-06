@@ -14,7 +14,7 @@ function Tabs(props: ITabsProps) {
           onClick={() => props.handleCurrentTab(socialNetwork)}
           className={classNames(
             scss.tab,
-            socialNetwork.id === props.currentTab.id ? scss.active : null
+            socialNetwork.id === props.currentTab.id && scss.active
           )}
         >
           {socialNetwork.icon}

@@ -1,12 +1,11 @@
 ﻿import { useState } from 'react';
 
-import classNames from 'classnames';
-import { nanoid } from 'nanoid';
-
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 
 import scss from '~components/Tabber/Tabber.module.scss';
 
+import PostModes from './PostModes/PostModes';
+import Preview from './Preview/Preview';
 import Tabs from './Tabs/Tabs';
 
 import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
@@ -21,29 +20,7 @@ function Tabber() {
     setCurrentPostMode(0);
   };
 
-  const renderPostModes = () =>
-    currentTab.postModes.map((postMode, index) => (
-      <span
-        key={index}
-        className={classNames(
-          scss.postModeTitle,
-          currentPostMode === index ? scss.active : null
-        )}
-        onClick={() => setCurrentPostMode(index)}
-      >
-        {postMode.name}
-      </span>
-    ));
-
-  const renderPreviewComponent = () =>
-    currentTab.postModes.map((postMode, index) =>
-      index === currentPostMode ? (
-        <postMode.previewComponent
-          text={`${postMode.name} Placeholder`}
-          key={nanoid()}
-        />
-      ) : null
-    );
+  const handleCurrentPostMode = (index: number) => setCurrentPostMode(index);
 
   return (
     <div>
@@ -54,10 +31,15 @@ function Tabber() {
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
-          <div className={scss.postModesHeader}>{renderPostModes()}</div>
-          <div className={scss.postModesBody}></div>
+          <PostModes
+            handleCurrentPostMode={handleCurrentPostMode}
+            currentPostMode={currentPostMode}
+            postModes={currentTab.postModes}
+          />
         </div>
-        <div className={scss.previewContainer}>{renderPreviewComponent()}</div>
+        <div className={scss.previewContainer}>
+          <Preview currentTab={currentTab} currentPostMode={currentPostMode} />
+        </div>
       </div>
     </div>
   );
