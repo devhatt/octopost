@@ -1,22 +1,19 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ComposerEditor from '../ComposerEditor/ComposerEditor';
-import MediaInputs from '../MediaInputs/MediaInput';
-
-import '../../i18n';
+import AccordionTab from '~components/AccordionTab/AccordionTab';
+import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
+import MediaInputs from '~components/MediaInputs/MediaInput';
+import '~i18n';
 
 import scss from './MainComposer.module.scss';
 
 function MainComposer() {
+  const [isOpen, setOpen] = useState(true);
   const { t } = useTranslation();
 
   return (
-    <div className={scss.wrapper}>
-      <div className={scss.innerHeader}>
-        <div className={scss.mainContent}>
-          <p className={scss.mainText}>Main Content</p>
-        </div>
-      </div>
+    <AccordionTab isOpen={isOpen} onChangeOpen={setOpen} title="Main Content">
       <div className={scss.content}>
         <div className={scss.textInput}>
           <ComposerEditor />
@@ -34,7 +31,7 @@ function MainComposer() {
           </div>
         </div>
       </div>
-    </div>
+    </AccordionTab>
   );
 }
 

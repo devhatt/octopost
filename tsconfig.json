@@ -21,6 +21,7 @@
       "~enums/*": ["enums/*"],
       "~hooks/*": ["hooks/*"],
       "~interfaces/*": ["interfaces/*"],
+      "~i18n": ["i18n/index.tsx"],
       "~pages/*": ["pages/*"],
       "~services/*": ["services/*"],
       "~snippets/*": ["snippets/*"],
