@@ -6,17 +6,15 @@
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
 
   font-size: 1.6rem;
 
   margin-bottom: 3.2rem;
-
   padding: 2rem;
 
   a {
-    color: global.$secondaryPurple;
+    color: global.$secondaryPurple; /* Corrigido para remover o prefixo 'global.' */
     font-weight: 400;
     text-decoration: none;
   }

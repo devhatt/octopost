@@ -2,8 +2,6 @@
 
 .wrapper {
   width: 100%;
-
-  // Estilos padrão que se aplicam a todas as telas
 }
 
 .innerHeader {
@@ -55,26 +53,6 @@
         content: '';
       }
     }
-  }
-
-  @include global.for-phone-only {
-    background-color: deeppink;
-  }
-
-  @include global.for-tablet-portrait-up {
-    background-color: black;
-  }
-
-  @include global.for-tablet-landscape-up {
-    background-color: gray;
-  }
-
-  @include global.for-desktop-up {
-    background-color: global.$secondaryPurple;
-  }
-
-  @include global.for-big-desktop-up {
-    background-color: global.$secondaryPurple;
   }
 }
 
