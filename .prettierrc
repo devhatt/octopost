@@ -8,6 +8,5 @@
   "jsxBracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "eolLast": true,
   "printWidth": 80
 }
