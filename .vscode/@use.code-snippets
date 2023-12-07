@@ -1,0 +1,11 @@
+{
+  "Import scss": {
+    "scope": "scss",
+    "prefix": "use",
+    "body": [
+			"@use '$1' as *;",
+			"",
+		],
+    "description": "import a scss file"
+  }
+}
