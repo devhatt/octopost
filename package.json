@@ -24,6 +24,8 @@
     "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
+    "prettier": "prettier ./src --check --ignore-unknown",
+    "code-style": "concurrently \"pnpm lint\" \"pnpm stylelint\" \"pnpm prettier\"",
     "ladle": "ladle serve",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "commit": "git-cz"
