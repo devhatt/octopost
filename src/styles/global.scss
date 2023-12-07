@@ -14,3 +14,11 @@ $secondaryRed: #c00016;
 $baseColor: #6750a4;
 $hovering: #6750a414; // Hovering with 8% opacity
 $pressing: #6750a41f; // Pressing with 12% opacity
+
+$sm: 40rem; //640px
+
+@mixin from640 {
+  @media screen and (max-width: $sm) {
+    @content;
+  }
+}

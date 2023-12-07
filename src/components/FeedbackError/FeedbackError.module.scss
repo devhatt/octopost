@@ -1,0 +1,40 @@
+@use '../../styles/global.scss' as *;
+
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  gap: 1rem;
+
+  align-items: center;
+
+  margin-top: 3.2rem;
+  padding-left: 1rem;
+  border-left: 8px solid $secondaryRed;
+
+  .icon {
+    width: 28px;
+    height: 28px;
+
+    background-image: url('./assets/IconErrorRed.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include from640 {
+      background: url('./assets/IconErrorWhite.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .errorMessage {
+    color: $secondaryRed;
+    @include from640 {
+      color: $primaryWhite;
+    }
+  }
+
+  @include from640 {
+    background: $secondaryRed;
+  }
+}
