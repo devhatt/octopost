@@ -7,6 +7,9 @@
     "jsx": "react-jsx",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+    
 
     /* Bundler mode */
     "moduleResolution": "bundler",
