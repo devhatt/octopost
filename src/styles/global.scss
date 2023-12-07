@@ -15,10 +15,10 @@ $baseColor: #6750a4;
 $hovering: #6750a414; // Hovering with 8% opacity
 $pressing: #6750a41f; // Pressing with 12% opacity
 
-$sm: 40rem; //640px
+$phoneScreen: 37.4375rem; //599px
 
-@mixin from640 {
-  @media screen and (max-width: $sm) {
+@mixin from599 {
+  @media screen and (min-width: $phoneScreen) {
     @content;
   }
 }

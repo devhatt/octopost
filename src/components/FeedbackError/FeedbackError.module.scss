@@ -12,29 +12,31 @@
   padding-left: 1rem;
   border-left: 8px solid $secondaryRed;
 
+  background: $secondaryRed;
+
   .icon {
     width: 28px;
     height: 28px;
 
-    background-image: url('./assets/IconErrorRed.svg');
+    background: url('./assets/IconErrorWhite.svg');
     background-repeat: no-repeat;
     background-position: center;
 
-    @include from640 {
-      background: url('./assets/IconErrorWhite.svg');
+    @include from599 {
+      background-image: url('./assets/IconErrorRed.svg');
       background-repeat: no-repeat;
       background-position: center;
     }
   }
 
   .errorMessage {
-    color: $secondaryRed;
-    @include from640 {
-      color: $primaryWhite;
+    color: $primaryWhite;
+    @include from599 {
+      color: $secondaryRed;
     }
   }
 
-  @include from640 {
-    background: $secondaryRed;
+  @include from599 {
+    background: inherit;
   }
 }
