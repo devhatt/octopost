@@ -23,38 +23,22 @@
     "jsx": "react-jsx",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
-  },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
-  /* Bundler mode */
-  "moduleResolution": "bundler",
-  "noEmit": true,
-  "noFallthroughCasesInSwitch": true,
-  "noUnusedLocals": true,
-  "noUnusedParameters": true,
-  "paths": {
-    "~components/*": ["components/*"],
-    "~config/*": ["config/*"],
-    "~constants/*": ["constants/*"],
-    "~enums/*": ["enums/*"],
-    "~hooks/*": ["hooks/*"],
-    "~interfaces/*": ["interfaces/*"],
-    "~i18n": ["i18n/*"],
-    "~pages/*": ["pages/*"],
-    "~services/*": ["services/*"],
-    "~snippets/*": ["snippets/*"],
-    "~store/*": ["store/*"],
-    "~styles/*": ["styles/*"],
-    "~types/*": ["types/*"],
-    "~utils/*": ["utils/*"]
-  },
-  "resolveJsonModule": true,
-  "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
 
-  /* Linting */
-  "strict": true,
-  "target": "ES2020",
-  "useDefineForClassFields": true,
+    /* Linting */
+    "strict": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true
+  },
   "exclude": ["node_modules", "dist"],
   "include": [
     "src/**/*",
