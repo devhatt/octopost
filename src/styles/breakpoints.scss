@@ -1,0 +1,59 @@
+$phoneScreen: 37.4375rem; //599px
+$tabletScreen: 56.5rem; //904px
+$laptopScreenMin: 56.5625rem; //905px
+$laptopScreenMax: 77.4375rem; //1239px
+$desktopScreenMin: 77.5rem; //1240px
+$desktopScreenMax: 89.9375rem; //1439px
+$largeDesktopScreen: 90rem; //1440px
+
+$breakpointPhone: 20rem; //320px
+$breakpointTablet: 30rem; //480px
+$breakpointDesktop: 120rem; //1920px
+
+@mixin from320to599 {
+  @media screen and (min-width: $breakpointPhone) and (max-width: $phoneScreen) {
+    @content;
+  }
+}
+
+@mixin from480to904 {
+  @media screen and (min-width: $breakpointTablet) and (max-width: $tabletScreen) {
+    @content;
+  }
+}
+
+@mixin from1920 {
+  @media screen and (min-width: $breakpointDesktop) {
+    @content;
+  }
+}
+
+@mixin from599 {
+  @media screen and (min-width: $phoneScreen) {
+    @content;
+  }
+}
+
+@mixin from904 {
+  @media screen and (min-width: $tabletScreen) {
+    @content;
+  }
+}
+
+@mixin from905to1239 {
+  @media screen and (min-width: $laptopScreenMin) and (max-width: $laptopScreenMax) {
+    @content;
+  }
+}
+
+@mixin from1240to1439 {
+  @media screen and (min-width: $desktopScreenMin) and (max-width: $desktopScreenMax) {
+    @content;
+  }
+}
+
+@mixin from1440 {
+  @media screen and (min-width: $largeDesktopScreen) {
+    @content;
+  }
+}

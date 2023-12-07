@@ -14,39 +14,3 @@ $secondaryRed: #c00016;
 $baseColor: #6750a4;
 $hovering: #6750a414; // Hovering with 8% opacity
 $pressing: #6750a41f; // Pressing with 12% opacity
-
-$sm: 40rem; //640px
-$md: 48rem; //768px
-$lg: 64rem; //1024px
-$xl: 80rem; //1280px
-$xxl: 96rem; //1536px
-
-@mixin from640 {
-  @media screen and (min-width: $sm) {
-    @content;
-  }
-}
-
-@mixin from768 {
-  @media screen and (min-width: $md) {
-    @content;
-  }
-}
-
-@mixin from1024 {
-  @media screen and (min-width: $lg) {
-    @content;
-  }
-}
-
-@mixin from1280 {
-  @media screen and (min-width: $xl) {
-    @content;
-  }
-}
-
-@mixin from1536 {
-  @media screen and (min-width: $xxl) {
-    @content;
-  }
-}
