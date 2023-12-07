@@ -26,13 +26,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-          
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Style-guide Tests (Stylelint, Prettier and Eslint)
         run: pnpm code-style
-        
+
       - name: Install e2e dependencies
         run: pnpm playwright install --with-deps
 
