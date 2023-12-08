@@ -3,6 +3,6 @@ import { create } from 'zustand';
 import { IUseError } from './useError.types';
 
 export const useError = create<IUseError>()((set) => ({
-  errorMessage: 'we',
+  errorMessage: '',
   setErrorMessage: (errorMessage) => set({ errorMessage }),
 }));
