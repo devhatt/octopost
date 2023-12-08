@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useFeedbackError } from 'stores/feedbackError/useFeedbackError';
+import { useError } from 'stores/useError/useError';
 
 import scss from './FeedbackError.module.scss';
 
@@ -21,7 +21,7 @@ const animationVariants = {
 };
 
 function FeedbackError() {
-  const errorMessage = useFeedbackError((state) => state.errorMessage);
+  const errorMessage = useError((state) => state.errorMessage);
 
   const renderError = () => (
     <motion.div

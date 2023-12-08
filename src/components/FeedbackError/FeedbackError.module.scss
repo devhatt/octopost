@@ -1,4 +1,4 @@
-@use '../../styles/global.scss' as *;
+@use '~styles/global.scss' as *;
 
 .wrapper {
   width: 100%;
@@ -21,22 +21,23 @@
     background: url('./assets/IconErrorWhite.svg');
     background-repeat: no-repeat;
     background-position: center;
-
-    @include from599 {
-      background-image: url('./assets/IconErrorRed.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
   }
 
   .errorMessage {
     color: $primaryWhite;
-    @include from599 {
+  }
+}
+
+@include from599 {
+  .wrapper {
+    background: inherit;
+
+    .icon {
+      background-image: url('./assets/IconErrorRed.svg');
+    }
+
+    .errorMessage {
       color: $secondaryRed;
     }
-  }
-
-  @include from599 {
-    background: inherit;
   }
 }

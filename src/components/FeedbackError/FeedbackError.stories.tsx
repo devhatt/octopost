@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import type { Story } from '@ladle/react';
-import { useFeedbackError } from 'stores/feedbackError/useFeedbackError';
+import { useFeedbackError } from 'stores/useError/useFeedbackError';
 
 import FeedbackError from './FeedbackError';
 interface IFeedbackErrorProps {
