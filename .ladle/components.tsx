@@ -1,6 +1,8 @@
-import type { GlobalProvider } from '@ladle/react';
+import type { GlobalProvider, StoryDefault } from '@ladle/react';
 import React from 'react';
 
-import '../src/styles/base.scss';
+import './laddle.scss';
 
-export const Provider: GlobalProvider = ({ children }) => <div>{children}</div>;
+export const Provider: GlobalProvider = ({ children }) => {
+  return <div>{children}</div>;
+};

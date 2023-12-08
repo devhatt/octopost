@@ -15,24 +15,35 @@ jobs:
         node-version: [18.x]
 
     steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Code checkout
         uses: actions/checkout@v2
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
-      - name: Install and build
-        run: |
-          yarn install
-          yarn build
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Run Vitest tests
-        run: yarn test --watch=false
+      - name: Style-guide Tests (Stylelint, Prettier and Eslint)
+        run: pnpm code-style
 
-      - name: Lint tests
-        run: yarn lint
+      - name: Install e2e dependencies
+        run: pnpm playwright install --with-deps
 
-      - name: Stylelint tests
-        run: yarn stylelint
+      - name: Run unit Tests
+        run: pnpm test --silent
+
+      - name: Run e2e tests
+        run: pnpm playwright test
+
+      - name: Run ct tests
+        run: pnpm test-ct
+
+      - name: Build
+        run: pnpm build

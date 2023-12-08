@@ -1,13 +1,9 @@
-@use '../../styles/global';
+@use '~styles/global.scss';
 
-.wrapper {
-  width: 100%;
-}
+.header {
+  font-size: 2rem;
 
-.innerHeader {
-  padding: 1rem 3rem;
-  border: 0.1rem solid global.$primaryGray;
-  border-bottom: 0;
+  padding: 1rem 2rem;
 
   background-color: global.$secondaryPurple;
   border-radius: 2rem 2rem 0 0;
@@ -58,9 +54,6 @@
 
 .content {
   padding: 2.4rem 1.6rem;
-  border: 0.1rem solid global.$primaryGray;
-
-  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .textInput textarea {
@@ -86,4 +79,11 @@
   font-size: 1.6rem;
 
   margin-bottom: 2.4rem;
+}
+
+.mainComposerInputMedia {
+  display: flex;
+  gap: 3.2rem;
+
+  margin-top: 2.4rem;
 }
