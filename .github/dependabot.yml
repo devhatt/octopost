@@ -10,3 +10,4 @@ updates:
     groups:
       all-minor-updates:
         update-types: ['minor', 'patch']
+        
