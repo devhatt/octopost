@@ -1,7 +1,7 @@
 version: 2
 updates:
   - directory: '/'
-    package-ecosystem: 'npm'
+    package-ecosystem: 'pnpm'
     schedule:
       interval: 'weekly'
       time: '06:00'
@@ -10,4 +10,3 @@ updates:
     groups:
       all-minor-updates:
         update-types: ['minor', 'patch']
-
