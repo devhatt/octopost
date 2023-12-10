@@ -1,27 +1,30 @@
 ﻿import classNames from 'classnames';
-import { nanoid } from 'nanoid';
 
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
+import { TSocialNetworks } from '../stores/useSocialNetworkStore.types';
 import { ITabsProps } from './Tabs.types';
 
 function Tabs(props: ITabsProps) {
-  const RenderTabs = () =>
-    props.socialNetworks.map((socialNetwork) => (
-      <div
-        key={nanoid()}
-        onClick={() => props.handleCurrentTab(socialNetwork)}
-        className={classNames(
-          scss.tab,
-          socialNetwork.id === props.currentTab.id && scss.active
-        )}
-      >
-        {socialNetwork.icon}
-        <span className={scss.tabTitle}>{socialNetwork.name}</span>
-      </div>
-    ));
+  const tabClasses = (id: string) =>
+    classNames(scss.tab, id === props.currentTab.id && scss.active);
 
-  return <div className={scss.tabsContainer}>{RenderTabs()}</div>;
+  const renderTabs = (socialNetwork: TSocialNetworks) => (
+    <div
+      className={tabClasses(socialNetwork.id)}
+      key={`${socialNetwork.id}-${socialNetwork.name}`}
+      onClick={() => props.handleCurrentTab(socialNetwork)}
+    >
+      {socialNetwork.icon}
+      <span className={scss.tabTitle}>{socialNetwork.name}</span>
+    </div>
+  );
+
+  return (
+    <div className={scss.tabsContainer}>
+      {props.socialNetworks.map(renderTabs)}
+    </div>
+  );
 }
 
 export default Tabs;

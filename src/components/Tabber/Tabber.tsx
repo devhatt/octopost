@@ -1,26 +1,46 @@
 ﻿import { useState } from 'react';
 
+import { IPostMode } from 'modules/types';
+
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
+import { buildPostModeId } from './utils';
 
 import scss from '~components/Tabber/Tabber.module.scss';
 
 import PostModes from './PostModes/PostModes';
-import Preview from './Preview/Preview';
 import Tabs from './Tabs/Tabs';
 
-import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
+import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber() {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
-  const [currentTab, setCurrentTab] = useState(socialNetworks[0]);
-  const [currentPostMode, setCurrentPostMode] = useState(0);
 
-  const handleCurrentTab = (socialNetwork: TSocialNetworks) => {
+  const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
+  const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
+    buildPostModeId(currentTab)
+  );
+
+  const handleCurrentTab = (socialNetwork: ITab) => {
+    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
+      ? socialNetwork.currentPostModeId
+      : buildPostModeId(socialNetwork);
+
     setCurrentTab(socialNetwork);
-    setCurrentPostMode(0);
+    setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
-  const handleCurrentPostMode = (index: number) => setCurrentPostMode(index);
+  const handleCurrentPostMode = (
+    postMode: IPostMode,
+    postModeId: TPostModeId
+  ) => {
+    setCurrentPostModeId(postModeId);
+    currentTab.currentPostMode = postMode;
+    currentTab.currentPostModeId = postModeId;
+  };
+
+  const preview = currentTab.currentPostMode
+    ? currentTab.currentPostMode
+    : currentTab.postModes[0];
 
   return (
     <div>
@@ -33,12 +53,12 @@ function Tabber() {
         <div className={scss.postModesContainer}>
           <PostModes
             handleCurrentPostMode={handleCurrentPostMode}
-            currentPostMode={currentPostMode}
-            postModes={currentTab.postModes}
+            currentPostModeId={currentPostModeId}
+            currentTab={currentTab}
           />
         </div>
         <div className={scss.previewContainer}>
-          <Preview currentTab={currentTab} currentPostMode={currentPostMode} />
+          <preview.previewComponent text={`${preview.name} Placeholder`} />
         </div>
       </div>
     </div>
