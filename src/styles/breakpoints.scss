@@ -1,9 +1,6 @@
-$phoneScreen: 37.4375rem; // 599px
-$tabletScreen: 56.5rem; // 904px
-$laptopScreenMin: 56.5625rem; // 905px
-$laptopScreenMax: 77.4375rem; // 1239px - Nao esta sendo utilizado
-$desktopScreenMin: 77.5rem; // 1240px
-$desktopScreenMax: 89.9375rem; // 1439px - Nao esta sendo utilizado
+$phoneScreen: 37.5rem; // 600px
+$tabletScreen: 56.5rem; // 905px
+$desktopScreen: 77.5rem; // 1240px
 $largeDesktopScreen: 90rem; // 1440px
 
 $breakpointPhone: 20rem; // 320px
@@ -22,26 +19,32 @@ $breakpointDesktop: 120rem; // 1920px
   }
 }
 
-@mixin from599 {
+@mixin from600 {
   @media screen and (min-width: $phoneScreen) {
     @content;
   }
 }
 
 @mixin from905 {
-  @media screen and (min-width: $laptopScreenMin) {
+  @media screen and (min-width: $tabletScreen) {
     @content;
   }
 }
 
 @mixin from1240 {
-  @media screen and (min-width: $desktopScreenMin) {
+  @media screen and (min-width: $desktopScreen) {
     @content;
   }
 }
 
 @mixin from1440 {
   @media screen and (min-width: $largeDesktopScreen) {
+    @content;
+  }
+}
+
+@mixin from1920 {
+  @media screen and (min-width: $breakpointDesktop) {
     @content;
   }
 }
