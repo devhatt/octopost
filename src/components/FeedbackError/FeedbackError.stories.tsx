@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 
 import type { Story } from '@ladle/react';
-import { useFeedbackError } from 'stores/useError/useFeedbackError';
+import { useError } from 'stores/useError/useError';
 
 import FeedbackError from './FeedbackError';
+
 interface IFeedbackErrorProps {
   errorMessage: string;
 }
 
 export const FeedbackErrorComponent: Story<IFeedbackErrorProps> = (props) => {
-  const updateError = useFeedbackError((state) => state);
+  const setErrorMessage = useError((state) => state.setErrorMessage);
 
   useEffect(() => {
-    updateError.setErrorMessage(props.errorMessage);
+    setErrorMessage(props.errorMessage);
   }, [props.errorMessage]);
 
   return <FeedbackError />;
