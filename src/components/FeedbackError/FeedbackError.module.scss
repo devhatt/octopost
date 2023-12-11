@@ -14,13 +14,8 @@
 
   background: $secondaryRed;
 
-  .icon {
-    width: 28px;
-    height: 28px;
-
-    background: url('./assets/IconErrorWhite.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+  .errorIcon {
+    color: $primaryWhite;
   }
 
   .errorMessage {
@@ -32,8 +27,8 @@
   .wrapper {
     background: inherit;
 
-    .icon {
-      background-image: url('./assets/IconErrorRed.svg');
+    .errorIcon {
+      color: $secondaryRed;
     }
 
     .errorMessage {
