@@ -14,8 +14,7 @@
   font-display: block;
 }
 
-[class^='i'],
-[class*=' i'] {
+.icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   font-weight: normal;
@@ -23,7 +22,7 @@
   text-transform: none;
   line-height: 1;
   font-variant: normal;
-  speak: never;
+  speak-as: never;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -96,8 +95,4 @@ span.large {
 
 .disable {
   color: global.$secondaryGray;
-}
-
-.error {
-  color: global.$secondaryRed;
 }
