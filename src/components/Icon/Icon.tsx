@@ -2,6 +2,8 @@ import classNames from 'classnames';
 
 import { colors, icons, sizes } from './data';
 
+import scss from './icon.module.scss';
+
 import { IIconProps } from './icon.types';
 
 const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {
@@ -9,7 +11,13 @@ const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {
   const iconColors = color ? colors[color] : '';
   const iconSizes = size ? sizes[size] : '';
 
-  const iconClasses = classNames(iconIcons, iconSizes, iconColors, className);
+  const iconClasses = classNames(
+    scss.icon,
+    iconIcons,
+    iconSizes,
+    iconColors,
+    className
+  );
 
   return <span data-testid="icon-element" className={iconClasses} />;
 };
