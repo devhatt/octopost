@@ -72,6 +72,12 @@
   }
 }
 
+.iError {
+  &::before {
+    content: $iError;
+  }
+}
+
 span.small {
   font-size: 0.75rem;
 }
