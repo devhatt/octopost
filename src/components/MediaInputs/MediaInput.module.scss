@@ -1,12 +1,14 @@
 @use '../../styles/global';
 
 .manyMediaContainer {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(10.4rem, auto));
+  width: 100%;
 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 9.4rem));
   gap: 1.4rem;
 
   align-items: center;
+  justify-content: flex-start;
 
   .imageGroup {
     width: 10.4rem;
