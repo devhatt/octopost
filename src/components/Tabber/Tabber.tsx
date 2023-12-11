@@ -20,7 +20,7 @@ function Tabber() {
     buildPostModeId(currentTab)
   );
 
-  const handleCurrentTab = (socialNetwork: ITab) => {
+  const changeCurrentTab = (socialNetwork: ITab) => {
     const tabsCurrentPostModeId = socialNetwork.currentPostModeId
       ? socialNetwork.currentPostModeId
       : buildPostModeId(socialNetwork);
@@ -29,7 +29,7 @@ function Tabber() {
     setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
-  const handleCurrentPostMode = (
+  const changeCurrentPostMode = (
     postMode: IPostMode,
     postModeId: TPostModeId
   ) => {
@@ -45,14 +45,14 @@ function Tabber() {
   return (
     <div>
       <Tabs
-        handleCurrentTab={handleCurrentTab}
+        onChangeTab={changeCurrentTab}
         socialNetworks={socialNetworks}
         currentTab={currentTab}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            handleCurrentPostMode={handleCurrentPostMode}
+            onChangePostMode={changeCurrentPostMode}
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
           />

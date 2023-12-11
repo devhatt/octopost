@@ -13,7 +13,7 @@ function Tabs(props: ITabsProps) {
     <div
       className={tabClasses(socialNetwork.id)}
       key={`${socialNetwork.id}-${socialNetwork.name}`}
-      onClick={() => props.handleCurrentTab(socialNetwork)}
+      onClick={() => props.onChangeTab(socialNetwork)}
     >
       {socialNetwork.icon}
       <span className={scss.tabTitle}>{socialNetwork.name}</span>

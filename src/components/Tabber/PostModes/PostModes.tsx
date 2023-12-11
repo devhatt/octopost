@@ -9,20 +9,20 @@ import { IPostModesProps } from './PostModes.types';
 
 function PostModes(props: IPostModesProps) {
   const postModeClasses = (index: number) =>
-    classNames(
-      scss.postModeTitle,
-      props.currentPostModeId === buildPostModeId(props.currentTab, index) &&
-        scss.active
-    );
+    classNames({
+      [scss.postModeTitle]: true,
+      [scss.active]:
+        props.currentPostModeId === buildPostModeId(props.currentTab, index),
+    });
 
-  const renderPostModes = (postMode: IPostMode, index: number) => {
+  const renderPostMode = (postMode: IPostMode, index: number) => {
     const postModeId = buildPostModeId(props.currentTab, index);
 
     return (
       <span
         key={postModeId}
         className={postModeClasses(index)}
-        onClick={() => props.handleCurrentPostMode(postMode, postModeId)}
+        onClick={() => props.onChangePostMode(postMode, postModeId)}
       >
         {postMode.name}
       </span>
@@ -31,7 +31,7 @@ function PostModes(props: IPostModesProps) {
 
   return (
     <div className={scss.postModesHeader}>
-      {props.currentTab.postModes.map(renderPostModes)}
+      {props.currentTab.postModes.map(renderPostMode)}
     </div>
   );
 }
