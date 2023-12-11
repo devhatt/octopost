@@ -2,10 +2,18 @@ import { Story } from '@ladle/react';
 
 import Icon from './Icon';
 
-export const iconFont: Story = () => {
+import { IIconProps } from './icon.types';
+
+export const iconFont: Story<IIconProps> = (props) => {
   return (
     <div>
-      <Icon icon="at" color="active" size="large" />
+      <Icon {...props} />
     </div>
   );
+};
+
+iconFont.args = {
+  color: 'active',
+  icon: 'at',
+  size: 'large',
 };

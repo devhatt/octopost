@@ -1,0 +1,38 @@
+@use '~styles/global.scss' as *;
+
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  gap: 1rem;
+
+  align-items: center;
+
+  margin-top: 3.2rem;
+  padding-left: 1rem;
+  border-left: 8px solid $secondaryRed;
+
+  background: $secondaryRed;
+
+  .errorIcon {
+    color: $primaryWhite;
+  }
+
+  .errorMessage {
+    color: $primaryWhite;
+  }
+}
+
+@include from599 {
+  .wrapper {
+    background: inherit;
+
+    .errorIcon {
+      color: $secondaryRed;
+    }
+
+    .errorMessage {
+      color: $secondaryRed;
+    }
+  }
+}

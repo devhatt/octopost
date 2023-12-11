@@ -1,7 +1,8 @@
 import { Story } from '@ladle/react';
 
+import Icon from '~components/Icon/Icon';
+
 import Button from './Button';
-import LocationIcon from './icons/LocationIcon';
 
 export const ButtonStories: Story = () => (
   <div>
@@ -17,22 +18,22 @@ export const ButtonStories: Story = () => (
       Secondary Outlined
     </Button>
     <br />
-    <Button circle icon={<LocationIcon />} />
-    <Button variant="container" circle icon={<LocationIcon />} />
-    <Button variant="outlined" circle icon={<LocationIcon />} />
+    <Button circle icon={<Icon icon="at" />} />
+    <Button variant="container" circle icon={<Icon icon="pin" />} />
+    <Button variant="outlined" circle icon={<Icon icon="hashtag" />} />
     <br />
-    <Button color="secondary" circle icon={<LocationIcon />} />
+    <Button color="secondary" circle icon={<Icon icon="error" />} />
     <Button
       color="secondary"
       variant="container"
       circle
-      icon={<LocationIcon />}
+      icon={<Icon icon="emote" />}
     />
     <Button
       color="secondary"
       variant="outlined"
       circle
-      icon={<LocationIcon />}
+      icon={<Icon icon="canva" />}
     />
   </div>
 );
