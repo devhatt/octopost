@@ -1,0 +1,21 @@
+﻿@use '../../../styles/global';
+
+.postModesHeader {
+  width: fit-content;
+
+  align-self: flex-end;
+}
+
+.postModeTitle {
+  color: global.$primaryGray;
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  padding: 1.2rem;
+
+  cursor: pointer;
+
+  &.active {
+    color: global.$secondaryPurple;
+  }
+}
