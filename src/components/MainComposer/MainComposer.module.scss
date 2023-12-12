@@ -5,7 +5,51 @@
 
   padding: 1rem 2rem;
 
-  column-gap: 1rem;
+  background-color: global.$secondaryPurple;
+  border-radius: 2rem 2rem 0 0;
+
+  .mainContent {
+    .mainText {
+      color: global.$primaryWhite;
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 2.8rem;
+
+      &::before {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        display: inline-block;
+
+        float: left;
+
+        margin-top: 0.7rem;
+        margin-right: 1rem;
+
+        background-color: global.$primaryWhite;
+        border-radius: 50%;
+
+        content: '';
+      }
+
+      &::after {
+        width: 2rem;
+        height: 0.5rem;
+
+        display: inline-block;
+
+        float: right;
+
+        margin-top: 1.4rem;
+        margin-left: 1rem;
+
+        background-color: global.$primaryWhite;
+
+        content: '';
+      }
+    }
+  }
 }
 
 .content {

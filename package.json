@@ -5,7 +5,6 @@
     "node": "18.18.2",
     "pnpm": "^8"
   },
-  "packageManager": "yarn@1.22.19",
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
@@ -17,11 +16,11 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:coverage": "vitest --coverage",
-    "test:ct": "yarn test-ct",
+    "test:ct": "pnpm test-ct",
     "test:e2e": "playwright test",
-    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && electron-builder --windows --config electron-builder.json",
-    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
+    "electron:dev": "concurrently \"cross-env BROWSER=none pnpm start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "pnpm build && electron-builder --windows --config electron-builder.json",
+    "electron:dist": "pnpm build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
     "prettier": "prettier ./src --check --ignore-unknown",

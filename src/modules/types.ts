@@ -48,15 +48,17 @@ export interface IWidget {
   component: React.ComponentType<{ onChange: () => TGenericObject }>;
 }
 
+export interface IPreviewComponent {
+  text: string;
+  medias?: File[];
+  customData?: TGenericObject;
+}
+
 export interface IPostMode {
   name: string;
   validators: TValidators;
   widgets: IWidget[];
-  previewComponent: React.ComponentType<{
-    text: string;
-    medias: File[];
-    customData: TGenericObject;
-  }>;
+  previewComponent: React.FC<IPreviewComponent>;
 }
 
 export interface IOctoModule {
