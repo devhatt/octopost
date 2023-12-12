@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '~styles/global.scss';
 
 .manyMediaContainer {
   width: 100%;
@@ -8,10 +8,10 @@
   gap: 1.4rem;
 
   align-items: center;
-  justify-content: flex-start;
+  justify-content: start;
 
   .imageGroup {
-    width: 10.4rem;
+    width: 11.2rem;
 
     position: relative;
 
