@@ -16,6 +16,7 @@ const Home = () => {
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>
             <Sidebar />
+            <window.octopost />
           </div>
           <div className={scss.gridInput}>
             <MainComposer />

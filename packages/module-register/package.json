@@ -1,0 +1,30 @@
+{
+  "name": "@octopost/octomodule",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "main": "./dist/counter.umd.cjs",
+  "module": "./dist/counter.js",
+  "types": "./index.d.ts",
+  "exports": {
+    "types": "./index.d.ts",
+    "import": "./dist/counter.js",
+    "require": "./dist/counter.umd.cjs"
+  },
+  "scripts": {
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "add": "^2.0.6",
+    "eslint": "^8.55.0",
+    "eslint-define-config": "^2.0.0",
+    "prettier": "^3.1.1",
+    "typescript": "5.2.2",
+    "vite": "^5.0.0"
+  }
+}
