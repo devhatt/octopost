@@ -1,0 +1,32 @@
+{
+  "name": "@octopost/module-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.umd.cjs"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "add": "^2.0.6",
+    "eslint": "^8.55.0",
+    "eslint-define-config": "^2.0.0",
+    "prettier": "^3.1.1",
+    "typescript": "5.2.2",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.6.4",
+    "vite-tsconfig-paths": "^4.2.1"
+  }
+}
