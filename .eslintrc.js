@@ -112,8 +112,10 @@ module.exports = defineConfig({
       },
     },
     {
-      files: ['*.js'],
+      files: ['**/*.js'],
+      parserOptions: { sourceType: 'module' },
       rules: {
+        'no-undef': 'off',
         'no-console': 'off',
         '@typescript-eslint/no-var-requires': 'off',
       },

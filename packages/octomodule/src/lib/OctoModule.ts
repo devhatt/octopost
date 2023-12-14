@@ -1,4 +1,4 @@
-import { EventEmitter } from './lib/EventEmitter';
+import { EventEmitter } from './EventEmitter';
 
 export class OctoModule extends EventEmitter {
   private modules = new Map<string, unknown>();

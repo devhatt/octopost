@@ -5,13 +5,14 @@
     "node": "18.18.2",
     "pnpm": "^8"
   },
-  "packageManager": "yarn@1.22.19",
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
-    "eject": "vite eject",
+    "start:web": "vite cross-env isElectron=false",
+    "start:app": "vite cross-env isElectron=true",
+    "build:web": "vite build cross-env isElectron=false",
+    "build:app": "vite build cross-env isElectron=true",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "test": "vitest",
@@ -19,9 +20,6 @@
     "test:coverage": "vitest --coverage",
     "test:ct": "yarn test-ct",
     "test:e2e": "playwright test",
-    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && electron-builder --windows --config electron-builder.json",
-    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
     "prettier": "prettier ./src --check --ignore-unknown",
@@ -31,6 +29,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@octopost/octomodule": "link:packages\\octomodule",
     "@sentry/react": "^7.81.1",
     "@types/react-helmet": "^6.1.11",
     "@vitejs/plugin-react-swc": "^3.5.0",

@@ -1,4 +1,6 @@
-type Events = 'load' | 'loaded';
+/* eslint-disable */
+
+type Events = 'load' | 'loaded-module';
 
 export class EventEmitter {
   private events: Record<string, Function[]>;
@@ -7,7 +9,7 @@ export class EventEmitter {
     this.events = {};
   }
 
-  subscribe(eventName: Events, fn: Function) {
+  subscribe(eventName: Events, fn: Function): Function {
     if (!this.events[eventName]) {
       this.events[eventName] = [];
     }

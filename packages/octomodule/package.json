@@ -4,16 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
-  "main": "./dist/counter.umd.cjs",
-  "module": "./dist/counter.js",
-  "types": "./index.d.ts",
+  "main": "./dist/octomodule.umd.cjs",
+  "module": "./dist/octomodule.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    "types": "./index.d.ts",
-    "import": "./dist/counter.js",
-    "require": "./dist/counter.umd.cjs"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/octomodule.js",
+    "require": "./dist/octomodule.umd.cjs"
   },
   "scripts": {
     "build": "tsc && vite build"
@@ -25,6 +24,8 @@
     "eslint-define-config": "^2.0.0",
     "prettier": "^3.1.1",
     "typescript": "5.2.2",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.6.4",
+    "vite-tsconfig-paths": "^4.2.1"
   }
 }
