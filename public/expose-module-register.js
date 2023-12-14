@@ -1,1 +1,1 @@
-export const moduleRegister = window.moduleRegister;
+export const manager = window.$$manager;

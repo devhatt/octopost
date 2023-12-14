@@ -29,7 +29,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "@octopost/octomodule": "link:packages\\octomodule",
+    "@octopost/module-manager": "*",
     "@sentry/react": "^7.81.1",
     "@types/react-helmet": "^6.1.11",
     "@vitejs/plugin-react-swc": "^3.5.0",

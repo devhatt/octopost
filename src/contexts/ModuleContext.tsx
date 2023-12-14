@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 
-import { OctoModule, moduleRegister } from '@octopost/octomodule';
+import { OctoModule, manager } from '@octopost/module-manager';
 
 export interface ModuleInterface {
   components: ReactElement[];
@@ -25,9 +25,9 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
   const [modules, setModules] = useState<OctoModule[]>([]);
 
   useEffect(() => {
-    const unsubscribe = moduleRegister.subscribe('loaded-module', () => {
+    const unsubscribe = manager.subscribe('loaded-module', () => {
       // eslint-disable-next-line no-console
-      setModules(moduleRegister.loadModules() as any);
+      setModules(manager.loadModules() as any);
     });
 
     return () => unsubscribe();

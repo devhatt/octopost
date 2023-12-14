@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@octopost/octomodule':
-        specifier: link:packages\octomodule
-        version: link:packages/octomodule
+      '@octopost/module-manager':
+        specifier: '*'
+        version: link:packages/module-manager
       '@sentry/react':
         specifier: ^7.81.1
         version: 7.84.0(react@18.2.0)
@@ -208,31 +208,7 @@ importers:
         specifier: ^4.4.6
         version: 4.4.7(@types/react@18.2.41)(react@18.2.0)
 
-  packages/module-register:
-    devDependencies:
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.12.0
-        version: 6.12.0(@typescript-eslint/parser@6.13.2)(eslint@8.55.0)(typescript@5.2.2)
-      add:
-        specifier: ^2.0.6
-        version: 2.0.6
-      eslint:
-        specifier: ^8.55.0
-        version: 8.55.0
-      eslint-define-config:
-        specifier: ^2.0.0
-        version: 2.0.0
-      prettier:
-        specifier: ^3.1.1
-        version: 3.1.1
-      typescript:
-        specifier: 5.2.2
-        version: 5.2.2
-      vite:
-        specifier: ^5.0.0
-        version: 5.0.5(@types/node@20.10.3)(sass@1.69.5)
-
-  packages/octomodule:
+  packages/module-manager:
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.12.0
