@@ -1,6 +1,6 @@
 {
   "name": "@octopost/module-manager",
-  "private": true,
+  "private": false,
   "version": "0.1.0",
   "type": "module",
   "files": [
@@ -28,5 +28,8 @@
     "vite": "^5.0.0",
     "vite-plugin-dts": "^3.6.4",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
