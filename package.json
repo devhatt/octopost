@@ -1,11 +1,10 @@
 {
-  "name": "octopost",
+  "name": "@octopost/core",
   "version": "0.1.0",
   "engines": {
     "node": "18.18.2",
     "pnpm": "^8"
   },
-  "packageManager": "yarn@1.22.19",
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
@@ -17,20 +16,24 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:coverage": "vitest --coverage",
-    "test:ct": "yarn test-ct",
+    "test:ct": "pnpm test-ct",
     "test:e2e": "playwright test",
-    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
-    "electron:build": "yarn build && electron-builder --windows --config electron-builder.json",
-    "electron:dist": "yarn build && tsc -p electron && electron-builder --mac --dir",
+    "electron:dev": "concurrently \"cross-env BROWSER=none pnpm start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "pnpm build && electron-builder --windows --config electron-builder.json",
+    "electron:dist": "pnpm build && tsc -p electron && electron-builder --mac --dir",
     "prepare": "husky install",
     "stylelint": "stylelint \"**/*.scss\"",
     "prettier": "prettier ./src --check --ignore-unknown",
     "code-style": "concurrently \"pnpm lint\" \"pnpm stylelint\" \"pnpm prettier\"",
     "ladle": "ladle serve",
     "test-ct": "playwright test -c playwright-ct.config.ts",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@sentry/react": "^7.81.1",
     "@types/react-helmet": "^6.1.11",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -55,6 +58,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/cz-commitlint": "^18.4.3",
@@ -93,6 +97,7 @@
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "5.2.2",
+    "typescript-plugin-css-modules": "^5.0.2",
     "vite-plugin-electron": "^0.15.4",
     "vite-plugin-native": "^0.2.0",
     "vitest": "^0.34.6",

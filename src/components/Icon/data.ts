@@ -10,6 +10,7 @@ export const icons: Record<IIconProps['icon'], string> = {
   pin: scss.iPin,
   gpt: scss.iGpt,
   canva: scss.iCanva,
+  error: scss.iError,
 };
 
 export const sizes = {

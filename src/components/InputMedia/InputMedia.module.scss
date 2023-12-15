@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '~styles/global.scss';
 
 .button,
 .buttonSelected {
@@ -26,7 +26,7 @@
 }
 
 .buttonSelected {
-  width: 10.4rem;
+  width: 100%;
   height: 10.4rem;
 
   border: 2px solid global.$tertiaryPurple;
