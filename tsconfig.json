@@ -48,7 +48,7 @@
     "tests-examples/**/*",
     "playwright/**/*",
     "e2e-testing/**/*"
-  ],
+, "module.js"  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

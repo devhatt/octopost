@@ -1,5 +1,24 @@
+import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
+import express from 'express';
 import path from 'path';
+const expressApp = express();
+const port = 3000;
+
+expressApp.use(cors());
+
+expressApp.get('/modules', (req, res) => {
+  res.sendFile(
+    path.resolve(
+      app.getPath('documents'),
+      'octopost',
+      'plugins',
+      'facebook-plugin',
+      'dist',
+      'facebook-plugin.js'
+    )
+  );
+});
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
@@ -16,12 +35,17 @@ if (!app.requestSingleInstanceLock()) {
 let win: BrowserWindow | null;
 
 function createWindow() {
+  expressApp.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`Example app listening on port ${port}`);
+  });
+
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
       preload: path.join(__dirname, './preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
 
