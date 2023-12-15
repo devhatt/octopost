@@ -1,5 +1,5 @@
 ---
-'octopost': patch
+'@octopost/core': patch
 ---
 
 * add a release pipeline
