@@ -1,15 +1,17 @@
-@use '../../styles/global';
+@use '~styles/global.scss';
 
 .manyMediaContainer {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(10.4rem, auto));
+  width: 100%;
 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 9.7rem));
   gap: 1.4rem;
 
   align-items: center;
+  justify-content: start;
 
   .imageGroup {
-    width: 10.4rem;
+    width: 11.2rem;
 
     position: relative;
 

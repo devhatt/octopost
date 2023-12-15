@@ -3,17 +3,6 @@
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowImportingTsExtensions": true,
     "baseUrl": "src",
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "paths": {
       "~components/*": ["components/*"],
       "~config/*": ["config/*"],
@@ -21,7 +10,7 @@
       "~enums/*": ["enums/*"],
       "~hooks/*": ["hooks/*"],
       "~interfaces/*": ["interfaces/*"],
-      "~i18n": ["i18n/index.tsx"],
+      "~i18n": ["i18n/"],
       "~pages/*": ["pages/*"],
       "~services/*": ["services/*"],
       "~snippets/*": ["snippets/*"],
@@ -30,6 +19,18 @@
       "~types/*": ["types/*"],
       "~utils/*": ["utils/*"]
     },
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
 

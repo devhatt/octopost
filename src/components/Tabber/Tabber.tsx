@@ -1,23 +1,65 @@
-import PreviewContainer from '~components/ComponentPreview/PreviewContainer';
-import Preview from '~components/Preview/Preview';
+﻿import { useState } from 'react';
 
-import RenderNetwork from './components/TabberCompose/RenderNetwork';
+import { IPostMode } from 'modules/types';
 
-import scss from './Tabber.module.scss';
+import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
+import { buildPostModeId } from './utils';
 
-import { ITabberProps } from './Tabber.types';
+import scss from '~components/Tabber/Tabber.module.scss';
 
-function Tabber(props: ITabberProps) {
+import PostModes from './PostModes/PostModes';
+import Tabs from './Tabs/Tabs';
+
+import { ITab, TPostModeId } from './Tabber.types';
+
+function Tabber() {
+  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
+
+  const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
+  const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
+    buildPostModeId(currentTab)
+  );
+
+  const changeCurrentTab = (socialNetwork: ITab) => {
+    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
+      ? socialNetwork.currentPostModeId
+      : buildPostModeId(socialNetwork);
+
+    setCurrentTab(socialNetwork);
+    setCurrentPostModeId(tabsCurrentPostModeId);
+  };
+
+  const changeCurrentPostMode = (
+    postMode: IPostMode,
+    postModeId: TPostModeId
+  ) => {
+    setCurrentPostModeId(postModeId);
+    currentTab.currentPostMode = postMode;
+    currentTab.currentPostModeId = postModeId;
+  };
+
+  const preview = currentTab.currentPostMode
+    ? currentTab.currentPostMode
+    : currentTab.postModes[0];
+
   return (
-    <div className={scss.social}>
-      <div className={scss.tabberContainer}>
-        <RenderNetwork socialList={props.socialList} />
-      </div>
-      <div className={scss.flexSelect}>
-        <div className={scss.contentContainer}>Content Imaginário</div>
-        <PreviewContainer>
-          <Preview>Preview Imaginário</Preview>
-        </PreviewContainer>
+    <div>
+      <Tabs
+        onChangeTab={changeCurrentTab}
+        socialNetworks={socialNetworks}
+        currentTab={currentTab}
+      />
+      <div className={scss.gridContainer}>
+        <div className={scss.postModesContainer}>
+          <PostModes
+            onChangePostMode={changeCurrentPostMode}
+            currentPostModeId={currentPostModeId}
+            currentTab={currentTab}
+          />
+        </div>
+        <div className={scss.previewContainer}>
+          <preview.previewComponent text={`${preview.name} Placeholder`} />
+        </div>
       </div>
     </div>
   );

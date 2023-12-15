@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import { ModuleContext } from 'contexts/ModuleContext';
 
+import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
 import MediaInputs from '~components/MediaInputs/MediaInput';
@@ -28,8 +29,8 @@ const Home = () => {
             <MainComposer />
             <MediaInputs />
             <FirstComment />
+            <FeedbackError />
           </div>
-          <div className={scss.gridTabs} />
         </div>
         <SavBar />
       </div>
