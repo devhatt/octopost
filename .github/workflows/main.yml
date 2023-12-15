@@ -28,7 +28,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Style-guide Tests (Stylelint, Prettier and Eslint)
         run: pnpm code-style
