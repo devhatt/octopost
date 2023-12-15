@@ -29,6 +29,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@octopost/module-manager": "*",
     "@sentry/react": "^7.81.1",
     "@types/react-helmet": "^6.1.11",
