@@ -1,5 +1,5 @@
 {
-  "name": "octopost",
+  "name": "@octopost/core",
   "version": "0.1.0",
   "engines": {
     "node": "18.18.2",
@@ -27,9 +27,13 @@
     "code-style": "concurrently \"pnpm lint\" \"pnpm stylelint\" \"pnpm prettier\"",
     "ladle": "ladle serve",
     "test-ct": "playwright test -c playwright-ct.config.ts",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "@sentry/react": "^7.81.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "classnames": "^2.3.2",
@@ -51,6 +55,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/cz-commitlint": "^18.4.3",
@@ -85,7 +90,7 @@
     "stylelint": "^15.11.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-order": "^6.0.3",
-    "typescript": "^5.3.2",
+    "typescript": "5.2.2",
     "typescript-plugin-css-modules": "^5.0.2",
     "vite-plugin-electron": "^0.15.4",
     "vite-plugin-native": "^0.2.0",
