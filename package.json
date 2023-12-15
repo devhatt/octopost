@@ -29,8 +29,8 @@
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "commit": "git-cz",
     "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "ci:version": "changeset version",
+    "ci:publish": "pnpm build && changeset publish"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
