@@ -17,23 +17,41 @@ jobs:
       issues: write # to post issue comments
       pull-requests: write # to create pull request
 
-    strategy:
-      matrix:
-        node-version: [18.x]
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NODE_VERSION: 18.18.2
+      STORE_PATH: .pnpm-store
 
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - name: Package Manager
-        uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2
         with:
           version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile]
 
-      - name: Configuring Node ${{ matrix.node-version }}
+      - name: Get PNPM store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup PNPM cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+
+      - name: Configuring Node ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -47,11 +65,7 @@ jobs:
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm release
-          version: pnpm version-packages
+          publish: pnpm ci:publish
+          version: pnpm ci:version
           title: '[BUMP] Lançar uma release para o octopost!'
           commit: 'chore: bump packages version'
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
