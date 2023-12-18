@@ -1,3 +1,6 @@
+// temporario enquanto os types nao sao migrados
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Events = 'load' | 'loaded';
 
 export class EventEmitter {
