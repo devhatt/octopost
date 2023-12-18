@@ -2,6 +2,9 @@ import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
 import express from 'express';
 import path from 'path';
+
+import resolveModulePath from './utils/resolveModulePath';
+
 const expressApp = express();
 const port = 3000;
 
@@ -18,6 +21,22 @@ expressApp.get('/modules', (req, res) => {
       'facebook-plugin.js'
     )
   );
+});
+
+expressApp.get('/package', async (req, res) => {
+  const { packagePath } = req.query;
+  if (!packagePath) {
+    res.status(404).json('caminho para o package.json não-encontrado');
+    // necessário para o typescript entender que o packagePath nunca será undefined
+    return;
+  }
+
+  try {
+    const mainContent = await resolveModulePath(packagePath.toString());
+    res.json(mainContent);
+  } catch (error) {
+    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+  }
 });
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
