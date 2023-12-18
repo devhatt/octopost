@@ -2,7 +2,7 @@
   "name": "@octopost/core",
   "version": "0.1.0",
   "engines": {
-    "node": "18",
+    "node": "^18",
     "pnpm": "^8"
   },
   "private": true,
