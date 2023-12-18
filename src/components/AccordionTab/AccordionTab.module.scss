@@ -1,49 +1,55 @@
 @use '../../styles/global.scss' as *;
+@use '../../styles/breakpoints.scss';
 
 .container {
-  display: flex;
-  flex-direction: column;
+  @include breakpoints.from600 {
+    display: flex;
+    flex-direction: column;
 
-  align-items: stretch;
+    align-items: stretch;
 
-  font-family: $mainFont;
+    font-family: $mainFont;
 
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 
-  border: 1px solid #cbc4cf;
+    border: 1px solid #cbc4cf;
 
-  background-color: $primaryWhite;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 17px 17px 0 0;
+    background-color: $primaryWhite;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 17px 17px 0 0;
+  }
 }
 
 .header {
-  width: 100%;
+  display: none;
+  @include breakpoints.from600 {
+    width: 100%;
 
-  display: flex;
-  flex-flow: row nowrap;
+    display: flex;
+    flex-flow: row nowrap;
 
-  align-items: center;
+    align-items: center;
 
-  justify-content: space-between;
+    justify-content: space-between;
 
-  color: $primaryWhite;
-  font-size: 1.6rem;
-  line-height: 1;
+    color: $primaryWhite;
+    font-size: 1.6rem;
+    line-height: 1;
 
-  padding: 1.2rem;
+    padding: 1.2rem;
 
-  position: relative;
+    position: relative;
 
-  background-color: $secondaryPurple;
-  border-radius: 17px 17px 0 0;
+    background-color: $secondaryPurple;
+    border-radius: 17px 17px 0 0;
 
-  &::before {
-    font-size: 1.8rem;
+    &::before {
+      font-size: 1.8rem;
 
-    margin-right: 1rem;
+      margin-right: 1rem;
 
-    content: '⬤';
+      content: '⬤';
+    }
   }
 }
 

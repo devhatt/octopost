@@ -20,13 +20,25 @@ function MainComposer() {
         </div>
         <div className={scss.contentBot}>
           <div className={scss.contentBotTop}>
-            <h2>content-bot-top</h2>
+            <div>left</div>
+            <div className={scss.socialMedias}>
+              <p>Right</p>
+            </div>
           </div>
           <div className={scss.contentBotBot}>
             <div className={scss.mainComposerInputMedia}>
               <MediaInputs />
             </div>
-            <h2>content-bot-bot</h2>
+            {/* <h2>content-bot-bot</h2> */}
+            <div className={scss.iconPulsSave}>
+              <div className={scss.icons}>
+                <p>left</p>
+              </div>
+              <div>
+                <p>right</p>
+              </div>
+            </div>
+
             <p>{t('We have a lot of work')}</p>
           </div>
         </div>
