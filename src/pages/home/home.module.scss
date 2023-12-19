@@ -62,26 +62,6 @@
   .gridInput > :not(:first-child) {
     display: none;
   }
-
-  @include breakpoints.from600 {
-    width: 100%;
-
-    display: grid;
-    grid-template-areas:
-      'switches input'
-      'switches tabs';
-    grid-template-rows: 1fr 2fr;
-    grid-template-columns: 28.4rem 1fr;
-    gap: 10px;
-
-    .gridSwitches {
-      display: block;
-    }
-
-    .gridInput > :not(:first-child) {
-      display: block;
-    }
-  }
 }
 
 .gridSwitches {
@@ -96,7 +76,32 @@
 
 .gridSavBar {
   display: none;
-  @include breakpoints.from600 {
+}
+
+@include breakpoints.from600 {
+  .gridContainer {
+    width: 100%;
+
+    display: grid;
+    grid-template-areas:
+      'switches input'
+      'switches tabs';
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 28.4rem 1fr;
+    gap: 10px;
+
+    padding: 0 2%;
+
+    .gridSwitches {
+      display: block;
+    }
+
+    .gridInput > :not(:first-child) {
+      display: block;
+    }
+  }
+
+  .gridSavBar {
     display: block;
   }
 }
