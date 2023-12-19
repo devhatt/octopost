@@ -6,7 +6,14 @@ import resolveModulePath from './resolveModulePath';
 
 import { IPluginMetadata } from './readPackage/readPackage.types';
 
-async function resolveModulesMetadata(pluginsPath: string) {
+/**
+ * function to get all necessary metadata about the plugins installed
+ * @param {strin} pluginsPath - path to folder where all plugins are installed
+ * @returns metadata of all plugins installed
+ */
+async function resolveModulesMetadata(
+  pluginsPath: string
+): Promise<IPluginMetadata[]> {
   const plugins = await fs.readdir(pluginsPath);
 
   const metadatas = await Promise.all(
