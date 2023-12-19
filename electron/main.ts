@@ -28,7 +28,7 @@ expressApp.get('/metadata', async (req, res) => {
   const { packagePath } = req.query;
   if (!packagePath) {
     res.status(404).json('caminho para o os plugins não-encontrado');
-    // necessário para o typescript entender que o packagePath nunca será undefined
+    // Required for TypeScript to understand that the packagePath will never be undefined
     return;
   }
 
