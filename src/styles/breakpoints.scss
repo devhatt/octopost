@@ -1,11 +1,11 @@
-$phoneScreen: 37.5rem; // 600px **
-$tabletScreen: 56.5rem; // 905px **
+$phoneScreen: 37.5rem; // 600px
+$tabletScreen: 56.5rem; // 905px
 $desktopScreen: 77.5rem; // 1240px
-$largeDesktopScreen: 90rem; // 1440px **
+$largeDesktopScreen: 90rem; // 1440px
 
 $breakpointPhone: 20rem; // 320px
 $breakpointTablet: 30rem; // 480px
-$breakpointDesktop: 120rem; // 1920px **
+$breakpointDesktop: 120rem; // 1920px
 
 @mixin from320 {
   @media screen and (min-width: $breakpointPhone) {
