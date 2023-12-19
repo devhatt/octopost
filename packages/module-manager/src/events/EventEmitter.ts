@@ -1,5 +1,6 @@
-import type { GenericFunction } from '@utils/primitives';
-import { IEventEmitter } from './types';
+import type { IEventEmitter } from './types';
+
+import type { GenericFunction } from '~/utils/primitives';
 
 export abstract class EventEmitter implements IEventEmitter {
   private events: Record<string, GenericFunction[]>;
