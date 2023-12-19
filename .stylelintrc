@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-sass-guidelines",
   "plugins": ["stylelint-order"],
+  "ignoreFiles": [".next", ".vscode", "node_modules", "*.*", "!*.scss"],
   "rules": {
     "scss/dollar-variable-pattern": "(^[a-z])[A-Za-z0-9]+$",
 
