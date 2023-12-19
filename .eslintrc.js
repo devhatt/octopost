@@ -10,6 +10,7 @@ module.exports = defineConfig({
     '.vscode',
     'node_modules',
     '!*.scss',
+    'packages/**/*',
   ],
   extends: ['eslint:recommended'],
   plugins: ['prettier', 'eslint-plugin-import-helpers'],

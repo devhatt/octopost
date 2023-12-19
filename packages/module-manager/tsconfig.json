@@ -1,7 +1,12 @@
 {
   "extends": ["../../tsconfig.json"],
   "compilerOptions": {
-    
+    "rootDir": ".",
+    "types": ["./src/index.d.ts"],
+    "baseUrl": "src",
+    "paths": {
+      "~/utils/*": ["utils/*"]
+    }
   },
-  "include": ["main.ts"]
+  "include": ["./src/**/*"]
 }

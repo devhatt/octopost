@@ -1,13 +1,14 @@
-type Events = 'load' | 'loaded';
+import type { GenericFunction } from '@utils/primitives';
+import { IEventEmitter } from './types';
 
-export class EventEmitter {
-  private events: Record<string, Function[]>;
+export abstract class EventEmitter implements IEventEmitter {
+  private events: Record<string, GenericFunction[]>;
 
   constructor() {
     this.events = {};
   }
 
-  subscribe(eventName: Events, fn: Function) {
+  subscribe(eventName: string, fn: GenericFunction): GenericFunction {
     if (!this.events[eventName]) {
       this.events[eventName] = [];
     }
@@ -21,7 +22,7 @@ export class EventEmitter {
     };
   }
 
-  emit(eventName: Events, data: any) {
+  emit(eventName: string, data: unknown): void {
     const event = this.events[eventName];
     if (event) {
       event.forEach((fn) => {

@@ -3,9 +3,9 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     lib: {
-      entry: 'main.ts',
-      name: 'octomodule',
-      fileName: 'octomodule',
+      entry: 'src/index.ts',
+      name: 'ModuleManager',
+      fileName: 'main',
     },
   },
 });
