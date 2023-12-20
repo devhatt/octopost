@@ -1,7 +1,7 @@
 name: Unassign Issue After 7 days
 on:
   schedule:
-    - cron: "0 0 * * *" ### Runs everyday at 00h
+    - cron: '0 0 * * *' ### Runs everyday at 00h
 
 jobs:
   unassign-issues-labeled-waiting-for-contributor-after-7-days-of-inactivity:
@@ -11,4 +11,4 @@ jobs:
       - uses: boundfoxstudios/action-unassign-contributor-after-days-of-inactivity@main
         with:
           last-activity: 7 # After how many days the issue should get unassigned ()
-          message: "Automatically unassigned after 7 days of inactivity."
+          message: 'Automatically unassigned after 7 days of inactivity.'

@@ -4,7 +4,6 @@ about: Suggest a feature to be added to Octopost
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Describe the feature**
@@ -35,6 +34,7 @@ A clear and short description of the feature.
   </summary>
 
 [Provide any details or suggestions on how this feature could be implemented.]
+
 </details>
 
 <br>
@@ -45,6 +45,7 @@ A clear and short description of the feature.
   </summary>
 
 [Include any visual representations or concepts if those are available and applicable.]
+
 </details>
 
 <br>
