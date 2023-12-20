@@ -1,7 +1,7 @@
 const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
-  extends: ['../../.eslintrc.cjs'],
+  extends: ['../../.eslintrc.cjs', 'plugin:import/recommended'],
   ignorePatterns: ['node_modules', 'dist'],
   plugins: [
     '@typescript-eslint',
@@ -9,7 +9,6 @@ module.exports = defineConfig({
     'import',
     'sort-keys-fix',
   ],
-  extends: ['plugin:import/recommended'],
   rules: {
     'import-helpers/order-imports': 'off',
     '@typescript-eslint/naming-convention': 'off',
