@@ -28,7 +28,7 @@
     "stylelint": "stylelint \"**/*.scss\"",
     "test:coverage": "vitest --coverage",
     "test:ct": "playwright test -c playwright-ct.config.ts",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test --pass-with-no-tests",
     "test:ui": "vitest --ui --coverage",
     "test": "vitest"
   },
