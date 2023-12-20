@@ -1,13 +1,13 @@
 import fs from 'node:fs/promises';
 
-import { IPluginMetadata } from './readPackage.types';
+import { IPackageJson } from './readPackageJson.types';
 
 /**
  * get **all** content inside the `package.json` on specified path
  * @param {string} moduleDir path to find the `package.json`
  * @returns the content inside `package.json`
  */
-async function readPackage(moduleDir: string): Promise<IPluginMetadata> {
+async function readPackageJson(moduleDir: string): Promise<IPackageJson> {
   const parsedPackage = JSON.parse(
     await fs.readFile(`${moduleDir}/package.json`, 'utf8')
   );
@@ -16,7 +16,7 @@ async function readPackage(moduleDir: string): Promise<IPluginMetadata> {
     throw new Error('conteúdo dentro do package.json não-encontrado');
   }
 
-  return parsedPackage as IPluginMetadata;
+  return parsedPackage as IPackageJson;
 }
 
-export default readPackage;
+export default readPackageJson;

@@ -1,33 +1,33 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import readPackage from './readPackage/readPackage';
+import readPackageJson from './readPackageJson/readPackageJson';
 import resolveModulePath from './resolveModulePath';
 
-import { IPluginMetadata } from './readPackage/readPackage.types';
+import { IPluginMetadata } from './readPackageJson/readPackageJson.types';
 
 /**
  * function to get all necessary metadata about the plugins installed
- * @param {strin} pluginsPath - path to folder where all plugins are installed
+ * @param {string} PluginsFolder - path to folder where all plugins are installed
  * @returns metadata of all plugins installed
  */
 async function resolveModulesMetadata(
-  pluginsPath: string
+  PluginsFolder: string
 ): Promise<IPluginMetadata[]> {
-  const plugins = await fs.readdir(pluginsPath);
+  const plugins = await fs.readdir(PluginsFolder);
 
   const metadatas = await Promise.all(
     plugins.map(async (plugin) => {
-      const metadataPath = path.join(pluginsPath, plugin);
+      const metadataPath = path.join(PluginsFolder, plugin);
 
-      const getMetadata = await readPackage(metadataPath);
+      const getMetadata = await readPackageJson(metadataPath);
 
       const metadata: IPluginMetadata = {
         name: getMetadata.name,
-        main: await resolveModulePath(metadataPath),
+        sourcePath: await resolveModulePath(metadataPath),
         version: getMetadata.version,
         author: getMetadata.author,
-        repository: getMetadata.repository,
+        repositoryURL: getMetadata.repository?.url,
       };
 
       return metadata;
