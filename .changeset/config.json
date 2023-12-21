@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
   "changelog": ["@changesets/changelog-github", { "repo": "devhatt/octopost" }],
   "commit": false,
-  "fixed": [],
+  "fixed": [["@octopost/module-manager", "@octopost/core"]],
   "linked": [],
   "access": "restricted",
   "baseBranch": "master",
