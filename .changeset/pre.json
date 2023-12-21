@@ -4,5 +4,7 @@
   "initialVersions": {
     "@octopost/core": "0.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "tough-trainers-cheer"
+  ]
 }
