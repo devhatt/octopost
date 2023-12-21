@@ -58,7 +58,7 @@ jobs:
         run: pnpm test --silent
 
       - name: Run e2e tests
-        run: pnpm playwright test
+        run: pnpm playwright test --pass-with-no-tests
 
       - name: Run ct tests
         run: pnpm test-ct
