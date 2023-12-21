@@ -27,8 +27,8 @@ jobs:
       - name: Add a comment to the issue
         run: |
           # Comment to be added
-          comment="### Obrigado por abrir a issue\n### Verifique os nossos guidelines:\n- [Código de conduta](https://github.com/Alecell/octopost/blob/master/CODE_OF_CONDUCT.md)\n- [Contribuição](https://github.com/Alecell/octopost/blob/master/CONTRIBUTING.md)\n- [Guia de Estilo](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)" 
-          
+          comment="### Obrigado por abrir a issue\n### Verifique os nossos guidelines:\n- [Código de conduta](https://github.com/DevHatt/octopost/blob/master/docs/CODE_OF_CONDUCT.md)\n- [Contribuição](https://github.com/DevHatt/octopost/blob/master/docs/CONTRIBUTING.md)\n- [Guia de Estilo](https://github.com/DevHatt/octopost/blob/master/docs/STYLEGUIDE.md)" 
+
           # Add the comment to the issue
           echo "Adding comment to the issue..."
           curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
