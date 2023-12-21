@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'path';
 
 import resolveModulePath from './utils/resolveModulePath';
+import resolveModulesMetadata from './utils/resolveModulesMetadata';
 
 const expressApp = express();
 const port = 3000;
@@ -23,11 +24,26 @@ expressApp.get('/modules', (req, res) => {
   );
 });
 
+expressApp.get('/metadata', async (req, res) => {
+  const { packagePath } = req.query;
+  if (!packagePath) {
+    res.status(404).json('caminho para o os plugins não-encontrado');
+    // Required for TypeScript to understand that the packagePath will never be undefined
+    return;
+  }
+
+  try {
+    const mainContent = await resolveModulesMetadata(packagePath.toString());
+    res.json(mainContent);
+  } catch (error) {
+    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+  }
+});
+
 expressApp.get('/package', async (req, res) => {
   const { packagePath } = req.query;
   if (!packagePath) {
     res.status(404).json('caminho para o package.json não-encontrado');
-    // necessário para o typescript entender que o packagePath nunca será undefined
     return;
   }
 
