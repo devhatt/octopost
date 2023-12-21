@@ -1,16 +1,15 @@
-// temporario enquanto os types nao sao migrados
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type Events = 'load' | 'loaded';
+import type { IEventEmitter } from './types';
 
-export class EventEmitter {
-  private events: Record<string, Function[]>;
+import type { GenericFunction } from '~/utils/primitives';
+
+export abstract class EventEmitter implements IEventEmitter {
+  private events: Record<string, GenericFunction[]>;
 
   constructor() {
     this.events = {};
   }
 
-  subscribe(eventName: Events, fn: Function) {
+  subscribe(eventName: string, fn: GenericFunction): GenericFunction {
     if (!this.events[eventName]) {
       this.events[eventName] = [];
     }
@@ -24,7 +23,7 @@ export class EventEmitter {
     };
   }
 
-  emit(eventName: Events, data: any) {
+  emit(eventName: string, data: unknown): void {
     const event = this.events[eventName];
     if (event) {
       event.forEach((fn) => {

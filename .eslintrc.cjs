@@ -81,6 +81,10 @@ module.exports = defineConfig({
       extends: ['plugin:@typescript-eslint/recommended'],
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
       plugins: ['@typescript-eslint'],
       rules: {
         //  TODO: Colocar regra de underscore em variaveis membro e regra de nomeclatura de classe abstrata
@@ -118,5 +122,23 @@ module.exports = defineConfig({
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
+    {
+      files: [
+        './**/vite.config.ts',
+        './**/vitest.config.ts',
+        './**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: './tsconfig.node.json',
+      },
+    },
   ],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
 });

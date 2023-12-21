@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import {
   Route,
   HashRouter as Router,
@@ -11,8 +10,11 @@ import {
 } from 'react-router-dom';
 
 import * as Sentry from '@sentry/react';
+import ModuleProvider from 'contexts/ModuleContext';
 
 import Home from './pages/home/home';
+
+import { Head } from '~components/Head/Head';
 
 import scss from './App.module.scss';
 import './styles/base.scss';
@@ -39,16 +41,16 @@ const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function App() {
   return (
-    <div className={scss.app}>
-      <Helmet>
-        <script src="http://localhost:3000/modules" type="module" defer />
-      </Helmet>
-      <Router>
-        <SentryRoutes>
-          <Route path="/" element={<Home />} />
-        </SentryRoutes>
-      </Router>
-    </div>
+    <ModuleProvider>
+      <div className={scss.app}>
+        <Head />
+        <Router>
+          <SentryRoutes>
+            <Route path="/" element={<Home />} />
+          </SentryRoutes>
+        </Router>
+      </div>
+    </ModuleProvider>
   );
 }
 

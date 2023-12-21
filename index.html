@@ -5,17 +5,14 @@
       {
         "imports": {
           "react/jsx-runtime": "/react-jsx-runtime.js",
-          "react": "/react-as-es-module.js"
+          "react": "/react-as-es-module.js",
+          "@octopost/module-manager": "/expose-module-manager.js"
         }
       }
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module">
-      import { jsx } from 'react/jsx-runtime';
-      window.jsx = jsx;
-    </script>
     <title>Vite + React + TS</title>
   </head>
 

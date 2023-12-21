@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+
+import { ModuleContext } from 'contexts/ModuleContext';
+
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
@@ -9,6 +13,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 const Home = () => {
+  const { modules } = useContext(ModuleContext) as ModuleContext;
+
   return (
     <>
       <Header />
@@ -16,7 +22,7 @@ const Home = () => {
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>
             <Sidebar />
-            <window.octopost />
+            {modules.map((item) => JSON.stringify(item))}
           </div>
           <div className={scss.gridInput}>
             <MainComposer />
