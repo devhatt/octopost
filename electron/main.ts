@@ -1,5 +1,59 @@
+import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
+import express from 'express';
 import path from 'path';
+
+import resolveModulePath from './utils/resolveModulePath';
+import resolveModulesMetadata from './utils/resolveModulesMetadata';
+
+const expressApp = express();
+const port = 3000;
+
+expressApp.use(cors());
+
+expressApp.get('/modules', (req, res) => {
+  res.sendFile(
+    path.resolve(
+      app.getPath('documents'),
+      'octopost',
+      'plugins',
+      'facebook-plugin',
+      'dist',
+      'facebook-plugin.js'
+    )
+  );
+});
+
+expressApp.get('/metadata', async (req, res) => {
+  const { packagePath } = req.query;
+  if (!packagePath) {
+    res.status(404).json('caminho para o os plugins não-encontrado');
+    // Required for TypeScript to understand that the packagePath will never be undefined
+    return;
+  }
+
+  try {
+    const mainContent = await resolveModulesMetadata(packagePath.toString());
+    res.json(mainContent);
+  } catch (error) {
+    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+  }
+});
+
+expressApp.get('/package', async (req, res) => {
+  const { packagePath } = req.query;
+  if (!packagePath) {
+    res.status(404).json('caminho para o package.json não-encontrado');
+    return;
+  }
+
+  try {
+    const mainContent = await resolveModulePath(packagePath.toString());
+    res.json(mainContent);
+  } catch (error) {
+    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+  }
+});
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
@@ -16,12 +70,17 @@ if (!app.requestSingleInstanceLock()) {
 let win: BrowserWindow | null;
 
 function createWindow() {
+  expressApp.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`Example app listening on port ${port}`);
+  });
+
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
       preload: path.join(__dirname, './preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
 

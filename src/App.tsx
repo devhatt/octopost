@@ -10,11 +10,13 @@ import {
 } from 'react-router-dom';
 
 import * as Sentry from '@sentry/react';
+import ModuleProvider from 'contexts/ModuleContext';
 
 import Home from './pages/home/home';
 
-import scss from './App.module.scss';
+import { Head } from '~components/Head/Head';
 
+import scss from './App.module.scss';
 import './styles/base.scss';
 
 Sentry.init({
@@ -39,13 +41,16 @@ const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function App() {
   return (
-    <div className={scss.app}>
-      <Router>
-        <SentryRoutes>
-          <Route path="/" element={<Home />} />
-        </SentryRoutes>
-      </Router>
-    </div>
+    <ModuleProvider>
+      <div className={scss.app}>
+        <Head />
+        <Router>
+          <SentryRoutes>
+            <Route path="/" element={<Home />} />
+          </SentryRoutes>
+        </Router>
+      </div>
+    </ModuleProvider>
   );
 }
 

@@ -47,7 +47,8 @@
     "setupTests.js",
     "tests-examples/**/*",
     "playwright/**/*",
-    "e2e-testing/**/*"
+    "e2e-testing/**/*",
+    "module.js"
   ],
   "references": [
     {
