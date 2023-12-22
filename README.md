@@ -55,9 +55,9 @@ Em nosso [servidor do discord](https://discord.gg/qwzKXrzrus), temos várias op�
 - **`Torttinho`** → User que participa minimamente do servidor;
 - **`Hattinho`** → Participante ativo do servidor, está contribuindo no projeto e pegando tasks;
 - **`De capa`** → Dev com experiência, já trabalha na área e está ajudando e participando do projeto;
-- **`Hatter `** → Participante aprovado na seleção feita pelo Alecell e está envolvido ativamente no projeto;
-- **`Bolha `** → Dev influente e conhecido da bolha dev e participa do servidor;
-- **`Dono do parquinho `** → Auto-explicativo. Idealizador do projeto e com poderes especiais.
+- **`Hatter`** → Participante aprovado na seleção feita pelo Alecell e está envolvido ativamente no projeto;
+- **`Bolha`** → Dev influente e conhecido da bolha dev e participa do servidor;
+- **`Dono do parquinho`** → Auto-explicativo. Idealizador do projeto e com poderes especiais.
 
 ## **Código de Conduta**
 
@@ -73,6 +73,6 @@ Se tiver alguma dúvida ou precisar de ajuda, fique à vontade para entrar em co
 
 ## **License**
 
-## Atente-se a nossa [Lincença de Distribuição](https://github.com/devhatt/octopost/blob/master/LICENSE).
+## Atente-se a nossa [Lincença de Distribuição](https://github.com/devhatt/octopost/blob/master/LICENSE)
 
 Obrigado pelo seu interesse no OctoPost! Esperamos suas contribuições e esperamos que você aproveite o aplicativo tanto quanto nós gostamos de construí-lo.

@@ -2,8 +2,8 @@
 
 Reference Style Guide
 
-  - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
-  - [Airbnb](https://github.com/airbnb/javascript/tree/master)
+- [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+- [Airbnb](https://github.com/airbnb/javascript/tree/master)
 
 ## Sumário:
 
@@ -35,22 +35,21 @@ Reference Style Guide
 <a name="alt-em-images"></a>
 <a name="estrutura-de-pastas"></a>
 
-
 ## Regras básicas
 
 - Um componente por arquivo
 - Evite ao máximo o uso de `any` nas tipagens
 - Componentes unicamente em TSX
 - Código apenas em inglês
-> `Por que? Por mais que todos os contribuídores sejam brasileiros é importante padronizarmos todo o código em inglês para evitar uma mistura de inglês e português, algo do tipo "setNome()", um dos principais motivos também é a acessibilidade, muitas ferramentas de tradução automática e leitores de tela são mais eficazes quando lidam com texto em inglês.` 
+  > `Por que? Por mais que todos os contribuídores sejam brasileiros é importante padronizarmos todo o código em inglês para evitar uma mistura de inglês e português, algo do tipo "setNome()", um dos principais motivos também é a acessibilidade, muitas ferramentas de tradução automática e leitores de tela são mais eficazes quando lidam com texto em inglês.`
 
 ## Estrutura de componentes
 
 - Separe a pasta do seu componente em 4 arquivos
-	- Componente.tsx (seu componente em si)
-	- Componente.spec.tsx (testes do componente)
-	- Componente.module.scss (seus estilos)
-	- Componente.types.ts (interfaces e types do componente)
+  - Componente.tsx (seu componente em si)
+  - Componente.spec.tsx (testes do componente)
+  - Componente.module.scss (seus estilos)
+  - Componente.types.ts (interfaces e types do componente)
 
 ```
 ├─ components
@@ -62,10 +61,10 @@ Reference Style Guide
 
 ## Criando componentes
 
-Todos os componentes serão criados em **`funções normais`**, `arrow functions`  **apenas** dentro dos componentes
+Todos os componentes serão criados em **`funções normais`**, `arrow functions` **apenas** dentro dos componentes
 
 ```ts
-// Bom 
+// Bom
 function Component(props: IProps) {
 	const handleSomething = () => { /* ... */ }
 	return ( /* ... */ )
@@ -81,7 +80,7 @@ const Component = (props: IProps) => {
 const Component = (props: IProps) => {
 	function handleSomething() { /* ... */ }
 	return ( /* ... */ )
-} 
+}
 ```
 
 ## Exportando arquivos
@@ -89,19 +88,19 @@ const Component = (props: IProps) => {
 Iremos usar **SEMPRE** `export default` nos componentes
 
 ```ts
-// Bom 
+// Bom
 function Component(props: IProps) {
 	return ( /* ... */ )
 }
 
-export default Component 
+export default Component
 
 // Ruim
 export function Component(props: IProps) {
 	return ( /* ... */ )
 }
 
-// Ruim 
+// Ruim
 function Component(props: IProps) {
 	const handleSomething = () => { /* ... */ }
 	return ( /* ... */ )
@@ -112,10 +111,14 @@ Com excessão dos componentes, não iremos usar export default
 
 ```ts
 // Bom
-export interface IProps { /* ... */ }
+export interface IProps {
+  /* ... */
+}
 
 // Ruim
-interface IProps { /* ... */ }
+interface IProps {
+  /* ... */
+}
 export default IProps;
 ```
 
@@ -123,11 +126,15 @@ Isso também vale para `custom hooks`
 
 ```ts
 // Bom
-export const useHook = () => { /* ... */ }
+export const useHook = () => {
+  /* ... */
+};
 
 // Ruim
-const useHook = () => { /* ... */ }
-export default useHook
+const useHook = () => {
+  /* ... */
+};
+export default useHook;
 ```
 
 ## Custom hooks
@@ -136,13 +143,18 @@ Se precisar criar um custom hook, use `arrow functions`
 
 ```ts
 // Bom
-export const useHook = () => { /* ... */ }
+export const useHook = () => {
+  /* ... */
+};
 
 // Ruim
-export function useHook() { /* ... */ }
+export function useHook() {
+  /* ... */
+}
 ```
 
-## Componentes em PascalCase 
+## Componentes em PascalCase
+
 Iremos seguir o padrão PascalCase que consiste em nomear todas as palavras com a primeira letra maiúscula.
 
 ```
@@ -156,13 +168,19 @@ Tirando componentes e interfaces, iremos utilizar `camelCase` para nomear tudo.
 
 ```ts
 // Bom
-const handleSomething = () => { /* ... */ }
+const handleSomething = () => {
+  /* ... */
+};
 
 // Ruim
-const HandleSomething = () => { /* ... */ }
+const HandleSomething = () => {
+  /* ... */
+};
 
 // Ruim
-const handle_something = () => { /* ... */ }
+const handle_something = () => {
+  /* ... */
+};
 ```
 
 Isso Inclue props de componentes
@@ -202,7 +220,7 @@ Oculte parâmetros que sempre serão `true`
 
 ## Class component
 
-Nosso projeto está sendo feito inteiramente com `programação funcional`, então apenas use `functional components` *(salvo excessões bem excessíveis)*:
+Nosso projeto está sendo feito inteiramente com `programação funcional`, então apenas use `functional components` _(salvo excessões bem excessíveis)_:
 
 ```ts
 // Bom
@@ -226,32 +244,36 @@ Estamos utilizando `scss modules` para estilização, ele tem umas diferenças d
 ```scss
 // Bom
 .button {
-	/* seu css aqui */
-	&:hover {
-		/* seu css de hover aqui*/
-	}
+  /* seu css aqui */
+  &:hover {
+    /* seu css de hover aqui*/
+  }
 }
 
 // Ruim
-.button { /* seu css aqui */ }
-.button:hover { /* seu css de hover aqui*/ }
+.button {
+  /* seu css aqui */
+}
+.button:hover {
+  /* seu css de hover aqui*/
+}
 ```
 
 use `scss modules` sempre
 
 ```tsx
 // Bom
-import scss from "./Component.module.scss"
+import scss from './Component.module.scss';
 
 function Component(props: IProps) {
-	return <div className={scss.style} />;
+  return <div className={scss.style} />;
 }
 
 // Ruim
-import "./Component.scss"
+import './Component.scss';
 
 function Component(props: IProps) {
-	return <div className="style" />;
+  return <div className="style" />;
 }
 ```
 
@@ -260,47 +282,60 @@ _Existem excessões em que é precisa usar `inline styles`, mas são casos espec
 
 ```tsx
 // Bom
-import scss from "./Component.module.scss"
+import scss from './Component.module.scss';
 
 function Component(props: IProps) {
-	return <div className={scss.style} />;
+  return <div className={scss.style} />;
 }
 
 // Ruim
 function Component(props: IProps) {
-	return <div style={{ color: "#fff" }} />;
+  return <div style={{ color: '#fff' }} />;
 }
 ```
+
 ## Tipando componentes
 
 Priorize `Interfaces` no lugar de `Types` , ambos servem para fazer a mesma coisa, mas estamos seguindo o padrão de interfaces
 
 ```ts
 // Bom
-interface IProps { /* ... */ }
+interface IProps {
+  /* ... */
+}
 
 // Ruim
-type IProps = { /* ... */ }
+type IProps = {
+  /* ... */
+};
 ```
 
 Use o Prefixo `I` na hora da criação de interfaces.
 
 ```ts
 // Bom
-interface IProps { /* ... */ }
+interface IProps {
+  /* ... */
+}
 
 // Ruim
-interface PropTypes { /* ... */ }
+interface PropTypes {
+  /* ... */
+}
 ```
 
 Use o Prefixo `T` na hora da criação de tipos.
 
 ```ts
 // Bom
-type TProps = { /* ... */ }
+type TProps = {
+  /* ... */
+};
 
 // Ruim
-type PropTypes = { /* ... */ }
+type PropTypes = {
+  /* ... */
+};
 ```
 
 Use o Prefixo `E` na hora da criação de enums.
@@ -315,7 +350,7 @@ type Coisas = { /* ... */ }
 
 ## Testes unitários
 
-Tente ser o mais claro para descrever seus testes, descreva a ação que você vai fazer como `describe()` e use o `it()`  para descrever a ação esperada do teste. Siga esse padrão:
+Tente ser o mais claro para descrever seus testes, descreva a ação que você vai fazer como `describe()` e use o `it()` para descrever a ação esperada do teste. Siga esse padrão:
 _Evite a palavra "should" seguida do `it`, faça sua sentença ser hiperativa, como "it has", "it renders", "it fails" e etc. Isso serve pra evitar que toda descrição de um teste inicie por "should"._
 
 ```ts
@@ -339,7 +374,7 @@ describe('MyButtonComponent', () => {
 SEMPRE coloque o atributo `alt` quando for usar alguma imagem no projeto, é bom por causa do `SEO` (mesmo que esse projeto não seja web) e acessibilidade.
 
 ```tsx
-// Bom 
+// Bom
 <img src={image} alt="me and my dog" />
 
 // Ruim
@@ -352,6 +387,7 @@ Evite usar o prefixo `image` ou `picture` porque os leitores de tela ja adiciona
 // Ruim
 <img src={image} alt="image about me and my dog" />
 ```
+
 ## Estrutura de pastas do projeto
 
 ```

@@ -12,7 +12,7 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
    cd octopost
 ```
 
-3. **Pegue uma Issue:** Para instruções mais detalhadas, acesse **[Pegando uma Issue](https://github.com/Alecell/octopost/blob/master/FLOWISSUE.md/)**.
+3. **Pegue uma Issue:** Para instruções mais detalhadas, acesse **[Pegando uma Issue](https://github.com/DevHatt/octopost/blob/master/docs/FLOWISSUE.md/)**.
 
 4. **Crie uma Branch:** Crie uma branch a partir da develop para trabalhar nas suas alterações:
 
@@ -23,7 +23,7 @@ Bem-vindo ao Octopost! Agradecemos pelo seu interesse em contribuir para este pr
 ```
 
 5. **Faça Alterações:** Faça as alterações desejadas no código, documentação, ou outros recursos.
-6. **Código:** Siga o Style guide [octopost/STYLEGUIDE.md at master · Alecell/octopost (github.com)](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
+6. **Código:** Siga o Style guide [octopost/STYLEGUIDE.md at master · DevHatt/octopost (github.com)](https://github.com/DevHatt/octopost/blob/master/docs/STYLEGUIDE.md)
 7. **Testes:** Certifique-se de que todas as mudanças são testadas e não introduzem erros.
 8. **Commits Significativos:** Faça commits significativos utilizando o [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) e com mensagens claras. Utilizando comando abaixo e seguindo as instruções o commit ficara no padrão utilizado no projeto.
 
@@ -62,7 +62,7 @@ sudo apt-get install wine32
 
 ## Diretrizes de Contribuição
 
-- **Estilo de Código:** Siga as convenções de estilo de código existentes no projeto.[Style Guide](https://github.com/Alecell/octopost/blob/master/STYLEGUIDE.md)
+- **Estilo de Código:** Siga as convenções de estilo de código existentes no projeto.[Style Guide](https://github.com/DevHatt/octopost/blob/master/docs/STYLEGUIDE.md)
 - **Documentação:** Sempre atualize a documentação para refletir mudanças significativas.
 - **Testes:** Certifique-se de que suas alterações não quebram testes existentes. Se necessário, adicione novos testes.
 - **Tamanho das Pull Requests:** PRs menores são mais fáceis de revisar e mesclar. Tente manter o escopo de suas contribuições relativamente pequeno.

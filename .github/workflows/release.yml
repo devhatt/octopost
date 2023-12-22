@@ -47,7 +47,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-
       - name: Configuring Node ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:

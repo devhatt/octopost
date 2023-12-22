@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+dist
+dist-electron
+node_modules
+playwright-report
+.prettierignore
+.changeset/pre.json
+.changeset/config.json
