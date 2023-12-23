@@ -15,7 +15,7 @@ function MediaInputs() {
   };
 
   const removeMedia = (id: IMedia['id']) => {
-    const list = [...medias];
+    const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
     if (indexToRemove !== -1) {
@@ -26,7 +26,7 @@ function MediaInputs() {
   };
 
   const updateMedia = (files: IMedia[], id: IMedia['id']) => {
-    const list = [...medias];
+    const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
     if (indexToUpdate !== -1) {
