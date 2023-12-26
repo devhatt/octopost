@@ -2,11 +2,13 @@ import type { Story } from '@ladle/react';
 
 import ErrorBoundary from './ErrorBoundary';
 
-export const ErrorBoundaryComponent: Story<{ previewText: string }> = ({
-  previewText,
-}) => {
+export const ErrorBoundaryComponent: Story<{ previewText: string }> = (
+  props
+) => {
   return (
-    <ErrorBoundary fallBack={<div>Error</div>}>{previewText}</ErrorBoundary>
+    <ErrorBoundary fallBack={<div>Error</div>}>
+      {props.previewText}
+    </ErrorBoundary>
   );
 };
 

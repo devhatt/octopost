@@ -1,11 +1,11 @@
-type TBoundaryProps = {
-  fallBack: React.ReactNode;
+interface TBoundaryProps {
   children: React.ReactNode;
-};
+  fallBack: React.ReactNode;
+}
 
-type TErrorBoundaryState = {
-  hasError: boolean;
+interface TErrorBoundaryState {
   error: Error | null;
-};
+  hasError: boolean;
+}
 
 export type { TBoundaryProps, TErrorBoundaryState };

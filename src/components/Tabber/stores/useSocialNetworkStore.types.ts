@@ -2,6 +2,6 @@
 
 export type TSocialNetworks = Omit<ExampleModule1, 'services'> & { id: string };
 
-export type TSocialNetworksState = {
+export interface TSocialNetworksState {
   socialNetworks: TSocialNetworks[];
-};
+}

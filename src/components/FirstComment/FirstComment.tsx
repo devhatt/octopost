@@ -8,28 +8,28 @@ import styles from './FirstComment.module.scss';
 
 import { TFirstCommentProps } from './FirstComment.types';
 
-export function FirstComment(props: TFirstCommentProps) {
-  const [isOpen, setOpen] = useState(false);
+function FirstComment(props: TFirstCommentProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Accordion
-      duration={0.5}
       className={styles.container}
-      isOpen={isOpen}
-      header={
-        <Checkbox
-          className={styles.checkbox}
-          checked={isOpen}
-          onChange={setOpen}
-        >
-          First Comment
-        </Checkbox>
-      }
       content={
         <div className={styles.textarea}>
           <ComposerEditor />
         </div>
       }
+      duration={0.5}
+      header={
+        <Checkbox
+          checked={isOpen}
+          className={styles.checkbox}
+          onChange={setIsOpen}
+        >
+          First Comment
+        </Checkbox>
+      }
+      isOpen={isOpen}
       {...props}
     />
   );

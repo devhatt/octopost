@@ -11,32 +11,32 @@ import scss from './Sidebar.module.scss';
 
 function Sidebar() {
   const [value, setValue] = useState('');
-  const [isOpen, setOpen] = useState(false);
-  const inputSearchRef = useRef<TInputComponent | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const inputSearchRef = useRef<null | TInputComponent>(null);
 
   const handleToggleModal = () => {
-    setOpen((isOpen) => !isOpen);
+    setIsOpen((isOpen) => !isOpen);
   };
 
   const renderSearchClue = () => {
     return (
       <SearchClue
         clearInput={inputSearchRef.current?.clearInput}
-        value={value}
         label="Searching for"
+        value={value}
       />
     );
   };
 
   return (
-    <AccordionTab title="Select Social Media" hideCloseButton>
+    <AccordionTab hideCloseButton title="Select Social Media">
       <div className={scss.content}>
         <InputSearch
           className={scss.searchBar}
-          onChange={(value) => setValue(value as string)}
+          error={false}
+          onChange={(value) => { setValue(value as string); }}
           placeholder="Search for social media"
           ref={inputSearchRef}
-          error={false}
         />
 
         {!value && renderSearchClue()}
@@ -53,14 +53,14 @@ function Sidebar() {
         </div>
 
         <Button
-          onClick={handleToggleModal}
           className={scss.newAccountButton}
+          onClick={handleToggleModal}
           variant="container"
         >
           + &ensp; New Account
         </Button>
 
-        <Modal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
+        <Modal isOpen={isOpen} onClickOutside={() => { setIsOpen(false); }}>
           Octopost
         </Modal>
       </div>

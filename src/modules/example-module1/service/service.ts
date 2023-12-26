@@ -2,7 +2,8 @@
 import { IPublishResponse, IService } from 'modules/types';
 
 import { TGenericObject } from '~types/object';
-function fakeApiCall(data: unknown, delay = 1000) {
+
+async function fakeApiCall(data: unknown, delay = 1000) {
   // Simulate an API call with a delay using a Promise
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -26,7 +27,7 @@ export class Service implements IService {
       return {
         status: 200,
       };
-    } catch (error) {
+    } catch {
       // console.error('API Error:', error);
       return {
         status: 500,

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { expect, test } from '@playwright/experimental-ct-react';
 
 import MainComposer from '../MainComposer/MainComposer';
 
@@ -33,7 +33,7 @@ test.describe('MainComposer', () => {
 
     test.describe('when the file is diferent from image or video', () => {
       test('doesnt select the file', async ({ mount }) => {
-        const mediaSelected: string | null = null;
+        const mediaSelected: null | string = null;
 
         const component = await mount(<MainComposer />);
 

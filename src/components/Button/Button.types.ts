@@ -1,10 +1,10 @@
 ﻿import { ReactElement } from 'react';
 
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  variant?: 'text' | 'container' | 'outlined';
-  type?: 'button' | 'submit' | 'reset';
   color?: 'primary' | 'secondary';
   disabled?: boolean;
+  type?: 'button' | 'reset' | 'submit';
+  variant?: 'container' | 'outlined' | 'text';
 }
 
 export interface ITextButtonProps extends IButtonProps {
@@ -12,6 +12,6 @@ export interface ITextButtonProps extends IButtonProps {
 }
 
 export interface ICircleButtonProps extends IButtonProps {
-  icon: ReactElement;
   circle: boolean;
+  icon: ReactElement;
 }

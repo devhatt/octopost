@@ -6,20 +6,21 @@ import scss from './icon.module.scss';
 
 import { IIconProps } from './icon.types';
 
-const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {
-  const iconIcons = icon ? icons[icon] : '';
-  const iconColors = color ? colors[color] : '';
-  const iconSizes = size ? sizes[size] : '';
+function Icon(props: IIconProps) {
+  const iconIcons = props.icon ? icons[props.icon] : '';
+  const iconColors = props.color ? colors[props.color] : '';
+  // eslint-disable-next-line unicorn/explicit-length-check
+  const iconSizes = props.size ? sizes[props.size] : '';
 
   const iconClasses = classNames(
     scss.icon,
     iconIcons,
     iconSizes,
     iconColors,
-    className
+    props.className
   );
 
-  return <span data-testid="icon-element" className={iconClasses} />;
-};
+  return <span className={iconClasses} data-testid="icon-element" />;
+}
 
 export default Icon;

@@ -2,10 +2,11 @@
 
 import scss from '~components/Button/Button.module.scss';
 
-import { ITextButtonProps, ICircleButtonProps } from './Button.types';
+import { ICircleButtonProps, ITextButtonProps } from './Button.types';
 
-function Button(props: ITextButtonProps | ICircleButtonProps) {
-  const RenderTextButton = (props: ITextButtonProps) => {
+function Button(props: ICircleButtonProps | ITextButtonProps) {
+  const type = props.type ?? 'button';
+  function renderTextButton(props: ITextButtonProps) {
     const classes: string = classNames(
       props.className,
       scss.textButton,
@@ -17,17 +18,18 @@ function Button(props: ITextButtonProps | ICircleButtonProps) {
 
     return (
       <button
-        type={props.type ? props.type : 'button'}
         className={classes}
         disabled={props.disabled}
         onClick={props.onClick}
+        // eslint-disable-next-line react/button-has-type
+        type={type}
       >
         {props.children}
       </button>
     );
-  };
+  }
 
-  const RenderCircleButton = (props: ICircleButtonProps) => {
+  function renderCircleButton(props: ICircleButtonProps) {
     const classes: string = classNames(
       props.className,
       scss.circleButton,
@@ -38,19 +40,20 @@ function Button(props: ITextButtonProps | ICircleButtonProps) {
 
     return (
       <button
-        type={props.type || 'button'}
         className={classes}
         disabled={props.disabled}
         onClick={props.onClick}
+        // eslint-disable-next-line react/button-has-type
+        type={props.type || 'button'}
       >
         {props.icon}
       </button>
     );
-  };
+  }
 
   return 'circle' in props
-    ? RenderCircleButton(props)
-    : RenderTextButton(props);
+    ? renderCircleButton(props)
+    : renderTextButton(props);
 }
 
 export default Button;

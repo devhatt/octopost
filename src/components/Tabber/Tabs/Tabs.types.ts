@@ -2,7 +2,7 @@
 import { ITab } from '../Tabber.types';
 
 export interface ITabsProps {
-  socialNetworks: ITab[];
   currentTab: TSocialNetworks;
   onChangeTab: (socialNetwork: TSocialNetworks) => void;
+  socialNetworks: ITab[];
 }
