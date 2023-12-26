@@ -8,7 +8,7 @@ import alertIcon from './assets/alertIcon.svg';
 import leftIcon from './assets/leftIcon.svg';
 import rightIcon from './assets/rightIcon.svg';
 
-import { TInputProps, TInputComponentRef } from './InputSearch.types';
+import { TInputComponentRef, TInputProps } from './InputSearch.types';
 
 function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   const [value, setValue] = useState('');
@@ -20,21 +20,19 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   const containerClass = [scss.container];
   const [isFocused, setIsFocused] = useState(false);
 
-  const IconAlert = () => {
-    return <img className={scss.icon} src={alertIcon} />;
-  };
-
-  const IconRight = () => {
-    return <img src={rightIcon} />;
-  };
-
   const handleIcons = () => (
+    // TODO: Remove this
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={scss.iconRight}
       data-testid="clear-button"
       onClick={handleClear}
     >
-      {props.error ? <IconAlert /> : <IconRight />}
+      {props.error ? (
+        <img alt="" className={scss.icon} src={alertIcon} />
+      ) : (
+        <img alt="" src={rightIcon} />
+      )}
     </div>
   );
 
@@ -60,7 +58,7 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   };
 
   const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setIsFocused(e.target.value.length !== 0);
+    setIsFocused(e.target.value.length > 0);
   };
 
   const handleFocusedStyles = () => {
@@ -91,35 +89,35 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   return (
     <div className={classNames(containerClass)}>
       <div className={scss.inputWrapper}>
-        <label htmlFor={props.name} className={classNames(labelClass)}>
+        <label className={classNames(labelClass)} htmlFor={props.name}>
           {props.placeholder}
         </label>
         <div className={scss.iconLeft}>
-          <img src={leftIcon} />
+          <img alt="" src={leftIcon} />
         </div>
         <input
-          required
-          readOnly={props.readOnly}
-          type={props.type}
+          className={classNames(inputClass)}
           id={props.name}
           name={props.name}
-          className={classNames(inputClass)}
-          placeholder={props.placeholder}
-          onBlur={(e) => onInputBlur(e)}
-          onFocus={onInputFocus}
-          value={value}
+          onBlur={(e) => { onInputBlur(e); }}
           onChange={handleValue}
+          onFocus={onInputFocus}
+          placeholder={props.placeholder}
+          readOnly={props.readOnly}
+          required
+          type={props.type}
+          value={value}
         />
 
-        {value && handleIcons()}
+        {!!value && handleIcons()}
 
-        <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
+        <fieldset aria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
             <span className={scss.legendTitle}>{props.placeholder}</span>
           </legend>
         </fieldset>
       </div>
-      {props.error && renderErrorMessage()}
+      {!!props.error && renderErrorMessage()}
     </div>
   );
 }

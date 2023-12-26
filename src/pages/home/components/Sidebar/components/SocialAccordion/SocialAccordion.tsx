@@ -11,59 +11,49 @@ import { ISocialAccordion } from './SocialAccordion.type';
 function SocialAccordion(props: ISocialAccordion) {
   const [isOpen, setIsOpen] = useState(true);
 
-  const openLabel = isOpen ? 'open' : 'closed';
-
-  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
+  const handleOpenAccordion = () => { setIsOpen((prev) => !prev); };
 
   const renderError = () => <span className={scss.error}>error!!!!</span>;
-
-  const renderAccountQuantity = () => (
-    <>
-      <span>{props.accountList.length}+</span>
-      <p>{openLabel}</p>
-    </>
-  );
 
   const renderAccordionMap = () =>
     props.accountList.map((accounts) => (
       <li key={accounts.id}>
         <ToggleSocialMedia
-          accountName={accounts.username}
           accountImage={accounts.image}
+          accountName={accounts.username}
         />
       </li>
     ));
 
   const renderAccordionContent = () => (
-    <ul role="listitem" className={scss.list}>
-      {renderAccordionMap()}
-    </ul>
+    <ul className={scss.list}>{renderAccordionMap()}</ul>
   );
 
   return (
     <Accordion
       className={scss.wrapper}
-      isOpen={isOpen}
+      content={renderAccordionContent()}
       header={
         <button
-          id="btn-accordion"
-          aria-expanded={isOpen}
-          onClick={handleOpenAccordion}
           aria-controls="content-accordion"
+          aria-expanded={isOpen}
+          id="btn-accordion"
+          onClick={handleOpenAccordion}
+          type="button"
         >
           <header className={scss.header}>
             <div className={scss.socialInfo}>
-              <img className={scss.icon} src={iconPlaceholderForIcon} />
+              <img alt="" className={scss.icon} src={iconPlaceholderForIcon} />
               <p>{props.socialMediaName}</p>
             </div>
 
             <div className={scss.accordionInfo}>
-              {props.error ? renderError() : renderAccountQuantity()}
+              {!!props.error && renderError()}
             </div>
           </header>
         </button>
       }
-      content={renderAccordionContent()}
+      isOpen={isOpen}
     />
   );
 }

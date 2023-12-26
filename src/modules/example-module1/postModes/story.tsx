@@ -9,7 +9,6 @@ const mockPreview: React.FC<IPreviewComponent> = (props) => {
 export const story: IPostMode = {
   name: 'Story',
   previewComponent: mockPreview,
-  widgets: [location],
   validators: {
     media: {
       allowedFormats: ['jpeg', 'png', 'webp'],
@@ -21,12 +20,12 @@ export const story: IPostMode = {
       maxLength: 200,
     },
   },
+  widgets: [location],
 };
 
 export const post: IPostMode = {
   name: 'Post',
   previewComponent: mockPreview,
-  widgets: [location],
   validators: {
     media: {
       allowedFormats: ['jpeg', 'png', 'webp'],
@@ -38,12 +37,12 @@ export const post: IPostMode = {
       maxLength: 200,
     },
   },
+  widgets: [location],
 };
 
 export const reels: IPostMode = {
   name: 'Reels',
   previewComponent: mockPreview,
-  widgets: [location],
   validators: {
     media: {
       allowedFormats: ['jpeg', 'png', 'webp'],
@@ -55,4 +54,5 @@ export const reels: IPostMode = {
       maxLength: 200,
     },
   },
+  widgets: [location],
 };

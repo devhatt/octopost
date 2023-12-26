@@ -5,10 +5,10 @@ import { Service } from './service/service';
 
 const icon = (
   <svg
-    width="21"
+    fill="none"
     height="17"
     viewBox="0 0 21 17"
-    fill="none"
+    width="21"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -21,8 +21,8 @@ const icon = (
 const postModes: IPostMode[] = [story];
 
 export class ExampleModule1 implements IOctoModule {
-  name = 'Example Module 1';
   icon = icon;
+  name = 'Example Module 1';
   postModes = postModes;
   services = new Service();
 }

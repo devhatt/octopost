@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentType, FC, ReactNode } from 'react';
 
 import { EHttpStatusCode } from '~enums/httpStatusCodes';
 import { TGenericObject } from '~types/object';
@@ -17,8 +17,8 @@ export interface IService {
 
 export type TAspectRatio = `${number}:${number}`;
 
-export type TImageFormats = 'png' | 'jpg' | 'jpeg' | 'webp' | 'gif';
-export type TVideoFormats = 'mp4' | 'mov' | 'avi' | 'webm';
+export type TImageFormats = 'gif' | 'jpeg' | 'jpg' | 'png' | 'webp';
+export type TVideoFormats = 'avi' | 'mov' | 'mp4' | 'webm';
 export type TMediaFormats = TImageFormats | TVideoFormats;
 
 export interface ITextValidator {
@@ -29,41 +29,39 @@ export interface ITextValidator {
 
 export interface IMediaValidator {
   media: {
+    allowedFormats: TMediaFormats[];
+    ar: TAspectRatio[];
+
     maxFileSize: number;
     mediaQtyLimit: number;
-
-    ar: TAspectRatio[];
-    allowedFormats: TMediaFormats[];
   };
 }
 
 export type TValidators =
-  | (IMediaValidator & ITextValidator)
-  | IMediaValidator
-  | ITextValidator;
+  IMediaValidator | IMediaValidator & ITextValidator | ITextValidator;
 
 export interface IWidget {
-  name: string;
+  component: ComponentType<{ onChange: () => TGenericObject }>;
   icon: JSX.Element;
-  component: React.ComponentType<{ onChange: () => TGenericObject }>;
+  name: string;
 }
 
 export interface IPreviewComponent {
-  text: string;
-  medias?: File[];
   customData?: TGenericObject;
+  medias?: File[];
+  text: string;
 }
 
 export interface IPostMode {
   name: string;
+  previewComponent: FC<IPreviewComponent>;
   validators: TValidators;
   widgets: IWidget[];
-  previewComponent: React.FC<IPreviewComponent>;
 }
 
 export interface IOctoModule {
+  icon: ReactNode;
   name: string;
-  icon: JSX.Element;
   postModes: IPostMode[];
   services: IService;
 }

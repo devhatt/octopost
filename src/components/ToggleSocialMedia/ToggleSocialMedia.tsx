@@ -21,7 +21,8 @@ function ToggleSocialMedia(props: ITogleSocialMedia) {
       <div className={scss.accountInfo}>
         <button
           className={scss.button}
-          onClick={() => setIsFavorite((prev) => !prev)}
+          onClick={() => { setIsFavorite((prev) => !prev); }}
+          type="button"
         >
           {isFavorite ? 'starred' : 'star'}
         </button>

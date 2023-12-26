@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 
 import Checkbox from './Checkbox';
 
 import type { TCheckboxProps } from './Checkbox.types';
 
 const makeSut = ({
-  onChange = vi.fn(),
   checked = false,
+  onChange = vi.fn(),
   ...props
 }: Partial<TCheckboxProps>) => {
   return render(

@@ -24,7 +24,7 @@ function withPrototype(obj: Record<string, any>) {
 }
 
 // --------- Preload scripts loading ---------
-function domReady(
+async function domReady(
   condition: DocumentReadyState[] = ['complete', 'interactive']
 ) {
   return new Promise((resolve) => {
@@ -42,13 +42,13 @@ function domReady(
 
 const safeDOM = {
   append(parent: HTMLElement, child: HTMLElement) {
-    if (!Array.from(parent.children).find((e) => e === child)) {
-      parent.appendChild(child);
+    if (!Array.from(parent.children).includes(child)) {
+      parent.append(child);
     }
   },
   remove(parent: HTMLElement, child: HTMLElement) {
-    if (Array.from(parent.children).find((e) => e === child)) {
-      parent.removeChild(child);
+    if (Array.from(parent.children).includes(child)) {
+      child.remove();
     }
   },
 };
@@ -111,10 +111,13 @@ function useLoading() {
 // ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading();
-domReady().then(appendLoading);
+domReady().then(appendLoading).catch(console.log);
 
-window.onmessage = (ev) => {
+function callback(ev: MessageEvent) {
   ev.data.payload === 'removeLoading' && removeLoading();
-};
+  window.removeEventListener('message', callback);
+}
+
+window.addEventListener('message', callback);
 
 setTimeout(removeLoading, 4999);

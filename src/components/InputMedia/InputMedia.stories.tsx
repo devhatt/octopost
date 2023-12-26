@@ -9,5 +9,5 @@ export const InputMediaComponent: Story<IInputMediaProps> = (props) => {
 };
 
 InputMediaComponent.args = {
-  onChange: (media) => alert(`image selected ${media[0].file.name}`),
+  onChange: (media) => { alert(`image selected ${media[0].file.name}`); },
 };

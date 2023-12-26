@@ -11,7 +11,7 @@ describe('CharacterLimit Component', () => {
       const id = 'id';
 
       const { container } = render(
-        <CharacterLimit maxLength={maxLength} value={value} svg={svg} id={id} />
+        <CharacterLimit id={id} maxLength={maxLength} svg={svg} value={value} />
       );
 
       const characterLimitElement = container.querySelector('.characterLimit');
@@ -33,7 +33,7 @@ describe('CharacterLimit Component', () => {
       const svg = <svg />;
       const id = 'id';
       const { container } = render(
-        <CharacterLimit maxLength={maxLength} value={value} svg={svg} id={id} />
+        <CharacterLimit id={id} maxLength={maxLength} svg={svg} value={value} />
       );
 
       const characterLimitElement = container.querySelector('.characterLimit');

@@ -12,18 +12,18 @@ function FeedbackError() {
 
   const renderError = () => (
     <motion.div
-      initial="hidden"
       animate="visible"
-      exit="hidden"
       className={scss.wrapper}
-      variants={animationVariants}
       data-testid="error-container"
+      exit="hidden"
+      initial="hidden"
+      variants={animationVariants}
     >
-      <Icon icon="error" size="large" className={scss.errorIcon} />
+      <Icon className={scss.errorIcon} icon="error" size="large" />
       <p className={scss.errorMessage}>{errorMessage}</p>
     </motion.div>
   );
-  return <AnimatePresence>{errorMessage && renderError()}</AnimatePresence>;
+  return <AnimatePresence>{!!errorMessage && renderError()}</AnimatePresence>;
 }
 
 export default FeedbackError;

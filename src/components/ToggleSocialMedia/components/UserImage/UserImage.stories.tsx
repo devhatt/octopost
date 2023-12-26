@@ -9,7 +9,7 @@ export const UserImageComponent: Story<IUserImage> = (props) => {
 };
 
 UserImageComponent.args = {
+  accountName: 'Jhon doe',
   image:
     'https://pbs.twimg.com/profile_images/1539832609315987456/vaTzT3Co_400x400.jpg',
-  accountName: 'Jhon doe',
 };
