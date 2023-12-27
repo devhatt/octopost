@@ -29,8 +29,14 @@ function Modal(props: TModalProps) {
           className={classNames(scss.container, props.className)}
           onClick={props.onClickOutside}
         >
-          <div onClick={(e) => e.stopPropagation()}>
-            <div className={scss.modalContent}>{props.children}</div>
+          <div
+            className={scss.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <header className={scss.modalHeader}>{props.header}</header>
+            <div>
+              <div className={scss.modalContentText}>{props.children}</div>
+            </div>
           </div>
         </motion.div>
       )}

@@ -12,17 +12,38 @@
   position: fixed;
   z-index: 1000;
 
-  background-color: #0004;
+  background-color: #21005d29;
   inset: 0;
 }
 
 // TODO: remove when define we create modal design;
 .modalContent {
-  padding: 5rem;
+  display: flex;
 
-  background-color: $primaryWhite;
+  flex-direction: column;
 
-  box-shadow: 3px 3px 3px #0003;
+  align-items: center;
+  justify-content: center;
+
+  // padding: 5rem;
+
+  box-shadow: 3px 3px 3px #21005d29;
 
   border-radius: 5px;
+}
+
+.modalHeader {
+  width: 100%;
+
+  font-size: 2.2rem;
+
+  font-weight: 500;
+
+  background-color: $primaryWhite;
+}
+
+.modalContentText {
+  padding: 0.8rem 1.6rem;
+
+  background-color: #e6e1e6;
 }
