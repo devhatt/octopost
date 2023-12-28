@@ -40,45 +40,52 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    const controller = new AbortController();
-
     async function fetchInitialModules() {
-      const { data: moduleDatas } = await fetchModules.get<IPluginMetadata[]>(
-        '/metadata',
-        {
-          signal: controller.signal,
-        }
-      );
-      moduleDatas;
-      const modules = await Promise.all(
-        moduleDatas.map(async (module) => {
-          return (
-            await fetch('http://localhost:3000/sourcePath', {
-              body: JSON.stringify({ sourcePath: module.sourcePath }),
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            })
-          ).blob();
-        })
-      );
-      setModulesURL(
-        modules.map((module) => {
+      try {
+        const { data: moduleDatas } =
+          await fetchModules.get<IPluginMetadata[]>('/metadata');
+
+        manager.emit('fetch-modules', moduleDatas);
+
+        const modules = await Promise.all(
+          moduleDatas.map(async (module) => {
+            const modulesRequest = await fetch(
+              'http://localhost:3000/sourcePath',
+              {
+                body: JSON.stringify({ sourcePath: module.sourcePath }),
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              }
+            );
+            return modulesRequest.blob();
+          })
+        );
+
+        const modulesUrl = modules.map((module, index) => {
+          if (index === modules.length - 1) {
+            manager.emit('finish-load', index);
+          }
           return URL.createObjectURL(module);
-        })
-      );
+        });
+
+        setModulesURL(modulesUrl);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
     }
 
     fetchInitialModules();
 
-    return () => {
-      controller.abort();
-    };
-  }, []);
+    const unsubscribe = manager.subscribe('loaded-module', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setModules(manager.loadModules() as any);
+    });
 
-  // eslint-disable-next-line no-console
-  useEffect(() => console.log(modules), [modules]);
+    return () => unsubscribe();
+  }, []);
 
   return (
     <ModuleContext.Provider value={{ modules, modulesURL }}>
