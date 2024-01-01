@@ -1,8 +1,10 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
-  "plugins": ["stylelint-order"],
+  "extends": ["stylelint-config-sass-guidelines"],
+  "plugins": ["stylelint-order", "stylelint-scss", "stylelint-prettier"],
   "ignoreFiles": [".next", ".vscode", "node_modules", "*.*", "!*.scss"],
+  
   "rules": {
+    "prettier/prettier": true,
     "scss/dollar-variable-pattern": "(^[a-z])[A-Za-z0-9]+$",
 
     "max-nesting-depth": 20,
