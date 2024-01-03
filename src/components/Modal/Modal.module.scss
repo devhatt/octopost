@@ -16,18 +16,22 @@
   inset: 0;
 }
 
-// TODO: remove when define we create modal design;
 .modalContent {
+  min-width: 45rem;
+  max-width: 60rem;
+  max-height: 60rem;
+
+  overflow: auto;
+
   display: flex;
 
   flex-direction: column;
 
-  align-items: center;
-  justify-content: center;
+  border: 2px solid black;
 
-  // padding: 5rem;
+  background-color: #fff;
 
-  box-shadow: 3px 3px 3px #21005d29;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
   border-radius: 5px;
 }
@@ -35,15 +39,38 @@
 .modalHeader {
   width: 100%;
 
+  display: flex;
+
+  justify-content: space-between;
+
   font-size: 2.2rem;
 
   font-weight: 500;
 
+  padding: 2.4rem 1.6rem;
+
   background-color: $primaryWhite;
+
+  h2 {
+    font-size: 2.2rem;
+
+    line-height: 2.8rem;
+
+    margin: 0;
+  }
 }
 
 .modalContentText {
-  padding: 0.8rem 1.6rem;
+  padding: 1.6rem 4rem;
+}
 
-  background-color: #e6e1e6;
+.modalFooter {
+  width: 100%;
+
+  padding: 1.6rem 3.2rem;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 1.6rem;
 }

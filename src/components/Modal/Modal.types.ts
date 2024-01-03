@@ -4,5 +4,7 @@ export type TModalProps = PropsWithChildren<{
   isOpen: boolean;
   onClickOutside?: MouseEventHandler<HTMLDivElement>;
   className?: string;
-  header?: string | React.ReactNode;
+  title: string;
+  footer: React.ReactNode;
+  headerButtons?: React.ReactNode;
 }>;

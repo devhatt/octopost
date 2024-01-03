@@ -21,24 +21,44 @@ function Modal(props: TModalProps) {
   return createPortal(
     <AnimatePresence>
       {props.isOpen && (
-        <motion.div
-          data-testid="portal"
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+        // <motion.div
+        //   data-testid="portal"
+        //   animate={{ opacity: 1 }}
+        //   exit={{ opacity: 0 }}
+        //   transition={{ duration: 0.3 }}
+        //   className={classNames(scss.container, props.className)}
+        //   onClick={props.onClickOutside}
+        // >
+        //   <div
+        //     className={scss.modalContent}
+        //     onClick={(e) => e.stopPropagation()}
+        //   >
+        //     <div className={scss.modalHeader}>
+        //       <h2>{props.title}</h2>
+        //       <div className={scss.headerButtons}>{props.headerButtons}</div>
+        //     </div>
+        //     <div>
+        //       <div className={scss.modalContentText}>{props.children}</div>
+        //     </div>
+        //     <footer className={scss.modalFooter}>{props.footer}</footer>
+        //   </div>
+        // </motion.div>
+        <div
           className={classNames(scss.container, props.className)}
           onClick={props.onClickOutside}
         >
-          <div
+          <section
             className={scss.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <header className={scss.modalHeader}>{props.header}</header>
-            <div>
-              <div className={scss.modalContentText}>{props.children}</div>
+            <div className={scss.modalHeader}>
+              <h2>Title Modal</h2>
+              <div>buttons</div>
             </div>
-          </div>
-        </motion.div>
+            <div className={scss.modalContentText}>{props.children}</div>
+            <footer className={scss.modalFooter}>{props.footer}</footer>
+          </section>
+        </div>
       )}
     </AnimatePresence>,
     document.body

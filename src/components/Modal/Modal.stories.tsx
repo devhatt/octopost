@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { Story } from '@ladle/react';
 
 import Button from '~components/Button/Button';
-import FirstComment from '~components/FirstComment/FirstComment';
+import Icon from '~components/Icon/Icon';
+import { networkListMock } from '~components/Tabber/networkListMock';
+import Tabber from '~components/Tabber/Tabber';
 
 import Portal from './Modal';
 
@@ -15,13 +17,16 @@ export const ModalStories: Story = () => {
       <button onClick={() => setOpen(true)}>open portal</button>
       <Portal
         isOpen={isOpen}
-        header={<FirstComment />}
+        title="Modal Title"
         onClickOutside={() => setOpen(false)}
+        footer={
+          <Button type="button" variant="outlined">
+            Clica
+          </Button>
+        }
+        headerButtons={[<Icon icon="gpt" />, <Icon icon="pin" />]}
       >
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        <Button type="button" variant="outlined">
-          Clica
-        </Button>
+        <Tabber socialList={networkListMock} />
       </Portal>
     </div>
   );
