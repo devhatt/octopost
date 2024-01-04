@@ -1,6 +1,5 @@
 import {
   PropsWithChildren,
-  ReactElement,
   createContext,
   useContext,
   useEffect,
@@ -12,15 +11,7 @@ import { OctoModule, manager } from '@octopost/module-manager';
 import { fetchModules } from '~services/axios/modules';
 
 import { IPluginMetadata } from '../../electron/utils/readPackageJson/readPackageJson.types';
-
-export interface IModuleInterface {
-  components: ReactElement[];
-}
-
-export interface IModuleContext {
-  modules: OctoModule[];
-  modulesURL: string[];
-}
+import { IModuleContext } from './ModuleContext.types';
 
 export const ModuleContext = createContext({} as IModuleContext);
 
