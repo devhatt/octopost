@@ -60,13 +60,11 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
 
         const modules = await Promise.all(moduleDatas.map(fetchModuleScript));
 
-        const modulesUrl = modules.map((module, index) => {
-          if (index === modules.length - 1) {
-            manager.emit('finish-load', index);
-          }
+        const modulesUrl = modules.map((module) => {
           return URL.createObjectURL(module);
         });
 
+        manager.emit('finish-load', modulesUrl);
         setModulesURL(modulesUrl);
       } catch (error) {
         console.error(error);
