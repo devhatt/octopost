@@ -27,8 +27,6 @@
 
   flex-direction: column;
 
-  border: 2px solid black;
-
   background-color: #fff;
 
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -67,10 +65,42 @@
 .modalFooter {
   width: 100%;
 
+  display: flex;
+  gap: 0.8rem;
+
+  place-items: center;
+
   padding: 1.6rem 3.2rem;
 }
 
 .headerButtons {
   display: flex;
   gap: 1.6rem;
+
+  button {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    display: block;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+
+  padding: 0 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7a757f;
+  border-radius: 10rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+body {
+  scrollbar-width: none;
+  scrollbar-color: #7a757f;
 }
