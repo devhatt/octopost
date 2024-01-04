@@ -49,6 +49,13 @@ module.exports = defineConfig({
     ],
   },
   overrides: [
+    {
+      files: ['src/contexts/ModuleContext.tsx'],
+      rules: {
+        'no-console': 'off',
+        'no-explicit-any': 'off',
+      },
+    },
     // test files with vitest
     {
       files: ['**/*.spec.*'],

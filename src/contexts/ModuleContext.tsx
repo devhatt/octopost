@@ -32,8 +32,7 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const unsubscribe = manager.subscribe('loaded-module', () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setModules(manager.loadModules() as any);
+      setModules(manager.loadModules());
     });
 
     return () => unsubscribe();
@@ -72,7 +71,6 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
 
         setModulesURL(modulesUrl);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error(error);
       }
     }
@@ -80,8 +78,7 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
     fetchInitialModules();
 
     const unsubscribe = manager.subscribe('loaded-module', () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setModules(manager.loadModules() as any);
+      setModules(manager.loadModules());
     });
 
     return () => unsubscribe();
