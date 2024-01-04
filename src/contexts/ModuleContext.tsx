@@ -8,6 +8,7 @@ import {
 
 import { OctoModule, manager } from '@octopost/module-manager';
 
+import { EMethod } from '~enums/fetchMethods';
 import { fetchModules } from '~services/axios/modules';
 
 import { IPluginMetadata } from '../../electron/utils/readPackageJson/readPackageJson.types';
@@ -37,21 +38,27 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
 
         manager.emit('fetch-modules', moduleDatas);
 
-        const modules = await Promise.all(
-          moduleDatas.map(async (module) => {
-            const modulesRequest = await fetch(
-              'http://localhost:3000/sourcePath',
-              {
-                body: JSON.stringify({ sourcePath: module.sourcePath }),
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              }
-            );
-            return modulesRequest.blob();
-          })
-        );
+        const bodyBuilder = (sourcePath: Record<string, string>) => {
+          const body = {
+            body: JSON.stringify(sourcePath),
+            method: EMethod.POST,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          };
+          return body;
+        };
+
+        const fetchModuleScript = async (module: IPluginMetadata) => {
+          const modulesRequest = await fetch(
+            'http://localhost:3000/sourcePath',
+            bodyBuilder({ sourcePath: module.sourcePath })
+          );
+
+          return modulesRequest.blob();
+        };
+
+        const modules = await Promise.all(moduleDatas.map(fetchModuleScript));
 
         const modulesUrl = modules.map((module, index) => {
           if (index === modules.length - 1) {
