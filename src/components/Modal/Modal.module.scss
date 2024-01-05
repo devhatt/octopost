@@ -27,7 +27,7 @@
 
   flex-direction: column;
 
-  background-color: #fff;
+  background-color: $primaryWhite;
 
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
@@ -102,5 +102,5 @@
 
 body {
   scrollbar-width: none;
-  scrollbar-color: #7a757f;
+  scrollbar-color: $secondaryGray;
 }

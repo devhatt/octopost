@@ -33,7 +33,7 @@ function Modal(props: TModalProps) {
         >
           <div
             className={scss.modalContent}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
           >
             <div className={scss.modalHeader}>
               <h2>{props.title}</h2>
