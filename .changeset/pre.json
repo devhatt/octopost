@@ -4,5 +4,8 @@
   "initialVersions": {
     "@octopost/core": "0.1.0"
   },
-  "changesets": ["tough-trainers-cheer"]
+  "changesets": [
+    "cool-pans-appear",
+    "tough-trainers-cheer"
+  ]
 }
