@@ -13,12 +13,17 @@ expressApp.use(express.json());
 
 expressApp.get('/metadata', async (req, res) => {
   try {
-    const teste = path.join(app.getPath('documents'), '/octopost/plugins/');
+    const userLocalModules = path.join(
+      app.getPath('documents'),
+      '/octopost/plugins/'
+    );
 
-    const mainContent = await resolveModulesMetadata(teste);
-    res.json(mainContent);
+    const mainContent = await resolveModulesMetadata(userLocalModules);
+    res.json({ script: mainContent });
   } catch (error) {
-    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
   }
 });
 
@@ -26,14 +31,18 @@ expressApp.post('/sourcePath', async (req, res) => {
   const { sourcePath } = req.body;
 
   if (!sourcePath) {
-    res.status(404).json('caminho para o package.json não-encontrado');
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
     return;
   }
 
   try {
     res.sendFile(sourcePath.toString());
   } catch (error) {
-    res.status(404).json('conteúdo dentro do package.json não-encontrado');
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
   }
 });
 
