@@ -1,7 +1,6 @@
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
-import MediaInputs from '~components/MediaInputs/MediaInput';
 import SavBar from '~components/SavBar/SavBar';
 
 import Header from './components/Header/Header';
@@ -20,12 +19,13 @@ const Home = () => {
           </div>
           <div className={scss.gridInput}>
             <MainComposer />
-            <MediaInputs />
             <FirstComment />
             <FeedbackError />
           </div>
         </div>
-        <SavBar />
+        <div className={scss.gridSavBar}>
+          <SavBar />
+        </div>
       </div>
     </>
   );

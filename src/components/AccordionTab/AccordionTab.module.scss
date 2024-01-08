@@ -1,50 +1,8 @@
 @use '../../styles/global.scss' as *;
-
-.container {
-  display: flex;
-  flex-direction: column;
-
-  align-items: stretch;
-
-  font-family: $mainFont;
-
-  font-size: 1.6rem;
-
-  border: 1px solid #cbc4cf;
-
-  background-color: $primaryWhite;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  border-radius: 17px 17px 0 0;
-}
+@use '~styles/breakpoints.scss';
 
 .header {
-  width: 100%;
-
-  display: flex;
-  flex-flow: row nowrap;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  color: $primaryWhite;
-  font-size: 1.6rem;
-  line-height: 1;
-
-  padding: 1.2rem;
-
-  position: relative;
-
-  background-color: $secondaryPurple;
-  border-radius: 17px 17px 0 0;
-
-  &::before {
-    font-size: 1.8rem;
-
-    margin-right: 1rem;
-
-    content: '⬤';
-  }
+  display: none;
 }
 
 .headerTitle {
@@ -66,4 +24,51 @@
   margin-right: 2rem;
 
   cursor: pointer;
+}
+
+@include breakpoints.from600 {
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    font-family: $mainFont;
+    font-size: 1.6rem;
+
+    border: 1px solid #cbc4cf;
+
+    background-color: $primaryWhite;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 17px 17px 0 0;
+  }
+
+  .header {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+
+    align-items: center;
+    justify-content: space-between;
+
+    color: $primaryWhite;
+    font-size: 1.6rem;
+    line-height: 1;
+
+    padding: 1.2rem;
+
+    position: relative;
+
+    background-color: $secondaryPurple;
+    border-radius: 17px 17px 0 0;
+
+    &::before {
+      font-size: 1.8rem;
+
+      margin-right: 1rem;
+
+      content: '⬤';
+    }
+  }
 }
