@@ -1,6 +1,6 @@
 {
   "name": "@octopost/core",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.1",
   "engines": {
     "node": "18.18.2",
     "pnpm": "^8"
