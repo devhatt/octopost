@@ -37,12 +37,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #7a757f;
+    background-color: $secondaryGray;
     border-radius: 10rem;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
+    background-color: $primaryWhite;
   }
 }
 
