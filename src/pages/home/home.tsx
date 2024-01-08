@@ -1,6 +1,8 @@
-import { useContext } from 'react';
+import { useEffect } from 'react';
 
-import { ModuleContext } from 'contexts/ModuleContext';
+import { useModule } from 'contexts/ModuleContext';
+
+import { fetchModules } from '~services/axios/modules';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
@@ -14,7 +16,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 const Home = () => {
-  const { modules } = useContext(ModuleContext) as ModuleContext;
+  const { modules } = useModule();
 
   return (
     <>

@@ -49,6 +49,12 @@ module.exports = defineConfig({
     ],
   },
   overrides: [
+    {
+      files: ['src/services/fetchModules/fetchModules.ts'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
     // test files with vitest
     {
       files: ['**/*.spec.*'],
