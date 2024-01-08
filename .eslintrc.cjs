@@ -50,10 +50,9 @@ module.exports = defineConfig({
   },
   overrides: [
     {
-      files: ['src/contexts/ModuleContext.tsx'],
+      files: ['src/services/fetchModules/fetchModules.ts'],
       rules: {
         'no-console': 'off',
-        'no-explicit-any': 'off',
       },
     },
     // test files with vitest

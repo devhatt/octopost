@@ -8,10 +8,8 @@ import {
 
 import { OctoModule, manager } from '@octopost/module-manager';
 
-import { EMethod } from '~enums/fetchMethods';
-import { fetchModules } from '~services/axios/modules';
+import { useFetchModules } from '~services/fetchModules/fetchModules';
 
-import { IPluginMetadata } from '../../electron/utils/readPackageJson/readPackageJson.types';
 import { IModuleContext } from './ModuleContext.types';
 
 export const ModuleContext = createContext({} as IModuleContext);
@@ -20,59 +18,22 @@ export const useModule = () => useContext(ModuleContext);
 
 export default function ModuleProvider({ children }: PropsWithChildren) {
   const [modules, setModules] = useState<OctoModule[]>([]);
-  const [modulesURL, setModulesURL] = useState<string[]>([]);
+
+  const { modulesURL, fetchModulesMetadata, fetchInitialModules } =
+    useFetchModules();
 
   useEffect(() => {
-    const unsubscribe = manager.subscribe('loaded-module', () => {
-      setModules(manager.loadModules());
-    });
+    async function modulesFetch() {
+      const modulesMetadata = await fetchModulesMetadata();
 
-    return () => unsubscribe();
-  }, []);
+      if (!modulesMetadata) return;
 
-  useEffect(() => {
-    async function fetchInitialModules() {
-      try {
-        const { data: moduleDatas } =
-          await fetchModules.get<IPluginMetadata[]>('/metadata');
-
-        manager.emit('fetch-modules', moduleDatas);
-
-        const bodyBuilder = (sourcePath: Record<string, string>) => {
-          const body = {
-            body: JSON.stringify(sourcePath),
-            method: EMethod.POST,
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          };
-          return body;
-        };
-
-        const fetchModuleScript = async (module: IPluginMetadata) => {
-          const modulesRequest = await fetch(
-            'http://localhost:3000/sourcePath',
-            bodyBuilder({ sourcePath: module.sourcePath })
-          );
-
-          return modulesRequest.blob();
-        };
-
-        const modules = await Promise.all(moduleDatas.map(fetchModuleScript));
-
-        const modulesUrl = modules.map((module) => {
-          return URL.createObjectURL(module);
-        });
-
-        manager.emit('finish-load', modulesUrl);
-        setModulesURL(modulesUrl);
-      } catch (error) {
-        console.error(error);
-      }
+      manager.emit('fetch-modules', modulesMetadata);
+      await fetchInitialModules(modulesMetadata);
+      manager.emit('finish-load', modulesURL);
     }
 
-    fetchInitialModules();
-
+    modulesFetch();
     const unsubscribe = manager.subscribe('loaded-module', () => {
       setModules(manager.loadModules());
     });

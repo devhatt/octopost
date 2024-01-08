@@ -63,7 +63,7 @@ let win: BrowserWindow | null;
 function createWindow() {
   expressApp.listen(port, () => {
     // eslint-disable-next-line no-console
-    console.log(`Example app listening on port ${port}`);
+    console.log(`internal server running on http://localhost:${port}`);
   });
 
   win = new BrowserWindow({

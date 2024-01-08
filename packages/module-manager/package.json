@@ -39,5 +39,8 @@
     "typescript": "5.2.2",
     "vite": "^5.0.0",
     "vite-plugin-dts": "3.6.4"
+  },
+  "dependencies": {
+    "dist": "link:/home/hxsggsz/frontend/octopost/packages/module-manager/dist"
   }
 }
