@@ -12,17 +12,85 @@
   position: fixed;
   z-index: 1000;
 
-  background-color: #0004;
+  background-color: rgba(33, 0, 93, 0.161);
   inset: 0;
 }
 
-// TODO: remove when define we create modal design;
 .modalContent {
-  padding: 5rem;
+  min-width: 45rem;
+  max-width: 60rem;
+  max-height: 60rem;
+
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: $primaryWhite;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  ::-webkit-scrollbar {
+    width: 0.4rem;
+
+    padding: 0 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $secondaryGray;
+    border-radius: 10rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: $primaryWhite;
+  }
+}
+
+.modalHeader {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 2.2rem;
+  font-weight: 500;
+
+  padding: 2.4rem 1.6rem;
 
   background-color: $primaryWhite;
 
-  box-shadow: 3px 3px 3px #0003;
+  h2 {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
 
-  border-radius: 5px;
+    margin: 0;
+  }
+}
+
+.modalContentText {
+  padding: 1.6rem 4rem;
+}
+
+.modalFooter {
+  width: 100%;
+
+  display: flex;
+  gap: 0.8rem;
+
+  place-items: center;
+
+  padding: 1.6rem 3.2rem;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 1.6rem;
+
+  button {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    display: block;
+  }
 }

@@ -4,6 +4,8 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import Icon from '~components/Icon/Icon';
+
 import scss from './Modal.module.scss';
 
 import { type TModalProps } from './Modal.types';
@@ -29,8 +31,22 @@ function Modal(props: TModalProps) {
           className={classNames(scss.container, props.className)}
           onClick={props.onClickOutside}
         >
-          <div onClick={(e) => e.stopPropagation()}>
-            <div className={scss.modalContent}>{props.children}</div>
+          <div
+            className={scss.modalContent}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className={scss.modalHeader}>
+              <h2>{props.title}</h2>
+              <div className={scss.headerButtons}>
+                <button onClick={props.onClickOutside}>
+                  {<Icon icon="emote" size="large" />}
+                </button>
+              </div>
+            </div>
+            <div>
+              <div className={scss.modalContentText}>{props.children}</div>
+            </div>
+            <footer className={scss.modalFooter}>{props.footer}</footer>
           </div>
         </motion.div>
       )}
