@@ -12,6 +12,7 @@ import scss from './Sidebar.module.scss';
 function Sidebar() {
   const [value, setValue] = useState('');
   const [isOpen, setOpen] = useState(false);
+  const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = () => {
@@ -29,42 +30,55 @@ function Sidebar() {
   };
 
   return (
-    <AccordionTab title="Select Social Media" hideCloseButton>
-      <div className={scss.content}>
-        <InputSearch
-          className={scss.searchBar}
-          onChange={(value) => setValue(value as string)}
-          placeholder="Search for social media"
-          ref={inputSearchRef}
-          error={false}
-        />
+    <>
+      <Button variant="outlined" onClick={() => setMobileIsOpen(true)}>
+        Abre
+      </Button>
+      <AccordionTab
+        className={
+          scss.mobile +
+          ' ' +
+          (mobileIsOpen ? scss.openMobile : scss.closeMobile)
+        }
+        title="Select Social Media"
+        hideCloseButton
+      >
+        <div className={scss.content}>
+          <InputSearch
+            className={scss.searchBar}
+            onChange={(value) => setValue(value as string)}
+            placeholder="Search for social media"
+            ref={inputSearchRef}
+            error={false}
+          />
 
-        {!value && renderSearchClue()}
+          {!value && renderSearchClue()}
 
-        <div className={scss.items}>
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          <div className={scss.items}>
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          </div>
+
+          <Button
+            onClick={handleToggleModal}
+            className={scss.newAccountButton}
+            variant="container"
+          >
+            + &ensp; New Account
+          </Button>
+
+          <Modal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
+            Octopost
+          </Modal>
         </div>
-
-        <Button
-          onClick={handleToggleModal}
-          className={scss.newAccountButton}
-          variant="container"
-        >
-          + &ensp; New Account
-        </Button>
-
-        <Modal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
-          Octopost
-        </Modal>
-      </div>
-    </AccordionTab>
+      </AccordionTab>
+    </>
   );
 }
 
