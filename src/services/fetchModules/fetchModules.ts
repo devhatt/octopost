@@ -24,9 +24,7 @@ export const useFetchModules = () => {
       const fetchModuleScript = async (module: IPluginMetadata) => {
         const modulesRequest = await fetchModules.post(
           '/sourcePath',
-          {
-            sourcePath: module.sourcePath,
-          },
+          { sourcePath: module.sourcePath },
           {
             headers: { 'Content-Type': 'application/json' },
             responseType: 'blob',
