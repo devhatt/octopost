@@ -6,7 +6,6 @@ import { ISocialMediaList } from './SocialMediaList.type';
 
 function SocialMediaList(props: ISocialMediaList) {
   const [tags, setTags] = useState<string[]>([]);
-  const [selectedOption, setSelectedOption] = useState('');
 
   const addTag = (newTag: string) => {
     if (!tags.includes(newTag)) {
