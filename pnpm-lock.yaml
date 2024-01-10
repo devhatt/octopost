@@ -141,6 +141,9 @@ importers:
       '@vitest/ui':
         specifier: ^0.34.6
         version: 0.34.7(vitest@0.34.6)
+      axios:
+        specifier: 1.6.3
+        version: 1.6.3
       commitizen:
         specifier: ^4.3.0
         version: 4.3.0(typescript@5.2.2)
@@ -221,6 +224,10 @@ importers:
         version: 4.4.7(@types/react@18.2.41)(react@18.2.0)
 
   packages/module-manager:
+    dependencies:
+      dist:
+        specifier: link:/home/hxsggsz/frontend/octopost/packages/module-manager/dist
+        version: link:dist
     devDependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.15.0
@@ -260,10 +267,10 @@ importers:
         version: 5.2.2
       vite:
         specifier: ^5.0.0
-        version: 5.0.10(@types/node@20.10.5)(sass@1.69.5)
+        version: 5.0.10
       vite-plugin-dts:
         specifier: 3.6.4
-        version: 3.6.4(@types/node@20.10.5)(typescript@5.2.2)(vite@5.0.10)
+        version: 3.6.4(typescript@5.2.2)(vite@5.0.10)
 
 packages:
 
@@ -1710,24 +1717,24 @@ packages:
       react: 18.2.0
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.3(@types/node@20.10.5):
+  /@microsoft/api-extractor-model@7.28.3:
     resolution: {integrity: sha512-wT/kB2oDbdZXITyDh2SQLzaWwTOFbV326fP0pUwNW00WeliARs0qjmXBWmGWardEzp2U3/axkO3Lboqun6vrig==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.62.0(@types/node@20.10.5)
+      '@rushstack/node-core-library': 3.62.0
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.39.0(@types/node@20.10.5):
+  /@microsoft/api-extractor@7.39.0:
     resolution: {integrity: sha512-PuXxzadgnvp+wdeZFPonssRAj/EW4Gm4s75TXzPk09h3wJ8RS3x7typf95B4vwZRrPTQBGopdUl+/vHvlPdAcg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.3(@types/node@20.10.5)
+      '@microsoft/api-extractor-model': 7.28.3
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.62.0(@types/node@20.10.5)
+      '@rushstack/node-core-library': 3.62.0
       '@rushstack/rig-package': 0.5.1
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
@@ -1990,7 +1997,7 @@ packages:
     resolution: {integrity: sha512-2/U3GXA6YiPYQDLGwtGlnNgKYBSwCFIHf8Y9LUY5VATHdtbLlU0Y1R3QoBnT0aB4qv/BEiVVsj7LJXoQCgJ2vA==}
     dev: true
 
-  /@rushstack/node-core-library@3.62.0(@types/node@20.10.5):
+  /@rushstack/node-core-library@3.62.0:
     resolution: {integrity: sha512-88aJn2h8UpSvdwuDXBv1/v1heM6GnBf3RjEy6ZPP7UnzHNCqOHA2Ut+ScYUbXcqIdfew9JlTAe3g+cnX9xQ/Aw==}
     peerDependencies:
       '@types/node': '*'
@@ -1998,7 +2005,6 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.10.5
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -3427,8 +3433,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.2:
-    resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
+  /axios@1.6.3:
+    resolution: {integrity: sha512-fWyNdeawGam70jXSVlKl+SUNVcL6j6W79CuSIPfi6HnDUmSCH6gyUys/HrqHeA/wU0Az41rRgean494d0Jb+ww==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
@@ -5054,6 +5060,7 @@ packages:
       debug: 3.2.7
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.15.0)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -11127,7 +11134,7 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      axios: 1.6.2
+      axios: 1.6.3
       joi: 17.11.0
       lodash: 4.17.21
       minimist: 1.2.8

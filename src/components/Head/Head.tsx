@@ -1,9 +1,15 @@
 import { Helmet } from 'react-helmet';
 
+import { useModule } from 'contexts/ModuleContext';
+
 export function Head() {
+  const { modulesURL } = useModule();
+
   return (
     <Helmet>
-      <script src="http://localhost:3000/modules" type="module" defer />
+      {modulesURL.map((module) => (
+        <script key={module} src={module} type="module" defer />
+      ))}
     </Helmet>
   );
 }

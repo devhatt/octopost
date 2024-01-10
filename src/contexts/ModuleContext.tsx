@@ -1,41 +1,48 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   PropsWithChildren,
-  ReactElement,
   createContext,
+  useContext,
   useEffect,
   useState,
 } from 'react';
 
 import { OctoModule, manager } from '@octopost/module-manager';
 
-export interface ModuleInterface {
-  components: ReactElement[];
-}
+import { useFetchModules } from '~services/fetchModules/fetchModules';
 
-export interface ModuleContext {
-  modules: OctoModule[];
-}
+import { IModuleContext } from './ModuleContext.types';
 
-export const ModuleContext = createContext<ModuleContext | null>(null);
+export const ModuleContext = createContext({} as IModuleContext);
+
+export const useModule = () => useContext(ModuleContext);
 
 export default function ModuleProvider({ children }: PropsWithChildren) {
   const [modules, setModules] = useState<OctoModule[]>([]);
 
+  const { modulesURL, fetchModulesMetadata, fetchInitialModules } =
+    useFetchModules();
+
   useEffect(() => {
+    async function modulesFetch() {
+      const modulesMetadata = await fetchModulesMetadata();
+
+      if (!modulesMetadata) return;
+
+      manager.emit('fetch-modules', modulesMetadata);
+      await fetchInitialModules(modulesMetadata);
+      manager.emit('finish-load', modulesURL);
+    }
+
+    modulesFetch();
     const unsubscribe = manager.subscribe('loaded-module', () => {
-      setModules(manager.loadModules() as any);
+      setModules(manager.loadModules());
     });
 
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => console.log(modules), [modules]);
-
   return (
-    <ModuleContext.Provider value={{ modules }}>
+    <ModuleContext.Provider value={{ modules, modulesURL }}>
       {children}
     </ModuleContext.Provider>
   );
