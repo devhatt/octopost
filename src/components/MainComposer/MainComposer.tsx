@@ -19,14 +19,13 @@ function MainComposer() {
           <ComposerEditor />
         </div>
         <div className={scss.contentBot}>
-          <div className={scss.contentBotTop}>
-            <h2>content-bot-top</h2>
-          </div>
+          <div className={scss.contentBotTop}></div>
           <div className={scss.contentBotBot}>
             <div className={scss.mainComposerInputMedia}>
               <MediaInputs />
             </div>
-            <h2>content-bot-bot</h2>
+            <div className={scss.iconPulsSave}></div>
+
             <p>{t('We have a lot of work')}</p>
           </div>
         </div>
