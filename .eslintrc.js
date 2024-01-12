@@ -105,18 +105,5 @@ module.exports = defineConfig({
         '@typescript-eslint/no-non-null-assertion': 'off',
       },
     },
-    {
-      files: ['./src/types/*.ts', '*.d.ts'],
-      rules: {
-        '@typescript-eslint/no-explicit-any': 'off',
-      },
-    },
-    {
-      files: ['*.js'],
-      rules: {
-        'no-console': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
   ],
 });
