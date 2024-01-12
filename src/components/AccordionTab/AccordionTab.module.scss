@@ -9,10 +9,14 @@
   flex-grow: 1;
 }
 
+.headerIcon {
+  padding: 0.8rem;
+}
+
 .closeButton {
   width: min-content;
 
-  display: flex;
+  display: none;
 
   align-items: center;
   justify-content: center;
