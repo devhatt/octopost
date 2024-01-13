@@ -64,7 +64,7 @@ jobs:
       - name: Run prettier in all files
         if: steps.changed-files.outputs.all_any_changed == 'true'
         env:
-          files: ${{ steps.changed-files.outputs.all_changed_files }}
+          files: ${{ steps.changed-files.outputs.all_all_changed_files }}
         run: pnpm exec prettier $files --check --ignore-unknown
 
       - name: Run eslint in code files
