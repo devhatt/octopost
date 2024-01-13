@@ -120,14 +120,14 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write --ignore-unknown"
     ],
     "*.scss": [
       "stylelint --fix",
-      "prettier --write"
+      "prettier --write --ignore-unknown"
     ],
     "*": [
-      "prettier --write"
+      "prettier --write --ignore-unknown"
     ]
   }
 }
