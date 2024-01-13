@@ -13,7 +13,7 @@ env:
 jobs:
   code-style:
     runs-on: ubuntu-latest
-    name: Enforce Octopost code-style
+    name: Enforce code-style
     steps:
       - name: Code checkout
         uses: actions/checkout@v3
@@ -58,7 +58,7 @@ jobs:
       - name: Run eslint in code files
         if: steps.code-files.outputs.any_changed == 'true'
         env:
-          CODE_CHANGED_FILES: ${{ steps.code-files.outputs.code-files }}
+          CODE_CHANGED_FILES: ${{ steps.code-files.outputs.all_changed_files }}
         run: pnpm exec eslint $CODE_CHANGED_FILES --report-unused-disable-directives --max-warnings 0
 
       - name: Get all style files
@@ -72,7 +72,7 @@ jobs:
       - name: Run stylelint in scss files
         if: steps.styles-files.outputs.any_changed == 'true'
         env:
-          CODE_CHANGED_FILES: ${{ steps.styles-files.outputs.styles-files }}
+          CODE_CHANGED_FILES: ${{ steps.styles-files.outputs.all_changed_files }}
         run: pnpm exec stylelint $CODE_CHANGED_FILES --allow-empty-input
 
       - name: Get all changed files
@@ -82,7 +82,7 @@ jobs:
       - name: Run prettier in all files
         if: steps.changed-files.outputs.any_changed == 'true'
         env:
-          CODE_CHANGED_FILES: ${{ steps.changed-files.outputs.changed-files }}
+          CODE_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: pnpm exec prettier $CODE_CHANGED_FILES --check --ignore-unknown
 
   build:
