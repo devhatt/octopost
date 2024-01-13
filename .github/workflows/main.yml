@@ -49,17 +49,15 @@ jobs:
         with:
           files_yaml: |
             code:
-              - **.js
-              - **.ts
-              - **.tsx
-              - **.jsx
-              - **.mjs
-              - **.cjs
+              - '**.js'
+              - '**.ts'
+              - '**.tsx'
+              - '**.jsx'
+              - '**.mjs'
+              - '**.cjs'
             style:
-              - **.scss
-              - **.css
-            all:
-              - **
+              - '**.scss'
+              - '**.css'
 
       - name: Run eslint in code files
         if: steps.changed-files.outputs.code_any_changed == 'true'
@@ -74,9 +72,9 @@ jobs:
         run: pnpm exec stylelint $files --allow-empty-input
 
       - name: Run prettier in all files
-        if: steps.changed-files.outputs.all_any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         env:
-          files: ${{ steps.changed-files.outputs.all_all_changed_files }}
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
         run: pnpm exec prettier $files --check --ignore-unknown
 
   build:
