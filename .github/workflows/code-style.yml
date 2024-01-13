@@ -44,9 +44,12 @@ jobs:
       - name: Get all changed files
         id: all-changed-files
         uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            !pnpm-lock.yaml
 
       - name: Run prettier in all files
-        # if: steps.all-changed-files.outputs.any_changed == 'true'
+        if: steps.all-changed-files.outputs.any_changed == 'true'
         env:
           files: ${{ steps.all-changed-files.outputs.all_changed_files }}
         run: pnpm exec prettier $files --check --ignore-unknown
