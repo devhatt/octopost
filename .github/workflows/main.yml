@@ -59,7 +59,7 @@ jobs:
               - '**.scss'
               - '**.css'
             all:
-              - '**'
+              - /**
 
       - name: Run prettier in all files
         if: steps.changed-files.outputs.all_any_changed == 'true'
