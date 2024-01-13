@@ -1,4 +1,5 @@
 @use '~styles/global.scss';
+@use '~styles/breakpoints.scss';
 
 .home {
   display: grid;
@@ -29,8 +30,7 @@
 }
 
 .mainContainer {
-  width: 90%;
-
+  width: 100%;
   max-width: 120rem;
 
   align-items: center;
@@ -40,15 +40,28 @@
 }
 
 .gridContainer {
-  width: 100%;
-
-  display: grid;
   grid-template-areas:
-    'switches input'
-    'switches tabs';
-  grid-template-rows: 1fr 2fr;
-  grid-template-columns: 28.4rem 1fr;
-  gap: 10px;
+    'switches'
+    'input'
+    'tabs';
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+
+  text-align: center;
+
+  margin: 0 auto;
+
+  .gridSwitches {
+    display: none;
+
+    &.gridSwitchesVisible {
+      display: block;
+    }
+  }
+
+  .gridInput > :not(:first-child) {
+    display: none;
+  }
 }
 
 .gridSwitches {
@@ -59,4 +72,36 @@
   display: flex;
   flex-direction: column;
   grid-area: input;
+}
+
+.gridSavBar {
+  display: none;
+}
+
+@include breakpoints.from600 {
+  .gridContainer {
+    width: 100%;
+
+    display: grid;
+    grid-template-areas:
+      'switches input'
+      'switches tabs';
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 28.4rem 1fr;
+    gap: 1rem;
+
+    padding: 0 2rem;
+
+    .gridSwitches {
+      display: block;
+    }
+
+    .gridInput > :not(:first-child) {
+      display: block;
+    }
+  }
+
+  .gridSavBar {
+    display: block;
+  }
 }
