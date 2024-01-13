@@ -11,11 +11,12 @@ env:
   NODE_VERSION: 18.18.2
 
 jobs:
-  build:
+  code-style:
     runs-on: ubuntu-latest
-
+    name: Enforce Octopost code-style
     steps:
-      - uses: actions/checkout@v3
+      - name: Code checkout
+        uses: actions/checkout@v3
 
       - uses: pnpm/action-setup@v2
         with:
@@ -37,8 +38,78 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Get all code files
+        id: code-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            **.js
+            **.ts
+            **.tsx
+            **.jsx
+            **.mjs
+            **.cjs
+
+      - name: Run eslint in code files
+        if: steps.code-files.outputs.any_changed == 'true'
+        env:
+          CODE_CHANGED_FILES: ${{ steps.code-files.outputs.code-files }}
+        run: pnpm exec eslint $CODE_CHANGED_FILES --report-unused-disable-directives --max-warnings 0
+
+      - name: Get all style files
+        id: styles-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            **.css
+            **.scss
+
+      - name: Run stylelint in scss files
+        if: steps.styles-files.outputs.any_changed == 'true'
+        env:
+          CODE_CHANGED_FILES: ${{ steps.styles-files.outputs.styles-files }}
+        run: pnpm exec stylelint $CODE_CHANGED_FILES --allow-empty-input
+
+      - name: Get all changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+
+      - name: Run prettier in all files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          CODE_CHANGED_FILES: ${{ steps.changed-files.outputs.changed-files }}
+        run: pnpm exec prettier $CODE_CHANGED_FILES --check --ignore-unknown
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
       - name: Code checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile]
+
+      - name: Get PNPM store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        name: Setup PNPM cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
@@ -47,9 +118,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Style-guide Tests (Stylelint, Prettier and Eslint)
-        run: pnpm code-style
 
       - name: Install e2e dependencies
         run: pnpm playwright install --with-deps
