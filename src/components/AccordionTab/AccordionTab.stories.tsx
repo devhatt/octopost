@@ -7,13 +7,13 @@ import AccordionTab from './AccordionTab';
 import { TAccordionTabProps } from './AccordionTab.types';
 
 export const AccordionTabStories: Story<TAccordionTabProps> = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setOpen] = useState(true);
 
   return (
     <AccordionTab
-      isOpen={isOpen}
-      onChangeOpen={() => { setIsOpen((isOpen) => !isOpen); }}
       title="Accordion Tab"
+      onChangeOpen={() => setOpen((isOpen) => !isOpen)}
+      isOpen={isOpen}
       {...props}
     >
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam autem

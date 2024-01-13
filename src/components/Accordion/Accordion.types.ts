@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
-export interface TAccordionProps {
+export type TAccordionProps = {
   className?: string;
-  content: ReactNode;
   duration?: number;
-  header: ReactNode;
   isOpen: boolean;
-}
+  content: ReactNode;
+  header: ReactNode;
+};

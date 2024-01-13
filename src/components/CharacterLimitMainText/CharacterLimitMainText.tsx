@@ -9,11 +9,11 @@ function CharacterLimitMainText(props: ICharacterLimitMainTextProps) {
     <div className={scss.compost}>
       {props.module.map((module) => (
         <CharacterLimit
-          id={module.id}
           key={module.id}
           maxLength={module.maxLength}
-          svg={module.svg}
           value={module.value}
+          id={module.id}
+          svg={module.svg}
         />
       ))}
     </div>

@@ -3,6 +3,8 @@ import scss from './SearchClue.module.scss';
 import { ISearchClueProps } from './SearchClue.types';
 
 function SearchClue(props: ISearchClueProps) {
+  const { label } = props;
+
   const handleClearClick = () => {
     if (props.clearInput) {
       props.clearInput();
@@ -12,13 +14,9 @@ function SearchClue(props: ISearchClueProps) {
   return (
     <div className={scss.searchClueContainer}>
       <span className={scss.spanSearchClue}>
-        {props.label} <span className={scss.searchWord}>{props.value}</span>
+        {label} <span className={scss.searchWord}>{props.value}</span>
       </span>
-      <button
-        className={scss.clearButton}
-        onClick={handleClearClick}
-        type="button"
-      >
+      <button className={scss.clearButton} onClick={handleClearClick}>
         Clean
       </button>
     </div>

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import scss from './Modal.module.scss';
 
-import type { TModalProps } from './Modal.types';
+import { type TModalProps } from './Modal.types';
 
 function Modal(props: TModalProps) {
   useEffect(() => {
@@ -20,22 +20,18 @@ function Modal(props: TModalProps) {
 
   return createPortal(
     <AnimatePresence>
-      {!!props.isOpen && (
+      {props.isOpen && (
         <motion.div
-          animate={{ opacity: 1 }}
-          className={classNames(scss.container, props.className)}
           data-testid="portal"
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={props.onClickOutside}
           transition={{ duration: 0.3 }}
+          className={classNames(scss.container, props.className)}
+          onClick={props.onClickOutside}
         >
-          {
-            // TODO: Remove this
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,, jsx-a11y/no-static-element-interactions
-            <div onClick={(e) => { e.stopPropagation(); }}>
-              <div className={scss.modalContent}>{props.children}</div>
-            </div>
-          }
+          <div onClick={(e) => e.stopPropagation()}>
+            <div className={scss.modalContent}>{props.children}</div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>,

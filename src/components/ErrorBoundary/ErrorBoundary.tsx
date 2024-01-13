@@ -1,20 +1,23 @@
-import { Component } from 'react';
+import React from 'react';
 
 import { TBoundaryProps, TErrorBoundaryState } from './ErrorBoundary.types';
 
 const initialState: TErrorBoundaryState = {
-  error: null,
   hasError: false,
+  error: null,
 };
 
-class ErrorBoundary extends Component<TBoundaryProps, TErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  TBoundaryProps,
+  TErrorBoundaryState
+> {
   constructor(props: TBoundaryProps) {
     super(props);
     this.state = initialState;
   }
 
   static getDerivedStateFromError(error: Error) {
-    return { error: error, hasError: true };
+    return { hasError: true, error: error };
   }
 
   render() {

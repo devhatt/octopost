@@ -3,21 +3,18 @@ import scss from '../MediaInput.module.scss';
 import InputMedia from '../../InputMedia/InputMedia';
 import { IMediaGroupProps } from './MediaGroup.types';
 
-function MediaGroup(props: IMediaGroupProps) {
+function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps) {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
         <InputMedia
-          files={props.media.file}
-          onChange={(newMedias) =>
-            { props.onImageChange(newMedias, props.media.id); }
-          }
+          files={media.file}
+          onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
         <button
-          aria-label="Close"
+          area-label="Close"
           className={scss.removeButton}
-          onClick={() => { props.onRemove(props.media.id); }}
-          type="button"
+          onClick={() => onRemove(media.id)}
         >
           X
         </button>

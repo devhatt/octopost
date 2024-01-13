@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Story } from '@ladle/react';
 
 import InputSearch from './InputSearch';
@@ -5,8 +7,8 @@ import InputSearch from './InputSearch';
 import { TInputProps } from './InputSearch.types';
 
 export default {
-  component: InputSearch,
   title: 'InputSearch',
+  component: InputSearch,
 };
 
 const Template: Story<TInputProps> = (args) => (
@@ -15,9 +17,9 @@ const Template: Story<TInputProps> = (args) => (
 
 export const InputSearchComponent = Template.bind({});
 InputSearchComponent.args = {
-  error: false,
-  errorMessage: 'Erro no campo de entrada',
   name: 'Input Search',
   placeholder: 'Search Social Media',
   required: true,
+  error: false,
+  errorMessage: 'Erro no campo de entrada',
 };

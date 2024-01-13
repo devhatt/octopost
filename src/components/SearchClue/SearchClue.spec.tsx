@@ -1,12 +1,12 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import SearchClue from './SearchClue';
 
 describe('searchClue component', () => {
   const props = {
+    value: 'value example',
     label: 'label example',
     setValue: vi.fn(),
-    value: 'value example',
   };
 
   const { getByText } = render(<SearchClue {...props} />);

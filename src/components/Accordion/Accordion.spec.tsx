@@ -9,13 +9,13 @@ afterEach(() => {
 });
 
 const makeSut = ({
-  content = <div>content</div>,
   header = <div>header</div>,
+  content = <div>content</div>,
   isOpen = false,
   ...props
 }: Partial<TAccordionProps>) => {
   return render(
-    <Accordion content={content} header={header} isOpen={isOpen} {...props} />
+    <Accordion isOpen={isOpen} header={header} content={content} {...props} />
   );
 };
 

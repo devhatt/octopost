@@ -7,12 +7,14 @@ import { TSocialNetworksState } from './useSocialNetworkStore.types';
 export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
   socialNetworks: [
     {
+      id: nanoid(),
+      name: 'Facebook',
       icon: (
         <svg
-          fill="none"
+          width="24"
           height="24"
           viewBox="0 0 24 24"
-          width="24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -21,17 +23,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      id: nanoid(),
-      name: 'Facebook',
       postModes: [story, post, reels],
     },
     {
+      id: nanoid(),
+      name: 'Instagram',
       icon: (
         <svg
-          fill="none"
+          width="24"
           height="24"
           viewBox="0 0 24 24"
-          width="24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -40,17 +42,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      id: nanoid(),
-      name: 'Instagram',
       postModes: [reels, story, post],
     },
     {
+      id: nanoid(),
+      name: 'Xwitter',
       icon: (
         <svg
-          fill="none"
+          width="24"
           height="24"
           viewBox="0 0 24 24"
-          width="24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -59,17 +61,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      id: nanoid(),
-      name: 'Xwitter',
       postModes: [post],
     },
     {
+      id: nanoid(),
+      name: 'TikTok',
       icon: (
         <svg
-          fill="none"
+          width="24"
           height="24"
           viewBox="0 0 24 24"
-          width="24"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -78,8 +80,6 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      id: nanoid(),
-      name: 'TikTok',
       postModes: [post, story],
     },
   ],

@@ -1,11 +1,11 @@
 export interface ISocialAccordion {
-  accountList: IAccountList[];
-  error: boolean;
   socialMediaName: string;
+  error: boolean;
+  accountList: IAccountList[];
 }
 
 export interface IAccountList {
-  id: number | string;
-  image: string;
+  id: string | number;
   username: string;
+  image: string;
 }

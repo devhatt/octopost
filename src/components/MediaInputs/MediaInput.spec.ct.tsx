@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/experimental-ct-react';
+import { test, expect } from '@playwright/experimental-ct-react';
 
 import MediaInputs from './MediaInput'; // Forna de importar diferente
 
@@ -33,7 +33,7 @@ test.describe('ManyInputs', () => {
 
     test.describe('when the file is diferent from image or video', () => {
       test('doesnt select the file', async ({ mount }) => {
-        const mediaSelected: null | string = null;
+        const mediaSelected: string | null = null;
 
         const component = await mount(<MediaInputs />);
         await component

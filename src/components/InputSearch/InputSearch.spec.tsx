@@ -1,20 +1,22 @@
-import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+
+import { render, fireEvent } from '@testing-library/react';
 
 import InputSearch from './InputSearch';
 
 const mockProps = {
-  error: false,
-  errorMessage: 'Test Error Message',
-  handleClear: vi.fn(),
   name: 'testInput',
-  onChange: vi.fn(),
-  onFocus: vi.fn(),
-  placeholder: 'Test Placeholder',
-  readonly: false,
-  required: false,
-  setValue: vi.fn(),
   type: 'text',
   value: 'Value',
+  required: false,
+  placeholder: 'Test Placeholder',
+  errorMessage: 'Test Error Message',
+  readonly: false,
+  error: false,
+  onFocus: vi.fn(),
+  handleClear: vi.fn(),
+  onChange: vi.fn(),
+  setValue: vi.fn(),
 };
 
 describe('InputSearch component', () => {
@@ -51,7 +53,7 @@ describe('InputSearch component', () => {
   });
 
   it('displays error message when errors prop is true', () => {
-    const { getByText } = render(<InputSearch {...mockProps} error />);
+    const { getByText } = render(<InputSearch {...mockProps} error={true} />);
 
     const errorMessage = getByText('Test Error Message');
     expect(errorMessage).toBeInTheDocument();

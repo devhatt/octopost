@@ -4,18 +4,18 @@ import { IIconProps } from './icon.types';
 
 export const icons: Record<IIconProps['icon'], string> = {
   at: scss.iAt,
-  canva: scss.iCanva,
   emote: scss.iEmote,
-  error: scss.iError,
-  gpt: scss.iGpt,
   hashtag: scss.iHashtag,
   link: scss.iLink,
   pin: scss.iPin,
+  gpt: scss.iGpt,
+  canva: scss.iCanva,
+  error: scss.iError,
 };
 
 export const sizes = {
-  large: scss.large,
   small: scss.small,
+  large: scss.large,
 };
 
 export const colors = {

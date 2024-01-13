@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 
 import { Story } from '@ladle/react';
 
@@ -7,11 +7,18 @@ import Accordion from './Accordion';
 import { TAccordionProps } from './Accordion.types';
 
 export const AccordionStories: Story<TAccordionProps> = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = React.useState(false);
 
   return (
     <Accordion
       {...props}
+      duration={0.3}
+      isOpen={isOpen}
+      header={
+        <button onClick={() => setOpen((isOpen) => !isOpen)}>
+          Click to open!
+        </button>
+      }
       content={
         <div>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. od quis
@@ -19,13 +26,6 @@ export const AccordionStories: Story<TAccordionProps> = (props) => {
           officiis. Officiis excepturi aperiam error.
         </div>
       }
-      duration={0.3}
-      header={
-        <button onClick={() => { setIsOpen((isOpen) => !isOpen); }} type="button">
-          Click to open!
-        </button>
-      }
-      isOpen={isOpen}
     />
   );
 };

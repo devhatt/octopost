@@ -13,7 +13,7 @@ function AccordionTab(props: TAccordionTabProps) {
 
   const renderCloseButton = () => {
     return (
-      <button className={scss.closeButton} onClick={handleClose} type="button">
+      <button onClick={handleClose} className={scss.closeButton}>
         -
       </button>
     );
@@ -29,9 +29,9 @@ function AccordionTab(props: TAccordionTabProps) {
   return (
     <Accordion
       className={classNames(scss.container, props.className)}
-      content={props.children}
-      header={renderHeader()}
       isOpen={props.isOpen ?? true}
+      header={renderHeader()}
+      content={props.children}
     />
   );
 }

@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { render, fireEvent, screen, act } from '@testing-library/react';
 
 import CustomTextArea from './TextArea';
 
@@ -16,7 +16,7 @@ describe('CustomTextArea', () => {
 
     const inputElement = screen.getByPlaceholderText(
       'Digite algo aqui...'
-    ) ;
+    ) as HTMLInputElement;
     const testInputValue = 'Testing TextArea input';
     act(() => {
       fireEvent.change(inputElement, { target: { value: testInputValue } });

@@ -21,8 +21,9 @@ function Tabber() {
   );
 
   const changeCurrentTab = (socialNetwork: ITab) => {
-    const tabsCurrentPostModeId =
-      socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
+    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
+      ? socialNetwork.currentPostModeId
+      : buildPostModeId(socialNetwork);
 
     setCurrentTab(socialNetwork);
     setCurrentPostModeId(tabsCurrentPostModeId);
@@ -37,21 +38,23 @@ function Tabber() {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
+  const preview = currentTab.currentPostMode
+    ? currentTab.currentPostMode
+    : currentTab.postModes[0];
 
   return (
     <div>
       <Tabs
-        currentTab={currentTab}
         onChangeTab={changeCurrentTab}
         socialNetworks={socialNetworks}
+        currentTab={currentTab}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
+            onChangePostMode={changeCurrentPostMode}
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
-            onChangePostMode={changeCurrentPostMode}
           />
         </div>
         <div className={scss.previewContainer}>

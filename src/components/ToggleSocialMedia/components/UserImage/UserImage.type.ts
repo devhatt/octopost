@@ -1,4 +1,4 @@
 export interface IUserImage {
-  accountName: string;
   image: string;
+  accountName: string;
 }

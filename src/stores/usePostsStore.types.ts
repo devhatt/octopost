@@ -1,5 +1,5 @@
 export interface IPostsStore {
-  increase: (by: number) => void;
   postsQuantity: number;
+  increase: (by: number) => void;
   reset: () => void;
 }

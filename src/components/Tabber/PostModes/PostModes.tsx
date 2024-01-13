@@ -10,21 +10,19 @@ import { IPostModesProps } from './PostModes.types';
 function PostModes(props: IPostModesProps) {
   const postModeClasses = (index: number) =>
     classNames({
+      [scss.postModeTitle]: true,
       [scss.active]:
         props.currentPostModeId === buildPostModeId(props.currentTab, index),
-      [scss.postModeTitle]: true,
     });
 
   const renderPostMode = (postMode: IPostMode, index: number) => {
     const postModeId = buildPostModeId(props.currentTab, index);
 
     return (
-      // TODO: Remove this warning
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
       <span
-        className={postModeClasses(index)}
         key={postModeId}
-        onClick={() => { props.onChangePostMode(postMode, postModeId); }}
+        className={postModeClasses(index)}
+        onClick={() => props.onChangePostMode(postMode, postModeId)}
       >
         {postMode.name}
       </span>
@@ -33,9 +31,7 @@ function PostModes(props: IPostModesProps) {
 
   return (
     <div className={scss.postModesHeader}>
-      {props.currentTab.postModes.map((element, index) =>
-        renderPostMode(element, index)
-      )}
+      {props.currentTab.postModes.map(renderPostMode)}
     </div>
   );
 }

@@ -9,11 +9,11 @@ import '~i18n';
 import scss from './MainComposer.module.scss';
 
 function MainComposer() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setOpen] = useState(true);
   const { t } = useTranslation();
 
   return (
-    <AccordionTab isOpen={isOpen} onChangeOpen={setIsOpen} title="Main Content">
+    <AccordionTab isOpen={isOpen} onChangeOpen={setOpen} title="Main Content">
       <div className={scss.content}>
         <div className={scss.textInput}>
           <ComposerEditor />

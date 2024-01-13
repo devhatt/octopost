@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron';
-import path from 'node:path';
+import path from 'path';
 
-process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 process.env.DIST = path.join(__dirname, '../dist');
 process.env.VITE_PUBLIC = app.isPackaged
@@ -19,9 +19,9 @@ function createWindow() {
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
       preload: path.join(__dirname, './preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
@@ -44,4 +44,4 @@ app.on('window-all-closed', () => {
   win = null;
 });
 
-app.whenReady().then(createWindow).catch(console.log);
+app.whenReady().then(createWindow);

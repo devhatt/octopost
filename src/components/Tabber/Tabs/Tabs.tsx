@@ -10,12 +10,10 @@ function Tabs(props: ITabsProps) {
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
   const renderTabs = (socialNetwork: TSocialNetworks) => (
-    // TODO: Remove this warning
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div
       className={tabClasses(socialNetwork.id)}
       key={`${socialNetwork.id}-${socialNetwork.name}`}
-      onClick={() => { props.onChangeTab(socialNetwork); }}
+      onClick={() => props.onChangeTab(socialNetwork)}
     >
       {socialNetwork.icon}
       <span className={scss.tabTitle}>{socialNetwork.name}</span>
@@ -24,7 +22,7 @@ function Tabs(props: ITabsProps) {
 
   return (
     <div className={scss.tabsContainer}>
-      {props.socialNetworks.map((element) => renderTabs(element))}
+      {props.socialNetworks.map(renderTabs)}
     </div>
   );
 }

@@ -5,14 +5,12 @@ import { Story } from '@ladle/react';
 import Portal from './Modal';
 
 export const ModalStories: Story = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <div>
-      <button onClick={() => { setIsOpen(true); }} type="button">
-        open portal
-      </button>
-      <Portal isOpen={isOpen} onClickOutside={() => { setIsOpen(false); }}>
+      <button onClick={() => setOpen(true)}>open portal</button>
+      <Portal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
         octopost
       </Portal>
     </div>

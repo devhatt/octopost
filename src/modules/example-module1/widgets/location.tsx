@@ -2,10 +2,10 @@ import { IWidget } from 'modules/types';
 
 const icon = (
   <svg
-    fill="none"
+    width="10"
     height="14"
     viewBox="0 0 10 14"
-    width="10"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -22,7 +22,7 @@ const component = () => (
 );
 
 export const location: IWidget = {
-  component,
-  icon,
   name: 'Location',
+  icon,
+  component,
 };

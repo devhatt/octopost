@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import * as zustand from 'zustand';
 
 import { usePostsStore } from './usePostsStore';
@@ -6,7 +6,7 @@ import { usePostsStore } from './usePostsStore';
 import { myCustomCreate, storeResetFns } from './__mocks__/zunstandMock';
 
 vi.mock('zustand', async () => {
-  const zustand = (await vi.importActual('zustand'));
+  const zustand = (await vi.importActual('zustand')) as object;
 
   return {
     __esModule: true,
@@ -19,9 +19,9 @@ vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
 describe('usePostsStore', () => {
   afterEach(() => {
     act(() => {
-      for (const resetFn of storeResetFns) {
+      storeResetFns.forEach((resetFn) => {
         resetFn();
-      }
+      });
     });
   });
 

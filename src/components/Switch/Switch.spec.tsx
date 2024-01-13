@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import Switch from './Switch';
 
@@ -15,7 +15,7 @@ describe('Switch', () => {
     });
 
     it('renders the switch on when checked={true}', () => {
-      render(<Switch checked setChecked={() => {}} />);
+      render(<Switch checked={true} setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
 
@@ -27,12 +27,12 @@ describe('Switch', () => {
   describe('when click', () => {
     it('calls the setChecked function', async () => {
       const setCheckedMock = vi.fn();
-      render(<Switch checked setChecked={setCheckedMock} />);
+      render(<Switch checked={true} setChecked={setCheckedMock} />);
 
       const switchComponent = screen.getByRole('checkbox');
       userEvent.click(switchComponent);
 
-      await waitFor(() => { expect(setCheckedMock).toHaveBeenCalledTimes(1); });
+      await waitFor(() => expect(setCheckedMock).toHaveBeenCalledTimes(1));
     });
   });
 });

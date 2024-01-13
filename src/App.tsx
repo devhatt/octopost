@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React from 'react';
 import {
-  createRoutesFromChildren,
-  HashRouter as Router,
-  matchRoutes,
   Route,
+  HashRouter as Router,
   Routes,
+  createRoutesFromChildren,
+  matchRoutes,
   useLocation,
   useNavigationType,
 } from 'react-router-dom';
@@ -22,7 +22,7 @@ Sentry.init({
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-        useEffect,
+        React.useEffect,
         useLocation,
         useNavigationType,
         createRoutesFromChildren,
@@ -30,9 +30,9 @@ Sentry.init({
       ),
     }),
   ],
-  replaysOnErrorSampleRate: 1,
+  tracesSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
-  tracesSampleRate: 1,
+  replaysOnErrorSampleRate: 1.0,
 });
 
 const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
@@ -42,7 +42,7 @@ function App() {
     <div className={scss.app}>
       <Router>
         <SentryRoutes>
-          <Route element={<Home />} path="/" />
+          <Route path="/" element={<Home />} />
         </SentryRoutes>
       </Router>
     </div>

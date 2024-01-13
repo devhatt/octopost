@@ -1,1 +1,3 @@
-export type TGenericObject<T = never> = Record<string, T extends never ? never : T>;
+export type TGenericObject<T = never> = {
+  [key: string]: T extends never ? never : T;
+};

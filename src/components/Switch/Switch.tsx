@@ -17,8 +17,8 @@ function Switch(props: ISwitch) {
 
   return (
     <input
-      checked={props.checked}
       className={inputClasses}
+      checked={props.checked}
       onChange={handleCheck}
       type="checkbox"
     />

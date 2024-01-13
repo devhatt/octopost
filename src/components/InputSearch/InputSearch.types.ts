@@ -1,4 +1,5 @@
-import { ForwardedRef, HTMLProps } from 'react';
+import { HTMLProps } from 'react';
+import { ForwardedRef } from 'react';
 
 export type TInputProps = HTMLProps<HTMLInputElement> & {
   error?: boolean;
@@ -6,8 +7,8 @@ export type TInputProps = HTMLProps<HTMLInputElement> & {
   onChange: (value: string) => void;
 };
 
-export interface TInputComponent {
+export type TInputComponent = {
   clearInput: () => void;
-}
+};
 
 export type TInputComponentRef = ForwardedRef<TInputComponent>;

@@ -11,49 +11,59 @@ import { ISocialAccordion } from './SocialAccordion.type';
 function SocialAccordion(props: ISocialAccordion) {
   const [isOpen, setIsOpen] = useState(true);
 
-  const handleOpenAccordion = () => { setIsOpen((prev) => !prev); };
+  const openLabel = isOpen ? 'open' : 'closed';
+
+  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
 
   const renderError = () => <span className={scss.error}>error!!!!</span>;
+
+  const renderAccountQuantity = () => (
+    <>
+      <span>{props.accountList.length}+</span>
+      <p>{openLabel}</p>
+    </>
+  );
 
   const renderAccordionMap = () =>
     props.accountList.map((accounts) => (
       <li key={accounts.id}>
         <ToggleSocialMedia
-          accountImage={accounts.image}
           accountName={accounts.username}
+          accountImage={accounts.image}
         />
       </li>
     ));
 
   const renderAccordionContent = () => (
-    <ul className={scss.list}>{renderAccordionMap()}</ul>
+    <ul role="listitem" className={scss.list}>
+      {renderAccordionMap()}
+    </ul>
   );
 
   return (
     <Accordion
       className={scss.wrapper}
-      content={renderAccordionContent()}
+      isOpen={isOpen}
       header={
         <button
-          aria-controls="content-accordion"
-          aria-expanded={isOpen}
           id="btn-accordion"
+          aria-expanded={isOpen}
           onClick={handleOpenAccordion}
-          type="button"
+          aria-controls="content-accordion"
         >
           <header className={scss.header}>
             <div className={scss.socialInfo}>
-              <img alt="" className={scss.icon} src={iconPlaceholderForIcon} />
+              <img className={scss.icon} src={iconPlaceholderForIcon} />
               <p>{props.socialMediaName}</p>
             </div>
 
             <div className={scss.accordionInfo}>
-              {!!props.error && renderError()}
+              {props.error ? renderError() : renderAccountQuantity()}
             </div>
           </header>
         </button>
       }
-      isOpen={isOpen}
+      content={renderAccordionContent()}
     />
   );
 }

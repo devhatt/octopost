@@ -9,7 +9,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 import scss from './home.module.scss';
 
-function Home() {
+const Home = () => {
   return (
     <>
       <Header />
@@ -29,6 +29,6 @@ function Home() {
       </div>
     </>
   );
-}
+};
 
 export default Home;

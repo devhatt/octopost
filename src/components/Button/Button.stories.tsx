@@ -19,21 +19,21 @@ export const ButtonStories: Story = () => (
     </Button>
     <br />
     <Button circle icon={<Icon icon="at" />} />
-    <Button circle icon={<Icon icon="pin" />} variant="container" />
-    <Button circle icon={<Icon icon="hashtag" />} variant="outlined" />
+    <Button variant="container" circle icon={<Icon icon="pin" />} />
+    <Button variant="outlined" circle icon={<Icon icon="hashtag" />} />
     <br />
-    <Button circle color="secondary" icon={<Icon icon="error" />} />
+    <Button color="secondary" circle icon={<Icon icon="error" />} />
     <Button
-      circle
       color="secondary"
-      icon={<Icon icon="emote" />}
       variant="container"
+      circle
+      icon={<Icon icon="emote" />}
     />
     <Button
-      circle
       color="secondary"
-      icon={<Icon icon="canva" />}
       variant="outlined"
+      circle
+      icon={<Icon icon="canva" />}
     />
   </div>
 );

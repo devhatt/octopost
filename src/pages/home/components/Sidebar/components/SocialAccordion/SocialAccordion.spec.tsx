@@ -1,5 +1,5 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 import SocialAccordion from './SocialAccordion';
 
@@ -20,8 +20,8 @@ describe('SocialAccordion', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          accountList={mockList}
           error={false}
+          accountList={mockList}
           socialMediaName="facebook"
         />
       );
@@ -31,8 +31,8 @@ describe('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          accountList={mockList}
           error={false}
+          accountList={mockList}
           socialMediaName="facebook"
         />
       );
@@ -41,7 +41,7 @@ describe('SocialAccordion', () => {
 
     it('shows the error on screen if error={true}', () => {
       render(
-        <SocialAccordion accountList={[]} error socialMediaName="facebook" />
+        <SocialAccordion error accountList={[]} socialMediaName="facebook" />
       );
       expect(screen.getByText(/error/i)).toBeInTheDocument();
     });
@@ -51,8 +51,8 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          accountList={mockList}
           error={false}
+          accountList={mockList}
           socialMediaName="facebook"
         />
       );
@@ -62,7 +62,7 @@ describe('SocialAccordion', () => {
       expect(screen.getByText(/jhon doe/i)).toBeInTheDocument();
       await act(async () => userEvent.click(openAccordion));
       await waitFor(() =>
-        { expect(screen.queryByText(/jhon doe/i)).not.toBeInTheDocument(); }
+        expect(screen.queryByText(/jhon doe/i)).not.toBeInTheDocument()
       );
     });
   });
@@ -71,8 +71,8 @@ describe('SocialAccordion', () => {
     it('renders with zero if list is empty', () => {
       render(
         <SocialAccordion
-          accountList={[]}
           error={false}
+          accountList={[]}
           socialMediaName="facebook"
         />
       );
@@ -82,8 +82,8 @@ describe('SocialAccordion', () => {
     it('renders with one if list have one account', () => {
       render(
         <SocialAccordion
-          accountList={mockList}
           error={false}
+          accountList={mockList}
           socialMediaName="facebook"
         />
       );

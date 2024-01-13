@@ -12,7 +12,7 @@ function UserImage(props: IUserImage) {
   }, [props.accountName]);
 
   const renderProfileImage = () => (
-    <img alt="profile user" className={scss.userImage} src={props.image} />
+    <img className={scss.userImage} src={props.image} alt="profile user" />
   );
 
   const renderImagePlaceholder = () => (
