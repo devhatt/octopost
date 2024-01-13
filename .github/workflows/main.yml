@@ -59,6 +59,12 @@ jobs:
               - '**.scss'
               - '**.css'
 
+      - name: Run prettier in all files
+        if: steps.changed-files.outputs.any_changed == 'true'
+        env:
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: pnpm exec prettier $files --check --ignore-unknown
+
       - name: Run eslint in code files
         if: steps.changed-files.outputs.code_any_changed == 'true'
         env:
@@ -70,12 +76,6 @@ jobs:
         env:
           files: ${{ steps.changed-files.outputs.style_all_changed_files }}
         run: pnpm exec stylelint $files --allow-empty-input
-
-      - name: Run prettier in all files
-        if: steps.changed-files.outputs.any_changed == 'true'
-        env:
-          files: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: pnpm exec prettier $files --check --ignore-unknown
 
   build:
     runs-on: ubuntu-latest
