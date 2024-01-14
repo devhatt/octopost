@@ -12,7 +12,7 @@ export default mergeConfig(
         functions: 60,
         lines: 60,
         provider: 'istanbul',
-        reporter: ['json', 'json-summary'],
+        reporter: ['json', 'json-summary', 'html'],
         reportOnFailure: true,
         statements: 60,
       },
