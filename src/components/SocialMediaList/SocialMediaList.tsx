@@ -2,9 +2,12 @@ import { useState } from 'react';
 
 import scss from './SocialMediaList.module.scss';
 
+import PlusIcon from './assets/plusIcon.svg';
+import RemoveIcon from './assets/xIcon.svg';
+
 import { ISocialMediaList } from './SocialMediaList.type';
 
-function SocialMediaList(props: ISocialMediaList) {
+const SocialMediaList = (props: ISocialMediaList) => {
   const [tags, setTags] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -25,34 +28,22 @@ function SocialMediaList(props: ISocialMediaList) {
     setTags(tags.filter((tag) => tag !== removedTag));
   };
 
-  function renderEmptyTagsPlaceholder() {
-    return <div className={scss.placeholderText}>Select Social Account</div>;
-  }
+  const renderEmptyTagsPlaceholder = () => (
+    <div className={scss.placeholderText}>Select Social Account</div>
+  );
 
-  function renderTags() {
-    return tags.map((tag) => (
+  const renderTags = () =>
+    tags.map((tag) => (
       <div key={tag} className={scss.tag}>
         <div className={scss.iconContainer}>
           {props.SocialMediaList.find((item) => item.name === tag)?.icon}
         </div>
         {tag}
         <button onClick={() => handleRemoveTag(tag)}>
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.25 1.8075L10.1925 0.75L6 4.9425L1.8075 0.75L0.75 1.8075L4.9425 6L0.75 10.1925L1.8075 11.25L6 7.0575L10.1925 11.25L11.25 10.1925L7.0575 6L11.25 1.8075Z"
-              fill="#1E192B"
-            />
-          </svg>
+          <img className={scss.icon} src={RemoveIcon} alt="icone de remover" />
         </button>
       </div>
     ));
-  }
 
   return (
     <div className={scss.mainContainer}>
@@ -61,11 +52,11 @@ function SocialMediaList(props: ISocialMediaList) {
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag}>
-          +
+          <img src={PlusIcon} alt="Icone de mais" />
         </button>
       </div>
     </div>
   );
-}
+};
 
 export default SocialMediaList;

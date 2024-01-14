@@ -73,8 +73,10 @@
 
     cursor: pointer;
   }
+}
 
-  @include breakpoints.from600 {
+@include breakpoints.from600 {
+  .mainContainer {
     display: none;
   }
 }
