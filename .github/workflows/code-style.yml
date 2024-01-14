@@ -58,7 +58,7 @@ jobs:
               - '**.css'
             all:
               - '!pnpm-lock.yaml'
-              - **/*
+              - */*
 
       - name: Run eslint in code files
         if: steps.changed-files.outputs.code_any_changed == 'true'
