@@ -18,13 +18,12 @@ jobs:
       - name: Setup deps
         uses: ./.github/actions/install-deps
 
-      - name: Run your tests
-        run: npx playwright test
+      - name: Run e2e tests
+        run: pnpm test:e2e
         env:
           HOME: /root
 
-      - name: Run e2e tests
-        run: pnpm test:e2e
-
       - name: Run ct tests
         run: pnpm test:ct
+        env:
+          HOME: /root
