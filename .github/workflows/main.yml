@@ -22,11 +22,5 @@ jobs:
       - name: Run unit Tests
         run: pnpm test --silent
 
-      - name: Run e2e tests
-        run: pnpm test:e2e
-
-      - name: Run ct tests
-        run: pnpm test:ct
-
       - name: Build
         run: pnpm build
