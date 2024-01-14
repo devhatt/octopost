@@ -16,12 +16,10 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
         with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Get PNPM store directory
         shell: bash
@@ -36,10 +34,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile]
 
       - name: Get all code files, Get all style files, Get all changed files
         id: changed-files
