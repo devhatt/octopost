@@ -1,4 +1,4 @@
-name: Run prettier, eslint and stylelint in changed files from this PR
+name: Code Style
 
 on:
   pull_request:
@@ -15,12 +15,12 @@ jobs:
       - name: Setup deps
         uses: ./.github/actions/install-deps
 
-      - name: Get changed files
+      - name: Get all changed files
         id: all-changed-files
         uses: tj-actions/changed-files@v41
         with:
           files: |
-            '!pnpm-lock.yaml'
+            !pnpm-lock.yaml
 
       - name: Run prettier in all files
         if: steps.all-changed-files.outputs.any_changed == 'true'
@@ -28,7 +28,7 @@ jobs:
           files: ${{ steps.all-changed-files.outputs.all_changed_files }}
         run: pnpm exec prettier $files --check --ignore-unknown
 
-      - name: Get changed files
+      - name: Get specific changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
         with:
