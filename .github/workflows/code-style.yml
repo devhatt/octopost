@@ -9,38 +9,16 @@ env:
   NODE_VERSION: 18.18.2
 
 jobs:
+  install-deps:
+    uses: ./.github/workflows/install-deps.yml
+    with:
+      NODE_VERSION: 18.18.2
+      PNPM_VERSION: 8
+
   code-style:
     runs-on: ubuntu-latest
     name: code-style
     steps:
-      - name: Code checkout
-        uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Get PNPM store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup PNPM cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
-
       - name: Get all code files, Get all style files, Get all changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
@@ -58,7 +36,7 @@ jobs:
               - '**.css'
             all:
               - '!pnpm-lock.yaml'
-              - */*
+              - '**.*'
 
       - name: Run eslint in code files
         if: steps.changed-files.outputs.code_any_changed == 'true'

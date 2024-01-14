@@ -6,45 +6,16 @@ on:
   pull_request:
     branches: ['master', 'develop']
 
-env:
-  STORE_PATH: .pnpm-store
-  NODE_VERSION: 18.18.2
-
 jobs:
+  install-deps:
+    uses: ./.github/workflows/install-deps.yml
+    with:
+      NODE_VERSION: 18.18.2
+      PNPM_VERSION: 8
+
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Code checkout
-        uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Get PNPM store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup PNPM cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
-
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Install e2e dependencies
         run: pnpm playwright install --with-deps
 
