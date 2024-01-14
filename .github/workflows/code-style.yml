@@ -44,14 +44,26 @@ jobs:
               - '**.scss'
               - '**.css'
 
-      - name: Run eslint in code files
-        if: steps.changed-files.outputs.code_any_changed == 'true'
-        env:
-          files: ${{ steps.changed-files.outputs.code_all_changed_files }}
-        run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0
-
       - name: Run stylelint in scss files
         if: steps.changed-files.outputs.style_any_changed == 'true'
         env:
           files: ${{ steps.changed-files.outputs.style_all_changed_files }}
         run: pnpm exec stylelint $files --allow-empty-input
+
+      - name: Run eslint in code files
+        if: steps.changed-files.outputs.code_any_changed == 'true'
+        env:
+          files: ${{ steps.changed-files.outputs.code_all_changed_files }}
+        run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0 --output-file eslint_report.json --format json
+        continue-on-error: true
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@1.0.4
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          report-json: 'eslint_report.json'
+      - name: Upload ESLint report
+        uses: actions/upload-artifact@v1
+        with:
+          name: eslint_report.json
+          path: eslint_report.json
