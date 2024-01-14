@@ -5,7 +5,7 @@ on:
     inputs:
       NODE_VERSION:
         required: true
-        type: number
+        type: string
       PNPM_VERSION:
         required: true
         type: number

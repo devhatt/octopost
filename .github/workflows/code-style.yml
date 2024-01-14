@@ -4,10 +4,6 @@ on:
   pull_request:
     branches: ['master']
 
-env:
-  STORE_PATH: .pnpm-store
-  NODE_VERSION: 18.18.2
-
 jobs:
   install-deps:
     uses: ./.github/workflows/install-deps.yml
