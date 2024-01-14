@@ -8,13 +8,13 @@ export default mergeConfig(
     server: { open: false },
     test: {
       coverage: {
-        branches: 0,
-        functions: 0,
-        lines: 0,
+        branches: 60,
+        functions: 60,
+        lines: 60,
         provider: 'istanbul',
         reporter: ['json', 'json-summary'],
         reportOnFailure: true,
-        statements: 0,
+        statements: 60,
       },
       css: {
         modules: { classNameStrategy: 'non-scoped' },
