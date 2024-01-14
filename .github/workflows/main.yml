@@ -7,16 +7,12 @@ on:
     branches: ['master', 'develop']
 
 jobs:
-  install-deps:
-    uses: ./.github/workflows/install-deps.yml
-    with:
-      NODE_VERSION: 18.18.2
-      PNPM_VERSION: 8
-
   build:
-    needs: [install-deps]
     runs-on: ubuntu-latest
     steps:
+      - name: Setup deps
+        uses: ./.github/actions/install-deps
+
       - name: Install e2e dependencies
         run: pnpm playwright install --with-deps
 

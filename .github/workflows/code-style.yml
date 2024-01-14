@@ -5,17 +5,12 @@ on:
     branches: ['master']
 
 jobs:
-  install-deps:
-    uses: ./.github/workflows/install-deps.yml
-    with:
-      NODE_VERSION: 18.18.2
-      PNPM_VERSION: 8
-
   code-style:
-    needs: [install-deps]
     runs-on: ubuntu-latest
     name: code-style
     steps:
+      - name: Setup deps
+        uses: ./.github/actions/install-deps
       - name: Get all code files, Get all style files, Get all changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
