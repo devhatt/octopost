@@ -16,9 +16,6 @@ jobs:
       - name: Setup deps
         uses: ./.github/actions/install-deps
 
-      - name: Install e2e dependencies
-        run: pnpm playwright install --with-deps
-
       - name: Run unit Tests
         run: pnpm test --silent
 
