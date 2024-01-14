@@ -22,7 +22,7 @@ jobs:
         uses: ./.github/actions/install-deps
 
       - name: Run unit Tests
-        run: pnpm test --silent
+        run: pnpm test:coverage --silent
 
       - name: 'Report Coverage'
         if: always()
