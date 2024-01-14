@@ -12,6 +12,7 @@ jobs:
       PNPM_VERSION: 8
 
   code-style:
+    needs: [install-deps]
     runs-on: ubuntu-latest
     name: code-style
     steps:
