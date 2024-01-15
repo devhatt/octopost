@@ -201,6 +201,9 @@ importers:
       stylelint-order:
         specifier: ^6.0.3
         version: 6.0.4(stylelint@15.11.0)
+      stylelint-prettier:
+        specifier: '4'
+        version: 4.1.0(prettier@3.2.2)(stylelint@15.11.0)
       typescript:
         specifier: 5.2.2
         version: 5.2.2
@@ -9932,6 +9935,18 @@ packages:
     dependencies:
       postcss: 8.4.33
       postcss-sorting: 8.0.2(postcss@8.4.33)
+      stylelint: 15.11.0(typescript@5.2.2)
+    dev: true
+
+  /stylelint-prettier@4.1.0(prettier@3.2.2)(stylelint@15.11.0):
+    resolution: {integrity: sha512-dd653q/d1IfvsSQshz1uAMe+XDm6hfM/7XiFH0htYY8Lse/s5ERTg7SURQehZPwVvm/rs7AsFhda9EQ2E9TS0g==}
+    engines: {node: ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      prettier: '>=3.0.0'
+      stylelint: '>=15.8.0'
+    dependencies:
+      prettier: 3.2.2
+      prettier-linter-helpers: 1.0.0
       stylelint: 15.11.0(typescript@5.2.2)
     dev: true
 

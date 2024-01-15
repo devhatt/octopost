@@ -100,6 +100,7 @@
     "stylelint": "^15.11.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-order": "^6.0.3",
+    "stylelint-prettier": "4",
     "typescript": "5.2.2",
     "vite-plugin-electron": "^0.15.4",
     "vite-plugin-native": "^0.2.0",
