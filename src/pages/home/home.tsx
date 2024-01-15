@@ -1,8 +1,4 @@
-import { useEffect } from 'react';
-
 import { useModule } from 'contexts/ModuleContext';
-
-import { fetchModules } from '~services/axios/modules';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
