@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
-    "@octopost/module-manager": "link:packages\\module-manager",
+    "@octopost/module-manager": "workspace:*",
     "@sentry/react": "^7.88.0",
     "@types/react-helmet": "^6.1.11",
     "@vitejs/plugin-react-swc": "^3.5.0",
