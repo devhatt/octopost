@@ -1,6 +1,4 @@
-import { ReactNode } from 'react';
-
-import { useModule } from '~contexts/ModuleContext';
+import { useState } from 'react';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
@@ -12,8 +10,12 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 import scss from './home.module.scss';
 
-function Home(): ReactNode {
-  const { modules } = useModule();
+const Home = () => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  function handleCloseAccordion(): void {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <>
@@ -25,7 +27,11 @@ function Home(): ReactNode {
             {modules.map((item) => JSON.stringify(item))}
           </div>
           <div className={scss.gridInput}>
-            <MainComposer />
+            <MainComposer
+              title="Main Content"
+              isOpen={isOpen}
+              onChangeOpen={handleCloseAccordion}
+            />
             <FirstComment />
             <FeedbackError />
           </div>
@@ -36,6 +42,6 @@ function Home(): ReactNode {
       </div>
     </>
   );
-}
+};
 
 export default Home;
