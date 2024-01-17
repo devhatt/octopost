@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
@@ -12,10 +13,7 @@ import scss from './home.module.scss';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(true);
-
-  function handleCloseAccordion(): void {
-    setIsOpen(!isOpen);
-  }
+  const [inputText, setInputText] = useState('');
 
   return (
     <>
@@ -30,7 +28,13 @@ const Home = () => {
             <MainComposer
               title="Main Content"
               isOpen={isOpen}
-              onChangeOpen={handleCloseAccordion}
+              onChangeOpen={() => setIsOpen(!isOpen)}
+              editor={
+                <ComposerEditor
+                  inputText={inputText}
+                  onTextChange={setInputText}
+                />
+              }
             />
             <FirstComment />
             <FeedbackError />

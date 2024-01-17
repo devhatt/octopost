@@ -1,16 +1,15 @@
-import { useState } from 'react';
-
 import CharacterLimitMainText from '../CharacterLimitMainText/CharacterLimitMainText'; // Importe o componente CharacterLimitMainText aqui
 import CustomTextArea from '../TextArea/TextArea'; // Importe o componente CustomTextArea aqui
 
 import scss from './ComposerEditor.module.scss';
 
-const ComposerEditor = () => {
-  const [inputText, setInputText] = useState('');
+import { TComposerEditorProps } from './ComposerEditor.types';
 
+const ComposerEditor = (props: TComposerEditorProps) => {
   const handleInputChange = (newText: string) => {
-    setInputText(newText);
+    props?.onTextChange(newText);
   };
+
   const module = [
     {
       id: 'input',
@@ -44,7 +43,7 @@ const ComposerEditor = () => {
           ></path>
         </svg>
       ),
-      value: inputText,
+      value: props.inputText,
     },
   ];
 
