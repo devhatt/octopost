@@ -5,7 +5,9 @@ import MainComposer from '../MainComposer/MainComposer';
 test.describe('MainComposer', () => {
   test.describe('MediaInputs', () => {
     test('upload the image', async ({ mount }) => {
-      const component = await mount(<MainComposer />);
+      const component = await mount(
+        <MainComposer isOpen title="Main Content" />
+      );
 
       await component
         .getByTestId('imageInput')
@@ -17,7 +19,9 @@ test.describe('MainComposer', () => {
     });
 
     test('upload two images', async ({ mount }) => {
-      const component = await mount(<MainComposer />);
+      const component = await mount(
+        <MainComposer isOpen title="Main Content" />
+      );
 
       await component
         .getByTestId('imageInput')
@@ -35,7 +39,9 @@ test.describe('MainComposer', () => {
       test('doesnt select the file', async ({ mount }) => {
         const mediaSelected: string | null = null;
 
-        const component = await mount(<MainComposer />);
+        const component = await mount(
+          <MainComposer isOpen title="Main Content" />
+        );
 
         await component
           .getByTestId('imageInput')
@@ -47,7 +53,9 @@ test.describe('MainComposer', () => {
 
     test.describe('when add img and click on remove button', () => {
       test('remove image', async ({ mount }) => {
-        const component = await mount(<MainComposer />);
+        const component = await mount(
+          <MainComposer isOpen title="Main Content" />
+        );
 
         await component
           .getByTestId('imageInput')

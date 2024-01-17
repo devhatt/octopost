@@ -8,7 +8,7 @@ import { IModuleProps } from '../CharacterLimitMainText.types';
 
 function CharacterLimit(props: IModuleProps) {
   const [counterZero, setCounterZero] = useState(false);
-  const remainingCharacters = props.maxLength - props.value.length;
+  const remainingCharacters = props.maxLength - props.value?.length;
 
   useEffect(() => {
     setCounterZero(remainingCharacters < 0);

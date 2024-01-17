@@ -7,7 +7,9 @@ const placeholderText = 'Digite algo aqui...';
 describe('ComposeEditor', () => {
   describe('when render component', () => {
     it('successfully renders with a TextArea', () => {
-      const { getByPlaceholderText } = render(<ComposerEditor />);
+      const { getByPlaceholderText } = render(
+        <ComposerEditor inputText="" onTextChange={() => {}} />
+      );
       const textArea = getByPlaceholderText(placeholderText);
 
       expect(textArea).toBeInTheDocument();
