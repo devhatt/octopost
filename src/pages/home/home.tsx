@@ -1,3 +1,5 @@
+import { useModule } from 'contexts/ModuleContext';
+
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
 import MainComposer from '~components/MainComposer/MainComposer';
@@ -9,6 +11,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 const Home = () => {
+  const { modules } = useModule();
+
   return (
     <>
       <Header />
@@ -16,6 +20,7 @@ const Home = () => {
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>
             <Sidebar />
+            {modules.map((item) => JSON.stringify(item))}
           </div>
           <div className={scss.gridInput}>
             <MainComposer />

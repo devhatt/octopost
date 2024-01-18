@@ -48,6 +48,19 @@ module.exports = defineConfig({
         'unicorn/consistent-function-scoping': 'warn',
       },
     },
+    {
+      files: [
+        './**/vite.config.ts',
+        './**/vitest.config.ts',
+        './**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
     // stories
     {
       files: ['**/*.stories.*'],
@@ -70,7 +83,7 @@ module.exports = defineConfig({
       files: [
         'vitest.config.ts',
         'vite.config.ts',
-        '.eslintrc.js',
+        '.eslintrc.cjs',
         'playwright-ct.config.ts',
         'playwright.config.ts',
       ],
