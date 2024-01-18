@@ -7,16 +7,22 @@ export default mergeConfig(
   defineConfig({
     server: { open: false },
     test: {
-      globals: true,
-      environment: 'jsdom',
       coverage: {
+        branches: 60,
+        functions: 60,
+        lines: 60,
         provider: 'istanbul',
+        reporter: ['json', 'json-summary', 'html'],
+        reportOnFailure: true,
+        statements: 60,
       },
-      setupFiles: ['src/setupTests.ts'],
-      include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
       css: {
         modules: { classNameStrategy: 'non-scoped' },
       },
+      environment: 'jsdom',
+      globals: true,
+      include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
+      setupFiles: ['src/setupTests.ts'],
     },
   })
 );
