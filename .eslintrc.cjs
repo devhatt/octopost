@@ -57,8 +57,8 @@ module.exports = defineConfig({
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        tsconfigRootDir: __dirname,
         project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
       },
     },
     // stories
@@ -83,7 +83,7 @@ module.exports = defineConfig({
       files: [
         'vitest.config.ts',
         'vite.config.ts',
-        '.eslintrc.js',
+        '.eslintrc.cjs',
         'playwright-ct.config.ts',
         'playwright.config.ts',
       ],
