@@ -43,6 +43,7 @@ export const useFetchModules = () => {
 
       setModulesURL(modulesUrl);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
