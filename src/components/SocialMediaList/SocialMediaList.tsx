@@ -40,7 +40,7 @@ const SocialMediaList = (props: ISocialMediaList) => {
         </div>
         {tag}
         <button onClick={() => handleRemoveTag(tag)}>
-          <img className={scss.icon} src={RemoveIcon} alt="icone de remover" />
+          <img src={RemoveIcon} alt="Ícone para apagar uma tag" />
         </button>
       </div>
     ));
