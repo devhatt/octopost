@@ -1,0 +1,69 @@
+name: Code Style
+
+on:
+  pull_request:
+    branches: ['master']
+
+jobs:
+  code-style:
+    runs-on: ubuntu-latest
+    name: code-style
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup deps
+        uses: ./.github/actions/install-deps
+
+      - name: Get all changed files
+        id: all-changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            !pnpm-lock.yaml
+
+      - name: Run prettier in all files
+        if: steps.all-changed-files.outputs.any_changed == 'true'
+        env:
+          files: ${{ steps.all-changed-files.outputs.all_changed_files }}
+        run: pnpm exec prettier $files --check --ignore-unknown
+
+      - name: Get specific changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files_yaml: |
+            code:
+              - '**.js'
+              - '**.ts'
+              - '**.tsx'
+              - '**.jsx'
+              - '**.mjs'
+              - '**.cjs'
+            style:
+              - '**.scss'
+              - '**.css'
+
+      - name: Run stylelint in scss files
+        if: steps.changed-files.outputs.style_any_changed == 'true'
+        env:
+          files: ${{ steps.changed-files.outputs.style_all_changed_files }}
+        run: pnpm exec stylelint $files --allow-empty-input
+
+      - name: Run eslint in code files
+        if: steps.changed-files.outputs.code_any_changed == 'true'
+        env:
+          files: ${{ steps.changed-files.outputs.code_all_changed_files }}
+        run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0 --output-file eslint_report.json --format json
+        continue-on-error: true
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@v2
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          report-json: 'eslint_report.json'
+      - name: Upload ESLint report
+        uses: actions/upload-artifact@v1
+        with:
+          name: eslint_report.json
+          path: eslint_report.json

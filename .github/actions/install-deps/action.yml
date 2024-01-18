@@ -1,0 +1,44 @@
+name: Reusable install deps
+description: This workflow installs dependencies using PNPM and caches the store directory. It is meant to be used as a reusable workflow.
+inputs:
+  NODE_VERSION:
+    description: 'The version of Node.js to use'
+    required: true
+    default: '18.x'
+  PNPM_VERSION:
+    description: 'The version of PNPM to use'
+    required: true
+    default: '8.x'
+runs:
+  using: composite
+  steps:
+    - name: Code checkout
+      uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ inputs.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.NODE_VERSION }}
+
+    - uses: pnpm/action-setup@v2
+      name: Install pnpm
+      with:
+        version: ${{ inputs.PNPM_VERSION }}
+        run_install: false
+
+    - name: Get PNPM store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v3
+      name: Setup PNPM cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile -r
