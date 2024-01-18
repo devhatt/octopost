@@ -34,7 +34,7 @@ export default function ModuleProvider({ children }: PropsWithChildren) {
     }
 
     modulesFetch();
-    const unsubscribe = manager.subscribe('loaded-module', () => {
+    const unsubscribe = manager.subscribe('loaded', () => {
       setModules(manager.loadModules());
     });
 
