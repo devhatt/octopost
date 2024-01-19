@@ -1,5 +1,5 @@
 ---
-'@octopost/octomodule': feat
+'@octopost/module-manager': feat
 ---
 
 - create a function that get the content in main line on package.json
