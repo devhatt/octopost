@@ -14,7 +14,7 @@ function MainComposer(props: TMainComposerProps) {
   return (
     <AccordionTab
       isOpen={props.isOpen}
-      onChangeOpen={props.onChangeOpen}
+      onChangeOpen={props.onToggle}
       title={props.title}
     >
       <div className={scss.content}>

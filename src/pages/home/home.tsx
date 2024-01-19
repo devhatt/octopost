@@ -15,6 +15,10 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
 
+  const editor = (
+    <ComposerEditor inputText={inputText} onTextChange={setInputText} />
+  );
+
   return (
     <>
       <Header />
@@ -28,13 +32,8 @@ const Home = () => {
             <MainComposer
               title="Main Content"
               isOpen={isOpen}
-              onChangeOpen={() => setIsOpen(!isOpen)}
-              editor={
-                <ComposerEditor
-                  inputText={inputText}
-                  onTextChange={setInputText}
-                />
-              }
+              onToggle={() => setIsOpen(!isOpen)}
+              editor={editor}
             />
             <FirstComment />
             <FeedbackError />

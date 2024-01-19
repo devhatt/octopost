@@ -27,7 +27,7 @@ export function FirstComment(props: TFirstCommentProps) {
       }
       content={
         <div className={styles.textarea}>
-          <ComposerEditor />
+          <ComposerEditor inputText="" />
         </div>
       }
       {...props}

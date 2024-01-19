@@ -7,7 +7,7 @@ import { TComposerEditorProps } from './ComposerEditor.types';
 
 const ComposerEditor = (props: TComposerEditorProps) => {
   const handleInputChange = (newText: string) => {
-    props?.onTextChange(newText);
+    if(props?.onTextChange) props.onTextChange(newText);
   };
 
   const module = [
