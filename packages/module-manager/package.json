@@ -12,7 +12,8 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext=ts,tsx",
     "lint:fix": "pnpm lint --fix",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.2.0",

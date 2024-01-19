@@ -39,8 +39,11 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
+<<<<<<< HEAD
       id: nanoid(),
       name: 'Instagram',
+=======
+>>>>>>> 157ed22 (feat: implement type checking with tsc before commits,builds and fix types)
       postModes: [],
     },
     {
@@ -58,8 +61,11 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
+<<<<<<< HEAD
       id: nanoid(),
       name: 'Xwitter',
+=======
+>>>>>>> 157ed22 (feat: implement type checking with tsc before commits,builds and fix types)
       postModes: [],
     },
     {
@@ -77,8 +83,11 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
+<<<<<<< HEAD
       id: nanoid(),
       name: 'TikTok',
+=======
+>>>>>>> 157ed22 (feat: implement type checking with tsc before commits,builds and fix types)
       postModes: [],
     },
   ],

@@ -18,7 +18,10 @@ module.exports = defineConfig({
       globals: { vi: true },
       plugins: ['vitest', 'testing-library'],
       rules: {
-        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/no-magic-numbers': [
+          'warn',
+          { ignoreArrayIndexes: true },
+        ],
         'testing-library/await-async-events': 'warn',
         'testing-library/await-async-queries': 'warn',
         'testing-library/await-async-utils': 'warn',

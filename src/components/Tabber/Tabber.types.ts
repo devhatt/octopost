@@ -1,10 +1,10 @@
-﻿import { IPostMode } from 'modules/types';
+﻿import { PostMode } from '@octopost/module-manager';
 
 import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
 
 export type TPostModeId = `${string}-${number}`;
 
 export interface ITab extends TSocialNetworks {
-  currentPostMode?: IPostMode;
+  currentPostMode?: PostMode;
   currentPostModeId?: TPostModeId;
 }

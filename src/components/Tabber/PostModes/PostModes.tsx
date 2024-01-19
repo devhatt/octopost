@@ -1,5 +1,5 @@
-﻿import classNames from 'classnames';
-import { IPostMode } from 'modules/types';
+﻿import { PostMode as IPostMode } from '@octopost/module-manager';
+import classNames from 'classnames';
 
 import { buildPostModeId } from '../utils';
 
@@ -10,9 +10,9 @@ import { IPostModesProps } from './PostModes.types';
 function PostModes(props: IPostModesProps) {
   const postModeClasses = (index: number) =>
     classNames({
-      [scss.postModeTitle]: true,
       [scss.active]:
         props.currentPostModeId === buildPostModeId(props.currentTab, index),
+      [scss.postModeTitle]: true,
     });
 
   const renderPostMode = (postMode: IPostMode, index: number) => {
@@ -20,8 +20,8 @@ function PostModes(props: IPostModesProps) {
 
     return (
       <span
-        key={postModeId}
         className={postModeClasses(index)}
+        key={postModeId}
         onClick={() => props.onChangePostMode(postMode, postModeId)}
       >
         {postMode.name}

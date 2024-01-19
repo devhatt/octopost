@@ -1,4 +1,4 @@
-import type { GenericObject } from '~/utils/primitives';
+import type { GenericObject } from '../utils/primitives';
 
 export interface PublishResponse {}
 
