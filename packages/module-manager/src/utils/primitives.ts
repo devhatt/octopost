@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export type GenericObject<T = never> = {
-  [key: string]: T extends never ? never : T;
-};
+export type GenericObject<T = never> = Record<
+  string,
+  T extends never ? never : T
+>;
 
-export type GenericFunction<Args = any, Return = any> = (
+export type GenericFunction<Args = unknown, Return = unknown> = (
   ...args: Args[]
 ) => Return;

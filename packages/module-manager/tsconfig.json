@@ -2,8 +2,9 @@
   "extends": ["../../tsconfig.json"],
   "compilerOptions": {
     "rootDir": "src",
-    "types": ["./src/global.d.ts"],
     "baseUrl": "src",
+    "typeRoots": ["src/global.d.ts"],
+    "types": [],
     "paths": {
       "~/utils/*": ["utils/*"]
     }

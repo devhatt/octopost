@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react';
 
-import { IPostMode } from 'modules/types';
+import { PostMode } from '@octopost/module-manager';
 
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
@@ -14,7 +14,6 @@ import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber() {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
-
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
@@ -30,7 +29,7 @@ function Tabber() {
   };
 
   const changeCurrentPostMode = (
-    postMode: IPostMode,
+    postMode: PostMode,
     postModeId: TPostModeId
   ) => {
     setCurrentPostModeId(postModeId);
@@ -45,20 +44,24 @@ function Tabber() {
   return (
     <div>
       <Tabs
+        currentTab={currentTab}
         onChangeTab={changeCurrentTab}
         socialNetworks={socialNetworks}
-        currentTab={currentTab}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            onChangePostMode={changeCurrentPostMode}
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
+            onChangePostMode={changeCurrentPostMode}
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent text={`${preview.name} Placeholder`} />
+          <preview.previewComponent
+            customData={{}}
+            medias={[]}
+            text={`${preview.name} Placeholder`}
+          />
         </div>
       </div>
     </div>

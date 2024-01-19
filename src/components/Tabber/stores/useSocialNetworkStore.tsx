@@ -1,5 +1,4 @@
-﻿import { post, reels, story } from 'modules/example-module1/postModes/story';
-import { nanoid } from 'nanoid';
+﻿import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
 import { TSocialNetworksState } from './useSocialNetworkStore.types';
@@ -23,7 +22,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [story, post, reels],
+      postModes: [],
     },
     {
       id: nanoid(),
@@ -42,7 +41,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [reels, story, post],
+      postModes: [],
     },
     {
       id: nanoid(),
@@ -61,7 +60,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [post],
+      postModes: [],
     },
     {
       id: nanoid(),
@@ -80,7 +79,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [post, story],
+      postModes: [],
     },
   ],
 }));

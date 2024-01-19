@@ -1,7 +1,7 @@
 import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
 import express from 'express';
-import path from 'path';
+import path from 'node:path';
 
 import resolveModulesMetadata from './utils/resolveModulesMetadata';
 
@@ -11,7 +11,7 @@ const port = 3000;
 expressApp.use(cors());
 expressApp.use(express.json());
 
-expressApp.get('/metadata', async (req, res) => {
+expressApp.get('/metadata', async (_req, res) => {
   try {
     const userLocalModules = path.join(
       app.getPath('documents'),
@@ -20,7 +20,7 @@ expressApp.get('/metadata', async (req, res) => {
 
     const mainContent = await resolveModulesMetadata(userLocalModules);
     res.json({ script: mainContent });
-  } catch (error) {
+  } catch {
     res
       .status(404)
       .json({ message: 'conteúdo dentro do package.json não-encontrado' });
@@ -39,14 +39,14 @@ expressApp.post('/sourcePath', async (req, res) => {
 
   try {
     res.sendFile(sourcePath.toString());
-  } catch (error) {
+  } catch {
     res
       .status(404)
       .json({ message: 'conteúdo dentro do package.json não-encontrado' });
   }
 });
 
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 
 process.env.DIST = path.join(__dirname, '../dist');
 process.env.VITE_PUBLIC = app.isPackaged
@@ -62,16 +62,15 @@ let win: BrowserWindow | null;
 
 function createWindow() {
   expressApp.listen(port, () => {
-    // eslint-disable-next-line no-console
     console.log(`internal server running on http://localhost:${port}`);
   });
 
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
-      preload: path.join(__dirname, './preload.js'),
-      nodeIntegration: true,
       contextIsolation: true,
+      nodeIntegration: true,
+      preload: path.join(__dirname, './preload.js'),
     },
   });
 

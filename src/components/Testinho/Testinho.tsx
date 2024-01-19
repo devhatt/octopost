@@ -1,8 +1,6 @@
-import React from 'react';
-
 import { usePostsStore } from 'stores/usePostsStore';
 
-const Testinho = ({ name = 'World' }) => {
+function Testinho({ name = 'World' }) {
   const posts = usePostsStore((state) => state.postsQuantity);
 
   const increaseValue = usePostsStore((state) => state.increase);
@@ -14,6 +12,6 @@ const Testinho = ({ name = 'World' }) => {
       <h1>Hello, {name}!</h1>
     </>
   );
-};
+}
 
 export default Testinho;

@@ -31,7 +31,8 @@
     "test:ct": "playwright test -c playwright-ct.config.ts",
     "test:e2e": "playwright test --pass-with-no-tests",
     "test:ui": "vitest --ui --coverage",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc --noEmit && pnpm -r typecheck"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
