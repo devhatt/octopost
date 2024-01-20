@@ -6,3 +6,5 @@ playwright-report
 .prettierignore
 .changeset/pre.json
 .changeset/config.json
+.husky
+*.svg
