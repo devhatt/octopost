@@ -166,8 +166,8 @@ importers:
         specifier: ^24.9.1
         version: 24.9.1
       electron-is-dev:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^3.0.1
+        version: 3.0.1
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
@@ -4712,8 +4712,9 @@ packages:
       unzip-crx-3: 0.2.0
     dev: false
 
-  /electron-is-dev@2.0.0:
-    resolution: {integrity: sha512-3X99K852Yoqu9AcW50qz3ibYBWY79/pBhlMCab8ToEWS48R0T9tyxRiQhwylE7zQdXrMnx2JKqUJyMPmt5FBqA==}
+  /electron-is-dev@3.0.1:
+    resolution: {integrity: sha512-8TjjAh8Ec51hUi3o4TaU0mD3GMTOESi866oRNavj9A3IQJ7pmv+MJVmdZBFGw4GFT36X7bkqnuDNYvkQgvyI8Q==}
+    engines: {node: '>=18'}
     dev: true
 
   /electron-publish@24.8.1:
