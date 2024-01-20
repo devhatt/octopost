@@ -1,0 +1,41 @@
+{
+  "name": "@octopost/module-manager",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext=ts,tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "5.2.2",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "3.6.4"
+  },
+  "publishConfig": {
+    "main": "./dist/index.umd.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  }
+}
