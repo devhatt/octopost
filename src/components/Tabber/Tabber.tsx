@@ -20,9 +20,8 @@ function Tabber() {
   );
 
   const changeCurrentTab = (socialNetwork: ITab) => {
-    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
-      ? socialNetwork.currentPostModeId
-      : buildPostModeId(socialNetwork);
+    const tabsCurrentPostModeId =
+      socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
 
     setCurrentTab(socialNetwork);
     setCurrentPostModeId(tabsCurrentPostModeId);
@@ -37,9 +36,7 @@ function Tabber() {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode
-    ? currentTab.currentPostMode
-    : currentTab.postModes[0];
+  const preview = currentTab.currentPostMode || currentTab.postModes[0];
 
   return (
     <div>
