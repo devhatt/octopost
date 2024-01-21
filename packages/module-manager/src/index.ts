@@ -1,6 +1,6 @@
-export * from './types';
-
 import { Manager } from './manager/Manager';
+
+export * from './types';
 
 export const manager = new Manager();
 
