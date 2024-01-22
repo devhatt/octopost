@@ -6,6 +6,7 @@
     "@octopost/module-manager": "0.0.0"
   },
   "changesets": [
+    "few-singers-travel",
     "silly-cameras-glow",
     "slow-vans-think"
   ]

@@ -1,7 +1,7 @@
 {
   "name": "@octopost/module-manager",
   "private": false,
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "type": "module",
   "files": [
     "dist",
