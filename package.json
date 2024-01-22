@@ -88,7 +88,7 @@
     "cross-env": "^7.0.3",
     "electron-builder": "^24.9.1",
     "electron-is-dev": "^2.0.0",
-    "electron": "^24.1.2",
+    "electron": "^27.2.4",
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-define-config": "^2.1.0",
