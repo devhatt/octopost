@@ -1,6 +1,6 @@
 {
   "name": "@octopost/core",
-  "version": "0.1.1-alpha.0",
+  "version": "1.0.0-alpha.1",
   "engines": {
     "node": "^18",
     "pnpm": "^8"
@@ -47,7 +47,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-vitest": "^0.3.20",
     "framer-motion": "^10.17.9",
-    "i18next": "^23.7.16",
+    "i18next": "^23.7.18",
     "i18next-browser-languagedetector": "^7.2.0",
     "jsdom": "^22.1.0",
     "nanoid": "^5.0.3",
@@ -119,7 +119,7 @@
     "stylelint-config-sass-guidelines": "11.0.0",
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "5.0.0",
-    "stylelint-scss": "6.0.0",
+    "stylelint-scss": "6.1.0",
     "stylelint": "^16.2.0",
     "typescript-plugin-css-modules": "^5.0.2",
     "typescript": "5.3.3",
