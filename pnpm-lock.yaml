@@ -48,8 +48,8 @@ importers:
         specifier: ^10.17.9
         version: 10.18.0(react-dom@18.2.0)(react@18.2.0)
       i18next:
-        specifier: ^23.7.16
-        version: 23.7.16
+        specifier: ^23.7.18
+        version: 23.7.18
       i18next-browser-languagedetector:
         specifier: ^7.2.0
         version: 7.2.0
@@ -73,7 +73,7 @@ importers:
         version: 6.1.0(react@18.2.0)
       react-i18next:
         specifier: ^13.5.0
-        version: 13.5.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0)
+        version: 13.5.0(i18next@23.7.18)(react-dom@18.2.0)(react@18.2.0)
       react-router-dom:
         specifier: ^6.21.3
         version: 6.21.3(react-dom@18.2.0)(react@18.2.0)
@@ -259,8 +259,8 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(prettier@3.2.4)(stylelint@16.2.0)
       stylelint-scss:
-        specifier: 6.0.0
-        version: 6.0.0(stylelint@16.2.0)
+        specifier: 6.1.0
+        version: 6.1.0(stylelint@16.2.0)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -6614,8 +6614,8 @@ packages:
       '@babel/runtime': 7.23.8
     dev: false
 
-  /i18next@23.7.16:
-    resolution: {integrity: sha512-SrqFkMn9W6Wb43ZJ9qrO6U2U4S80RsFMA7VYFSqp7oc7RllQOYDCdRfsse6A7Cq/V8MnpxKvJCYgM8++27n4Fw==}
+  /i18next@23.7.18:
+    resolution: {integrity: sha512-b9N2KjRCYQNlUvE1Kc83g8knyUkL5NiZQOp9BsTR/v/LXk6Fzz+doOzTg2/826XK28mCgBkYLNAtixjE58qpCw==}
     dependencies:
       '@babel/runtime': 7.23.8
     dev: false
@@ -9379,7 +9379,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /react-i18next@13.5.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0):
+  /react-i18next@13.5.0(i18next@23.7.18)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
     peerDependencies:
       i18next: '>= 23.2.3'
@@ -9394,7 +9394,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.8
       html-parse-stringify: 3.0.1
-      i18next: 23.7.16
+      i18next: 23.7.18
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -10417,7 +10417,7 @@ packages:
       postcss: 8.4.33
       postcss-scss: 4.0.9(postcss@8.4.33)
       stylelint: 16.2.0(typescript@5.3.3)
-      stylelint-scss: 6.0.0(stylelint@16.2.0)
+      stylelint-scss: 6.1.0(stylelint@16.2.0)
     dev: true
 
   /stylelint-order@6.0.4(stylelint@16.2.0):
@@ -10442,8 +10442,8 @@ packages:
       stylelint: 16.2.0(typescript@5.3.3)
     dev: true
 
-  /stylelint-scss@6.0.0(stylelint@16.2.0):
-    resolution: {integrity: sha512-N1xV/Ef5PNRQQt9E45unzGvBUN1KZxCI8B4FgN/pMfmyRYbZGVN4y9qWlvOMdScU17c8VVCnjIHTVn38Bb6qSA==}
+  /stylelint-scss@6.1.0(stylelint@16.2.0):
+    resolution: {integrity: sha512-kCfK8TQzthGwb4vaZniZgxRsVbCM4ZckmT1b/H5m4FU3I8Dz0id9llKsy1NMp3XXqC8+OPD4rVKtUbSxXlJb5g==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
       stylelint: ^16.0.2
