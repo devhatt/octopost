@@ -2,7 +2,11 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
-    "@octopost/core": "0.1.0"
+    "@octopost/core": "0.1.0",
+    "@octopost/module-manager": "0.0.0"
   },
-  "changesets": ["tough-trainers-cheer"]
+  "changesets": [
+    "silly-cameras-glow",
+    "slow-vans-think"
+  ]
 }
