@@ -1,5 +1,12 @@
 # @octopost/core
 
+## 1.0.0-alpha.2
+
+### Patch Changes
+
+- Updated dependencies [[`d85e90f`](https://github.com/devhatt/octopost/commit/d85e90facd5cf145bc8cbe4fe3e61b74d2ac0a23)]:
+  - @octopost/module-manager@1.0.0-alpha.2
+
 ## 1.0.0-alpha.1
 
 ### Minor Changes
