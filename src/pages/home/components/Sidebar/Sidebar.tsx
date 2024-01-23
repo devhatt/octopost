@@ -21,82 +21,73 @@ function Sidebar() {
     setOpen((isOpen) => !isOpen);
   };
 
-  const renderSearchClue = () => {
-    return (
-      <SearchClue
-        clearInput={inputSearchRef.current?.clearInput}
-        value={value}
-        label="Searching for"
-      />
-    );
-  };
+  const renderSearchClue = () => (
+    <SearchClue
+      clearInput={inputSearchRef.current?.clearInput}
+      label="Searching for"
+      value={value}
+    />
+  );
 
   return (
-    <>
-      <Button variant="outlined" onClick={() => setMobileIsOpen(!mobileIsOpen)}>
-        Abre
-      </Button>
-      <AccordionTab
-        className={
-          scss.mobile +
-          ' ' +
-          (mobileIsOpen ? scss.openMobile : scss.closeMobile)
-        }
-        title="Select Social Media"
-        hideCloseButton
-      >
-        <div className={scss.content}>
-          <InputSearch
-            className={scss.searchBar}
-            onChange={(value) => setValue(value as string)}
-            placeholder="Search for social media"
-            ref={inputSearchRef}
-            error={false}
-          />
+    <AccordionTab
+      className={
+        scss.mobile + ' ' + (mobileIsOpen ? scss.openMobile : scss.closeMobile)
+      }
+      hideCloseButton
+      title="Select Social Media"
+    >
+      <div className={scss.content}>
+        <InputSearch
+          className={scss.searchBar}
+          error={false}
+          onChange={(value) => setValue(value as string)}
+          placeholder="Search for social media"
+          ref={inputSearchRef}
+        />
 
-          {!value && renderSearchClue()}
+        {value ? null : renderSearchClue()}
 
-          <div className={scss.items}>
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          </div>
-
-          <Button
-            onClick={handleToggleModal}
-            className={scss.newAccountButton}
-            variant="container"
-          >
-            {' '}
-            + &ensp; New Account
-          </Button>
-
-          <div className={scss.newAccountButtonMobileContainer}>
-            <Button
-              onClick={handleToggleModal}
-              className={scss.newAccountButtonMobile}
-              variant="container"
-              circle
-              icon={<PlusIcon />}
-            />
-          </div>
-
-          <Modal
-            isOpen={isOpen}
-            onClickOutside={() => setOpen(false)}
-            title="Adcionar Social"
-            footer={<div>footer</div>}
-          >
-            Octopost
-          </Modal>
+        <div className={scss.items}>
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
         </div>
-      </AccordionTab>
-    </>
+
+        <Button
+          className={scss.newAccountButton}
+          onClick={handleToggleModal}
+          variant="container"
+        >
+          {' '}
+          + &ensp; New Account
+        </Button>
+
+        <div className={scss.newAccountButtonMobileContainer}>
+          <Button
+            circle
+            className={scss.newAccountButtonMobile}
+            icon={<PlusIcon />}
+            onClick={handleToggleModal}
+            variant="container"
+          />
+        </div>
+
+        <Modal
+          footer={<div>footer</div>}
+          isOpen={isOpen}
+          onClickOutside={() => setOpen(false)}
+          title="Adcionar Social"
+        >
+          Octopost
+        </Modal>
+      </div>
+    </AccordionTab>
   );
 }
 
