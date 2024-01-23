@@ -5,7 +5,7 @@ import Icon from './Icon';
 describe('Icon', () => {
   it('renders the icon element with the correct classes', () => {
     render(
-      <Icon icon="at" color="active" size="large" className="custom-class" />
+      <Icon className="custom-class" color="active" icon="at" size="large" />
     );
     const iconElement = screen.getByTestId('icon-element');
     expect(iconElement).toBeInTheDocument();

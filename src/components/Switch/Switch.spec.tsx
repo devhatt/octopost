@@ -15,7 +15,7 @@ describe('Switch', () => {
     });
 
     it('renders the switch on when checked={true}', () => {
-      render(<Switch checked={true} setChecked={() => {}} />);
+      render(<Switch checked setChecked={() => {}} />);
 
       const switchComponent = screen.getByRole('checkbox');
 
@@ -27,10 +27,10 @@ describe('Switch', () => {
   describe('when click', () => {
     it('calls the setChecked function', async () => {
       const setCheckedMock = vi.fn();
-      render(<Switch checked={true} setChecked={setCheckedMock} />);
+      render(<Switch checked setChecked={setCheckedMock} />);
 
       const switchComponent = screen.getByRole('checkbox');
-      userEvent.click(switchComponent);
+      await userEvent.click(switchComponent);
 
       await waitFor(() => expect(setCheckedMock).toHaveBeenCalledTimes(1));
     });

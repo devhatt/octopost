@@ -4,8 +4,8 @@ import AccordionTab from './AccordionTab';
 
 beforeEach(() => {
   // https://github.com/vitest-dev/vitest/issues/4223
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  window.scrollTo = vi.fn<any>();
+
+  window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
 });
 
 afterEach(() => {

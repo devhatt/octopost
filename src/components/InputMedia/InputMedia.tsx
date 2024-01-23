@@ -41,22 +41,22 @@ function InputMedia(props: IInputMediaProps) {
 
   const renderEmptyImagePlaceholder = () => (
     <img
-      src={emptyInputGrey}
       alt="image placeholder"
       className={scss.imagePlaceholder}
+      src={emptyInputGrey}
     />
   );
 
   const renderImage = (file: File) => (
     <img
-      src={URL.createObjectURL(file)}
       alt={`uploaded image ${file.name}`}
       className={scss.imageSelected}
+      src={URL.createObjectURL(file)}
     />
   );
 
   const renderVideo = (file: File) => (
-    <video controls className={scss.imageSelected}>
+    <video className={scss.imageSelected} controls>
       <source src={URL.createObjectURL(file)} type={file.type} />
     </video>
   );
@@ -72,13 +72,13 @@ function InputMedia(props: IInputMediaProps) {
   return (
     <button className={inputClasses} onClick={handleInputClick}>
       <input
-        type="file"
-        data-testid="imageInput"
-        ref={fileInputRef}
-        className={scss.hidden}
         accept="image/*, video/*"
-        onChange={handleFileChange}
+        className={scss.hidden}
+        data-testid="imageInput"
         multiple
+        onChange={handleFileChange}
+        ref={fileInputRef}
+        type="file"
       />
       {props.files ? renderMedia() : renderEmptyImagePlaceholder()}
     </button>

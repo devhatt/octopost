@@ -1,3 +1,4 @@
+import React from 'react';
 import type { GenericObject } from '../utils/primitives';
 import type { Validators } from './Validators';
 import type { Widget } from './Widget';

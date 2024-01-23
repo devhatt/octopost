@@ -5,9 +5,7 @@ import App from './App';
 
 import 'normalize.css';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.querySelector('#root')!);
 
 root.render(
   <React.StrictMode>

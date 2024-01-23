@@ -8,49 +8,49 @@ export interface IPackageJsonPerson extends IPackageJsonAddress {
 }
 
 export interface IPackageJson {
-  name: string;
-  version: string;
-  main: string;
-  description?: string;
-  keywords?: string;
-  homepage?: string;
-  bugs?: IPackageJsonAddress;
-  license?: string;
-  author?: string | IPackageJsonPerson;
-  contributors?: string[] | IPackageJsonPerson[];
-  files?: string[];
-  browser?: string;
+  author?: IPackageJsonPerson | string;
   bin?: Record<string, string>;
-  man?: string;
+  browser?: string;
+  bugs?: IPackageJsonAddress;
+  bundledDependencies?: string[];
+  config?: Record<string, string>;
+  contributors?: IPackageJsonPerson[] | string[];
+  cpu?: string[];
+  dependencies?: Record<string, string>;
+  description?: string;
+  devDependencies?: Record<string, string>;
   directories?: {
-    lib?: string;
     bin?: string;
-    man?: string;
     doc?: string;
     example?: string;
+    lib?: string;
+    man?: string;
     test?: string;
   };
+  engines?: Record<string, string>;
+  files?: string[];
+  homepage?: string;
+  keywords?: string;
+  license?: string;
+  main: string;
+  man?: string;
+  name: string;
+  optionalDependencies?: Record<string, string>;
+  os?: string[];
+  peerDependencies?: Record<string, string>;
   repository?: {
+    directory?: string;
     type?: 'git' | string;
     url?: string;
-    directory?: string;
   };
   scripts?: Record<string, string>;
-  config?: Record<string, string>;
-  dependencies?: Record<string, string>;
-  devDependencies?: Record<string, string>;
-  peerDependencies?: Record<string, string>;
-  optionalDependencies?: Record<string, string>;
-  bundledDependencies?: string[];
-  engines?: Record<string, string>;
-  os?: string[];
-  cpu?: string[];
+  version: string;
 }
 
 export interface IPluginMetadata {
+  author?: IPackageJsonPerson | string;
   name: string;
-  version: string;
-  author?: string | IPackageJsonPerson;
   repositoryURL?: string;
   sourcePath: string;
+  version: string;
 }

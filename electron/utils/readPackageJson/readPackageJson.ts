@@ -8,15 +8,17 @@ import { IPackageJson } from './readPackageJson.types';
  * @returns the content inside `package.json`
  */
 async function readPackageJson(moduleDir: string): Promise<IPackageJson> {
-  const parsedPackage = JSON.parse(
-    await fs.readFile(`${moduleDir}/package.json`, 'utf8')
-  );
+  const file = await fs.readFile(`${moduleDir}/package.json`, 'utf-8');
+
+  // TODO [2024-04-1]: create a function to check if package.json is well formatted.
+
+  const parsedPackage = JSON.parse(file) as unknown as IPackageJson | undefined;
 
   if (!parsedPackage) {
     throw new Error('conteúdo dentro do package.json não-encontrado');
   }
 
-  return parsedPackage as IPackageJson;
+  return parsedPackage;
 }
 
 export default readPackageJson;

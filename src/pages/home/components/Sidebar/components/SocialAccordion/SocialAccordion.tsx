@@ -28,14 +28,14 @@ function SocialAccordion(props: ISocialAccordion) {
     props.accountList.map((accounts) => (
       <li key={accounts.id}>
         <ToggleSocialMedia
-          accountName={accounts.username}
           accountImage={accounts.image}
+          accountName={accounts.username}
         />
       </li>
     ));
 
   const renderAccordionContent = () => (
-    <ul role="listitem" className={scss.list}>
+    <ul className={scss.list} role="listitem">
       {renderAccordionMap()}
     </ul>
   );
@@ -43,13 +43,13 @@ function SocialAccordion(props: ISocialAccordion) {
   return (
     <Accordion
       className={scss.wrapper}
-      isOpen={isOpen}
+      content={renderAccordionContent()}
       header={
         <button
-          id="btn-accordion"
-          aria-expanded={isOpen}
-          onClick={handleOpenAccordion}
           aria-controls="content-accordion"
+          aria-expanded={isOpen}
+          id="btn-accordion"
+          onClick={handleOpenAccordion}
         >
           <header className={scss.header}>
             <div className={scss.socialInfo}>
@@ -63,7 +63,7 @@ function SocialAccordion(props: ISocialAccordion) {
           </header>
         </button>
       }
-      content={renderAccordionContent()}
+      isOpen={isOpen}
     />
   );
 }

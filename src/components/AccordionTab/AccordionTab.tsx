@@ -11,27 +11,25 @@ function AccordionTab(props: TAccordionTabProps) {
     if (props.onChangeOpen) props.onChangeOpen(!props.isOpen);
   };
 
-  const renderCloseButton = () => {
-    return (
-      <button onClick={handleClose} className={scss.closeButton}>
-        -
-      </button>
-    );
-  };
+  const renderCloseButton = () => (
+    <button className={scss.closeButton} onClick={handleClose}>
+      -
+    </button>
+  );
 
   const renderHeader = () => (
     <div className={scss.header}>
       <p className={scss.headerTitle}>{props.title}</p>
-      {!props.hideCloseButton && renderCloseButton()}
+      {props.hideCloseButton ? null : renderCloseButton()}
     </div>
   );
 
   return (
     <Accordion
       className={classNames(scss.container, props.className)}
-      isOpen={props.isOpen ?? true}
-      header={renderHeader()}
       content={props.children}
+      header={renderHeader()}
+      isOpen={props.isOpen ?? true}
     />
   );
 }

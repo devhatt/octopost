@@ -14,9 +14,8 @@ export const useFetchModules = () => {
         await fetchModules.get<IFetchModuleResponse>('/metadata');
 
       return modulesMetadata.script;
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -37,20 +36,17 @@ export const useFetchModules = () => {
 
       const modules = await Promise.all(modulesMetadata.map(fetchModuleScript));
 
-      const modulesUrl = modules.map((module) => {
-        return URL.createObjectURL(module);
-      });
+      const modulesUrl = modules.map((module) => URL.createObjectURL(module));
 
       setModulesURL(modulesUrl);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
 
   return {
-    modulesURL,
     fetchInitialModules,
     fetchModulesMetadata,
+    modulesURL,
   };
 };

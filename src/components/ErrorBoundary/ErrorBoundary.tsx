@@ -3,8 +3,8 @@ import React from 'react';
 import { TBoundaryProps, TErrorBoundaryState } from './ErrorBoundary.types';
 
 const initialState: TErrorBoundaryState = {
-  hasError: false,
   error: null,
+  hasError: false,
 };
 
 class ErrorBoundary extends React.Component<
@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component<
   }
 
   static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error: error };
+    return { error: error, hasError: true };
   }
 
   render() {

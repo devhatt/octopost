@@ -1,27 +1,27 @@
-import { renderHook, act } from '@testing-library/react';
-import * as zustand from 'zustand';
+import { act, renderHook } from '@testing-library/react';
+import * as zustandLib from 'zustand';
 
 import { useError } from './useError';
 
 import { myCustomCreate, storeResetFns } from '../__mocks__/zunstandMock';
 
 vi.mock('zustand', async () => {
-  const zustand = (await vi.importActual('zustand')) as object;
+  const actualZustand = await vi.importActual<typeof zustandLib>('zustand');
 
   return {
     __esModule: true,
-    ...zustand,
+    ...actualZustand,
   };
 });
 
-vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
+vi.spyOn(zustandLib, 'create').mockImplementation(myCustomCreate as never);
 
 describe('useError', () => {
   afterEach(() => {
     act(() => {
-      storeResetFns.forEach((resetFn) => {
+      for (const resetFn of storeResetFns) {
         resetFn();
-      });
+      }
     });
   });
 

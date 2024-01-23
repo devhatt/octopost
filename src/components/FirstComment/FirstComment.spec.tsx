@@ -5,9 +5,8 @@ import FirstComment from './FirstComment';
 
 import type { TFirstCommentProps } from './FirstComment.types';
 
-const makeSut = ({ ...props }: Partial<TFirstCommentProps>) => {
-  return render(<FirstComment {...props} />);
-};
+const makeSut = ({ ...props }: Partial<TFirstCommentProps>) =>
+  render(<FirstComment {...props} />);
 
 describe('FirstComment', () => {
   describe('when checkbox is marked', () => {

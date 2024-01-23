@@ -1,8 +1,8 @@
 export type TCheckboxChangeHandler = (checked: boolean) => void;
 
-export type TCheckboxProps = {
-  className?: string;
-  children: string;
-  onChange: TCheckboxChangeHandler;
+export interface TCheckboxProps {
   checked: boolean;
-};
+  children: string;
+  className?: string;
+  onChange: TCheckboxChangeHandler;
+}

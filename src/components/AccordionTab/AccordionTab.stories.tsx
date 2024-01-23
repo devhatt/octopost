@@ -11,9 +11,9 @@ export const AccordionTabStories: Story<TAccordionTabProps> = (props) => {
 
   return (
     <AccordionTab
-      title="Accordion Tab"
-      onChangeOpen={() => setOpen((isOpen) => !isOpen)}
       isOpen={isOpen}
+      onChangeOpen={() => setOpen((isOpen) => !isOpen)}
+      title="Accordion Tab"
       {...props}
     >
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam autem

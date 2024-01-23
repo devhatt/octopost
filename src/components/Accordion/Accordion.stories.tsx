@@ -12,13 +12,6 @@ export const AccordionStories: Story<TAccordionProps> = (props) => {
   return (
     <Accordion
       {...props}
-      duration={0.3}
-      isOpen={isOpen}
-      header={
-        <button onClick={() => setOpen((isOpen) => !isOpen)}>
-          Click to open!
-        </button>
-      }
       content={
         <div>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. od quis
@@ -26,6 +19,13 @@ export const AccordionStories: Story<TAccordionProps> = (props) => {
           officiis. Officiis excepturi aperiam error.
         </div>
       }
+      duration={0.3}
+      header={
+        <button onClick={() => setOpen((isOpen) => !isOpen)}>
+          Click to open!
+        </button>
+      }
+      isOpen={isOpen}
     />
   );
 };

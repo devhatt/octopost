@@ -540,7 +540,6 @@ module.exports = defineConfig({
     'unicorn/prefer-event-target': 'warn',
     'unicorn/prefer-export-from': 'warn',
     'unicorn/prefer-includes': 'warn',
-    'unicorn/prefer-json-parse-buffer': 'warn',
     'unicorn/prefer-keyboard-event-key': 'warn',
     'unicorn/prefer-logical-operator-over-ternary': 'warn',
     'unicorn/prefer-modern-dom-apis': 'warn',

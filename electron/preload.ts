@@ -24,7 +24,7 @@ function withPrototype(obj: Record<string, any>) {
 }
 
 // --------- Preload scripts loading ---------
-function domReady(
+async function domReady(
   condition: DocumentReadyState[] = ['complete', 'interactive']
 ) {
   return new Promise((resolve) => {
@@ -43,12 +43,12 @@ function domReady(
 const safeDOM = {
   append(parent: HTMLElement, child: HTMLElement) {
     if (!Array.from(parent.children).find((e) => e === child)) {
-      parent.appendChild(child);
+      parent.append(child);
     }
   },
   remove(parent: HTMLElement, child: HTMLElement) {
     if (Array.from(parent.children).find((e) => e === child)) {
-      parent.removeChild(child);
+      child.remove();
     }
   },
 };

@@ -9,15 +9,14 @@ afterEach(() => {
 });
 
 const makeSut = ({
-  header = <div>header</div>,
   content = <div>content</div>,
+  header = <div>header</div>,
   isOpen = false,
   ...props
-}: Partial<TAccordionProps>) => {
-  return render(
-    <Accordion isOpen={isOpen} header={header} content={content} {...props} />
+}: Partial<TAccordionProps>) =>
+  render(
+    <Accordion content={content} header={header} isOpen={isOpen} {...props} />
   );
-};
 
 describe('Accordion', () => {
   describe('when isOpen is false', () => {

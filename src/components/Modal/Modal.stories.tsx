@@ -13,9 +13,6 @@ export const ModalStories: Story = () => {
     <div>
       <button onClick={() => setOpen(true)}>open portal</button>
       <Portal
-        isOpen={isOpen}
-        title="Modal Title"
-        onClickOutside={() => setOpen(false)}
         footer={
           <>
             <div>Footer example</div>
@@ -24,6 +21,9 @@ export const ModalStories: Story = () => {
             </Button>
           </>
         }
+        isOpen={isOpen}
+        onClickOutside={() => setOpen(false)}
+        title="Modal Title"
       >
         CONTENT
       </Portal>

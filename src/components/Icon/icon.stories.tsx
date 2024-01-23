@@ -4,13 +4,11 @@ import Icon from './Icon';
 
 import { IIconProps } from './icon.types';
 
-export const iconFont: Story<IIconProps> = (props) => {
-  return (
-    <div>
-      <Icon {...props} />
-    </div>
-  );
-};
+export const iconFont: Story<IIconProps> = (props) => (
+  <div>
+    <Icon {...props} />
+  </div>
+);
 
 iconFont.args = {
   color: 'active',

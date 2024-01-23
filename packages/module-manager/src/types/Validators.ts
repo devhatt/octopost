@@ -1,7 +1,7 @@
 export type AspectRatio = `${number}:${number}`;
 
-export type ImageFormats = 'png' | 'jpg' | 'jpeg' | 'webp' | 'gif';
-export type VideoFormats = 'mp4' | 'mov' | 'avi' | 'webm';
+export type ImageFormats = 'gif' | 'jpeg' | 'jpg' | 'png' | 'webp';
+export type VideoFormats = 'avi' | 'mov' | 'mp4' | 'webm';
 export type MediaFormats = ImageFormats | VideoFormats;
 
 export interface TextValidator {
@@ -21,6 +21,6 @@ export interface MediaValidator {
 }
 
 export type Validators =
-  | (MediaValidator & TextValidator)
   | MediaValidator
+  | (MediaValidator & TextValidator)
   | TextValidator;

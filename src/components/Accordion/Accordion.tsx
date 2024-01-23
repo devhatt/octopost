@@ -7,8 +7,8 @@ import { TAccordionProps } from './Accordion.types';
 
 function computeVariants(duration: number) {
   return {
-    expanded: { height: 'auto', transition: { duration } },
     collapsed: { height: 0, transition: { duration } },
+    expanded: { height: 'auto', transition: { duration } },
   };
 }
 
@@ -17,17 +17,17 @@ function Accordion(props: TAccordionProps) {
     <section className={classNames(props.className, styles.container)}>
       <div className={styles.header}>{props.header}</div>
       <AnimatePresence>
-        {props.isOpen && (
+        {props.isOpen ? (
           <motion.div
-            exit="collapsed"
             animate="expanded"
-            initial="collapsed"
             className={styles.content}
+            exit="collapsed"
+            initial="collapsed"
             variants={computeVariants(props.duration ?? 0.3)}
           >
             {props.content}
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </section>
   );

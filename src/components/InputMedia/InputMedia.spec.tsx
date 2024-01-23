@@ -3,11 +3,9 @@ import userEvent from '@testing-library/user-event';
 
 import InputMedia from './InputMedia';
 
-vi.mock('nanoid', () => {
-  return {
-    nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
-  };
-});
+vi.mock('nanoid', () => ({
+  nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
+}));
 
 describe('InputMedia', () => {
   it('renders the icon', () => {
@@ -17,11 +15,11 @@ describe('InputMedia', () => {
   });
 
   describe('when clicking the icon', () => {
-    it('triggers the file input', () => {
+    it('triggers the file input', async () => {
       render(<InputMedia onChange={() => {}} />);
 
       const icon = screen.getByRole('img');
-      userEvent.click(icon);
+      await userEvent.click(icon);
 
       const input = screen.getByTestId('imageInput');
       expect(input).toHaveAttribute('type', 'file');

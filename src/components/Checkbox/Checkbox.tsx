@@ -14,10 +14,10 @@ function Checkbox(props: TCheckboxProps) {
   return (
     <label className={classNames(styles.container, props.className)}>
       <input
-        type="checkbox"
-        onChange={handleChange}
-        className={styles.input}
         checked={props.checked}
+        className={styles.input}
+        onChange={handleChange}
+        type="checkbox"
       />
       <span className={styles.text}>{props.children}</span>
     </label>

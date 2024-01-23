@@ -10,16 +10,16 @@ function CustomTextArea(props: ICustomTextAreaProps) {
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    props?.onTextChange(newValue);
+    props.onTextChange(newValue);
   };
 
   return (
     <div>
       <textarea
         className={scss.textArea}
-        value={inputValue}
         onChange={handleInputChange}
         placeholder="Digite algo aqui..."
+        value={inputValue}
       />
     </div>
   );

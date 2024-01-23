@@ -20,8 +20,8 @@ describe('SocialAccordion', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
@@ -31,8 +31,8 @@ describe('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
@@ -41,7 +41,7 @@ describe('SocialAccordion', () => {
 
     it('shows the error on screen if error={true}', () => {
       render(
-        <SocialAccordion error accountList={[]} socialMediaName="facebook" />
+        <SocialAccordion accountList={[]} error socialMediaName="facebook" />
       );
       expect(screen.getByText(/error/i)).toBeInTheDocument();
     });
@@ -51,8 +51,8 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
@@ -71,8 +71,8 @@ describe('SocialAccordion', () => {
     it('renders with zero if list is empty', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={[]}
+          error={false}
           socialMediaName="facebook"
         />
       );
@@ -82,8 +82,8 @@ describe('SocialAccordion', () => {
     it('renders with one if list have one account', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );

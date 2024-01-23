@@ -1,9 +1,11 @@
-import { render, fireEvent, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import CustomTextArea from './TextArea';
 
 describe('CustomTextArea', () => {
   const mockOnChange = vi.fn();
+
   it('renders the component textarea', () => {
     render(<CustomTextArea onTextChange={mockOnChange} />);
 
@@ -11,16 +13,15 @@ describe('CustomTextArea', () => {
     expect(inputElement).toBeInTheDocument();
   });
 
-  it('updates input value when typing', () => {
+  it('updates input value when typing', async () => {
     render(<CustomTextArea onTextChange={mockOnChange} />);
 
-    const inputElement = screen.getByPlaceholderText(
+    const inputElement: HTMLInputElement = screen.getByPlaceholderText(
       'Digite algo aqui...'
-    ) as HTMLInputElement;
+    );
     const testInputValue = 'Testing TextArea input';
-    act(() => {
-      fireEvent.change(inputElement, { target: { value: testInputValue } });
-    });
+
+    await userEvent.type(inputElement, testInputValue);
 
     expect(inputElement.value).toBe(testInputValue);
     expect(mockOnChange).toHaveBeenCalledWith(testInputValue);

@@ -6,16 +6,15 @@ import Checkbox from './Checkbox';
 import type { TCheckboxProps } from './Checkbox.types';
 
 const makeSut = ({
-  onChange = vi.fn(),
   checked = false,
+  onChange = vi.fn(),
   ...props
-}: Partial<TCheckboxProps>) => {
-  return render(
+}: Partial<TCheckboxProps>) =>
+  render(
     <Checkbox checked={checked} onChange={onChange} {...props}>
       checkbox
     </Checkbox>
   );
-};
 
 describe('Checkbox', () => {
   describe('when checkbox be clicked', () => {

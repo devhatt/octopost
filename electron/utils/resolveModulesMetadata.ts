@@ -23,11 +23,11 @@ async function resolveModulesMetadata(
       const getMetadata = await readPackageJson(metadataPath);
 
       const metadata: IPluginMetadata = {
+        author: getMetadata.author,
         name: getMetadata.name,
+        repositoryURL: getMetadata.repository?.url,
         sourcePath: await resolveModulePath(metadataPath),
         version: getMetadata.version,
-        author: getMetadata.author,
-        repositoryURL: getMetadata.repository?.url,
       };
 
       return metadata;
