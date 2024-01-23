@@ -100,6 +100,34 @@ function Sidebar(): ReactNode {
             Octopost
           </Modal>
         </div>
+
+        <Button
+          className={scss.newAccountButton}
+          onClick={handleToggleModal}
+          variant="container"
+        >
+          {' '}
+          + &ensp; New Account
+        </Button>
+
+        <div className={scss.newAccountButtonMobileContainer}>
+          <Button
+            circle
+            className={scss.newAccountButtonMobile}
+            icon={<PlusIcon />}
+            onClick={handleToggleModal}
+            variant="container"
+          />
+        </div>
+
+        <Modal
+          footer={<div>footer</div>}
+          isOpen={isOpen}
+          onClickOutside={() => setIsOpen(false)}
+          title="Adcionar Social"
+        >
+          Octopost
+        </Modal>
       </AccordionTab>
     </>
   );
