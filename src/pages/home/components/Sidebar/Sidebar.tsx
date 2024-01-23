@@ -7,6 +7,8 @@ import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
+import { PlusIcon } from './components/PlusIcon';
+
 import scss from './Sidebar.module.scss';
 
 function Sidebar() {
@@ -31,7 +33,7 @@ function Sidebar() {
 
   return (
     <>
-      <Button variant="outlined" onClick={() => setMobileIsOpen(true)}>
+      <Button variant="outlined" onClick={() => setMobileIsOpen(!mobileIsOpen)}>
         Abre
       </Button>
       <AccordionTab
@@ -70,10 +72,26 @@ function Sidebar() {
             className={scss.newAccountButton}
             variant="container"
           >
+            {' '}
             + &ensp; New Account
           </Button>
 
-          <Modal isOpen={isOpen} onClickOutside={() => setOpen(false)}>
+          <div className={scss.newAccountButtonMobileContainer}>
+            <Button
+              onClick={handleToggleModal}
+              className={scss.newAccountButtonMobile}
+              variant="container"
+              circle
+              icon={<PlusIcon />}
+            />
+          </div>
+
+          <Modal
+            isOpen={isOpen}
+            onClickOutside={() => setOpen(false)}
+            title="Adcionar Social"
+            footer={<div>footer</div>}
+          >
             Octopost
           </Modal>
         </div>
