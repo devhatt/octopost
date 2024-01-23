@@ -3,11 +3,9 @@ import userEvent from '@testing-library/user-event';
 
 import InputMedia from './InputMedia';
 
-vi.mock('nanoid', () => {
-  return {
-    nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
-  };
-});
+vi.mock('nanoid', () => ({
+  nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
+}));
 
 describe('InputMedia', () => {
   it('renders the icon', () => {
@@ -16,12 +14,65 @@ describe('InputMedia', () => {
     expect(icon).toBeInTheDocument();
   });
 
+  test('upload the image', async () => {
+    window.URL.createObjectURL = vi.fn();
+
+    const mockOnChange = vi.fn();
+    render(<InputMedia onChange={mockOnChange} />);
+    const fileInput = screen.getByTestId('imageInput');
+
+    const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
+    await userEvent.upload(fileInput, file);
+
+    expect(mockOnChange).toHaveBeenCalledWith([
+      { file, id: 'sua-string-especifica-aqui' },
+    ]);
+  });
+
+  test('upload two images', async () => {
+    window.URL.createObjectURL = vi.fn();
+
+    const mockOnChange = vi.fn();
+    render(<InputMedia onChange={mockOnChange} />);
+    const fileInput = screen.getByTestId('imageInput');
+
+    const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
+    await userEvent.upload(fileInput, file);
+
+    const file2 = new File(['(⌐□_□)'], 'test2.png', { type: 'image/png' });
+    await userEvent.upload(fileInput, file);
+
+    expect(mockOnChange).toHaveBeenCalledWith([
+      { file, id: 'sua-string-especifica-aqui' },
+    ]);
+    
+    expect(mockOnChange).toHaveBeenCalledWith([
+      { file: file2, id: 'sua-string-especifica-aqui' },
+    ]);
+  });
+
+  describe('when the file is diferent from image or video', () => {
+    test('doesnt select the file', async () => {
+      window.URL.createObjectURL = vi.fn();
+
+      const mockOnChange = vi.fn();
+      render(<InputMedia onChange={mockOnChange} />);
+      const fileInput = screen.getByTestId('imageInput');
+
+      const file = new File([""], "filename.txt", { type: "text/plain" })
+      await userEvent.upload(fileInput, file);
+
+
+      expect(mockOnChange).not.toHaveBeenCalled();
+    });
+  });
+
   describe('when clicking the icon', () => {
-    it('triggers the file input', () => {
+    it('triggers the file input', async () => {
       render(<InputMedia onChange={() => {}} />);
 
       const icon = screen.getByRole('img');
-      userEvent.click(icon);
+      await userEvent.click(icon);
 
       const input = screen.getByTestId('imageInput');
       expect(input).toHaveAttribute('type', 'file');

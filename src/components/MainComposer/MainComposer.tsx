@@ -20,12 +20,12 @@ function MainComposer(props: TMainComposerProps) {
       <div className={scss.content}>
         <div className={scss.textInput}>{props.editor}</div>
         <div className={scss.contentBot}>
-          <div className={scss.contentBotTop}></div>
+          <div className={scss.contentBotTop} />
           <div className={scss.contentBotBot}>
-            <div className={scss.mainComposerInputMedia}>
+            <div className={scss.mainComposerInputMedia} data-testid="mediaInputs">
               <MediaInputs />
             </div>
-            <div className={scss.iconPulsSave}></div>
+            <div className={scss.iconPulsSave} />
 
             <p>{t('We have a lot of work')}</p>
           </div>
