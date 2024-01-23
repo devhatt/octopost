@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   createRoutesFromChildren,
   HashRouter as Router,
@@ -39,7 +39,7 @@ Sentry.init({
 
 const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
-function App() {
+function App(): ReactNode {
   return (
     <ModuleProvider>
       <div className={scss.app}>
