@@ -1,5 +1,4 @@
-﻿import { post, reels, story } from 'modules/example-module1/postModes/story';
-import { nanoid } from 'nanoid';
+﻿import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
 import { TSocialNetworksState } from './useSocialNetworkStore.types';
@@ -7,14 +6,12 @@ import { TSocialNetworksState } from './useSocialNetworkStore.types';
 export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
   socialNetworks: [
     {
-      id: nanoid(),
-      name: 'Facebook',
       icon: (
         <svg
-          width="24"
+          fill="none"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -23,17 +20,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [story, post, reels],
+      id: nanoid(),
+      name: 'Facebook',
+      postModes: [],
     },
     {
-      id: nanoid(),
-      name: 'Instagram',
       icon: (
         <svg
-          width="24"
+          fill="none"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -42,17 +39,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [reels, story, post],
+      id: nanoid(),
+      name: 'Instagram',
+      postModes: [],
     },
     {
-      id: nanoid(),
-      name: 'Xwitter',
       icon: (
         <svg
-          width="24"
+          fill="none"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -61,17 +58,17 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [post],
+      id: nanoid(),
+      name: 'Xwitter',
+      postModes: [],
     },
     {
-      id: nanoid(),
-      name: 'TikTok',
       icon: (
         <svg
-          width="24"
+          fill="none"
           height="24"
           viewBox="0 0 24 24"
-          fill="none"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -80,7 +77,9 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
           />
         </svg>
       ),
-      postModes: [post, story],
+      id: nanoid(),
+      name: 'TikTok',
+      postModes: [],
     },
   ],
 }));

@@ -2,22 +2,10 @@
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowImportingTsExtensions": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "~components/*": ["components/*"],
-      "~config/*": ["config/*"],
-      "~constants/*": ["constants/*"],
-      "~enums/*": ["enums/*"],
-      "~hooks/*": ["hooks/*"],
-      "~interfaces/*": ["interfaces/*"],
-      "~i18n": ["i18n/"],
-      "~pages/*": ["pages/*"],
-      "~services/*": ["services/*"],
-      "~snippets/*": ["snippets/*"],
-      "~store/*": ["store/*"],
-      "~styles/*": ["styles/*"],
-      "~types/*": ["types/*"],
-      "~utils/*": ["utils/*"]
+      "~*": ["src/*"],
+      "~electron/*": ["electron/*"],
     },
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -37,7 +25,7 @@
     /* Linting */
     "strict": true,
     "target": "ES2020",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
   },
   "exclude": ["node_modules", "dist"],
   "include": [
@@ -48,11 +36,11 @@
     "tests-examples/**/*",
     "playwright/**/*",
     "e2e-testing/**/*",
-    "module.js"
+    "module.js",
   ],
   "references": [
     {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+      "path": "./tsconfig.node.json",
+    },
+  ],
 }

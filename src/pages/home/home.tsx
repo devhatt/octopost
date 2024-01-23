@@ -1,4 +1,6 @@
-import { useModule } from 'contexts/ModuleContext';
+import { ReactNode } from 'react';
+
+import { useModule } from '~contexts/ModuleContext';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
@@ -10,7 +12,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 import scss from './home.module.scss';
 
-const Home = () => {
+function Home(): ReactNode {
   const { modules } = useModule();
 
   return (
@@ -34,6 +36,6 @@ const Home = () => {
       </div>
     </>
   );
-};
+}
 
 export default Home;
