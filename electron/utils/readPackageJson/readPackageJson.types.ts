@@ -40,7 +40,7 @@ export interface IPackageJson {
   peerDependencies?: Record<string, string>;
   repository?: {
     directory?: string;
-    type?: 'git' | string;
+    type?: string | 'git';
     url?: string;
   };
   scripts?: Record<string, string>;
