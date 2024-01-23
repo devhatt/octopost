@@ -331,7 +331,6 @@ module.exports = defineConfig({
     'import/no-extraneous-dependencies': 'warn',
     'import/no-named-as-default-member': 'warn',
     'import/no-self-import': 'warn',
-    'import/no-unresolved': 'warn',
     'import/no-unused-modules': 'warn',
     'import/order': 'off', // keep disable to not conflict with import-helpers/order-imports
     'jsx-a11y/alt-text': 'warn',

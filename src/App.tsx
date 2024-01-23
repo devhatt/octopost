@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-  Route,
-  HashRouter as Router,
-  Routes,
   createRoutesFromChildren,
+  HashRouter as Router,
   matchRoutes,
+  Route,
+  Routes,
   useLocation,
   useNavigationType,
 } from 'react-router-dom';
 
 import * as Sentry from '@sentry/react';
-import ModuleProvider from 'contexts/ModuleContext';
+import ModuleProvider from '~contexts/ModuleContext';
 
 import Home from './pages/home/home';
 
@@ -32,9 +32,9 @@ Sentry.init({
       ),
     }),
   ],
-  tracesSampleRate: 1.0,
+  replaysOnErrorSampleRate: 1,
   replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
+  tracesSampleRate: 1,
 });
 
 const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
@@ -46,7 +46,7 @@ function App() {
         <Head />
         <Router>
           <SentryRoutes>
-            <Route path="/" element={<Home />} />
+            <Route element={<Home />} path="/" />
           </SentryRoutes>
         </Router>
       </div>
