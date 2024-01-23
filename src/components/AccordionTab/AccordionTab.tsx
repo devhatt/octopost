@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 
-import Icon from '~components/Icon/Icon';
-
 import Accordion from '../Accordion/Accordion';
 
 import scss from './AccordionTab.module.scss';
@@ -23,7 +21,6 @@ function AccordionTab(props: TAccordionTabProps) {
 
   const renderHeader = () => (
     <div className={scss.header}>
-      <Icon className={scss.headerIcon} icon="at" />
       <p className={scss.headerTitle}>{props.title}</p>
       {!props.hideCloseButton && renderCloseButton()}
     </div>

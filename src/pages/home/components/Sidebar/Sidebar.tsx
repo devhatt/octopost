@@ -9,6 +9,8 @@ import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
+import { PlusIcon } from './components/PlusIcon';
+
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
@@ -36,7 +38,7 @@ function Sidebar(): ReactNode {
 
   return (
     <>
-      <Button onClick={() => setMobileIsOpen(true)} variant="outlined">
+      <Button onClick={() => setMobileIsOpen(!mobileIsOpen)} variant="outlined">
         Abre
       </Button>
       <AccordionTab
@@ -75,10 +77,26 @@ function Sidebar(): ReactNode {
             onClick={handleToggleModal}
             variant="container"
           >
+            {' '}
             + &ensp; New Account
           </Button>
 
-          <Modal isOpen={isOpen} onClickOutside={() => setIsOpen(false)}>
+          <div className={scss.newAccountButtonMobileContainer}>
+            <Button
+              circle
+              className={scss.newAccountButtonMobile}
+              icon={<PlusIcon />}
+              onClick={handleToggleModal}
+              variant="container"
+            />
+          </div>
+
+          <Modal
+            footer={<div>footer</div>}
+            isOpen={isOpen}
+            onClickOutside={() => setIsOpen(false)}
+            title="Adcionar Social"
+          >
             Octopost
           </Modal>
         </div>
