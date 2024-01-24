@@ -7,40 +7,40 @@ import RemoveIcon from './assets/xIcon.svg';
 
 import { ISocialMediaList } from './SocialMediaList.type';
 
-const SocialMediaList = (props: ISocialMediaList) => {
+function SocialMediaList(props: ISocialMediaList) {
   const [tags, setTags] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState('');
 
-  const addTag = (newTag: string) => {
+  const addTag = (newTag: string): void => {
     if (!tags.includes(newTag)) {
       setTags([...tags, newTag]);
     }
   };
 
-  const handleAddTag = () => {
+  const handleAddTag = (): void => {
     if (selectedOption.trim() !== '') {
       addTag(selectedOption);
       setSelectedOption('');
     }
   };
 
-  const handleRemoveTag = (removedTag: string) => {
+  const handleRemoveTag = (removedTag: string): void => {
     setTags(tags.filter((tag) => tag !== removedTag));
   };
 
-  const renderEmptyTagsPlaceholder = () => (
+  const renderEmptyTagsPlaceholder = (): JSX.Element => (
     <div className={scss.placeholderText}>Select Social Account</div>
   );
 
   const renderTags = () =>
     tags.map((tag) => (
-      <div key={tag} className={scss.tag}>
+      <div className={scss.tag} data-testid="tag" key={tag}>
         <div className={scss.iconContainer}>
-          {props.SocialMediaList.find((item) => item.name === tag)?.icon}
+          {props.socialMediaList.find((item) => item.name === tag)?.icon}
         </div>
         {tag}
         <button onClick={() => handleRemoveTag(tag)}>
-          <img src={RemoveIcon} alt="Ícone para apagar uma tag" />
+          <img alt="Ícone de apagar uma tag" src={RemoveIcon} />
         </button>
       </div>
     ));
@@ -52,11 +52,11 @@ const SocialMediaList = (props: ISocialMediaList) => {
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag}>
-          <img src={PlusIcon} alt="Icone de mais" />
+          <img alt="Icone de adicionar uma tag" src={PlusIcon} />
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default SocialMediaList;

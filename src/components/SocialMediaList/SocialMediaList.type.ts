@@ -1,9 +1,9 @@
 export interface ISocialMediaList {
-  SocialMediaList: ISocialMediaDb[];
+  socialMediaList: ISocialMedia[];
 }
 
-export interface ISocialMediaDb {
+export interface ISocialMedia {
+  icon: React.ReactElement;
   id: number;
   name: string;
-  icon: React.ReactElement;
 }
