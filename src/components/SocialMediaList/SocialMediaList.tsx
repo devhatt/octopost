@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import scss from './SocialMediaList.module.scss';
 
@@ -7,7 +7,7 @@ import RemoveIcon from './assets/xIcon.svg';
 
 import { ISocialMediaList } from './SocialMediaList.type';
 
-function SocialMediaList(props: ISocialMediaList) {
+function SocialMediaList(props: ISocialMediaList): ReactNode {
   const zeroTagCount = 0;
   const [tags, setTags] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState('');
@@ -33,7 +33,7 @@ function SocialMediaList(props: ISocialMediaList) {
     <div className={scss.placeholderText}>Select Social Account</div>
   );
 
-  const renderTags = () =>
+  const renderTags = (): ReactNode =>
     tags.map((tag) => (
       <div className={scss.tag} data-testid="tag" key={tag}>
         <div className={scss.iconContainer}>
