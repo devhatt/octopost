@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import scss from './SocialMediaList.module.scss';
 
@@ -8,6 +8,7 @@ import RemoveIcon from './assets/xIcon.svg';
 import { ISocialMediaList } from './SocialMediaList.type';
 
 function SocialMediaList(props: ISocialMediaList) {
+  const zeroTagCount = 0;
   const [tags, setTags] = useState<string[]>([]);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -28,7 +29,7 @@ function SocialMediaList(props: ISocialMediaList) {
     setTags(tags.filter((tag) => tag !== removedTag));
   };
 
-  const renderEmptyTagsPlaceholder = (): JSX.Element => (
+  const renderEmptyTagsPlaceholder = (): ReactNode => (
     <div className={scss.placeholderText}>Select Social Account</div>
   );
 
@@ -39,7 +40,7 @@ function SocialMediaList(props: ISocialMediaList) {
           {props.socialMediaList.find((item) => item.name === tag)?.icon}
         </div>
         {tag}
-        <button onClick={() => handleRemoveTag(tag)}>
+        <button onClick={() => handleRemoveTag(tag)} type="button">
           <img alt="Ícone de apagar uma tag" src={RemoveIcon} />
         </button>
       </div>
@@ -48,10 +49,12 @@ function SocialMediaList(props: ISocialMediaList) {
   return (
     <div className={scss.mainContainer}>
       <div className={scss.tagContainer}>
-        {tags.length === 0 ? renderEmptyTagsPlaceholder() : renderTags()}
+        {tags.length === zeroTagCount
+          ? renderEmptyTagsPlaceholder()
+          : renderTags()}
       </div>
       <div>
-        <button className={scss.addButton} onClick={handleAddTag}>
+        <button className={scss.addButton} onClick={handleAddTag} type="button">
           <img alt="Icone de adicionar uma tag" src={PlusIcon} />
         </button>
       </div>
