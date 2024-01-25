@@ -11,7 +11,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 import scss from './home.module.scss';
 
-const Home = () => {
+function Home() {
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
 
@@ -30,10 +30,10 @@ const Home = () => {
           </div>
           <div className={scss.gridInput}>
             <MainComposer
-              title="Main Content"
+              editor={editor}
               isOpen={isOpen}
               onToggle={() => setIsOpen(!isOpen)}
-              editor={editor}
+              title="Main Content"
             />
             <FirstComment />
             <FeedbackError />
@@ -45,6 +45,6 @@ const Home = () => {
       </div>
     </>
   );
-};
+}
 
 export default Home;

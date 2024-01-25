@@ -13,23 +13,23 @@ export function FirstComment(props: TFirstCommentProps) {
 
   return (
     <Accordion
-      duration={0.5}
       className={styles.container}
-      isOpen={isOpen}
-      header={
-        <Checkbox
-          className={styles.checkbox}
-          checked={isOpen}
-          onChange={setOpen}
-        >
-          First Comment
-        </Checkbox>
-      }
       content={
         <div className={styles.textarea}>
           <ComposerEditor inputText="" />
         </div>
       }
+      duration={0.5}
+      header={
+        <Checkbox
+          checked={isOpen}
+          className={styles.checkbox}
+          onChange={setOpen}
+        >
+          First Comment
+        </Checkbox>
+      }
+      isOpen={isOpen}
       {...props}
     />
   );
