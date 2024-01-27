@@ -6,6 +6,6 @@
   "singleQuote": true,
   "jsxSingleQuote": false,
   "arrowParens": "always",
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "printWidth": 80
 }
