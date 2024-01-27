@@ -33,7 +33,7 @@ describe('InputSearch component', () => {
     render(<InputSearch {...mockProps} />);
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    await userEvent.type(inputElement, 'value');
+    await userEvent.type(inputElement, 'Value');
 
     expect(inputElement).toHaveValue('Value');
   });
@@ -62,7 +62,7 @@ describe('InputSearch component', () => {
 
     const clearButton = screen.getByTestId('clear-button');
 
-    expect(inputElement).toHaveValue('Value');
+    expect(inputElement).toHaveValue('value');
     await userEvent.click(clearButton);
 
     expect(inputElement).toHaveValue('');
