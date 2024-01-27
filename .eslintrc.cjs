@@ -3,6 +3,7 @@ const { defineConfig } = require('eslint-define-config');
 module.exports = defineConfig({
   env: { browser: true, es2020: true },
   extends: ['eslint:recommended', 'prettier'],
+  extends: ['plugin:@eslint-community/eslint-comments/recommended'],
   ignorePatterns: [
     'dist',
     'dist-electron',
@@ -86,6 +87,7 @@ module.exports = defineConfig({
         '.eslintrc.cjs',
         'playwright-ct.config.ts',
         'playwright.config.ts',
+        'electron/*',
       ],
       rules: {
         'no-console': 'off',
@@ -134,7 +136,7 @@ module.exports = defineConfig({
         '@typescript-eslint/max-params': ['warn', { max: 3 }],
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/method-signature-style': ['warn', 'property'],
-        //  TODO: Colocar regra de underscore em variaveis membro e regra de nomeclatura de classe abstrata
+        //  TODO: #349 Colocar regra de underscore em variaveis membro e regra de nomeclatura de classe abstrata
         '@typescript-eslint/naming-convention': [
           'warn',
           {
@@ -173,7 +175,10 @@ module.exports = defineConfig({
         '@typescript-eslint/no-invalid-void-type': 'warn',
         '@typescript-eslint/no-loop-func': 'warn',
         '@typescript-eslint/no-loss-of-precision': 'warn',
-        '@typescript-eslint/no-magic-numbers': 'warn',
+        '@typescript-eslint/no-magic-numbers': [
+          'warn',
+          { ignoreArrayIndexes: true },
+        ],
         '@typescript-eslint/no-meaningless-void-operator': 'warn',
         '@typescript-eslint/no-misused-new': 'warn',
         '@typescript-eslint/no-misused-promises': 'warn',
@@ -266,24 +271,21 @@ module.exports = defineConfig({
     'react',
     'regexp',
     'write-good-comments',
-    'eslint-comments',
+    '@eslint-community/eslint-comments',
   ],
   root: true,
   rules: {
-    'array-func/avoid-reverse': 'off',
+    '@eslint-community/eslint-comments/disable-enable-pair': 'warn',
+    '@eslint-community/eslint-comments/no-aggregating-enable': 'warn',
+    '@eslint-community/eslint-comments/no-duplicate-disable': 'warn',
+    '@eslint-community/eslint-comments/no-unlimited-disable': 'warn',
+    '@eslint-community/eslint-comments/no-unused-enable': 'warn',
+    '@eslint-community/eslint-comments/require-description': 'warn',
     'array-func/from-map': 'warn',
-    'array-func/no-unnecessary-this-arg': 'off',
     'array-func/prefer-array-from': 'warn',
     'array-func/prefer-flat': 'warn',
     'array-func/prefer-flat-map': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
-    'eslint-comments/disable-enable-pair': ['warn', { allowWholeFile: true }],
-    'eslint-comments/no-aggregating-enable': ['warn'],
-    'eslint-comments/no-duplicate-disable': ['warn'],
-    'eslint-comments/no-unlimited-disable': ['warn'],
-    'eslint-comments/no-unused-disable': ['warn'],
-    'eslint-comments/no-unused-enable': ['warn'],
-    'eslint-comments/require-description': ['warn'],
     'import-helpers/order-imports': [
       'warn',
       {
@@ -343,7 +345,6 @@ module.exports = defineConfig({
     'jsx-a11y/aria-role': 'warn',
     'jsx-a11y/aria-unsupported-elements': 'warn',
     'jsx-a11y/autocomplete-valid': 'warn',
-    'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/heading-has-content': 'warn',
     'jsx-a11y/html-has-lang': 'warn',
     'jsx-a11y/iframe-has-title': 'warn',
@@ -383,7 +384,6 @@ module.exports = defineConfig({
     'perfectionist/sort-named-imports': 'warn',
     'perfectionist/sort-object-types': 'warn',
     'perfectionist/sort-objects': 'warn',
-    'perfectionist/sort-union-types': 'warn',
     'promise/always-return': 'warn',
     'promise/catch-or-return': 'warn',
     'promise/no-callback-in-promise': 'warn',
@@ -485,7 +485,13 @@ module.exports = defineConfig({
     'unicorn/consistent-destructuring': 'warn',
     'unicorn/consistent-function-scoping': 'warn',
     'unicorn/escape-case': 'warn',
-    'unicorn/expiring-todo-comments': 'warn',
+    'unicorn/expiring-todo-comments': [
+      'warn',
+      {
+        allowWarningComments: false,
+        ignore: ['#\\d+', /issue-\d+/i],
+      },
+    ],
     'unicorn/explicit-length-check': 'warn',
     'unicorn/new-for-builtins': 'warn',
     'unicorn/no-abusive-eslint-disable': 'warn',

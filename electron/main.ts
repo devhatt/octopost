@@ -1,8 +1,9 @@
 import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
-import express from 'express';
-import path from 'path';
+import express, { Request } from 'express';
+import path from 'node:path';
 
+import { EHttpStatusCode } from '../src/enums/httpStatusCodes';
 import resolveModulesMetadata from './utils/resolveModulesMetadata';
 
 const expressApp = express();
@@ -11,67 +12,74 @@ const port = 3000;
 expressApp.use(cors());
 expressApp.use(express.json());
 
-expressApp.get('/metadata', async (req, res) => {
-  try {
-    const userLocalModules = path.join(
-      app.getPath('documents'),
-      '/octopost/plugins/'
-    );
+expressApp.get('/metadata', (_, res) => {
+  void (async function (): Promise<void> {
+    try {
+      const userLocalModules = path.join(
+        app.getPath('documents'),
+        '/octopost/plugins/'
+      );
 
-    const mainContent = await resolveModulesMetadata(userLocalModules);
-    res.json({ script: mainContent });
-  } catch (error) {
-    res
-      .status(404)
-      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
-  }
+      const mainContent = await resolveModulesMetadata(userLocalModules);
+      res.json({ script: mainContent });
+    } catch {
+      res
+        .status(EHttpStatusCode.NOT_FOUND)
+        .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+    }
+  })();
 });
 
-expressApp.post('/sourcePath', async (req, res) => {
-  const { sourcePath } = req.body;
+expressApp.post(
+  '/sourcePath',
+  (req: Request<object, object, { sourcePath: string }>, res): void => {
+    const { sourcePath } = req.body;
 
-  if (!sourcePath) {
-    res
-      .status(404)
-      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
-    return;
+    if (!sourcePath) {
+      res
+        .status(EHttpStatusCode.NOT_FOUND)
+        .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+      return;
+    }
+
+    try {
+      res.sendFile(sourcePath.toString());
+    } catch {
+      res
+        .status(EHttpStatusCode.NOT_FOUND)
+        .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+    }
   }
+);
 
-  try {
-    res.sendFile(sourcePath.toString());
-  } catch (error) {
-    res
-      .status(404)
-      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
-  }
-});
-
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 
 process.env.DIST = path.join(__dirname, '../dist');
+
 process.env.VITE_PUBLIC = app.isPackaged
   ? process.env.DIST
   : path.join(process.env.DIST, '../public');
 
 if (!app.requestSingleInstanceLock()) {
+  const EXIT_SUCCESS = 0;
+
   app.quit();
-  process.exit(0);
+  process.exit(EXIT_SUCCESS);
 }
 
-let win: BrowserWindow | null;
+let win: BrowserWindow | null = null;
 
-function createWindow() {
+async function createWindow(): Promise<void> {
   expressApp.listen(port, () => {
-    // eslint-disable-next-line no-console
     console.log(`internal server running on http://localhost:${port}`);
   });
 
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
-      preload: path.join(__dirname, './preload.js'),
-      nodeIntegration: true,
       contextIsolation: true,
+      nodeIntegration: true,
+      preload: path.join(__dirname, './preload.js'),
     },
   });
 
@@ -80,12 +88,11 @@ function createWindow() {
     win?.webContents.send('main-process-message', new Date().toLocaleString());
   });
 
-  if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL);
-    win.webContents.openDevTools();
+  if (process.env.VITE_DEV_SERVER_URL === undefined) {
+    await win.loadFile(path.join(process.env.DIST, 'index.html'));
   } else {
-    // win.loadFile('dist/index.html')
-    win.loadFile(path.join(process.env.DIST, 'index.html'));
+    await win.loadURL(process.env.VITE_DEV_SERVER_URL);
+    win.webContents.openDevTools();
   }
 }
 
@@ -94,4 +101,4 @@ app.on('window-all-closed', () => {
   win = null;
 });
 
-app.whenReady().then(createWindow);
+void app.whenReady().then(createWindow);

@@ -1,6 +1,6 @@
-﻿import { useState } from 'react';
+﻿import { ReactNode, useState } from 'react';
 
-import { IPostMode } from 'modules/types';
+import { PostMode } from '@octopost/module-manager';
 
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
@@ -12,7 +12,7 @@ import Tabs from './Tabs/Tabs';
 
 import { ITab, TPostModeId } from './Tabber.types';
 
-function Tabber() {
+function Tabber(): ReactNode {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
 
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
@@ -20,45 +20,46 @@ function Tabber() {
     buildPostModeId(currentTab)
   );
 
-  const changeCurrentTab = (socialNetwork: ITab) => {
-    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
-      ? socialNetwork.currentPostModeId
-      : buildPostModeId(socialNetwork);
+  const changeCurrentTab = (socialNetwork: ITab): void => {
+    const tabsCurrentPostModeId =
+      socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
 
     setCurrentTab(socialNetwork);
     setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
   const changeCurrentPostMode = (
-    postMode: IPostMode,
+    postMode: PostMode,
     postModeId: TPostModeId
-  ) => {
+  ): void => {
     setCurrentPostModeId(postModeId);
     currentTab.currentPostMode = postMode;
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode
-    ? currentTab.currentPostMode
-    : currentTab.postModes[0];
+  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
 
   return (
     <div>
       <Tabs
+        currentTab={currentTab}
         onChangeTab={changeCurrentTab}
         socialNetworks={socialNetworks}
-        currentTab={currentTab}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            onChangePostMode={changeCurrentPostMode}
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
+            onChangePostMode={changeCurrentPostMode}
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent text={`${preview.name} Placeholder`} />
+          <preview.previewComponent
+            customData={{}}
+            medias={[]}
+            text={`${preview.name} Placeholder`}
+          />
         </div>
       </div>
     </div>

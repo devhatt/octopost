@@ -1,9 +1,9 @@
 ﻿import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
-import { TSocialNetworksState } from './useSocialNetworkStore.types';
+import { ISocialNetworksState } from './useSocialNetworkStore.types';
 
-export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
+export const useSocialNetworkStore = create<ISocialNetworksState>(() => ({
   socialNetworks: [
     {
       icon: (

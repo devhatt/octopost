@@ -2,12 +2,16 @@
   "extends": ["../../tsconfig.json"],
   "compilerOptions": {
     "rootDir": "src",
+    "composite": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
     "types": ["./src/global.d.ts"],
     "baseUrl": "src",
+    "outDir": "dist",
     "paths": {
-      "~/utils/*": ["utils/*"]
-    }
+      "~/utils/*": ["utils/*"],
+    },
   },
   "include": ["./src/**/*"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
 }
