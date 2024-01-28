@@ -59,12 +59,4 @@ jobs:
         if: steps.changed-files.outputs.code_any_changed == 'true'
         env:
           files: ${{ steps.changed-files.outputs.code_all_changed_files }}
-        run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0 --output-file eslint_report.json --format json
-        continue-on-error: true
-
-      - name: Annotate Code Linting Results
-        uses: reviewdog/action-eslint@v1
-        if: steps.changed-files.outputs.code_any_changed == 'true'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-check
+        run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0
