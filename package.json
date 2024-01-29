@@ -58,13 +58,14 @@
     "react-i18next": "^13.5.0",
     "react-router-dom": "^6.21.3",
     "vite": "^5.0.12",
-    "vite-tsconfig-paths": "^4.3.1"
+    "vite-tsconfig-paths": "4.2.3"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
     "@commitlint/cz-commitlint": "^18.4.4",
+    "@eslint-community/eslint-plugin-eslint-comments": "4.1.0",
     "@ladle/react": "^4.0.1",
     "@playwright/experimental-ct-react": "^1.41.1",
     "@playwright/test": "^1.41.1",
@@ -80,8 +81,8 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "6.19.0",
-    "@vitest/coverage-istanbul": "^0.34.6",
-    "@vitest/ui": "^0.34.6",
+    "@vitest/coverage-istanbul": "1.2.2",
+    "@vitest/ui": "1.2.2",
     "axios": "1.6.5",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
@@ -125,7 +126,7 @@
     "typescript": "5.3.3",
     "vite-plugin-electron": "^0.15.5",
     "vite-plugin-native": "^0.2.0",
-    "vitest": "^0.34.6",
+    "vitest": "1.2.2",
     "wait-on": "^7.2.0",
     "zustand": "^4.5.0"
   },
