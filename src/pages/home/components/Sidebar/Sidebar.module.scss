@@ -1,5 +1,5 @@
 @use '~styles/global.scss' as *;
-@use '../../../../styles/breakpoints.scss' as breakpoints;
+@use '~styles/breakpoints.scss' as breakpoints;
 
 .mobile {
   overflow: hidden;
