@@ -18,7 +18,10 @@
   "scripts": {
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "ladle": "ladle serve"
+    "ladle": "ladle serve",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui --coverage",
+    "test": "vitest"
   },
   "peerDependencies": {
     "react": "^18.2.0",
