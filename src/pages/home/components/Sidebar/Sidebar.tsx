@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 
+import classNames from 'classnames';
+
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
 import InputSearch from '~components/InputSearch/InputSearch';
@@ -29,65 +31,66 @@ function Sidebar() {
     />
   );
 
+  const mobalIsOpen = mobileIsOpen ? scss.openMobile : scss.closeMobile;
+
   return (
-    <AccordionTab
-      className={
-        scss.mobile + ' ' + (mobileIsOpen ? scss.openMobile : scss.closeMobile)
-      }
-      hideCloseButton
-      title="Select Social Media"
-    >
-      <div className={scss.content}>
-        <InputSearch
-          className={scss.searchBar}
-          error={false}
-          onChange={(value) => setValue(value as string)}
-          placeholder="Search for social media"
-          ref={inputSearchRef}
-        />
-
-        {value ? null : renderSearchClue()}
-
-        <div className={scss.items}>
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-        </div>
-
-        <Button
-          className={scss.newAccountButton}
-          onClick={handleToggleModal}
-          variant="container"
-        >
-          {' '}
-          + &ensp; New Account
-        </Button>
-
-        <div className={scss.newAccountButtonMobileContainer}>
+    <div>
+      <button onClick={() => setMobileIsOpen(!mobileIsOpen)}>Open/Close</button>
+      <AccordionTab
+        className={classNames({
+          // [' ']: true,
+          [mobalIsOpen]: true,
+          [scss.mobile]: true,
+        })}
+        hideCloseButton
+        title="Select Social Media"
+      >
+        <div className={scss.content}>
+          <InputSearch
+            className={scss.searchBar}
+            error={false}
+            onChange={(value) => setValue(value as string)}
+            placeholder="Search for social media"
+            ref={inputSearchRef}
+          />
+          {value ? renderSearchClue() : null}
+          <div className={scss.items}>
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          </div>
           <Button
-            circle
-            className={scss.newAccountButtonMobile}
-            icon={<PlusIcon />}
+            className={scss.newAccountButton}
             onClick={handleToggleModal}
             variant="container"
-          />
+          >
+            + &ensp; New Account
+          </Button>
+          <div className={scss.newAccountButtonMobileContainer}>
+            <Button
+              circle
+              className={scss.newAccountButtonMobile}
+              icon={<PlusIcon />}
+              onClick={handleToggleModal}
+              variant="container"
+            />
+          </div>
+          <Modal
+            footer={<div>footer</div>}
+            isOpen={isOpen}
+            onClickOutside={() => setOpen(false)}
+            title="Adcionar Social"
+          >
+            Octopost
+          </Modal>
         </div>
-
-        <Modal
-          footer={<div>footer</div>}
-          isOpen={isOpen}
-          onClickOutside={() => setOpen(false)}
-          title="Adcionar Social"
-        >
-          Octopost
-        </Modal>
-      </div>
-    </AccordionTab>
+      </AccordionTab>
+    </div>
   );
 }
 
