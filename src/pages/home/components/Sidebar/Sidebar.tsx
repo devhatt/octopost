@@ -1,5 +1,7 @@
 import { ReactNode, useRef, useState } from 'react';
 
+import classNames from 'classnames';
+
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
@@ -112,12 +114,29 @@ function Sidebar(): ReactNode {
 
         <div className={scss.newAccountButtonMobileContainer}>
           <Button
-            circle
-            className={scss.newAccountButtonMobile}
-            icon={<PlusIcon />}
+            className={scss.newAccountButton}
             onClick={handleToggleModal}
             variant="container"
-          />
+          >
+            + &ensp; New Account
+          </Button>
+          <div className={scss.newAccountButtonMobileContainer}>
+            <Button
+              circle
+              className={scss.newAccountButtonMobile}
+              icon={<PlusIcon />}
+              onClick={handleToggleModal}
+              variant="container"
+            />
+          </div>
+          <Modal
+            footer={<div>footer</div>}
+            isOpen={isOpen}
+            onClickOutside={() => setIsOpen(false)}
+            title="Adcionar Social"
+          >
+            Octopost
+          </Modal>
         </div>
 
         <Modal
