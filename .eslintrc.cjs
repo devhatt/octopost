@@ -50,9 +50,9 @@ module.exports = defineConfig({
     },
     {
       files: [
-        './**/vite.config.ts',
-        './**/vitest.config.ts',
-        './**/playwright.config.ts',
+        '**/vite.config.ts',
+        '**/vitest.config.ts',
+        '**/playwright.config.ts',
         '**/playwright-ct.config.ts',
       ],
       parser: '@typescript-eslint/parser',
@@ -81,11 +81,11 @@ module.exports = defineConfig({
     {
       env: { node: true },
       files: [
-        'vitest.config.ts',
-        'vite.config.ts',
-        '.eslintrc.cjs',
-        'playwright-ct.config.ts',
-        'playwright.config.ts',
+        '**/vitest.config.ts',
+        '**/vite.config.ts',
+        '**/.eslintrc.cjs',
+        '**/playwright-ct.config.ts',
+        '**/playwright.config.ts',
       ],
       rules: {
         'no-console': 'off',
