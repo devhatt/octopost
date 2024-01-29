@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Example } from './Example';
 
-import { ExampleProps } from './Example.types';
+import type { ExampleProps } from './Example.types';
 
 const makeSut = ({ ...props }: Partial<ExampleProps>): void => {
   const component = <Example {...props} />;

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ExampleProps } from './Example.types';
+import type { ExampleProps } from './Example.types';
 
 // eslint-disable-next-line react/destructuring-assignment -- apenas teste
 export function Example({

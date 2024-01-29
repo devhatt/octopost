@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc --project tsconfig.build.json",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "ladle": "ladle serve",
     "test:coverage": "vitest --coverage",
@@ -46,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-vitest": "^0.3.20",
+    "glob": "10.3.10",
     "normalize.css": "^8.0.1",
     "sass": "^1.70.0",
     "typescript": "^5.2.2",

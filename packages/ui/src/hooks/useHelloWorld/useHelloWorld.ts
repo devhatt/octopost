@@ -1,3 +1,3 @@
 export function useHelloWorld(): string {
-  return 'oi';
+  return 'Hello World!';
 }

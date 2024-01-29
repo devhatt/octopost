@@ -1,6 +1,10 @@
 {
   "extends": ["../../tsconfig.json"],
   "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+    },
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "target": "ES2020",
     "useDefineForClassFields": true,
