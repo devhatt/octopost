@@ -4,7 +4,7 @@ module.exports = defineConfig({
   extends: ['../../.eslintrc.cjs'],
   overrides: [
     {
-      files: ['./lib/**/*.{ts,tsx}'],
+      files: ['./src/**/*.{ts,tsx}'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.json',

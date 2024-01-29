@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/lib/index.ts'),
+      entry: path.resolve(__dirname, 'src/index.ts'),
       fileName: (format) => `index.${format}.js`,
       formats: ['es', 'umd'],
       name: 'index',
