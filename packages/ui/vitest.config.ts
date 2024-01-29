@@ -9,6 +9,8 @@ export default defineConfig({
   server: { open: false },
   test: {
     coverage: {
+      exclude: ['*.stories.*'],
+      include: ['src'],
       provider: 'istanbul',
       reporter: ['json', 'json-summary', 'html'],
       reportOnFailure: true,
@@ -25,6 +27,6 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
-    setupFiles: ['src/setupTests.ts'],
+    setupFiles: ['setupTests.ts'],
   },
 });

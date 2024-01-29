@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
+    "@octopost/ui": "workspace:*",
     "@octopost/module-manager": "workspace:*",
     "@sentry/react": "^7.94.1",
     "@types/react-helmet": "^6.1.11",
