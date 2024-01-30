@@ -21,7 +21,6 @@
     "ladle": "ladle serve",
     "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preinstall": "pnpm -r build",
     "prepare": "husky install",
     "prettier:fix": "prettier . --write --ignore-unknown",
     "prettier": "prettier . --check --ignore-unknown",

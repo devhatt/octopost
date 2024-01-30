@@ -382,6 +382,9 @@ importers:
       eslint-plugin-vitest:
         specifier: ^0.3.20
         version: 0.3.20(@typescript-eslint/eslint-plugin@6.19.0)(eslint@8.56.0)(typescript@5.3.3)(vitest@1.2.2)
+      glob:
+        specifier: 10.3.10
+        version: 10.3.10
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
