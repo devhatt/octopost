@@ -1,7 +1,7 @@
 import React from 'react';
 
-export interface ISocialMediaList {
-  socialMediaList: ISocialMedia[];
+export interface ISocialMediaListProps {
+  tags: ISocialMedia[];
 }
 
 export interface ISocialMedia {

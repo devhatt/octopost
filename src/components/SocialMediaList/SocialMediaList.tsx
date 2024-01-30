@@ -5,28 +5,17 @@ import scss from './SocialMediaList.module.scss';
 import PlusIcon from './assets/plusIcon.svg';
 import RemoveIcon from './assets/xIcon.svg';
 
-import { ISocialMediaList } from './SocialMediaList.type';
+import { ISocialMedia, ISocialMediaListProps } from './SocialMediaList.type';
 
-function SocialMediaList(props: ISocialMediaList): ReactNode {
-  const zeroTagCount = 0;
-  const [tags, setTags] = useState<string[]>([]);
-  const [selectedOption, setSelectedOption] = useState('');
+function SocialMediaList(props: ISocialMediaListProps): ReactNode {
+  const [tags, setTags] = useState<ISocialMedia[]>(Array.from(props.tags));
 
-  const addTag = (newTag: string): void => {
-    if (!tags.includes(newTag)) {
-      setTags([...tags, newTag]);
-    }
+  const handleAddTag = () => {
+    throw new Error('Not implemented');
   };
 
-  const handleAddTag = (): void => {
-    if (selectedOption.trim() !== '') {
-      addTag(selectedOption);
-      setSelectedOption('');
-    }
-  };
-
-  const handleRemoveTag = (removedTag: string): void => {
-    setTags(tags.filter((tag) => tag !== removedTag));
+  const handleRemoveTag = (removedTag: ISocialMedia): void => {
+    setTags(tags.filter((tag) => tag.id !== removedTag.id));
   };
 
   const renderEmptyTagsPlaceholder = (): ReactNode => (
@@ -35,11 +24,9 @@ function SocialMediaList(props: ISocialMediaList): ReactNode {
 
   const renderTags = (): ReactNode =>
     tags.map((tag) => (
-      <div className={scss.tag} data-testid="tag" key={tag}>
-        <div className={scss.iconContainer}>
-          {props.socialMediaList.find((item) => item.name === tag)?.icon}
-        </div>
-        {tag}
+      <div className={scss.tag} data-testid="tag" key={tag.id}>
+        <div className={scss.iconContainer}>{tag.icon}</div>
+        {tag.name}
         <button onClick={() => handleRemoveTag(tag)} type="button">
           <img alt="Ícone de apagar uma tag" src={RemoveIcon} />
         </button>
@@ -49,9 +36,7 @@ function SocialMediaList(props: ISocialMediaList): ReactNode {
   return (
     <div className={scss.mainContainer}>
       <div className={scss.tagContainer}>
-        {tags.length === zeroTagCount
-          ? renderEmptyTagsPlaceholder()
-          : renderTags()}
+        {tags.length > 0 ? renderTags() : renderEmptyTagsPlaceholder()}
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag} type="button">
