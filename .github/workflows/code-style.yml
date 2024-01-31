@@ -7,11 +7,6 @@ on:
 jobs:
   code-style:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pull-requests: write
-
     name: code-style
     steps:
       - name: Code Checkout
@@ -62,7 +57,7 @@ jobs:
         run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0
 
       - name: Annotate Code Linting Results
-        if: steps.changed-files.outputs.code_any_changed == 'true'
+        if: !github.event.pull_request.head.repo.fork && steps.changed-files.outputs.code_any_changed == 'true'
         uses: ataylorme/eslint-annotate-action@v2
         with:
           report-json: 'eslint_report.json'
