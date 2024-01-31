@@ -3,7 +3,6 @@ const { defineConfig } = require('eslint-define-config');
 module.exports = defineConfig({
   env: { browser: true, es2020: true },
   extends: ['eslint:recommended', 'prettier'],
-  extends: ['plugin:@eslint-community/eslint-comments/recommended'],
   ignorePatterns: [
     'dist',
     'dist-electron',
