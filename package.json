@@ -9,7 +9,7 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "pnpm -r build && pnpm typecheck && vite build",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
@@ -32,8 +32,7 @@
     "test:e2e": "playwright test --pass-with-no-tests",
     "test:ui": "vitest --ui --coverage",
     "test": "vitest",
-    "preinstall": "pnpm -r build",
-    "typecheck": "tsc && pnpm -r typecheck"
+    "typecheck": "pnpm -r build && tsc && pnpm -r typecheck"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1",
