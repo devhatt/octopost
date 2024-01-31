@@ -57,7 +57,9 @@ jobs:
         run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0
 
       - name: Annotate Code Linting Results
-        if: !github.event.pull_request.head.repo.fork && steps.changed-files.outputs.code_any_changed == 'true'
+        if: |
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          steps.changed-files.outputs.code_any_changed == 'true'
         uses: ataylorme/eslint-annotate-action@v2
         with:
           report-json: 'eslint_report.json'
