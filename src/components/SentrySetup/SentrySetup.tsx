@@ -32,3 +32,5 @@ const SentrySetup = Sentry.withSentryReactRouterV6Routing(Routes);
 function SentryRoutes({ children }: any) {
   return <SentrySetup>{children}</SentrySetup>;
 }
+
+export default SentryRoutes;
