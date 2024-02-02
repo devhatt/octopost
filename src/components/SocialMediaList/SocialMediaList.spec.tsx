@@ -25,11 +25,12 @@ describe('SocialMediaList', () => {
 
   it('should remove a tag when the remove button is clicked', async () => {
     render(<SocialMediaList tags={mock} />);
+    const zero = 0;
 
     const tags = screen.getAllByTestId('tag');
-    const removeButton = within(tags[0]).getByRole('button');
+    const removeButton = within(tags[zero]).getByRole('button');
     await userEvent.click(removeButton);
 
-    expect(tags[0]).not.toBeInTheDocument();
+    expect(tags[zero]).not.toBeInTheDocument();
   });
 });

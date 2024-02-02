@@ -7,12 +7,12 @@ import RemoveIcon from './assets/xIcon.svg';
 
 import { ISocialMedia, ISocialMediaListProps } from './SocialMediaList.type';
 
+const handleAddTag = (): void => {
+  throw new Error('Not implemented');
+};
+
 function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   const [tags, setTags] = useState<ISocialMedia[]>(Array.from(props.tags));
-
-  const handleAddTag = () => {
-    throw new Error('Not implemented');
-  };
 
   const handleRemoveTag = (removedTag: ISocialMedia): void => {
     setTags(tags.filter((tag) => tag.id !== removedTag.id));
