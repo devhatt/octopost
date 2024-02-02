@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   createRoutesFromChildren,
   matchRoutes,
@@ -8,6 +8,10 @@ import {
 } from 'react-router-dom';
 
 import * as Sentry from '@sentry/react';
+
+interface SentryProps {
+  children: ReactNode;
+}
 
 Sentry.init({
   dsn: import.meta.env.REACT_APP_SENTRY_KEY,
@@ -29,7 +33,7 @@ Sentry.init({
 
 const SentrySetup = Sentry.withSentryReactRouterV6Routing(Routes);
 
-function SentryRoutes({ children }: any) {
+function SentryRoutes({ children }: SentryProps) {
   return <SentrySetup>{children}</SentrySetup>;
 }
 
