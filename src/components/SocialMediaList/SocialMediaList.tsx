@@ -13,6 +13,7 @@ const handleAddTag = (): void => {
 
 function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   const [tags, setTags] = useState<ISocialMedia[]>(Array.from(props.tags));
+  const zero = 0;
 
   const handleRemoveTag = (removedTag: ISocialMedia): void => {
     setTags(tags.filter((tag) => tag.id !== removedTag.id));
@@ -36,7 +37,7 @@ function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   return (
     <div className={scss.mainContainer}>
       <div className={scss.tagContainer}>
-        {tags.length > 0 ? renderTags() : renderEmptyTagsPlaceholder()}
+        {tags.length === zero ? renderEmptyTagsPlaceholder() : renderTags()}
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag} type="button">
