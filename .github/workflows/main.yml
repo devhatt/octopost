@@ -2,18 +2,13 @@ name: Node.js CI
 
 on:
   push:
-    branches: ['master', 'develop']
+    branches: ['master']
   pull_request:
-    branches: ['master', 'develop']
+    branches: ['master']
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pull-requests: write
-
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
@@ -25,7 +20,9 @@ jobs:
         run: pnpm test:coverage --silent
 
       - name: 'Report Coverage'
-        if: always()
+        if: |
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          always()
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: 'Upload Coverage'
