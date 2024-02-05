@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -13,17 +13,17 @@ import { PlusIcon } from './components/PlusIcon';
 
 import scss from './Sidebar.module.scss';
 
-function Sidebar() {
+function Sidebar(): React.ReactNode {
   const [value, setValue] = useState('');
   const [isOpen, setOpen] = useState(false);
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
-  const handleToggleModal = () => {
+  const handleToggleModal = (): void => {
     setOpen((isOpen) => !isOpen);
   };
 
-  const renderSearchClue = () => (
+  const renderSearchClue = (): React.ReactNode => (
     <SearchClue
       clearInput={inputSearchRef.current?.clearInput}
       label="Searching for"
@@ -31,15 +31,20 @@ function Sidebar() {
     />
   );
 
-  const mobalIsOpen = mobileIsOpen ? scss.openMobile : scss.closeMobile;
+  const mobileScssIsOpen = mobileIsOpen ? scss.openMobile : scss.closeMobile;
 
   return (
     <div>
-      <button onClick={() => setMobileIsOpen(!mobileIsOpen)}>Open/Close</button>
+      <button
+        onClick={() =>
+          setMobileIsOpen((currentMobileIsOpen) => !currentMobileIsOpen)
+        }
+      >
+        Open/Close
+      </button>
       <AccordionTab
         className={classNames({
-          // [' ']: true,
-          [mobalIsOpen]: true,
+          [mobileScssIsOpen]: true,
           [scss.mobile]: true,
         })}
         hideCloseButton
