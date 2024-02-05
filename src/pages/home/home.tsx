@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useModule } from '~contexts/ModuleContext';
+
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
@@ -14,6 +16,7 @@ import scss from './home.module.scss';
 function Home() {
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
+  const { modules } = useModule();
 
   const editor = (
     <ComposerEditor inputText={inputText} onTextChange={setInputText} />
