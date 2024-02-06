@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import electron from 'vite-plugin-electron/simple';
+import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -10,6 +11,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    svgr(),
     tsconfigPaths(),
     electron({
       main: { entry: 'electron/main.ts' },
