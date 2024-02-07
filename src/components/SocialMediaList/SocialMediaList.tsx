@@ -16,7 +16,9 @@ function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   const zero = 0;
 
   const handleRemoveTag = (removedTag: ISocialMedia): void => {
-    setTags(tags.filter((tag) => tag.id !== removedTag.id));
+    setTags((tags: ISocialMedia[]) =>
+      tags.filter((tag: ISocialMedia) => tag.id !== removedTag.id)
+    );
   };
 
   const renderEmptyTagsPlaceholder = (): ReactNode => (
@@ -24,7 +26,7 @@ function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   );
 
   const renderTags = (): ReactNode =>
-    tags.map((tag) => (
+    (tags as ISocialMedia[]).map((tag: ISocialMedia) => (
       <div className={scss.tag} data-testid="tag" key={tag.id}>
         <div className={scss.iconContainer}>{tag.icon}</div>
         {tag.name}
@@ -37,7 +39,9 @@ function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   return (
     <div className={scss.mainContainer}>
       <div className={scss.tagContainer}>
-        {tags.length === zero ? renderEmptyTagsPlaceholder() : renderTags()}
+        {(tags as ISocialMedia[]).length === zero
+          ? renderEmptyTagsPlaceholder()
+          : renderTags()}
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag} type="button">
