@@ -124,8 +124,16 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       '@types/node':
+<<<<<<< HEAD
         specifier: 20.11.19
         version: 20.11.19
+=======
+        specifier: 20.11.16
+        version: 20.11.16
+      '@types/react':
+        specifier: 18.2.55
+        version: 18.2.55
+>>>>>>> 66ba065 (chore: adjust eslint rules yettt)
       '@types/react-dom':
         specifier: 18.2.19
         version: 18.2.19
