@@ -17,7 +17,7 @@
     "code-style": "concurrently \"pnpm lint\" \"pnpm stylelint\" \"pnpm prettier\"",
     "commit": "git-cz",
     "eject": "vite eject",
-    "electron:dev": "concurrently \"cross-env BROWSER=none pnpm start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:dev": "concurrently \"cross-env BROWSER=none pnpm start -c vite.electron.config.ts\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
     "electron:build": "pnpm build && electron-builder --windows --config electron-builder.json",
     "electron:dist": "pnpm build && tsc -p electron && electron-builder --mac --dir",
     "ladle": "ladle serve",

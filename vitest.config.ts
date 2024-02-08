@@ -24,9 +24,9 @@ export default defineConfig({
       modules: { classNameStrategy: 'non-scoped' },
     },
     environment: 'jsdom',
+    exclude: ['src/**/*.ct.spec.ts', 'src/**/*.ct.spec.tsx'],
     globals: true,
     include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
-    exclude: ['src/**/*.ct.spec.ts', 'src/**/*.ct.spec.tsx'],
     setupFiles: ['src/setupTests.ts'],
   },
 });
