@@ -1,5 +1,7 @@
 import { ReactNode, useState } from 'react';
 
+import { isEmpty } from 'lodash';
+
 import scss from './SocialMediaList.module.scss';
 
 import PlusIcon from './assets/plusIcon.svg';
@@ -13,7 +15,6 @@ const handleAddTag = (): void => {
 
 function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   const [tags, setTags] = useState(Array.from(props.tags));
-  const zero = 0;
 
   const handleRemoveTag = (removedTag: ISocialMedia): void => {
     setTags((currentTags: ISocialMedia[]) =>
@@ -39,7 +40,7 @@ function SocialMediaList(props: ISocialMediaListProps): ReactNode {
   return (
     <div className={scss.mainContainer}>
       <div className={scss.tagContainer}>
-        {tags.length === zero ? renderEmptyTagsPlaceholder() : renderTags()}
+        {isEmpty(tags) ? renderEmptyTagsPlaceholder() : renderTags()}
       </div>
       <div>
         <button className={scss.addButton} onClick={handleAddTag} type="button">
