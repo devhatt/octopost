@@ -24,7 +24,7 @@
     border-radius: 0.5rem;
 
     .placeholderText {
-      color: global.$secondaryGray;
+      color: $secondaryGray;
       text-align: left;
       font-size: 1.6rem;
       font-weight: 400;
@@ -39,7 +39,7 @@
       align-items: center;
 
       font-family: $mainFont;
-      color: global.$darkPurple;
+      color: $darkPurple;
       font-size: 1.4rem;
       font-weight: 500;
       line-height: 2rem;
