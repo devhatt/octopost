@@ -11,7 +11,7 @@ describe('useKeyPress', () => {
     targetKey = 'Enter';
   });
 
-  test('should call action function when target key is pressed', () => {
+  it('calls action function when target key is pressed', () => {
     renderHook(() => useKeyPress(targetKey, action));
 
     act(() => {
@@ -22,7 +22,7 @@ describe('useKeyPress', () => {
     expect(action).toHaveBeenCalled();
   });
 
-  test('should not call action function when a different key is pressed', () => {
+  it('does not call action function when a different key is pressed', () => {
     renderHook(() => useKeyPress(targetKey, action));
 
     act(() => {
