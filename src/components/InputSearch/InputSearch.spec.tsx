@@ -1,4 +1,5 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import InputSearch from './InputSearch';
 
@@ -19,31 +20,27 @@ const mockProps = {
 
 describe('InputSearch component', () => {
   it('renders the component', () => {
-    const { getByLabelText, getByPlaceholderText } = render(
-      <InputSearch {...mockProps} />
-    );
+    render(<InputSearch {...mockProps} />);
 
-    const inputElement = getByPlaceholderText('Test Placeholder');
-    const labelElement = getByLabelText('Test Placeholder');
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
+    const labelElement = screen.getByLabelText('Test Placeholder');
 
     expect(inputElement).toBeInTheDocument();
     expect(labelElement).toBeInTheDocument();
   });
 
-  it('handles input value correctly', () => {
-    const { getByPlaceholderText } = render(<InputSearch {...mockProps} />);
-    const inputElement = getByPlaceholderText(
-      'Test Placeholder'
-    ) as HTMLInputElement;
+  it('handles input value correctly', async () => {
+    render(<InputSearch {...mockProps} />);
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    fireEvent.change(inputElement, { target: { value: 'Value' } });
+    await userEvent.type(inputElement, 'Value');
 
-    expect(inputElement.value).toBe('Value');
+    expect(inputElement).toHaveValue('Value');
   });
 
   it('handles onFocus callback', () => {
-    const { getByPlaceholderText } = render(<InputSearch {...mockProps} />);
-    const inputElement = getByPlaceholderText('Test Placeholder');
+    render(<InputSearch {...mockProps} />);
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
     fireEvent.focus(inputElement);
 
@@ -51,27 +48,23 @@ describe('InputSearch component', () => {
   });
 
   it('displays error message when errors prop is true', () => {
-    const { getByText } = render(<InputSearch {...mockProps} error />);
+    render(<InputSearch {...mockProps} error />);
 
-    const errorMessage = getByText('Test Error Message');
+    const errorMessage = screen.getByText('Test Error Message');
     expect(errorMessage).toBeInTheDocument();
   });
 
   it('clears input value on clear button click', async () => {
-    const { getByPlaceholderText, queryByTestId } = render(
-      <InputSearch {...mockProps} />
-    );
-    const inputElement = getByPlaceholderText(
-      'Test Placeholder'
-    ) as HTMLInputElement;
+    render(<InputSearch {...mockProps} />);
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    fireEvent.change(inputElement, { target: { value: 'Value' } });
+    await userEvent.type(inputElement, 'value');
 
-    const clearButton = queryByTestId('clear-button') as HTMLButtonElement;
+    const clearButton = screen.getByTestId('clear-button');
 
-    expect(inputElement.value).toBe('Value');
-    fireEvent.click(clearButton);
+    expect(inputElement).toHaveValue('value');
+    await userEvent.click(clearButton);
 
-    expect(inputElement.value).toBe('');
+    expect(inputElement).toHaveValue('');
   });
 });

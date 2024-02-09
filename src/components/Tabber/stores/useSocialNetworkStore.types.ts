@@ -2,6 +2,6 @@
 
 export type TSocialNetworks = Omit<OctoModule, 'services'> & { id: string };
 
-export interface TSocialNetworksState {
+export interface ISocialNetworksState {
   socialNetworks: TSocialNetworks[];
 }

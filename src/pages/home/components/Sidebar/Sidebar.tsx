@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -9,16 +9,16 @@ import SearchClue from '~components/SearchClue/SearchClue';
 
 import scss from './Sidebar.module.scss';
 
-function Sidebar(): ReactElement {
+function Sidebar(): ReactNode {
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const inputSearchRef = useRef<null | TInputComponent>(null);
+  const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
-    setIsOpen((isOpen) => !isOpen);
+    setIsOpen((currentIsOpen) => !currentIsOpen);
   };
 
-  const renderSearchClue = (): ReactElement => ( // Tipo de retorno ReactElement adicionado
+  const renderSearchClue = (): ReactNode => (
     <SearchClue
       clearInput={inputSearchRef.current?.clearInput}
       label="Searching for"
@@ -32,12 +32,12 @@ function Sidebar(): ReactElement {
         <InputSearch
           className={scss.searchBar}
           error={false}
-          onChange={() => setValue(value)}
+          onChange={(newValue) => setValue(newValue as string)}
           placeholder="Search for social media"
           ref={inputSearchRef}
         />
 
-        {value ? null : renderSearchClue()}
+        {!!value && renderSearchClue()}
 
         <div className={scss.items}>{/* Itens listados aqui */}</div>
 

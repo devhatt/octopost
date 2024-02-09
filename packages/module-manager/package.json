@@ -7,13 +7,21 @@
     "dist",
     "index.d.ts"
   ],
-  "main": "./src/index.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "build": "tsc && vite build",
+    "dev": "tsup --watch",
+    "build": "tsup",
     "lint": "eslint src --ext=ts,tsx",
     "lint:fix": "pnpm lint --fix",
-    "prepublishOnly": "pnpm build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -22,22 +30,16 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "eslint": "^8.55.0",
+    "eslint-define-config": "^2.1.0",
     "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsup": "8.0.1",
     "typescript": "5.3.3",
     "vite": "^5.0.12",
     "vite-plugin-dts": "3.7.1"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "./dist/index.umd.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    }
+    "access": "public"
   }
 }

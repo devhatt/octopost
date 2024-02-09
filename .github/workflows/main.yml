@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: ['master', 'develop']
+    branches: ['master']
   pull_request:
-    branches: ['master', 'develop']
+    branches: ['master']
 
 jobs:
   build:
@@ -12,8 +12,6 @@ jobs:
 
     permissions:
       contents: read
-      pull-requests: write
-
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
@@ -25,10 +23,13 @@ jobs:
         run: pnpm test:coverage --silent
 
       - name: 'Report Coverage'
-        if: always()
+        if: |
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          steps.changed-files.outputs.code_any_changed == 'true'
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: 'Upload Coverage'
+        if: !github.event.pull_request.head.repo.fork
         uses: actions/upload-artifact@v4
         with:
           name: coverage

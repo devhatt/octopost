@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { ReactNode, useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
@@ -12,14 +12,14 @@ import Tabs from './Tabs/Tabs';
 
 import { ITab, TPostModeId } from './Tabber.types';
 
-function Tabber() {
+function Tabber(): ReactNode {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
 
-  const changeCurrentTab = (socialNetwork: ITab) => {
+  const changeCurrentTab = (socialNetwork: ITab): void => {
     const tabsCurrentPostModeId =
       socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
 
@@ -30,13 +30,13 @@ function Tabber() {
   const changeCurrentPostMode = (
     postMode: PostMode,
     postModeId: TPostModeId
-  ) => {
+  ): void => {
     setCurrentPostModeId(postModeId);
     currentTab.currentPostMode = postMode;
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode || currentTab.postModes[0];
+  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
 
   return (
     <div>

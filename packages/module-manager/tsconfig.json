@@ -1,14 +1,11 @@
 {
-  "extends": ["../../tsconfig.json"],
   "compilerOptions": {
     "rootDir": "src",
     "baseUrl": "src",
-    "typeRoots": ["src/global.d.ts"],
-    "types": [],
     "paths": {
-      "~/utils/*": ["utils/*"]
-    }
+      "~/utils/*": ["utils/*"],
+    },
   },
   "include": ["./src/**/*"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
 }

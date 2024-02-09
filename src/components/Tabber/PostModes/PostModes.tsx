@@ -1,6 +1,6 @@
-﻿import React from 'react';
+﻿import { KeyboardEvent, ReactNode } from 'react';
 
-import { PostMode as IPostMode } from '@octopost/module-manager';
+import { PostMode } from '@octopost/module-manager';
 import classNames from 'classnames';
 
 import { buildPostModeId } from '../utils';
@@ -9,7 +9,7 @@ import scss from '~components/Tabber/PostModes/PostModes.module.scss';
 
 import { IPostModesProps } from './PostModes.types';
 
-function PostModes(props: IPostModesProps): React.JSX.Element {
+function PostModes(props: IPostModesProps): ReactNode {
   const postModeClasses = (index: number): string =>
     classNames({
       [scss.active]:
@@ -17,15 +17,10 @@ function PostModes(props: IPostModesProps): React.JSX.Element {
       [scss.postModeTitle]: true,
     });
 
-  const renderPostMode = (
-    postMode: IPostMode,
-    index: number
-  ): React.JSX.Element => {
+  const renderPostMode = (postMode: PostMode, index: number): ReactNode => {
     const postModeId = buildPostModeId(props.currentTab, index);
 
-    const handleKeyDown = (
-      event: React.KeyboardEvent<HTMLButtonElement>
-    ): void => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
       if (event.key === 'Enter' || event.key === ' ') {
         props.onChangePostMode(postMode, postModeId);
       }

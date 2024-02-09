@@ -3,9 +3,10 @@
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
       "~*": ["src/*"],
-      "~electron/*": ["electron/*"]
+      "~electron/*": ["electron/*"],
     },
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -25,13 +26,9 @@
     /* Linting */
     "strict": true,
     "target": "ES2020",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*", "electron/**/*"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "include": ["src/", "electron/"],
+  "exclude": ["node_modules/", "dist/"],
+  "references": [{ "path": "./tsconfig.node.json" }],
 }
