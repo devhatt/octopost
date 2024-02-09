@@ -1,12 +1,13 @@
 import { ReactNode, useState } from 'react';
 
+import isEmpty from '~utils/isEmpty/isEmpty';
+
 import scss from './SocialMediaList.module.scss';
 
 import PlusIcon from './assets/plusIcon.svg';
 import RemoveIcon from './assets/xIcon.svg';
 
 import { ISocialMedia, ISocialMediaListProps } from './SocialMediaList.type';
-import isEmpty from './utils/isEmpty.tsx';
 
 const handleAddTag = (): void => {
   throw new Error('Not implemented');
