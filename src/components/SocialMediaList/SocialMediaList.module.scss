@@ -1,5 +1,5 @@
-@use '../../styles/global';
-@use '../../styles/breakpoints.scss';
+@use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as *;
 
 .mainContainer {
   width: 100%;
@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   padding: 1.6rem;
-  border-top: 1px solid global.$primaryGray;
+  border-top: 1px solid $primaryGray;
 
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
 
@@ -38,7 +38,7 @@
 
       align-items: center;
 
-      font-family: global.$mainFont;
+      font-family: $mainFont;
       color: global.$darkPurple;
       font-size: 1.4rem;
       font-weight: 500;
@@ -46,7 +46,7 @@
 
       padding: 0.6rem 1rem;
 
-      background-color: global.$primaryPurple;
+      background-color: $primaryPurple;
       border-radius: 0.8rem;
 
       .iconContainer {
@@ -62,13 +62,13 @@
     width: 3.2rem;
     height: 3.2rem;
 
-    color: global.$primaryWhite;
+    color: $primaryWhite;
 
     margin-left: 0.5rem;
     padding: 1.5rem;
     border: 0;
 
-    background-color: global.$secondaryPurple;
+    background-color: $secondaryPurple;
     border-radius: 50%;
 
     cursor: pointer;

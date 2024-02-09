@@ -144,9 +144,6 @@
     "*.scss": [
       "stylelint --fix",
       "prettier --write --ignore-unknown"
-    ],
-    "*,!*.svg": [
-      "prettier --write"
     ]
   }
 }
