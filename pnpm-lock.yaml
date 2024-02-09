@@ -136,10 +136,13 @@ importers:
 =======
         specifier: 20.11.16
         version: 20.11.16
+<<<<<<< HEAD
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
 >>>>>>> 66ba065 (chore: adjust eslint rules yettt)
+=======
+>>>>>>> 4b81144 (chore: update pnpm)
       '@types/react-dom':
         specifier: 18.2.19
         version: 18.2.19
