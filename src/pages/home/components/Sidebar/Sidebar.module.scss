@@ -2,11 +2,16 @@
 @use '~styles/breakpoints.scss' as breakpoints;
 
 .mobile {
+  width: 100%;
   overflow: hidden;
 
   position: fixed;
 
   z-index: 1;
+
+  transform: translateX(100%);
+
+  transition: transform 0.5s;
 }
 
 .openMobile {
@@ -15,14 +20,6 @@
   transform: translateX(0);
 
   transition: transform 1s;
-}
-
-.closeMobile {
-  width: 100%;
-
-  transform: translateX(100%);
-
-  transition: transform 0.5s;
 }
 
 .newAccountButtonMobile {
@@ -125,14 +122,11 @@
   .mobile {
     width: 100%;
 
+    overflow-x: auto;
+
     position: relative;
 
     z-index: 0;
-  }
-
-  .closeMobile {
-    width: 100%;
-    overflow-x: auto;
 
     transform: none;
   }
