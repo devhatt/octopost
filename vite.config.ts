@@ -8,14 +8,7 @@ export default defineConfig({
   build: {
     target: ['edge88', 'firefox85', 'chrome88', 'safari14', 'ios14'],
   },
-  plugins: [
-    react(),
-    tsconfigPaths(),
-    electron({
-      main: { entry: 'electron/main.ts' },
-      preload: { input: 'electron/preload.ts' },
-    }),
-  ],
+  plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: {
       '~styles': path.join(__dirname, 'src/styles'),
