@@ -7,36 +7,44 @@
     "dist",
     "index.d.ts"
   ],
-  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint src --ext=ts,tsx",
     "lint:fix": "pnpm lint --fix",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.19.1",
-    "eslint": "^8.55.0",
-    "prettier": "^3.2.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "5.3.3",
-    "vite": "^5.0.12",
-    "vite-plugin-dts": "3.7.2"
+    "@types/react": "18.2.52",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "eslint": "8.55.0",
+    "prettier": "3.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tsup": "8.0.1",
+    "typescript": "5.3.3"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "./dist/index.umd.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    }
+    "access": "public"
+  },
+  "dependencies": {
+    "@devhatt/global": "5.0.0",
+    "eventemitter3": "5.0.1",
+    "h3": "1.10.1"
   }
 }

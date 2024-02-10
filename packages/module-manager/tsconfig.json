@@ -1,13 +1,12 @@
 {
-  "extends": ["../../tsconfig.json"],
   "compilerOptions": {
     "rootDir": "src",
-    "types": ["./src/global.d.ts"],
-    "baseUrl": "src",
-    "paths": {
-      "~/utils/*": ["utils/*"]
-    }
+    "outDir": "dist",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "strict": true,
+    "jsx": "react-jsx",
   },
   "include": ["./src/**/*"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
 }

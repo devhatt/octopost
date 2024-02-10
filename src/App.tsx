@@ -9,14 +9,13 @@ import {
   useNavigationType,
 } from 'react-router-dom';
 
+import { AddonProvider } from '@octopost/module-manager';
 import * as Sentry from '@sentry/react';
-import ModuleProvider from '~contexts/ModuleContext';
 
 import Home from './pages/home/home';
 
-import { Head } from '~components/Head/Head';
-
 import scss from './App.module.scss';
+
 import './styles/base.scss';
 
 Sentry.init({
@@ -41,16 +40,15 @@ const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function App(): ReactNode {
   return (
-    <ModuleProvider>
+    <AddonProvider httpServer="http://localhost:3000">
       <div className={scss.app}>
-        <Head />
         <Router>
           <SentryRoutes>
             <Route element={<Home />} path="/" />
           </SentryRoutes>
         </Router>
       </div>
-    </ModuleProvider>
+    </AddonProvider>
   );
 }
 
