@@ -7,7 +7,7 @@ module.exports = defineConfig({
       files: ['src/**/*.{ts,tsx}', 'setupTests.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: './tsconfig.json',
+        project: ['./tsconfig.json'],
         tsconfigRootDir: __dirname,
       },
     },
@@ -15,7 +15,7 @@ module.exports = defineConfig({
     {
       env: { jest: true },
       extends: ['plugin:vitest/recommended'],
-      files: ['**/*.spec.*', './setupTests.ts'],
+      files: ['**/*.spec.*', './src/setupTests.ts'],
       globals: { vi: true },
       plugins: ['vitest', 'testing-library'],
       rules: {

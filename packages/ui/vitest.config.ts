@@ -1,11 +1,8 @@
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
-import viteConfig from './vite.config';
-
 export default defineConfig({
   plugins: [tsconfigPaths()],
-  resolve: viteConfig.resolve,
   server: { open: false },
   test: {
     coverage: {
@@ -21,12 +18,10 @@ export default defineConfig({
         statements: 60,
       },
     },
-    css: {
-      modules: { classNameStrategy: 'non-scoped' },
-    },
+    css: { modules: { classNameStrategy: 'non-scoped' } },
     environment: 'jsdom',
     globals: true,
     include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
-    setupFiles: ['setupTests.ts'],
+    setupFiles: ['./src/setupTests.ts'],
   },
 });
