@@ -52,6 +52,7 @@ module.exports = defineConfig({
     {
       files: ['**/*.stories.*'],
       rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
         'no-console': 'off',
         'no-secrets/no-secrets': 'off',
         'react/forbid-dom-props': 'off',
@@ -64,6 +65,7 @@ module.exports = defineConfig({
         ],
         'react/no-children-prop': 'off',
         'react/prop-types': 'off',
+        'write-good-comments/write-good-comments': 'off',
       },
     },
     {
