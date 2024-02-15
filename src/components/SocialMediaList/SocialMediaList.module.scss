@@ -1,5 +1,5 @@
 @use '~styles/global.scss' as *;
-@use '~styles/breakpoints.scss' as *;
+@use '~styles/breakpoints.scss' as breakpoints;
 
 .mainContainer {
   width: 100%;
