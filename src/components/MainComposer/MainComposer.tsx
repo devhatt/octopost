@@ -1,17 +1,13 @@
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import MediaInputs from '~components/MediaInputs/MediaInput';
-import '~i18n';
 
 import scss from './MainComposer.module.scss';
 
 import { TMainComposerProps } from './MainComposer.types';
 
 function MainComposer(props: TMainComposerProps): ReactNode {
-  const { t } = useTranslation();
-
   return (
     <AccordionTab
       isOpen={props.isOpen}

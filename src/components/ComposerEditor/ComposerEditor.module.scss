@@ -17,3 +17,19 @@
 
   justify-content: center;
 }
+
+//Migração
+
+.textArea {
+  width: 100%;
+  min-height: 20rem;
+
+  color: global.$tertiaryGray;
+
+  font-size: 1.6rem;
+
+  padding: 2.6rem 1.6rem;
+  border: 1px solid global.$primaryGray;
+
+  background-color: global.$primaryWhite;
+}

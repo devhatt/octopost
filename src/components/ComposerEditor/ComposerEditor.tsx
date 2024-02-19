@@ -1,15 +1,24 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import CharacterLimitMainText from '../CharacterLimitMainText/CharacterLimitMainText'; // Importe o componente CharacterLimitMainText aqui
-import CustomTextArea from '../TextArea/TextArea'; // Importe o componente CustomTextArea aqui
 
 import scss from './ComposerEditor.module.scss';
 
 import { TComposerEditorProps } from './ComposerEditor.types';
 
 function ComposerEditor(props: TComposerEditorProps): ReactNode {
-  const handleInputChange = (newText: string): void => {
-    props.onTextChange && props.onTextChange(newText);
+  const [inputValue, setInputValue] = useState('');
+
+  // TODO: Mover a lógica para um customHook
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+    if (props.onTextChange) {
+      props.onTextChange(newValue);
+    }
   };
 
   const module = [
@@ -52,7 +61,12 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
   return (
     <div className={scss.inputContainer}>
       <div className={scss.wrapper}>
-        <CustomTextArea onTextChange={handleInputChange} />
+        <textarea
+          className={scss.textArea}
+          onChange={handleInputChange}
+          placeholder="Digite algo aqui..."
+          value={inputValue}
+        />
         <div>
           <CharacterLimitMainText module={module} />
         </div>
