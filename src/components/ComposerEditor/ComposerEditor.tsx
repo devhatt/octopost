@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import CharacterLimitMainText from '../CharacterLimitMainText/CharacterLimitMainText'; // Importe o componente CharacterLimitMainText aqui
 import CustomTextArea from '../TextArea/TextArea'; // Importe o componente CustomTextArea aqui
 
@@ -5,8 +7,8 @@ import scss from './ComposerEditor.module.scss';
 
 import { TComposerEditorProps } from './ComposerEditor.types';
 
-function ComposerEditor(props: TComposerEditorProps) {
-  const handleInputChange = (newText: string) => {
+function ComposerEditor(props: TComposerEditorProps): ReactNode {
+  const handleInputChange = (newText: string): void => {
     props.onTextChange && props.onTextChange(newText);
   };
 

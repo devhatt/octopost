@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
@@ -8,7 +9,7 @@ import scss from './MainComposer.module.scss';
 
 import { TMainComposerProps } from './MainComposer.types';
 
-function MainComposer(props: TMainComposerProps) {
+function MainComposer(props: TMainComposerProps): ReactNode {
   const { t } = useTranslation();
 
   return (
@@ -22,12 +23,13 @@ function MainComposer(props: TMainComposerProps) {
         <div className={scss.contentBot}>
           <div className={scss.contentBotTop} />
           <div className={scss.contentBotBot}>
-            <div className={scss.mainComposerInputMedia} data-testid="mediaInputs">
+            <div
+              className={scss.mainComposerInputMedia}
+              data-testid="mediaInputs"
+            >
               <MediaInputs />
             </div>
             <div className={scss.iconPulsSave} />
-
-            <p>{t('We have a lot of work')}</p>
           </div>
         </div>
       </div>

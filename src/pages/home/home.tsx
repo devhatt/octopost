@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { useModule } from '~contexts/ModuleContext';
 
@@ -13,7 +13,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 import scss from './home.module.scss';
 
-function Home() {
+function Home(): ReactNode {
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
   const { modules } = useModule();

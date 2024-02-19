@@ -1,14 +1,9 @@
 @use '~styles/global.scss';
 @use '~styles/breakpoints.scss';
 
-.content {
-  padding: 2.4rem 1.6rem;
-}
-
-.textInput {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-}
+// .content {
+//   padding: 2.4rem 1.6rem;
+// }
 
 .textInput textarea {
   width: 100%;
@@ -17,10 +12,17 @@
   font-size: 1.6rem;
 
   margin-bottom: 2.4rem;
+
+  padding-top: 2.4rem;
+  padding-left: 1.6rem;
   border: 0;
   box-sizing: border-box;
 
   resize: none;
+}
+
+.contentBot {
+  padding-left: 1.6rem;
 }
 
 .contentBotTop {
