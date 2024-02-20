@@ -231,6 +231,26 @@ module.exports = defineConfig({
         'no-undef': 'off',
       },
     },
+    {
+      files: [
+        './**/vite.config.ts',
+        './**/vitest.config.ts',
+        './**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-console': 'off',
+        'no-undef': 'off',
+        'write-good-comments/write-good-comments': 'off',
+      },
+    },
   ],
   parserOptions: {
     ecmaFeatures: {
