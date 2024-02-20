@@ -1,10 +1,6 @@
-import React from 'react';
-
 import { Story } from '@ladle/react';
 
-import Icon from './Icon';
-
-import { IIconProps } from './Icon.types';
+import Icon, { IIconProps, TIconsType } from './Icon';
 
 export default {
   argTypes: {
@@ -27,7 +23,7 @@ export default {
         'star',
         'star-filled',
         'minus',
-      ],
+      ] as TIconsType[],
     },
     size: {
       control: {

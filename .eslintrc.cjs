@@ -99,7 +99,6 @@ module.exports = defineConfig({
         project: ['tsconfig.json', 'tsconfig.node.json'],
       },
       rules: {
-        '@typescript-eslint/adjacent-overload-signatures': 'off',
         '@typescript-eslint/array-type': [
           'warn',
           { default: 'array', readonly: 'array' },
@@ -233,7 +232,6 @@ module.exports = defineConfig({
         '@typescript-eslint/sort-type-constituents': 'warn',
         '@typescript-eslint/strict-boolean-expressions': 'warn',
         '@typescript-eslint/switch-exhaustiveness-check': 'warn',
-        '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/triple-slash-reference': 'warn',
         '@typescript-eslint/typedef': 'warn',
         '@typescript-eslint/unbound-method': 'warn',
