@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -8,6 +8,7 @@ import { IModuleProps } from '../CharacterLimitMainText.types';
 
 function CharacterLimit(props: IModuleProps) {
   const [counterZero, setCounterZero] = useState(false);
+  const maxLengthCharacters = props.maxLength;
   const remainingCharacters = props.maxLength - props.value.length;
 
   useEffect(() => {
@@ -26,7 +27,9 @@ function CharacterLimit(props: IModuleProps) {
     <div className={svgColor}>
       {props.svg}
       <div className={characterLimitClass}>
-        <span>{remainingCharacters}</span>
+        <span>
+          {maxLengthCharacters}/{remainingCharacters}
+        </span>
       </div>
     </div>
   );

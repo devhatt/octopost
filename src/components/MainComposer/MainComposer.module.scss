@@ -6,21 +6,20 @@
 }
 
 .textInput {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-}
+  padding: 0.313rem;
 
-.textInput textarea {
-  width: 100%;
-  height: 15rem;
+  textarea {
+    width: 100%;
+    height: 12.5rem;
 
-  font-size: 1.6rem;
+    font-size: 1.5rem;
 
-  margin-bottom: 2.4rem;
-  border: 0;
-  box-sizing: border-box;
+    border: 0;
 
-  resize: none;
+    outline: none;
+
+    resize: none;
+  }
 }
 
 .contentBotTop {
@@ -63,7 +62,8 @@
 
 .mainComposerInputMedia {
   display: flex;
-  gap: 3.2rem;
+
+  justify-content: space-between;
 
   margin-top: 2.4rem;
 }
