@@ -3,10 +3,11 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Home from './pages/home/home';
 
+import SentryRoutes from '~components/SentrySetup/SentrySetup';
+
 import scss from './App.module.scss';
 
 import './styles/base.scss';
-import SentryRoutes from '~components/SentrySetup/SentrySetup';
 
 function App(): ReactNode {
   return (

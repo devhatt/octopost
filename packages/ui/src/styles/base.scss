@@ -1,0 +1,35 @@
+@use './global.scss';
+@use './breakpoints.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: global.$mainFont;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+button {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+  outline-color: global.$secondaryPurple;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}

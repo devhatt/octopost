@@ -38,6 +38,8 @@ module.exports = defineConfig({
             unnamedComponents: 'arrow-function',
           },
         ],
+
+        'react/no-multi-comp': 'off',
         'react/prop-types': 'off',
       },
     },
