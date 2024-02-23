@@ -35,7 +35,7 @@ export const hasScrollbars = async (
   console.log(hasVerticalScrollbar, hasHorizontalScrollbar);
 
   return {
-    vertical: hasVerticalScrollbar,
     horizontal: hasHorizontalScrollbar,
+    vertical: hasVerticalScrollbar,
   };
 };
