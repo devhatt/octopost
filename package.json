@@ -10,7 +10,6 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test-ct": "playwright test -c playwright-ct.config.ts",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
     "ci:version": "changeset version",
