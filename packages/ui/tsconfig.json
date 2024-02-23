@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@styles/*": ["./src/styles/*"]
-    },
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
-    "target": "ES2020",
     "module": "ESNext",
-    "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hooks": ["src/hooks"]
+    },
     "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "strict": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "types": ["vitest/globals"],
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src", ".ladle", "./setupTests.ts", "./typings.d.ts"]
+  "include": ["src", ".ladle", "typings.d.ts"],
+  "exclude": ["node_modules", "dist", "coverage"]
 }

@@ -8,11 +8,15 @@
     "package.json",
     "LICENSE"
   ],
+  "module": "dist/index.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "ladle": "ladle serve",
     "test:coverage": "vitest --coverage",
@@ -33,24 +37,22 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "@typescript-eslint/eslint-plugin": "6.14.0",
     "@typescript-eslint/parser": "6.14.0",
-    "@vitejs/plugin-react": "4.2.1",
+    "@vitejs/plugin-react-swc": "3.6.0",
     "@vitest/coverage-istanbul": "1.2.2",
     "@vitest/ui": "1.2.2",
     "classnames": "2.3.2",
     "eslint": "8.55.0",
     "eslint-define-config": "2.1.0",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-react-refresh": "0.4.5",
-    "eslint-plugin-vitest": "0.3.20",
     "framer-motion": "10.17.9",
     "glob": "10.3.10",
-    "postcss": "8.4.33",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "sass": "1.70.0",
-    "typescript": "5.2.2",
-    "vite-tsconfig-paths": "4.3.1",
+    "typescript": "5.3.3",
+    "vite": "5.1.4",
+    "vite-plugin-dts": "3.7.3",
+    "vite-plugin-lib-inject-css": "2.0.0",
+    "vite-tsconfig-paths": "4.3.0",
     "vitest": "1.2.2"
-  },
-  "dependencies": {
-    "vite": "5.0.12"
   }
 }

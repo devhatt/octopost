@@ -1,12 +1,13 @@
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  plugins: [react(), tsconfigPaths({ root: __dirname })],
   server: { open: false },
   test: {
     coverage: {
-      exclude: ['*.stories.*'],
+      exclude: ['*.stories.*', 'setupTests.ts'],
       include: ['src'],
       provider: 'istanbul',
       reporter: ['json', 'json-summary', 'html'],

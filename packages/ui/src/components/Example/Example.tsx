@@ -2,10 +2,15 @@ import { ReactNode } from 'react';
 
 import type { ExampleProps } from './Example.types';
 
-// eslint-disable-next-line react/destructuring-assignment -- apenas teste
+import scss from './Example.module.scss';
+
 export function Example({
   children = 'Hello World',
   ...props
 }: ExampleProps): ReactNode {
-  return <div {...props}>{children}</div>;
+  return (
+    <div className={scss.container} {...props}>
+      {children}
+    </div>
+  );
 }

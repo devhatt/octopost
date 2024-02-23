@@ -7,7 +7,7 @@ module.exports = defineConfig({
       files: ['src/**/*.{ts,tsx}', 'setupTests.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: './tsconfig.json',
         tsconfigRootDir: __dirname,
       },
     },
