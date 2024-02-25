@@ -1,7 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
-import InputMedia from '~components/InputMedia/InputMedia';
 
 import MediaInputs from './MediaInput';
 

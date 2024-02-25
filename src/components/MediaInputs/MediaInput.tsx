@@ -40,7 +40,6 @@ function MediaInputs() {
     <div className={scss.manyMediaContainer} data-testid="manyMediaInputs">
       {medias.map((media) => (
         <MediaGroup
-          data-testid="removeFile"
           key={media.id}
           media={media}
           onImageChange={updateMedia}
