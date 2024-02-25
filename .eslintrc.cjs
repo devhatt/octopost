@@ -48,19 +48,6 @@ module.exports = defineConfig({
         'unicorn/consistent-function-scoping': 'warn',
       },
     },
-    {
-      files: [
-        './**/vite.config.ts',
-        './**/vitest.config.ts',
-        './**/playwright.config.ts',
-        '**/playwright-ct.config.ts',
-      ],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.node.json',
-        tsconfigRootDir: __dirname,
-      },
-    },
     // stories
     {
       files: ['**/*.stories.*'],
@@ -75,21 +62,8 @@ module.exports = defineConfig({
             unnamedComponents: 'arrow-function',
           },
         ],
+        'react/no-children-prop': 'off',
         'react/prop-types': 'off',
-      },
-    },
-    {
-      env: { node: true },
-      files: [
-        'vitest.config.ts',
-        'vite.config.ts',
-        '.eslintrc.cjs',
-        'playwright-ct.config.ts',
-        'playwright.config.ts',
-      ],
-      rules: {
-        'no-console': 'off',
-        'no-undef': 'off',
       },
     },
     {
@@ -153,7 +127,10 @@ module.exports = defineConfig({
         '@typescript-eslint/no-invalid-void-type': 'warn',
         '@typescript-eslint/no-loop-func': 'warn',
         '@typescript-eslint/no-loss-of-precision': 'warn',
-        '@typescript-eslint/no-magic-numbers': 'warn',
+        '@typescript-eslint/no-magic-numbers': [
+          'warn',
+          { ignoreArrayIndexes: false },
+        ],
         '@typescript-eslint/no-meaningless-void-operator': 'warn',
         '@typescript-eslint/no-misused-new': 'warn',
         '@typescript-eslint/no-misused-promises': 'warn',
@@ -222,6 +199,32 @@ module.exports = defineConfig({
         'max-params': 'off',
         'no-loss-of-precision': 'off',
         'no-magic-numbers': 'off',
+      },
+    },
+    {
+      files: [
+        './**/vite.config.js',
+        './**/vitest.config.js',
+        './**/playwright.config.js',
+        './**/playwright-ct.config.js',
+        './**/vite.electron.config.js',
+      ],
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-undef': 'off',
+      },
+    },
+    {
+      env: { node: true },
+      files: ['.eslintrc.cjs'],
+      rules: {
+        'no-console': 'off',
+        'no-undef': 'off',
       },
     },
   ],

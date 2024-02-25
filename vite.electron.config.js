@@ -1,13 +1,12 @@
 import react from '@vitejs/plugin-react-swc';
-import path from 'node:path';
 import { defineConfig } from 'vite';
 import electron from 'vite-plugin-electron/simple';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+import viteConfig from './vite.config';
+
 export default defineConfig({
-  build: {
-    target: ['edge88', 'firefox85', 'chrome88', 'safari14', 'ios14'],
-  },
+  build: viteConfig.build,
   plugins: [
     react(),
     tsconfigPaths(),
@@ -16,9 +15,5 @@ export default defineConfig({
       preload: { input: 'electron/preload.ts' },
     }),
   ],
-  resolve: {
-    alias: {
-      '~styles': path.join(__dirname, 'src/styles'),
-    },
-  },
+  resolve: viteConfig.resolve,
 });
