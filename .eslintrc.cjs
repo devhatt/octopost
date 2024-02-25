@@ -245,6 +245,8 @@ module.exports = defineConfig({
     'regexp',
     'write-good-comments',
     '@eslint-community/eslint-comments',
+    'react-hooks',
+    'react-refresh',
   ],
   root: true,
   rules: {
@@ -376,6 +378,9 @@ module.exports = defineConfig({
     'promise/no-return-wrap': 'warn',
     'promise/param-names': 'warn',
     'promise/prefer-await-to-then': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-refresh/only-export-components': 'warn',
     'react/boolean-prop-naming': 'warn',
     'react/button-has-type': 'warn',
     'react/destructuring-assignment': ['warn', 'never'],
