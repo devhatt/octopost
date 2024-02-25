@@ -45,7 +45,7 @@ describe('InputMedia', () => {
     expect(mockOnChange).toHaveBeenCalledWith([
       { file, id: 'sua-string-especifica-aqui' },
     ]);
-    
+
     expect(mockOnChange).toHaveBeenCalledWith([
       { file: file2, id: 'sua-string-especifica-aqui' },
     ]);
@@ -59,9 +59,8 @@ describe('InputMedia', () => {
       render(<InputMedia onChange={mockOnChange} />);
       const fileInput = screen.getByTestId('imageInput');
 
-      const file = new File([""], "filename.txt", { type: "text/plain" })
+      const file = new File([''], 'filename.txt', { type: 'text/plain' });
       await userEvent.upload(fileInput, file);
-
 
       expect(mockOnChange).not.toHaveBeenCalled();
     });
