@@ -4,13 +4,7 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  build: {
-    target: ['edge88', 'firefox85', 'chrome88', 'safari14', 'ios14'],
-  },
+  build: { target: ['edge88', 'firefox85', 'chrome88', 'safari14', 'ios14'] },
   plugins: [react(), tsconfigPaths()],
-  resolve: {
-    alias: {
-      '~styles': path.join(__dirname, 'src/styles'),
-    },
-  },
+  resolve: { alias: { '~styles': path.join(__dirname, 'src/styles') } },
 });

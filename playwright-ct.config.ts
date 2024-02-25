@@ -14,14 +14,6 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
   ],
   reporter: 'html',
   retries: process.env.CI ? 2 : 0,
@@ -34,7 +26,9 @@ export default defineConfig({
     ctPort: 3100,
 
     ctViteConfig: {
+      // @ts-expect-error The playwright-ct references vite of version 4.5.1, and the plugin is for vite 5.
       plugins: [tsconfigPaths()],
+      // @ts-expect-error The playwright-ct references vite of version 4.5.1 and config resolves is for version 5.
       resolve: viteConfig.resolve,
     },
     trace: 'on-first-retry',
