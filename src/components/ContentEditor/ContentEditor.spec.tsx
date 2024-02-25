@@ -1,7 +1,6 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 
-import MainComposer from './MainComposer';
+import MainComposer from './ContentEditor';
 
 describe('MainComposer', () => {
   describe('when component loads', () => {

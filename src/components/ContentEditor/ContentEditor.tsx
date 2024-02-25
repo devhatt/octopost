@@ -3,11 +3,11 @@ import { ReactNode } from 'react';
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import MediaInputs from '~components/MediaInputs/MediaInput';
 
-import scss from './MainComposer.module.scss';
+import scss from './ContentEditor.module.scss';
 
-import { TMainComposerProps } from './MainComposer.types';
+import { TContentEditorProps } from './ContentEditor.types';
 
-function MainComposer(props: TMainComposerProps): ReactNode {
+function ContentEditor(props: TContentEditorProps): ReactNode {
   return (
     <AccordionTab
       isOpen={props.isOpen}
@@ -17,7 +17,7 @@ function MainComposer(props: TMainComposerProps): ReactNode {
       <div className={scss.content}>
         <div className={scss.textInput}>{props.editor}</div>
         <div className={scss.contentBot}>
-          <div className={scss.contentBotTop} />
+          <div className={scss.divider} />
           <div className={scss.contentBotBot}>
             <div
               className={scss.mainComposerInputMedia}
@@ -33,4 +33,4 @@ function MainComposer(props: TMainComposerProps): ReactNode {
   );
 }
 
-export default MainComposer;
+export default ContentEditor;

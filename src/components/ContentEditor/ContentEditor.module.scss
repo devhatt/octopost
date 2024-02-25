@@ -21,28 +21,20 @@
   padding-inline: 1.6rem;
 }
 
-.contentBotTop {
+.divider {
+  border-bottom: 0.1rem solid global.$primaryGray;
+}
+
+.contentBotBot {
   display: flex;
 
   justify-content: space-between;
 
   font-size: 1.6rem;
 
-  padding: 1rem 0;
-
-  border-bottom: 0.1rem solid global.$primaryGray;
-
-  .socialMedias {
-    display: flex;
-
-    align-items: center;
-  }
-}
-
-.contentBotBot {
-  font-size: 1.6rem;
-
   margin-bottom: 2.4rem;
+
+  padding: 1rem 0;
 
   .iconPulsSave {
     display: flex;

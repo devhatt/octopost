@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
-export type TMainComposerProps = {
-  isOpen: boolean;
-  title: string;
-  onToggle?: (opened: boolean) => void;
+export interface TContentEditorProps {
   editor?: ReactNode;
-};
+  isOpen: boolean;
+  onToggle?: (opened: boolean) => void;
+  title: string;
+}
