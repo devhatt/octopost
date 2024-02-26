@@ -1,26 +1,22 @@
 {
   "name": "@octopost/module-manager",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "dist",
-    "index.d.ts"
+    "CHANGELOG.md",
+    "package.json",
+    "LICENSE"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
     "lint": "eslint src --ext=ts,tsx",
     "lint:fix": "pnpm lint --fix",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
@@ -34,10 +30,10 @@
     "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "8.0.1",
     "typescript": "5.3.3",
     "vite": "^5.0.12",
-    "vite-plugin-dts": "3.7.1"
+    "vite-plugin-dts": "3.7.1",
+    "vite-tsconfig-paths": "4.2.3"
   },
   "publishConfig": {
     "access": "public"

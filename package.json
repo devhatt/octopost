@@ -8,7 +8,7 @@
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
-    "start": "vite",
+    "start": "pnpm -r build && vite",
     "build": "pnpm -r build && pnpm typecheck && vite build",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "changeset": "changeset",
@@ -17,7 +17,7 @@
     "code-style": "concurrently \"pnpm lint\" \"pnpm stylelint\" \"pnpm prettier\"",
     "commit": "git-cz",
     "eject": "vite eject",
-    "electron:dev": "concurrently \"cross-env BROWSER=none pnpm start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:dev": "pnpm -r build && concurrently \"cross-env BROWSER=none pnpm start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
     "electron:build": "pnpm build && electron-builder --windows --config electron-builder.json",
     "electron:dist": "pnpm build && tsc -p electron && electron-builder --mac --dir",
     "ladle": "ladle serve",
