@@ -17,9 +17,6 @@ importers:
       '@sentry/react':
         specifier: ^7.94.1
         version: 7.99.0(react@18.2.0)
-      '@types/lodash.omit':
-        specifier: 4.5.9
-        version: 4.5.9
       '@types/react-helmet':
         specifier: ^6.1.11
         version: 6.1.11
@@ -129,6 +126,9 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/lodash.omit':
+        specifier: 4.5.9
+        version: 4.5.9
       '@types/node':
         specifier: ^20.11.5
         version: 20.11.16
@@ -2644,11 +2644,11 @@ packages:
     resolution: {integrity: sha512-zuAVFLUPJMOzsw6yawshsYGgq2hWUHtsZgeXHZmSFhaQQFC6EQ021uDKHkSjOpNhSvtNSU9165/o3o/Q51GpTw==}
     dependencies:
       '@types/lodash': 4.14.202
-    dev: false
+    dev: true
 
   /@types/lodash@4.14.202:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
-    dev: false
+    dev: true
 
   /@types/mdast@4.0.3:
     resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==}
