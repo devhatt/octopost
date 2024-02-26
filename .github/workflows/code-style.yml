@@ -63,4 +63,3 @@ jobs:
         uses: ataylorme/eslint-annotate-action@v2
         with:
           report-json: 'eslint_report.json'
-          markdown-report-on-step-summary: true

@@ -1,5 +1,7 @@
 import { ReactNode, useRef, useState } from 'react';
 
+import useKeyPress from '~hooks/useKeyPress/useKeyPress';
+
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
 import InputSearch from '~components/InputSearch/InputSearch';
@@ -10,12 +12,12 @@ import SearchClue from '~components/SearchClue/SearchClue';
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const [value, setValue] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState<string>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
-    setIsOpen((currentIsOpen) => !currentIsOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const renderSearchClue = (): ReactNode => (
@@ -26,18 +28,22 @@ function Sidebar(): ReactNode {
     />
   );
 
+  useKeyPress('Escape', (e: KeyboardEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+  });
+
   return (
     <AccordionTab hideCloseButton title="Select Social Media">
       <div className={scss.content}>
         <InputSearch
-          className={scss.searchBar}
           error={false}
-          onChange={(newValue) => setValue(newValue as string)}
+          onChange={(currentValue) => setValue(currentValue as string)}
           placeholder="Search for social media"
           ref={inputSearchRef}
         />
 
-        {!!value && renderSearchClue()}
+        {value ? null : renderSearchClue()}
 
         <div className={scss.items}>{/* Itens listados aqui */}</div>
 
@@ -49,12 +55,7 @@ function Sidebar(): ReactNode {
           + &ensp; New Account
         </Button>
 
-        <Modal
-          footer={undefined}
-          isOpen={isOpen}
-          onClickOutside={() => setIsOpen(false)}
-          title={''}
-        >
+        <Modal isOpen={isOpen} onClickOutside={() => setIsOpen(false)}>
           Octopost
         </Modal>
       </div>

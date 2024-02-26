@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
@@ -25,7 +22,7 @@ jobs:
       - name: 'Report Coverage'
         if: |
           github.event.pull_request.head.repo.full_name == github.repository &&
-          steps.changed-files.outputs.code_any_changed == 'true'
+          always()
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: 'Upload Coverage'

@@ -6,7 +6,7 @@
     "rootDir": ".",
     "paths": {
       "~*": ["src/*"],
-      "~electron/*": ["electron/*"],
+      "~electron/*": ["electron/*"]
     },
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -26,9 +26,20 @@
     /* Linting */
     "strict": true,
     "target": "ES2020",
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": true
   },
-  "include": ["src/", "electron/"],
-  "exclude": ["node_modules/", "dist/"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", "dist"],
+  "include": [
+    "src/**/*",
+    "electron/**/*",
+    "setupTests.ts",
+    "tests-examples/**/*",
+    "playwright/**/*",
+    "e2e/**/*"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

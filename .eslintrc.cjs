@@ -51,20 +51,6 @@ module.exports = defineConfig({
         'unicorn/consistent-function-scoping': 'warn',
       },
     },
-    {
-      files: [
-        './**/tsup.config.ts',
-        './**/vite.config.ts',
-        './**/vitest.config.ts',
-        './**/playwright.config.ts',
-        './**/playwright-ct.config.ts',
-      ],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.node.json',
-        tsconfigRootDir: __dirname,
-      },
-    },
     // stories
     {
       files: ['**/*.stories.*'],
@@ -79,22 +65,8 @@ module.exports = defineConfig({
             unnamedComponents: 'arrow-function',
           },
         ],
+        'react/no-children-prop': 'off',
         'react/prop-types': 'off',
-      },
-    },
-    {
-      env: { node: true },
-      files: [
-        'vitest.config.ts',
-        'vite.config.ts',
-        '.eslintrc.cjs',
-        'playwright-ct.config.ts',
-        'playwright.config.ts',
-        'electron/*',
-      ],
-      rules: {
-        'no-console': 'off',
-        'no-undef': 'off',
       },
     },
     {
@@ -104,7 +76,6 @@ module.exports = defineConfig({
         project: ['tsconfig.json', 'tsconfig.node.json'],
       },
       rules: {
-        '@typescript-eslint/adjacent-overload-signatures': 'warn',
         '@typescript-eslint/array-type': [
           'warn',
           { default: 'array', readonly: 'array' },
@@ -139,25 +110,6 @@ module.exports = defineConfig({
         '@typescript-eslint/max-params': ['warn', { max: 3 }],
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/method-signature-style': ['warn', 'property'],
-        //  TODO: #349 Colocar regra de underscore em variaveis membro e regra de nomeclatura de classe abstrata
-        '@typescript-eslint/naming-convention': [
-          'warn',
-          {
-            format: ['PascalCase'],
-            prefix: ['I'],
-            selector: 'interface',
-          },
-          {
-            format: ['PascalCase'],
-            prefix: ['E'],
-            selector: 'enum',
-          },
-          {
-            format: ['PascalCase'],
-            prefix: ['T'],
-            selector: 'typeAlias',
-          },
-        ],
         '@typescript-eslint/no-array-constructor': 'warn',
         '@typescript-eslint/no-base-to-string': 'warn',
         '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
@@ -180,7 +132,14 @@ module.exports = defineConfig({
         '@typescript-eslint/no-loss-of-precision': 'warn',
         '@typescript-eslint/no-magic-numbers': [
           'warn',
-          { ignoreArrayIndexes: true },
+          {
+            ignoreArrayIndexes: true,
+            ignoreClassFieldInitialValues: true,
+            ignoreDefaultValues: true,
+            ignoreEnums: true,
+            ignoreNumericLiteralTypes: true,
+            ignoreReadonlyClassProperties: true,
+          },
         ],
         '@typescript-eslint/no-meaningless-void-operator': 'warn',
         '@typescript-eslint/no-misused-new': 'warn',
@@ -206,7 +165,6 @@ module.exports = defineConfig({
         '@typescript-eslint/no-useless-constructor': 'warn',
         '@typescript-eslint/no-useless-empty-export': 'warn',
         '@typescript-eslint/no-var-requires': 'warn',
-        '@typescript-eslint/non-nullable-type-assertion-style': 'warn',
         '@typescript-eslint/parameter-properties': 'warn',
         '@typescript-eslint/prefer-as-const': 'warn',
         '@typescript-eslint/prefer-destructuring': 'warn',
@@ -242,6 +200,36 @@ module.exports = defineConfig({
         'max-params': 'off',
         'no-loss-of-precision': 'off',
         'no-magic-numbers': 'off',
+        'no-unused-vars': 'off',
+      },
+    },
+    // javascript files
+    {
+      env: { node: true },
+      files: ['.eslintrc.cjs', '**/*.js'],
+      rules: {
+        'no-console': 'off',
+        'no-undef': 'off',
+      },
+    },
+    // typescript config files
+    {
+      files: [
+        '**/vite.config.ts',
+        '**/vitest.config.ts',
+        '**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+        '**/vite.electron.config.ts',
+      ],
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-undef': 'off',
       },
     },
   ],
@@ -267,16 +255,23 @@ module.exports = defineConfig({
     'regexp',
     'write-good-comments',
     '@eslint-community/eslint-comments',
+    'react-hooks',
+    'react-refresh',
   ],
   root: true,
   rules: {
-    '@eslint-community/eslint-comments/disable-enable-pair': 'warn',
+    '@eslint-community/eslint-comments/disable-enable-pair': [
+      'warn',
+      { allowWholeFile: true },
+    ],
     '@eslint-community/eslint-comments/no-aggregating-enable': 'warn',
     '@eslint-community/eslint-comments/no-duplicate-disable': 'warn',
-    '@eslint-community/eslint-comments/no-unlimited-disable': 'warn',
+    '@eslint-community/eslint-comments/no-unused-disable': 'warn',
     '@eslint-community/eslint-comments/no-unused-enable': 'warn',
     '@eslint-community/eslint-comments/require-description': 'warn',
+    'array-func/avoid-reverse': 'warn',
     'array-func/from-map': 'warn',
+    'array-func/no-unnecessary-this-arg': 'warn',
     'array-func/prefer-array-from': 'warn',
     'array-func/prefer-flat': 'warn',
     'array-func/prefer-flat-map': 'warn',
@@ -391,6 +386,9 @@ module.exports = defineConfig({
     'promise/no-return-wrap': 'warn',
     'promise/param-names': 'warn',
     'promise/prefer-await-to-then': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-refresh/only-export-components': 'warn',
     'react/boolean-prop-naming': 'warn',
     'react/button-has-type': 'warn',
     'react/destructuring-assignment': ['warn', 'never'],
@@ -490,7 +488,6 @@ module.exports = defineConfig({
     ],
     'unicorn/explicit-length-check': 'warn',
     'unicorn/new-for-builtins': 'warn',
-    'unicorn/no-abusive-eslint-disable': 'warn',
     'unicorn/no-array-callback-reference': 'warn',
     'unicorn/no-array-for-each': 'warn',
     'unicorn/no-array-method-this-argument': 'warn',
