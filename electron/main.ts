@@ -13,7 +13,7 @@ const port = 3000;
 expressApp.use(cors());
 expressApp.use(express.json());
 
-router.get('/metadata', async (req, res) => {
+router.get('/metadata', async (_, res) => {
   try {
     const userLocalModules = path.join(
       app.getPath('documents'),
