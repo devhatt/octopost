@@ -11,8 +11,8 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    if (props.onTextChange) {
-      props.onTextChange(newValue);
+    if (props.onChange) {
+      props.onChange(newValue);
     }
   };
 
@@ -49,7 +49,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
           />
         </svg>
       ),
-      value: props.inputText,
+      value: props.value,
     },
   ];
 

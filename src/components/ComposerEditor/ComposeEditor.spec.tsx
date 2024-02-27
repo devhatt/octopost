@@ -6,7 +6,7 @@ import ComposerEditor from './ComposerEditor';
 describe('ComposeEditor', () => {
   describe('when render component', () => {
     it('should mount a textbox', () => {
-      render(<ComposerEditor inputText="" onTextChange={() => {}} />);
+      render(<ComposerEditor onChange={vi.fn()} value="" />);
 
       const textArea = screen.getByRole('textbox');
 
@@ -17,7 +17,7 @@ describe('ComposeEditor', () => {
   describe('When user type', () => {
     it('update input value', async () => {
       const mockOnChange = vi.fn();
-      render(<ComposerEditor inputText="" onTextChange={mockOnChange} />);
+      render(<ComposerEditor onChange={mockOnChange} value="" />);
 
       const inputElement = screen.getByRole('textbox');
       const testInputValue = 'Testing TextArea input';

@@ -9,14 +9,25 @@
 
 .textArea {
   width: 100%;
+
   min-height: 20rem;
 
   color: global.$tertiaryGray;
 
   font-size: 1.6rem;
 
+  font-size: 1.6rem;
+
+  margin-bottom: 2.4rem;
+
   padding: 2.6rem 1.6rem;
-  border: 1px solid global.$primaryGray;
+
+  padding-top: 2.4rem;
+  padding-left: 1.6rem;
+  border: 0;
+  box-sizing: border-box;
 
   background-color: global.$primaryWhite;
+
+  resize: none;
 }

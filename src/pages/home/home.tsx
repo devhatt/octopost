@@ -18,9 +18,7 @@ function Home(): ReactNode {
   const [inputText, setInputText] = useState('');
   const { modules } = useModule();
 
-  const editor = (
-    <ComposerEditor inputText={inputText} onTextChange={setInputText} />
-  );
+  const editor = <ComposerEditor onChange={setInputText} value={inputText} />;
 
   return (
     <>
