@@ -1,14 +1,14 @@
-@use '../../styles/global';
+@use '~styles/global.scss' as *;
 
 .input {
   width: 48px;
   height: 28px;
 
-  color: global.$secondaryGray;
+  color: $secondaryGray;
 
   position: relative;
 
-  background: global.$primaryGray;
+  background: $primaryGray;
   box-shadow:
     0 0 5px,
     0 0 0 2px;
@@ -48,15 +48,15 @@
   }
 
   &:checked[type='checkbox'] {
-    color: global.$secondaryPurple;
+    color: $secondaryPurple;
 
-    background: global.$secondaryPurple;
+    background: $secondaryPurple;
   }
 
   &:checked[type='checkbox']::before {
     left: 41%;
 
-    background: global.$primaryWhite;
+    background: $primaryWhite;
     background-image: url('./assets/checkIcon.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -65,7 +65,7 @@
 }
 
 .error {
-  color: global.$secondaryRed;
+  color: $secondaryRed;
 
-  background: global.$primaryWhite;
+  background: $primaryWhite;
 }

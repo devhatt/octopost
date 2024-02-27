@@ -1,38 +1,72 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Switch from './Switch';
+import { Switch } from './Switch';
+
+import { SwitchProps } from './Switch.types';
+
+const makeSut = (props: Partial<SwitchProps>): RenderResult =>
+  render(<Switch {...props} />);
 
 describe('Switch', () => {
   describe('when initialize', () => {
-    it('renders the switch off when checked={false}', () => {
-      render(<Switch checked={false} setChecked={() => {}} />);
+    it('should mount input', () => {
+      makeSut({});
 
-      const switchComponent = screen.getByRole('checkbox');
+      const input = screen.getByRole('checkbox');
 
-      expect(switchComponent).not.toBeChecked();
-      expect(switchComponent).toBeInTheDocument();
+      expect(input).toBeInTheDocument();
     });
 
-    it('renders the switch on when checked={true}', () => {
-      render(<Switch checked={true} setChecked={() => {}} />);
+    it('should mount input with error', () => {
+      makeSut({ variant: 'error' });
 
-      const switchComponent = screen.getByRole('checkbox');
+      const input = screen.getByRole('checkbox');
 
-      expect(switchComponent).toBeChecked();
-      expect(switchComponent).toBeInTheDocument();
+      expect(input).toBeInTheDocument();
+    });
+  });
+
+  describe('when checked', () => {
+    it('renders the switch on', () => {
+      makeSut({ checked: true });
+
+      const input = screen.getByRole('checkbox');
+
+      expect(input).toBeChecked();
+    });
+  });
+
+  describe('when not checked', () => {
+    it('renders the switch off', () => {
+      makeSut({ checked: false });
+
+      const input = screen.getByRole('checkbox');
+
+      expect(input).not.toBeChecked();
     });
   });
 
   describe('when click', () => {
-    it('calls the setChecked function', async () => {
-      const setCheckedMock = vi.fn();
-      render(<Switch checked={true} setChecked={setCheckedMock} />);
+    it('call onChange with true', async () => {
+      const onChange = vi.fn();
+      makeSut({ onChange });
 
-      const switchComponent = screen.getByRole('checkbox');
-      userEvent.click(switchComponent);
+      const input = screen.getByRole('checkbox');
 
-      await waitFor(() => expect(setCheckedMock).toHaveBeenCalledTimes(1));
+      await userEvent.click(input);
+
+      expect(onChange).toHaveBeenCalledWith(true);
+    });
+
+    it('should input to be checked', async () => {
+      makeSut({});
+
+      const input = screen.getByRole('checkbox');
+
+      await userEvent.click(input);
+
+      expect(input).toBeChecked();
     });
   });
 });
