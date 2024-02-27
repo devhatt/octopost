@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
@@ -37,7 +37,22 @@ function Tabber(): ReactNode {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
+  const handleContentChange = (postId: TPostModeId, text: string) => {
+    setContent((prevContent) => ({
+      ...prevContent,
+      [postId]: {
+        text: text,
+      },
+    }));
+  };
+
+  const preview =
+    currentTab.currentPostMode ??
+    (currentTab.postModes?.[0] as PostMode | undefined);
+
+  useEffect(() => {
+    setCurrentContent(content[currentPostModeId]?.text || '');
+  }, [content, currentPostModeId]); 
 
   return (
     <div>
@@ -55,11 +70,13 @@ function Tabber(): ReactNode {
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent
-            customData={{}}
-            medias={[]}
-            text={`${preview.name} Placeholder`}
-          />
+          {preview?.previewComponent ? (
+            <preview.previewComponent
+              customData={{}}
+              medias={[] as File[]}
+              text={`${preview.name} Placeholder`}
+            />
+          ) : null}
         </div>
       </div>
     </div>

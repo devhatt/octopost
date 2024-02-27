@@ -22,6 +22,7 @@ function PostModes(props: IPostModesProps): ReactNode {
 
     return (
       <span
+        aria-hidden="true"
         className={postModeClasses(index)}
         key={postModeId}
         onClick={() => props.onChangePostMode(postMode, postModeId)}
@@ -33,8 +34,8 @@ function PostModes(props: IPostModesProps): ReactNode {
 
   return (
     <div className={scss.postModesHeader}>
-      {props.currentTab.postModes.map((postMode, index) =>
-        renderPostMode(postMode, index)
+      {props.currentTab.postModes.map((element: PostMode, index: number) =>
+        renderPostMode(element, index)
       )}
     </div>
   );

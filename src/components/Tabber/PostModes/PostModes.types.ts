@@ -2,8 +2,8 @@
 
 import { ITab, TPostModeId } from '../Tabber.types';
 
-export type IPostModesProps = {
+export interface IPostModesProps {
   currentPostModeId: TPostModeId;
   currentTab: ITab;
   onChangePostMode: (postMode: PostMode, postModeId: TPostModeId) => void;
-};
+}

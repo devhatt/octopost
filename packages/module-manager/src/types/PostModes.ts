@@ -1,7 +1,9 @@
-import type { Validators } from './Validators';
-import type { Widget } from './Widget';
+import React from 'react';
 
 import type { GenericObject } from '~/utils/primitives';
+
+import type { Validators } from './Validators';
+import type { Widget } from './Widget';
 
 export interface PostMode {
   name: string;
