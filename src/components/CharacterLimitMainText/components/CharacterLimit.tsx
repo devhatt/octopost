@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -6,9 +6,10 @@ import scss from './CharacterLimit.module.scss';
 
 import { IModuleProps } from '../CharacterLimitMainText.types';
 
-function CharacterLimit(props: IModuleProps) {
+function CharacterLimit(props: IModuleProps): ReactNode {
   const [counterZero, setCounterZero] = useState(false);
-  const remainingCharacters = props.maxLength - props.value.length;
+  const value = props.value ?? '';
+  const remainingCharacters = props.maxLength - value.length;
 
   useEffect(() => {
     setCounterZero(remainingCharacters < 0);
