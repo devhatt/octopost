@@ -9,8 +9,8 @@ const makeSut = (props: Partial<CheckboxProps>): RenderResult =>
   render(<Checkbox {...props}>checkbox</Checkbox>);
 
 describe('Checkbox', () => {
-  describe('when checkbox render', () => {
-    it('should mount input', async () => {
+  describe('when is mounted', () => {
+    it('render a checkbox', async () => {
       makeSut({});
 
       const input = screen.getByRole('checkbox');
@@ -21,8 +21,8 @@ describe('Checkbox', () => {
     });
   });
 
-  describe('when checkbox be clicked', () => {
-    it('call [onChange]', async () => {
+  describe('when be clicked', () => {
+    it('call onChange', async () => {
       const onChange = vi.fn();
 
       makeSut({ onChange });
@@ -32,6 +32,16 @@ describe('Checkbox', () => {
       await userEvent.click(input);
 
       expect(onChange).toHaveBeenCalledWith(true);
+    });
+
+    it('be checked', async () => {
+      makeSut({});
+
+      const input = screen.getByRole('checkbox');
+
+      await userEvent.click(input);
+
+      expect(input).toBeChecked();
     });
   });
 });
