@@ -230,6 +230,22 @@ module.exports = defineConfig({
         'no-undef': 'off',
       },
     },
+    // electron
+    {
+      env: { node: true },
+      files: ['**/electron/*'],
+      parserOptions: {
+        project: ['./tsconfig.node.json', './electron/tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-undef': 'off',
+      },
+    },
   ],
   parserOptions: {
     ecmaFeatures: {
