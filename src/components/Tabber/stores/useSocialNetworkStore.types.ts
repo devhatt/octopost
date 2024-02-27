@@ -1,7 +1,7 @@
-﻿import { ExampleModule1 } from 'modules/example-module1/example-module1';
+﻿import { OctoModule } from '@octopost/module-manager';
 
-export type TSocialNetworks = Omit<ExampleModule1, 'services'> & { id: string };
+export type TSocialNetworks = Omit<OctoModule, 'services'> & { id: string };
 
-export type TSocialNetworksState = {
+export interface TSocialNetworksState {
   socialNetworks: TSocialNetworks[];
-};
+}
