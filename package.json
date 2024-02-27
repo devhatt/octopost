@@ -10,7 +10,7 @@
   "scripts": {
     "start": "pnpm -r build && vite",
     "build": "tsc && pnpm -r build && vite build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && pnpm -r typecheck",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
     "ci:version": "changeset version",

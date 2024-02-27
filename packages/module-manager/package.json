@@ -10,6 +10,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc && vite build",
+    "typecheck": "tsc",
     "lint": "eslint src --ext=ts,tsx",
     "lint:fix": "pnpm lint --fix",
     "prepublishOnly": "pnpm build"
