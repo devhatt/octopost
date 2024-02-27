@@ -10,6 +10,8 @@ export default defineConfig({
   server: { open: false },
   test: {
     coverage: {
+      exclude: ['src/**/*.stories.tsx'],
+      include: ['src/**/*.ts', 'src/**/*.tsx'],
       provider: 'istanbul',
       reporter: ['json', 'json-summary', 'html'],
       reportOnFailure: true,
