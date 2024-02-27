@@ -28,18 +28,6 @@
     "useDefineForClassFields": true
   },
   "exclude": ["node_modules", "dist"],
-  "include": [
-    "src/**/*",
-    "electron/**/*",
-    "setupTests.js",
-    "tests-examples/**/*",
-    "playwright/**/*",
-    "e2e/**/*",
-    "module.js"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "include": ["src/**/*", "electron/**/*", "playwright/**/*", "e2e/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
