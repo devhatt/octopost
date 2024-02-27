@@ -1,7 +1,8 @@
 import { ReactNode, useState } from 'react';
 
+import { Checkbox } from '~components/Checkbox/Checkbox';
+
 import Accordion from '../Accordion/Accordion';
-import Checkbox from '../Checkbox/Checkbox';
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 
 import styles from './FirstComment.module.scss';
