@@ -97,7 +97,7 @@ module.exports = defineConfig({
             objectLiteralTypeAssertions: 'allow-as-parameter',
           },
         ],
-        '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+        '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
         '@typescript-eslint/default-param-last': 'warn',
         '@typescript-eslint/dot-notation': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'warn',
@@ -388,7 +388,6 @@ module.exports = defineConfig({
     'react-refresh/only-export-components': 'warn',
     'react/boolean-prop-naming': 'warn',
     'react/button-has-type': 'warn',
-    'react/destructuring-assignment': ['warn', 'never'],
     'react/forbid-dom-props': ['warn', { forbid: ['style'] }],
     'react/function-component-definition': [
       'warn',
