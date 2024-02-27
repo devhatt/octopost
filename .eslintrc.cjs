@@ -130,6 +130,7 @@ module.exports = defineConfig({
         '@typescript-eslint/no-magic-numbers': [
           'warn',
           {
+            detectObjects: false,
             ignoreArrayIndexes: true,
             ignoreClassFieldInitialValues: true,
             ignoreDefaultValues: true,
