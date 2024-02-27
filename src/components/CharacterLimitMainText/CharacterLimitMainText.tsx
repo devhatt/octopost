@@ -1,19 +1,23 @@
+import { ReactNode } from 'react';
+
 import CharacterLimit from './components/CharacterLimit';
 
 import scss from './CharacterLimitMainText.module.scss';
 
 import { ICharacterLimitMainTextProps } from './CharacterLimitMainText.types';
 
-function CharacterLimitMainText(props: ICharacterLimitMainTextProps) {
+function CharacterLimitMainText(
+  props: ICharacterLimitMainTextProps
+): ReactNode {
   return (
     <div className={scss.compost}>
       {props.module.map((module) => (
         <CharacterLimit
+          id={module.id}
           key={module.id}
           maxLength={module.maxLength}
-          value={module.value}
-          id={module.id}
           svg={module.svg}
+          value={module.value}
         />
       ))}
     </div>

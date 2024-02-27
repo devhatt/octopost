@@ -2,11 +2,9 @@ import { render, screen } from '@testing-library/react';
 
 import MediaInputs from './MediaInput';
 
-vi.mock('nanoid', () => {
-  return {
-    nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
-  };
-});
+vi.mock('nanoid', () => ({
+  nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
+}));
 
 describe('MediaInputs', () => {
   it('renders the  media inputs', () => {
