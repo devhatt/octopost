@@ -14,7 +14,7 @@ const handleAddTag = (): void => {
 };
 
 function SocialMediaList(props: ISocialMediaListProps): ReactNode {
-  const [tags, setTags] = useState(Array.from(props.tags));
+  const [tags, setTags] = useState(props.tags);
 
   const handleRemoveTag = (removedTag: ISocialMedia): void => {
     setTags((currentTags: ISocialMedia[]) =>
