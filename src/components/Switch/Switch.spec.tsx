@@ -9,8 +9,8 @@ const makeSut = (props: Partial<SwitchProps>): RenderResult =>
   render(<Switch {...props} />);
 
 describe('Switch', () => {
-  describe('when initialize', () => {
-    it('should mount input', () => {
+  describe('when is mounted', () => {
+    it('render a checkbox', () => {
       makeSut({});
 
       const input = screen.getByRole('checkbox');
@@ -18,7 +18,7 @@ describe('Switch', () => {
       expect(input).toBeInTheDocument();
     });
 
-    it('should mount input with error', () => {
+    it('render with variant error', () => {
       makeSut({ variant: 'error' });
 
       const input = screen.getByRole('checkbox');
@@ -28,7 +28,7 @@ describe('Switch', () => {
   });
 
   describe('when checked', () => {
-    it('renders the switch on', () => {
+    it('render with switch on', () => {
       makeSut({ checked: true });
 
       const input = screen.getByRole('checkbox');
@@ -38,7 +38,7 @@ describe('Switch', () => {
   });
 
   describe('when not checked', () => {
-    it('renders the switch off', () => {
+    it('render with switch off', () => {
       makeSut({ checked: false });
 
       const input = screen.getByRole('checkbox');
@@ -59,7 +59,7 @@ describe('Switch', () => {
       expect(onChange).toHaveBeenCalledWith(true);
     });
 
-    it('should input to be checked', async () => {
+    it('to be checked', async () => {
       makeSut({});
 
       const input = screen.getByRole('checkbox');
