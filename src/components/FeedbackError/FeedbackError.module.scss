@@ -1,4 +1,5 @@
 @use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as *;
 
 .wrapper {
   width: 100%;
@@ -23,7 +24,7 @@
   }
 }
 
-@include from599 {
+@include from600 {
   .wrapper {
     background: inherit;
 

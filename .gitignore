@@ -140,3 +140,6 @@ project_structure.md
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# Environment config
+.vscode 

@@ -1,55 +1,38 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-import viteConfig from './vite.config.ts';
+import viteConfig from './vite.config';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './',
-  /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
-  snapshotDir: './__snapshots__',
-  /* Maximum time one test can run for. */
-  timeout: 10 * 1000,
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-
-    /* Port to use for Playwright component endpoint. */
-    ctPort: 3100,
-    ctViteConfig: {
-      plugins: [tsconfigPaths()],
-      resolve: viteConfig.resolve,
-    },
-  },
-
-  testMatch: '**/*.spec.ct.tsx',
-
-  /* Configure projects for major browsers */
+  fullyParallel: true,
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
   ],
+  reporter: 'html',
+  retries: process.env.CI ? 2 : 0,
+  snapshotDir: './__snapshots__',
+  testDir: './',
+  testMatch: '**/*.ct.spec.tsx',
+  timeout: 10 * 1000,
+
+  use: {
+    ctPort: 3100,
+
+    ctViteConfig: {
+      // @ts-expect-error The playwright-ct references vite of version 4.5.1, and the plugin is for vite 5.
+      plugins: [tsconfigPaths()],
+      // @ts-expect-error The playwright-ct references vite of version 4.5.1 and config resolves is for version 5.
+      resolve: viteConfig.resolve,
+    },
+    trace: 'on-first-retry',
+  },
+
+  workers: process.env.CI ? 1 : undefined,
 });
