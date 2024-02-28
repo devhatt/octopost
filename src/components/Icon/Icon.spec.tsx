@@ -1,20 +1,21 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import Icon from './Icon';
 
-describe('Icon component', () => {
-  it('renders without crashing', () => {
-    const { container } = render(<Icon icon="alert" />);
-    expect(container).toBeInTheDocument();
-  });
+import { IIconProps } from './Icon.types';
 
-  it('renders with optional size', () => {
-    const { container } = render(<Icon icon="alert" size={20} />);
-    expect(container).toBeInTheDocument();
-  });
+const makeSut = ({
+  icon = 'alert',
+  ...props
+}: Partial<IIconProps>): RenderResult =>
+  render(<Icon icon={icon} {...props} />);
 
-  it('renders with optional width and height', () => {
-    const { container } = render(<Icon height={30} icon="alert" width={30} />);
-    expect(container).toBeInTheDocument();
+describe('Icon', () => {
+  describe('when is mounted', () => {
+    it('render an image', () => {
+      makeSut({});
+      const icon = screen.getByRole('img');
+      expect(icon).toBeInTheDocument();
+    });
   });
 });

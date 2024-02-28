@@ -13,6 +13,7 @@ function Icon(props: IIconProps): React.ReactNode {
     <Component
       {...omit(props, ['icon', 'size'])}
       height={props.size}
+      role="img"
       width={props.size}
     />
   );
