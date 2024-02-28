@@ -1,8 +1,7 @@
 import { ReactNode, useState } from 'react';
 
+import { Avatar } from '~components/Avatar/Avatar';
 import { Switch } from '~components/Switch/Switch';
-
-import UserImage from './components/UserImage/UserImage';
 
 import scss from './ToggleSocialMedia.module.scss';
 
@@ -15,7 +14,7 @@ function ToggleSocialMedia(props: ITogleSocialMedia): ReactNode {
   return (
     <div className={scss.wrapper}>
       <div className={scss.accountInfo}>
-        <UserImage accountName={props.accountName} image={props.accountImage} />
+        <Avatar image={props.accountImage} username={props.accountName} />
         <p className={scss.text}>{props.accountName}</p>
       </div>
 
