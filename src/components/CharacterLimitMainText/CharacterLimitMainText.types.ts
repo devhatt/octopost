@@ -8,5 +8,5 @@ export type IModuleProps = {
   id: string;
   maxLength: number;
   svg: ReactNode;
-  value?: string;
+  value: string;
 };

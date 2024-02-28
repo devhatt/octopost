@@ -6,13 +6,15 @@ import scss from './CharacterLimit.module.scss';
 
 import { IModuleProps } from '../CharacterLimitMainText.types';
 
+//TODO: Renomear para characterCounter
+
 function CharacterLimit(props: IModuleProps): ReactNode {
   const [counterZero, setCounterZero] = useState(false);
-  const value = props.value ?? '';
-  const remainingCharacters = props.maxLength - value.length;
+  const remainingCharacters = props.maxLength - props.value.length;
+  const zero = 0;
 
   useEffect(() => {
-    setCounterZero(remainingCharacters < 0);
+    setCounterZero(remainingCharacters < zero);
   }, [remainingCharacters]);
 
   const svgColor = classNames(scss.svgColor, {
