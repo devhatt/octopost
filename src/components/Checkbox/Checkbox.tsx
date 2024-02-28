@@ -2,7 +2,7 @@ import { ChangeEvent, forwardRef } from 'react';
 
 import classNames from 'classnames';
 
-import styles from './Checkbox.module.scss';
+import scss from './Checkbox.module.scss';
 
 import { CheckboxProps } from './Checkbox.types';
 
@@ -13,16 +13,16 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <label className={classNames(styles.container, props.className)}>
+      <label className={classNames(scss.container, props.className)}>
         <input
           {...props}
           checked={props.checked}
-          className={styles.input}
+          className={scss.input}
           onChange={handleChange}
           ref={ref}
           type="checkbox"
         />
-        <span className={styles.text}>{children}</span>
+        <span className={scss.text}>{children}</span>
       </label>
     );
   }
