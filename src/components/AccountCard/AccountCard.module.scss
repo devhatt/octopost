@@ -1,0 +1,42 @@
+@use '~styles/global.scss' as *;
+
+.container {
+  min-width: min-content;
+
+  display: flex;
+  flex-flow: row nowrap;
+
+  gap: 2rem;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.8rem 0.8rem 0.8rem 1.6rem;
+
+  background-color: $secondaryWhite;
+}
+
+.username {
+  overflow: hidden;
+
+  display: -webkit-box;
+
+  margin-left: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.star {
+  width: 8rem;
+
+  padding: 0 1rem;
+
+  background: none;
+  outline-color: $secondaryPurple;
+
+  cursor: pointer;
+}
+
+.text {
+  font-size: 1.4rem;
+}
