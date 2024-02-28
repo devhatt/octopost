@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ICharacterLimitMainTextProps {
   module: IModuleProps[];
 }
@@ -5,6 +7,6 @@ export interface ICharacterLimitMainTextProps {
 export interface IModuleProps {
   id: string;
   maxLength: number;
-  svg: React.ReactNode;
-  value?: string;
+  svg: ReactNode;
+  value: string;
 }
