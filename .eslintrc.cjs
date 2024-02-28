@@ -52,6 +52,7 @@ module.exports = defineConfig({
     {
       files: ['**/*.stories.*'],
       rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
         'no-console': 'off',
         'no-secrets/no-secrets': 'off',
         'react/forbid-dom-props': 'off',
@@ -65,6 +66,7 @@ module.exports = defineConfig({
         'react/no-children-prop': 'off',
         'react/no-multi-comp': 'off',
         'react/prop-types': 'off',
+        'write-good-comments/write-good-comments': 'off',
       },
     },
     {
@@ -228,6 +230,26 @@ module.exports = defineConfig({
         '@typescript-eslint/no-magic-numbers': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-undef': 'off',
+      },
+    },
+    {
+      files: [
+        './**/vite.config.ts',
+        './**/vitest.config.ts',
+        './**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-console': 'off',
+        'no-undef': 'off',
+        'write-good-comments/write-good-comments': 'off',
       },
     },
   ],
