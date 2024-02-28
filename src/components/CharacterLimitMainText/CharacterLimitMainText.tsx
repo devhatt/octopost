@@ -4,11 +4,9 @@ import CharacterLimit from './components/CharacterLimit';
 
 import scss from './CharacterLimitMainText.module.scss';
 
-import { ICharacterLimitMainTextProps } from './CharacterLimitMainText.types';
+import { CharacterLimitMainTextProps } from './CharacterLimitMainText.types';
 
-function CharacterLimitMainText(
-  props: ICharacterLimitMainTextProps
-): ReactNode {
+function CharacterLimitMainText(props: CharacterLimitMainTextProps): ReactNode {
   return (
     <div className={scss.compost}>
       {props.module.map((module) => (

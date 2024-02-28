@@ -4,11 +4,12 @@ import classNames from 'classnames';
 
 import scss from './CharacterLimit.module.scss';
 
-import { IModuleProps } from '../CharacterLimitMainText.types';
+import { ModuleProps } from '../CharacterLimitMainText.types';
 
 //TODO: Renomear para characterCounter
+//TODO: Fazer 2 variantes do componente, uma com icone e outra sem icone
 
-function CharacterLimit(props: IModuleProps): ReactNode {
+function CharacterLimit(props: ModuleProps): ReactNode {
   const [counterZero, setCounterZero] = useState(false);
   const remainingCharacters = props.maxLength - props.value.length;
   const zero = 0;
@@ -25,12 +26,24 @@ function CharacterLimit(props: IModuleProps): ReactNode {
     [scss.exceeded]: counterZero,
   });
 
-  return (
-    <div className={svgColor}>
-      {props.svg}
-      <div className={characterLimitClass}>
-        <span>{remainingCharacters}</span>
+  const hasIcon = props.icon;
+
+  if (hasIcon ?? false) {
+    return (
+      <div className={svgColor}>
+        {props.svg}
+        <div className={characterLimitClass}>
+          <span>{remainingCharacters}</span>
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className={characterLimitClass}>
+      <p>
+        {props.value.length}/{props.maxLength}
+      </p>
     </div>
   );
 }
