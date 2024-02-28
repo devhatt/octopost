@@ -6,11 +6,11 @@ import ModuleProvider from '~contexts/ModuleContext';
 import Home from './pages/home/home';
 
 import { Head } from '~components/Head/Head';
+import SentryRoutes from '~components/SentrySetup/SentrySetup';
 
 import scss from './App.module.scss';
 
 import './styles/base.scss';
-import SentryRoutes from '~components/SentrySetup/SentrySetup';
 
 function App(): ReactNode {
   return (
