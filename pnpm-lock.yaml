@@ -96,6 +96,9 @@ importers:
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: 4.1.0
         version: 4.1.0(eslint@8.56.0)
+      '@faker-js/faker':
+        specifier: 8.4.1
+        version: 8.4.1
       '@ladle/react':
         specifier: 4.0.2
         version: 4.0.2(@types/node@20.11.19)(@types/react@18.2.57)(react-dom@18.2.0)(react@18.2.0)(sass@1.71.0)(typescript@5.3.3)
@@ -1516,6 +1519,11 @@ packages:
   /@eslint/js@8.56.0:
     resolution: {integrity: sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  /@faker-js/faker@8.4.1:
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+    dev: true
 
   /@hapi/hoek@9.3.0:
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
