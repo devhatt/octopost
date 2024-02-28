@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
-import Switch from '../Switch/Switch';
+import { Switch } from '~components/Switch/Switch';
+
 import UserImage from './components/UserImage/UserImage';
 
 import scss from './ToggleSocialMedia.module.scss';
 
 import { ITogleSocialMedia } from './ToggleSocialMedia.types';
 
-function ToggleSocialMedia(props: ITogleSocialMedia) {
+function ToggleSocialMedia(props: ITogleSocialMedia): ReactNode {
   const [checked, setChecked] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -22,10 +23,11 @@ function ToggleSocialMedia(props: ITogleSocialMedia) {
         <button
           className={scss.button}
           onClick={() => setIsFavorite((prev) => !prev)}
+          type="button"
         >
           {isFavorite ? 'starred' : 'star'}
         </button>
-        <Switch checked={checked} setChecked={setChecked} />
+        <Switch checked={checked} onChange={setChecked} />
       </div>
     </div>
   );

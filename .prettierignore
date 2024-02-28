@@ -8,3 +8,4 @@ playwright-report
 .changeset/config.json
 .husky
 *.svg
+**/*.svg

@@ -52,6 +52,7 @@ module.exports = defineConfig({
     {
       files: ['**/*.stories.*'],
       rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
         'no-console': 'off',
         'no-secrets/no-secrets': 'off',
         'react/forbid-dom-props': 'off',
@@ -64,6 +65,7 @@ module.exports = defineConfig({
         ],
         'react/no-children-prop': 'off',
         'react/prop-types': 'off',
+        'write-good-comments/write-good-comments': 'off',
       },
     },
     {
@@ -97,7 +99,7 @@ module.exports = defineConfig({
             objectLiteralTypeAssertions: 'allow-as-parameter',
           },
         ],
-        '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+        '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
         '@typescript-eslint/default-param-last': 'warn',
         '@typescript-eslint/dot-notation': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'warn',
@@ -245,6 +247,26 @@ module.exports = defineConfig({
         '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-undef': 'off',
+      },
+    },
+    {
+      files: [
+        './**/vite.config.ts',
+        './**/vitest.config.ts',
+        './**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-console': 'off',
+        'no-undef': 'off',
+        'write-good-comments/write-good-comments': 'off',
       },
     },
   ],
@@ -406,7 +428,6 @@ module.exports = defineConfig({
     'react-refresh/only-export-components': 'warn',
     'react/boolean-prop-naming': 'warn',
     'react/button-has-type': 'warn',
-    'react/destructuring-assignment': ['warn', 'never'],
     'react/forbid-dom-props': ['warn', { forbid: ['style'] }],
     'react/function-component-definition': [
       'warn',
