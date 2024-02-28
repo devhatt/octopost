@@ -4,16 +4,14 @@ import ToggleSocialMedia from './ToggleSocialMedia';
 
 import { ITogleSocialMedia } from './ToggleSocialMedia.types';
 
-export const ToggleSocialMediaComponent: Story<ITogleSocialMedia> = (props) => {
-  return (
-    <div style={{ maxWidth: '20rem' }}>
-      <ToggleSocialMedia
-        accountImage={props.accountImage}
-        accountName={props.accountName}
-      />
-    </div>
-  );
-};
+export const ToggleSocialMediaComponent: Story<ITogleSocialMedia> = (props) => (
+  <div style={{ maxWidth: '25rem' }}>
+    <ToggleSocialMedia
+      accountImage={props.accountImage}
+      accountName={props.accountName}
+    />
+  </div>
+);
 
 ToggleSocialMediaComponent.args = {
   accountImage:
