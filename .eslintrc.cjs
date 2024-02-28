@@ -63,6 +63,7 @@ module.exports = defineConfig({
           },
         ],
         'react/no-children-prop': 'off',
+        'react/no-multi-comp': 'off',
         'react/prop-types': 'off',
       },
     },
