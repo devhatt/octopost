@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 
-export type ICharacterLimitMainTextProps = {
-  module: IModuleProps[];
+export type CharacterLimitMainTextProps = {
+  module: ModuleProps[];
 };
 
-export type IModuleProps = {
+export type ModuleProps = {
+  icon?: boolean;
   id: string;
   maxLength: number;
   svg: ReactNode;
