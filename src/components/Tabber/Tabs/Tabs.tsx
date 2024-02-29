@@ -8,31 +8,32 @@ import { TSocialNetworks } from '../stores/useSocialNetworkStore.types';
 import { ITabsProps } from './Tabs.types';
 
 function Tabs(props: ITabsProps): ReactNode {
-  const tabClasses = (id: string): string =>
-    classNames(scss.tab, id === props.currentTab.id && scss.active);
+  const tabClasses = (id: string, name: string): string => {
+    const isTabAll = name === 'All';
+    return classNames(
+      scss.tab,
+      id === props.currentTab.id && scss.active,
+      isTabAll && scss.tabPostAll
+    );
+  };
 
   const renderTabs = (socialNetwork: TSocialNetworks): ReactNode => (
-    <div
-      aria-hidden="true"
-      className={[
-        tabClasses(socialNetwork.id),
-        socialNetwork.name === 'All' && scss.tabPostAll,
-      ].join(' ')}
+    <button
+      className={tabClasses(socialNetwork.id, socialNetwork.name)}
       key={`${socialNetwork.id}-${socialNetwork.name}`}
       onClick={() => props.onChangeTab(socialNetwork)}
+      type="button"
     >
       {socialNetwork.icon}
       <span className={scss.tabTitle}>{socialNetwork.name}</span>
-    </div>
+    </button>
   );
 
-  return (
-    <div className={scss.tabsContainer}>
-      {props.socialNetworks.map((socialNetwork: TSocialNetworks) =>
-        renderTabs(socialNetwork)
-      )}
-    </div>
+  const listSocialNetworks: ReactNode = props.socialNetworks.map(
+    (socialNetwork: TSocialNetworks) => renderTabs(socialNetwork)
   );
+
+  return <div className={scss.tabsContainer}>{listSocialNetworks}</div>;
 }
 
 export default Tabs;

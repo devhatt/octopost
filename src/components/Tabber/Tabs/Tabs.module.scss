@@ -1,4 +1,4 @@
-@use '../../../styles/global';
+@use '~styles/global';
 @use '~styles/breakpoints.scss';
 
 .tabsContainer {
@@ -8,6 +8,8 @@
 }
 
 .tab {
+  width: auto;
+
   display: flex;
   flex-direction: column;
 
