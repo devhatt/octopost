@@ -21,24 +21,22 @@ function PostModes(props: IPostModesProps): ReactNode {
     const postModeId = buildPostModeId(props.currentTab, index);
 
     return (
-      <span
-        aria-hidden="true"
+      <button
         className={postModeClasses(index)}
         key={postModeId}
         onClick={() => props.onChangePostMode(postMode, postModeId)}
+        type="button"
       >
         {postMode.name}
-      </span>
+      </button>
     );
   };
 
-  return (
-    <div className={scss.postModesHeader}>
-      {props.currentTab.postModes.map((element: PostMode, index: number) =>
-        renderPostMode(element, index)
-      )}
-    </div>
+  const listPostModes: ReactNode = props.currentTab.postModes.map(
+    (element: PostMode, index: number) => renderPostMode(element, index)
   );
+
+  return <div className={scss.postModesHeader}>{listPostModes}</div>;
 }
 
 export default PostModes;
