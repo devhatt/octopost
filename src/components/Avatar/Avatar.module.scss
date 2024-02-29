@@ -1,13 +1,13 @@
-@use '../../../../styles/global';
+@use '~styles/global.scss';
 
-.userImage {
+.image {
   width: 40px;
   height: 40px;
 
   border-radius: 50%;
 }
 
-.userImagePlaceholder {
+.username {
   width: 40px;
   height: 40px;
 
@@ -15,11 +15,9 @@
 
   place-items: center;
 
+  font-size: 1.6rem;
+  font-weight: 500;
+
   background-color: global.$primaryPurple;
   border-radius: 50%;
-
-  .initialLetter {
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
 }
