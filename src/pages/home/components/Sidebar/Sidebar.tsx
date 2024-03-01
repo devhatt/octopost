@@ -42,11 +42,7 @@ function Sidebar(): ReactNode {
         Abre
       </Button>
       <AccordionTab
-        className={
-          scss.mobile +
-          ' ' +
-          (mobileIsOpen ? scss.openMobile : scss.closeMobile)
-        }
+        className={scss.mobile + ' ' + (mobileIsOpen ? scss.openMobile : '')}
         hideCloseButton
         title="Select Social Media"
       >
