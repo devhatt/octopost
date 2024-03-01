@@ -1,11 +1,14 @@
+import React from 'react';
+
+import Button from '~components/Button/Button';
 import SubmitButton from '~components/SubmitButton/SubmitButton';
 
 import scss from './SavBar.module.scss';
 
-function SavBar() {
+function SavBar(): React.JSX.Element {
   return (
     <div className={scss.savBarWrapper}>
-      <a href="/">+ Save as draft</a>
+      <Button> Save as draft</Button>
       <SubmitButton />
     </div>
   );
