@@ -20,9 +20,7 @@ jobs:
         run: pnpm test:coverage --silent
 
       - name: 'Report Coverage'
-        if: |
-          github.event.pull_request.head.repo.full_name == github.repository &&
-          always()
+        if: ${{ always() && !github.event.pull_request.head.repo.fork }}
         uses: davelosert/vitest-coverage-report-action@v2
 
       - name: 'Upload Coverage'
