@@ -13,6 +13,7 @@ module.exports = defineConfig({
     },
   ],
   rules: {
+    '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'import-helpers/order-imports': 'off',
     'import/order': 'warn',
