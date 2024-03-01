@@ -1,5 +1,7 @@
 import { ReactNode, useRef, useState } from 'react';
 
+import classNames from 'classnames';
+
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
@@ -42,13 +44,12 @@ function Sidebar(): ReactNode {
         Abre
       </Button>
       <AccordionTab
-        className={scss.mobile + ' ' + (mobileIsOpen ? scss.openMobile : '')}
+        className={classNames(scss.mobile, { [scss.openMobile]: mobileIsOpen })}
         hideCloseButton
         title="Select Social Media"
       >
         <div className={scss.content}>
           <InputSearch
-            className={scss.searchBar}
             error={false}
             onChange={(data) => setValue(data as string)}
             placeholder="Search for social media"
