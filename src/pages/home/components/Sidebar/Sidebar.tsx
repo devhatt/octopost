@@ -1,7 +1,5 @@
 import { ReactNode, useRef, useState } from 'react';
 
-import classNames from 'classnames';
-
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
