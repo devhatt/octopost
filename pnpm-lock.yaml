@@ -129,9 +129,6 @@ importers:
       '@types/express':
         specifier: 4.17.21
         version: 4.17.21
-      '@types/lodash':
-        specifier: 4.14.202
-        version: 4.14.202
       '@types/lodash.omit':
         specifier: 4.5.9
         version: 4.5.9
