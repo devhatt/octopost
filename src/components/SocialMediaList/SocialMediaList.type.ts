@@ -1,11 +1,11 @@
 import React from 'react';
 
-export interface ISocialMediaListProps {
+export type ISocialMediaListProps = {
   tags: ISocialMedia[];
-}
+};
 
-export interface ISocialMedia {
+export type ISocialMedia = {
   icon: React.ReactElement;
   id: number;
   name: string;
-}
+};
