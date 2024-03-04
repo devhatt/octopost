@@ -375,7 +375,6 @@ module.exports = defineConfig({
     'jsx-a11y/no-noninteractive-tabindex': 'warn',
     'jsx-a11y/no-redundant-roles': 'warn',
     'jsx-a11y/no-static-element-interactions': 'warn',
-    'jsx-a11y/prefer-tag-over-role': 'warn',
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
     'jsx-a11y/scope': 'warn',

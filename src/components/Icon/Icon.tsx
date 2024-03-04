@@ -1,25 +1,22 @@
-import classNames from 'classnames';
+import { ReactNode } from 'react';
 
-import { colors, icons, sizes } from './data';
+import omit from 'lodash.omit';
 
-import scss from './icon.module.scss';
+import { icons } from './data';
 
-import { IIconProps } from './icon.types';
+import { IIconProps } from './Icon.types';
 
-const Icon: React.FC<IIconProps> = ({ icon, color, size, className }) => {
-  const iconIcons = icon ? icons[icon] : '';
-  const iconColors = color ? colors[color] : '';
-  const iconSizes = size ? sizes[size] : '';
+function Icon(props: IIconProps): ReactNode {
+  const Component = icons[props.icon];
 
-  const iconClasses = classNames(
-    scss.icon,
-    iconIcons,
-    iconSizes,
-    iconColors,
-    className
+  return (
+    <Component
+      {...omit(props, ['icon', 'size'])}
+      height={props.size}
+      role="img"
+      width={props.size}
+    />
   );
-
-  return <span data-testid="icon-element" className={iconClasses} />;
-};
+}
 
 export default Icon;
