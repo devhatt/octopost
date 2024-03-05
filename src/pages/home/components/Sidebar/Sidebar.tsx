@@ -39,7 +39,7 @@ function Sidebar(): ReactNode {
   });
 
   return (
-    <>
+    <div className={scss.container}>
       <Button onClick={() => setMobileIsOpen(!mobileIsOpen)} variant="outlined">
         Abre
       </Button>
@@ -56,7 +56,7 @@ function Sidebar(): ReactNode {
             ref={inputSearchRef}
           />
 
-          {value ? null : renderSearchClue()}
+          {value ? renderSearchClue() : null}
 
           <div className={scss.items}>
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
@@ -65,37 +65,42 @@ function Sidebar(): ReactNode {
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
           </div>
-        </div>
-
-        <div className={scss.newAccountButtonMobileContainer}>
-          <Button
-            className={scss.newAccountButton}
-            onClick={handleToggleModal}
-            variant="container"
-          >
-            + &ensp; New Account
-          </Button>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
-              circle
-              className={scss.newAccountButtonMobile}
-              icon={<PlusIcon />}
+              className={scss.newAccountButton}
               onClick={handleToggleModal}
               variant="container"
-            />
+            >
+              + &ensp; New Account
+            </Button>
+            <div className={scss.newAccountButtonMobileContainer}>
+              <Button
+                circle
+                className={scss.newAccountButtonMobile}
+                icon={<PlusIcon />}
+                onClick={handleToggleModal}
+                variant="container"
+              />
+            </div>
+            <Modal
+              footer={<div>footer</div>}
+              isOpen={isOpen}
+              onClickOutside={() => setIsOpen(false)}
+              title="Adcionar Social"
+            >
+              Octopost
+            </Modal>
           </div>
-          <Modal
-            footer={<div>footer</div>}
-            isOpen={isOpen}
-            onClickOutside={() => setIsOpen(false)}
-            title="Adcionar Social"
-          >
-            Octopost
-          </Modal>
         </div>
       </AccordionTab>
-    </>
+    </div>
   );
 }
 
