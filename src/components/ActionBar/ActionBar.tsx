@@ -4,12 +4,12 @@ import Button from '~components/Button/Button';
 
 import scss from './SavBar.module.scss';
 
-function SavBar(): ReactNode {
+function ActionBar(): ReactNode {
   return (
-    <div className={scss.savBarWrapper}>
+    <div className={scss.actionBarWrapper}>
       <Button> Save as draft</Button>
     </div>
   );
 }
 
-export default SavBar;
+export default ActionBar;
