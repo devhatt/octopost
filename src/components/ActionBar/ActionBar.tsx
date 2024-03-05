@@ -7,7 +7,11 @@ import scss from './ActionBar.module.scss';
 function ActionBar(): ReactNode {
   return (
     <div className={scss.actionBarWrapper}>
-      <Button> Save as draft</Button>
+      <Button className={scss.actionBarButton}>Save as draft</Button>
+      <div className={scss.actionButtonsContainer}>
+        <Button className={scss.postNowButton}>Post Now</Button>
+        <Button className={scss.postLaterButton}>Post Later</Button>
+      </div>
     </div>
   );
 }

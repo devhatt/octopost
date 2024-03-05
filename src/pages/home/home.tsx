@@ -40,9 +40,7 @@ function Home(): ReactNode {
             <FeedbackError />
           </div>
         </div>
-        <div className={scss.gridSavBar}>
-          <ActionBar />
-        </div>
+        <ActionBar />
       </div>
     </>
   );

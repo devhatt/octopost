@@ -74,10 +74,6 @@
   grid-area: input;
 }
 
-.gridSavBar {
-  display: none;
-}
-
 @include breakpoints.from600 {
   .gridContainer {
     width: 100%;
@@ -99,9 +95,5 @@
     .gridInput > :not(:first-child) {
       display: block;
     }
-  }
-
-  .gridSavBar {
-    display: block;
   }
 }
