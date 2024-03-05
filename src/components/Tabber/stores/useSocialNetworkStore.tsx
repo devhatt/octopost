@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
+import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
+
 import { TSocialNetworksState } from './useSocialNetworkStore.types';
 
 const postModes = [
@@ -121,6 +123,32 @@ const socialNetworks = [
     postModes,
   },
 ];
-export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
-  socialNetworks,
-}));
+
+const socialNetworksWithTabAll = [
+  {
+    icon: (
+      <svg
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="12" cy="12" fill="currentColor" r="5" />
+      </svg>
+    ),
+    id: nanoid(),
+    name: 'All',
+    postModes: [],
+  },
+  ...socialNetworks,
+];
+
+export const useSocialNetworkStore = create<TSocialNetworksState>(() => {
+  const isMobileScreen = useMediaQuery('media-query: 600px');
+
+  if (isMobileScreen) {
+    return { socialNetworks: socialNetworksWithTabAll };
+  }
+  return { socialNetworks: socialNetworks };
+});
