@@ -2,11 +2,11 @@ import { ReactNode, useState } from 'react';
 
 import { useModule } from '~contexts/ModuleContext';
 
+import ActionBar from '~components/ActionBar/ActionBar';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/ContentEditor/ContentEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
-import SavBar from '~components/SavBar/SavBar';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -41,7 +41,7 @@ function Home(): ReactNode {
           </div>
         </div>
         <div className={scss.gridSavBar}>
-          <SavBar />
+          <ActionBar />
         </div>
       </div>
     </>
