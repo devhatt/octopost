@@ -58,8 +58,10 @@ function Tabber() {
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent text={`${preview.name} Placeholder`} />
-          {typesText?.[currentPostModeId] || ''}
+          <preview.previewComponent
+            text={`${preview.name} Placeholder 
+            ${typesText?.[currentPostModeId] || ''}`}
+          />
         </div>
       </div>
     </div>
