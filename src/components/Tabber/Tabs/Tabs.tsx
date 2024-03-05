@@ -8,18 +8,12 @@ import { TSocialNetworks } from '../stores/useSocialNetworkStore.types';
 import { ITabsProps } from './Tabs.types';
 
 function Tabs(props: ITabsProps): ReactNode {
-  const tabClasses = (id: string, name: string): string => {
-    const isTabAll = name === 'All';
-    return classNames(
-      scss.tab,
-      id === props.currentTab.id && scss.active,
-      isTabAll && scss.tabPostAll
-    );
-  };
+  const tabClasses = (id: string): string =>
+    classNames(scss.tab, id === props.currentTab.id && scss.active);
 
   const renderTabs = (socialNetwork: TSocialNetworks): ReactNode => (
     <button
-      className={tabClasses(socialNetwork.id, socialNetwork.name)}
+      className={tabClasses(socialNetwork.id)}
       key={`${socialNetwork.id}-${socialNetwork.name}`}
       onClick={() => props.onChangeTab(socialNetwork)}
       type="button"

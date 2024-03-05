@@ -1,5 +1,4 @@
 @use '~styles/global';
-@use '~styles/breakpoints.scss';
 
 .tabsContainer {
   width: 100%;
@@ -10,11 +9,11 @@
 .tab {
   width: auto;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) auto;
+  gap: 0.5rem;
 
   align-items: center;
-  justify-content: center;
 
   color: global.$tertiaryGray;
 
@@ -57,39 +56,5 @@
     line-height: 2;
 
     margin: 0;
-  }
-}
-
-@include breakpoints.from600 {
-  .tabPostAll {
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    margin: -1px;
-    padding: 0;
-    border-width: 0;
-
-    position: absolute;
-
-    clip: rect(0, 0, 0, 0);
-
-    &::before {
-      width: 0;
-      height: 0;
-      overflow: hidden;
-
-      display: block;
-
-      content: '';
-    }
-  }
-
-  .tab {
-    display: grid;
-    grid-template-columns: minmax(min-content, max-content) auto;
-    gap: 0.5rem;
   }
 }

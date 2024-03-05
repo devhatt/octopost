@@ -70,13 +70,13 @@ function Tabber(): ReactNode {
           />
         </div>
         <div className={scss.previewContainer}>
-          {preview?.previewComponent ? (
+          {!!preview?.previewComponent && (
             <preview.previewComponent
               customData={{}}
               medias={[] as File[]}
               text={`${preview.name} Placeholder`}
             />
-          ) : null}
+          )}
         </div>
       </div>
     </div>
