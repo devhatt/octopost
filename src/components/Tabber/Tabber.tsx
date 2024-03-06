@@ -2,6 +2,8 @@ import { ReactNode, useEffect, useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
+import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
+
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
 
@@ -13,7 +15,18 @@ import Tabs from './Tabs/Tabs';
 import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber(): ReactNode {
-  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
+  const isMobileScreen = useMediaQuery('media-query: 600px');
+
+  const quantityItemsToRemoveIfMobile = 0; // If you're on a mobile device, don't remove the item
+  const quantityItemsToRemoveIfDesktop = 1; // If you're on a desktop screen, remove an item
+
+  const itemsToRemove = isMobileScreen
+    ? quantityItemsToRemoveIfMobile
+    : quantityItemsToRemoveIfDesktop;
+
+  const socialNetworks = useSocialNetworkStore((state) =>
+    state.socialNetworks.slice(itemsToRemove)
+  );
 
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
