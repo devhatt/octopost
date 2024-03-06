@@ -1,5 +1,5 @@
 @use '~styles/global.scss' as *;
-@use '~styles/breakpoints.scss' as breakpoints;
+@use '~styles/breakpoints.scss' as *;
 
 .container {
   width: 100%;
@@ -60,7 +60,7 @@
   flex-direction: column;
 }
 
-@include breakpoints.from480 {
+@include from480 {
   .header {
     display: flex;
     gap: 2.1rem;
