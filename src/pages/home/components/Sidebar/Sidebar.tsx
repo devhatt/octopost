@@ -6,12 +6,11 @@ import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
+import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 import SearchClue from '~components/SearchClue/SearchClue';
-
-import { PlusIcon } from './components/PlusIcon';
 
 import scss from './Sidebar.module.scss';
 
@@ -84,7 +83,7 @@ function Sidebar(): ReactNode {
               <Button
                 circle
                 className={scss.newAccountButtonMobile}
-                icon={<PlusIcon />}
+                icon={<Icon icon="plus" size={16} />}
                 onClick={handleToggleModal}
                 variant="container"
               />
