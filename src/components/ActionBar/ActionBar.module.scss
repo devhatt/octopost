@@ -1,8 +1,6 @@
 @use '~styles/global.scss' as *;
 
 .actionBarWrapper {
-  max-width: 101rem;
-
   display: flex;
 
   align-items: center;
@@ -24,6 +22,8 @@
 
     display: flex;
     gap: 0.8rem;
+
+    justify-content: center;
 
     .postNowButton,
     .postLaterButton {
