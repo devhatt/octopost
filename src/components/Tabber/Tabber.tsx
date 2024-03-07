@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 
 import { IPostMode } from 'modules/types';
 
@@ -10,7 +10,7 @@ import scss from '~components/Tabber/Tabber.module.scss';
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
 
-import { ITab, TPostModeId } from './Tabber.types';
+import { ITab, TPostModeId, TTabState } from './Tabber.types';
 
 function Tabber() {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
@@ -19,6 +19,8 @@ function Tabber() {
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
+  const [content, setContent] = useState<TTabState>({});
+  const [currentContent, setCurrentContent] = useState('');
 
   const changeCurrentTab = (socialNetwork: ITab) => {
     const tabsCurrentPostModeId = socialNetwork.currentPostModeId
@@ -38,9 +40,22 @@ function Tabber() {
     currentTab.currentPostModeId = postModeId;
   };
 
+  const handleContentChange = (postId: TPostModeId, text: string) => {
+    setContent((prevContent) => ({
+      ...prevContent,
+      [postId]: {
+        text: text,
+      },
+    }));
+  };
+
   const preview = currentTab.currentPostMode
     ? currentTab.currentPostMode
     : currentTab.postModes[0];
+
+  useEffect(() => {
+    setCurrentContent(content[currentPostModeId]?.text || '');
+  }, [content, currentPostModeId]);
 
   return (
     <div>
@@ -56,12 +71,17 @@ function Tabber() {
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
           />
+          <input
+            type="text"
+            onChange={(e) =>
+              handleContentChange(currentPostModeId, e.target.value)
+            }
+            value={currentContent}
+          />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent
-            text={`${preview.name} Placeholder 
-            ${typesText?.[currentPostModeId] || ''}`}
-          />
+          <preview.previewComponent text={`${preview.name} Placeholder`} />
+          {currentContent}
         </div>
       </div>
     </div>
