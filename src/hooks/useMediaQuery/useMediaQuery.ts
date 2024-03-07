@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMedia } from 'react-use';
 
 /**
  * Hook to match the media query.
@@ -6,20 +6,6 @@ import { useEffect, useState } from 'react';
  * @returns {boolean} Returns true if the media query matches, otherwise false.
  */
 export function useMediaQuery(queryString: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(${queryString})`);
-    setMatches(mediaQuery.matches);
-
-    const handleChange = (event: MediaQueryListEvent): void => {
-      setMatches(event.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [queryString]);
-
-  return matches;
+  const isMatched = useMedia(`(${queryString})`);
+  return isMatched;
 }
