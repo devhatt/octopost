@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
+import variables from '../../styles/breakpoints.module.scss';
 
-// Reference: src/styles/breakpoints.scss
+const {phoneScreen, 
+  tabletScreen, 
+  desktopScreen,
+largeDesktopScreen,
+} = variables
+
 const breakpoints = {
-  lg: '1240px',
-  md: '905px',
-  sm: '600px',
-  xl: '1440px',
+  from600: phoneScreen,
+  from905: tabletScreen,
+  from1240: desktopScreen,
+  from1440: largeDesktopScreen,
 } as const;
 
 type Breakpoints = keyof typeof breakpoints;
 
-/**
- * Hook to match the media query.
- * @param {Breakpoints} query The media query string. Should be in the format `sm`, `md`, `lg`, `xl`.
- * @returns {boolean} Returns true if the media query matches, otherwise false.
- */
 export function useMediaQuery(query: Breakpoints): boolean {
   const [matches, setMatches] = useState(false);
 

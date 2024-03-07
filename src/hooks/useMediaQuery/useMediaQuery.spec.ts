@@ -21,7 +21,7 @@ describe('useMediaQuery', () => {
     // Simulate a screen with width greater than sm
     window.innerWidth = 800;
 
-    const queryString = 'sm';
+    const queryString = 'from600';
     const { result } = renderHook(() => useMediaQuery(queryString));
 
     expect(result.current).toBe(true);
@@ -31,7 +31,7 @@ describe('useMediaQuery', () => {
     // Simulate a screen with width less than sm
     window.innerWidth = 500;
 
-    const queryString = 'sm';
+    const queryString = 'from600';
     const { result } = renderHook(() => useMediaQuery(queryString));
 
     expect(result.current).toBe(false);

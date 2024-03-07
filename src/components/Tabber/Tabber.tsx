@@ -5,8 +5,6 @@ import { ChangeEvent, ReactNode, useState } from 'react';
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
-// import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
-
 import { accountsToTabs } from './utils';
 
 import scss from '~components/Tabber/Tabber.module.scss';
@@ -18,12 +16,6 @@ import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
 
 function Tabber(): ReactNode {
   const { accounts, sendPosts, socialMedias } = useSocialMediaStore();
-
-  // const isDesktopScreen = useMediaQuery('sm');
-
-  // const socialNetworks = useSocialNetworkStore((state) =>
-  //   state.socialNetworks.slice(Number(isDesktopScreen))
-  // );
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     `${accounts[0].id}-${accounts[0].socialMediaId}`

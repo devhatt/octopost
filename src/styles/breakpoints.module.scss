@@ -1,0 +1,11 @@
+@use 'breakpoints';
+
+:export {
+phoneScreen: $phoneScreen;
+tabletScreen: $tabletScreen; 
+desktopScreen: $desktopScreen; 
+largeDesktopScreen: $largeDesktopScreen; 
+breakpointPhone: $breakpointPhone; 
+breakpointTablet: $breakpointTablet; 
+breakpointDesktop: $breakpointDesktop; 
+}
