@@ -1,7 +1,12 @@
 # @octopost/core
 
-## 0.1.1-alpha.0
+## 0.1.0
+
+### Minor Changes
+
+- [#339](https://github.com/devhatt/octopost/pull/339) [`6e598f5`](https://github.com/devhatt/octopost/commit/6e598f5e1f51dadc6d74347c729696bafe5a3929) Thanks [@alvarogfn](https://github.com/alvarogfn)! - automatizing release
 
 ### Patch Changes
 
-- [#272](https://github.com/devhatt/octopost/pull/272) [`2d49b4b`](https://github.com/devhatt/octopost/commit/2d49b4b07d39d8d3e24e9ef171c9a20df6353e57) Thanks [@alvarogfn](https://github.com/alvarogfn)! - add a release pipeline and change the name of octopost to @octopost/core
+- Updated dependencies [[`6e598f5`](https://github.com/devhatt/octopost/commit/6e598f5e1f51dadc6d74347c729696bafe5a3929)]:
+  - @octopost/module-manager@0.1.0

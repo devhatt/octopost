@@ -2,66 +2,34 @@ name: Node.js CI
 
 on:
   push:
-    branches: ['master', 'develop']
+    branches: ['master']
   pull_request:
-    branches: ['master', 'develop']
-
-env:
-  STORE_PATH: .pnpm-store
-  NODE_VERSION: 18.18.2
+    branches: ['master']
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Code Checkout
+        uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile]
-
-      - name: Get PNPM store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup PNPM cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Code checkout
-        uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Style-guide Tests (Stylelint, Prettier and Eslint)
-        run: pnpm code-style
-
-      - name: Install e2e dependencies
-        run: pnpm playwright install --with-deps
+      - name: Setup deps
+        uses: ./.github/actions/install-deps
 
       - name: Run unit Tests
-        run: pnpm test --silent
+        run: pnpm test:coverage --silent
 
-      - name: Run e2e tests
-        run: pnpm playwright test
+      - name: 'Report Coverage'
+        if: |
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          always()
+        uses: davelosert/vitest-coverage-report-action@v2
 
-      - name: Run ct tests
-        run: pnpm test-ct
+      - name: 'Upload Coverage'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
 
       - name: Build
         run: pnpm build

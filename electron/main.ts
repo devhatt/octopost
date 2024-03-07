@@ -1,5 +1,50 @@
+import cors from 'cors';
 import { app, BrowserWindow } from 'electron';
+import express from 'express';
 import path from 'path';
+
+import resolveModulesMetadata from './utils/resolveModulesMetadata';
+
+const expressApp = express();
+const port = 3000;
+
+expressApp.use(cors());
+expressApp.use(express.json());
+
+expressApp.get('/metadata', async (req, res) => {
+  try {
+    const userLocalModules = path.join(
+      app.getPath('documents'),
+      '/octopost/plugins/'
+    );
+
+    const mainContent = await resolveModulesMetadata(userLocalModules);
+    res.json({ script: mainContent });
+  } catch (error) {
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+  }
+});
+
+expressApp.post('/sourcePath', async (req, res) => {
+  const { sourcePath } = req.body;
+
+  if (!sourcePath) {
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+    return;
+  }
+
+  try {
+    res.sendFile(sourcePath.toString());
+  } catch (error) {
+    res
+      .status(404)
+      .json({ message: 'conteúdo dentro do package.json não-encontrado' });
+  }
+});
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
@@ -16,12 +61,17 @@ if (!app.requestSingleInstanceLock()) {
 let win: BrowserWindow | null;
 
 function createWindow() {
+  expressApp.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`internal server running on http://localhost:${port}`);
+  });
+
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'logo.svg'),
     webPreferences: {
       preload: path.join(__dirname, './preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
 

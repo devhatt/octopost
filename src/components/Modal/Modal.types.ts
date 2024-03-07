@@ -1,7 +1,9 @@
-import { MouseEventHandler, PropsWithChildren } from 'react';
+import { MouseEventHandler, PropsWithChildren, ReactNode } from 'react';
 
 export type TModalProps = PropsWithChildren<{
-  isOpen: boolean;
-  onClickOutside?: MouseEventHandler<HTMLDivElement>;
   className?: string;
+  footer?: ReactNode;
+  isOpen?: boolean;
+  onClickOutside?: MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
+  title?: string;
 }>;

@@ -2,22 +2,10 @@
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "allowImportingTsExtensions": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "~components/*": ["components/*"],
-      "~config/*": ["config/*"],
-      "~constants/*": ["constants/*"],
-      "~enums/*": ["enums/*"],
-      "~hooks/*": ["hooks/*"],
-      "~interfaces/*": ["interfaces/*"],
-      "~i18n": ["i18n/"],
-      "~pages/*": ["pages/*"],
-      "~services/*": ["services/*"],
-      "~snippets/*": ["snippets/*"],
-      "~store/*": ["store/*"],
-      "~styles/*": ["styles/*"],
-      "~types/*": ["types/*"],
-      "~utils/*": ["utils/*"]
+      "~*": ["src/*"],
+      "~electron/*": ["electron/*"]
     },
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -43,11 +31,11 @@
   "include": [
     "src/**/*",
     "electron/**/*",
-    "playwright-ct.config.ts",
     "setupTests.js",
     "tests-examples/**/*",
     "playwright/**/*",
-    "e2e-testing/**/*"
+    "e2e/**/*",
+    "module.js"
   ],
   "references": [
     {

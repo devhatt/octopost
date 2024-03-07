@@ -1,9 +1,17 @@
-import { Story } from '@ladle/react';
+import type { Story, StoryDefault } from '@ladle/react';
 
-import Checkbox from './Checkbox';
+import { Checkbox } from './Checkbox';
 
-import { TCheckboxProps } from './Checkbox.types';
+import { CheckboxProps } from './Checkbox.types';
 
-export const CheckboxStories: Story<TCheckboxProps> = (props) => {
-  return <Checkbox {...props}>Checkbox</Checkbox>;
+export default {
+  title: 'Checkbox',
+} satisfies StoryDefault;
+
+export const StoryCheckbox: Story<CheckboxProps> = (props) => (
+  <Checkbox {...props} />
+);
+
+StoryCheckbox.args = {
+  children: 'Hello',
 };

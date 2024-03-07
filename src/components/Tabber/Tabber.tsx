@@ -60,16 +60,16 @@ function Tabber() {
   return (
     <div>
       <Tabs
+        currentTab={currentTab}
         onChangeTab={changeCurrentTab}
         socialNetworks={socialNetworks}
-        currentTab={currentTab}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            onChangePostMode={changeCurrentPostMode}
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
+            onChangePostMode={changeCurrentPostMode}
           />
           <input
             type="text"

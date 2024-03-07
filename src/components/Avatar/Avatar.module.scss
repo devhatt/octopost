@@ -1,0 +1,23 @@
+@use '~styles/global.scss';
+
+.image {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+}
+
+.username {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  background-color: global.$primaryPurple;
+  border-radius: 50%;
+}

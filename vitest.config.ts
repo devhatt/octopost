@@ -1,22 +1,35 @@
-import { defineConfig, mergeConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react-swc';
+import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 
 import viteConfig from './vite.config';
 
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
-    server: { open: false },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      coverage: {
-        provider: 'istanbul',
-      },
-      setupFiles: ['src/setupTests.ts'],
-      include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
-      css: {
-        modules: { classNameStrategy: 'non-scoped' },
+export default defineConfig({
+  plugins: [tsconfigPaths(), react(), svgr()],
+  resolve: viteConfig.resolve,
+  server: { open: false },
+  test: {
+    coverage: {
+      exclude: ['src/**/*.stories.tsx'],
+      include: ['src/**/*.ts', 'src/**/*.tsx'],
+      provider: 'istanbul',
+      reporter: ['json', 'json-summary', 'html'],
+      reportOnFailure: true,
+      thresholds: {
+        branches: 0,
+        functions: 0,
+        lines: 0,
+        statements: 0,
       },
     },
-  })
-);
+    css: {
+      modules: { classNameStrategy: 'non-scoped' },
+    },
+    environment: 'jsdom',
+    exclude: ['src/**/*.ct.spec.ts', 'src/**/*.ct.spec.tsx'],
+    globals: true,
+    include: ['src/**/*.spec.ts', 'src/**/*.spec.tsx'],
+    setupFiles: ['src/setupTests.ts'],
+  },
+});

@@ -1,35 +1,36 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
+
+import { Checkbox } from '~components/Checkbox/Checkbox';
 
 import Accordion from '../Accordion/Accordion';
-import Checkbox from '../Checkbox/Checkbox';
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 
 import styles from './FirstComment.module.scss';
 
 import { TFirstCommentProps } from './FirstComment.types';
 
-export function FirstComment(props: TFirstCommentProps) {
-  const [isOpen, setOpen] = useState(false);
+export function FirstComment(props: TFirstCommentProps): ReactNode {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Accordion
-      duration={0.5}
       className={styles.container}
-      isOpen={isOpen}
+      content={
+        <div className={styles.textarea}>
+          <ComposerEditor value="" />
+        </div>
+      }
+      duration={0.5}
       header={
         <Checkbox
-          className={styles.checkbox}
           checked={isOpen}
-          onChange={setOpen}
+          className={styles.checkbox}
+          onChange={setIsOpen}
         >
           First Comment
         </Checkbox>
       }
-      content={
-        <div className={styles.textarea}>
-          <ComposerEditor />
-        </div>
-      }
+      isOpen={isOpen}
       {...props}
     />
   );

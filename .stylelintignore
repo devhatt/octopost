@@ -1,5 +1,0 @@
-.next
-.vscode
-node_modules
-*.*
-!*.scss

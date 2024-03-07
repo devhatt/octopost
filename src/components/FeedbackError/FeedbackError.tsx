@@ -1,5 +1,8 @@
+import { ReactNode } from 'react';
+
 import { AnimatePresence, motion } from 'framer-motion';
-import { useError } from 'stores/useError/useError';
+
+import { useError } from '~stores/useError/useError';
 
 import Icon from '~components/Icon/Icon';
 
@@ -7,23 +10,25 @@ import scss from './FeedbackError.module.scss';
 
 import { animationVariants } from './FeedbackError.data';
 
-function FeedbackError() {
+function FeedbackError(): ReactNode {
   const errorMessage = useError((state) => state.errorMessage);
 
-  const renderError = () => (
+  const renderError = (): ReactNode => (
     <motion.div
-      initial="hidden"
       animate="visible"
-      exit="hidden"
       className={scss.wrapper}
-      variants={animationVariants}
       data-testid="error-container"
+      exit="hidden"
+      initial="hidden"
+      variants={animationVariants}
     >
-      <Icon icon="error" size="large" className={scss.errorIcon} />
+      <Icon className={scss.errorIcon} icon="error" size="large" />
       <p className={scss.errorMessage}>{errorMessage}</p>
     </motion.div>
   );
-  return <AnimatePresence>{errorMessage && renderError()}</AnimatePresence>;
+  return (
+    <AnimatePresence>{errorMessage ? renderError() : null}</AnimatePresence>
+  );
 }
 
 export default FeedbackError;
