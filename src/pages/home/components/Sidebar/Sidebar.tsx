@@ -43,7 +43,7 @@ function Sidebar(): ReactNode {
           ref={inputSearchRef}
         />
 
-        {value ? null : renderSearchClue()}
+        {value ? renderSearchClue() : null}
 
         <div className={scss.items}>
           Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
