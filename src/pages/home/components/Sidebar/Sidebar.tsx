@@ -39,7 +39,10 @@ function Sidebar(): ReactNode {
 
   return (
     <div className={scss.container}>
-      <Button onClick={() => setMobileIsOpen(!mobileIsOpen)} variant="outlined">
+      <Button
+        onClick={() => setMobileIsOpen((prev) => !prev)}
+        variant="outlined"
+      >
         Abre
       </Button>
       <AccordionTab
