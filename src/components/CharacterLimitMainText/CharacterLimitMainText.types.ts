@@ -5,7 +5,6 @@ export type CharacterLimitMainTextProps = {
 };
 
 export type ModuleProps = {
-  icon?: boolean;
   id: string;
   maxLength: number;
   svg: ReactNode;

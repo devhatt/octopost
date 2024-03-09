@@ -26,9 +26,9 @@ function CharacterLimit(props: ModuleProps): ReactNode {
     [scss.exceeded]: counterZero,
   });
 
-  const hasIcon = props.icon;
+  const hasIcon = props.svg !== null;
 
-  if (hasIcon ?? false) {
+  if (hasIcon) {
     return (
       <div className={svgColor}>
         {props.svg}
