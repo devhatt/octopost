@@ -6,60 +6,23 @@ labels: ''
 assignees: ''
 ---
 
-**Describe the bug**
-A short description of what the bug is.
+## Describe the bug
+**[A short description of what the bug is.]**
 
-<details open> 
-  <summary>
-    <b>Description</b>
-  </summary>
-   [Describe the bug reported]
-</details>
+## Description
+[Describe the bug reported.]
 
-<br>
-
-<details> 
-  <summary>
-    <b>Steps to Reproduce</b>
-  </summary>
-
+## Steps to Reproduce
 [If applicable, provide detailed steps to reproduce the bug.]
 
-</details>
+## Expected Behavior
+[Describe what is expected to happen.]
 
-<br>
+## Current Behavior
+[Describe what is currently happening.]
 
-<details> 
-  <summary>
-    <b>Expected Behavior</b>
-  </summary>
-  [Describe what is expected to happen.]
-</details>
+## Visual information
+[If possible, add screenshots to illustrate this bug.]
 
-<br>
-
-<details> 
-  <summary>
-    <b>Current Behavior</b>
-  </summary>
-  [Describe what is currently happening.]
-</details>
-
-<br>
-
-<details> 
-  <summary>
-    <b>Visual information</b>
-  </summary>
-  [If possible, add screenshots to illustrate this bug.]
-</details>
-
-<br>
-
-<details> 
-  <summary>
-    <b>Additional Information</b>
-  </summary>
-  [Provide any additional information, such as relevant versions, browser, OS, context, etc.]
-
-</details>
+## Additional Information
+[Provide any additional information, such as relevant versions, browser, OS, context, etc.]
