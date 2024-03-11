@@ -1,9 +1,12 @@
 import { ReactNode, useRef, useState } from 'react';
 
+import classNames from 'classnames';
+
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
+import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
@@ -12,8 +15,9 @@ import SearchClue from '~components/SearchClue/SearchClue';
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const [value, setValue] = useState<string>('');
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [value, setValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
@@ -34,41 +38,71 @@ function Sidebar(): ReactNode {
   });
 
   return (
-    <AccordionTab hideCloseButton title="Select Social Media">
-      <div className={scss.content}>
-        <InputSearch
-          error={false}
-          onChange={(currentValue) => setValue(currentValue as string)}
-          placeholder="Search for social media"
-          ref={inputSearchRef}
-        />
+    <div className={scss.container}>
+      <Button
+        onClick={() => setMobileIsOpen((prev) => !prev)}
+        variant="outlined"
+      >
+        Abre
+      </Button>
+      <AccordionTab
+        className={classNames(scss.mobile, { [scss.openMobile]: mobileIsOpen })}
+        hideCloseButton
+        title="Select Social Media"
+      >
+        <div className={scss.content}>
+          <InputSearch
+            error={false}
+            onChange={(data) => setValue(data as string)}
+            placeholder="Search for social media"
+            ref={inputSearchRef}
+          />
 
-        {value ? null : renderSearchClue()}
+          {value && renderSearchClue()}
 
-        <div className={scss.items}>
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-          Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+          <div className={scss.items}>
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
+          </div>
+          <div className={scss.newAccountButtonMobileContainer}>
+            <Button
+              className={scss.newAccountButton}
+              onClick={handleToggleModal}
+              variant="container"
+            >
+              + &ensp; New Account
+            </Button>
+            <div className={scss.newAccountButtonMobileContainer}>
+              <Button
+                circle
+                className={scss.newAccountButtonMobile}
+                icon={<Icon icon="plus" size={16} />}
+                onClick={handleToggleModal}
+                variant="container"
+              />
+            </div>
+            <Modal
+              footer={<div>footer</div>}
+              isOpen={isOpen}
+              onClickOutside={() => setIsOpen(false)}
+              title="Adcionar Social"
+            >
+              Octopost
+            </Modal>
+          </div>
         </div>
-
-        <Button
-          className={scss.newAccountButton}
-          onClick={handleToggleModal}
-          variant="container"
-        >
-          + &ensp; New Account
-        </Button>
-
-        <Modal isOpen={isOpen} onClickOutside={() => setIsOpen(false)}>
-          Octopost
-        </Modal>
-      </div>
-    </AccordionTab>
+      </AccordionTab>
+    </div>
   );
 }
 
