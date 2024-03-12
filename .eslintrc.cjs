@@ -436,7 +436,6 @@ module.exports = defineConfig({
     'react/jsx-no-comment-textnodes': 'warn',
     'react/jsx-no-constructed-context-values': 'warn',
     'react/jsx-no-duplicate-props': 'warn',
-    'react/jsx-no-leaked-render': ['warn', { validStrategies: ['ternary'] }],
     'react/jsx-no-script-url': 'warn',
     'react/jsx-no-target-blank': 'warn',
     'react/jsx-no-undef': 'warn',
