@@ -18,21 +18,29 @@ export const ButtonStories: Story = () => (
       Secondary Outlined
     </Button>
     <br />
-    <Button circle icon={<Icon icon="at" />} />
-    <Button circle icon={<Icon icon="pin" />} variant="container" />
-    <Button circle icon={<Icon icon="hashtag" />} variant="outlined" />
+    <Button circle icon={<Icon icon="alert" width={32} />} />
+    <Button
+      circle
+      icon={<Icon icon="check" width={32} />}
+      variant="container"
+    />
+    <Button circle icon={<Icon icon="close" width={32} />} variant="outlined" />
     <br />
-    <Button circle color="secondary" icon={<Icon icon="error" />} />
     <Button
       circle
       color="secondary"
-      icon={<Icon icon="emote" />}
+      icon={<Icon icon="hamburguer" width={32} />}
+    />
+    <Button
+      circle
+      color="secondary"
+      icon={<Icon icon="left-arrow" width={32} />}
       variant="container"
     />
     <Button
       circle
       color="secondary"
-      icon={<Icon icon="canva" />}
+      icon={<Icon icon="plus" width={32} />}
       variant="outlined"
     />
   </div>
