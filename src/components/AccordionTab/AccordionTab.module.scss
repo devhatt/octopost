@@ -9,13 +9,14 @@
   flex-grow: 1;
 }
 
+.headerIcon {
+  padding: 0.8rem;
+}
+
 .closeButton {
   width: min-content;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  display: none;
 
   color: $primaryWhite;
   font-size: 4rem;
@@ -70,5 +71,9 @@
 
       content: '⬤';
     }
+  }
+
+  .closeButton {
+    display: block;
   }
 }

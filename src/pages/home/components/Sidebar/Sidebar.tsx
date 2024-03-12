@@ -72,6 +72,8 @@ function Sidebar(): ReactNode {
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
+            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
+            
           </div>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
