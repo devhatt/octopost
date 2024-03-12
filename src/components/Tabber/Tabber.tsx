@@ -39,7 +39,7 @@ function Tabber(): ReactNode {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview: PostMode | undefined =
+  const preview =
     currentTab.currentPostMode ??
     (currentTab.postModes?.[0] as PostMode | undefined);
 
