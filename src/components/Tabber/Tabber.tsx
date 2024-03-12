@@ -1,6 +1,8 @@
-﻿import { useEffect, useState } from 'react';
+﻿import { ReactNode, useState } from 'react';
 
-import { IPostMode } from 'modules/types';
+import { PostMode } from '@octopost/module-manager';
+
+// import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
 
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
@@ -10,52 +12,36 @@ import scss from '~components/Tabber/Tabber.module.scss';
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
 
-import { ITab, TPostModeId, TTabState } from './Tabber.types';
+import { ITab, TPostModeId } from './Tabber.types';
 
-function Tabber() {
+function Tabber(): ReactNode {
   const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
 
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
-  const [content, setContent] = useState<TTabState>({});
-  const [currentContent, setCurrentContent] = useState('');
 
-  const changeCurrentTab = (socialNetwork: ITab) => {
-    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
-      ? socialNetwork.currentPostModeId
-      : buildPostModeId(socialNetwork);
+  const changeCurrentTab = (socialNetwork: ITab): void => {
+    const tabsCurrentPostModeId =
+      socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
 
     setCurrentTab(socialNetwork);
     setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
   const changeCurrentPostMode = (
-    postMode: IPostMode,
+    postMode: PostMode,
     postModeId: TPostModeId
-  ) => {
+  ): void => {
     setCurrentPostModeId(postModeId);
     currentTab.currentPostMode = postMode;
     currentTab.currentPostModeId = postModeId;
   };
 
-  const handleContentChange = (postId: TPostModeId, text: string) => {
-    setContent((prevContent) => ({
-      ...prevContent,
-      [postId]: {
-        text: text,
-      },
-    }));
-  };
-
-  const preview = currentTab.currentPostMode
-    ? currentTab.currentPostMode
-    : currentTab.postModes[0];
-
-  useEffect(() => {
-    setCurrentContent(content[currentPostModeId]?.text || '');
-  }, [content, currentPostModeId]);
+  const preview: PostMode | undefined =
+    currentTab.currentPostMode ??
+    (currentTab.postModes?.[0] as PostMode | undefined);
 
   return (
     <div>
@@ -71,17 +57,15 @@ function Tabber() {
             currentTab={currentTab}
             onChangePostMode={changeCurrentPostMode}
           />
-          <input
-            type="text"
-            onChange={(e) =>
-              handleContentChange(currentPostModeId, e.target.value)
-            }
-            value={currentContent}
-          />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent text={`${preview.name} Placeholder`} />
-          {currentContent}
+          {!!preview?.previewComponent && (
+            <preview.previewComponent
+              customData={{}}
+              medias={[] as File[]}
+              text={`${preview.name} Placeholder`}
+            />
+          )}
         </div>
       </div>
     </div>
