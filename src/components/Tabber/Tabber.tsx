@@ -2,8 +2,6 @@
 
 import { PostMode } from '@octopost/module-manager';
 
-// import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
-
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
 
