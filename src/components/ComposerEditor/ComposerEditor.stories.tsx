@@ -12,17 +12,11 @@ export default {
 } satisfies StoryDefault;
 
 export const ComposerEditorStories: Story<TComposerEditorProps> = (props) => {
-  const [inputText, setInputText] = useState(props.inputText);
+  const [inputText, setInputText] = useState(props.value);
 
-  return (
-    <ComposerEditor
-      inputText={inputText}
-      onTextChange={setInputText}
-      {...props}
-    />
-  );
+  return <ComposerEditor onChange={setInputText} value={inputText} />;
 };
 
 ComposerEditorStories.args = {
-  inputText: '',
+  value: '',
 };
