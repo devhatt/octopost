@@ -4,7 +4,14 @@ import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
 
 export type TPostModeId = `${string}-${number}`;
 
-export interface ITab extends TSocialNetworks {
+export type ITab = TSocialNetworks & {
   currentPostMode?: PostMode;
   currentPostModeId?: TPostModeId;
-}
+};
+
+export type TTabState = Record<
+  TPostModeId,
+  {
+    text: string;
+  }
+>;

@@ -1,19 +1,50 @@
 import { Story } from '@ladle/react';
 
-import Icon from './Icon';
+import { Icon } from './Icon';
 
-import { IIconProps } from './icon.types';
+import { IconProps, IconsType } from './Icon.types';
 
-export const iconFont: Story<IIconProps> = (props) => {
-  return (
-    <div>
-      <Icon {...props} />
-    </div>
-  );
+export default {
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: ['black', 'purple', 'red', 'blue', 'violet', 'cyan'],
+    },
+    icon: {
+      control: { type: 'select' },
+      options: [
+        'left-arrow',
+        'right-arrow',
+        'check',
+        'hamburguer',
+        'close',
+        'plus',
+        'small-circle-filled',
+        'mag',
+        'alert',
+        'star',
+        'star-filled',
+        'minus',
+      ] as IconsType[],
+    },
+    size: {
+      control: {
+        max: 100,
+        min: 0,
+        step: 1,
+        type: 'range',
+      },
+    },
+  },
+  component: Icon,
+  title: 'Icon',
 };
 
-iconFont.args = {
-  color: 'active',
-  icon: 'at',
-  size: 'large',
+const Template: Story<IconProps> = (args) => <Icon {...args} />;
+
+export const DefaultIconStory: Story<IconProps> = Template.bind({});
+DefaultIconStory.args = {
+  color: 'black',
+  icon: 'left-arrow',
+  size: 24,
 };

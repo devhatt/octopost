@@ -1,0 +1,67 @@
+@use '~styles/global.scss' as *;
+
+.actionBarWrapper {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+
+  margin-bottom: 3.2rem;
+  padding: 2rem;
+
+  .actionBarButton {
+    color: $secondaryPurple;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .actionButtonsContainer {
+    width: 30rem;
+
+    display: flex;
+    gap: 0.8rem;
+
+    justify-content: center;
+
+    .postNowButton,
+    .postLaterButton {
+      font-size: 1.6rem;
+
+      padding: 1rem 0.6rem;
+      border: 0.1rem solid $secondaryGray;
+
+      background-color: $primaryWhite;
+      border-radius: 3rem;
+
+      cursor: pointer;
+    }
+
+    .postNowButton {
+      color: $secondaryPurple;
+    }
+
+    .postNowButton:hover {
+      color: $primaryWhite;
+
+      background-color: $secondaryPurple;
+
+      transition: 0.3s;
+    }
+
+    .postLaterButton {
+      color: $primaryWhite;
+
+      background-color: $secondaryPurple;
+    }
+
+    .postLaterButton:hover {
+      color: $secondaryPurple;
+
+      background-color: $primaryWhite;
+
+      transition: 0.3s;
+    }
+  }
+}
