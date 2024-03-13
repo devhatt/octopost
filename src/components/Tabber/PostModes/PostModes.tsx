@@ -21,12 +21,6 @@ function PostModes(props: IPostModesProps): ReactNode {
     const postModeId = buildPostModeId(props.currentTab, index);
 
     return (
-      /* eslint-disable-next-line 
-      jsx-a11y/click-events-have-key-events, 
-      jsx-a11y/no-static-element-interactions
-      --
-      # TODO: Add support to keyboard navigation
-      */
       <span
         className={postModeClasses(index)}
         key={postModeId}
