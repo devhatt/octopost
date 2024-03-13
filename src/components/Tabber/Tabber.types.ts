@@ -8,3 +8,10 @@ export interface ITab extends TSocialNetworks {
   currentPostMode?: IPostMode;
   currentPostModeId?: TPostModeId;
 }
+
+export type TTabState = Record<
+  TPostModeId,
+  {
+    text: string;
+  }
+>;

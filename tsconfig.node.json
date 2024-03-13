@@ -9,9 +9,10 @@
     "strictNullChecks": true
   },
   "include": [
-    "**/vite.config.ts",
     "**/vitest.config.ts",
-    "**/playwright-ct.config.ts",
-    "**/playwright.config.ts"
+    "**/vite.electron.config.ts",
+    "**/vite.config.ts",
+    "**/playwright.config.ts",
+    "**/playwright-ct.config.ts"
   ]
 }

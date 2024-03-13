@@ -7,13 +7,27 @@
   flex-direction: column;
 }
 
-.wrapper {
-  position: relative;
-}
+.textArea {
+  width: 100%;
 
-.copyTextContainer {
-  width: 30%;
-  height: 50%;
+  min-height: 20rem;
 
-  justify-content: center;
+  color: global.$tertiaryGray;
+
+  font-size: 1.6rem;
+
+  font-size: 1.6rem;
+
+  margin-bottom: 2.4rem;
+
+  padding: 2.6rem 1.6rem;
+
+  padding-top: 2.4rem;
+  padding-left: 1.6rem;
+  border: 0;
+  box-sizing: border-box;
+
+  background-color: global.$primaryWhite;
+
+  resize: none;
 }

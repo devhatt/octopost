@@ -1,3 +1,4 @@
+/* eslint-disable -- TODO @alvarogfn [2024-02-29]: to be fixed in next pull request */
 import { useState } from 'react';
 
 import scss from './SocialAccordion.module.scss';
@@ -5,7 +6,7 @@ import scss from './SocialAccordion.module.scss';
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
 import Accordion from '../../../../../../components/Accordion/Accordion';
-import ToggleSocialMedia from '../../../../../../components/ToggleSocialMedia/ToggleSocialMedia';
+import { AccountCard } from '~components/AccountCard/AccountCard';
 import { ISocialAccordion } from './SocialAccordion.type';
 
 function SocialAccordion(props: ISocialAccordion) {
@@ -27,17 +28,12 @@ function SocialAccordion(props: ISocialAccordion) {
   const renderAccordionMap = () =>
     props.accountList.map((accounts) => (
       <li key={accounts.id}>
-        <ToggleSocialMedia
-          accountName={accounts.username}
-          accountImage={accounts.image}
-        />
+        <AccountCard username={accounts.username} avatarURL={accounts.image} />
       </li>
     ));
 
   const renderAccordionContent = () => (
-    <ul role="listitem" className={scss.list}>
-      {renderAccordionMap()}
-    </ul>
+    <ul role="listitem">{renderAccordionMap()}</ul>
   );
 
   return (

@@ -1,25 +1,28 @@
-import { render, screen } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Checkbox from './Checkbox';
+import { Checkbox } from './Checkbox';
 
-import type { TCheckboxProps } from './Checkbox.types';
+import type { CheckboxProps } from './Checkbox.types';
 
-const makeSut = ({
-  onChange = vi.fn(),
-  checked = false,
-  ...props
-}: Partial<TCheckboxProps>) => {
-  return render(
-    <Checkbox checked={checked} onChange={onChange} {...props}>
-      checkbox
-    </Checkbox>
-  );
-};
+const makeSut = (props: Partial<CheckboxProps>): RenderResult =>
+  render(<Checkbox {...props}>checkbox</Checkbox>);
 
 describe('Checkbox', () => {
-  describe('when checkbox be clicked', () => {
-    it('call [onChange]', async () => {
+  describe('when is mounted', () => {
+    it('render a checkbox', async () => {
+      makeSut({});
+
+      const input = screen.getByRole('checkbox');
+
+      await userEvent.click(input);
+
+      expect(input).toBeInTheDocument();
+    });
+  });
+
+  describe('when be clicked', () => {
+    it('call onChange', async () => {
       const onChange = vi.fn();
 
       makeSut({ onChange });
@@ -29,6 +32,16 @@ describe('Checkbox', () => {
       await userEvent.click(input);
 
       expect(onChange).toHaveBeenCalledWith(true);
+    });
+
+    it('be checked', async () => {
+      makeSut({});
+
+      const input = screen.getByRole('checkbox');
+
+      await userEvent.click(input);
+
+      expect(input).toBeChecked();
     });
   });
 });

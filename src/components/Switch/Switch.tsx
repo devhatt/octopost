@@ -1,28 +1,29 @@
+import { ChangeEvent, forwardRef } from 'react';
+
 import classNames from 'classnames';
 
 import scss from './Switch.module.scss';
 
-import { ISwitch } from './Switch.types';
+import { SwitchProps } from './Switch.types';
 
-function Switch(props: ISwitch) {
-  const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    props.setChecked(ev.target.checked);
-  };
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+  ({ variant = 'default', ...props }, ref) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+      if (props.onChange) props.onChange(event.target.checked);
+    };
 
-  const hasError = true;
+    const classes = classNames(scss.input, {
+      [scss.error]: variant === 'error',
+    });
 
-  const inputClasses = classNames(scss.input, {
-    [scss.error]: hasError,
-  });
-
-  return (
-    <input
-      className={inputClasses}
-      checked={props.checked}
-      onChange={handleCheck}
-      type="checkbox"
-    />
-  );
-}
-
-export default Switch;
+    return (
+      <input
+        checked={props.checked}
+        className={classes}
+        onChange={handleChange}
+        ref={ref}
+        type="checkbox"
+      />
+    );
+  }
+);

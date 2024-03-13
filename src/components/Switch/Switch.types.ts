@@ -1,4 +1,9 @@
-export interface ISwitch {
-  checked: boolean;
-  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ComponentPropsWithRef } from 'react';
+
+export type BaseSwitchProps = Omit<ComponentPropsWithRef<'input'>, 'onChange'>;
+
+export type SwitchProps = BaseSwitchProps & {
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+  variant?: 'default' | 'error';
+};

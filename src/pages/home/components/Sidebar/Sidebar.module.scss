@@ -1,80 +1,139 @@
 @use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as *;
 
 .container {
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: stretch;
-
-  font-family: $mainFont;
-
-  font-size: 1.6rem;
-
-  border: 1px solid #cbc4cf;
-
-  background-color: #f5eff4;
-  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.1);
-  border-radius: 1.2rem 1.2rem 0 0;
+  height: 100svh;
 }
 
-.header {
+.mobile {
+  width: 100%;
+  height: 100%;
+
+  padding: 0.8rem 1.6rem 4.8rem;
+
+  position: fixed;
+
+  z-index: 1;
+
+  transform: translateX(100%);
+
+  transition: transform 0.5s;
+}
+
+.openMobile {
   width: 100%;
 
-  display: flex;
-  gap: 2.1rem;
+  transform: translateX(0);
 
-  align-items: center;
-
-  color: #fff;
-  font-size: 1.4rem;
-  line-height: 1;
-
-  padding: 2.1rem;
-
-  position: relative;
-
-  background-color: $secondaryPurple;
-  border-radius: 18px 18px 0 0;
-
-  &::before {
-    width: 8px;
-    height: 8px;
-
-    display: block;
-
-    margin-bottom: 2px;
-
-    background-color: $primaryWhite;
-    border-radius: 50%;
-
-    content: '';
-  }
-
-  .dotSvg {
-    width: 3.4rem;
-  }
+  transition: transform 1s;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
+.newAccountButtonMobile {
+  min-width: 48px;
 
-  align-items: center;
-
-  padding: 1rem;
+  display: block;
 }
 
-.items {
-  width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
+.newAccountButtonMobileContainer {
+  display: flex;
+
+  place-content: center;
 }
 
 .newAccountButton {
-  margin-top: 5rem;
-  margin-bottom: 2rem;
-  padding: 1rem 4rem;
+  display: none;
+}
+
+.items {
+  height: 100%;
+  overflow: auto;
+
+  padding: 0 0.8rem;
+}
+
+.content {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@include from480 {
+  .header {
+    display: flex;
+    gap: 2.1rem;
+
+    align-items: center;
+
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+
+    padding: 2.1rem;
+
+    position: relative;
+
+    background-color: $secondaryPurple;
+    border-radius: 18px 18px 0 0;
+
+    &::before {
+      width: 8px;
+      height: 8px;
+
+      display: block;
+
+      margin-bottom: 0.2rem;
+
+      background-color: $primaryWhite;
+      border-radius: 50%;
+
+      content: '';
+    }
+
+    .dotSvg {
+      width: 3.4rem;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 1rem;
+  }
+
+  .items {
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  .newAccountButton {
+    display: block;
+
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    padding: 1rem 4rem;
+  }
+
+  .newAccountButtonMobile {
+    display: none;
+  }
+
+  .mobile {
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding: 0;
+
+    position: relative;
+
+    z-index: 0;
+
+    transform: none;
+  }
 }
