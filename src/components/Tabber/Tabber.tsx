@@ -15,17 +15,10 @@ import Tabs from './Tabs/Tabs';
 import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber(): ReactNode {
-  const isDesktopScreen = useMediaQuery('600px');
-
-  const quantityItemsToRemoveIfMobile = 0; // If you're on a mobile device, don't remove the item
-  const quantityItemsToRemoveIfDesktop = 1; // If you're on a desktop screen, remove an item
-
-  const itemsToRemove = isDesktopScreen
-    ? quantityItemsToRemoveIfDesktop
-    : quantityItemsToRemoveIfMobile;
+  const isDesktopScreen = useMediaQuery('sm');
 
   const socialNetworks = useSocialNetworkStore((state) =>
-    state.socialNetworks.slice(itemsToRemove)
+    state.socialNetworks.slice(Number(isDesktopScreen))
   );
 
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
