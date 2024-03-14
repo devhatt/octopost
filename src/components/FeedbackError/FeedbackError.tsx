@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -12,23 +12,51 @@ import { animationVariants } from './FeedbackError.data';
 
 function FeedbackError(): ReactNode {
   const errorMessage = useError((state) => state.errorMessage);
+  const [showErrors, setShowErrors] = useState(false);
+
+  const errors = [''];
+
+  const renderErrorDropdown = (): ReactNode => {
+    if (!showErrors) return null;
+
+    return (
+      <ul className={scss.wrapperErrorList}>
+        {errors.map((error) => (
+          <li key={error}>{error}</li>
+        ))}
+      </ul>
+    );
+  };
 
   const renderError = (): ReactNode => (
     <motion.div
       animate="visible"
-      className={scss.wrapper}
       data-testid="error-container"
       exit="hidden"
       initial="hidden"
       variants={animationVariants}
     >
-      <Icon className={scss.errorIcon} icon="alert" size={12} />
-      <p className={scss.errorMessage}>{errorMessage}</p>
+      <div className={scss.errorSection}>
+        <div className={scss.errorContainer}>
+          <Icon className={scss.alertIcon} icon="alert" size={20} />
+          <div className={scss.errorMessageContainer}>
+            <p className={scss.errorMessage}>{errorMessage}</p>
+          </div>
+          <div className={scss.dropdownIconContainer}>
+            <Icon
+              className={scss.dropdownIconContainer}
+              icon="DropDownArrow"
+              onClick={() => setShowErrors(!showErrors)}
+              size={10}
+            />
+          </div>
+        </div>
+        {renderErrorDropdown()}
+      </div>
     </motion.div>
   );
-  return (
-    <AnimatePresence>{errorMessage ? renderError() : null}</AnimatePresence>
-  );
+
+  return <AnimatePresence>{errorMessage && renderError()}</AnimatePresence>;
 }
 
 export default FeedbackError;

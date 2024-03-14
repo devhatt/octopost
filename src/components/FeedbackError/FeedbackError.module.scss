@@ -1,7 +1,7 @@
 @use '~styles/global.scss' as *;
 @use '~styles/breakpoints.scss' as *;
 
-.wrapper {
+.errorContainer {
   width: 100%;
 
   display: flex;
@@ -15,12 +15,23 @@
 
   background: $secondaryRed;
 
-  .errorIcon {
+  .alertIcon {
     color: $primaryWhite;
   }
 
   .errorMessage {
-    color: $primaryWhite;
+    font-family: $mainFont;
+
+    color: $secondaryRed;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2rem;
+  }
+
+  .dropdownIconContainer {
+    color: $secondaryRed;
+
+    cursor: pointer;
   }
 }
 
@@ -33,15 +44,60 @@
 }
 
 @include from600 {
-  .wrapper {
+  .errorContainer {
     background: inherit;
 
-    .errorIcon {
+    .alertIcon {
       color: $secondaryRed;
     }
 
     .errorMessage {
       color: $secondaryRed;
+    }
+  }
+
+  @include from600 {
+    .errorContainer {
+      background: inherit;
+
+      .alertIcon {
+        color: $secondaryRed;
+      }
+
+      .errorMessage {
+        color: $secondaryRed;
+      }
+    }
+
+    .wrapperErrorList li {
+      display: flex;
+
+      align-items: center;
+
+      font-family: $mainFont;
+
+      color: $secondaryRed;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2rem;
+
+      padding-left: 1.6rem;
+      border-left: 8px solid $secondaryRed;
+      letter-spacing: 0.05rem;
+
+      &::before {
+        width: 0.8rem;
+        height: 0.8rem;
+
+        display: inline-block;
+
+        margin-right: 1.8rem;
+
+        background-color: $secondaryRed;
+        border-radius: 50%;
+
+        content: '';
+      }
     }
   }
 }
