@@ -24,6 +24,14 @@
   }
 }
 
+.iconContainer {
+  width: 2rem;
+
+  display: flex;
+
+  align-items: center;
+}
+
 @include from600 {
   .wrapper {
     background: inherit;

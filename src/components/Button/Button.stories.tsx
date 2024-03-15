@@ -4,36 +4,51 @@ import Icon from '~components/Icon/Icon';
 
 import Button from './Button';
 
-export const ButtonStories: Story = () => (
-  <div>
-    <Button>Primary Text</Button>
-    <Button variant="container">Primary Container</Button>
-    <Button variant="outlined">Primary Outlined</Button>
-    <br />
-    <Button color="secondary">Secondary Text</Button>
-    <Button color="secondary" variant="container">
-      Secondary Container
-    </Button>
-    <Button color="secondary" variant="outlined">
-      Secondary Outlined
-    </Button>
-    <br />
-    <Button circle icon={<Icon icon="at" />} />
-    <Button circle icon={<Icon icon="pin" />} variant="container" />
-    <Button circle icon={<Icon icon="hashtag" />} variant="outlined" />
-    <br />
-    <Button circle color="secondary" icon={<Icon icon="error" />} />
-    <Button
-      circle
-      color="secondary"
-      icon={<Icon icon="emote" />}
-      variant="container"
-    />
-    <Button
-      circle
-      color="secondary"
-      icon={<Icon icon="canva" />}
-      variant="outlined"
-    />
-  </div>
+import { ICircleButtonProps, ITextButtonProps } from './Button.types';
+
+export default {
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+    disabled: {
+      control: { type: 'check' },
+      options: [''],
+    },
+    variant: {
+      control: { type: 'select' },
+      options: ['container', 'outlined', 'text'],
+    },
+  },
+};
+
+export const ButtonText: Story<ITextButtonProps> = (props) => (
+  <Button
+    color={props.color}
+    disabled={props.disabled}
+    type={props.type}
+    variant={props.variant}
+  >
+    Button
+  </Button>
 );
+ButtonText.args = {
+  color: 'primary',
+  variant: 'container',
+};
+
+export const CircleButton: Story<ICircleButtonProps> = (props) => (
+  <Button
+    circle
+    color={props.color}
+    disabled={props.disabled}
+    icon={<Icon icon="plus" size={32} />}
+    type={props.type}
+    variant={props.variant}
+  />
+);
+CircleButton.args = {
+  color: 'primary',
+  variant: 'container',
+};

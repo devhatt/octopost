@@ -22,7 +22,9 @@ function FeedbackError(): ReactNode {
       initial="hidden"
       variants={animationVariants}
     >
-      <Icon className={scss.errorIcon} icon="error" size="large" />
+      <div className={scss.iconContainer}>
+        <Icon className={scss.errorIcon} icon="alert" />
+      </div>
       <p className={scss.errorMessage}>{errorMessage}</p>
     </motion.div>
   );
