@@ -4,6 +4,8 @@ import { Icon } from '~components/Icon/Icon';
 
 import Button from './Button';
 
+import { ICircleButtonProps } from './Button.types';
+
 export const ButtonStories: Story = () => (
   <div>
     <Button>Primary Text</Button>
@@ -37,3 +39,22 @@ export const ButtonStories: Story = () => (
     />
   </div>
 );
+ButtonStories.args = {
+  color: 'primary',
+  variant: 'container',
+};
+
+export const CircleButton: Story<ICircleButtonProps> = (props) => (
+  <Button
+    circle
+    color={props.color}
+    disabled={props.disabled}
+    icon={<Icon icon="plus" size={32} />}
+    type={props.type}
+    variant={props.variant}
+  />
+);
+CircleButton.args = {
+  color: 'primary',
+  variant: 'container',
+};
