@@ -133,6 +133,8 @@ module.exports = defineConfig({
         '@typescript-eslint/no-magic-numbers': [
           'warn',
           {
+            detectObjects: false,
+            ignore: [0],
             ignoreArrayIndexes: true,
             ignoreClassFieldInitialValues: true,
             ignoreDefaultValues: true,
@@ -228,6 +230,22 @@ module.exports = defineConfig({
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-undef': 'off',
+      },
+    },
+    // electron
+    {
+      env: { node: true },
+      files: ['**/electron/*'],
+      parserOptions: {
+        project: ['./tsconfig.node.json', './electron/tsconfig.json'],
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-magic-numbers': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-undef': 'off',
       },
@@ -355,7 +373,6 @@ module.exports = defineConfig({
     'jsx-a11y/aria-role': 'warn',
     'jsx-a11y/aria-unsupported-elements': 'warn',
     'jsx-a11y/autocomplete-valid': 'warn',
-    'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/heading-has-content': 'warn',
     'jsx-a11y/html-has-lang': 'warn',
     'jsx-a11y/iframe-has-title': 'warn',
@@ -374,7 +391,6 @@ module.exports = defineConfig({
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'warn',
     'jsx-a11y/no-noninteractive-tabindex': 'warn',
     'jsx-a11y/no-redundant-roles': 'warn',
-    'jsx-a11y/no-static-element-interactions': 'warn',
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
     'jsx-a11y/scope': 'warn',

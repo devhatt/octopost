@@ -1,14 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 
-import Icon from './Icon';
+import { Icon } from './Icon';
 
-import { IIconProps } from './Icon.types';
+import { IconProps } from './Icon.types';
 
 const makeSut = ({
   icon = 'alert',
   ...props
-}: Partial<IIconProps>): RenderResult =>
-  render(<Icon icon={icon} {...props} />);
+}: Partial<IconProps>): RenderResult => render(<Icon icon={icon} {...props} />);
 
 describe('Icon', () => {
   describe('when is mounted', () => {

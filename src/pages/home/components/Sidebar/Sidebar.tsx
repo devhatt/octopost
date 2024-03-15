@@ -6,7 +6,7 @@ import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
-import Icon from '~components/Icon/Icon';
+import { Icon } from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';

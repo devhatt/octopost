@@ -2,13 +2,22 @@
 
 /// <reference types="vite/client" />
 
-/// <reference path="globals.d.ts" />
+declare module '*.scss' {
+  const content: Record<string, string>;
+  export default content;
+}
 
-interface ImportMetaEnv {
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.svg';
+declare module '*.gif';
+
+type ImportMetaEnv = {
   readonly REACT_APP_SENTRY_KEY: string;
   // more env variables...
-}
+};
 
-interface ImportMeta {
+type ImportMeta = {
   readonly env: ImportMetaEnv;
-}
+};

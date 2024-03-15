@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import type { StoryDefault } from '@ladle/react';
 import { Story } from '@ladle/react';
 
@@ -11,11 +9,9 @@ export default {
   title: 'Composer Editor',
 } satisfies StoryDefault;
 
-export const ComposerEditorStories: Story<TComposerEditorProps> = (props) => {
-  const [inputText, setInputText] = useState(props.value);
-
-  return <ComposerEditor onChange={setInputText} value={inputText} />;
-};
+export const ComposerEditorStories: Story<TComposerEditorProps> = (props) => (
+  <ComposerEditor {...props} />
+);
 
 ComposerEditorStories.args = {
   value: '',
