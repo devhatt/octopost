@@ -18,7 +18,7 @@ const mockProps = {
   value: 'Value',
 };
 
-// Desejo trocar as desestruturações do componente render para usar diretamente no screen em todos esses métodos
+// TODO #380: Desejo trocar as desestruturações do componente render para usar diretamente no screen em todos esses métodos
 describe('InputSearch component', () => {
   let user = userEvent.setup();
 
