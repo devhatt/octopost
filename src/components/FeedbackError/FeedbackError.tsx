@@ -16,17 +16,13 @@ function FeedbackError(): ReactNode {
 
   const errors = [''];
 
-  const renderErrorDropdown = (): ReactNode => {
-    if (!showErrors) return null;
-
-    return (
-      <ul className={scss.wrapperErrorList}>
-        {errors.map((error) => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
-    );
-  };
+  const renderErrorDropdown = (): ReactNode => (
+    <ul className={scss.wrapperErrorList}>
+      {errors.map((error) => (
+        <li key={error}>{error}</li>
+      ))}
+    </ul>
+  );
 
   const renderError = (): ReactNode => (
     <motion.div
@@ -51,7 +47,7 @@ function FeedbackError(): ReactNode {
             />
           </div>
         </div>
-        {renderErrorDropdown()}
+        {showErrors && renderErrorDropdown()}
       </div>
     </motion.div>
   );
