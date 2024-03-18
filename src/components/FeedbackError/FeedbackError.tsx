@@ -38,14 +38,17 @@ function FeedbackError(): ReactNode {
           <div className={scss.errorMessageContainer}>
             <p className={scss.errorMessage}>{errorMessage}</p>
           </div>
-          <div className={scss.dropdownIconContainer}>
+          <button
+            className={scss.dropDownIconContainer}
+            onClick={() => setShowErrors((prevState) => !prevState)}
+            type="button"
+          >
             <Icon
-              className={scss.dropdownIconContainer}
+              className={scss.dropDownIcon}
               icon="DropDownArrow"
-              onClick={() => setShowErrors(!showErrors)}
               size={10}
             />
-          </div>
+          </button>
         </div>
         {showErrors && renderErrorDropdown()}
       </div>

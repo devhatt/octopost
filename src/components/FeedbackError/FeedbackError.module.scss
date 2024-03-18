@@ -28,19 +28,19 @@
     line-height: 2;
   }
 
-  .dropdownIconContainer {
+  .dropDownIcon {
     color: $secondaryRed;
 
     cursor: pointer;
   }
-}
 
-.iconContainer {
-  width: 2rem;
+  .dropDownIconContainer {
+    width: 2rem;
 
-  display: flex;
+    display: flex;
 
-  align-items: center;
+    align-items: center;
+  }
 }
 
 @include from600 {
