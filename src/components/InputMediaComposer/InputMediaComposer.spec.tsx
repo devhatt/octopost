@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import MediaInputs from './MediaInput';
+import InputMediaComposer from './InputMediaComposer';
 
 vi.mock('nanoid', () => ({
   nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
@@ -8,7 +8,7 @@ vi.mock('nanoid', () => ({
 
 describe('MediaInputs', () => {
   it('renders the  media inputs', () => {
-    render(<MediaInputs />);
+    render(<InputMediaComposer />);
 
     const manyMediaComponent = screen.getAllByTestId('manyMediaInputs');
     expect(manyMediaComponent.length).toBeGreaterThan(0);

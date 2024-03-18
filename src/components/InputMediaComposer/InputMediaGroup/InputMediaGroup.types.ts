@@ -1,6 +1,6 @@
-import { IMedia } from '~components/InputMedia/InputMedia.types';
+import { IMedia } from '../InputMediaButton/InputMediaButton.types';
 
-export interface IMediaGroupProps {
+export interface IInputMediaGroupProps {
   media: IMedia;
 
   onImageChange: (newMedias: IMedia[], id: IMedia['id']) => void;

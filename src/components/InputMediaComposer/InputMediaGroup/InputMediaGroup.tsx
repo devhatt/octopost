@@ -1,13 +1,18 @@
+import InputMediaButton from '../InputMediaButton/InputMediaButton';
+
 import scss from '../MediaInput.module.scss';
 
-import InputMedia from '../../InputMedia/InputMedia';
-import { IMediaGroupProps } from './MediaGroup.types';
+import { IInputMediaGroupProps } from './InputMediaGroup.types';
 
-function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps) {
+function InputMediaGroup({
+  media,
+  onImageChange,
+  onRemove,
+}: IInputMediaGroupProps) {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
-        <InputMedia
+        <InputMediaButton
           files={media.file}
           onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
@@ -23,4 +28,4 @@ function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps) {
   );
 }
 
-export default MediaGroup;
+export default InputMediaGroup;

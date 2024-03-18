@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { IMedia } from '~components/InputMedia/InputMedia.types';
-
-import InputMedia from '../InputMedia/InputMedia';
-import MediaGroup from './MediaGroup/MediaGroup';
+import InputMediaButton from './InputMediaButton/InputMediaButton';
+import InputMediaGroup from './InputMediaGroup/InputMediaGroup';
 
 import scss from './MediaInput.module.scss';
 
-function MediaInputs() {
+import { IMedia } from './InputMediaButton/InputMediaButton.types';
+
+function InputMediaComposer() {
   const [medias, setMedias] = useState<IMedia[]>([]);
 
   const addMedia = (files: IMedia[]) => {
@@ -39,16 +39,16 @@ function MediaInputs() {
   return (
     <div className={scss.manyMediaContainer} data-testid="manyMediaInputs">
       {medias.map((media) => (
-        <MediaGroup
+        <InputMediaGroup
           key={media.id}
           media={media}
           onImageChange={updateMedia}
           onRemove={removeMedia}
         />
       ))}
-      <InputMedia onChange={addMedia} />
+      <InputMediaButton onChange={addMedia} />
     </div>
   );
 }
 
-export default MediaInputs;
+export default InputMediaComposer;
