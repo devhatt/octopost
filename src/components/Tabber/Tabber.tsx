@@ -12,7 +12,7 @@ import scss from '~components/Tabber/Tabber.module.scss';
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
 
-import { ITab, TPostModeId } from './Tabber.types';
+import { ITab, TPostModeId, TTabState } from './Tabber.types';
 
 function Tabber(): ReactNode {
   const isDesktopScreen = useMediaQuery('sm');
@@ -25,6 +25,8 @@ function Tabber(): ReactNode {
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
+  const [content, setContent] = useState<TTabState>({});
+  const [currentContent, setCurrentContent] = useState('');
 
   const changeCurrentTab = (socialNetwork: ITab): void => {
     const tabsCurrentPostModeId =
@@ -58,7 +60,7 @@ function Tabber(): ReactNode {
 
   useEffect(() => {
     setCurrentContent(content[currentPostModeId]?.text || '');
-  }, [content, currentPostModeId]); 
+  }, [content, currentPostModeId]);
 
   return (
     <div>
@@ -73,6 +75,13 @@ function Tabber(): ReactNode {
             currentPostModeId={currentPostModeId}
             currentTab={currentTab}
             onChangePostMode={changeCurrentPostMode}
+          />
+          <input
+            type="text"
+            onChange={(e) =>
+              handleContentChange(currentPostModeId, e.target.value)
+            }
+            value={currentContent}
           />
         </div>
         <div className={scss.previewContainer}>
