@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 import InputMediaButton from '../InputMediaButton/InputMediaButton';
 
-import scss from '../MediaInput.module.scss';
+import scss from '../InputMediaComposer.module.scss';
 
 import { IInputMediaGroupProps } from './InputMediaGroup.types';
 
@@ -8,7 +10,7 @@ function InputMediaGroup({
   media,
   onImageChange,
   onRemove,
-}: IInputMediaGroupProps) {
+}: IInputMediaGroupProps): ReactNode {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
@@ -17,9 +19,10 @@ function InputMediaGroup({
           onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
         <button
-          area-label="Close"
+          aria-label="Close"
           className={scss.removeButton}
           onClick={() => onRemove(media.id)}
+          type="button"
         >
           X
         </button>

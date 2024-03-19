@@ -1,5 +1,5 @@
 import type { Story } from '@ladle/react';
 
-import MediaInputs from './InputMediaComposer';
+import InputMediaComposer from './InputMediaComposer';
 
-export const ManyMediaInputsComponent: Story = () => <MediaInputs />;
+export const ManyMediaInputsComponent: Story = () => <InputMediaComposer />;
