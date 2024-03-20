@@ -63,7 +63,7 @@ function FeedbackError(): ReactNode {
     </motion.div>
   );
 
-  return errorMessage ? renderError() : null;
+  return errorMessage && renderError();
 }
 
 export default FeedbackError;
