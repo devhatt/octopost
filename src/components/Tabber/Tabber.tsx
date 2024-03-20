@@ -1,8 +1,9 @@
-﻿import { useState } from 'react';
+﻿import React, { useState } from 'react';
 
-import { IPostMode } from 'modules/types';
+import { PostMode } from '@octopost/module-manager';
 
-import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
+import { useModulesStore } from '~stores/useModulesStore';
+
 import { buildPostModeId } from './utils';
 
 import scss from '~components/Tabber/Tabber.module.scss';
@@ -12,42 +13,39 @@ import Tabs from './Tabs/Tabs';
 
 import { ITab, TPostModeId } from './Tabber.types';
 
-function Tabber() {
-  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
-
-  const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
+function Tabber(): React.ReactElement {
+  const modules = useModulesStore((state) => state.modules);
+  const [currentTab, setCurrentTab] = useState<ITab>(modules[0] as ITab);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
 
-  const changeCurrentTab = (socialNetwork: ITab) => {
-    const tabsCurrentPostModeId = socialNetwork.currentPostModeId
-      ? socialNetwork.currentPostModeId
-      : buildPostModeId(socialNetwork);
+  const changeCurrentTab = (newModules: ITab): void => {
+    const tabsCurrentPostModeId =
+      (newModules.currentPostModeId ?? '') || buildPostModeId(newModules);
 
-    setCurrentTab(socialNetwork);
+    setCurrentTab(newModules);
     setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
   const changeCurrentPostMode = (
-    postMode: IPostMode,
+    postMode: PostMode,
     postModeId: TPostModeId
-  ) => {
+  ): void => {
     setCurrentPostModeId(postModeId);
     currentTab.currentPostMode = postMode;
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode
-    ? currentTab.currentPostMode
-    : currentTab.postModes[0];
+  const preview =
+    Boolean(currentTab.currentPostMode) || currentTab.postModes[0];
 
   return (
     <div>
       <Tabs
         currentTab={currentTab}
         onChangeTab={changeCurrentTab}
-        socialNetworks={socialNetworks}
+        socialNetworks={modules as ITab[]}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
