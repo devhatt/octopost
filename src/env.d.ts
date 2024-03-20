@@ -1,11 +1,23 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/// <reference types="vite-plugin-svgr/client" />
+
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly REACT_APP_SENTRY_KEY: string;
-  // more env variables...
+declare module '*.scss' {
+  const content: Record<string, string>;
+  export default content;
 }
 
-interface ImportMeta {
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.jpeg';
+declare module '*.svg';
+declare module '*.gif';
+
+type ImportMetaEnv = {
+  readonly REACT_APP_SENTRY_KEY: string;
+  // more env variables...
+};
+
+type ImportMeta = {
   readonly env: ImportMetaEnv;
-}
+};

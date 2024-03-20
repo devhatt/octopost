@@ -1,8 +1,9 @@
-export type TCheckboxChangeHandler = (checked: boolean) => void;
+import { ComponentPropsWithRef } from 'react';
 
-export type TCheckboxProps = {
-  className?: string;
-  children: string;
-  onChange: TCheckboxChangeHandler;
-  checked: boolean;
+type CheckboxBaseProps = Omit<ComponentPropsWithRef<'input'>, 'onChange'>;
+
+export type CheckboxProps = CheckboxBaseProps & {
+  checked?: boolean;
+  children?: string;
+  onChange?: (checked: boolean) => void;
 };

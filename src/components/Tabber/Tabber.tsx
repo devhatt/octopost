@@ -56,7 +56,15 @@ function Tabber(): React.ReactElement {
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent text={`${preview.name} Placeholder`} />
+          {typeof preview === 'object' && Boolean(preview.previewComponent) ? (
+            <preview.previewComponent
+              customData={{}}
+              medias={[]}
+              text={`${preview.name} Placeholder`}
+            />
+          ) : (
+            <div>No preview available</div>
+          )}
         </div>
       </div>
     </div>

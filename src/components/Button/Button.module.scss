@@ -1,4 +1,4 @@
-﻿@use '../../styles/global';
+@use '../../styles/global';
 
 button {
   display: flex;
@@ -308,10 +308,5 @@ button {
         rgba(255, 255, 255, 0.15)
       );
     }
-  }
-
-  img,
-  svg {
-    width: 0.625rem;
   }
 }

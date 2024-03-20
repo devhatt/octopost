@@ -1,7 +1,31 @@
-﻿import { nanoid } from 'nanoid';
+﻿/* eslint-disable @typescript-eslint/no-explicit-any -- this is a mock file */
+import { ReactNode } from 'react';
+
+import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
 import { TSocialNetworksState } from './useSocialNetworkStore.types';
+
+const postModes = [
+  {
+    name: 'Story',
+    previewComponent: (): ReactNode => <div>Story</div>,
+    validators: null as any,
+    widgets: [],
+  },
+  {
+    name: 'Post',
+    previewComponent: (): ReactNode => <div>Post</div>,
+    validators: null as any,
+    widgets: [],
+  },
+  {
+    name: 'Album',
+    previewComponent: (): ReactNode => <div>Album</div>,
+    validators: null as any,
+    widgets: [],
+  },
+];
 
 export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
   socialNetworks: [
@@ -22,7 +46,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
       ),
       id: nanoid(),
       name: 'Facebook',
-      postModes: [],
+      postModes,
     },
     {
       icon: (
@@ -41,7 +65,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
       ),
       id: nanoid(),
       name: 'Instagram',
-      postModes: [],
+      postModes,
     },
     {
       icon: (
@@ -60,7 +84,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
       ),
       id: nanoid(),
       name: 'Xwitter',
-      postModes: [],
+      postModes,
     },
     {
       icon: (
@@ -79,7 +103,7 @@ export const useSocialNetworkStore = create<TSocialNetworksState>(() => ({
       ),
       id: nanoid(),
       name: 'TikTok',
-      postModes: [],
+      postModes,
     },
   ],
 }));

@@ -2,4 +2,8 @@ import { Story } from '@ladle/react';
 
 import MainComposer from './ContentEditor';
 
-export const MainComposerStories: Story = () => <MainComposer />;
+import { TContentEditorProps } from './ContentEditor.types';
+
+export const MainComposerStories: Story<TContentEditorProps> = (props) => (
+  <MainComposer {...props} />
+);
