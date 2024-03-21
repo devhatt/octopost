@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 import * as zustand from 'zustand';
 
 import { useError } from './useError';
@@ -6,11 +6,11 @@ import { useError } from './useError';
 import { myCustomCreate, storeResetFns } from '../__mocks__/zunstandMock';
 
 vi.mock('zustand', async () => {
-  const zustand = (await vi.importActual('zustand')) as object;
+  const zustandd = await vi.importActual('zustand');
 
   return {
     __esModule: true,
-    ...zustand,
+    ...zustandd,
   };
 });
 
@@ -19,28 +19,28 @@ vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
 describe('useError', () => {
   afterEach(() => {
     act(() => {
-      storeResetFns.forEach((resetFn) => {
+      for (const resetFn of storeResetFns) {
         resetFn();
-      });
+      }
     });
   });
 
   describe('when initialize', () => {
-    it('error message is empty', () => {
+    it('errors array is empty', () => {
       const { result } = renderHook(() => useError((state) => state));
-      expect(result.current.errorMessage).toBe('');
+      expect(result.current.errors).toEqual([]);
     });
   });
 
-  describe('when change the error message', () => {
-    it('changes the error message', () => {
+  describe('when add a new error message', () => {
+    it('adds the new error message to the errors array', () => {
       const { result } = renderHook(() => useError((state) => state));
 
       act(() => {
-        result.current.setErrorMessage('update error message');
+        result.current.setErrors('new error message');
       });
 
-      expect(result.current.errorMessage).toBe('update error message');
+      expect(result.current.errors).toEqual(['new error message']);
     });
   });
 });
