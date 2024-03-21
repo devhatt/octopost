@@ -10,20 +10,6 @@ module.exports = defineConfig({
     'playwright-report',
   ],
   overrides: [
-    {
-      files: [
-        '**/vite.config.ts',
-        '**/vitest.config.ts',
-        '**/playwright.config.ts',
-        '**/playwright-ct.config.ts',
-        '**/tsup.config.ts',
-      ],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.node.json',
-        tsconfigRootDir: __dirname,
-      },
-    },
     // stories
     {
       files: ['**/*.stories.*'],
@@ -38,13 +24,11 @@ module.exports = defineConfig({
             unnamedComponents: 'arrow-function',
           },
         ],
-
         'react/no-multi-comp': 'off',
         'react/prop-types': 'off',
       },
     },
     {
-      env: { node: true },
       files: [
         '**/vitest.config.ts',
         '**/vite.config.ts',
@@ -186,6 +170,22 @@ module.exports = defineConfig({
         'max-params': 'off',
         'no-loss-of-precision': 'off',
         'no-magic-numbers': 'off',
+      },
+    },
+    {
+      files: [
+        '**/vite.config.ts',
+        '**/vitest.config.ts',
+        '**/playwright.config.ts',
+        '**/playwright-ct.config.ts',
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.node.json',
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        '@typescript-eslint/no-magic-numbers': 'off',
       },
     },
   ],
@@ -356,7 +356,7 @@ module.exports = defineConfig({
     'react/no-unstable-nested-components': 'warn',
     'react/prefer-stateless-function': 'warn',
     'react/prop-types': 'warn',
-    'react/react-in-jsx-scope': 'off', // React 18 no need for import React, since its a global variable
+    'react/react-in-jsx-scope': 'off', // React 18 no need for import React, since it's a global variable
     'react/self-closing-comp': 'warn',
     'react/style-prop-object': 'warn',
     'react/void-dom-elements-no-children': 'warn',
