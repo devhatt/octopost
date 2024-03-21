@@ -1,10 +1,10 @@
 import { ITab } from '~components/Tabber/Tabber.types';
 
-interface Module {
+type Module = {
   name: string;
-}
+};
 
-export interface ModulesState {
+export type ModulesState = {
   addModule: (module: Module) => void;
   modules: (ITab | Module)[];
-}
+};
