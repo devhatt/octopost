@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
@@ -12,7 +12,7 @@ import scss from '~components/Tabber/Tabber.module.scss';
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
 
-import { ITab, TPostModeId, TTabState } from './Tabber.types';
+import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber(): ReactNode {
   const isDesktopScreen = useMediaQuery('sm');
@@ -25,8 +25,6 @@ function Tabber(): ReactNode {
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
-  const [content, setContent] = useState<TTabState>({});
-  const [currentContent, setCurrentContent] = useState('');
 
   const changeCurrentTab = (socialNetwork: ITab): void => {
     const tabsCurrentPostModeId =
@@ -45,22 +43,9 @@ function Tabber(): ReactNode {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const handleContentChange = (postId: TPostModeId, text: string) => {
-    setContent((prevContent) => ({
-      ...prevContent,
-      [postId]: {
-        text: text,
-      },
-    }));
-  };
-
   const preview =
     currentTab.currentPostMode ??
-    (currentTab.postModes?.[0] as PostMode | undefined);
-
-  useEffect(() => {
-    setCurrentContent(content[currentPostModeId]?.text || '');
-  }, [content, currentPostModeId]);
+    (currentTab.postModes[0] as PostMode | undefined);
 
   return (
     <div>

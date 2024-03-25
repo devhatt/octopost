@@ -7,8 +7,6 @@ import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/ContentEditor/ContentEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
-import SavBar from '~components/SavBar/SavBar';
-import SocialMediaList from '~components/SocialMediaList/SocialMediaList';
 import Tabber from '~components/Tabber/Tabber';
 
 import Header from './components/Header/Header';
