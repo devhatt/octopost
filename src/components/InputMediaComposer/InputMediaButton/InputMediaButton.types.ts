@@ -3,11 +3,11 @@ export interface IMedia {
   id: string;
 }
 
-export interface IInputMediaProps {
+export interface IInputMediaButtonProps {
   files?: File;
   onChange: (media: IMedia[]) => void;
 }
 
-export interface IInputMediaTestWrapper {
+export interface IInputMediaButtonTestWrapper {
   onChange: (media: string) => void;
 }

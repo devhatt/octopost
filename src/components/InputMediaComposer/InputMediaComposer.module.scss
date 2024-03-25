@@ -3,9 +3,9 @@
 .manyMediaContainer {
   width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 9.7rem));
-  gap: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 
   align-items: center;
   justify-content: start;

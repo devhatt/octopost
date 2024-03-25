@@ -3,13 +3,13 @@ import { useRef } from 'react';
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
 
-import scss from './InputMedia.module.scss';
+import scss from './InputMediaButton.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
 
-import { IInputMediaProps } from './InputMedia.types';
+import { IInputMediaButtonProps } from './InputMediaButton.types';
 
-function InputMedia(props: IInputMediaProps) {
+function MediaButton(props: IInputMediaButtonProps) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const inputClasses = classNames(scss.button, {
@@ -41,22 +41,22 @@ function InputMedia(props: IInputMediaProps) {
 
   const renderEmptyImagePlaceholder = () => (
     <img
-      src={emptyInputGrey}
       alt="image placeholder"
       className={scss.imagePlaceholder}
+      src={emptyInputGrey}
     />
   );
 
   const renderImage = (file: File) => (
     <img
-      src={URL.createObjectURL(file)}
       alt={`uploaded image ${file.name}`}
       className={scss.imageSelected}
+      src={URL.createObjectURL(file)}
     />
   );
 
   const renderVideo = (file: File) => (
-    <video controls className={scss.imageSelected}>
+    <video className={scss.imageSelected} controls>
       <source src={URL.createObjectURL(file)} type={file.type} />
     </video>
   );
@@ -72,17 +72,17 @@ function InputMedia(props: IInputMediaProps) {
   return (
     <button className={inputClasses} onClick={handleInputClick}>
       <input
-        type="file"
-        data-testid="imageInput"
-        ref={fileInputRef}
-        className={scss.hidden}
         accept="image/*, video/*"
-        onChange={handleFileChange}
+        className={scss.hidden}
+        data-testid="imageInput"
         multiple
+        onChange={handleFileChange}
+        ref={fileInputRef}
+        type="file"
       />
       {props.files ? renderMedia() : renderEmptyImagePlaceholder()}
     </button>
   );
 }
 
-export default InputMedia;
+export default MediaButton;

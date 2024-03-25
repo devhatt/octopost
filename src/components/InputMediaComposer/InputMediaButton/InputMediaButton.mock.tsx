@@ -1,6 +1,6 @@
-import InputMedia from './InputMedia';
+import InputMediaButton from './InputMediaButton';
 
-import { IInputMediaTestWrapper } from './InputMedia.types';
+import { IInputMediaButtonTestWrapper } from './InputMediaButton.types';
 
 /*
  *playwright's tests runs on the server and in a real browser,
@@ -9,9 +9,9 @@ import { IInputMediaTestWrapper } from './InputMedia.types';
  *github.com/microsoft/playwright/issues/27439
  */
 
-export function InputMediaForTest(props: IInputMediaTestWrapper) {
+export function InputMediaButtonForTest(props: IInputMediaButtonTestWrapper) {
   return (
-    <InputMedia
+    <InputMediaButton
       onChange={(media) => {
         props.onChange(media[0].file.name);
       }}

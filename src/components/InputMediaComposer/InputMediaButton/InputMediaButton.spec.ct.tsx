@@ -1,14 +1,14 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { expect, test } from '@playwright/experimental-ct-react';
 
-import { InputMediaForTest } from './InputMedia.mock';
+import { InputMediaButtonForTest } from './InputMediaButton.mock';
 
-test.describe('InputMedia', () => {
+test.describe('MediaButton', () => {
   test.describe('when click on input', () => {
     test('changes the image', async ({ mount }) => {
       let mediaSelected: string | null = null;
 
       const component = await mount(
-        <InputMediaForTest
+        <InputMediaButtonForTest
           onChange={(mediaName) => (mediaSelected = mediaName)}
         />
       );
@@ -25,7 +25,7 @@ test.describe('InputMedia', () => {
         let mediaSelected: string | null = null;
 
         const component = await mount(
-          <InputMediaForTest
+          <InputMediaButtonForTest
             onChange={(mediaName) => (mediaSelected = mediaName)}
           />
         );
