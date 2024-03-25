@@ -66,6 +66,10 @@
 
       .errorMessage {
         color: $secondaryRed;
+
+        .boldSpanErrorMessage {
+          font-weight: bold;
+        }
       }
     }
 

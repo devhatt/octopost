@@ -44,8 +44,9 @@ function FeedbackError(): ReactNode {
           <Icon className={scss.alertIcon} icon="alert" size={20} />
           <div className={scss.errorMessageContainer}>
             <p className={scss.errorMessage}>
-              Failed to progress, please click on the<strong> button </strong>on
-              the side to see the errors
+              Failed to progress, please click on the{' '}
+              <span className={scss.boldSpanErrorMessage}> button </span>on the
+              side to see the errors
             </p>
           </div>
           <button

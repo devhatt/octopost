@@ -17,7 +17,7 @@ export const FeedbackErrorComponent: Story<IFeedbackErrorProps> = (props) => {
     for (const error of props.errors) {
       setErrors(error);
     }
-  }, [props.errors, setErrors]); // Include 'setErrors' in the dependency array
+  }, [props.errors, setErrors]);
 
   return <FeedbackError />;
 };
