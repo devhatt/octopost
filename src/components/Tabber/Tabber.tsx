@@ -76,13 +76,6 @@ function Tabber(): ReactNode {
             currentTab={currentTab}
             onChangePostMode={changeCurrentPostMode}
           />
-          <input
-            type="text"
-            onChange={(e) =>
-              handleContentChange(currentPostModeId, e.target.value)
-            }
-            value={currentContent}
-          />
         </div>
         <div className={scss.previewContainer}>
           {!!preview?.previewComponent && (
