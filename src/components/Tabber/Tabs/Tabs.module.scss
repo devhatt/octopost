@@ -1,5 +1,5 @@
-@use '~styles/global';
-@use '~styles/breakpoints.scss';
+@use '~styles/global' as *;
+@use '~styles/breakpoints.scss' as *;
 
 .tabsContainer {
   width: 100%;
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
 
-  color: global.$tertiaryGray;
+  color: $tertiaryGray;
 
   padding: 0.75rem 1rem;
 
@@ -25,10 +25,10 @@
   cursor: pointer;
 
   &.active {
-    color: global.$secondaryPurple;
+    color: $secondaryPurple;
 
     &::before {
-      height: 2px;
+      height: 2px;  
 
       position: absolute;
 
@@ -40,7 +40,7 @@
   }
 
   &.error {
-    color: global.$secondaryRed;
+    color: $secondaryRed;
   }
 
   path {
@@ -59,7 +59,7 @@
     margin: 0;
   }
 }
-@include breakpoints.from600 {
+@include from600 {
   .tab {
     display: grid;
     grid-template-columns: minmax(min-content, max-content) auto;

@@ -16,7 +16,6 @@ function Tabs(props: ITabsProps): ReactNode {
       className={tabClasses(socialNetwork.id)}
       key={`${socialNetwork.id}-${socialNetwork.name}`}
       onClick={() => props.onChangeTab(socialNetwork)}
-      type="button"
     >
       {socialNetwork.icon}
       <span className={scss.tabTitle}>{socialNetwork.name}</span>
