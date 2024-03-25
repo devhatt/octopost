@@ -237,6 +237,9 @@ importers:
       eslint-plugin-unicorn:
         specifier: 50.0.1
         version: 50.0.1(eslint@8.56.0)
+      eslint-plugin-write-good-comments:
+        specifier: 0.2.0
+        version: 0.2.0
       express:
         specifier: 4.18.2
         version: 4.18.2
@@ -3511,6 +3514,11 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
+  /adverb-where@0.2.6:
+    resolution: {integrity: sha512-uVazUDEPYpBSVRjEDTzO6hVXh9X/eQb+gobzDpqdzMiM1MkfGxfPtgN8YerBjAeDkoABZprsOwhSZnY4X3knnw==}
+    engines: {node: '>=6', npm: '>=5'}
+    dev: true
+
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -4361,6 +4369,10 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
+  /commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+    dev: true
+
   /commander@5.1.0:
     resolution: {integrity: sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==}
     engines: {node: '>= 6'}
@@ -5033,6 +5045,10 @@ packages:
   /dotenv@9.0.2:
     resolution: {integrity: sha512-I9OvvrHp4pIARv4+x9iuewrWycX6CcZtoAu1XrzPxc5UygMJXJZYmBsynku8IkrJwgypE5DGNjDPmPRhDCptUg==}
     engines: {node: '>=10'}
+    dev: true
+
+  /e-prime@0.10.4:
+    resolution: {integrity: sha512-tzBmM2mFSnAq5BuxPSyin6qXb3yMe1wufJN7L7ZPcEWS5S+jI2dhKQEoqHVEcSMMXo/j5lcWpX5jzA6wLSmX6w==}
     dev: true
 
   /eastasianwidth@0.2.0:
@@ -5795,6 +5811,14 @@ packages:
       - supports-color
       - typescript
     dev: false
+
+  /eslint-plugin-write-good-comments@0.2.0:
+    resolution: {integrity: sha512-YuTGPicIAyORMFeKBdXAks0xRv5vTyOElctJWwm95Wl5R7dOR4Aq/4w6V4Zh2scEQQsY7d+un18fU+YoKCKiqQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      requireindex: 1.1.0
+      write-good: 1.0.8
+    dev: true
 
   /eslint-scope@5.1.1:
     resolution: {integrity: sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw==}
@@ -9060,6 +9084,11 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /no-cliches@0.3.6:
+    resolution: {integrity: sha512-3yZ1vfGKOcv0dyyhUeqA0Qa6RsQ4SfUnL6o2IWR4sVg8kdnJo48XTWbMLdtnfiZTbCUdsMttNwyJcihEdGCZBw==}
+    engines: {node: '>=16', npm: '>=8'}
+    dev: true
+
   /node-addon-api@1.7.2:
     resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
     requiresBuild: true
@@ -9383,6 +9412,10 @@ packages:
   /parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
+    dev: true
+
+  /passive-voice@0.1.0:
+    resolution: {integrity: sha512-Pj9iwzXw4bKEtdugGYm92jT4tnsj+xrTSkHFEM4bn6fefqbFdZi49tZMmGIZ91aIQTyFtMUww7O2qYaZKAsDag==}
     dev: true
 
   /path-browserify@1.0.1:
@@ -10101,6 +10134,11 @@ packages:
   /require-main-filename@2.0.0:
     resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}
     dev: false
+
+  /requireindex@1.1.0:
+    resolution: {integrity: sha512-LBnkqsDE7BZKvqylbmn7lTIVdpx4K/QCduRATpO5R+wtPmky/a8pN1bO2D6wXppn1497AJF9mNjqAXr6bdl9jg==}
+    engines: {node: '>=0.10.5'}
+    dev: true
 
   /requireindex@1.2.0:
     resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
@@ -11136,6 +11174,11 @@ packages:
     engines: {node: '>=0.6'}
     dev: true
 
+  /too-wordy@0.3.6:
+    resolution: {integrity: sha512-fK4DKkEcrpBbK6uANekH37VeNAb/88qKdkqc/nBOFJpHdvXKXdA4lZRkiM6zNlow00Zp4W4/lnWyqqCaOQlg/w==}
+    engines: {node: '>=6', npm: '>=5'}
+    dev: true
+
   /totalist@3.0.1:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
@@ -11934,6 +11977,10 @@ packages:
     dependencies:
       defaults: 1.0.4
 
+  /weasel-words@0.1.1:
+    resolution: {integrity: sha512-rWkTAGqs4TN6qreS06+irmFUMrQVx5KoFjD8CxMHUsAwmxw/upDcfleaEYOLsonUbornahg+VJ9xrWxp4udyJA==}
+    dev: true
+
   /web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
     dev: true
@@ -12102,6 +12149,20 @@ packages:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 4.1.0
+    dev: true
+
+  /write-good@1.0.8:
+    resolution: {integrity: sha512-P1Ct7+DNrOcr2JAxDZ3Q5i5sx2LSveu7iLaoUL0A+YiG0GKf0l5+9j3rwMeyh6JeTL1+HfQV1rnwEvzhNIvpFw==}
+    engines: {node: '>=6', npm: '>=5'}
+    hasBin: true
+    dependencies:
+      adverb-where: 0.2.6
+      commander: 2.20.3
+      e-prime: 0.10.4
+      no-cliches: 0.3.6
+      passive-voice: 0.1.0
+      too-wordy: 0.3.6
+      weasel-words: 0.1.1
     dev: true
 
   /ws@8.16.0:
