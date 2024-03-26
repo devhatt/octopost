@@ -20,7 +20,9 @@ button {
 }
 
 .textButton {
-  width: fit-content;
+  width: 15rem;
+  height: 4.65rem;
+
   overflow: hidden;
 
   gap: 0.5rem;
@@ -104,12 +106,16 @@ button {
 }
 
 @mixin outlined($color, $border, $hover) {
-  color: $color;
+  color: global.$secondaryPurple;
 
   border: 1px solid $border;
 
   &:hover {
-    background-color: $hover;
+    color: global.$secondaryPurple;
+
+    background-color: global.$pressing;
+
+    transition: 0.3s;
   }
 
   svg,
