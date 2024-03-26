@@ -1,10 +1,26 @@
+import { ReactNode } from 'react';
+
 import scss from './SubmitButton.module.scss';
 
-function SubmitButton() {
+function SubmitButton(): ReactNode {
+  const isDisabled = false;
+
   return (
     <div className={scss.buttonWrapper}>
-      <button className={scss.submitButtonPostNow}>Post Now</button>
-      <button className={scss.submitButtonPostLater}>Post Later</button>
+      <button
+        className={scss.submitButtonPostLater}
+        disabled={isDisabled}
+        type="button"
+      >
+        Post Later
+      </button>
+      <button
+        className={scss.submitButtonPostNow}
+        disabled={isDisabled}
+        type="button"
+      >
+        Post Now
+      </button>
     </div>
   );
 }
