@@ -6,11 +6,11 @@ import { useError } from './useError';
 import { myCustomCreate, storeResetFns } from '../__mocks__/zunstandMock';
 
 vi.mock('zustand', async () => {
-  const zustandd = await vi.importActual('zustand');
+  const actualZustand = await vi.importActual('zustand');
 
   return {
     __esModule: true,
-    ...zustandd,
+    ...actualZustand,
   };
 });
 
