@@ -1,3 +1,5 @@
-export interface IPreviewContainerProps {
-  children: React.ReactNode;
+import { ReactNode } from 'react';
+
+export type IPreviewContainerProps = {
+  children: ReactNode;
 }

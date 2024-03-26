@@ -1,5 +1,4 @@
-import { HTMLProps } from 'react';
-import { ForwardedRef } from 'react';
+import { ForwardedRef , HTMLProps } from 'react';
 
 export type TInputProps = HTMLProps<HTMLInputElement> & {
   error?: boolean;

@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
-import { IUseError } from './useError.types';
+import { UseError } from './useError.types';
 
-export const useError = create<IUseError>()((set) => ({
+export const useError = create<UseError>()((set) => ({
   errorMessage: '',
-  setErrorMessage: (errorMessage) => set({ errorMessage }),
+  setErrorMessage: (errorMessage): void => set({ errorMessage }),
 }));

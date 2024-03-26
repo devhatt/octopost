@@ -6,7 +6,7 @@ import { useError } from '~stores/useError/useError';
 
 import FeedbackError from './FeedbackError';
 
-interface IFeedbackErrorProps {
+type IFeedbackErrorProps = {
   errorMessage: string;
 }
 
@@ -15,7 +15,7 @@ export const FeedbackErrorComponent: Story<IFeedbackErrorProps> = (props) => {
 
   useEffect(() => {
     setErrorMessage(props.errorMessage);
-  }, [props.errorMessage]);
+  }, [props.errorMessage, setErrorMessage]);
 
   return <FeedbackError />;
 };

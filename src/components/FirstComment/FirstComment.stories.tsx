@@ -4,6 +4,4 @@ import FirstComment from './FirstComment';
 
 import { TFirstCommentProps } from './FirstComment.types';
 
-export const FirstCommentStories: Story<TFirstCommentProps> = (props) => {
-  return <FirstComment {...props} />;
-};
+export const FirstCommentStories: Story<TFirstCommentProps> = (props) => <FirstComment {...props} />;

@@ -5,9 +5,9 @@ import CharacterLimitMainText from './CharacterLimitMainText';
 describe('CharacterLimitMainText map test', () => {
   it('renders the correct number of elements', () => {
     const modules = [
-      { maxLength: 10, value: 'Option 1', id: '1', svg: <svg /> },
-      { maxLength: 15, value: 'Option 2', id: '2', svg: <svg /> },
-      { maxLength: 20, value: 'Option 3', id: '3', svg: <svg /> },
+      { id: '1', maxLength: 10, svg: <svg />, value: 'Option 1' },
+      { id: '2', maxLength: 15, svg: <svg />, value: 'Option 2' },
+      { id: '3', maxLength: 20, svg: <svg />, value: 'Option 3' },
     ];
 
     const { container } = render(<CharacterLimitMainText module={modules} />);

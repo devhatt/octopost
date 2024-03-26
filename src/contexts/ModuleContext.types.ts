@@ -1,10 +1,13 @@
+
+import { ReactElement } from 'react';
+
 import { OctoModule } from '@octopost/module-manager';
 
-export interface IModuleInterface {
-  components: React.ReactElement[];
+export type IModuleInterface = {
+  components: ReactElement[];
 }
 
-export interface IModuleContext {
+export type IModuleContext = {
   modules: OctoModule[];
   modulesURL: string[];
 }
