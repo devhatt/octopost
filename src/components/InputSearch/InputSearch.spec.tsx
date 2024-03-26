@@ -1,79 +1,80 @@
-import React from 'react';
-
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import InputSearch from './InputSearch';
 
 const mockProps = {
+  error: false,
+  errorMessage: 'Test Error Message',
+  handleClear: vi.fn(),
   name: 'testInput',
+  onChange: vi.fn(),
+  onFocus: vi.fn(),
+  placeholder: 'Test Placeholder',
+  readonly: false,
+  required: false,
+  setValue: vi.fn(),
   type: 'text',
   value: 'Value',
-  required: false,
-  placeholder: 'Test Placeholder',
-  errorMessage: 'Test Error Message',
-  readonly: false,
-  error: false,
-  onFocus: vi.fn(),
-  handleClear: vi.fn(),
-  onChange: vi.fn(),
-  setValue: vi.fn(),
 };
 
+// TODO #380: Desejo trocar as desestruturações do componente render para usar diretamente no screen em todos esses métodos
 describe('InputSearch component', () => {
-  it('renders the component', () => {
-    const { getByLabelText, getByPlaceholderText } = render(
-      <InputSearch {...mockProps} />
-    );
+  let user = userEvent.setup();
 
-    const inputElement = getByPlaceholderText('Test Placeholder');
-    const labelElement = getByLabelText('Test Placeholder');
+  beforeEach(() => {
+    user = userEvent.setup();
+  });
+
+  it('renders the component', () => {
+    render(<InputSearch {...mockProps} />);
+
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
+    const labelElement = screen.getByLabelText('Test Placeholder');
 
     expect(inputElement).toBeInTheDocument();
     expect(labelElement).toBeInTheDocument();
   });
 
-  it('handles input value correctly', () => {
-    const { getByPlaceholderText } = render(<InputSearch {...mockProps} />);
-    const inputElement = getByPlaceholderText(
-      'Test Placeholder'
-    ) as HTMLInputElement;
+  it('handles input value correctly', async () => {
+    render(<InputSearch {...mockProps} />);
 
-    fireEvent.change(inputElement, { target: { value: 'Value' } });
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    expect(inputElement.value).toBe('Value');
+    await user.type(inputElement, 'value');
+
+    expect(inputElement).toHaveValue('value');
   });
 
-  it('handles onFocus callback', () => {
-    const { getByPlaceholderText } = render(<InputSearch {...mockProps} />);
-    const inputElement = getByPlaceholderText('Test Placeholder');
+  it('handles onFocus callback', async () => {
+    render(<InputSearch {...mockProps} />);
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    fireEvent.focus(inputElement);
+    await userEvent.click(inputElement);
 
     expect(mockProps.onFocus).toHaveBeenCalled();
   });
 
   it('displays error message when errors prop is true', () => {
-    const { getByText } = render(<InputSearch {...mockProps} error={true} />);
+    render(<InputSearch {...mockProps} error />);
 
-    const errorMessage = getByText('Test Error Message');
+    const errorMessage = screen.getByText('Test Error Message');
     expect(errorMessage).toBeInTheDocument();
   });
 
   it('clears input value on clear button click', async () => {
-    const { getByPlaceholderText, queryByTestId } = render(
-      <InputSearch {...mockProps} />
-    );
-    const inputElement = getByPlaceholderText(
-      'Test Placeholder'
-    ) as HTMLInputElement;
+    render(<InputSearch {...mockProps} />);
+    const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
-    fireEvent.change(inputElement, { target: { value: 'Value' } });
+    await userEvent.type(inputElement, 'Value');
 
-    const clearButton = queryByTestId('clear-button') as HTMLButtonElement;
+    const clearButton = screen.queryByTestId(
+      'clear-button'
+    ) as HTMLButtonElement;
 
-    expect(inputElement.value).toBe('Value');
-    fireEvent.click(clearButton);
+    expect(inputElement).toHaveValue('Value');
+    await userEvent.click(clearButton);
 
-    expect(inputElement.value).toBe('');
+    expect(inputElement).toHaveValue('');
   });
 });

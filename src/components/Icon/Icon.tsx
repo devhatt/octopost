@@ -4,9 +4,9 @@ import omit from 'lodash.omit';
 
 import { icons } from './data';
 
-import { IIconProps } from './Icon.types';
+import { IconProps } from './Icon.types';
 
-function Icon(props: IIconProps): ReactNode {
+export function Icon(props: IconProps): ReactNode {
   const Component = icons[props.icon];
 
   return (
@@ -18,5 +18,3 @@ function Icon(props: IIconProps): ReactNode {
     />
   );
 }
-
-export default Icon;

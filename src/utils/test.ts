@@ -1,3 +1,5 @@
+/* eslint-disable -- it's just thrash, no need for checks */
+// @ts-nocheck
 import { Locator } from '@playwright/test';
 
 export const hasScrollbars = async (

@@ -1,10 +1,10 @@
-import { SVGProps } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { icons } from './data';
 
-export type TIconsType = keyof typeof icons;
+export type IconsType = keyof typeof icons;
 
-export interface IIconProps extends SVGProps<SVGSVGElement> {
-  icon: TIconsType;
+export type IconProps = ComponentPropsWithoutRef<'svg'> & {
+  icon: IconsType;
   size?: number;
-}
+};

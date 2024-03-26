@@ -5,6 +5,7 @@ import type { Service } from './Service';
 
 export interface OctoModule {
   icon: ReactElement;
+  id: string;
   name: string;
   postModes: PostMode[];
   services: Service;

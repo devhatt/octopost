@@ -55,12 +55,9 @@ jobs:
         env:
           files: ${{ steps.changed-files.outputs.code_all_changed_files }}
         run: pnpm exec eslint $files --report-unused-disable-directives --max-warnings 0 --output-file eslint_report.json --format json
-        continue-on-error: true
 
       - name: Annotate Code Linting Results
-        if: |
-          github.event.pull_request.head.repo.full_name == github.repository &&
-          steps.changed-files.outputs.code_any_changed == 'true'
+        if: ${{ always() && !github.event.pull_request.head.repo.fork && steps.changed-files.outputs.code_any_changed == 'true' }}
         uses: ataylorme/eslint-annotate-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'

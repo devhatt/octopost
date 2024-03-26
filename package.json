@@ -8,8 +8,9 @@
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
+    "start": "pnpm -r build && vite",
+    "build": "tsc && pnpm -r build && vite build",
+    "typecheck": "tsc --noEmit && pnpm -r typecheck",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
     "ci:version": "changeset version",

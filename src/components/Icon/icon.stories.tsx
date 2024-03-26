@@ -1,6 +1,8 @@
 import { Story } from '@ladle/react';
 
-import Icon, { IIconProps, TIconsType } from './Icon';
+import { Icon } from './Icon';
+
+import { IconProps, IconsType } from './Icon.types';
 
 export default {
   argTypes: {
@@ -23,7 +25,7 @@ export default {
         'star',
         'star-filled',
         'minus',
-      ] as TIconsType[],
+      ] as IconsType[],
     },
     size: {
       control: {
@@ -38,9 +40,9 @@ export default {
   title: 'Icon',
 };
 
-const Template: Story<IIconProps> = (args) => <Icon {...args} />;
+const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
-export const DefaultIconStory: Story<IIconProps> = Template.bind({});
+export const DefaultIconStory: Story<IconProps> = Template.bind({});
 DefaultIconStory.args = {
   color: 'black',
   icon: 'left-arrow',

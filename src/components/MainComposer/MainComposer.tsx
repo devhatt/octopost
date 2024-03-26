@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
@@ -8,15 +8,15 @@ import '~i18n';
 
 import scss from './MainComposer.module.scss';
 
-function MainComposer() {
-  const [isOpen, setOpen] = useState(true);
+function MainComposer(): ReactNode {
+  const [isOpen, setIsOpen] = useState(true);
   const { t } = useTranslation();
 
   return (
-    <AccordionTab isOpen={isOpen} onChangeOpen={setOpen} title="Main Content">
+    <AccordionTab isOpen={isOpen} onChangeOpen={setIsOpen} title="Main Content">
       <div className={scss.content}>
         <div className={scss.textInput}>
-          <ComposerEditor />
+          <ComposerEditor value="" />
         </div>
         <div className={scss.contentBot}>
           <div className={scss.contentBotTop} />

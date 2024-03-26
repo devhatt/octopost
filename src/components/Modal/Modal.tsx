@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { ReactPortal, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 import classNames from 'classnames';
@@ -8,25 +8,32 @@ import scss from './Modal.module.scss';
 
 import type { TModalProps } from './Modal.types';
 
-function Modal(props: TModalProps) {
+function Modal({
+  children,
+  className,
+  footer,
+  isOpen = false,
+  onClickOutside,
+  title,
+}: TModalProps): ReactPortal {
   useEffect(() => {
-    if (props.isOpen) {
+    if (isOpen) {
       document.body.style.overflow = 'hidden';
       return;
     }
 
     document.body.style.overflow = 'auto';
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   return createPortal(
     <AnimatePresence>
-      {props.isOpen ? (
+      {isOpen ? (
         <motion.div
           animate={{ opacity: 1 }}
-          className={classNames(scss.container, props.className)}
+          className={classNames(scss.container, className)}
           data-testid="portal"
           exit={{ opacity: 0 }}
-          onClick={props.onClickOutside}
+          onClick={onClickOutside}
           transition={{ duration: 0.3 }}
         >
           <div
@@ -34,15 +41,15 @@ function Modal(props: TModalProps) {
             onClick={(event) => event.stopPropagation()}
           >
             <div className={scss.modalHeader}>
-              <h2>{props.title}</h2>
+              <h2>{title}</h2>
               <div className={scss.headerButtons}>
-                <button onClick={props.onClickOutside} />
+                <button onClick={onClickOutside} type="button" />
               </div>
             </div>
             <div>
-              <div className={scss.modalContentText}>{props.children}</div>
+              <div className={scss.modalContentText}>{children}</div>
             </div>
-            <footer className={scss.modalFooter}>{props.footer}</footer>
+            <footer className={scss.modalFooter}>{footer}</footer>
           </div>
         </motion.div>
       ) : null}

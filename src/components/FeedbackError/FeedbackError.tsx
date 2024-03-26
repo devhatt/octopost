@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { useError } from '~stores/useError/useError';
 
-import Icon from '~components/Icon/Icon';
+import { Icon } from '~components/Icon/Icon';
 
 import scss from './FeedbackError.module.scss';
 
@@ -22,7 +22,7 @@ function FeedbackError(): ReactNode {
       initial="hidden"
       variants={animationVariants}
     >
-      <Icon className={scss.errorIcon} icon="error" size="large" />
+      <Icon className={scss.errorIcon} icon="alert" size={12} />
       <p className={scss.errorMessage}>{errorMessage}</p>
     </motion.div>
   );

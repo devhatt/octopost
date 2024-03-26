@@ -40,7 +40,7 @@ _(PascalCase / kebab-case)_
 
 ### 2.2 - Ainda em `icons.tsx` vamos adicionar a importação na função mapeadora `ICONS()` seguindo o padrão já existente " `<SVG ReactNode>`
 
-const icons = (props: Omit<IIconProps, 'icon' | 'size'>): Record<IIconProps['icon'], React.ReactNode> => ({
+const icons = (props: Omit<IconProps, 'icon' | 'size'>): Record<IconProps['icon'], React.ReactNode> => ({
 'check': <Check {...props} />,
 `'left-arrow': <LeftArrow {...props} />,`
 `'right-arrow': <RightArrow {...props} />,`
@@ -52,7 +52,7 @@ const icons = (props: Omit<IIconProps, 'icon' | 'size'>): Record<IIconProps['ico
 Dentro da interface, na propriedade `icon` adicionar o nome do novo svg seguindo os exemplos
 _Lembrando que esse deverá ser o nome do icone em 'kebab case' e não do componente_
 
-export interface IIconProps extends SVGProps<SVGSVGElement> {
+export interface IconProps extends SVGProps<SVGSVGElement> {
 `icon: 'left-arrow' | 'novo-svg' |;`
 size?: number;
 }
