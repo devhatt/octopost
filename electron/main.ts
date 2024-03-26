@@ -4,6 +4,7 @@ import express, { Router } from 'express';
 import path from 'node:path';
 import process from 'node:process';
 
+import { EHttpStatusCode } from '../src/enums/httpStatusCodes';
 import resolveModulesMetadata from './utils/resolveModulesMetadata';
 
 const expressApp = express();
@@ -24,7 +25,7 @@ router.get('/metadata', async (_, res) => {
     res.json({ script: mainContent });
   } catch {
     res
-      .status(404)
+      .status(EHttpStatusCode.NOT_FOUND)
       .json({ message: 'conteúdo dentro do package.json não-encontrado' });
   }
 });
@@ -34,7 +35,7 @@ expressApp.post('/sourcePath', (req, res) => {
 
   if (!sourcePath) {
     res
-      .status(404)
+      .status(EHttpStatusCode.NOT_FOUND)
       .json({ message: 'conteúdo dentro do package.json não-encontrado' });
     return;
   }
@@ -43,7 +44,7 @@ expressApp.post('/sourcePath', (req, res) => {
     res.sendFile(sourcePath.toString());
   } catch {
     res
-      .status(404)
+      .status(EHttpStatusCode.NOT_FOUND)
       .json({ message: 'conteúdo dentro do package.json não-encontrado' });
   }
 });
