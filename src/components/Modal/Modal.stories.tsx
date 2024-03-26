@@ -7,15 +7,12 @@ import Button from '~components/Button/Button';
 import Portal from './Modal';
 
 export const ModalStories: Story = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setOpen(true)}>open portal</button>
+      <button onClick={() => setIsOpen(true)} type='button'>open portal</button>
       <Portal
-        isOpen={isOpen}
-        title="Modal Title"
-        onClickOutside={() => setOpen(false)}
         footer={
           <>
             <div>Footer example</div>
@@ -24,6 +21,9 @@ export const ModalStories: Story = () => {
             </Button>
           </>
         }
+        isOpen={isOpen}
+        onClickOutside={() => setIsOpen(false)}
+        title="Modal Title"
       >
         CONTENT
       </Portal>

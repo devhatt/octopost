@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 /// <reference types="vite-plugin-electron/electron-env" />
 
 declare namespace NodeJS {
-  interface ProcessEnv {
+  type ProcessEnv = {
     /**
      * The built directory structure
      *
@@ -23,6 +23,6 @@ declare namespace NodeJS {
 }
 
 // Used in Renderer process, expose in `preload.ts`
-interface Window {
+type Window = {
   ipcRenderer: import('electron').IpcRenderer;
 }
