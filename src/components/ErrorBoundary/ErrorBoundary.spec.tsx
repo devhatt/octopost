@@ -4,7 +4,7 @@ import ErrorBoundary from './ErrorBoundary';
 
 // this prevents the error from being outputted in console.log when react boundary throws an error;
 // https://github.com/facebook/react/issues/11098#issuecomment-412682721
-function onError(e: Event) {
+function onError(e: Event): void {
   e.preventDefault();
 }
 
@@ -32,7 +32,7 @@ describe('ErrorBoundary', () => {
   describe('when error', () => {
     const error = new Error('Error');
     it('render "fallback" element', () => {
-      const ThrowErrorComponent = ({ error }: { error: Error }) => {
+      const ThrowErrorComponent = ({ error }: { error: Error }): Error => {
         throw error;
       };
       render(
@@ -40,7 +40,8 @@ describe('ErrorBoundary', () => {
           <ThrowErrorComponent error={error} />
         </ErrorBoundary>
       );
-      expect(screen.getByText('Error')).toBeInTheDocument();
+      const errorElement = screen.getByText('Error');
+      expect(errorElement).toBeInTheDocument();
     });
   });
 });

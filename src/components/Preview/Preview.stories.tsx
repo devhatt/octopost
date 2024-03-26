@@ -4,9 +4,7 @@ import Preview from './Preview';
 
 export const PreviewComponent: Story<{ previewText: string }> = ({
   previewText,
-}) => {
-  return <Preview>{previewText}</Preview>;
-};
+}) => <Preview>{previewText}</Preview>;
 
 PreviewComponent.args = {
   previewText: 'preview',

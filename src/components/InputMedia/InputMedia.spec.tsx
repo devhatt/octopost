@@ -9,7 +9,7 @@ vi.mock('nanoid', () => ({
 
 describe('InputMedia', () => {
   it('renders the icon', () => {
-    render(<InputMedia onChange={() => {}} />);
+    render(<InputMedia onChange={vi.fn()} />);
     const icon = screen.getByRole('img');
     expect(icon).toBeInTheDocument();
   });
@@ -68,7 +68,7 @@ describe('InputMedia', () => {
 
   describe('when clicking the icon', () => {
     it('triggers the file input', async () => {
-      render(<InputMedia onChange={() => {}} />);
+      render(<InputMedia onChange={vi.fn()} />);
 
       const icon = screen.getByRole('img');
       await userEvent.click(icon);

@@ -1,11 +1,11 @@
+import { ReactNode } from 'react';
+
 import scss from './SearchClue.module.scss';
 
 import { ISearchClueProps } from './SearchClue.types';
 
-function SearchClue(props: ISearchClueProps) {
-  const { label } = props;
-
-  const handleClearClick = () => {
+function SearchClue(props: ISearchClueProps): ReactNode {
+  const handleClearClick = (): void => {
     if (props.clearInput) {
       props.clearInput();
     }
@@ -14,9 +14,9 @@ function SearchClue(props: ISearchClueProps) {
   return (
     <div className={scss.searchClueContainer}>
       <span className={scss.spanSearchClue}>
-        {label} <span className={scss.searchWord}>{props.value}</span>
+        {props.label} <span className={scss.searchWord}>{props.value}</span>
       </span>
-      <button className={scss.clearButton} onClick={handleClearClick}>
+      <button className={scss.clearButton} onClick={handleClearClick} type='button'>
         Clean
       </button>
     </div>

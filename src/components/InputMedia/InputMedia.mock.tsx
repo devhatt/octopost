@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import InputMedia from './InputMedia';
 
 import { IInputMediaTestWrapper } from './InputMedia.types';
@@ -9,7 +11,7 @@ import { IInputMediaTestWrapper } from './InputMedia.types';
  *github.com/microsoft/playwright/issues/27439
  */
 
-export function InputMediaForTest(props: IInputMediaTestWrapper) {
+export function InputMediaForTest(props: IInputMediaTestWrapper): ReactNode {
   return (
     <InputMedia
       onChange={(media) => {

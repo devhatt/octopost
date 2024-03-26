@@ -1,14 +1,14 @@
 import {
-  PropsWithChildren,
   createContext,
+  PropsWithChildren,
   useContext,
   useEffect,
   useState,
 } from 'react';
 
-import { OctoModule, manager } from '@octopost/module-manager';
+import { manager, OctoModule } from '@octopost/module-manager';
 
-import { useFetchModules } from '~services/fetchModules/fetchModules';
+import { useFetchModules } from '~services/fetchModules/useFetchModules';
 
 import { IModuleContext } from './ModuleContext.types';
 
@@ -19,7 +19,7 @@ export const useModule = () => useContext(ModuleContext);
 export default function ModuleProvider({ children }: PropsWithChildren) {
   const [modules, setModules] = useState<OctoModule[]>([]);
 
-  const { modulesURL, fetchModulesMetadata, fetchInitialModules } =
+  const { fetchInitialModules, fetchModulesMetadata, modulesURL } =
     useFetchModules();
 
   useEffect(() => {

@@ -1,37 +1,42 @@
+import { ReactNode } from 'react';
+
 import classNames from 'classnames';
 
-import Accordion from '../Accordion/Accordion';
+import Accordion from '~components/Accordion/Accordion';
+import Icon from '~components/Icon/Icon';
 
 import scss from './AccordionTab.module.scss';
 
 import { TAccordionTabProps } from './AccordionTab.types';
 
-function AccordionTab(props: TAccordionTabProps) {
-  const handleClose = () => {
-    if (props.onChangeOpen) props.onChangeOpen(!props.isOpen);
+function AccordionTab({
+  hideCloseButton = false,
+  isOpen = false,
+  ...props
+}: TAccordionTabProps): ReactNode {
+  const handleClose = (): void => {
+    if (props.onChangeOpen) props.onChangeOpen(!isOpen);
   };
 
-  const renderCloseButton = () => {
-    return (
-      <button onClick={handleClose} className={scss.closeButton}>
-        -
-      </button>
-    );
-  };
+  const renderCloseButton = (): ReactNode => (
+    <button className={scss.closeButton} onClick={handleClose} type="button">
+      <Icon icon="minus" size={16} />
+    </button>
+  );
 
-  const renderHeader = () => (
+  const renderHeader = (): ReactNode => (
     <div className={scss.header}>
       <p className={scss.headerTitle}>{props.title}</p>
-      {!props.hideCloseButton && renderCloseButton()}
+      {hideCloseButton ? null : renderCloseButton()}
     </div>
   );
 
   return (
     <Accordion
       className={classNames(scss.container, props.className)}
-      isOpen={props.isOpen ?? true}
-      header={renderHeader()}
       content={props.children}
+      header={renderHeader()}
+      isOpen={isOpen}
     />
   );
 }

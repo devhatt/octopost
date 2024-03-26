@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import SocialAccordion from './SocialAccordion';
@@ -20,30 +20,34 @@ describe('SocialAccordion', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
-      expect(screen.getByText(/facebook/i)).toBeInTheDocument();
+
+      const accordion = screen.getByTestId('accordion');
+      expect(accordion).toBeInTheDocument();
     });
 
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
-      expect(screen.getByText(/jhon doe/i)).toBeInTheDocument();
+      const openAccordion = screen.getByText(/jhon doe/i);
+      expect(openAccordion).toBeInTheDocument();
     });
 
     it('shows the error on screen if error={true}', () => {
       render(
-        <SocialAccordion error accountList={[]} socialMediaName="facebook" />
+        <SocialAccordion accountList={[]} error socialMediaName="facebook" />
       );
-      expect(screen.getByText(/error/i)).toBeInTheDocument();
+      const accordion = screen.getByText(/error/i);
+      expect(accordion).toBeInTheDocument();
     });
   });
 
@@ -51,16 +55,18 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
 
       const openAccordion = screen.getByText(/facebook/i);
+      const accordion = screen.getByText(/jhon doe/i);
 
-      expect(screen.getByText(/jhon doe/i)).toBeInTheDocument();
-      await act(async () => userEvent.click(openAccordion));
+      expect(accordion).toBeInTheDocument();
+
+      await userEvent.click(openAccordion);
       await waitFor(() =>
         expect(screen.queryByText(/jhon doe/i)).not.toBeInTheDocument()
       );
@@ -71,23 +77,25 @@ describe('SocialAccordion', () => {
     it('renders with zero if list is empty', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={[]}
+          error={false}
           socialMediaName="facebook"
         />
       );
-      expect(screen.getByText(/0/)).toBeInTheDocument();
+      const zero = screen.getByText(/0/);
+      expect(zero).toBeInTheDocument();
     });
 
     it('renders with one if list have one account', () => {
       render(
         <SocialAccordion
-          error={false}
           accountList={mockList}
+          error={false}
           socialMediaName="facebook"
         />
       );
-      expect(screen.getByText(/1/)).toBeInTheDocument();
+      const one = screen.getByText(/1/);
+      expect(one).toBeInTheDocument();
     });
   });
 });

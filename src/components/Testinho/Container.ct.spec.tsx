@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { expect, test } from '@playwright/experimental-ct-react';
 
 import { hasScrollbars } from '~utils/test';
 
@@ -25,18 +25,18 @@ test.describe('Container', () => {
   test('it cannot be bigger than 678', async ({ mount }) => {
     const component = await mount(
       <Container>
-        <div style={{ height: 1000, backgroundColor: 'red' }}></div>
+        <div style={{ backgroundColor: 'red', height: 1000 }} />
       </Container>
     );
-
-    expect((await component.boundingBox())?.height).toBe(maxContainerHeight);
+    const boundingBox = await component.boundingBox();
+    expect(boundingBox?.height).toBe(maxContainerHeight);
   });
 
   // TODO: Make the hasScrollbars function work to test this
   test.skip('shows a scrollbar', async ({ mount }) => {
     const component = await mount(
       <Container>
-        <div style={{ height: 1000, backgroundColor: 'red' }}></div>
+        <div style={{ backgroundColor: 'red', height: 1000 }} />
       </Container>
     );
 

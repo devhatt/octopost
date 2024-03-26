@@ -1,5 +1,5 @@
 import { IPluginMetadata } from '../../../electron/utils/readPackageJson/readPackageJson.types';
 
-export interface IFetchModuleResponse {
+export type IFetchModuleResponse = {
   script: IPluginMetadata[];
 }
