@@ -7,19 +7,18 @@ import FeedbackError from './FeedbackError';
 
 describe('FeedbackError', () => {
   const useErrorSpy = vi.spyOn(useErrorHook, 'useError');
-
-  it('When the error array is empty, the component should not be rendered', () => {
-    useErrorSpy.mockReturnValue({
-      errors: [],
-    });
+  it('dont render the component if theres no errors on the errors array', () => {
+    useErrorSpy.mockReturnValue([]);
 
     render(<FeedbackError />);
 
-    const feedbackError = screen.queryByTestId('error-container');
-    expect(feedbackError).not.toBeVisible();
+    const feedbackError = screen.queryByText(
+      'Failed to progress, please click on the button on the side to see the errors'
+    );
+    expect(feedbackError).not.toBeInTheDocument();
   });
 
-  it('When the error array has at least one error, the component must be rendered', async () => {
+  it('renders the component if theres at least one error on errors array', async () => {
     useErrorSpy.mockReturnValue(['Test error message']);
 
     render(<FeedbackError />);

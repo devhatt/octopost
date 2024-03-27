@@ -34,7 +34,6 @@ function FeedbackError(): ReactNode {
   const renderError = (): ReactNode => (
     <motion.div
       animate="visible"
-      data-testid="error-container"
       exit="hidden"
       initial="hidden"
       variants={animationVariants}
