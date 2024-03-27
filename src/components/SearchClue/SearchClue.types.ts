@@ -1,7 +1,7 @@
-import { TInputComponent } from '~components/InputSearch/InputSearch.types';
+import { TInputComponent } from '~components/CustomInput/CustomInput.types';
 
-export interface ISearchClueProps {
+export type ISearchClueProps = {
   clearInput?: TInputComponent['clearInput'];
-  value: string;
   label: string;
-}
+  value: string;
+};

@@ -1,18 +1,17 @@
 import { Story } from '@ladle/react';
 
-import InputSearch from './InputSearch';
+import { CustomInputRef } from './CustomInput';
 
-import { TInputProps } from './InputSearch.types';
+import { TInputProps } from './CustomInput.types';
 
 export default {
-  component: InputSearch,
-  title: 'InputSearch',
+  component: CustomInputRef,
+  title: 'CustomInput',
 };
 
 const Template: Story<TInputProps> = (args) => (
-  <InputSearch {...args} ref={undefined} />
+  <CustomInputRef {...args} ref={undefined} />
 );
-
 export const InputSearchComponent = Template.bind({});
 InputSearchComponent.args = {
   error: false,

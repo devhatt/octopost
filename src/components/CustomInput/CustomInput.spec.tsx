@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import InputSearch from './InputSearch';
+import { CustomInputRef } from './CustomInput';
 
 const mockProps = {
   error: false,
@@ -27,7 +27,7 @@ describe('InputSearch component', () => {
   });
 
   it('renders the component', () => {
-    render(<InputSearch {...mockProps} />);
+    render(<CustomInputRef {...mockProps} />);
 
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
     const labelElement = screen.getByLabelText('Test Placeholder');
@@ -37,7 +37,7 @@ describe('InputSearch component', () => {
   });
 
   it('handles input value correctly', async () => {
-    render(<InputSearch {...mockProps} />);
+    render(<CustomInputRef {...mockProps} />);
 
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
@@ -47,7 +47,7 @@ describe('InputSearch component', () => {
   });
 
   it('handles onFocus callback', async () => {
-    render(<InputSearch {...mockProps} />);
+    render(<CustomInputRef {...mockProps} />);
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
     await userEvent.click(inputElement);
@@ -56,14 +56,14 @@ describe('InputSearch component', () => {
   });
 
   it('displays error message when errors prop is true', () => {
-    render(<InputSearch {...mockProps} error />);
+    render(<CustomInputRef {...mockProps} error />);
 
     const errorMessage = screen.getByText('Test Error Message');
     expect(errorMessage).toBeInTheDocument();
   });
 
   it('clears input value on clear button click', async () => {
-    render(<InputSearch {...mockProps} />);
+    render(<CustomInputRef {...mockProps} />);
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
 
     await userEvent.type(inputElement, 'Value');
