@@ -1,4 +1,4 @@
-export interface IUseError {
-  errorMessage: string;
-  setErrorMessage: (errorMessage: string) => void;
-}
+export type IUseError = {
+  errors: string[];
+  setErrors: (newErrorMessage: string) => void;
+};

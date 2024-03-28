@@ -113,6 +113,7 @@
     "eslint-plugin-testing-library": "6.2.0",
     "eslint-plugin-typescript-sort-keys": "3.1.0",
     "eslint-plugin-unicorn": "50.0.1",
+    "eslint-plugin-write-good-comments": "0.2.0",
     "express": "4.18.2",
     "husky": "8.0.3",
     "lint-staged": "15.2.2",
