@@ -22,11 +22,7 @@ function Tabs(props: ITabsProps): ReactNode {
     </button>
   );
 
-  const listSocialNetworks: ReactNode = props.socialNetworks.map(
-    (socialNetwork: TSocialNetworks) => renderTabs(socialNetwork)
-  );
-
-  return <div className={scss.tabsContainer}>{listSocialNetworks}</div>;
+  return <div className={scss.tabsContainer}>{props.socialNetwroks.map(renderTabs)}</div>;
 }
 
 export default Tabs;
