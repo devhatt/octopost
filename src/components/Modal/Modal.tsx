@@ -4,6 +4,9 @@ import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import Button from '~components/Button/Button.tsx';
+import { Icon } from '~components/Icon/Icon.tsx';
+
 import scss from './Modal.module.scss';
 
 import type { TModalProps } from './Modal.types';
@@ -43,7 +46,13 @@ function Modal({
             <div className={scss.modalHeader}>
               <h2>{title}</h2>
               <div className={scss.headerButtons}>
-                <button onClick={onClickOutside} type="button" />
+                <Button
+                  circle
+                  icon={<Icon icon={'close'} size={14} />}
+                  onClick={onClickOutside}
+                  type={'button'}
+                  variant={'text'}
+                />
               </div>
             </div>
             <div>
