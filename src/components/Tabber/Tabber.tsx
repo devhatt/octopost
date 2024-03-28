@@ -1,8 +1,9 @@
-import { ReactNode, useState } from 'react';
+﻿import React, { useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
-import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
+import { useModulesStore } from '~stores/useModulesStore';
+
 import { buildPostModeId } from './utils';
 
 import scss from '~components/Tabber/Tabber.module.scss';
@@ -12,19 +13,18 @@ import Tabs from './Tabs/Tabs';
 
 import { ITab, TPostModeId } from './Tabber.types';
 
-function Tabber(): ReactNode {
-  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
-
-  const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
+function Tabber(): React.ReactElement {
+  const modules = useModulesStore((state) => state.modules);
+  const [currentTab, setCurrentTab] = useState<ITab>(modules[0] as ITab);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
     buildPostModeId(currentTab)
   );
 
-  const changeCurrentTab = (socialNetwork: ITab): void => {
+  const changeCurrentTab = (newModules: ITab): void => {
     const tabsCurrentPostModeId =
-      socialNetwork.currentPostModeId ?? buildPostModeId(socialNetwork);
+      (newModules.currentPostModeId ?? '') || buildPostModeId(newModules);
 
-    setCurrentTab(socialNetwork);
+    setCurrentTab(newModules);
     setCurrentPostModeId(tabsCurrentPostModeId);
   };
 
@@ -37,14 +37,15 @@ function Tabber(): ReactNode {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
+  const preview =
+    Boolean(currentTab.currentPostMode) || currentTab.postModes[0];
 
   return (
     <div>
       <Tabs
         currentTab={currentTab}
         onChangeTab={changeCurrentTab}
-        socialNetworks={socialNetworks}
+        socialNetworks={modules as ITab[]}
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
@@ -55,11 +56,15 @@ function Tabber(): ReactNode {
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent
-            customData={{}}
-            medias={[]}
-            text={`${preview.name} Placeholder`}
-          />
+          {typeof preview === 'object' && Boolean(preview.previewComponent) ? (
+            <preview.previewComponent
+              customData={{}}
+              medias={[]}
+              text={`${preview.name} Placeholder`}
+            />
+          ) : (
+            <div>No preview available</div>
+          )}
         </div>
       </div>
     </div>
