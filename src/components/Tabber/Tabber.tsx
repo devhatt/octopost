@@ -2,6 +2,8 @@ import { ReactNode, useState } from 'react';
 
 import { PostMode } from '@octopost/module-manager';
 
+import { useMediaQuery } from '~hooks/useMediaQuery/useMediaQuery';
+
 import { useSocialNetworkStore } from './stores/useSocialNetworkStore';
 import { buildPostModeId } from './utils';
 
@@ -13,7 +15,11 @@ import Tabs from './Tabs/Tabs';
 import { ITab, TPostModeId } from './Tabber.types';
 
 function Tabber(): ReactNode {
-  const socialNetworks = useSocialNetworkStore((state) => state.socialNetworks);
+  const isDesktopScreen = useMediaQuery('sm');
+
+  const socialNetworks = useSocialNetworkStore((state) =>
+    state.socialNetworks.slice(Number(isDesktopScreen))
+  );
 
   const [currentTab, setCurrentTab] = useState<ITab>(socialNetworks[0]);
   const [currentPostModeId, setCurrentPostModeId] = useState<TPostModeId>(
@@ -37,7 +43,9 @@ function Tabber(): ReactNode {
     currentTab.currentPostModeId = postModeId;
   };
 
-  const preview = currentTab.currentPostMode ?? currentTab.postModes[0];
+  const preview =
+    currentTab.currentPostMode ??
+    (currentTab.postModes[0] as PostMode | undefined);
 
   return (
     <div>
@@ -55,11 +63,13 @@ function Tabber(): ReactNode {
           />
         </div>
         <div className={scss.previewContainer}>
-          <preview.previewComponent
-            customData={{}}
-            medias={[]}
-            text={`${preview.name} Placeholder`}
-          />
+          {!!preview?.previewComponent && (
+            <preview.previewComponent
+              customData={{}}
+              medias={[] as File[]}
+              text={`${preview.name} Placeholder`}
+            />
+          )}
         </div>
       </div>
     </div>

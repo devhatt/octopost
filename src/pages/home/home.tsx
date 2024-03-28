@@ -7,6 +7,7 @@ import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/ContentEditor/ContentEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
+import Tabber from '~components/Tabber/Tabber';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -39,6 +40,7 @@ function Home(): ReactNode {
             <FirstComment />
             <FeedbackError />
           </div>
+          <Tabber />
         </div>
         <ActionBar />
       </div>
