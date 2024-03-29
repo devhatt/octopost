@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { AddonInfo } from '@models';
 import { getAddonPath } from './getAddonPath';
 
-import { AddonInfo } from '@models';
 import { getPackageJson } from './getPackageJson';
 
 /**
@@ -18,13 +18,13 @@ export function getAddonsInfo(folder: string): AddonInfo[] {
   for (const addon of addons) {
     const addonFolder = path.join(folder, addon);
 
-    const { name, version, author } = getPackageJson(addonFolder);
+    const { author, name, version } = getPackageJson(addonFolder);
 
     const addonInfo: AddonInfo = {
+      author: typeof author === 'string' ? author : author?.name,
       name: name,
       sourcePath: getAddonPath(addonFolder),
       version: version,
-      author: typeof author === 'string' ? author : author?.name,
     };
 
     addonsInfo.push(addonInfo);

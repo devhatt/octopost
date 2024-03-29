@@ -22,7 +22,7 @@ export function useAddonsLoader(addonsInfo: AddonInfo[]) {
         const url = URL.createObjectURL(blob);
         script.src = url;
 
-        document.head.appendChild(script);
+        document.head.append(script);
       }
     }
 

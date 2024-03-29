@@ -13,7 +13,7 @@ export function getPackageJson(dir: string): PackageJson {
   const packageObj = JSON.parse(packageFile);
 
   if (typeof packageObj !== 'object') {
-    throw new Error('conteúdo dentro do package.json não-encontrado');
+    throw new TypeError('conteúdo dentro do package.json não-encontrado');
   }
 
   return packageObj as PackageJson;

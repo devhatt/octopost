@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@octopost/web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -30,6 +30,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "react-router-dom": "6.22.0",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vite-tsconfig-paths": "4.3.2"
   }
 }

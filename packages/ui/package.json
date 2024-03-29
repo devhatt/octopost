@@ -5,12 +5,14 @@
   "type": "module",
   "files": [
     "dist",
+    "src",
     "package.json",
     "LICENSE"
   ],
-  "module": "dist/index.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "source": "src/index.ts",
   "sideEffects": [
     "*.css"
   ],
@@ -29,7 +31,7 @@
   },
   "devDependencies": {
     "@ladle/react": "4.0.1",
-    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.1.2",
     "@testing-library/user-event": "14.5.1",
     "@types/react": "18.2.43",
@@ -41,10 +43,9 @@
     "@vitest/coverage-istanbul": "1.2.2",
     "@vitest/ui": "1.2.2",
     "classnames": "2.3.2",
-    "eslint": "8.55.0",
-    "eslint-define-config": "2.1.0",
     "framer-motion": "10.17.9",
     "glob": "10.3.10",
+    "jsdom": "24.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.70.0",

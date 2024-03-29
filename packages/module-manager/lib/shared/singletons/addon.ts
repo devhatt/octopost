@@ -3,19 +3,19 @@ import { Addon } from '@models';
 
 export class AddonStore {
   private collection: Record<string, Addon> = {};
-  private loaders: Record<string, Function> = {};
+  loadAddons = () => {
+    Object.values(this.loaders).forEach((value: any) => value());
+  };
 
-  getAddons() {
-    return Object.values(this.collection);
-  }
+  private loaders: Record<string, Function> = {};
 
   add(id: string, addon: Addon): void {
     this.collection[id] = { ...addon, id };
   }
 
-  loadAddons = () => {
-    Object.values(this.loaders).forEach((value: any) => value());
-  };
+  getAddons() {
+    return Object.values(this.collection);
+  }
 }
 
 // Enforce addons store to be a singleton

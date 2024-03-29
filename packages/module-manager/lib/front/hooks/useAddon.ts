@@ -3,5 +3,5 @@ import { AddonContext } from '../providers/addon/AddonContext';
 import { AddonContextProps } from '../providers/addon/AddonProvider.types';
 
 export function useAddon() {
-  return useContext(AddonContext) as AddonContextProps;
+  return useContext(AddonContext);
 }

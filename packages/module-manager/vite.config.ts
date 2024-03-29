@@ -9,15 +9,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/index.ts'),
-      formats: ['es'],
       fileName: 'index',
+      formats: ['es'],
     },
     rollupOptions: { external: ['react', 'react/jsx-runtime'] },
   },
   plugins: [
     react(),
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
-    dts({ tsconfigPath: './tsconfig.json', include: ['lib'] }),
+    dts({ include: ['lib'], tsconfigPath: './tsconfig.json' }),
     {
       generateBundle(_, bundle) {
         for (const name in bundle) {

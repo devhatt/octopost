@@ -4,14 +4,11 @@
     "lib": ["ES2018", "DOM", "DOM.Iterable"],
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@components": ["src/components"],
-      "@hooks/*": ["src/hooks/*"],
-      "@hooks": ["src/hooks"]
+      "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationMap": false,
+    "declarationMap": true,
     "sourceMap": false,
     "outDir": "./dist",
     "strict": true,
@@ -24,6 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", ".ladle", "typings.d.ts"],
+  "include": ["src", ".ladle"],
   "exclude": ["node_modules", "dist", "coverage"]
 }

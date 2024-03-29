@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { AddonContext } from './AddonContext';
 import { useAddonInfoLoad } from '@hooks';
 import { addonApi } from '@api';
+import { AddonContext } from './AddonContext';
 import { AddonProviderProps } from './AddonProvider.types';
 
 export function AddonProvider({
