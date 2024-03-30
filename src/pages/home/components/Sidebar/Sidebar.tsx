@@ -1,8 +1,9 @@
-import { ReactNode, useRef, useState } from 'react';
+import { ChangeEvent, ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
+import { useModulesStore } from '~stores/useModulesStore';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -12,9 +13,13 @@ import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 import SearchClue from '~components/SearchClue/SearchClue';
 
+import AddAccount from './components/AddAccount/AddAccount';
+import SocialAccordion from './components/SocialAccordion/SocialAccordion';
+
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
+  const { addAccount, modules } = useModulesStore();
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
@@ -22,6 +27,14 @@ function Sidebar(): ReactNode {
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleSelectSocialMedia = (
+    e: ChangeEvent<HTMLSelectElement>,
+    addonId: string
+  ): void => {
+    addAccount(addonId);
+    setIsOpen(false);
   };
 
   const renderSearchClue = (): ReactNode => (
@@ -61,18 +74,7 @@ function Sidebar(): ReactNode {
           {value && renderSearchClue()}
 
           <div className={scss.items}>
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
+            {/* {modules.map((module) => <SocialAccordion socialMediaName={module.name} key={module.id}  />)} */}
           </div>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
@@ -95,9 +97,9 @@ function Sidebar(): ReactNode {
               footer={<div>footer</div>}
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}
-              title="Adcionar Social"
+              title="Adicionar Social"
             >
-              Octopost
+              <AddAccount onChange={handleSelectSocialMedia} />
             </Modal>
           </div>
         </div>

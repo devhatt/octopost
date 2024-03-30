@@ -1,6 +1,7 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
-import { useModule } from '~contexts/ModuleContext';
+import { useModulesStore } from '~stores/useModulesStore';
+import isEmpty from '~utils/isEmpty/isEmpty';
 
 import ActionBar from '~components/ActionBar/ActionBar';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
@@ -14,11 +15,18 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
+  const { getAll, modules } = useModulesStore();
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
-  const { modules } = useModule();
 
   const editor = <ComposerEditor onChange={setInputText} value={inputText} />;
+
+  useEffect(() => {
+    if (isEmpty(modules)) {
+      console.log('ROLE');
+      getAll();
+    }
+  }, []);
 
   return (
     <>
@@ -27,7 +35,6 @@ function Home(): ReactNode {
         <div className={scss.gridContainer}>
           <div className={scss.gridSwitches}>
             <Sidebar />
-            {modules.map((item) => JSON.stringify(item))}
           </div>
           <div className={scss.gridInput}>
             <MainComposer

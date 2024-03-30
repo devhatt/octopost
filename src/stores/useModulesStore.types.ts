@@ -1,10 +1,12 @@
-import { ITab } from '~components/Tabber/Tabber.types';
+import { OctoModule } from '~services/addons/addon/OctoModule';
 
 type Module = {
   name: string;
 };
 
 export type ModulesState = {
+  addAccount: (addonId: string) => void;
   addModule: (module: Module) => void;
-  modules: (ITab | Module)[];
+  getAll: () => void;
+  modules: OctoModule[];
 };

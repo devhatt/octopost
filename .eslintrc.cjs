@@ -144,7 +144,12 @@ module.exports = defineConfig({
         ],
         '@typescript-eslint/no-meaningless-void-operator': 'warn',
         '@typescript-eslint/no-misused-new': 'warn',
-        '@typescript-eslint/no-misused-promises': 'warn',
+        '@typescript-eslint/no-misused-promises': [
+          'warn',
+          {
+            checksVoidReturn: false,
+          },
+        ],
         '@typescript-eslint/no-mixed-enums': 'warn',
         '@typescript-eslint/no-namespace': 'warn',
         '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'warn',
