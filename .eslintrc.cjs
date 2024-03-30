@@ -66,7 +66,6 @@ module.exports = defineConfig({
         'react/no-children-prop': 'off',
         'react/no-multi-comp': 'off',
         'react/prop-types': 'off',
-        'write-good-comments/write-good-comments': 'off',
       },
     },
     {
@@ -267,7 +266,6 @@ module.exports = defineConfig({
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-console': 'off',
         'no-undef': 'off',
-        'write-good-comments/write-good-comments': 'off',
       },
     },
   ],
@@ -291,7 +289,6 @@ module.exports = defineConfig({
     'no-secrets',
     'react',
     'regexp',
-    'write-good-comments',
     '@eslint-community/eslint-comments',
     'react-hooks',
     'react-refresh',
@@ -592,7 +589,6 @@ module.exports = defineConfig({
     'unicorn/switch-case-braces': 'warn',
     'unicorn/template-indent': 'warn',
     'unicorn/throw-new-error': 'warn',
-    'write-good-comments/write-good-comments': 'warn',
   },
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
