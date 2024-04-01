@@ -203,16 +203,13 @@ button {
 
     &.disabled {
       &:hover {
-        background: none;
         background-color: transparent;
+        border: 1px solid global.$pressing;
+        background-color: global.$primaryWhite;
 
+        color: global.$secondaryGray;
         cursor: not-allowed;
       }
-      @include outlined(
-        global.$primaryGray,
-        global.$primaryGray,
-        rgba(255, 255, 255, 0.15)
-      );
     }
   }
 }
