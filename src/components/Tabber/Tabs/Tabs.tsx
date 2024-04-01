@@ -22,7 +22,7 @@ function Tabs(props: ITabsProps): ReactNode {
     </button>
   );
 
-  return <div className={scss.tabsContainer}>{props.socialNetwroks.map(renderTabs)}</div>;
+  return <div className={scss.tabsContainer}>{props.socialNetworks.map(renderTabs)}</div>;
 }
 
 export default Tabs;
