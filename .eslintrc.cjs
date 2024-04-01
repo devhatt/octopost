@@ -289,7 +289,6 @@ module.exports = defineConfig({
     'no-secrets',
     'react',
     'regexp',
-    'write-good-comments',
     '@eslint-community/eslint-comments',
     'react-hooks',
     'react-refresh',
