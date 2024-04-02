@@ -1,30 +1,33 @@
 import { ReactNode } from 'react';
 
-import InputMediaButton from '../InputMediaButton/InputMediaButton';
+import Icon from '~components/Icon/Icon';
 
-import scss from '../InputMediaComposer.module.scss';
+import InputMedia from '../InputMedia/InputMedia';
 
-import { IInputMediaGroupProps } from './InputMediaGroup.types';
+import scss from '../InputMediaGroup.module.scss';
+
+import { IMediaPreviewProps } from './MediaPreview.types';
 
 function InputMediaGroup({
   media,
   onImageChange,
   onRemove,
-}: IInputMediaGroupProps): ReactNode {
+}: IMediaPreviewProps): ReactNode {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
-        <InputMediaButton
+        <InputMedia
           files={media.file}
           onChange={(newMedias) => onImageChange(newMedias, media.id)}
         />
         <button
           aria-label="Close"
           className={scss.removeButton}
+          data-testid="closeButton"
           onClick={() => onRemove(media.id)}
           type="button"
         >
-          X
+          <Icon icon="close" size={10} />
         </button>
       </div>
     </div>

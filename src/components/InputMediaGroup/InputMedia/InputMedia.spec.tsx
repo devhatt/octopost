@@ -1,15 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import InputMediaButton from './InputMediaButton';
+import InputMedia from './InputMedia';
 
 vi.mock('nanoid', () => ({
   nanoid: vi.fn(() => 'sua-string-especifica-aqui'),
 }));
 
-describe('InputMediaButton', () => {
+describe('InputMedia', () => {
   it('renders the icon', () => {
-    render(<InputMediaButton onChange={() => {}} />);
+    render(
+      <InputMedia
+        onChange={() => {
+          ('');
+        }}
+      />
+    );
     const icon = screen.getByRole('img');
     expect(icon).toBeInTheDocument();
   });
@@ -18,7 +24,7 @@ describe('InputMediaButton', () => {
     window.URL.createObjectURL = vi.fn();
 
     const mockOnChange = vi.fn();
-    render(<InputMediaButton onChange={mockOnChange} />);
+    render(<InputMedia onChange={mockOnChange} />);
     const fileInput = screen.getByTestId('imageInput');
 
     const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
@@ -33,7 +39,7 @@ describe('InputMediaButton', () => {
     window.URL.createObjectURL = vi.fn();
 
     const mockOnChange = vi.fn();
-    render(<InputMediaButton onChange={mockOnChange} />);
+    render(<InputMedia onChange={mockOnChange} />);
     const fileInput = screen.getByTestId('imageInput');
 
     const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
@@ -56,7 +62,7 @@ describe('InputMediaButton', () => {
       window.URL.createObjectURL = vi.fn();
 
       const mockOnChange = vi.fn();
-      render(<InputMediaButton onChange={mockOnChange} />);
+      render(<InputMedia onChange={mockOnChange} />);
       const fileInput = screen.getByTestId('imageInput');
 
       const file = new File([''], 'filename.txt', { type: 'text/plain' });
@@ -68,8 +74,13 @@ describe('InputMediaButton', () => {
 
   describe('when clicking the icon', () => {
     it('triggers the file input', async () => {
-      render(<InputMediaButton onChange={() => {}} />);
-
+      render(
+        <InputMedia
+          onChange={() => {
+            ('');
+          }}
+        />
+      );
 
       const icon = screen.getByRole('img');
       await userEvent.click(icon);

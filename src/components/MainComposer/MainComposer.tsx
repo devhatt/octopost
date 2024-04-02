@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
-import InputMediaComposer from '~components/InputMediaComposer/InputMediaComposer';
+import InputMediaGroup from '~components/InputMediaGroup/InputMediaGroup';
 import '~i18n';
 
 import scss from './MainComposer.module.scss';
@@ -22,7 +22,7 @@ function MainComposer(): ReactNode {
           <div className={scss.contentBotTop} />
           <div className={scss.contentBotBot}>
             <div className={scss.mainComposerInputMedia}>
-              <InputMediaComposer />
+              <InputMediaGroup />
             </div>
             <div className={scss.iconPulsSave} />
             <p>{t('We have a lot of work')}</p>

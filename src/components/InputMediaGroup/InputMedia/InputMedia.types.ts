@@ -1,13 +1,13 @@
-export interface IMedia {
+export type IMedia = {
   file: File;
   id: string;
-}
+};
 
-export interface IInputMediaButtonProps {
+export type IInputMediaProps = {
   files?: File;
   onChange: (media: IMedia[]) => void;
-}
+};
 
-export interface IInputMediaButtonTestWrapper {
+export type IInputMediaTestWrapper = {
   onChange: (media: string) => void;
-}
+};
