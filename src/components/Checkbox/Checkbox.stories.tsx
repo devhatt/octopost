@@ -8,10 +8,19 @@ export default {
   title: 'Checkbox',
 } satisfies StoryDefault;
 
-export const StoryCheckbox: Story<CheckboxProps> = (props) => (
+export const UncontrolledCheckbox: Story<CheckboxProps> = (props) => (
   <Checkbox {...props} />
 );
+export const ControlledCheckbox: Story<CheckboxProps> = (props) => {
+  const test = false;
 
-StoryCheckbox.args = {
+  return <Checkbox {...props} checked={test} />;
+};
+
+UncontrolledCheckbox.args = {
+  children: 'Hello',
+};
+
+ControlledCheckbox.args = {
   children: 'Hello',
 };
