@@ -7,7 +7,7 @@ export type TPostModeId = `${string}-${number}`;
 export interface ITab extends TSocialNetworks {
   currentPostMode?: PostMode;
   currentPostModeId?: TPostModeId;
-};
+}
 
 export type TTabState = Record<
   TPostModeId,
