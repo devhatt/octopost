@@ -20,11 +20,6 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
     {
       id: 'input',
       maxLength: 100,
-      value: props.value,
-    },
-    {
-      id: 'input',
-      maxLength: 100,
       svg: (
         <svg
           height="24"
@@ -101,9 +96,14 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         value={inputValue}
       />
       <div className={scss.compost}>
-        <div />
-
-        <div>
+        <CharacterLimit
+          id="input"
+          key="jajajjaja"
+          maxLength={2000}
+          svg={null}
+          value={props.value}
+        />
+        <section className={scss.characterLimitWrapper}>
           {modules.map((module) => (
             <CharacterLimit
               id={module.id}
@@ -113,7 +113,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
               value={module.value}
             />
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );
