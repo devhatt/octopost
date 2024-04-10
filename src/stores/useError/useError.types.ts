@@ -1,4 +1,13 @@
 export type IUseError = {
-  errors: string[];
-  setErrors: (newErrorMessage: string) => void;
+  errors: IError;
+  removeError: (idToRemove: string) => void;
+  setError: (newErrorMessage: string) => string;
 };
+
+export type IError = Record<
+  string,
+  {
+    id: string;
+    message: string;
+  }
+>;

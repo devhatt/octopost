@@ -3,7 +3,6 @@ import { ReactNode, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { useError } from '~stores/useError/useError';
-import isEmpty from '~utils/isEmpty/isEmpty';
 
 import { Icon } from '~components/Icon/Icon';
 
@@ -24,8 +23,8 @@ function FeedbackError(): ReactNode {
         initial="hidden"
         variants={animationVariants}
       >
-        {errors.map((error) => (
-          <li key={error}>{error}</li>
+        {Object.values(errors).map((error) => (
+          <li key={error.id}>{error.message}</li>
         ))}
       </motion.ul>
     </AnimatePresence>
@@ -43,9 +42,8 @@ function FeedbackError(): ReactNode {
           <Icon className={scss.alertIcon} icon="alert" size={20} />
           <div className={scss.errorMessageContainer}>
             <p className={scss.errorMessage}>
-              Failed to progress, please click on the{' '}
-              <span className={scss.boldSpanErrorMessage}> button </span>on the
-              side to see the errors
+              Failed to progress, please click on the <span> button </span>on
+              the side to see the errors
             </p>
           </div>
           <button
@@ -66,7 +64,7 @@ function FeedbackError(): ReactNode {
     </motion.div>
   );
 
-  return !isEmpty(errors) && renderError();
+  return Object.entries(errors).length > 0 && renderError();
 }
 
 export default FeedbackError;

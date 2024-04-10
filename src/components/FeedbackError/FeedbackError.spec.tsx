@@ -8,7 +8,7 @@ import FeedbackError from './FeedbackError';
 describe('FeedbackError', () => {
   const useErrorSpy = vi.spyOn(useErrorHook, 'useError');
   it('dont render the component if theres no errors on the errors array', () => {
-    useErrorSpy.mockReturnValue([]);
+    useErrorSpy.mockReturnValue({});
 
     render(<FeedbackError />);
 

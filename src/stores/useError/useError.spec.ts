@@ -1,46 +1,40 @@
 import { act, renderHook } from '@testing-library/react';
-import * as zustand from 'zustand';
 
 import { useError } from './useError';
 
-import { myCustomCreate, storeResetFns } from '../__mocks__/zunstandMock';
-
-vi.mock('zustand', async () => {
-  const actualZustand = await vi.importActual('zustand');
-
-  return {
-    __esModule: true,
-    ...actualZustand,
-  };
-});
-
-vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
-
 describe('useError', () => {
-  afterEach(() => {
+  it('starts with an empty error object', () => {
+    const { result } = renderHook(() => useError());
+
+    expect(result.current.errors).toEqual({});
+  });
+
+  it('adds an error to error object', () => {
+    const { result } = renderHook(() => useError());
+
+    let errorId = '';
     act(() => {
-      for (const resetFn of storeResetFns) {
-        resetFn();
-      }
+      errorId = result.current.setError('Something went wrong');
+    });
+
+    expect(result.current.errors[errorId]).toEqual({
+      id: errorId,
+      message: 'Something went wrong',
     });
   });
 
-  describe('when initialize', () => {
-    it('errors array is empty', () => {
-      const { result } = renderHook(() => useError((state) => state));
-      expect(result.current.errors).toEqual([]);
+  it('removes an error from error object', () => {
+    const { result } = renderHook(() => useError());
+
+    let errorId = '';
+    act(() => {
+      errorId = result.current.setError('Something went wrong');
     });
-  });
 
-  describe('when add a new error message', () => {
-    it('adds the new error message to the errors array', () => {
-      const { result } = renderHook(() => useError((state) => state));
-
-      act(() => {
-        result.current.setErrors('new error message');
-      });
-
-      expect(result.current.errors).toEqual(['new error message']);
+    act(() => {
+      result.current.removeError(errorId);
     });
+
+    expect(result.current.errors).not.toHaveProperty(errorId);
   });
 });
