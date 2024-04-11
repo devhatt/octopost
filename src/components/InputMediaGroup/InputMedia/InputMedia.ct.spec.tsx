@@ -17,11 +17,7 @@ test.describe('MediaButton', () => {
         document.querySelector('[data-testid="imageInput"]')
       );
 
-      if (imageInput.asElement()) {
-        await imageInput.asElement()?.setInputFiles('src/assets/logo.png');
-      } else {
-        console.error('Elemento não encontrado');
-      }
+      await imageInput.asElement()?.setInputFiles('src/assets/logo.png');
 
       await expect.poll(() => mediaSelected).toBe('logo.png');
     });
@@ -39,11 +35,7 @@ test.describe('MediaButton', () => {
           document.querySelector('[data-testid="imageInput"]')
         );
 
-        if (imageInput.asElement()) {
-          await imageInput.asElement()?.setInputFiles('public/robots.txt');
-        } else {
-          console.error('Elemento não encontrado');
-        }
+        await imageInput.asElement()?.setInputFiles('public/robots.txt');
 
         expect(mediaSelected).toBeNull();
       });

@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import { ChangeEvent, ReactNode, useRef } from 'react';
 
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
@@ -23,9 +23,7 @@ function InputMedia(props: IInputMediaProps): ReactNode {
     }
   };
 
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { files } = event.target;
 
     if (!files) return;
