@@ -79,6 +79,7 @@ module.exports = defineConfig({
           'warn',
           { default: 'array', readonly: 'array' },
         ],
+
         '@typescript-eslint/await-thenable': 'warn',
         '@typescript-eslint/ban-ts-comment': 'warn',
         '@typescript-eslint/ban-types': 'warn',
@@ -401,7 +402,6 @@ module.exports = defineConfig({
     'no-secrets/no-secrets': 'warn',
     'perfectionist/sort-array-includes': 'warn',
     'perfectionist/sort-astro-attributes': 'warn',
-    'perfectionist/sort-classes': 'warn',
     'perfectionist/sort-enums': 'warn',
     'perfectionist/sort-exports': 'warn',
     'perfectionist/sort-imports': 'off', // keep disable to not conflict with import-helpers/order-imports

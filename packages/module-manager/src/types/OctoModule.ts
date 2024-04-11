@@ -1,5 +1,3 @@
-import type { ReactElement } from 'react';
-
 import type { PostMode } from './PostModes';
 import type { Service } from './Service';
 

@@ -23,7 +23,6 @@ function Home(): ReactNode {
 
   useEffect(() => {
     if (isEmpty(modules)) {
-      console.log('ROLE');
       getAll();
     }
   }, []);

@@ -8,5 +8,6 @@ export type ModulesState = {
   addAccount: (addonId: string) => void;
   addModule: (module: Module) => void;
   getAll: () => void;
+  getAllAccountsFrom: (moduleId: string) => any;
   modules: OctoModule[];
 };

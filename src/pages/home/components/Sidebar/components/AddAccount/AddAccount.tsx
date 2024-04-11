@@ -8,17 +8,17 @@ function AddAccount(props: AddAccountProps): ReactNode {
   const { modules } = useModulesStore();
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    props.onChange(e, e.target.id);
+    props.onChange(e, e.target.value);
   };
 
   return (
     <div>
-      <select onChange={(e) => handleChange(e)}>
-        <option disabled selected>
+      <select defaultValue="DEFAULT" onChange={(e) => handleChange(e)}>
+        <option disabled value="DEFAULT">
           Select a module
         </option>
         {modules.map((module) => (
-          <option id={module.id} key={module.id}>
+          <option key={module.id} value={module.id}>
             {module.name}
           </option>
         ))}

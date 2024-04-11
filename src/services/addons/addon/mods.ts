@@ -22,13 +22,25 @@ type Status = {
 // };
 
 export class ModsService {
+  public static async authenticate(moduleId: string): Promise<any> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          moduleId: moduleId,
+          token: '74vv7v276231gfbywf',
+          userId: '8rfb37fgv6b21y',
+        });
+      }, 1000); // 1 second delay
+    });
+  }
+
   public static async getAll(): Promise<OctoModule[]> {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve([
           {
             icon: 'Icon',
-            id: '1',
+            id: 'DISCORD_EXAMPLE_ID',
             name: 'Discord',
             postModes: [
               {
@@ -51,7 +63,7 @@ export class ModsService {
           },
           {
             icon: 'Icon',
-            id: '2',
+            id: 'TWITTER_EXAMPLE_ID',
             name: 'Twitter',
             postModes: [
               {

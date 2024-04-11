@@ -1,6 +1,7 @@
 import { ChangeEvent, ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import { get } from 'node:http';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useModulesStore } from '~stores/useModulesStore';
@@ -19,7 +20,7 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const { addAccount, modules } = useModulesStore();
+  const { addAccount, getAllAccountsFrom, modules } = useModulesStore();
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
@@ -74,7 +75,10 @@ function Sidebar(): ReactNode {
           {value && renderSearchClue()}
 
           <div className={scss.items}>
-            {/* {modules.map((module) => <SocialAccordion socialMediaName={module.name} key={module.id}  />)} */}
+            {modules.map((module) => {
+              getAllAccountsFrom(module.id).then((res) => console.log(res))
+              return <SocialAccordion accountList={[]} key={module.id} socialMediaName={module.name} />
+            })}
           </div>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
