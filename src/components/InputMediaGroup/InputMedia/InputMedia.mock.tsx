@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import InputMedia from './InputMedia';
 
-import { IInputMediaTestWrapper } from './InputMedia.types';
+import { TInputMediaTestWrapper } from './InputMedia.types';
 
 /*
  * Playwright's tests execute both on the server and in a real browser.
@@ -11,7 +11,7 @@ import { IInputMediaTestWrapper } from './InputMedia.types';
  * Refer to github.com/microsoft/playwright/issues/27439 for details.
  */
 
-export function InputMediaForTest(props: IInputMediaTestWrapper): ReactNode {
+export function InputMediaForTest(props: TInputMediaTestWrapper): ReactNode {
   return (
     <InputMedia
       onChange={(media) => {

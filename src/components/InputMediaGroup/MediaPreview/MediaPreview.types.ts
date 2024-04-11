@@ -1,8 +1,8 @@
-import { IMedia } from '../InputMedia/InputMedia.types';
+import { TMedia } from '../InputMedia/InputMedia.types';
 
-export type IMediaPreviewProps = {
-  media: IMedia;
+export type TMediaPreviewProps = {
+  media: TMedia;
 
-  onImageChange: (newMedias: IMedia[], id: IMedia['id']) => void;
-  onRemove: (id: IMedia['id']) => void;
+  onImageChange: (newMedias: TMedia[], id: TMedia['id']) => void;
+  onRemove: (id: TMedia['id']) => void;
 };

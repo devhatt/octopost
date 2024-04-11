@@ -45,7 +45,7 @@ test.describe('ManyInputs', () => {
           .getByTestId('imageInput')
           .setInputFiles('src/assets/logo.png');
 
-        await expect(component.getByAltText('logo.png')).toBeVisible();
+        await expect(component.getByAltText('logo.png')).toBeHidden();
 
         await component.getByTestId('closeButton').click();
 

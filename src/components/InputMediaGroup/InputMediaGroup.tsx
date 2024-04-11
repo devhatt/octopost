@@ -5,17 +5,17 @@ import MediaPreview from './MediaPreview/MediaPreview';
 
 import scss from './InputMediaGroup.module.scss';
 
-import { IMedia } from './InputMedia/InputMedia.types';
+import { TMedia } from './InputMedia/InputMedia.types';
 
 function InputMediaGroup(): ReactNode {
-  const [medias, setMedias] = useState<IMedia[]>([]);
+  const [medias, setMedias] = useState<TMedia[]>([]);
   const invalidIndex = -1;
 
-  const addMedia = (files: IMedia[]): void => {
+  const addMedia = (files: TMedia[]): void => {
     setMedias([...medias, ...files]);
   };
 
-  const removeMedia = (id: IMedia['id']): void => {
+  const removeMedia = (id: TMedia['id']): void => {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
     const amountToRemove = 1;
@@ -27,7 +27,7 @@ function InputMediaGroup(): ReactNode {
     setMedias(list);
   };
 
-  const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
+  const updateMedia = (files: TMedia[], id: TMedia['id']): void => {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
     const amountToUpdate = 1;

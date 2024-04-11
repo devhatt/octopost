@@ -7,9 +7,9 @@ import scss from './InputMedia.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
 
-import { IInputMediaProps } from './InputMedia.types';
+import { TInputMediaProps } from './InputMedia.types';
 
-function InputMedia(props: IInputMediaProps): ReactNode {
+function InputMedia(props: TInputMediaProps): ReactNode {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const inputClasses = classNames(scss.button, {

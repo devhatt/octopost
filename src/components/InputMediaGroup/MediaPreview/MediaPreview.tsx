@@ -6,19 +6,20 @@ import InputMedia from '../InputMedia/InputMedia';
 
 import scss from '../InputMediaGroup.module.scss';
 
-import { IMediaPreviewProps } from './MediaPreview.types';
+import { TMedia } from '../InputMedia/InputMedia.types';
+import { TMediaPreviewProps } from './MediaPreview.types';
 
 function InputMediaGroup({
   media,
   onImageChange,
   onRemove,
-}: IMediaPreviewProps): ReactNode {
+}: TMediaPreviewProps): ReactNode {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
         <InputMedia
           files={media.file}
-          onChange={(newMedias) => onImageChange(newMedias, media.id)}
+          onChange={(newMedias: TMedia[]) => onImageChange(newMedias, media.id)}
         />
         <button
           aria-label="Close"
