@@ -7,8 +7,9 @@ import FeedbackError from './FeedbackError';
 
 describe('FeedbackError', () => {
   const useErrorSpy = vi.spyOn(useErrorHook, 'useError');
+
   it('dont render the component if theres no errors on the errors array', () => {
-    useErrorSpy.mockReturnValue({});
+    useErrorSpy.mockReturnValue({ errors: {} });
 
     render(<FeedbackError />);
 
@@ -18,8 +19,12 @@ describe('FeedbackError', () => {
     expect(feedbackError).not.toBeInTheDocument();
   });
 
-  it('renders the component if theres at least one error on errors array', async () => {
-    useErrorSpy.mockReturnValue(['Test error message']);
+  it('renders the component if there is at least one error on errors object', async () => {
+    useErrorSpy.mockReturnValue({
+      errors: {
+        'some-id': { id: 'some-id', message: 'Test error message' },
+      },
+    });
 
     render(<FeedbackError />);
     const dropDownButton = screen.getByRole('button');

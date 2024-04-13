@@ -11,7 +11,7 @@ import scss from './FeedbackError.module.scss';
 import { animationVariants } from './FeedbackError.data';
 
 function FeedbackError(): ReactNode {
-  const errors = useError((state) => state.errors);
+  const { errors } = useError();
   const [showErrors, setShowErrors] = useState(false);
 
   const renderErrorDropdown = (): ReactNode => (
