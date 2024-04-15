@@ -10,16 +10,17 @@ import { IFeedbackErrorProps } from './FeedbackError.type';
 
 export const FeedbackErrorComponent: Story<IFeedbackErrorProps> = (props) => {
   const setErrors = useError((state) => state.setError);
-
   useEffect(() => {
     for (const error of props.errors) {
-      setErrors(error);
+      setErrors(error.message);
     }
   }, [props.errors, setErrors]);
-
   return <FeedbackError />;
 };
 
 FeedbackErrorComponent.args = {
-  errors: ['generic error message', 'second generic error message'],
+  errors: [
+    { id: 'another-id', message: 'First generic error message' },
+    { id: 'some-id', message: 'Second generic error message' },
+  ],
 };
