@@ -4,10 +4,7 @@ import classNames from 'classnames';
 
 import scss from './CharacterLimit.module.scss';
 
-import { ModuleProps } from '../CharacterLimitMainText.types';
-
-//TODO: Renomear para characterCounter
-//TODO: Fazer 2 variantes do componente, uma com icone e outra sem icone
+import { ModuleProps } from './CharacterLimit.types.ts';
 
 function CharacterLimit(props: ModuleProps): ReactNode {
   const [counterZero, setCounterZero] = useState(false);

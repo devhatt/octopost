@@ -1,9 +1,8 @@
 import { ChangeEvent, ReactNode, useState } from 'react';
 
-import CharacterLimit from '../CharacterLimitMainText/components/CharacterLimit';
-
 import scss from './ComposerEditor.module.scss';
 
+import CharacterLimit from '../CharacterLimitMainText/CharacterLimit.tsx';
 import { TComposerEditorProps } from './ComposerEditor.types';
 
 function ComposerEditor(props: TComposerEditorProps): ReactNode {
@@ -99,7 +98,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         <CharacterLimit
           id="input"
           key="jajajjaja"
-          maxLength={2000}
+          maxLength={10}
           svg={null}
           value={props.value}
         />
