@@ -14,6 +14,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
       props.onChange(newValue);
     }
   };
+  const value = props.value ?? '';
 
   const modules = [
     {
@@ -100,7 +101,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
           key="jajajjaja"
           maxLength={10}
           svg={null}
-          value={props.value}
+          value={value}
         />
         <section className={scss.characterLimitWrapper}>
           {modules.map((module) => (
@@ -109,7 +110,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
               key={module.id}
               maxLength={module.maxLength}
               svg={module.svg}
-              value={module.value}
+              value={value}
             />
           ))}
         </section>
