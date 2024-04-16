@@ -1,3 +1,3 @@
-export type IFeedbackErrorProps = {
+export type TFeedbackErrorProps = {
   errors: { id: string; message: string }[];
 };
