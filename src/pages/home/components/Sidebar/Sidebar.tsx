@@ -16,7 +16,15 @@ import Modal from '~components/Modal/Modal';
 import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
+import SocialAccordion from './components/SocialAccordion/SocialAccordion';
+
 import scss from './Sidebar.module.scss';
+
+import {
+  mockFacebookData,
+  mockInstagramData,
+  mockTwitterData,
+} from './components/SocialAccordion/mocksMidiaData';
 
 function Sidebar(): ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
@@ -63,6 +71,7 @@ function Sidebar(): ReactNode {
               )
             )}
           </div>
+
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
               className={scss.newAccountButton}

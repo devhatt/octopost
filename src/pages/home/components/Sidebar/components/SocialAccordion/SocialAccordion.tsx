@@ -12,8 +12,6 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 function SocialAccordion(props: SocialAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openLabel = isOpen ? 'open' : 'closed';
-
   const handleOpenAccordion = () => setIsOpen((prev) => !prev);
 
   const renderError = () => <span className={scss.error}>error!!!!</span>;
