@@ -14,5 +14,5 @@ function SubmitButton(): ReactNode {
     </div>
   );
 }
-// fazer instancia para o ladle ser capaz de pegar a propriedade disabled do componente
+
 export default SubmitButton;
