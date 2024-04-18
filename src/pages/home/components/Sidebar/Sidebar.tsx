@@ -10,12 +10,10 @@ import { Icon } from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
-import SearchClue from '~components/SearchClue/SearchClue';
 
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
@@ -23,14 +21,6 @@ function Sidebar(): ReactNode {
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
   };
-
-  const renderSearchClue = (): ReactNode => (
-    <SearchClue
-      clearInput={inputSearchRef.current?.clearInput}
-      label="Searching for"
-      value={value}
-    />
-  );
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -53,12 +43,9 @@ function Sidebar(): ReactNode {
         <div className={scss.content}>
           <InputSearch
             error={false}
-            onChange={(data) => setValue(data as string)}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
-
-          {value && renderSearchClue()}
 
           <div className={scss.items}>
             Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
