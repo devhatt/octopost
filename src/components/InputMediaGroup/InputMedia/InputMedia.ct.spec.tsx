@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { expect, test } from '@playwright/experimental-ct-react';
 
 import { InputMediaForTest } from './InputMedia.mock';
 
-test.describe('InputMedia', () => {
+test.describe('MediaButton', () => {
   test.describe('when click on input', () => {
     test('changes the image', async ({ mount }) => {
       let mediaSelected: string | null = null;
@@ -13,9 +13,11 @@ test.describe('InputMedia', () => {
         />
       );
 
-      await component
-        .getByTestId('imageInput')
-        .setInputFiles('src/assets/logo.png');
+      const imageInput = await component.evaluateHandle(() =>
+        document.querySelector('[data-testid="imageInput"]')
+      );
+
+      await imageInput.asElement()?.setInputFiles('src/assets/logo.png');
 
       await expect.poll(() => mediaSelected).toBe('logo.png');
     });
@@ -29,10 +31,13 @@ test.describe('InputMedia', () => {
             onChange={(mediaName) => (mediaSelected = mediaName)}
           />
         );
-        await component
-          .getByTestId('imageInput')
-          .setInputFiles('public/robots.txt');
-        await expect(mediaSelected).toBeNull();
+        const imageInput = await component.evaluateHandle(() =>
+          document.querySelector('[data-testid="imageInput"]')
+        );
+
+        await imageInput.asElement()?.setInputFiles('public/robots.txt');
+
+        expect(mediaSelected).toBeNull();
       });
     });
   });

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
-import MediaInputs from '~components/MediaInputs/MediaInput';
+import InputMediaGroup from '~components/InputMediaGroup/InputMediaGroup';
 
 import scss from './ContentEditor.module.scss';
 
@@ -23,7 +23,7 @@ function ContentEditor(props: TContentEditorProps): ReactNode {
               className={scss.mainComposerInputMedia}
               data-testid="mediaInputs"
             >
-              <MediaInputs />
+              <InputMediaGroup />
             </div>
             <div className={scss.iconPulsSave} />
           </div>

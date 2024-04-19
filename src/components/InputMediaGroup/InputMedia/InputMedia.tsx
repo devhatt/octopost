@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { ChangeEvent, ReactNode, useRef } from 'react';
 
 import classNames from 'classnames';
 import { nanoid } from 'nanoid';
@@ -7,23 +7,23 @@ import scss from './InputMedia.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
 
-import { IInputMediaProps } from './InputMedia.types';
+import { TInputMediaProps } from './InputMedia.types';
 
-function InputMedia(props: IInputMediaProps) {
+function InputMedia(props: TInputMediaProps): ReactNode {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const inputClasses = classNames(scss.button, {
     [scss.buttonSelected]: props.files,
   });
 
-  const handleInputClick = () => {
+  const handleFileSelect = (): void => {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
       fileInputRef.current.click();
     }
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { files } = event.target;
 
     if (!files) return;
@@ -33,35 +33,37 @@ function InputMedia(props: IInputMediaProps) {
     );
 
     const medias = validFiles.map((file) => ({ file, id: nanoid() }));
+    const zero = 0;
 
-    if (validFiles.length > 0) {
+    if (validFiles.length > zero) {
       props.onChange(medias);
     }
   };
 
-  const renderEmptyImagePlaceholder = () => (
+  const renderEmptyImagePlaceholder = (): ReactNode => (
     <img
-      src={emptyInputGrey}
-      alt="image placeholder"
+      alt="add file button"
       className={scss.imagePlaceholder}
+      src={emptyInputGrey}
     />
   );
 
-  const renderImage = (file: File) => (
+  const renderImage = (file: File): ReactNode => (
     <img
-      src={URL.createObjectURL(file)}
-      alt={`uploaded image ${file.name}`}
+      alt={`${file.name}`}
       className={scss.imageSelected}
+      src={URL.createObjectURL(file)}
     />
   );
 
-  const renderVideo = (file: File) => (
-    <video controls className={scss.imageSelected}>
+  const renderVideo = (file: File): ReactNode => (
+    <video className={scss.imageSelected} controls>
+      <track kind="captions" />
       <source src={URL.createObjectURL(file)} type={file.type} />
     </video>
   );
 
-  const renderMedia = () => {
+  const renderMedia = (): ReactNode => {
     if (!props.files) return;
 
     return props.files.type.includes('image')
@@ -70,15 +72,15 @@ function InputMedia(props: IInputMediaProps) {
   };
 
   return (
-    <button className={inputClasses} onClick={handleInputClick}>
+    <button className={inputClasses} onClick={handleFileSelect} type="button">
       <input
-        type="file"
-        data-testid="imageInput"
-        ref={fileInputRef}
-        className={scss.hidden}
         accept="image/*, video/*"
-        onChange={handleFileChange}
+        className={scss.hidden}
+        data-testid="imageInput"
         multiple
+        onChange={handleFileChange}
+        ref={fileInputRef}
+        type="file"
       />
       {props.files ? renderMedia() : renderEmptyImagePlaceholder()}
     </button>

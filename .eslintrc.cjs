@@ -252,6 +252,12 @@ module.exports = defineConfig({
         'write-good-comments/write-good-comments': 'off',
       },
     },
+    {
+      files: ['**.ct.spec.*'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'off',
+      }
+    },
   ],
   parserOptions: {
     ecmaFeatures: {
