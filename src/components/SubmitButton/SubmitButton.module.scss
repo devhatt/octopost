@@ -1,4 +1,4 @@
-@use '../../styles/global';
+@use '~styles/global.scss' as *;
 
 .buttonWrapper {
   width: 30rem;
@@ -15,54 +15,56 @@
 
   padding: 1.5rem 0.625rem;
 
-  background-color: global.$primaryWhite;
+  background-color: $primaryWhite;
   border-radius: 3rem;
 
   cursor: pointer;
 }
 
 .submitButtonPostLater {
-  color: global.$secondaryPurple;
+  color: $secondaryPurple;
 
-  border: 0.1rem solid global.$secondaryGray;
+  border: 1.6px solid $secondaryGray;
 }
 
 .submitButtonPostLater:hover {
-  color: global.$secondaryPurple;
+  color: $secondaryPurple;
 
-  background-color: global.$pressing;
+  background-color: $pressing;
 
   transition: 0.3s;
 }
 
 .submitButtonPostLater:disabled {
-  color: global.$secondaryGray;
-  background-color: global.$primaryWhite;
+  color: $secondaryGray;
 
-  border: 1px solid global.$pressing;
+  border: 1px solid $pressing;
+
+  background-color: $primaryWhite;
 
   cursor: not-allowed;
 }
 
 .submitButtonPostNow {
-  color: global.$primaryWhite;
+  color: $primaryWhite;
 
-  background-color: global.$secondaryPurple;
+  background-color: $secondaryPurple;
 }
 
 .submitButtonPostNow:hover {
-  color: global.$primaryWhite;
+  color: $primaryWhite;
+
   box-shadow: 0 1px 5px 0 #0000004d;
 
   transition: 0.3s;
 }
 
 .submitButtonPostNow:disabled {
-  color: global.$secondaryGray;
+  color: $secondaryGray;
 
-  background-color: global.$pressing;
-
-  cursor: not-allowed;
+  background-color: $pressing;
 
   box-shadow: none;
+
+  cursor: not-allowed;
 }
