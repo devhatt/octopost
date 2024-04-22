@@ -51,11 +51,12 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 
 ![HomePage](./docs/img/banner.png)
 [Figma Layout](https://www.figma.com/file/peiX1rvJum4D1RV99Fchqw/Layout-Octo?type=design&node-id=54395-66&mode=design)
+
 ## Como rodar
 
 1. Instalar as dependências: **`pnpm install`**
 2. Iniciar o aplicativo: **`pnpm start`**
-3. Instalar as extensões: 
+3. Instalar as extensões:
 
 - [Octopost Extension Pack](https://marketplace.visualstudio.com/items?itemName=DevHat.octopost-extension-pack)
 - **`ESLint`**
@@ -71,14 +72,13 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 ## Como Contribuir
 
 1. **Escolha uma Issue:** Explore nossos repositórios de projetos e escolha uma issue que lhe interesse.
-2. **Siga o nosso Fluxo de Issues**: Verifique nosso [Fluxo de Issues](./docs/FLOWISSUE.md) 
+2. **Siga o nosso Fluxo de Issues**: Verifique nosso [Fluxo de Issues](./docs/FLOWISSUE.md)
 3. **Siga nossas diretrizes de Contribuição:** Verifique nossas [Diretrizes de contribuição](./docs/CONTRIBUTING.md)
 4. **Siga a Guia de Estilo do projeto:** Verifique a [Guia de estilo](./docs/STYLEGUIDE.md) desse projeto
 
 [Comece sua jornada com a DevHatt agora!](https://discord.gg/devhatt)
- 
-## Regras
 
+## Regras
 
 Para garantir um ambiente saudável, respeitoso e receptivo, toda boa comunidade precisa de regras. Nossa equipe de moderação conta com o respaldo dessas regras, as quais foram criadas para tomar as providências cabíveis em cada situação. Este é um trabalho constante, pois frequentemente atualizamos nossas regras de convivência para enfrentar novos problemas que podem surgir. Por isso, é crucial reservar alguns minutos para ler sobre todas elas e, de tempos em tempos, voltar aqui para acompanhar as atualizações.
 
