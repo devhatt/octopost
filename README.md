@@ -49,7 +49,7 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 
 - **Gestão Simplificada:** Não é necessário alternar entre vários aplicativos - o OctoPost reúne todas as suas mídias sociais em um só lugar, simplificando o gerenciamento de suas contas.
 
-![HomePage](./docs/img/MacBook%20Pro%2014_%20-%205.png)
+![HomePage](./docs/img/banner.png)
 [Figma Layout](https://www.figma.com/file/peiX1rvJum4D1RV99Fchqw/Layout-Octo?type=design&node-id=54395-66&mode=design)
 ## Como rodar
 
