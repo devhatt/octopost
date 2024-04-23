@@ -16,7 +16,6 @@ import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 
-import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
@@ -28,8 +27,10 @@ const format = (userName: string): string => userName.toLowerCase().trim();
 function Sidebar(): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState('');
-  const [filteredAccounts, setFilteredAccounts] = useState(accounts);
+  const [mobileIsOpen, setMobileIsOpen] = useState(false);
+  const [selectSocialMedia, setSelectSocialMedia] = useState(
+    'Selecione uma rede social'
+  );
   const inputSearchRef = useRef<TInputComponent | null>(null);
   const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
@@ -114,12 +115,19 @@ function Sidebar(): React.ReactNode {
               />
             </div>
             <Modal
-              footer={<div>footer</div>}
+              className="$ternarygray"
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}
-              title="Adicionar Social"
             >
-              <AddAccount onChange={handleSelectSocialMedia} />
+              <select
+                onChange={(e) => setSelectSocialMedia(e.target.value)}
+                value={selectSocialMedia}
+              >
+                <option>{selectSocialMedia}</option>
+                <option value="twitter">Twitter</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+              </select>
             </Modal>
           </div>
         </div>
