@@ -15,17 +15,15 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
-  const { getAll, modules } = useModulesStore();
+  const { getAllAccounts, modules } = useModulesStore();
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
 
   const editor = <ComposerEditor onChange={setInputText} value={inputText} />;
 
   useEffect(() => {
-    if (isEmpty(modules)) {
-      getAll();
-    }
-  }, []);
+    if (isEmpty(modules)) getAllAccounts();
+  }, [getAllAccounts, modules]);
 
   return (
     <>

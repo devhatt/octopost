@@ -10,7 +10,7 @@ import { AccountCard } from '~components/AccountCard/AccountCard';
 import { ISocialAccordion } from './SocialAccordion.type';
 
 function SocialAccordion(props: ISocialAccordion) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const openLabel = isOpen ? 'open' : 'closed';
 
@@ -28,7 +28,7 @@ function SocialAccordion(props: ISocialAccordion) {
   const renderAccordionMap = () =>
     props.accountList.map((accounts) => (
       <li key={accounts.id}>
-        <AccountCard username={accounts.username} avatarURL={accounts.image} />
+        <AccountCard username={accounts.userName} avatarURL={accounts.avatar} />
       </li>
     ));
 

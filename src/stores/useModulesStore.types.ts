@@ -1,13 +1,14 @@
-import { OctoModule } from '~services/addons/addon/OctoModule';
+import { Account } from '~services/api/accounts/accounts.types';
+import { GenericObject } from '~types/object';
 
 type Module = {
   name: string;
 };
 
 export type ModulesState = {
+  accounts: GenericObject<Account[]>;
   addAccount: (addonId: string) => void;
   addModule: (module: Module) => void;
-  getAll: () => void;
-  getAllAccountsFrom: (moduleId: string) => any;
-  modules: OctoModule[];
+  getAllAccounts: () => void;
+  modules: string[];
 };
