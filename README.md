@@ -18,7 +18,7 @@
 [![GitHub Commit Activity (Week)](https://img.shields.io/github/commit-activity/w/devhatt/octopost)](https://github.com/devhatt/octopost/pulse)
 [![GitHub Contributors](https://img.shields.io/github/contributors/devhatt/octopost)](https://github.com/devhatt/octopost/contributors)
 [![GitHub stars](https://img.shields.io/github/stars/devhatt/octopost.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/devhatt/octopost/stargazers/)
-[![Discord Server](https://img.shields.io/discord/308323056592486420?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/9f5BZ7yD)
+[![Discord Server](https://img.shields.io/discord/308323056592486420?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/devhatt)
 [![Twitter Follow](https://img.shields.io/twitter/follow/DevHatt?style=social)](https://twitter.com/DevHatt)
 
 [**Junte-se a nós na DevHatt e transforme sua paixão por tecnologia em impacto real!**](https://discord.gg/devhatt)
@@ -49,8 +49,10 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 
 - **Gestão Simplificada:** Não é necessário alternar entre vários aplicativos - o OctoPost reúne todas as suas mídias sociais em um só lugar, simplificando o gerenciamento de suas contas.
 
-![HomePage](./docs/img/banner.png)
 [Figma Layout](https://www.figma.com/file/peiX1rvJum4D1RV99Fchqw/Layout-Octo?type=design&node-id=54395-66&mode=design)
+
+[![HomePage](./docs/img/banner.png)](https://www.figma.com/file/peiX1rvJum4D1RV99Fchqw/Layout-Octo?type=design&node-id=54395-66&mode=design)
+
 
 ## Como rodar
 
@@ -59,19 +61,21 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 3. Instalar as extensões:
 
 - [Octopost Extension Pack](https://marketplace.visualstudio.com/items?itemName=DevHat.octopost-extension-pack)
-- **`ESLint`**
-- **`Stylelint`**
-- **`Prettier`**
+- [**`ESLint`**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [**`Stylelint`**](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+- [**`Prettier`**](https://marketplace.visualstudio.com/items?itemName=SimonSiefke.prettier-vscode)
 
 ## Tirar Dúvidas
 
-- **Canal de Help no Discord:** Para dúvidas gerais, utilize nosso canal dedicado no Discord. É um espaço perfeito para receber suporte rápido da comunidade.
+- **Canal de Help no Discord:** Para dúvidas sobre o projeto utilize o [nosso chat do projeto](https://discord.com/channels/1032763359835213954/1137214858346119209).
 - **Salas Interativas:** Prefere uma interação mais direta? Junte-se a qualquer sala aberta no Discord e converse com outros membros que podem ajudar com suas dúvidas em tempo real.
 - **Plantões de Dúvidas:** Organizamos sessões especiais em horários determinados onde mentores estão disponíveis para ajudar com questões mais complexas.
+- **One-a-One:** Você também pode marcar um 1:1 com o mentor do projeto.
+- **Daily:** Se a sua dúvida for algo rápido, você também pode tirar suas dúvidas durante a daily.
 
 ## Como Contribuir
 
-1. **Escolha uma Issue:** Explore nossos repositórios de projetos e escolha uma issue que lhe interesse.
+1. **Escolha uma Issue:** Explore nossa [lista de issues](https://github.com/devhatt/octopost/issues) e escolha uma que mais te agradar
 2. **Siga o nosso Fluxo de Issues**: Verifique nosso [Fluxo de Issues](./docs/FLOWISSUE.md)
 3. **Siga nossas diretrizes de Contribuição:** Verifique nossas [Diretrizes de contribuição](./docs/CONTRIBUTING.md)
 4. **Siga a Guia de Estilo do projeto:** Verifique a [Guia de estilo](./docs/STYLEGUIDE.md) desse projeto
