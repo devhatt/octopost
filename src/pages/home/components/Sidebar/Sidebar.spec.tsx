@@ -1,6 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import Modal from '~components/Modal/Modal';
+
 import Sidebar from './Sidebar';
 
 describe('Sidebar', () => {
@@ -41,5 +43,14 @@ describe('Sidebar', () => {
       const closeModalEvidence = screen.queryByText(/Adicionar Social/);
       expect(closeModalEvidence).not.toBeInTheDocument();
     });
+  });
+
+  test('should close modal when clicked outside', async () => {
+    render(<Modal />);
+
+    await userEvent.click(document.body);
+
+    const modalOpenEvidence = screen.queryByText('Adicionar Social');
+    expect(modalOpenEvidence).not.toBeInTheDocument();
   });
 });
