@@ -1,8 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Modal from '~components/Modal/Modal';
-
 import Sidebar from './Sidebar';
 
 describe('Sidebar', () => {
@@ -28,22 +26,19 @@ describe('Sidebar', () => {
     expect(inputSearchComponent).toHaveValue('Test text');
   });
 
-  it('renders modal when button is clicked', async () => {
+  it('renders and closes modal when the key is pressed', async () => {
     render(<Sidebar />);
+
     const buttonToOpenModal = screen.getByText(/\+ New Account/);
     await userEvent.click(buttonToOpenModal);
 
-    const openModalEvidence = screen.getByText(/Adcionar Social/);
+    const openModalEvidence = screen.getByText(/Adicionar Social/);
     expect(openModalEvidence).toBeInTheDocument();
-  });
 
-  it('closes modal when the esc key is clicked', async () => {
-    render(<Modal />);
-
-    await userEvent.keyboard('Escape');
+    await userEvent.type(document.body, '{Escape}');
 
     await waitFor(() => {
-      expect(screen.queryByText(/Adcionar Social/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Adicionar Social/)).not.toBeInTheDocument();
     });
   });
 });

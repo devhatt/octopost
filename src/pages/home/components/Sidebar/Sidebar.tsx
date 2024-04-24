@@ -82,7 +82,7 @@ function Sidebar(): ReactNode {
               footer={<div>footer</div>}
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}
-              title="Adcionar Social"
+              title="Adicionar Social"
             >
               Octopost
             </Modal>
