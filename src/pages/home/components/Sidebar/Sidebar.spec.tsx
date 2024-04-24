@@ -25,4 +25,13 @@ describe('Sidebar', () => {
 
     expect(inputSearchComponent).toHaveValue('Test text');
   });
+
+  it('renders modal when button is clicked', async () => {
+    render(<Sidebar />);
+    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    await userEvent.click(buttonToOpenModal);
+
+    const openModalEvidence = screen.getByText(/Adcionar Social/);
+    expect(openModalEvidence).toBeInTheDocument();
+  });
 });
