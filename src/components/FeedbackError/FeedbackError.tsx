@@ -12,7 +12,7 @@ import { animationVariants } from './FeedbackError.data';
 
 function FeedbackError(): ReactNode {
   const { errors } = useError();
-  const [showErrors, setShowErrors] = useState(false);
+  const [showErrors, setShowErrors] = useState(true);
 
   const renderErrorDropdown = (): ReactNode => (
     <AnimatePresence>
