@@ -43,9 +43,6 @@ describe('Sidebar', () => {
       const closeModalEvidence = screen.queryByText(/Adicionar Social/);
       expect(closeModalEvidence).not.toBeInTheDocument();
     });
-  });
-
-  test('should close modal when clicked outside', async () => {
     render(<Modal />);
 
     await userEvent.click(document.body);
