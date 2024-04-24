@@ -14,7 +14,6 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
       props.onChange(newValue);
     }
   };
-  const value = props.value ?? '';
 
   const modules = [
     {
@@ -95,13 +94,13 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         placeholder="Digite algo aqui..."
         value={inputValue}
       />
-      <div className={scss.compost}>
+      <div className={scss.charactersLimitContainer}>
         <CharacterLimit
           id="input"
           key="jajajjaja"
           maxLength={10}
           svg={null}
-          value={value}
+          value={inputValue}
         />
         <section className={scss.characterLimitWrapper}>
           {modules.map((module) => (
@@ -110,7 +109,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
               key={module.id}
               maxLength={module.maxLength}
               svg={module.svg}
-              value={value}
+              value={inputValue}
             />
           ))}
         </section>

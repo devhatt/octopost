@@ -1,4 +1,4 @@
-@use '../../styles/global.scss';
+@use '~styles/global.scss';
 
 .inputContainer {
   width: 100%;
@@ -28,7 +28,7 @@
   resize: none;
 }
 
-.compost {
+.charactersLimitContainer {
   display: flex;
 
   justify-content: space-between;
