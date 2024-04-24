@@ -53,7 +53,6 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 
 [![HomePage](./docs/img/banner.png)](https://www.figma.com/file/peiX1rvJum4D1RV99Fchqw/Layout-Octo?type=design&node-id=54395-66&mode=design)
 
-
 ## Como rodar
 
 1. Instalar as dependências: **`pnpm install`**
