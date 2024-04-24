@@ -38,7 +38,8 @@ describe('Sidebar', () => {
     await userEvent.type(document.body, '{Escape}');
 
     await waitFor(() => {
-      expect(screen.queryByText(/Adicionar Social/)).not.toBeInTheDocument();
+      const closeModalEvidence = screen.queryByText(/Adicionar Social/);
+      expect(closeModalEvidence).not.toBeInTheDocument();
     });
   });
 });

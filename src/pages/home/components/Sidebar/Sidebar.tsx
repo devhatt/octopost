@@ -15,7 +15,6 @@ import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
@@ -29,14 +28,8 @@ function Sidebar(): ReactNode {
 
   return (
     <div className={scss.container}>
-      <Button
-        onClick={() => setMobileIsOpen((prev) => !prev)}
-        variant="outlined"
-      >
-        Abre
-      </Button>
       <AccordionTab
-        className={classNames(scss.mobile, { [scss.openMobile]: mobileIsOpen })}
+        className={classNames(scss.mobile, [scss.openMobile])}
         hideCloseButton
         title="Select Social Media"
       >
