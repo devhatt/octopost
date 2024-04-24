@@ -1,5 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import Modal from '~components/Modal/Modal';
 
 import Sidebar from './Sidebar';
 
@@ -33,5 +35,15 @@ describe('Sidebar', () => {
 
     const openModalEvidence = screen.getByText(/Adcionar Social/);
     expect(openModalEvidence).toBeInTheDocument();
+  });
+
+  it('closes modal when the esc key is clicked', async () => {
+    render(<Modal />);
+
+    await userEvent.keyboard('Escape');
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Adcionar Social/)).not.toBeInTheDocument();
+    });
   });
 });
