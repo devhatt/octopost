@@ -74,8 +74,11 @@ function Sidebar(): ReactNode {
             <Modal
               footer={<div>footer</div>}
               isOpen={isOpen}
-              onClickOutside={() => setIsOpen(false)}
-              title="Adicionar Social"
+              onClickOutside={() => {
+                console.log('onClickOutside was triggered');
+                setIsOpen(false);
+              }}
+              title="Adicionar Social 444444444"
             >
               Octopost
             </Modal>

@@ -1,8 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Modal from '~components/Modal/Modal';
-
 import Sidebar from './Sidebar';
 
 describe('Sidebar', () => {
@@ -28,7 +26,7 @@ describe('Sidebar', () => {
     expect(inputSearchComponent).toHaveValue('Test text');
   });
 
-  it('renders and closes modal when the key is pressed', async () => {
+  it('renders modal when the button is clicked', async () => {
     render(<Sidebar />);
 
     const buttonToOpenModal = screen.getByText(/\+ New Account/);
@@ -36,6 +34,13 @@ describe('Sidebar', () => {
 
     const openModalEvidence = screen.getByText(/Adicionar Social/);
     expect(openModalEvidence).toBeInTheDocument();
+  });
+
+  it('closes when the esc key is pressed', async () => {
+    render(<Sidebar />);
+
+    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    await userEvent.click(buttonToOpenModal);
 
     await userEvent.type(document.body, '{Escape}');
 
@@ -43,11 +48,19 @@ describe('Sidebar', () => {
       const closeModalEvidence = screen.queryByText(/Adicionar Social/);
       expect(closeModalEvidence).not.toBeInTheDocument();
     });
-    render(<Modal />);
+  });
 
-    await userEvent.click(document.body);
+  test('Closes modal when clicked outside', async () => {
+    render(<Sidebar />);
 
-    const modalOpenEvidence = screen.queryByText('Adicionar Social');
-    expect(modalOpenEvidence).not.toBeInTheDocument();
+    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    await userEvent.click(buttonToOpenModal);
+
+    const modalBackgroundEvidence = screen.getByTestId('portal');
+    await userEvent.click(modalBackgroundEvidence);
+
+    await waitFor(() => {
+      expect(modalBackgroundEvidence).not.toBeInTheDocument();
+    });
   });
 });
