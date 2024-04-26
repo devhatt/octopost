@@ -20,9 +20,8 @@ button {
 }
 
 .textButton {
-  width: 15rem;
-  height: 4.65rem;
-
+  min-width: 10rem;
+  max-width: 15rem;
   overflow: hidden;
 
   gap: 0.5rem;
@@ -31,7 +30,7 @@ button {
   text-transform: capitalize;
   line-height: 1.25rem;
 
-  padding: 0.625rem 1.5rem;
+  padding: 1.75rem;
 
   position: relative;
 
@@ -187,11 +186,13 @@ button {
 
     &.disabled {
       &:hover {
-        background-color: transparent;
+        color: $secondaryGray;
+
         border: 1px solid $pressing;
+
+        background-color: transparent;
         background-color: $primaryWhite;
 
-        color: $secondaryGray;
         cursor: not-allowed;
       }
     }

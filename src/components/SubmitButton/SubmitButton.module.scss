@@ -1,15 +1,17 @@
 @use '~styles/global.scss' as *;
 
 .buttonWrapper {
-  width: 30rem;
-  height: 5rem;
+  min-width: 10rem;
+  max-width: 30rem;
 
   display: flex;
   gap: 1rem;
+
+  padding: 1.5rem 0.625rem;
 }
 
-.submitButtonPostLater,
-.submitButtonPostNow {
+.buttonWrapperPrimary,
+.buttonWrapperContainer {
   font-size: 1.6rem;
   font-weight: 500;
 
@@ -21,13 +23,13 @@
   cursor: pointer;
 }
 
-.submitButtonPostLater {
+.buttonWrapperPrimary {
   color: $secondaryPurple;
 
-  border: 1.6px solid $secondaryGray;
+  border: 1.5px solid $secondaryGray;
 }
 
-.submitButtonPostLater:hover {
+.buttonWrapperPrimary:hover {
   color: $secondaryPurple;
 
   background-color: $pressing;
@@ -35,7 +37,7 @@
   transition: 0.3s;
 }
 
-.submitButtonPostLater:disabled {
+.buttonWrapperPrimary:disabled {
   color: $secondaryGray;
 
   border: 1px solid $pressing;
@@ -45,13 +47,13 @@
   cursor: not-allowed;
 }
 
-.submitButtonPostNow {
+.buttonWrapperContainer {
   color: $primaryWhite;
 
   background-color: $secondaryPurple;
 }
 
-.submitButtonPostNow:hover {
+.buttonWrapperContainer:hover {
   color: $primaryWhite;
 
   box-shadow: 0 1px 5px 0 #0000004d;
@@ -59,7 +61,7 @@
   transition: 0.3s;
 }
 
-.submitButtonPostNow:disabled {
+.buttonWrapperContainer:disabled {
   color: $secondaryGray;
 
   background-color: $pressing;
