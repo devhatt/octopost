@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
 
 export type AddAccountProps = {
-  onChange: (event: ChangeEvent<HTMLSelectElement>, addonId: string) => void;
+  onChange: (addonId: string, event: ChangeEvent<HTMLSelectElement>) => void;
 };

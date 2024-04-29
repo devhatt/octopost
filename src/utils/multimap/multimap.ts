@@ -9,11 +9,12 @@ export class MultiMap<V> {
     if (!this.map.has(key)) {
       this.map.set(key, []);
     }
-    this.map.get(key)!.push(value);
+
+    this.map.get(key)?.push(value);
   }
 
   public get(key: string): V[] {
-    return this.map.get(key) || [];
+    return this.map.get(key) ?? [];
   }
 
   public delete(key: string, value: V): void {
@@ -21,7 +22,7 @@ export class MultiMap<V> {
       const array = this.map.get(key);
       const index = array?.indexOf(value);
 
-      if (array?.includes(value)) {
+      if (index !== undefined && index > -1 && array) {
         array.splice(index, 1);
 
         if (array.length === 0) {
@@ -43,11 +44,7 @@ export class MultiMap<V> {
     this.map.clear();
   }
 
-  public toObject(): Record<string, V[]> {
-    const object: Record<string, V[]> = {};
-    for (const [key, values] of this.map.entries()) {
-      object[key.toString()] = values;
-    }
-    return object;
+  public toArray(): V[] {
+    return Array.from(this.map.values()).flat();
   }
 }

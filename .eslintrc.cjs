@@ -83,7 +83,7 @@ module.exports = defineConfig({
           'warn',
           {
             detectObjects: false,
-            ignore: [0],
+            ignore: [0, 1, -1],
             ignoreArrayIndexes: true,
             ignoreClassFieldInitialValues: true,
             ignoreDefaultValues: true,
@@ -525,7 +525,7 @@ module.exports = defineConfig({
     'unicorn/expiring-todo-comments': 'warn',
     'unicorn/explicit-length-check': 'warn',
     'unicorn/new-for-builtins': 'warn',
-    'unicorn/no-array-callback-reference': 'warn',
+    'unicorn/no-array-callback-reference': 'off',
     'unicorn/no-array-for-each': 'warn',
     'unicorn/no-array-method-this-argument': 'warn',
     'unicorn/no-array-push-push': 'warn',

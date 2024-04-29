@@ -1,7 +1,7 @@
-import { Account } from '~services/api/accounts/accounts.types';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
-export type ISocialAccordion = {
-  accountList: Account[];
+export type SocialAccordionProps = {
+  accounts: StoreAccount[];
   error: boolean;
   socialMediaName: string;
 };

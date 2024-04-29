@@ -1,9 +1,10 @@
-import { ChangeEvent, ReactNode, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
-import { useModulesStore } from '~stores/useModulesStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -19,7 +20,7 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const { accounts, addAccount } = useModulesStore();
+  const { accounts, addAccount } = useSocialMediaStore();
   const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
@@ -29,10 +30,7 @@ function Sidebar(): ReactNode {
     setIsOpen((prev) => !prev);
   };
 
-  const handleSelectSocialMedia = (
-    e: ChangeEvent<HTMLSelectElement>,
-    addonId: string
-  ): void => {
+  const handleSelectSocialMedia = (addonId: string): void => {
     addAccount(addonId);
     setIsOpen(false);
   };
@@ -74,10 +72,10 @@ function Sidebar(): ReactNode {
           {value && renderSearchClue()}
 
           <div className={scss.items}>
-            {Object.entries(accounts).map(
+            {Object.entries(groupBy(accounts, 'socialMediaId')).map(
               ([socialMediaId, socialMediaAccounts]) => (
                 <SocialAccordion
-                  accountList={socialMediaAccounts}
+                  accounts={socialMediaAccounts}
                   error={false}
                   key={socialMediaId}
                   socialMediaName={socialMediaId}

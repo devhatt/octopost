@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 
-import { useModulesStore } from '~stores/useModulesStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 import isEmpty from '~utils/isEmpty/isEmpty';
 
 import ActionBar from '~components/ActionBar/ActionBar';
@@ -8,6 +8,7 @@ import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/ContentEditor/ContentEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import FirstComment from '~components/FirstComment/FirstComment';
+import Tabber from '~components/Tabber/Tabber';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -15,15 +16,15 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
-  const { getAllAccounts, modules } = useModulesStore();
+  const { accounts, getAllAccounts } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(true);
   const [inputText, setInputText] = useState('');
 
   const editor = <ComposerEditor onChange={setInputText} value={inputText} />;
 
   useEffect(() => {
-    if (isEmpty(modules)) getAllAccounts();
-  }, [getAllAccounts, modules]);
+    if (isEmpty(accounts)) getAllAccounts();
+  }, [accounts, getAllAccounts]);
 
   return (
     <>
@@ -40,6 +41,7 @@ function Home(): ReactNode {
               onToggle={() => setIsOpen(!isOpen)}
               title="Main Content"
             />
+            {!isEmpty(accounts) && <Tabber />}
             <FirstComment />
             <FeedbackError />
           </div>

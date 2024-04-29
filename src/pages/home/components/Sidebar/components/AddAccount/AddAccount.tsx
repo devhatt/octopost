@@ -1,14 +1,14 @@
 import { ChangeEvent, ReactNode } from 'react';
 
-import { useModulesStore } from '~stores/useModulesStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import { AddAccountProps } from './AddAccount.types';
 
 function AddAccount(props: AddAccountProps): ReactNode {
-  const { modules } = useModulesStore();
+  const { socialMedias } = useSocialMediaStore();
 
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    props.onChange(e, e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
+    props.onChange(e.target.value, e);
   };
 
   return (
@@ -17,9 +17,9 @@ function AddAccount(props: AddAccountProps): ReactNode {
         <option disabled value="DEFAULT">
           Select a module
         </option>
-        {modules.map((module) => (
-          <option key={module.id} value={module.id}>
-            {module.name}
+        {Array.from(socialMedias, ([key, socialMedia]) => (
+          <option key={key} value={key}>
+            {socialMedia.name}
           </option>
         ))}
       </select>
