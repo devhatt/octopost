@@ -15,25 +15,20 @@
 
 .nav {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   padding: 1rem 2rem;
-}
 
-.navList {
-  gap: 1rem;
-  display: flex;
-}
+  &List {
+    gap: 1rem;
+    display: flex;
 
-.navItem {
-  margin-left: 1rem;
-}
+    &Item {
+      margin-left: 1rem;
+    }
 
-.navItemImage {
-  width: 3rem;
-
-  height: 3rem;
+    &Image {
+      width: 3rem;
+    }
+  }
 }

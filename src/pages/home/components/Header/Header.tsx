@@ -1,45 +1,45 @@
 import { ReactNode } from 'react';
 
-import scss from './Header.module.scss';
+import {
+  instagramLink,
+  octopostLink,
+  tiktokLink,
+  twitterLink,
+} from './links/links';
 
-import instagramIcon from './assets/instagram.svg';
-import octopostLogo from './assets/octopostLogo.svg';
-import tiktokIcon from './assets/tiktok.svg';
-import twitterIcon from './assets/twitter.svg';
+import InstagramIcon from './components/InstagramIcon';
+import OctopostLogo from './components/OctopostLogo';
+import TikTokIcon from './components/TikTokIcon';
+import TwitterIcon from './components/TwitterIcon';
+
+import scss from './Header.module.scss';
 
 function Header(): ReactNode {
   return (
     <header className={scss.header}>
       <nav className={scss.nav}>
-        <img alt="octopost logo" src={octopostLogo} />
+        <OctopostLogo alt="octopost logo" link={octopostLink} />
         <ul className={scss.navList}>
           <li className={scss.navItem}>
-            <a href="https://www.tiktok.com/@devhatt_">
-              <img
-                alt="tiktok icon"
-                className={scss.navItemImage}
-                src={tiktokIcon}
-              />
-            </a>
-          </li>
-
-          <li className={scss.navItem}>
-            <a href="https://twitter.com/DevHatt">
-              <img
-                alt="twitter icon"
-                className={scss.navItemImage}
-                src={twitterIcon}
-              />
-            </a>
+            <TikTokIcon
+              alt="tiktok icon"
+              className={scss.navItemImage}
+              link={tiktokLink}
+            />
           </li>
           <li className={scss.navItem}>
-            <a href="https://www.instagram.com/devhatt_">
-              <img
-                alt="instagram icon"
-                className={scss.navItemImage}
-                src={instagramIcon}
-              />
-            </a>
+            <TwitterIcon
+              alt="twitter icon"
+              className={scss.navItemImage}
+              link={twitterLink}
+            />
+          </li>
+          <li className={scss.navItem}>
+            <InstagramIcon
+              alt="instagram icon"
+              className={scss.navItemImage}
+              link={instagramLink}
+            />
           </li>
         </ul>
       </nav>
