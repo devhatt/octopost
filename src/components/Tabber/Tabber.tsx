@@ -15,7 +15,7 @@ import Tabs from './Tabs/Tabs';
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
 
 function Tabber(): ReactNode {
-  const { accounts, socialMedias } = useSocialMediaStore();
+  const { accounts, sendPosts, socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     `${accounts[0].id}-${accounts[0].socialMediaId}`
@@ -88,6 +88,9 @@ function Tabber(): ReactNode {
           {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
         </div>
       </div>
+      <button onClick={async () => sendPosts(tabs)} type="button">
+        POSTAR
+      </button>
     </div>
   );
 }

@@ -1,1 +1,1 @@
-export type GenericObject<T = any> = Record<string, T>;
+export type GenericObject<T = unknown> = Record<string, T>;

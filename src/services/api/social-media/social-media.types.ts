@@ -1,3 +1,11 @@
+export type Post = {
+  data: {
+    text: string;
+  };
+  postModeId: PostMode['id'];
+  socialMediaId: SocialMedia['id'];
+};
+
 export type SocialMedia = {
   icon: string;
   id: string;

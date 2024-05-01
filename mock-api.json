@@ -1,4 +1,46 @@
 {
+  "send-posts": [
+    {
+      "id": "2645",
+      "posts": [
+        {
+          "data": {
+            "text": "1231231"
+          },
+          "postModeId": "DISCORD_STORY_POSTMODE_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        },
+        {
+          "data": {
+            "text": "asdasd"
+          },
+          "postModeId": "DISCORD_REELS_POST_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        },
+        {
+          "data": {
+            "text": "zxczxc"
+          },
+          "postModeId": "DISCORD_REELS_POSTMODE_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        },
+        {
+          "data": {
+            "text": "456"
+          },
+          "postModeId": "TWITTER_THREAD_POST_ID",
+          "socialMediaId": "TWITTER_EXAMPLE_ID"
+        },
+        {
+          "data": {
+            "text": "12321213212"
+          },
+          "postModeId": "TWITTER_THREAD_POSTMODE_ID",
+          "socialMediaId": "TWITTER_EXAMPLE_ID"
+        }
+      ]
+    }
+  ],
   "accounts": [
     {
       "id": 1,

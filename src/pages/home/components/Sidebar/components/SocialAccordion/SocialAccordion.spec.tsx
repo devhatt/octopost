@@ -1,15 +1,30 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
+
 import SocialAccordion from './SocialAccordion';
 
-import { IAccountList } from './SocialAccordion.type';
-
-const mockList: IAccountList[] = [
+const mockList: StoreAccount[] = [
   {
-    id: '123',
-    image: 'userImage',
-    username: 'jhon doe',
+    avatar: 'https://example.com/avatar1.jpg',
+    expiresAt: '2022-12-31T23:59:59Z',
+    generatedAt: '2022-01-01T00:00:00Z',
+    id: '1',
+    socialMediaId: 'social1',
+    token: 'token1',
+    userName: 'User 1',
+    valid: true,
+  },
+  {
+    avatar: 'https://example.com/avatar2.jpg',
+    expiresAt: '2023-12-31T23:59:59Z',
+    generatedAt: '2023-01-01T00:00:00Z',
+    id: '2',
+    socialMediaId: 'social2',
+    token: 'token2',
+    userName: 'User 2',
+    valid: false,
   },
 ];
 
@@ -20,7 +35,7 @@ describe('SocialAccordion', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          accountList={mockList}
+          accounts={mockList}
           error={false}
           socialMediaName="facebook"
         />
@@ -33,7 +48,7 @@ describe('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          accountList={mockList}
+          accounts={mockList}
           error={false}
           socialMediaName="facebook"
         />
@@ -45,7 +60,7 @@ describe('SocialAccordion', () => {
 
     it('shows the error on screen if error={true}', () => {
       render(
-        <SocialAccordion accountList={[]} error socialMediaName="facebook" />
+        <SocialAccordion accounts={[]} error socialMediaName="facebook" />
       );
       const error = screen.getByText(/error/i);
 
@@ -57,7 +72,7 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          accountList={mockList}
+          accounts={mockList}
           error={false}
           socialMediaName="facebook"
         />

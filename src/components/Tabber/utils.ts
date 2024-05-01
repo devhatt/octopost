@@ -27,7 +27,7 @@ export const accountsToTabs = (
       id: tabId,
       postModeOnView,
       posts: {
-        [postModeOnView]: {},
+        [postModeOnView]: { text: '' },
       },
     };
 
