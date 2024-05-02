@@ -39,7 +39,8 @@ test.describe('ManyInputs', () => {
         await component
           .getByTestId('imageInput')
           .setInputFiles('public/robots.txt');
-        await expect(mediaSelected).toBeNull();
+
+        expect(mediaSelected).toBeNull();
       });
     });
 
@@ -59,7 +60,7 @@ test.describe('ManyInputs', () => {
 
         await expect(
           component.getByAltText('uploaded image logo.png')
-        ).not.toBeVisible();
+        ).toBeHidden();
       });
     });
   });
