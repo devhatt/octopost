@@ -291,11 +291,14 @@ module.exports = defineConfig({
         tsconfigRootDir: __dirname,
       },
       rules: {
+        '@typescript-eslint/consistent-type-definitions': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-magic-numbers': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-undef': 'off',
+        'react-hooks/rules-of-hooks': 'off',
       },
     },
     // test files with vitest
