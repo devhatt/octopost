@@ -1,46 +1,40 @@
 import { act, renderHook } from '@testing-library/react';
-import * as zustand from 'zustand';
 
 import { useError } from './useError';
 
-import { myCustomCreate, storeResetFns } from '../__mocks__/zunstandMock';
-
-vi.mock('zustand', async () => {
-  const zustandMock = (await vi.importActual('zustand'));
-
-  return {
-    __esModule: true,
-    ...zustandMock,
-  };
-});
-
-vi.spyOn(zustand, 'create').mockImplementation(myCustomCreate as never);
-
 describe('useError', () => {
-  afterEach(() => {
+  it('starts with an empty error object', () => {
+    const { result } = renderHook(() => useError());
+
+    expect(result.current.errors).toEqual({});
+  });
+
+  it('adds an error to error object', () => {
+    const { result } = renderHook(() => useError());
+
+    let errorId = '';
     act(() => {
-      for (const resetFn of storeResetFns) {
-        resetFn();
-      }
+      errorId = result.current.setError('Something went wrong');
+    });
+
+    expect(result.current.errors[errorId]).toEqual({
+      id: errorId,
+      message: 'Something went wrong',
     });
   });
 
-  describe('when initialize', () => {
-    it('error message is empty', () => {
-      const { result } = renderHook(() => useError((state) => state));
-      expect(result.current.errorMessage).toBe('');
+  it('removes an error from error object', () => {
+    const { result } = renderHook(() => useError());
+
+    let errorId = '';
+    act(() => {
+      errorId = result.current.setError('Something went wrong');
     });
-  });
 
-  describe('when change the error message', () => {
-    it('changes the error message', () => {
-      const { result } = renderHook(() => useError((state) => state));
-
-      act(() => {
-        result.current.setErrorMessage('update error message');
-      });
-
-      expect(result.current.errorMessage).toBe('update error message');
+    act(() => {
+      result.current.removeError(errorId);
     });
+
+    expect(result.current.errors).not.toHaveProperty(errorId);
   });
 });

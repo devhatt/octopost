@@ -1,4 +1,11 @@
-import { ChangeEvent, FocusEvent, forwardRef, ReactNode, useImperativeHandle, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useState,
+} from 'react';
 
 import classNames from 'classnames';
 
@@ -21,11 +28,11 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
 
   const [isFocused, setIsFocused] = useState(false);
 
-  const rightIcon = <img alt="right icon" src={rightIconSvg} />
-  const alertIcon = <img alt="alert icon" src={alertIconSvg} />
+  const rightIcon = <img alt="right icon" src={rightIconSvg} />;
+  const alertIcon = <img alt="alert icon" src={alertIconSvg} />;
 
   const handleClear = (): void => {
-    props.onChange('');
+    if (props.onChange) props.onChange('');
     setValue('');
   };
 
@@ -40,7 +47,7 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   );
 
   const handleValue = (e: ChangeEvent<HTMLInputElement>): void => {
-    props.onChange(e.target.value);
+    if (props.onChange) props.onChange(e.target.value);
     setValue(e.target.value);
   };
 

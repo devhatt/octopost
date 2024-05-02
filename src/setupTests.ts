@@ -11,8 +11,3 @@ afterEach(() => {
   vi.clearAllMocks();
   cleanup();
 });
-
-beforeEach(() => {
-  // https://github.com/vitest-dev/vitest/issues/4223
-  window.scrollTo = vi.fn();
-});

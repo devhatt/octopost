@@ -1,8 +1,7 @@
-﻿import { TSocialNetworks } from '../stores/useSocialNetworkStore.types';
-import { ITab } from '../Tabber.types';
+﻿import { Tab, TabId, Tabs } from '../Tabber.types';
 
 export type ITabsProps = {
-  currentTab: TSocialNetworks;
-  onChangeTab: (socialNetwork: TSocialNetworks) => void;
-  socialNetworks: ITab[];
-}
+  currentTab: Tab;
+  onChangeTab: (tab: Tab, tabId: TabId) => void;
+  tabs: Tabs;
+};

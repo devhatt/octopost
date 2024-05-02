@@ -7,10 +7,10 @@ import iconPlaceholderForIcon from './assets/facebook.svg';
 
 import Accordion from '../../../../../../components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
-import { ISocialAccordion } from './SocialAccordion.type';
+import { SocialAccordionProps } from './SocialAccordion.type';
 
-function SocialAccordion(props: ISocialAccordion) {
-  const [isOpen, setIsOpen] = useState(true);
+function SocialAccordion(props: SocialAccordionProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const openLabel = isOpen ? 'open' : 'closed';
 
@@ -20,15 +20,19 @@ function SocialAccordion(props: ISocialAccordion) {
 
   const renderAccountQuantity = () => (
     <>
-      <span>{props.accountList.length}+</span>
+      <span>{props.accounts.length}+</span>
       <p>{openLabel}</p>
     </>
   );
 
   const renderAccordionMap = () =>
-    props.accountList.map((accounts) => (
-      <li key={accounts.id}>
-        <AccountCard username={accounts.username} avatarURL={accounts.image} />
+    props.accounts.map((account) => (
+      <li key={account.id}>
+        <AccountCard
+          isEnabled={account.valid}
+          username={account.userName}
+          avatarURL={account.avatar}
+        />
       </li>
     ));
 
