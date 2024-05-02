@@ -327,7 +327,7 @@ module.exports = defineConfig({
         'write-good-comments/write-good-comments': 'off',
       },
     },
-    
+
     // javascript files
     {
       env: { node: true },
@@ -381,7 +381,7 @@ module.exports = defineConfig({
       files: ['**.ct.spec.*'],
       rules: {
         'testing-library/prefer-screen-queries': 'off',
-      }
+      },
     },
   ],
   parserOptions: {
