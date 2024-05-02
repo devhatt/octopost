@@ -28,7 +28,7 @@
 
   background-color: $primaryWhite;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  border-radius: 12px;
 
   ::-webkit-scrollbar {
     width: 0.4rem;
@@ -54,14 +54,14 @@
   justify-content: space-between;
 
   font-size: 2.2rem;
-  font-weight: 500;
 
-  padding: 2.4rem 1.6rem;
+  padding: 2.4rem 3.2rem;
 
   background-color: $primaryWhite;
 
   h2 {
     font-size: 2.2rem;
+    font-weight: 500;
     line-height: 2.8rem;
 
     margin: 0;
@@ -69,7 +69,9 @@
 }
 
 .modalContentText {
-  padding: 1.6rem 4rem;
+  color: $tertiaryGray;
+
+  padding: 4rem 5.2rem 2.4rem 4rem;
 }
 
 .modalFooter {
@@ -86,11 +88,4 @@
 .headerButtons {
   display: flex;
   gap: 1.6rem;
-
-  button {
-    width: 2.4rem;
-    height: 2.4rem;
-
-    display: block;
-  }
 }

@@ -12,7 +12,6 @@ import { Icon } from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
-import SearchClue from '~components/SearchClue/SearchClue';
 
 import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
@@ -21,9 +20,7 @@ import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
-  const [value, setValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
@@ -35,14 +32,6 @@ function Sidebar(): ReactNode {
     setIsOpen(false);
   };
 
-  const renderSearchClue = (): ReactNode => (
-    <SearchClue
-      clearInput={inputSearchRef.current?.clearInput}
-      label="Searching for"
-      value={value}
-    />
-  );
-
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
     setIsOpen(false);
@@ -50,26 +39,17 @@ function Sidebar(): ReactNode {
 
   return (
     <div className={scss.container}>
-      <Button
-        onClick={() => setMobileIsOpen((prev) => !prev)}
-        variant="outlined"
-      >
-        Abre
-      </Button>
       <AccordionTab
-        className={classNames(scss.mobile, { [scss.openMobile]: mobileIsOpen })}
+        className={classNames(scss.mobile, [scss.openMobile])}
         hideCloseButton
         title="Select Social Media"
       >
         <div className={scss.content}>
           <InputSearch
             error={false}
-            onChange={(data) => setValue(data as string)}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
-
-          {value && renderSearchClue()}
 
           <div className={scss.items}>
             {Object.entries(groupBy(accounts, 'socialMediaId')).map(
