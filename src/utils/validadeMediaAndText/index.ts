@@ -13,19 +13,19 @@ export function validateMediaSize(file: File, limitSize: number): boolean {
 
 export async function validateImageResolution(
   file: File,
-  width: number,
-  height: number
+  limitWidth: number,
+  limitHeight: number
 ): Promise<boolean> {
   if (!file.type.includes('image')) throw new Error('File is not a image');
 
-  const imageDimensions = await getImageDimensionsFromFile(file);
+  const { height, width } = await getImageDimensionsFromFile(file);
 
-  return imageDimensions.width <= width && imageDimensions.height <= height;
+  return width <= limitWidth && height <= limitHeight;
 }
 
 export async function validateImageAspectRatio(
   file: File,
-  limiteAspectRatio: number
+  limitAspectRatio: number
 ): Promise<boolean> {
   if (!file.type.includes('image')) throw new Error('File is not a image');
 
@@ -33,28 +33,28 @@ export async function validateImageAspectRatio(
 
   const imageAspectRatio = width / height;
 
-  return imageAspectRatio <= limiteAspectRatio;
+  return imageAspectRatio <= limitAspectRatio;
 }
 
 export async function validateVideoResolution(
   file: File,
-  width: number,
-  height: number
+  limitWidth: number,
+  limitHeight: number
 ): Promise<boolean> {
   if (!file.type.includes('video')) throw new Error('File is not a video');
 
-  const videoDimensions = await getVideoDimensionsAndDurationFromFile(file);
+  const { height, width } = await getVideoDimensionsAndDurationFromFile(file);
 
-  return videoDimensions.width <= width && videoDimensions.height <= height;
+  return width <= limitWidth && height <= limitHeight;
 }
 
 export async function validateVideoDuration(
   file: File,
-  durationLimit: number
+  limitDuration: number
 ): Promise<boolean> {
   if (!file.type.includes('video')) throw new Error('File is not a video');
 
   const { duration } = await getVideoDimensionsAndDurationFromFile(file);
 
-  return duration <= durationLimit;
+  return duration <= limitDuration;
 }

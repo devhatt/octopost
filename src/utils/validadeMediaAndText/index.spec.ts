@@ -25,9 +25,9 @@ describe('validate texts', () => {
 
 describe('validate medias', () => {
   it('validate media size', () => {
-    const mockLimitSize = 9999;
+    const limitSize = 9999;
 
-    expect(validateMediaSize(mockFileImage, mockLimitSize)).toBe(true);
+    expect(validateMediaSize(mockFileImage, limitSize)).toBe(true);
   });
 });
 
@@ -52,15 +52,14 @@ describe('validate images', () => {
   });
 
   it('validate image resolution', async () => {
-    const width = 1920;
-    const height = 1080;
+    const limitWidth = 1920;
+    const limitHeight = 1080;
 
-    expect(await validateImageResolution(mockFileImage, width, height)).toBe(
-      false
-    );
-
+    expect(
+      await validateImageResolution(mockFileImage, limitWidth, limitHeight)
+    ).toBe(false);
     await expect(
-      validateImageResolution(mockFileVideo, width, height)
+      validateImageResolution(mockFileVideo, limitWidth, limitHeight)
     ).rejects.toThrow('File is not a image');
   });
 
@@ -70,7 +69,6 @@ describe('validate images', () => {
     expect(
       await validateImageAspectRatio(mockFileImage, limiteAspectRatio)
     ).toBe(false);
-
     await expect(
       validateImageAspectRatio(mockFileVideo, limiteAspectRatio)
     ).rejects.toThrow('File is not a image');
@@ -111,27 +109,25 @@ describe('validate videos', () => {
   });
 
   it('validate video resolution', async () => {
-    const width = 600;
-    const height = 300;
+    const limitWidth = 600;
+    const limitHeight = 300;
 
-    expect(await validateVideoResolution(mockFileVideo, width, height)).toBe(
-      false
-    );
-
+    expect(
+      await validateVideoResolution(mockFileVideo, limitWidth, limitHeight)
+    ).toBe(false);
     await expect(
-      validateVideoResolution(mockFileImage, width, height)
+      validateVideoResolution(mockFileImage, limitWidth, limitHeight)
     ).rejects.toThrow('File is not a video');
   });
 
   it('validate video duration', async () => {
-    const durationLimit = 2000;
+    const limitDuration = 2000;
 
-    expect(await validateVideoDuration(mockFileVideo, durationLimit)).toBe(
+    expect(await validateVideoDuration(mockFileVideo, limitDuration)).toBe(
       false
     );
-
     await expect(
-      validateVideoDuration(mockFileImage, durationLimit)
+      validateVideoDuration(mockFileImage, limitDuration)
     ).rejects.toThrow('File is not a video');
   });
 });
