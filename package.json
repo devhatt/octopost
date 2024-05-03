@@ -9,8 +9,8 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "mock-api": "json-server mock-api.json",
-    "start": "pnpm -r build && vite",
-    "build": "tsc && pnpm -r build && vite build",
+    "start": "pnpm build && vite",
+    "build": "tsc && pnpm build && vite build",
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
