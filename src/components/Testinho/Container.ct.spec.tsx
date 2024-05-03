@@ -17,9 +17,9 @@ test.describe('Container', () => {
       </Container>
     );
 
-    expect((await component.boundingBox())?.height).toBeGreaterThan(
-      minContainerHeight
-    );
+    const componentBoundingBox = await component.boundingBox();
+
+    expect(componentBoundingBox?.height).toBeGreaterThan(minContainerHeight);
   });
 
   test('it cannot be bigger than 678', async ({ mount }) => {

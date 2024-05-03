@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 
 import Accordion from './Accordion';
 
@@ -13,7 +13,8 @@ const makeSut = ({
   header = <div>header</div>,
   isOpen = false,
   ...props
-}: Partial<TAccordionProps>) => render(
+}: Partial<TAccordionProps>): RenderResult =>
+  render(
     <Accordion content={content} header={header} isOpen={isOpen} {...props} />
   );
 

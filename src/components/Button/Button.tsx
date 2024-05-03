@@ -7,45 +7,47 @@ import scss from '~components/Button/Button.module.scss';
 import { ICircleButtonProps, ITextButtonProps } from './Button.types';
 
 function Button(props: ICircleButtonProps | ITextButtonProps): ReactNode {
-  function RenderTextButton(props: ITextButtonProps): ReactNode {
+  function RenderTextButton(textButtonProps: ITextButtonProps): ReactNode {
     const classes: string = classNames(
-      props.className,
+      textButtonProps.className,
       scss.textButton,
-      scss[`${props.variant ?? 'text'}`],
-      scss[`${props.color ?? 'primary'}`],
-      scss[`${props.disabled ? 'disabled' : null}`],
-      scss[`${props.disableElevation ? 'disableElevation' : null}`]
+      scss[`${textButtonProps.variant ?? 'text'}`],
+      scss[`${textButtonProps.color ?? 'primary'}`],
+      scss[`${textButtonProps.disabled ? 'disabled' : null}`],
+      scss[`${textButtonProps.disableElevation ? 'disableElevation' : null}`]
     );
 
     return (
       <button
         className={classes}
-        disabled={props.disabled}
-        onClick={props.onClick}
-        type={props.type ?? 'button'}
+        disabled={textButtonProps.disabled}
+        onClick={textButtonProps.onClick}
+        type={textButtonProps.type ?? 'button'}
       >
-        {props.children}
+        {textButtonProps.children}
       </button>
     );
   }
 
-  function RenderCircleButton(props: ICircleButtonProps): ReactNode {
+  function RenderCircleButton(
+    circleButtonprops: ICircleButtonProps
+  ): ReactNode {
     const classes: string = classNames(
-      props.className,
+      circleButtonprops.className,
       scss.circleButton,
-      scss[`${props.variant || 'text'}`],
-      scss[`${props.color || 'primary'}`],
-      scss[`${props.disabled ? 'disabled' : null}`]
+      scss[`${circleButtonprops.variant ?? 'text'}`],
+      scss[`${circleButtonprops.color ?? 'primary'}`],
+      scss[`${circleButtonprops.disabled ? 'disabled' : null}`]
     );
 
     return (
       <button
         className={classes}
-        disabled={props.disabled}
-        onClick={props.onClick}
-        type={props.type || 'button'}
+        disabled={circleButtonprops.disabled}
+        onClick={circleButtonprops.onClick}
+        type={circleButtonprops.type ?? 'button'}
       >
-        {props.icon}
+        {circleButtonprops.icon}
       </button>
     );
   }
