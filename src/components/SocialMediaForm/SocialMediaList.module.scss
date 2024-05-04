@@ -1,0 +1,36 @@
+@use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as breakpoints;
+
+.form {
+  background-color: #cba7fa;
+  min-height: 30vh;
+}
+
+.selection {
+  background-color: #622e96;
+  width: 100%;
+
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+
+  > .optionSocial {
+    background-color: #663399;
+    color: #ff0000;
+  }
+}
+
+.btn {
+  max-width: 60px;
+  margin: 2rem auto;
+
+  background-color: #9747ff;
+  color: #fff;
+  padding: 1rem 8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #7818f7;
+  }
+}
