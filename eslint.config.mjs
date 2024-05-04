@@ -7,7 +7,6 @@ import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginImportHelpers from 'eslint-plugin-import-helpers';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginNoSecrets from 'eslint-plugin-no-secrets';
-// import eslintPluginOnlyWarn from 'eslint-plugin-only-warn';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
 import eslintPluginPromise from 'eslint-plugin-promise';
