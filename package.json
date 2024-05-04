@@ -2,7 +2,7 @@
   "name": "@octopost/core",
   "version": "0.1.0",
   "engines": {
-    "node": "^22",
+    "node": "^20",
     "pnpm": "^8"
   },
   "private": true,
@@ -10,7 +10,7 @@
   "scripts": {
     "mock-api": "json-server mock-api.json",
     "start": "pnpm build && vite",
-    "build": "tsc && pnpm build && vite build",
+    "build": "tsc && vite build",
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
     "ci:publish": "pnpm build && changeset publish",
@@ -29,7 +29,7 @@
     "prettier:fix": "prettier . --write --ignore-unknown",
     "stylelint": "stylelint \"**/*.scss\"",
     "test:coverage": "vitest --coverage",
-    "test:ct": "playwright test -c playwright-ct.config.ts",
+    "test:ct": "playwright test -c playwright-ct.config.mts",
     "test:e2e": "playwright test --pass-with-no-tests",
     "test:ui": "vitest --ui --coverage",
     "test": "vitest"

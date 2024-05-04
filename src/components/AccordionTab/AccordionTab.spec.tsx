@@ -8,7 +8,7 @@ afterEach(() => {
 
 describe('AccordionTab', () => {
   describe('when [hideCloseButton] is false', () => {
-    it.only('not render close button', () => {
+    it('not render close button', () => {
       render(<AccordionTab />);
 
       const button = screen.getByRole('button');

@@ -48,7 +48,7 @@ function Modal({
               <div className={scss.headerButtons}>
                 <Button
                   circle
-                  icon={<Icon icon={'close'} size={14} />}
+                  icon={<Icon icon="close" size={14} />}
                   onClick={onClickOutside}
                   type={'button'}
                   variant={'text'}
