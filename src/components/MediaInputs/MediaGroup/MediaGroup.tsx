@@ -5,7 +5,11 @@ import scss from '../MediaInput.module.scss';
 import InputMedia from '../../InputMedia/InputMedia';
 import { IMediaGroupProps } from './MediaGroup.types';
 
-function MediaGroup({ media, onImageChange, onRemove }: IMediaGroupProps): ReactNode {
+function MediaGroup({
+  media,
+  onImageChange,
+  onRemove,
+}: IMediaGroupProps): ReactNode {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>

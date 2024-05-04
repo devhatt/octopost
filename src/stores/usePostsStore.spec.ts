@@ -6,7 +6,7 @@ import { usePostsStore } from './usePostsStore';
 import { myCustomCreate, storeResetFns } from './__mocks__/zunstandMock';
 
 vi.mock('zustand', async () => {
-  const zustandMock = (await vi.importActual('zustand'));
+  const zustandMock = await vi.importActual('zustand');
 
   return {
     __esModule: true,

@@ -5,4 +5,4 @@ export type IMediaGroupProps = {
 
   onImageChange: (newMedias: IMedia[], id: IMedia['id']) => void;
   onRemove: (id: IMedia['id']) => void;
-}
+};

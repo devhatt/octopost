@@ -61,12 +61,14 @@ function InputMedia(props: IInputMediaProps): ReactNode {
     </video>
   );
 
-  const renderMedia = (): ReactNode => props.files && (props.files.type.includes('image')
+  const renderMedia = (): ReactNode =>
+    props.files &&
+    (props.files.type.includes('image')
       ? renderImage(props.files)
-      : renderVideo(props.files))
+      : renderVideo(props.files));
 
   return (
-    <button className={inputClasses} onClick={handleInputClick} type='button'>
+    <button className={inputClasses} onClick={handleInputClick} type="button">
       <input
         accept="image/*, video/*"
         className={scss.hidden}

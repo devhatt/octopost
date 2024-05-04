@@ -11,7 +11,7 @@ import * as Sentry from '@sentry/react';
 
 type SentryProps = {
   children: ReactNode;
-}
+};
 
 Sentry.init({
   dsn: import.meta.env.REACT_APP_SENTRY_KEY,

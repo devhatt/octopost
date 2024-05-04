@@ -17,6 +17,4 @@ await use(initReactI18next).init({
   resources,
 });
 
-
-
-export {default} from 'i18next';
+export { default } from 'i18next';

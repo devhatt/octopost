@@ -20,4 +20,3 @@ function Icon(props: IconProps): ReactNode {
 }
 
 export default Icon;
-

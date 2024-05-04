@@ -5,4 +5,4 @@ export type TContentEditorProps = {
   isOpen: boolean;
   onToggle?: (opened: boolean) => void;
   title: string;
-}
+};
