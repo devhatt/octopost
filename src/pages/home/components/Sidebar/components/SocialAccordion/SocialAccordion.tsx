@@ -5,7 +5,7 @@ import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
-import Accordion from '../../../../../../components/Accordion/Accordion';
+import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
 import { SocialAccordionProps } from './SocialAccordion.type';
 

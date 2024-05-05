@@ -8,9 +8,9 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
 import { Tab, TabId } from '../Tabber.types';
-import { ITabsProps } from './Tabs.types';
+import { TabsProps } from './Tabs.types';
 
-function Tabs(props: ITabsProps): ReactNode {
+function Tabs(props: TabsProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
 
   const tabClasses = (id: TabId): string =>
