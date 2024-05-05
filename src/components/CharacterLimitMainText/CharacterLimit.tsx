@@ -19,7 +19,7 @@ function CharacterLimit(props: ModuleProps): ReactNode {
 
   function renderWithIcon(): ReactNode {
     return (
-      <div aria-label={'characterLimitWithIcon'} className={svgColor}>
+      <div className={svgColor} data-testid="characterLimitWithIcon">
         {props.svg}
         <div className={characterLimitClass}>
           <span>{remainingCharacters}</span>
@@ -30,7 +30,7 @@ function CharacterLimit(props: ModuleProps): ReactNode {
 
   function renderWithoutIcon(): ReactNode {
     return (
-      <div aria-label={'characterLimit'} className={characterLimitClass}>
+      <div className={characterLimitClass} data-testid="characterLimit">
         <p>
           {props.value.length}/{props.maxLength}
         </p>
@@ -38,7 +38,7 @@ function CharacterLimit(props: ModuleProps): ReactNode {
     );
   }
 
-  return props.svg === null ? renderWithoutIcon() : renderWithIcon();
+  return props.svg ? renderWithIcon() : renderWithoutIcon();
 }
 
 export default CharacterLimit;
