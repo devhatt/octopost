@@ -1,4 +1,4 @@
-export const home = 'http://localhost:5173/';
+export const home = '/';
 export const social_medias = {
   instagram: 'https://www.instagram.com/devhatt_',
   tiktok: 'https://www.tiktok.com/@devhatt_',

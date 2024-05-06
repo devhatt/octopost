@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { home, social_medias } from '~/constants/social-medias';
 
 import Header from './Header';
-
-import { home, social_medias } from '../../../../constants/social-medias';
 
 describe('Header component', () => {
   describe('show the content on screen', () => {
