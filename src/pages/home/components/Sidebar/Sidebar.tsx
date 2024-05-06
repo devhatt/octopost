@@ -1,24 +1,35 @@
 import { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 
+import AddAccount from './components/AddAccount/AddAccount';
+import SocialAccordion from './components/SocialAccordion/SocialAccordion';
+
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
+  const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleSelectSocialMedia = (addonId: string): void => {
+    addAccount(addonId);
+    setIsOpen(false);
   };
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
@@ -41,18 +52,16 @@ function Sidebar(): ReactNode {
           />
 
           <div className={scss.items}>
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
+            {Object.entries(groupBy(accounts, 'socialMediaId')).map(
+              ([socialMediaId, socialMediaAccounts]) => (
+                <SocialAccordion
+                  accounts={socialMediaAccounts}
+                  error={false}
+                  key={socialMediaId}
+                  socialMediaName={socialMediaId}
+                />
+              )
+            )}
           </div>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
@@ -74,13 +83,10 @@ function Sidebar(): ReactNode {
             <Modal
               footer={<div>footer</div>}
               isOpen={isOpen}
-              onClickOutside={() => {
-                console.log('onClickOutside was triggered');
-                setIsOpen(false);
-              }}
-              title="Adicionar Social 444444444"
+              onClickOutside={() => setIsOpen(false)}
+              title="Adicionar Social"
             >
-              Octopost
+              <AddAccount onChange={handleSelectSocialMedia} />
             </Modal>
           </div>
         </div>

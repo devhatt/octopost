@@ -1,17 +1,16 @@
-﻿import { PostMode } from '@octopost/module-manager';
+﻿import { Account } from '~services/api/accounts/accounts.types';
+import {
+  Post,
+  SocialMedia,
+} from '~services/api/social-media/social-media.types';
 
-import { TSocialNetworks } from './stores/useSocialNetworkStore.types';
+export type TabId = `${Account['socialMediaId']}-${SocialMedia['id']}`;
 
-export type TPostModeId = `${string}-${number}`;
-
-export type ITab = TSocialNetworks & {
-  currentPostMode?: PostMode;
-  currentPostModeId?: TPostModeId;
+export type Tab = {
+  account: Account;
+  id: TabId;
+  postModeOnView: SocialMedia['postModes'][number]['id'];
+  posts: Record<SocialMedia['postModes'][number]['id'], Post['data']>;
 };
 
-export type TTabState = Record<
-  TPostModeId,
-  {
-    text: string;
-  }
->;
+export type Tabs = Record<TabId, Tab>;

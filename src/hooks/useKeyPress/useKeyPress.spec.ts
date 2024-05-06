@@ -3,13 +3,8 @@
 import useKeyPress from './useKeyPress';
 
 describe('useKeyPress', () => {
-  let action: (event: KeyboardEvent) => void;
-  let targetKey: string;
-
-  beforeEach(() => {
-    action = vi.fn();
-    targetKey = 'Enter';
-  });
+  let action = vi.fn();
+  let targetKey = 'Enter';
 
   it('calls action function when target key is pressed', () => {
     renderHook(() => useKeyPress(targetKey, action));

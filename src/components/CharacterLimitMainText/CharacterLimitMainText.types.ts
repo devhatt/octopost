@@ -1,10 +1,12 @@
-export interface ICharacterLimitMainTextProps {
-  module: IModuleProps[];
-}
+import { ReactNode } from 'react';
 
-export interface IModuleProps {
+export type ICharacterLimitMainTextProps = {
+  module: IModuleProps[];
+};
+
+export type IModuleProps = {
   id: string;
   maxLength: number;
-  svg: React.ReactNode;
+  svg: ReactNode;
   value?: string;
-}
+};

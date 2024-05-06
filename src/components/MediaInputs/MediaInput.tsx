@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { IMedia } from '~components/InputMedia/InputMedia.types';
 
@@ -7,14 +7,14 @@ import MediaGroup from './MediaGroup/MediaGroup';
 
 import scss from './MediaInput.module.scss';
 
-function MediaInputs() {
+function MediaInputs(): ReactNode {
   const [medias, setMedias] = useState<IMedia[]>([]);
 
-  const addMedia = (files: IMedia[]) => {
+  const addMedia = (files: IMedia[]): void => {
     setMedias([...medias, ...files]);
   };
 
-  const removeMedia = (id: IMedia['id']) => {
+  const removeMedia = (id: IMedia['id']): void => {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
@@ -25,7 +25,7 @@ function MediaInputs() {
     setMedias(list);
   };
 
-  const updateMedia = (files: IMedia[], id: IMedia['id']) => {
+  const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
