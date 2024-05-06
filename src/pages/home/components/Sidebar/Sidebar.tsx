@@ -15,7 +15,8 @@ import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 // import Modal from '~components/Modal/Modal';
-import SocialMediaForm from '~components/SocialMediaForm/SocialMediaForm';
+
+import SocialMediaForm from './components/SocialMediaForm/SocialMediaForm';
 
 import scss from './Sidebar.module.scss';
 

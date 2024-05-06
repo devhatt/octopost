@@ -2,32 +2,38 @@
 @use '~styles/breakpoints.scss' as breakpoints;
 
 .form {
-  background-color: #cba7fa;
   min-height: 30vh;
+
+  background-color: #cba7fa;
 }
 
 .selection {
-  background-color: #622e96;
   width: 100%;
 
   color: #fff;
   text-align: center;
   text-transform: capitalize;
 
+  background-color: #622e96;
+
   > .optionSocial {
-    background-color: #663399;
-    color: #ff0000;
+    color: #f00;
+
+    background-color: #639;
   }
 }
 
 .btn {
   max-width: 60px;
+
+  color: #fff;
+
   margin: 2rem auto;
+  padding: 1rem 8rem;
 
   background-color: #9747ff;
-  color: #fff;
-  padding: 1rem 8rem;
   border-radius: 2rem;
+
   cursor: pointer;
 
   &:hover {
