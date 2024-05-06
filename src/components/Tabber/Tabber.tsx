@@ -1,5 +1,5 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed*/
+
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';

@@ -1,6 +1,5 @@
-/* eslint-disable unicorn/no-await-expression-member -- fix meant to be added on a task on future*/
-/* eslint-disable @typescript-eslint/no-empty-function -- Comments added let the function addAccounts be there without lint errors*/
-
+/* eslint-disable unicorn/no-await-expression-member */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { create } from 'zustand';
 
 import { AccountsService } from '~services/api/accounts/accounts';

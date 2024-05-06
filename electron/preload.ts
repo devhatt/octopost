@@ -1,32 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { contextBridge, ipcRenderer } from 'electron';
-
-// --------- Expose some API to the Renderer process ---------
-contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer));
-
-// `exposeInMainWorld` can't detect attributes and methods of `prototype`, manually patching it.
-function withPrototype(obj: Record<string, any>) {
-  const protos = Object.getPrototypeOf(obj);
-
-  for (const [key, value] of Object.entries(protos)) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) continue;
-
-    if (typeof value === 'function') {
-      // Some native APIs, like `NodeJS.EventEmitter['on']`, don't work in the Renderer process. Wrapping them into a function.
-      obj[key] = function (...args: any) {
-        return value.call(obj, ...args);
-      };
-    } else {
-      obj[key] = value;
-    }
-  }
-  return obj;
-}
-
 // --------- Preload scripts loading ---------
-function domReady(
+async function domReady(
   condition: DocumentReadyState[] = ['complete', 'interactive']
-) {
+): Promise<boolean> {
   return new Promise((resolve) => {
     if (condition.includes(document.readyState)) {
       resolve(true);
@@ -41,14 +16,14 @@ function domReady(
 }
 
 const safeDOM = {
-  append(parent: HTMLElement, child: HTMLElement) {
-    if (!Array.from(parent.children).find((e) => e === child)) {
-      parent.appendChild(child);
+  append(parent: HTMLElement, child: HTMLElement): void {
+    if (!Array.from(parent.children).includes(child)) {
+      parent.append(child);
     }
   },
-  remove(parent: HTMLElement, child: HTMLElement) {
-    if (Array.from(parent.children).find((e) => e === child)) {
-      parent.removeChild(child);
+  remove(parent: HTMLElement, child: HTMLElement): void {
+    if (Array.from(parent.children).includes(child)) {
+      child.remove();
     }
   },
 };
@@ -59,7 +34,10 @@ const safeDOM = {
  * https://projects.lukehaas.me/css-loaders
  * https://matejkustec.github.io/SpinThatShit
  */
-function useLoading() {
+function useLoading(): {
+  appendLoading: () => void;
+  removeLoading: () => void;
+} {
   const className = `loaders-css__square-spin`;
   const styleContent = `
 @keyframes square-spin {
@@ -97,11 +75,11 @@ function useLoading() {
   oDiv.innerHTML = `<div class="${className}"><div></div></div>`;
 
   return {
-    appendLoading() {
+    appendLoading(): void {
       safeDOM.append(document.head, oStyle);
       safeDOM.append(document.body, oDiv);
     },
-    removeLoading() {
+    removeLoading(): void {
       safeDOM.remove(document.head, oStyle);
       safeDOM.remove(document.body, oDiv);
     },
@@ -111,10 +89,10 @@ function useLoading() {
 // ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading();
-domReady().then(appendLoading);
+domReady().then(appendLoading).catch(console.error);
 
-window.onmessage = (ev) => {
-  ev.data.payload === 'removeLoading' && removeLoading();
-};
+window.addEventListener('message', (ev) => {
+  if (ev.data.payload === 'removeLoading') removeLoading();
+});
 
 setTimeout(removeLoading, 4999);

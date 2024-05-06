@@ -1,16 +1,23 @@
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  forwardRef,
+  ReactNode,
+  useImperativeHandle,
+  useState,
+} from 'react';
 
 import classNames from 'classnames';
 
 import scss from './InputSearch.module.scss';
 
-import alertIcon from './assets/alertIcon.svg';
+import alertIconSvg from './assets/alertIcon.svg';
 import leftIcon from './assets/leftIcon.svg';
-import rightIcon from './assets/rightIcon.svg';
+import rightIconSvg from './assets/rightIcon.svg';
 
-import { TInputProps, TInputComponentRef } from './InputSearch.types';
+import { TInputComponentRef, TInputProps } from './InputSearch.types';
 
-function InputSearch(props: TInputProps, ref: TInputComponentRef) {
+function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   const [value, setValue] = useState('');
 
   const labelClass = [scss.label];
@@ -18,59 +25,55 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   const legendClass = [scss.legend];
   const fieldsetClass = [scss.fieldset];
   const containerClass = [scss.container];
+
   const [isFocused, setIsFocused] = useState(false);
 
-  const IconAlert = () => {
-    return <img className={scss.icon} src={alertIcon} />;
+  const rightIcon = <img alt="right icon" src={rightIconSvg} />;
+  const alertIcon = <img alt="alert icon" src={alertIconSvg} />;
+
+  const handleClear = (): void => {
+    if (props.onChange) props.onChange('');
+    setValue('');
   };
 
-  const IconRight = () => {
-    return <img src={rightIcon} />;
-  };
-
-  const handleIcons = () => (
+  const handleIcons = (): ReactNode => (
     <div
       className={scss.iconRight}
       data-testid="clear-button"
       onClick={handleClear}
     >
-      {props.error ? <IconAlert /> : <IconRight />}
+      {props.error ? alertIcon : rightIcon}
     </div>
   );
 
-  const handleClear = () => {
-    props.onChange && props.onChange('');
-    setValue('');
-  };
-
-  const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.onChange && props.onChange(e.target.value);
+  const handleValue = (e: ChangeEvent<HTMLInputElement>): void => {
+    if (props.onChange) props.onChange(e.target.value);
     setValue(e.target.value);
   };
 
-  const renderErrorMessage = () => (
+  const renderErrorMessage = (): ReactNode => (
     <div className={scss.errorWrapper}>
       <span className={scss.errorMessage}>{props.errorMessage}</span>
     </div>
   );
 
-  const onInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+  const onInputFocus = (event: FocusEvent<HTMLInputElement>): void => {
     if (props.onFocus) props.onFocus(event);
     setIsFocused(true);
   };
 
-  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setIsFocused(e.target.value.length !== 0);
+  const onInputBlur = (e: FocusEvent<HTMLInputElement>): void => {
+    setIsFocused(e.target.value.length > 0);
   };
 
-  const handleFocusedStyles = () => {
+  const handleFocusedStyles = (): void => {
     fieldsetClass.push(scss.fieldsetFocus);
     legendClass.push(scss.legendFocus);
     labelClass.push(scss.labelAnimate);
     containerClass.push(scss.containerFocus);
   };
 
-  const handleErrorStyles = () => {
+  const handleErrorStyles = (): void => {
     fieldsetClass.push(scss.fieldsetError);
     containerClass.push(scss.containerError);
     labelClass.push(scss.labelError);
@@ -91,29 +94,29 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   return (
     <div className={classNames(containerClass)}>
       <div className={scss.inputWrapper}>
-        <label htmlFor={props.name} className={classNames(labelClass)}>
+        <label className={classNames(labelClass)} htmlFor={props.name}>
           {props.placeholder}
         </label>
         <div className={scss.iconLeft}>
-          <img src={leftIcon} />
+          <img alt="left icon" src={leftIcon} />
         </div>
         <input
-          required
-          readOnly={props.readOnly}
-          type={props.type}
+          className={classNames(inputClass)}
           id={props.name}
           name={props.name}
-          className={classNames(inputClass)}
-          placeholder={props.placeholder}
           onBlur={(e) => onInputBlur(e)}
-          onFocus={onInputFocus}
-          value={value}
           onChange={handleValue}
+          onFocus={onInputFocus}
+          placeholder={props.placeholder}
+          readOnly={props.readOnly}
+          required
+          type={props.type}
+          value={value}
         />
 
         {value && handleIcons()}
 
-        <fieldset eria-hidden="true" className={classNames(fieldsetClass)}>
+        <fieldset aria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
             <span className={scss.legendTitle}>{props.placeholder}</span>
           </legend>
@@ -124,4 +127,5 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef) {
   );
 }
 
-export default forwardRef(InputSearch);
+const ForwardedInputSearch = forwardRef(InputSearch);
+export default ForwardedInputSearch;

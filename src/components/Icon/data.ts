@@ -16,7 +16,7 @@ export const icons = {
   alert: Alert,
   check: Check,
   close: Close,
-  DropDownArrow: DropDownArrow,
+  dropDownArrow: DropDownArrow,
   hamburguer: Hamburguer,
   'left-arrow': LeftArrow,
   mag: Mag,

@@ -1,6 +1,6 @@
 import { Story } from '@ladle/react';
 
-import { Icon } from './Icon';
+import Icon from './Icon';
 
 import { IconProps, IconsType } from './Icon.types';
 
