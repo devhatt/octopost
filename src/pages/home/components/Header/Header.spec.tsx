@@ -1,50 +1,36 @@
 import { render, screen } from '@testing-library/react';
 
-import { instagramLink, tiktokLink, twitterLink } from './links/links';
-
 import Header from './Header';
+
+import { home, social_medias } from '../../../../constants/social-medias';
 
 describe('Header component', () => {
   describe('show the content on screen', () => {
     it('renders its content', () => {
       render(<Header />);
 
-      const octopostLogo = screen.getByAltText('octopost logo');
-
-      const tiktokIcon = screen.getByAltText('tiktok icon');
-
-      const twitterIcon = screen.getByAltText('twitter icon');
-
-      const instagramIcon = screen.getByAltText('instagram icon');
+      const octopostLogo = screen.getByLabelText('octopost logo');
+      const tiktokIcon = screen.getByLabelText('tiktok icon');
+      const twitterIcon = screen.getByLabelText('twitter icon');
+      const instagramIcon = screen.getByLabelText('instagram icon');
 
       expect(octopostLogo).toBeInTheDocument();
-
       expect(tiktokIcon).toBeInTheDocument();
-
       expect(twitterIcon).toBeInTheDocument();
-
       expect(instagramIcon).toBeInTheDocument();
     });
-  });
-
-  describe('ensure links are correct', () => {
-    it('renders social icons with correct URL', () => {
+    it('ensures social media links are correct', () => {
       render(<Header />);
 
-      const tiktokIcon = screen.getByRole('link', { name: 'tiktok icon' });
-      const hrefTiktok = tiktokIcon.getAttribute('href');
+      const homeLink = screen.getByLabelText('octopost logo');
+      const tiktokLink = screen.getByLabelText('tiktok icon');
+      const twitterLink = screen.getByLabelText('twitter icon');
+      const instagramLink = screen.getByLabelText('instagram icon');
 
-      const twitterIcon = screen.getByRole('link', { name: 'twitter icon' });
-      const hrefTwitter = twitterIcon.getAttribute('href');
-
-      const instagramIcon = screen.getByRole('link', {
-        name: 'instagram icon',
-      });
-      const hrefInstagram = instagramIcon.getAttribute('href');
-
-      expect(hrefTiktok).toEqual(tiktokLink);
-      expect(hrefTwitter).toEqual(twitterLink);
-      expect(hrefInstagram).toEqual(instagramLink);
+      expect(homeLink.getAttribute('href')).toBe(home);
+      expect(tiktokLink.getAttribute('href')).toBe(social_medias.tiktok);
+      expect(twitterLink.getAttribute('href')).toBe(social_medias.twitter);
+      expect(instagramLink.getAttribute('href')).toBe(social_medias.instagram);
     });
   });
 });

@@ -18,17 +18,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+}
 
-  &List {
-    gap: 1rem;
-    display: flex;
+.list {
+  gap: 1rem;
+  display: flex;
+}
 
-    &Item {
-      margin-left: 1rem;
-    }
+.item {
+  margin-left: 1rem;
+}
 
-    &Image {
-      width: 3rem;
-    }
-  }
+.image {
+  max-width: 3rem;
 }
