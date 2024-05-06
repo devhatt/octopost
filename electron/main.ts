@@ -40,7 +40,6 @@ async function createWindow(): Promise<void> {
       await win.loadURL(process.env.VITE_DEV_SERVER_URL);
       win.webContents.openDevTools();
     } else {
-      // win.loadFile('dist/index.html')
       if (process.env.DIST) {
         await win.loadFile(path.join(process.env.DIST, 'index.html'));
       }
