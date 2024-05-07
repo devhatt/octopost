@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
 
+import Button from '~components/Button/Button';
 import Modal from '~components/Modal/Modal';
 
 import scss from './SocialMediaList.module.scss';
@@ -20,9 +21,9 @@ function SocialMediaForm({
   return (
     <Modal
       footer={
-        <button className={scss.btn} type="button">
-          ok
-        </button>
+        <Button disabled={false} type="button" variant="outlined">
+          any_text
+        </Button>
       }
       isOpen={isOpen}
       onClickOutside={() => setIsOpen(false)}
