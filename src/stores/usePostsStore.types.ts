@@ -1,5 +1,5 @@
-export interface IPostsStore {
-  postsQuantity: number;
+export type IPostsStore = {
   increase: (by: number) => void;
+  postsQuantity: number;
   reset: () => void;
-}
+};

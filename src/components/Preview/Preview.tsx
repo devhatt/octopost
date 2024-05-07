@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 import { IPreview } from './Preview.types';
 
-function Preview(props: IPreview) {
+function Preview(props: IPreview): ReactNode {
   return <div>{props.children}</div>;
 }
 

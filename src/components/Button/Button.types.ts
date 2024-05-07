@@ -1,17 +1,17 @@
-﻿import { ReactElement } from 'react';
+﻿import { HTMLAttributes, ReactElement } from 'react';
 
-export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  variant?: 'text' | 'container' | 'outlined';
-  type?: 'button' | 'submit' | 'reset';
+export type IButtonProps = HTMLAttributes<HTMLButtonElement> & {
   color?: 'primary' | 'secondary';
   disabled?: boolean;
-}
+  type?: 'button' | 'reset' | 'submit';
+  variant?: 'container' | 'outlined' | 'text';
+};
 
-export interface ITextButtonProps extends IButtonProps {
+export type ITextButtonProps = IButtonProps & {
   disableElevation?: boolean;
-}
+};
 
-export interface ICircleButtonProps extends IButtonProps {
-  icon: ReactElement;
+export type ICircleButtonProps = IButtonProps & {
   circle: boolean;
-}
+  icon: ReactElement;
+};

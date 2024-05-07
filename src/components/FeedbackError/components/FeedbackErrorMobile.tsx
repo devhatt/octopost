@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { useError } from '~stores/useError/useError';
 
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 
 import scss from './FeedbackErrorMobile.module.scss';
 

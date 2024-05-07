@@ -2,34 +2,43 @@ import type { Story } from '@ladle/react';
 
 import SocialAccordion from './SocialAccordion';
 
-import { ISocialAccordion } from './SocialAccordion.type';
+import { SocialAccordionProps } from './SocialAccordion.type';
 
-const accountList = [
+const accounts: SocialAccordionProps['accounts'] = [
   {
+    avatar: 'http://someurl.com',
+    expiresAt: '2022-12-31T23:59:59Z',
+    generatedAt: '2022-01-01T00:00:00Z',
     id: 'jdoiawdawiodj',
-    username: 'jhon doe',
-    image:
-      'https://pbs.twimg.com/profile_images/1539832609315987456/vaTzT3Co_400x400.jpg',
+    socialMediaId: '123',
+    token: 'token1',
+    userName: 'jhon doe',
+    valid: true,
   },
   {
-    id: 1234,
-    username: 'joão da silva',
-    image: '',
+    avatar: 'http://someurl.com',
+    expiresAt: '2022-12-31T23:59:59Z',
+    generatedAt: '2022-01-01T00:00:00Z',
+    id: '1234',
+    socialMediaId: '456',
+    token: 'token2',
+    userName: 'joão da silva',
+    valid: false,
   },
 ];
 
-export const SocicialAccordionComponent: Story<ISocialAccordion> = (props) => {
-  return (
-    <SocialAccordion
-      error={props.error}
-      accountList={props.accountList}
-      socialMediaName={props.socialMediaName}
-    />
-  );
-};
+export const SocicialAccordionComponent: Story<SocialAccordionProps> = (
+  props
+) => (
+  <SocialAccordion
+    accounts={props.accounts}
+    error={props.error}
+    socialMediaName={props.socialMediaName}
+  />
+);
 
 SocicialAccordionComponent.args = {
-  socialMediaName: 'Facebook',
+  accounts,
   error: false,
-  accountList,
+  socialMediaName: 'Facebook',
 };

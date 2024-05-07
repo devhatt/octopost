@@ -1,7 +1,10 @@
+/* eslint-disable testing-library/no-node-access -- esses comentários devem ser resolvidos quando o TODO desse arquivo for resolvido */
+/* eslint-disable testing-library/no-container  -- esses comentários devem ser resolvidos quando o TODO desse arquivo for resolvido*/
 import { render } from '@testing-library/react';
 
 import CharacterLimit from './CharacterLimit';
 
+// TODO: reescrever esses testes usando getByText e getByRole, não usar os selectors de classes que tao sendo usado
 describe('CharacterLimit Component', () => {
   describe('when character limit is exceeded', () => {
     it('apply the exceeded class', () => {
@@ -11,7 +14,7 @@ describe('CharacterLimit Component', () => {
       const id = 'id';
 
       const { container } = render(
-        <CharacterLimit maxLength={maxLength} value={value} svg={svg} id={id} />
+        <CharacterLimit id={id} maxLength={maxLength} svg={svg} value={value} />
       );
 
       const characterLimitElement = container.querySelector('.characterLimit');
@@ -33,7 +36,7 @@ describe('CharacterLimit Component', () => {
       const svg = <svg />;
       const id = 'id';
       const { container } = render(
-        <CharacterLimit maxLength={maxLength} value={value} svg={svg} id={id} />
+        <CharacterLimit id={id} maxLength={maxLength} svg={svg} value={value} />
       );
 
       const characterLimitElement = container.querySelector('.characterLimit');

@@ -28,6 +28,15 @@
     "useDefineForClassFields": true
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*", "electron/**/*", "playwright/**/*", "e2e/**/*"],
+  "include": [
+    "src/**/*",
+    "electron/**/*",
+    "playwright/**/*",
+    "e2e/**/*",
+    ".ladle/**/*",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "vite.electron.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
