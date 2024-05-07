@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import classNames from 'classnames';
 
@@ -14,14 +14,14 @@ function SocialMediaForm({
   setIsOpen,
   ...props
 }: SocialMediaFormProps): ReactNode {
-  const [selectSocialMedia, setSelectSocialMedia] = useState(
-    'Selecione uma rede social'
-  );
+  // const [selectSocialMedia, setSelectSocialMedia] = useState(
+  //   'Selecione uma rede social'
+  // )
 
   return (
     <Modal
       footer={
-        <Button disabled={false} type="button" variant="outlined">
+        <Button disabled={false} type="button" variant="container">
           any_text
         </Button>
       }
@@ -30,7 +30,7 @@ function SocialMediaForm({
       title="selecione sua rede social"
     >
       <form className={classNames(scss.form)} {...props}>
-        <select
+        {/* <select
           className={scss.selection}
           onChange={(e) => setSelectSocialMedia(e.target.value)}
           value={selectSocialMedia}
@@ -45,7 +45,14 @@ function SocialMediaForm({
           <option className={scss.optionSocial} value="facebook">
             Facebook
           </option>
-        </select>
+        </select> */}
+        <ul className={scss.selection}>
+          <li>Twitter</li>
+          <li>Instagram</li>
+          <li>LinkedIn</li>
+          <li>Youtube</li>
+          <li>Facebook</li>
+        </ul>
       </form>
     </Modal>
   );

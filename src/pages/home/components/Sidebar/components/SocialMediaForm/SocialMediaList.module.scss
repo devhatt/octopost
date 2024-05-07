@@ -1,42 +1,32 @@
 @use '~styles/global.scss' as *;
 @use '~styles/breakpoints.scss' as breakpoints;
 
-.form {
-  min-height: 30vh;
-
-  background-color: #cba7fa;
-}
-
 .selection {
-  width: 100%;
-
-  color: #fff;
+  color: $darkPurple;
   text-align: center;
   text-transform: capitalize;
 
-  background-color: #622e96;
+  background-color: $secondaryWhite;
+  border-radius: 1rem;
 
-  > .optionSocial {
-    color: #f00;
+  > li {
+    color: $darkPurple;
+    padding: 2rem 1.8rem;
+    border-radius: 1rem;
 
-    background-color: #639;
+    &:active {
+      background-color: $darkPurple;
+      color: $primaryWhite;
+    }
+
+    &:hover {
+      background-color: $primaryGray;
+      cursor: pointer;
+    }
   }
 }
 
-.btn {
-  max-width: 60px;
-
-  color: #fff;
-
-  margin: 2rem auto;
-  padding: 1rem 8rem;
-
-  background-color: #9747ff;
-  border-radius: 2rem;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: #7818f7;
-  }
+.isActive {
+  background-color: $darkPurple;
+  color: $primaryWhite;
 }
