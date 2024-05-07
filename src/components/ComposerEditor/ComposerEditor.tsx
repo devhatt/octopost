@@ -95,12 +95,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         value={inputValue}
       />
       <div className={scss.charactersLimitContainer}>
-        <CharacterLimit
-          key="jajajjaja"
-          maxLength={10}
-          svg={null}
-          value={inputValue}
-        />
+        <CharacterLimit maxLength={10} svg={null} value={inputValue} />
         <section className={scss.characterLimitWrapper}>
           {modules.map((module) => (
             <CharacterLimit
