@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { useError } from '~stores/useError/useError';
+import isEmpty from '~utils/isEmpty/isEmpty';
 
 import Icon from '~components/Icon/Icon';
 
@@ -21,7 +22,7 @@ function FeedbackErrorMobile(): ReactNode {
     </button>
   );
 
-  return Object.entries(errors).length > 0 && renderErrorMobile();
+  return !isEmpty(Object.entries(errors)) && renderErrorMobile();
 }
 
 export default FeedbackErrorMobile;

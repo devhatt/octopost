@@ -12,16 +12,14 @@
 
   background: $secondaryRed;
 
+  cursor: pointer;
+
   .alertIcon {
     color: $primaryWhite;
   }
 
   .errorMessage {
-    font-family: $mainFont;
-
     color: $primaryWhite;
-    font-size: 1.6rem;
-    font-weight: 400;
     line-height: 2;
   }
 }
