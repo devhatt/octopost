@@ -1,8 +1,6 @@
-import { TImageDimensions, TVideoDimensions } from './mediaDimensions.types';
+import { ImageData, VideoData } from './getMediaData.type';
 
-export async function getImageDimensionsFromFile(
-  file: File
-): Promise<TImageDimensions> {
+export async function getImageData(file: File): Promise<ImageData> {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.addEventListener('load', (e) => {
@@ -21,9 +19,7 @@ export async function getImageDimensionsFromFile(
   });
 }
 
-export async function getVideoDimensionsAndDurationFromFile(
-  file: File
-): Promise<TVideoDimensions> {
+export async function getVideoData(file: File): Promise<VideoData> {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.addEventListener('load', () => {

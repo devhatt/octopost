@@ -1,9 +1,9 @@
-export type TImageDimensions = {
+export type ImageData = {
   height: number;
   width: number;
 };
 
-export type TVideoDimensions = {
+export type VideoData = {
   duration: number;
   height: number;
   width: number;
