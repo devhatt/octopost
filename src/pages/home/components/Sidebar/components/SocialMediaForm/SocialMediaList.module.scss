@@ -2,31 +2,43 @@
 @use '~styles/breakpoints.scss' as breakpoints;
 
 .selection {
-  color: $darkPurple;
-  text-align: center;
-  text-transform: capitalize;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
 
-  background-color: $secondaryWhite;
-  border-radius: 1rem;
+  .socialItem {
+    min-width: 150px;
 
-  > li {
-    color: $darkPurple;
-    padding: 2rem 1.8rem;
-    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
 
-    &:active {
-      background-color: $darkPurple;
-      color: $primaryWhite;
+    align-items: center;
+    justify-content: center;
+
+    color: $tertiaryPurple;
+
+    padding: 2rem;
+
+    background-color: rgb(226, 226, 226);
+    outline: 1px $primaryGray solid;
+
+    transition: 0.09s ease-in-out;
+
+    cursor: pointer;
+
+    > img {
+      padding: 2rem;
+      border: 1px $secondaryGray solid;
+
+      background-color: #fff;
+
+      border-radius: 50%;
     }
 
     &:hover {
-      background-color: $primaryGray;
-      cursor: pointer;
+      scale: 0.95;
+
+      background-color: rgba($color: #d1d1d1, $alpha: 1);
     }
   }
-}
-
-.isActive {
-  background-color: $darkPurple;
-  color: $primaryWhite;
 }
