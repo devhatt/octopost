@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { useError } from '~stores/useError/useError';
 
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 
 import scss from './FeedbackError.module.scss';
 
@@ -54,7 +54,7 @@ function FeedbackError(): ReactNode {
             <Icon
               className={scss.dropDownIcon}
               data-testid="dropdown-arrow"
-              icon="DropDownArrow"
+              icon="dropDownArrow"
               size={10}
             />
           </button>

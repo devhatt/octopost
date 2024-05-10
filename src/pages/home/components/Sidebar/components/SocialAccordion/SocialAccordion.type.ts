@@ -1,11 +1,13 @@
-export interface ISocialAccordion {
-  socialMediaName: string;
-  error: boolean;
-  accountList: IAccountList[];
-}
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
-export interface IAccountList {
-  id: string | number;
-  username: string;
+export type SocialAccordionProps = {
+  accounts: StoreAccount[];
+  error: boolean;
+  socialMediaName: string;
+};
+
+export type IAccountList = {
+  id: number | string;
   image: string;
-}
+  username: string;
+};

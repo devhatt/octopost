@@ -6,7 +6,7 @@ import { icons } from './data';
 
 import { IconProps } from './Icon.types';
 
-export function Icon(props: IconProps): ReactNode {
+function Icon(props: IconProps): ReactNode {
   const Component = icons[props.icon];
 
   return (
@@ -18,3 +18,5 @@ export function Icon(props: IconProps): ReactNode {
     />
   );
 }
+
+export default Icon;

@@ -1,28 +1,40 @@
-﻿import classNames from 'classnames';
+﻿import { ReactNode } from 'react';
+
+import classNames from 'classnames';
+
+import { Account } from '~services/api/accounts/accounts.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
-import { TSocialNetworks } from '../stores/useSocialNetworkStore.types';
-import { ITabsProps } from './Tabs.types';
+import { Tab, TabId } from '../Tabber.types';
+import { TabsProps } from './Tabs.types';
 
-function Tabs(props: ITabsProps) {
-  const tabClasses = (id: string) =>
+function Tabs(props: TabsProps): ReactNode {
+  const { socialMedias } = useSocialMediaStore();
+
+  const tabClasses = (id: TabId): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
-  const renderTabs = (socialNetwork: TSocialNetworks) => (
+  const renderSocialMediaIcon = (account: Account): ReactNode =>
+    socialMedias.get(account.socialMediaId)?.icon;
+
+  const renderTabs = (tabId: TabId, tab: Tab): ReactNode => (
     <div
-      className={tabClasses(socialNetwork.id)}
-      key={`${socialNetwork.id}-${socialNetwork.name}`}
-      onClick={() => props.onChangeTab(socialNetwork)}
+      className={tabClasses(tabId)}
+      key={tabId}
+      onClick={() => props.onChangeTab(tab, tabId)}
     >
-      {socialNetwork.icon}
-      <span className={scss.tabTitle}>{socialNetwork.name}</span>
+      {renderSocialMediaIcon(tab.account)}
+      <span className={scss.tabTitle}>{tab.account.userName}</span>
     </div>
   );
 
   return (
     <div className={scss.tabsContainer}>
-      {props.socialNetworks.map(renderTabs)}
+      {Object.entries(props.tabs).map(([tabId, tab]) =>
+        renderTabs(tabId as TabId, tab)
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Story } from '@ladle/react';
 
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 
 import Button from './Button';
 

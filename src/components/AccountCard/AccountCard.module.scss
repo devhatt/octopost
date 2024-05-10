@@ -1,8 +1,6 @@
 @use '~styles/global.scss' as *;
 
 .container {
-  min-width: min-content;
-
   display: flex;
   flex-flow: row nowrap;
 
