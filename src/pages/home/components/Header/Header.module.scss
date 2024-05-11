@@ -15,14 +15,17 @@
 
 .nav {
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
+
+  justify-content: space-between;
+
   padding: 1rem 2rem;
 }
 
 .list {
-  gap: 1rem;
   display: flex;
+  gap: 1rem;
 }
 
 .item {
