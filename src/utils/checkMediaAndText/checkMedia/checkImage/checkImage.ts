@@ -1,7 +1,6 @@
-import { getAspectRatio } from '../utils/getAspectRatio';
-import { getImageData } from '../utils/getMediaData';
+import { getAspectRatio, getImageData } from '../utils/getMediaData';
 
-export async function validateImageResolution(
+export async function checkImageResolution(
   file: File,
   limitWidth: number,
   limitHeight: number
@@ -12,7 +11,7 @@ export async function validateImageResolution(
   return width <= limitWidth && height <= limitHeight;
 }
 
-export async function validateImageAspectRatio(
+export async function checkImageAspectRatio(
   file: File,
   limitAspectRatio: string
 ): Promise<boolean> {

@@ -1,6 +1,6 @@
 import { getVideoData } from '../utils/getMediaData';
 
-export async function validateVideoResolution(
+export async function checkVideoResolution(
   file: File,
   limitWidth: number,
   limitHeight: number
@@ -11,7 +11,7 @@ export async function validateVideoResolution(
   return width <= limitWidth && height <= limitHeight;
 }
 
-export async function validateVideoDuration(
+export async function checkVideoDuration(
   file: File,
   limitDuration: number
 ): Promise<boolean> {
