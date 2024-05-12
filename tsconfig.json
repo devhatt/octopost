@@ -35,8 +35,7 @@
     "e2e/**/*",
     ".ladle/**/*",
     "vite.config.ts",
-    "vitest.config.ts",
-    "vite.electron.config.ts"
+    "vitest.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

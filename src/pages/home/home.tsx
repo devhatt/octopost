@@ -1,7 +1,8 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import isEmpty from '~utils/isEmpty/isEmpty';
+import isEmpty from 'lodash.isempty';
+
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import MainComposer from '~components/MainComposer/MainComposer';
@@ -14,11 +15,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
-  const { accounts, getAllAccounts } = useSocialMediaStore();
+  const { accounts } = useSocialMediaStore();
 
-  useEffect(() => {
-    if (isEmpty(accounts)) getAllAccounts();
-  }, [accounts, getAllAccounts]);
 
   return (
     <>

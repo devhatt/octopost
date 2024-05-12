@@ -6,8 +6,8 @@ import groupBy from 'lodash.groupby';
 import isEmpty from 'lodash.isempty';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -29,7 +29,7 @@ function Sidebar(): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [filteredAccounts, setFilteredAccounts] = useState(accounts);
+  const [filteredAccounts, setFilteredAccounts] = useState(accounts.data);
   const inputSearchRef = useRef<TInputComponent | null>(null);
   const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
@@ -37,22 +37,27 @@ function Sidebar(): React.ReactNode {
     setIsOpen((prev) => !prev);
   };
 
-  const handleSelectSocialMedia = (addonId: string): void => {
-    addAccount(addonId);
+  const handleSelectSocialMedia = (): void => {
+    void addAccount();
     setIsOpen(false);
   };
 
-  const getAccounts = (): StoreAccount[] =>
-    isEmpty(filteredAccounts) ? accounts : filteredAccounts;
+  const getAccounts = (): StoreAccount[] | null =>
+    isEmpty(filteredAccounts) ? accounts.data : filteredAccounts;
 
   const debouncedSearch = debounce((value: string): void => {
     const userName = format(value);
-    const filtered = accounts.filter((account) =>
+
+
+   if(accounts.data) {
+    const filtered = accounts.data.filter((account) =>
       format(account.userName).includes(userName)
     );
+    setFilteredAccounts(filtered);
+
+  }
 
     setInputValue(value);
-    setFilteredAccounts(filtered);
   }, HALF_SECOND);
 
   const renderEmptyResult = (): ReactNode => (

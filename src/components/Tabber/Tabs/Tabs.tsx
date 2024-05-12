@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 
 import { Account } from '~services/api/accounts/accounts.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
