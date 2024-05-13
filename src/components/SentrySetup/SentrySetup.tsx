@@ -9,9 +9,9 @@ import {
 
 import * as Sentry from '@sentry/react';
 
-interface SentryProps {
+type SentryProps = {
   children: ReactNode;
-}
+};
 
 Sentry.init({
   dsn: import.meta.env.REACT_APP_SENTRY_KEY,
@@ -33,7 +33,7 @@ Sentry.init({
 
 const SentrySetup = Sentry.withSentryReactRouterV6Routing(Routes);
 
-function SentryRoutes({ children }: SentryProps) {
+function SentryRoutes({ children }: SentryProps): ReactNode {
   return <SentrySetup>{children}</SentrySetup>;
 }
 

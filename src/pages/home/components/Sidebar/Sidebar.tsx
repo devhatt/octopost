@@ -1,36 +1,36 @@
 import { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
-import SearchClue from '~components/SearchClue/SearchClue';
+
+import AddAccount from './components/AddAccount/AddAccount';
+import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
 function Sidebar(): ReactNode {
-  const [value, setValue] = useState('');
+  const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
   };
 
-  const renderSearchClue = (): ReactNode => (
-    <SearchClue
-      clearInput={inputSearchRef.current?.clearInput}
-      label="Searching for"
-      value={value}
-    />
-  );
+  const handleSelectSocialMedia = (addonId: string): void => {
+    addAccount(addonId);
+    setIsOpen(false);
+  };
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -39,40 +39,29 @@ function Sidebar(): ReactNode {
 
   return (
     <div className={scss.container}>
-      <Button
-        onClick={() => setMobileIsOpen((prev) => !prev)}
-        variant="outlined"
-      >
-        Abre
-      </Button>
       <AccordionTab
-        className={classNames(scss.mobile, { [scss.openMobile]: mobileIsOpen })}
+        className={classNames(scss.mobile, [scss.openMobile])}
         hideCloseButton
         title="Select Social Media"
       >
         <div className={scss.content}>
           <InputSearch
             error={false}
-            onChange={(data) => setValue(data as string)}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
 
-          {value && renderSearchClue()}
-
           <div className={scss.items}>
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item2 <br />
-            Item 1 <br /> Item2 <br /> Item 1 <br /> Item3 <br />
+            {Object.entries(groupBy(accounts, 'socialMediaId')).map(
+              ([socialMediaId, socialMediaAccounts]) => (
+                <SocialAccordion
+                  accounts={socialMediaAccounts}
+                  error={false}
+                  key={socialMediaId}
+                  socialMediaName={socialMediaId}
+                />
+              )
+            )}
           </div>
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
@@ -95,9 +84,9 @@ function Sidebar(): ReactNode {
               footer={<div>footer</div>}
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}
-              title="Adcionar Social"
+              title="Adicionar Social"
             >
-              Octopost
+              <AddAccount onChange={handleSelectSocialMedia} />
             </Modal>
           </div>
         </div>

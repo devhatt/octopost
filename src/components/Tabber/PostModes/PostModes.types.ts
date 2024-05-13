@@ -1,9 +1,11 @@
-﻿import { PostMode } from '@octopost/module-manager';
-
-import { ITab, TPostModeId } from '../Tabber.types';
+﻿import { Account } from '~services/api/accounts/accounts.types';
+import {
+  PostMode,
+  SocialMedia,
+} from '~services/api/social-media/social-media.types';
 
 export type IPostModesProps = {
-  currentPostModeId: TPostModeId;
-  currentTab: ITab;
-  onChangePostMode: (postMode: PostMode, postModeId: TPostModeId) => void;
+  currentPostModeId: SocialMedia['postModes'][number]['id'];
+  currentTab: Account;
+  onChangePostMode: (postMode: PostMode) => void;
 };

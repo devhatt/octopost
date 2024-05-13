@@ -6,20 +6,21 @@ import { useError } from '~stores/useError/useError';
 
 import FeedbackError from './FeedbackError';
 
-interface IFeedbackErrorProps {
-  errorMessage: string;
-}
+import { TFeedbackErrorProps } from './FeedbackError.type';
 
-export const FeedbackErrorComponent: Story<IFeedbackErrorProps> = (props) => {
-  const setErrorMessage = useError((state) => state.setErrorMessage);
-
+export const FeedbackErrorComponent: Story<TFeedbackErrorProps> = (props) => {
+  const setErrors = useError((state) => state.setError);
   useEffect(() => {
-    setErrorMessage(props.errorMessage);
-  }, [props.errorMessage]);
-
+    for (const error of props.errors) {
+      setErrors(error.message);
+    }
+  }, [props.errors, setErrors]);
   return <FeedbackError />;
 };
 
 FeedbackErrorComponent.args = {
-  errorMessage: 'generic error message',
+  errors: [
+    { id: 'another-id', message: 'First generic error message' },
+    { id: 'some-id', message: 'Second generic error message' },
+  ],
 };

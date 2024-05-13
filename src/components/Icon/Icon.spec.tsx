@@ -1,6 +1,6 @@
 import { render, RenderResult, screen } from '@testing-library/react';
 
-import { Icon } from './Icon';
+import Icon from './Icon';
 
 import { IconProps } from './Icon.types';
 
