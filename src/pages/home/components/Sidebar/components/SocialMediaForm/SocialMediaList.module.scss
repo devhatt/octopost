@@ -2,31 +2,35 @@
 @use '~styles/breakpoints.scss' as breakpoints;
 
 .selection {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.4rem;
 
   .socialItem {
-    min-width: 150px;
-
+    /* min-width: 150px; */
     display: flex;
     flex-direction: column;
 
     align-items: center;
     justify-content: center;
 
-    color: $tertiaryPurple;
+    color: #5800c8;
+    font-weight: bold;
 
     padding: 2rem;
+    border: 1px solid #5800c8;
 
-    background-color: rgb(226, 226, 226);
-    outline: 1px $primaryGray solid;
-
+    border-radius: 21px;
+    /* background-color: rgb(226, 226, 226); */
+    /* outline: 1px #cbc4cf solid; */
     transition: 0.09s ease-in-out;
 
     cursor: pointer;
 
     > img {
+      overflow: visible;
+
       padding: 2rem;
       border: 1px $secondaryGray solid;
 

@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
@@ -16,18 +16,15 @@ import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 // import Modal from '~components/Modal/Modal';
 
+import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 import SocialMediaForm from './components/SocialMediaForm/SocialMediaForm';
 
 import scss from './Sidebar.module.scss';
 
-const HALF_SECOND = 500;
-
-const format = (userName: string): string => userName.toLowerCase().trim();
-
-function Sidebar(): React.ReactNode {
-  const { accounts, addAccount } = useSocialMediaStore();
+function Sidebar(): ReactNode {
+  const { accounts } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
-  const [mobileIsOpen, setMobileIsOpen] = useState(false);
+  // const [mobileIsOpen, setMobileIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
   const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
@@ -35,10 +32,10 @@ function Sidebar(): React.ReactNode {
     setIsOpen((prev) => !prev);
   };
 
-  const handleSelectSocialMedia = (addonId: string): void => {
-    addAccount(addonId);
-    setIsOpen(false);
-  };
+  // const handleSelectSocialMedia = (addonId: string): void => {
+  //   addAccount(addonId);
+  //   setIsOpen(false);
+  // };
 
   const getAccounts = (): StoreAccount[] =>
     isEmpty(filteredAccounts) ? accounts : filteredAccounts;
