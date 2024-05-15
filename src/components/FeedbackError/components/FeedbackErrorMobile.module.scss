@@ -1,0 +1,25 @@
+@use '~styles/global.scss' as *;
+
+.errorContainer {
+  width: 100%;
+
+  display: flex;
+  gap: 1.125rem;
+
+  align-items: center;
+
+  padding-left: 0.875rem;
+
+  background: $secondaryRed;
+
+  cursor: pointer;
+
+  .alertIcon {
+    color: $primaryWhite;
+  }
+
+  .errorMessage {
+    color: $primaryWhite;
+    line-height: 2;
+  }
+}
