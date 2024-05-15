@@ -12,3 +12,26 @@
   background: rgba(255, 255, 255, 0.01);
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
+
+.nav {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+}
+
+.list {
+  display: flex;
+  gap: 1rem;
+}
+
+.item {
+  margin-left: 1rem;
+}
+
+.image {
+  max-width: 3rem;
+}
