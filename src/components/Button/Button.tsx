@@ -11,6 +11,7 @@ function Button(props: ICircleButtonProps | ITextButtonProps): ReactNode {
     const classes: string = classNames(
       textButtonProps.className,
       scss.textButton,
+      scss.button,
       scss[`${textButtonProps.variant ?? 'text'}`],
       scss[`${textButtonProps.color ?? 'primary'}`],
       scss[`${textButtonProps.disabled ? 'disabled' : null}`],
@@ -35,6 +36,7 @@ function Button(props: ICircleButtonProps | ITextButtonProps): ReactNode {
     const classes: string = classNames(
       circleButtonprops.className,
       scss.circleButton,
+      scss.button,
       scss[`${circleButtonprops.variant ?? 'text'}`],
       scss[`${circleButtonprops.color ?? 'primary'}`],
       scss[`${circleButtonprops.disabled ? 'disabled' : null}`]
