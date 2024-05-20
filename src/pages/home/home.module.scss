@@ -81,7 +81,7 @@
     display: grid;
     grid-template-areas:
       'switches input'
-      'switches tabs';
+      '. tabs';
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 28.4rem 1fr;
     gap: 1rem;

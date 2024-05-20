@@ -11,11 +11,10 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 import Icon from '~components/Icon/Icon';
 
 function SocialAccordion(props: SocialAccordionProps) {
+  console.log('oi', props);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenAccordion = () => setIsOpen((prev) => !prev);
-
-  console.log('console da props', props);
 
   const renderError = () => <span className={scss.error}>error!!!!</span>;
 

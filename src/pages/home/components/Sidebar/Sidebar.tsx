@@ -5,7 +5,6 @@ import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -19,27 +18,10 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
-import {
-  mockFacebookAccounts,
-  mockInstagramAccounts,
-  mockTwitterAccounts,
-} from './components/SocialAccordion/mocksMidiaData';
-
 function Sidebar(): ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
-
-  const accountsM: StoreAccount[] = [
-    ...mockFacebookAccounts,
-    ...mockInstagramAccounts,
-    ...mockTwitterAccounts,
-  ];
-
-  console.log(accountsM);
-
-  const groupedAccounts = Object.entries(groupBy(accountsM, 'socialMediaId'));
-  console.log('Grouped Accounts:', groupedAccounts);
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -60,6 +42,7 @@ function Sidebar(): ReactNode {
       <AccordionTab
         className={classNames(scss.mobile, [scss.openMobile])}
         hideCloseButton
+        isOpen
         title="Select Social Media"
       >
         <div className={scss.content}>
@@ -72,8 +55,8 @@ function Sidebar(): ReactNode {
           <div className={scss.items}>
             {Object.entries(groupBy(accounts, 'socialMediaId')).map(
               ([socialMediaId, socialMediaAccounts]) => {
-                console.log('Social Media Accounts:', socialMediaAccounts);
-                console.log('Social Media ID:', socialMediaId);
+                console.log('accounts', socialMediaAccounts);
+                console.log('social media id', socialMediaId);
                 return (
                   <SocialAccordion
                     accounts={socialMediaAccounts}
