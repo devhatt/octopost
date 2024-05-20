@@ -5,6 +5,7 @@ import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -16,20 +17,29 @@ import Modal from '~components/Modal/Modal';
 import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
-import SocialAccordion from './components/SocialAccordion/SocialAccordion';
-
 import scss from './Sidebar.module.scss';
 
 import {
-  mockFacebookData,
-  mockInstagramData,
-  mockTwitterData,
+  mockFacebookAccounts,
+  mockInstagramAccounts,
+  mockTwitterAccounts,
 } from './components/SocialAccordion/mocksMidiaData';
 
 function Sidebar(): ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const inputSearchRef = useRef<TInputComponent | null>(null);
+
+  const accountsM: StoreAccount[] = [
+    ...mockFacebookAccounts,
+    ...mockInstagramAccounts,
+    ...mockTwitterAccounts,
+  ];
+
+  console.log(accountsM);
+
+  const groupedAccounts = Object.entries(groupBy(accountsM, 'socialMediaId'));
+  console.log('Grouped Accounts:', groupedAccounts);
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -61,14 +71,18 @@ function Sidebar(): ReactNode {
 
           <div className={scss.items}>
             {Object.entries(groupBy(accounts, 'socialMediaId')).map(
-              ([socialMediaId, socialMediaAccounts]) => (
-                <SocialAccordion
-                  accounts={socialMediaAccounts}
-                  error={false}
-                  key={socialMediaId}
-                  socialMediaName={socialMediaId}
-                />
-              )
+              ([socialMediaId, socialMediaAccounts]) => {
+                console.log('Social Media Accounts:', socialMediaAccounts);
+                console.log('Social Media ID:', socialMediaId);
+                return (
+                  <SocialAccordion
+                    accounts={socialMediaAccounts}
+                    error={false}
+                    key={socialMediaId}
+                    socialMediaName={socialMediaId}
+                  />
+                );
+              }
             )}
           </div>
 

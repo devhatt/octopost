@@ -9,5 +9,6 @@ export type SocialAccordionProps = {
 export type IAccountList = {
   id: number | string;
   image: string;
+  socialMediaName?: string;
   username: string;
 };

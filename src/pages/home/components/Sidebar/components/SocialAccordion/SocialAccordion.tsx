@@ -8,18 +8,26 @@ import iconPlaceholderForIcon from './assets/facebook.svg';
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
 import { SocialAccordionProps } from './SocialAccordion.type';
+import Icon from '~components/Icon/Icon';
 
 function SocialAccordion(props: SocialAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenAccordion = () => setIsOpen((prev) => !prev);
 
+  console.log('console da props', props);
+
   const renderError = () => <span className={scss.error}>error!!!!</span>;
 
   const renderAccountQuantity = () => (
     <>
       <span>{props.accounts.length}+</span>
-      <p>{openLabel}</p>
+      <p>
+        <Icon
+          icon={isOpen ? 'dropDownArrow' : 'left-arrow'}
+          aria-label={isOpen ? 'Accordion is open' : 'Accordion is closed'}
+        />
+      </p>
     </>
   );
 

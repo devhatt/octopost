@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { Avatar } from '~components/Avatar/Avatar';
-import { Icon } from '~components/Icon/Icon';
+import Icon from '~components/Icon/Icon';
 import { Switch } from '~components/Switch/Switch';
 
 import scss from './AccountCard.module.scss';
