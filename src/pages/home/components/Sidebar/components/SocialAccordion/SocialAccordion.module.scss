@@ -18,7 +18,7 @@
   justify-content: space-between;
 
   margin-top: 0.8rem;
-  padding: 0 0.6rem 0 0.6rem;
+  padding: 0 0.6rem;
 
   border: 1px solid $primaryGray;
 
@@ -26,11 +26,13 @@
 }
 
 .socialInfo {
-  display: flex;
-  gap: 1rem;
-
   width: 100%;
+
   overflow: hidden;
+
+  display: flex;
+
+  gap: 1rem;
 
   align-items: center;
 }
