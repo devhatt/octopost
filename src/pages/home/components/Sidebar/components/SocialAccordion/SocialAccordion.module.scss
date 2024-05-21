@@ -18,19 +18,28 @@
   justify-content: space-between;
 
   margin-top: 0.8rem;
-  padding: 0 1.6rem;
+  padding: 0 0.6rem 0 0.6rem;
 
   border: 1px solid $primaryGray;
 
   cursor: pointer;
 }
 
-.socialInfo,
-.accordionInfo {
+.socialInfo {
   display: flex;
   gap: 1rem;
 
+  width: 100%;
+  overflow: hidden;
+
   align-items: center;
+}
+
+.accordionInfo {
+  display: flex;
+
+  align-items: center;
+  justify-content: end;
 }
 
 .socialInfo {
@@ -41,7 +50,7 @@
 }
 
 .accordionInfo {
-  gap: 0.8rem;
+  gap: 1rem;
 
   span {
     color: $tertiaryGray;

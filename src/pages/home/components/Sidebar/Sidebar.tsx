@@ -52,20 +52,16 @@ function Sidebar(): ReactNode {
             ref={inputSearchRef}
           />
 
-          <div className={scss.items}>
+          <div className={scss.accordionContainer}>
             {Object.entries(groupBy(accounts, 'socialMediaId')).map(
-              ([socialMediaId, socialMediaAccounts]) => {
-                console.log('accounts', socialMediaAccounts);
-                console.log('social media id', socialMediaId);
-                return (
-                  <SocialAccordion
-                    accounts={socialMediaAccounts}
-                    error={false}
-                    key={socialMediaId}
-                    socialMediaName={socialMediaId}
-                  />
-                );
-              }
+              ([socialMediaId, socialMediaAccounts]) => (
+                <SocialAccordion
+                  accounts={socialMediaAccounts}
+                  error={false}
+                  key={socialMediaId}
+                  socialMediaName={socialMediaId}
+                />
+              )
             )}
           </div>
 

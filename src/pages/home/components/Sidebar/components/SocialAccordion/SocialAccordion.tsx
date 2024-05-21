@@ -11,7 +11,6 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 import Icon from '~components/Icon/Icon';
 
 function SocialAccordion(props: SocialAccordionProps) {
-  console.log('oi', props);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenAccordion = () => setIsOpen((prev) => !prev);
