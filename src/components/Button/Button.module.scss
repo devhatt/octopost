@@ -1,6 +1,6 @@
-@use '~styles/global';
+@use '~styles/global' as *;
 
-button {
+.button {
   display: flex;
 
   align-items: center;
@@ -20,7 +20,7 @@ button {
 }
 
 .textButton {
-  width: fit-content;
+  width: 100%;
   overflow: hidden;
 
   gap: 0.5rem;
@@ -29,7 +29,7 @@ button {
   text-transform: capitalize;
   line-height: 1.25rem;
 
-  padding: 0.625rem 1.5rem;
+  padding: 1.75rem;
 
   position: relative;
 
@@ -104,12 +104,16 @@ button {
 }
 
 @mixin outlined($color, $border, $hover) {
-  color: $color;
+  color: $secondaryPurple;
 
   border: 1px solid $border;
 
   &:hover {
-    background-color: $hover;
+    color: $secondaryPurple;
+
+    background-color: $pressing;
+
+    transition: 0.3s;
   }
 
   svg,
@@ -121,11 +125,11 @@ button {
 .textButton {
   &.text {
     &.primary {
-      @include text(global.$secondaryPurple, global.$primaryPurple);
+      @include text($secondaryPurple, $primaryPurple);
     }
 
     &.secondary {
-      @include text(global.$primaryWhite, rgba(255, 255, 255, 0.15));
+      @include text($primaryWhite, rgba(255, 255, 255, 0.15));
     }
 
     &.disabled {
@@ -135,39 +139,27 @@ button {
 
         cursor: not-allowed;
       }
-      @include text(global.$primaryGray, global.$primaryGray);
+      @include text($primaryGray, $primaryGray);
     }
   }
 
   &.container {
     &.primary {
-      @include container(
-        global.$secondaryPurple,
-        global.$primaryWhite,
-        global.$tertiaryPurple
-      );
+      @include container($secondaryPurple, $primaryWhite, $tertiaryPurple);
     }
 
     &.secondary {
-      @include container(
-        global.$primaryWhite,
-        global.$secondaryPurple,
-        global.$primaryPurple
-      );
+      @include container($primaryWhite, $secondaryPurple, $primaryPurple);
     }
 
     &.disabled {
       &:hover {
         background: none;
-        background-color: global.$primaryGray;
+        background-color: $primaryGray;
 
         cursor: not-allowed;
       }
-      @include container(
-        global.$primaryGray,
-        global.$secondaryGray,
-        global.$secondaryGray
-      );
+      @include container($primaryGray, $secondaryGray, $secondaryGray);
     }
 
     &.disabled,
@@ -180,33 +172,28 @@ button {
 
   &.outlined {
     &.primary {
-      @include outlined(
-        global.$secondaryPurple,
-        global.$secondaryGray,
-        global.$primaryPurple
-      );
+      @include outlined($secondaryPurple, $secondaryGray, $primaryPurple);
     }
 
     &.secondary {
       @include outlined(
-        global.$primaryWhite,
-        global.$primaryWhite,
+        $primaryWhite,
+        $primaryWhite,
         rgba(255, 255, 255, 0.15)
       );
     }
 
     &.disabled {
       &:hover {
-        background: none;
+        color: $secondaryGray;
+
+        border: 1px solid $pressing;
+
         background-color: transparent;
+        background-color: $primaryWhite;
 
         cursor: not-allowed;
       }
-      @include outlined(
-        global.$primaryGray,
-        global.$primaryGray,
-        rgba(255, 255, 255, 0.15)
-      );
     }
   }
 }
@@ -219,11 +206,11 @@ button {
 
   &.text {
     &.primary {
-      @include text(global.$secondaryPurple, global.$primaryPurple);
+      @include text($secondaryPurple, $primaryPurple);
     }
 
     &.secondary {
-      @include text(global.$primaryWhite, rgba(255, 255, 255, 0.15));
+      @include text($primaryWhite, rgba(255, 255, 255, 0.15));
     }
 
     &.disabled {
@@ -233,23 +220,19 @@ button {
 
         cursor: not-allowed;
       }
-      @include text(global.$primaryGray, global.$primaryGray);
+      @include text($primaryGray, $primaryGray);
     }
   }
 
   &.container {
     &.primary {
-      @include container(
-        global.$secondaryPurple,
-        global.$primaryWhite,
-        global.$tertiaryPurple
-      );
+      @include container($secondaryPurple, $primaryWhite, $tertiaryPurple);
     }
 
     &.secondary {
       @include container(
-        global.$primaryWhite,
-        global.$secondaryPurple,
+        $primaryWhite,
+        $secondaryPurple,
         rgba(255, 255, 255, 0.75)
       );
     }
@@ -257,15 +240,11 @@ button {
     &.disabled {
       &:hover {
         background: none;
-        background-color: global.$primaryGray;
+        background-color: $primaryGray;
 
         cursor: not-allowed;
       }
-      @include container(
-        global.$primaryGray,
-        global.$secondaryGray,
-        global.$secondaryGray
-      );
+      @include container($primaryGray, $secondaryGray, $secondaryGray);
     }
 
     &.primary,
@@ -280,17 +259,13 @@ button {
 
   &.outlined {
     &.primary {
-      @include outlined(
-        global.$secondaryGray,
-        global.$secondaryGray,
-        global.$primaryPurple
-      );
+      @include outlined($secondaryGray, $secondaryGray, $primaryPurple);
     }
 
     &.secondary {
       @include outlined(
-        global.$primaryWhite,
-        global.$primaryWhite,
+        $primaryWhite,
+        $primaryWhite,
         rgba(255, 255, 255, 0.15)
       );
     }
@@ -302,11 +277,7 @@ button {
 
         cursor: not-allowed;
       }
-      @include outlined(
-        global.$primaryGray,
-        global.$primaryGray,
-        rgba(255, 255, 255, 0.15)
-      );
+      @include outlined($primaryGray, $primaryGray, rgba(255, 255, 255, 0.15));
     }
   }
 }
