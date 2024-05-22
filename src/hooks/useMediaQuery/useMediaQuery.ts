@@ -32,7 +32,7 @@ export function useMediaQuery(query: Breakpoints): boolean {
 
     mediaQuery.addEventListener('change', handleChange);
 
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    return (): void => mediaQuery.removeEventListener('change', handleChange);
   }, [query]);
 
   return matches;
