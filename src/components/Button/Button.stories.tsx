@@ -30,12 +30,12 @@ export const ButtonText: Story<ITextButtonProps> = (props) => (
     type={props.type}
     variant={props.variant}
   >
-    Button
+    Post Later
   </Button>
 );
 ButtonText.args = {
   color: 'primary',
-  variant: 'container',
+  variant: 'outlined',
 };
 
 export const CircleButton: Story<ICircleButtonProps> = (props) => (
@@ -50,5 +50,5 @@ export const CircleButton: Story<ICircleButtonProps> = (props) => (
 );
 CircleButton.args = {
   color: 'primary',
-  variant: 'container',
+  variant: 'outlined',
 };
