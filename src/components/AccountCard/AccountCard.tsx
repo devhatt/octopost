@@ -33,7 +33,6 @@ export function AccountCard({
     <div className={classNames(scss.container, className)} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
-      {/* TODO: [2025-04-01]: Replace this button for a <IconButton /> with star icon after #392 */}
       <button
         className={scss.star}
         onClick={handleFavoriteChange}
