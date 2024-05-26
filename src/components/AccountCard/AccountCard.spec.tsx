@@ -21,11 +21,13 @@ describe('AccountCard', () => {
 
   describe('when initialize', () => {
     it('renders an avatar card', () => {
+      const userName = faker.internet.userName();
       makeSut({
         avatarURL: faker.image.avatar(),
+        username: userName,
       });
 
-      const avatar = screen.getByRole('img');
+      const avatar = screen.getByRole('img', { name: userName });
 
       expect(avatar).toBeInTheDocument();
     });

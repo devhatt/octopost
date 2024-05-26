@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion, Variant } from 'framer-motion';
 
-import styles from './Accordion.module.scss';
+import scss from './Accordion.module.scss';
 
 import { TAccordionProps } from './Accordion.types';
 
@@ -16,13 +16,13 @@ function computeVariants(duration: number): Record<string, Variant> {
 
 function Accordion({ duration = 0.3, ...props }: TAccordionProps): ReactNode {
   return (
-    <section className={classNames(props.className, styles.container)}>
-      <div>{props.header}</div>
+    <section className={classNames(props.className, scss.container)}>
+      <div className={scss.header}>{props.header}</div>
       <AnimatePresence>
         {props.isOpen ? (
           <motion.div
             animate="expanded"
-            className={styles.content}
+            className={scss.content}
             exit="collapsed"
             initial="collapsed"
             variants={computeVariants(duration)}

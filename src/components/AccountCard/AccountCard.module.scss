@@ -4,37 +4,45 @@
   display: flex;
   flex-flow: row nowrap;
 
-  gap: 2rem;
+  gap: 0.8rem;
 
   align-items: center;
   justify-content: space-between;
 
   padding: 0.8rem 0.8rem 0.8rem 1.6rem;
 
+  border-bottom: 0.1rem solid $primaryGray;
+
   background-color: $secondaryWhite;
 }
 
 .username {
+  width: 100%;
   overflow: hidden;
 
-  display: -webkit-box;
+  display: flex;
 
-  margin-left: 1rem;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  font-size: 1.4rem;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
 
-.star {
-  width: 8rem;
-
-  padding: 0 1rem;
-
-  background: none;
-  outline-color: $secondaryPurple;
-
-  cursor: pointer;
+.favorite {
+  padding: 0.6rem;
 }
 
 .text {
   font-size: 1.4rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  align-items: center;
+
+  justify-content: center;
 }

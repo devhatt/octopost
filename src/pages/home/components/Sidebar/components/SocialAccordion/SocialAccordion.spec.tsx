@@ -38,7 +38,7 @@ describe.skip('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockList}
           error={false}
-          socialMediaName="facebook"
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
       const accordion = screen.getByText(/facebook/i);
@@ -51,7 +51,7 @@ describe.skip('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockList}
           error={false}
-          socialMediaName="facebook"
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
       const innerContent = screen.getByText(/facebook/i);
@@ -61,7 +61,11 @@ describe.skip('SocialAccordion', () => {
 
     it('shows the error on screen if error={true}', () => {
       render(
-        <SocialAccordion accounts={[]} error socialMediaName="facebook" />
+        <SocialAccordion
+          accounts={[]}
+          error
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+        />
       );
       const error = screen.getByText(/error/i);
 
@@ -75,7 +79,7 @@ describe.skip('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockList}
           error={false}
-          socialMediaName="facebook"
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
 
@@ -96,7 +100,7 @@ describe.skip('SocialAccordion', () => {
         <SocialAccordion
           accounts={[]}
           error={false}
-          socialMediaName="facebook"
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
       const accountQuantity = screen.getByText(/0/);
@@ -109,7 +113,7 @@ describe.skip('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockList}
           error={false}
-          socialMediaName="facebook"
+          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
       const accountQuantity = screen.getByText(/1/);

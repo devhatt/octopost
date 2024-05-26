@@ -31,9 +31,9 @@ function Home(): ReactNode {
       <Header />
       <div className={scss.mainContainer}>
         <div className={scss.gridContainer}>
-          <div className={scss.gridSwitches}>
+          <aside className={scss.gridSwitches}>
             <Sidebar />
-          </div>
+          </aside>
           <div className={scss.gridInput}>
             <MainComposer
               editor={editor}

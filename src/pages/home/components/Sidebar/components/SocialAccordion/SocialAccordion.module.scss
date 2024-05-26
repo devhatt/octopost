@@ -1,4 +1,4 @@
-@use '../../../../../../styles/global' as *;
+@use '~styles/global' as *;
 
 .wrapper {
   overflow: hidden;
@@ -15,23 +15,33 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 1.6rem;
+  padding: 1.5rem 0.6rem;
 
   border: 1px solid $primaryGray;
 
   cursor: pointer;
 }
 
-.socialInfo,
-.accordionInfo {
+.socialInfo {
+  width: 100%;
+
+  overflow: hidden;
+
   display: flex;
+
+  gap: 1rem;
 
   align-items: center;
 }
 
-.socialInfo {
-  gap: 1rem;
+.accordionInfo {
+  display: flex;
 
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.socialInfo {
   p {
     color: $secondaryPurple;
     font-size: 1.6rem;
@@ -39,9 +49,9 @@
 }
 
 .accordionInfo {
-  gap: 0.8rem;
+  gap: 1rem;
 
-  span {
+  .accountQuantity {
     color: $tertiaryGray;
     font-size: 1.2rem;
     font-weight: 500;

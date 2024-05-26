@@ -33,12 +33,12 @@ export const SocicialAccordionComponent: Story<SocialAccordionProps> = (
   <SocialAccordion
     accounts={props.accounts}
     error={props.error}
-    socialMediaName={props.socialMediaName}
+    socialMediaId={props.socialMediaId}
   />
 );
 
 SocicialAccordionComponent.args = {
   accounts,
   error: false,
-  socialMediaName: 'Facebook',
+  socialMediaId: 'FACEBOOK_SOCIAL_MEDIA_ID',
 };

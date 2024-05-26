@@ -42,6 +42,7 @@ function Sidebar(): ReactNode {
       <AccordionTab
         className={classNames(scss.mobile, [scss.openMobile])}
         hideCloseButton
+        isOpen
         title="Select Social Media"
       >
         <div className={scss.content}>
@@ -51,25 +52,26 @@ function Sidebar(): ReactNode {
             ref={inputSearchRef}
           />
 
-          <div className={scss.items}>
+          <div className={scss.accordionContainer}>
             {Object.entries(groupBy(accounts, 'socialMediaId')).map(
               ([socialMediaId, socialMediaAccounts]) => (
                 <SocialAccordion
                   accounts={socialMediaAccounts}
                   error={false}
                   key={socialMediaId}
-                  socialMediaName={socialMediaId}
+                  socialMediaId={socialMediaId}
                 />
               )
             )}
           </div>
+
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
               className={scss.newAccountButton}
               onClick={handleToggleModal}
               variant="container"
             >
-              + &ensp; New Account
+              + New Account
             </Button>
             <div className={scss.newAccountButtonMobileContainer}>
               <Button
