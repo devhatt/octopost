@@ -28,8 +28,8 @@
   white-space: nowrap;
 }
 
-.star {
-  margin-right: -3rem;
+.favorite {
+  padding: 0.6rem;
 }
 
 .text {
@@ -40,7 +40,6 @@
   width: 40px;
   height: 40px;
 
-  display: flex;
   flex-shrink: 0;
 
   align-items: center;

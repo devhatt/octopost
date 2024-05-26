@@ -59,7 +59,7 @@ function Sidebar(): ReactNode {
                   accounts={socialMediaAccounts}
                   error={false}
                   key={socialMediaId}
-                  socialMediaName={socialMediaId}
+                  socialMediaId={socialMediaId}
                 />
               )
             )}
@@ -71,7 +71,7 @@ function Sidebar(): ReactNode {
               onClick={handleToggleModal}
               variant="container"
             >
-              + &ensp; New Account
+              + New Account
             </Button>
             <div className={scss.newAccountButtonMobileContainer}>
               <Button

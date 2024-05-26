@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { Avatar } from '~components/Avatar/Avatar';
+import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
 import { Switch } from '~components/Switch/Switch';
 
@@ -33,17 +34,13 @@ export function AccountCard({
     <div className={classNames(scss.container, className)} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
-      <button
-        className={scss.star}
+      <Button
+        circle
+        className={scss.favorite}
+        color="primary"
+        icon={<Icon icon={isFavorited ? 'star-filled' : 'star'} size={20} />}
         onClick={handleFavoriteChange}
-        type="button"
-      >
-        <Icon
-          aria-label={isFavorited ? 'Unfavorite' : 'Favorite'}
-          icon={isFavorited ? 'star-filled' : 'star'}
-          size={20}
-        />
-      </button>
+      />
       <Switch
         checked={isEnabled}
         onChange={handleEnableChange}

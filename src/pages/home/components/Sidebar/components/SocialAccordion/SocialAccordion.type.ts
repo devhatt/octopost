@@ -3,7 +3,7 @@ import { StoreAccount } from '~stores/useSocialMediaStore.types';
 export type SocialAccordionProps = {
   accounts: StoreAccount[];
   error: boolean;
-  socialMediaName: string;
+  socialMediaId: string;
 };
 
 export type IAccountList = {
