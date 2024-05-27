@@ -1,7 +1,11 @@
 @use '~styles/global.scss' as *;
 
-.actionBarWrapper {
+.container {
   display: flex;
 
   justify-content: flex-end;
+
+  .submit {
+    max-width: max-content;
+  }
 }

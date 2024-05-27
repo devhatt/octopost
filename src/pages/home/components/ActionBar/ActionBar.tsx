@@ -6,9 +6,9 @@ import scss from './ActionBar.module.scss';
 
 function ActionBar(): ReactNode {
   return (
-    <div className={scss.actionBarWrapper}>
-      <Button className={scss.postNowButton} variant="container">
-        Post Now
+    <div className={scss.container}>
+      <Button className={scss.submit} variant="container">
+        Postar
       </Button>
     </div>
   );
