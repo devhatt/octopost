@@ -1,6 +1,5 @@
-export const home = '/';
-export const social_medias = {
-  instagram: 'https://www.instagram.com/devhatt_',
-  tiktok: 'https://www.tiktok.com/@devhatt_',
-  twitter: 'https://twitter.com/DevHatt',
+export const SOCIAL_MEDIAS = {
+  INSTAGRAM: 'https://www.instagram.com/devhatt_',
+  TIKTOK: 'https://www.tiktok.com/@devhatt_',
+  TWITTER: 'https://twitter.com/DevHatt',
 };

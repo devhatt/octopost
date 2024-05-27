@@ -15,7 +15,7 @@ import Tabs from './Tabs/Tabs';
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
 
 function Tabber(): ReactNode {
-  const { accounts, sendPosts, socialMedias } = useSocialMediaStore();
+  const { accounts, socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     `${accounts[0].id}-${accounts[0].socialMediaId}`
@@ -40,12 +40,6 @@ function Tabber(): ReactNode {
     setCurrentTab(tab.id);
   };
 
-  /**
-   * TODO: criar uma task pra ativar postmodes
-   * Assim é possivel postar em 2 post modes da mesma conta ao mesmo tempo
-   * e principalmente, saber quais post modes estão ativos
-   * para publicação
-   */
   const changePostMode = (postMode: PostMode): void => {
     const tab = { ...tabs[currentTab] };
     tab.postModeOnView = postMode.id;
@@ -59,8 +53,6 @@ function Tabber(): ReactNode {
       [currentTab]: tab,
     });
   };
-  // TODO: integrar o visualizador de estado do zustand no projeto
-  // TODO: as contas aqui renderizadas devem ser apenas as contas que estão ativas, contas que deram erro ou não estão com o status de valid nao devem vir para ca
 
   return (
     <div>
@@ -88,9 +80,6 @@ function Tabber(): ReactNode {
           {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
         </div>
       </div>
-      <button onClick={async () => sendPosts(tabs)} type="button">
-        POSTAR
-      </button>
     </div>
   );
 }

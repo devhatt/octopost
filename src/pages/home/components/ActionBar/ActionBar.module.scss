@@ -1,0 +1,7 @@
+@use '~styles/global.scss' as *;
+
+.actionBarWrapper {
+  display: flex;
+
+  justify-content: flex-end;
+}

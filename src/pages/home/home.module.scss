@@ -1,99 +1,37 @@
-@use '~styles/global.scss';
-@use '~styles/breakpoints.scss';
+@use '~styles/breakpoints.scss' as *;
 
-.home {
+.content {
   display: grid;
-
-  color: #f2f2f2;
-}
-
-.navBar {
-  width: 100vw;
-  height: 5rem;
-
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  justify-content: center;
-
-  background-color: rgb(117, 31, 245);
-}
-
-.logo {
-  width: 3rem;
-  height: 3rem;
-
-  margin-left: 10rem;
-
-  border-radius: 50%;
-}
-
-.mainContainer {
-  width: 100%;
-  max-width: 120rem;
-
-  align-items: center;
-  justify-content: center;
-
-  margin: 0 auto;
-}
-
-.gridContainer {
   grid-template-areas:
-    'switches'
-    'input'
-    'tabs';
-  grid-template-rows: auto;
-  grid-template-columns: 1fr;
+    'editor aside'
+    'actions aside';
 
-  text-align: center;
+  grid-template-columns: 100vw;
 
-  margin: 0 auto;
-
-  .gridSwitches {
-    display: none;
-
-    &.gridSwitchesVisible {
-      display: block;
-    }
+  .aside {
+    grid-area: aside;
   }
 
-  .gridInput > :not(:first-child) {
-    display: none;
+  .editor {
+    grid-area: editor;
+  }
+
+  .actions {
+    grid-area: actions;
   }
 }
 
-.gridSwitches {
-  grid-area: switches;
-}
+@include from600 {
+  .content {
+    width: 90%;
+    max-width: 128rem;
 
-.gridInput {
-  display: flex;
-  flex-direction: column;
-  grid-area: input;
-}
-
-@include breakpoints.from600 {
-  .gridContainer {
-    width: 100%;
-
-    display: grid;
     grid-template-areas:
-      'switches input'
-      '. tabs';
-    grid-template-rows: 1fr 2fr;
-    grid-template-columns: 28.4rem 1fr;
-    gap: 1rem;
+      'aside editor'
+      'aside actions';
+    grid-template-columns: 30rem 1fr;
+    gap: 2.4rem;
 
-    padding: 0 2rem;
-
-    .gridSwitches {
-      display: block;
-    }
-
-    .gridInput > :not(:first-child) {
-      display: block;
-    }
+    margin: 0 auto;
   }
 }

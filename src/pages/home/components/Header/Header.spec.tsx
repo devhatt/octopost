@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { home, social_medias } from '~/constants/social-medias';
+import { SOCIAL_MEDIAS } from '~/constants/social-medias';
 
 import Header from './Header';
 
@@ -26,10 +26,10 @@ describe('Header component', () => {
       const twitterLink = screen.getByLabelText('twitter icon');
       const instagramLink = screen.getByLabelText('instagram icon');
 
-      expect(homeLink.getAttribute('href')).toBe(home);
-      expect(tiktokLink.getAttribute('href')).toBe(social_medias.tiktok);
-      expect(twitterLink.getAttribute('href')).toBe(social_medias.twitter);
-      expect(instagramLink.getAttribute('href')).toBe(social_medias.instagram);
+      expect(homeLink.getAttribute('href')).toBe('/');
+      expect(tiktokLink.getAttribute('href')).toBe(SOCIAL_MEDIAS.TIKTOK);
+      expect(twitterLink.getAttribute('href')).toBe(SOCIAL_MEDIAS.TWITTER);
+      expect(instagramLink.getAttribute('href')).toBe(SOCIAL_MEDIAS.INSTAGRAM);
     });
   });
 });

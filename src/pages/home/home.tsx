@@ -1,13 +1,13 @@
 import { ReactNode, useEffect, useState } from 'react';
 
+import ActionBar from '~pages/home/components/ActionBar/ActionBar';
+
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 import isEmpty from '~utils/isEmpty/isEmpty';
 
-import ActionBar from '~components/ActionBar/ActionBar';
 import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/ContentEditor/ContentEditor';
 import FeedbackError from '~components/FeedbackError/FeedbackError';
-import FirstComment from '~components/FirstComment/FirstComment';
 import Tabber from '~components/Tabber/Tabber';
 
 import Header from './components/Header/Header';
@@ -29,25 +29,24 @@ function Home(): ReactNode {
   return (
     <>
       <Header />
-      <div className={scss.mainContainer}>
-        <div className={scss.gridContainer}>
-          <aside className={scss.gridSwitches}>
-            <Sidebar />
-          </aside>
-          <div className={scss.gridInput}>
-            <MainComposer
-              editor={editor}
-              isOpen={isOpen}
-              onToggle={() => setIsOpen(!isOpen)}
-              title="Main Content"
-            />
-            {!isEmpty(accounts) && <Tabber />}
-            <FirstComment />
-            <FeedbackError />
-          </div>
+      <main className={scss.content}>
+        <aside className={scss.aside}>
+          <Sidebar />
+        </aside>
+        <div className={scss.aditor}>
+          <MainComposer
+            editor={editor}
+            isOpen={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            title="Main Content"
+          />
+          {!isEmpty(accounts) && <Tabber />}
+          <FeedbackError />
         </div>
-        <ActionBar />
-      </div>
+        <div className={scss.actions}>
+          <ActionBar />
+        </div>
+      </main>
     </>
   );
 }

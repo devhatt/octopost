@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { home, social_medias } from '~constants/social-medias';
+import { SOCIAL_MEDIAS } from '~constants/social-medias';
 
 import scss from './Header.module.scss';
 
@@ -13,22 +13,34 @@ function Header(): ReactNode {
   return (
     <header className={scss.header}>
       <nav className={scss.nav}>
-        <a aria-label="octopost logo" href={home}>
+        <a aria-label="octopost logo" className={scss.link} href="/">
           <OctopostLogo />
         </a>
         <ul className={scss.list}>
           <li className={scss.item}>
-            <a aria-label="tiktok icon" href={social_medias.tiktok}>
+            <a
+              aria-label="tiktok icon"
+              className={scss.link}
+              href={SOCIAL_MEDIAS.TIKTOK}
+            >
               <TikTokIcon />
             </a>
           </li>
           <li className={scss.item}>
-            <a aria-label="twitter icon" href={social_medias.twitter}>
+            <a
+              aria-label="twitter icon"
+              className={scss.link}
+              href={SOCIAL_MEDIAS.TWITTER}
+            >
               <TwitterIcon />
             </a>
           </li>
           <li className={scss.item}>
-            <a aria-label="instagram icon" href={social_medias.instagram}>
+            <a
+              aria-label="instagram icon"
+              className={scss.link}
+              href={SOCIAL_MEDIAS.INSTAGRAM}
+            >
               <InstagramIcon />
             </a>
           </li>
