@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
 
@@ -22,12 +22,15 @@ export function AccountCard({
   username,
   ...props
 }: AccountCardProps): ReactNode {
+  const [enabled, setEnabled] = useState(isEnabled);
+
   const handleFavoriteChange = (): void => {
     if (onFavoriteChange) onFavoriteChange(!isFavorited);
   };
 
   const handleEnableChange = (): void => {
-    if (onEnableChange) onEnableChange(!isEnabled);
+    setEnabled(!enabled);
+    if (onEnableChange) onEnableChange(!enabled);
   };
 
   return (
@@ -42,7 +45,7 @@ export function AccountCard({
         onClick={handleFavoriteChange}
       />
       <Switch
-        checked={isEnabled}
+        checked={enabled}
         onChange={handleEnableChange}
         variant={hasError ? 'error' : 'default'}
       />

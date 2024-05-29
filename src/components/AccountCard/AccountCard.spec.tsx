@@ -6,6 +6,7 @@ import { AccountCard } from './AccountCard';
 
 import { AccountCardProps } from './AccountCard.types';
 
+// TODO: refazer o teste com behavior driven, não testar metodos internos
 const makeSut = ({
   username = faker.internet.userName(),
   ...props
