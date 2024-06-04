@@ -128,7 +128,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 10
             }
           },
           "widgets": [
@@ -145,7 +145,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 7
             }
           },
           "widgets": [
@@ -186,7 +186,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 20
             }
           },
           "widgets": [
