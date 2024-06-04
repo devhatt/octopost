@@ -7,6 +7,7 @@ import isEmpty from 'lodash.isempty';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -19,7 +20,6 @@ import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 const HALF_SECOND = 500;
 
@@ -30,7 +30,6 @@ function Sidebar(): React.ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
-  console.log(accounts, 'batata, accounts');
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -58,6 +57,9 @@ function Sidebar(): React.ReactNode {
     setIsOpen(false);
   });
 
+  console.log('AAAAAAAAAAAAAAA', getAccounts());
+  console.log('OOOOOOOOOOOOO', filteredAccounts);
+
   return (
     <div className={scss.container}>
       <AccordionTab
@@ -68,8 +70,8 @@ function Sidebar(): React.ReactNode {
       >
         <div className={scss.content}>
           <InputSearch
-            onChange={debouncedSearch}
             error={false}
+            onChange={debouncedSearch}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />

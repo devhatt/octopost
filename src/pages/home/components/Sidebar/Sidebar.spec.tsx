@@ -1,16 +1,21 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
 
-vi.mock('framer-motion', () => ({
-  motion: {
-    div: (props: any) => <div {...props} />,
-    // adicione mais mocks conforme necessário
-  },
-}));
+// vi.mock('framer-motion', () => ({
+//   motion: {
+//     div: (props: any) => <div {...props} />,
+//     // adicione mais mocks conforme necessário
+//   },
+// }));
 
 const mockAccounts = [
   {
@@ -46,107 +51,113 @@ const mockAccounts = [
     valid: true,
   },
 ];
-const mockSocialMedias = [
-  {
-    icon: 'Icon',
-    id: 'DISCORD_EXAMPLE_ID',
-    name: 'Discord',
-    postModes: [
-      {
-        id: 'DISCORD_STORY_POSTMODE_ID',
-        name: 'TesteStory',
-        previewComponent: 'Teste',
-        validators: {
-          text: {
-            maxLength: 3,
+const mockSocialMedias = new Map<string, any>([
+  [
+    'DISCORD_EXAMPLE_ID',
+    {
+      icon: 'Icon',
+      id: 'DISCORD_EXAMPLE_ID',
+      name: 'Discord',
+      postModes: [
+        {
+          id: 'DISCORD_STORY_POSTMODE_ID',
+          name: 'TesteStory',
+          previewComponent: 'Teste',
+          validators: {
+            text: {
+              maxLength: 3,
+            },
           },
+          widgets: [
+            {
+              component: 'Teste',
+              icon: 'Teste',
+              name: 'Teste',
+            },
+          ],
         },
-        widgets: [
-          {
-            component: 'Teste',
-            icon: 'Teste',
-            name: 'Teste',
+        {
+          id: 'DISCORD_REELS_POST_ID',
+          name: 'TestePost',
+          previewComponent: 'Teste',
+          validators: {
+            text: {
+              maxLength: 3,
+            },
           },
-        ],
-      },
-      {
-        id: 'DISCORD_REELS_POST_ID',
-        name: 'TestePost',
-        previewComponent: 'Teste',
-        validators: {
-          text: {
-            maxLength: 3,
-          },
+          widgets: [
+            {
+              component: 'Teste',
+              icon: 'Teste',
+              name: 'Teste',
+            },
+          ],
         },
-        widgets: [
-          {
-            component: 'Teste',
-            icon: 'Teste',
-            name: 'Teste',
+        {
+          id: 'DISCORD_REELS_POSTMODE_ID',
+          name: 'TesteReels',
+          previewComponent: 'Teste',
+          validators: {
+            text: {
+              maxLength: 3,
+            },
           },
-        ],
-      },
-      {
-        id: 'DISCORD_REELS_POSTMODE_ID',
-        name: 'TesteReels',
-        previewComponent: 'Teste',
-        validators: {
-          text: {
-            maxLength: 3,
-          },
+          widgets: [
+            {
+              component: 'Teste',
+              icon: 'Teste',
+              name: 'Teste',
+            },
+          ],
         },
-        widgets: [
-          {
-            component: 'Teste',
-            icon: 'Teste',
-            name: 'Teste',
+      ],
+    },
+  ],
+  [
+    'TWITTER_EXAMPLE_ID',
+    {
+      icon: 'Icon',
+      id: 'TWITTER_EXAMPLE_ID',
+      name: 'Twitter',
+      postModes: [
+        {
+          id: 'TWITTER_THREAD_POST_ID',
+          name: 'TestePost',
+          previewComponent: 'Teste',
+          validators: {
+            text: {
+              maxLength: 3,
+            },
           },
-        ],
-      },
-    ],
-  },
-  {
-    icon: 'Icon',
-    id: 'TWITTER_EXAMPLE_ID',
-    name: 'Twitter',
-    postModes: [
-      {
-        id: 'TWITTER_THREAD_POST_ID',
-        name: 'TestePost',
-        previewComponent: 'Teste',
-        validators: {
-          text: {
-            maxLength: 3,
-          },
+          widgets: [
+            {
+              component: 'Teste',
+              icon: 'Teste',
+              name: 'Teste',
+            },
+          ],
         },
-        widgets: [
-          {
-            component: 'Teste',
-            icon: 'Teste',
-            name: 'Teste',
+        {
+          id: 'TWITTER_THREAD_POSTMODE_ID',
+          name: 'TesteThread',
+          previewComponent: 'Teste',
+          validators: {
+            text: {
+              maxLength: 3,
+            },
           },
-        ],
-      },
-      {
-        id: 'TWITTER_THREAD_POSTMODE_ID',
-        name: 'TesteThread',
-        previewComponent: 'Teste',
-        validators: {
-          text: {
-            maxLength: 3,
-          },
+          widgets: [
+            {
+              component: 'Teste',
+              icon: 'Teste',
+              name: 'Teste',
+            },
+          ],
         },
-        widgets: [
-          {
-            component: 'Teste',
-            icon: 'Teste',
-            name: 'Teste',
-          },
-        ],
-      },
-    ],
-  },
-];
+      ],
+    },
+  ],
+]);
 
 // TODO: revisitar esse teste pois está falhando
 describe('Sidebar component', () => {
@@ -185,14 +196,15 @@ describe('Sidebar component', () => {
     );
     await userEvent.type(inputSearchComponent, '4');
 
-    // const discordAccordion = screen.getByText('Discord');
-    // expect(discordAccordion).not.toBeInTheDocument();
+    const discordAccordion = screen.getByText('Discord');
+    await waitForElementToBeRemoved(discordAccordion);
 
-    // const accordion = screen.('Discord');
-    // await userEvent.click(accordionHeader);
+    const accordion = screen.getByText('Twitter');
+    await userEvent.click(accordion);
+    const evidence = screen.getByText('Twitter User 14');
 
-    // const evidence = screen.getByText('Discord User 1');
-    // expect(evidence).toBeInTheDocument();
+    expect(evidence).toBeInTheDocument();
+    expect(discordAccordion).not.toBeInTheDocument();
   });
 
   it('renders modal when the button is clicked', async () => {
