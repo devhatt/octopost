@@ -1,23 +1,17 @@
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
-import { SocialMediaService } from '~services/api/social-media/social-media.ts';
-import type { SocialMedia } from '~services/api/social-media/social-media.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
 
 import scss from './ComposerEditor.module.scss';
 
 import CharacterLimit from '../CharacterLimitMainText/CharacterLimit.tsx';
-import { TComposerEditorProps } from './ComposerEditor.types';
-
-type Social = {
-  id: string;
-  maxLength: number;
-  socialName: string;
-  svg: string;
-};
+import { Social, TComposerEditorProps } from './ComposerEditor.types';
 
 function ComposerEditor(props: TComposerEditorProps): ReactNode {
+  const { socialMedias } = useSocialMediaStore();
   const [inputValue, setInputValue] = useState('');
   const [socials, setSocials] = useState<Social[]>([]);
+  const [totalMaxLength, setTotalMaxLength] = useState(0);
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
     setInputValue(newValue);
@@ -26,29 +20,25 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
     }
   };
 
-  const getSocialMedias = async (): Promise<void> => {
-    const socialMedias: SocialMedia[] = await SocialMediaService.fetch([]);
-    const value = socialMedias.map((socialMedia) => {
-      const length: number = socialMedia.postModes.reduce((acc, data) => {
+  useEffect(() => {
+    for (const [, socialMedia] of socialMedias) {
+      const max = socialMedia.postModes.reduce((acc, data): number => {
         if (!('text' in data.validators)) {
           return 0;
         }
         const { maxLength } = data.validators.text;
         return acc > maxLength ? acc : maxLength;
       }, 0);
-      return {
+      const result = {
         id: socialMedia.id,
-        maxLength: length,
+        maxLength: max,
         socialName: socialMedia.name,
         svg: socialMedia.icon,
       };
-    });
-    setSocials(value);
-  };
-
-  useEffect(() => {
-    void getSocialMedias();
-  }, []);
+      setTotalMaxLength((prev) => (max > prev ? max : prev));
+      setSocials((prev) => [...prev, result]);
+    }
+  }, [socialMedias]);
 
   return (
     <div className={scss.inputContainer}>
@@ -59,8 +49,12 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         value={inputValue}
       />
       <div className={scss.charactersLimitContainer}>
-        <CharacterLimit maxLength={10} svg={null} value={inputValue} />
-        <section className={scss.characterLimitWrapper}>
+        <CharacterLimit
+          maxLength={totalMaxLength}
+          svg={null}
+          value={inputValue}
+        />
+        <div className={scss.characterLimitWrapper}>
           {socials.map((module) => (
             <CharacterLimit
               key={module.id}
@@ -69,7 +63,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
               value={inputValue}
             />
           ))}
-        </section>
+        </div>
       </div>
     </div>
   );

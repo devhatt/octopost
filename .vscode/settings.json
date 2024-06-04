@@ -1,0 +1,7 @@
+{
+  "cSpell.words": ["Tabber"],
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.options": {
+    "overrideConfigFile": "./eslint.config.mjs"
+  }
+}
