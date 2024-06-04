@@ -36,11 +36,13 @@
   },
   "dependencies": {
     "@sentry/react": "7.102.0",
+    "@types/lodash.debounce": "4.0.9",
     "classnames": "2.5.1",
     "cors": "2.8.5",
     "framer-motion": "10.17.9",
     "i18next": "23.9.0",
     "i18next-browser-languagedetector": "7.2.0",
+    "lodash.debounce": "4.0.8",
     "lodash.first": "3.0.0",
     "lodash.groupby": "4.6.0",
     "lodash.isempty": "4.4.0",

@@ -1,7 +1,9 @@
-import { ReactNode, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import debounce from 'lodash.debounce';
 import groupBy from 'lodash.groupby';
+import isEmpty from 'lodash.isempty';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
@@ -17,11 +19,18 @@ import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
-function Sidebar(): ReactNode {
+const HALF_SECOND = 500;
+
+const format = (userName: string): string => userName.toLowerCase().trim();
+
+function Sidebar(): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
+  const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
+  console.log(accounts, 'batata, accounts');
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -31,6 +40,18 @@ function Sidebar(): ReactNode {
     addAccount(addonId);
     setIsOpen(false);
   };
+
+  const getAccounts = (): StoreAccount[] =>
+    isEmpty(filteredAccounts) ? accounts : filteredAccounts;
+
+  const debouncedSearch = debounce((value: string): void => {
+    const userName = format(value);
+    const filtered = accounts.filter((account) =>
+      format(account.userName).includes(userName)
+    );
+
+    setFilteredAccounts(filtered);
+  }, HALF_SECOND);
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -47,13 +68,14 @@ function Sidebar(): ReactNode {
       >
         <div className={scss.content}>
           <InputSearch
+            onChange={debouncedSearch}
             error={false}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
 
           <div className={scss.accordionContainer}>
-            {Object.entries(groupBy(accounts, 'socialMediaId')).map(
+            {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
               ([socialMediaId, socialMediaAccounts]) => (
                 <SocialAccordion
                   accounts={socialMediaAccounts}
