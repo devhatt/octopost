@@ -4,8 +4,8 @@
 .selection {
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 1.6rem;
 
   .socialItem {
     /* min-width: 150px; */
@@ -15,18 +15,37 @@
     align-items: center;
     justify-content: center;
 
-    color: #5800c8;
+    color: $primaryGray;
     font-weight: bold;
 
-    padding: 2rem;
-    border: 1px solid #5800c8;
+    padding: 1.2rem;
+    border: 1px solid $primaryGray;
 
-    border-radius: 21px;
-    /* background-color: rgb(226, 226, 226); */
-    /* outline: 1px #cbc4cf solid; */
     transition: 0.09s ease-in-out;
 
     cursor: pointer;
+
+    &:hover {
+      scale: 0.98;
+
+      // background-color: rgba($color: $primaryGray, $alpha: 1);
+    }
+
+    p {
+      font-weight: 700;
+
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      display: block;
+
+      font-size: 1.4rem;
+
+      margin-top: 1rem;
+
+      padding: 1rem 3rem;
+    }
 
     > img {
       overflow: visible;
@@ -34,15 +53,9 @@
       padding: 2rem;
       border: 1px $secondaryGray solid;
 
-      background-color: #fff;
+      background-color: $primaryWhite;
 
       border-radius: 50%;
-    }
-
-    &:hover {
-      scale: 0.95;
-
-      background-color: rgba($color: #d1d1d1, $alpha: 1);
     }
   }
 }
