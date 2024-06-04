@@ -6,3 +6,10 @@ export type TComposerEditorProps = PropsWithChildren<{
   onChange?: TInputChange;
   value?: string;
 }>;
+
+export type Social = {
+  id: string;
+  maxLength: number;
+  socialName: string;
+  svg: string;
+};
