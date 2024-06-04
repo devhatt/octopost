@@ -24,7 +24,7 @@ function CharacterLimit(props: IModuleProps): ReactNode {
   });
 
   return (
-    <div className={svgColor}>
+    <div className={svgColor} role="alert">
       {props.svg}
       <div className={characterLimitClass}>
         <span>{remainingCharacters}</span>
