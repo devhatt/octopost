@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@sentry/react": "7.102.0",
-    "@types/lodash.debounce": "4.0.9",
     "classnames": "2.5.1",
     "cors": "2.8.5",
     "framer-motion": "10.17.9",

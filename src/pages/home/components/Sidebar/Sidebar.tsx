@@ -28,6 +28,7 @@ const format = (userName: string): string => userName.toLowerCase().trim();
 function Sidebar(): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
 
@@ -41,7 +42,11 @@ function Sidebar(): React.ReactNode {
   };
 
   const getAccounts = (): StoreAccount[] =>
-    isEmpty(filteredAccounts) ? accounts : filteredAccounts;
+    isEmpty(filteredAccounts)
+      ? isEmpty(inputValue)
+        ? accounts
+        : []
+      : filteredAccounts;
 
   const debouncedSearch = debounce((value: string): void => {
     const userName = format(value);
@@ -49,6 +54,7 @@ function Sidebar(): React.ReactNode {
       format(account.userName).includes(userName)
     );
 
+    setInputValue(value);
     setFilteredAccounts(filtered);
   }, HALF_SECOND);
 
@@ -72,6 +78,10 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
+
+          {!isEmpty(inputValue) && isEmpty(filteredAccounts) && (
+            <p> Não há resultados para essa busca</p>
+          )}
 
           <div className={scss.accordionContainer}>
             {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(

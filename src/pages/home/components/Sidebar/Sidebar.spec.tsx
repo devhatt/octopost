@@ -153,7 +153,57 @@ const mockSocialMedias = new Map<SocialMedia['id'], SocialMedia>([
   ],
 ]);
 
-// TODO: revisitar esse teste pois está falhando
+describe('Input search filter', () => {
+  it('filters the accounts by username', async () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
+    render(<Sidebar />);
+
+    const inputSearchComponent = screen.getByPlaceholderText(
+      'Search for social media'
+    );
+
+    await userEvent.type(inputSearchComponent, 'Twitter');
+
+    const discordAccordion = screen.getByText('Discord');
+    await waitForElementToBeRemoved(discordAccordion);
+
+    const accordion = screen.getByText('Twitter');
+    await userEvent.click(accordion);
+
+    const evidence = screen.getByText('Twitter User 14');
+
+    expect(evidence).toBeInTheDocument();
+    expect(discordAccordion).not.toBeInTheDocument();
+  });
+
+  it('returns a message when there is no search result', async () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
+    render(<Sidebar />);
+
+    const inputSearchComponent = screen.getByPlaceholderText(
+      'Search for social media'
+    );
+
+    await userEvent.type(inputSearchComponent, 'non existent name');
+
+    const discordAccordion = screen.getByText('Discord');
+    await waitForElementToBeRemoved(discordAccordion);
+
+    const textNoResult = screen.getByText('Não há resultados para essa busca');
+
+    expect(textNoResult).toBeInTheDocument();
+    expect(discordAccordion).not.toBeInTheDocument();
+  });
+});
+
 describe('Sidebar component', () => {
   it('renders correctly', () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
@@ -168,7 +218,7 @@ describe('Sidebar component', () => {
     expect(sideBarComponentEvidence).toBeInTheDocument();
   });
 
-  it('renders accounts correctly', async () => {
+  it('renders all accounts from store', async () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
       accounts: mockAccounts,
       socialMedias: mockSocialMedias,
@@ -188,7 +238,7 @@ describe('Sidebar component', () => {
     expect(accountEvidence).toBeInTheDocument();
   });
 
-  it('renders when accounts is empty correctly', () => {
+  it('dont render accounts when accounts store is empty', () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
       accounts: [],
       socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
@@ -215,32 +265,6 @@ describe('Sidebar component', () => {
     await userEvent.type(inputSearchComponent, 'Test text');
 
     expect(inputSearchComponent).toHaveValue('Test text');
-  });
-
-  it('filters the accounts by username with search input', async () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
-      socialMedias: mockSocialMedias,
-    });
-
-    render(<Sidebar />);
-
-    const inputSearchComponent = screen.getByPlaceholderText(
-      'Search for social media'
-    );
-
-    await userEvent.type(inputSearchComponent, 'Twitter');
-
-    const discordAccordion = screen.getByText('Discord');
-    await waitForElementToBeRemoved(discordAccordion);
-
-    const accordion = screen.getByText('Twitter');
-    await userEvent.click(accordion);
-
-    const evidence = screen.getByText('Twitter User 14');
-
-    expect(evidence).toBeInTheDocument();
-    expect(discordAccordion).not.toBeInTheDocument();
   });
 
   it('renders modal when the button is clicked', async () => {
