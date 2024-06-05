@@ -57,9 +57,6 @@ function Sidebar(): React.ReactNode {
     setIsOpen(false);
   });
 
-  console.log('AAAAAAAAAAAAAAA', getAccounts());
-  console.log('OOOOOOOOOOOOO', filteredAccounts);
-
   return (
     <div className={scss.container}>
       <AccordionTab

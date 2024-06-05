@@ -6,16 +6,10 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { SocialMedia } from '~services/api/social-media/social-media.types';
 import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
-
-// vi.mock('framer-motion', () => ({
-//   motion: {
-//     div: (props: any) => <div {...props} />,
-//     // adicione mais mocks conforme necessário
-//   },
-// }));
 
 const mockAccounts = [
   {
@@ -51,7 +45,7 @@ const mockAccounts = [
     valid: true,
   },
 ];
-const mockSocialMedias = new Map<string, any>([
+const mockSocialMedias = new Map<SocialMedia['id'], SocialMedia>([
   [
     'DISCORD_EXAMPLE_ID',
     {
@@ -162,11 +156,51 @@ const mockSocialMedias = new Map<string, any>([
 // TODO: revisitar esse teste pois está falhando
 describe('Sidebar component', () => {
   it('renders correctly', () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
     render(<Sidebar />);
 
     const sideBarComponentEvidence = screen.getByText(/Select Social Media/);
 
     expect(sideBarComponentEvidence).toBeInTheDocument();
+  });
+
+  it('renders accounts correctly', async () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
+    render(<Sidebar />);
+
+    const [account] = mockAccounts;
+    const socialMedia = mockSocialMedias.get(account.socialMediaId);
+
+    const accordionEvidence = screen.getByText(socialMedia?.name as string);
+    await userEvent.click(accordionEvidence);
+
+    const accountEvidence = screen.getByText(account.userName);
+
+    expect(accordionEvidence).toBeInTheDocument();
+    expect(accountEvidence).toBeInTheDocument();
+  });
+
+  it('renders when accounts is empty correctly', () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: [],
+      socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
+    });
+
+    render(<Sidebar />);
+
+    const [account] = mockAccounts;
+    const socialMedia = mockSocialMedias.get(account.socialMediaId);
+
+    const accordionEvidence = screen.queryByText(socialMedia?.name as string);
+    expect(accordionEvidence).not.toBeInTheDocument();
   });
 
   it('renders the InputSearch', async () => {
@@ -183,7 +217,7 @@ describe('Sidebar component', () => {
     expect(inputSearchComponent).toHaveValue('Test text');
   });
 
-  it.only('filters the accounts by username with search input', async () => {
+  it('filters the accounts by username with search input', async () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
       accounts: mockAccounts,
       socialMedias: mockSocialMedias,
@@ -194,13 +228,15 @@ describe('Sidebar component', () => {
     const inputSearchComponent = screen.getByPlaceholderText(
       'Search for social media'
     );
-    await userEvent.type(inputSearchComponent, '4');
+
+    await userEvent.type(inputSearchComponent, 'Twitter');
 
     const discordAccordion = screen.getByText('Discord');
     await waitForElementToBeRemoved(discordAccordion);
 
     const accordion = screen.getByText('Twitter');
     await userEvent.click(accordion);
+
     const evidence = screen.getByText('Twitter User 14');
 
     expect(evidence).toBeInTheDocument();
