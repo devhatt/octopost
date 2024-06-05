@@ -12,7 +12,7 @@ describe('CharacterLimitMainText map test', () => {
 
     render(<CharacterLimitMainText module={modules} />);
 
-    const optionElements = screen.getAllByRole('alert');
+    const optionElements = screen.getAllByText(/\d+/);
     expect(optionElements).toHaveLength(modules.length);
   });
 });
