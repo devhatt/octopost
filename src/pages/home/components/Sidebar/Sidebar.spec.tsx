@@ -153,57 +153,6 @@ const mockSocialMedias = new Map<SocialMedia['id'], SocialMedia>([
   ],
 ]);
 
-describe('Input search filter', () => {
-  it('filters the accounts by username', async () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
-      socialMedias: mockSocialMedias,
-    });
-
-    render(<Sidebar />);
-
-    const inputSearchComponent = screen.getByPlaceholderText(
-      'Search for social media'
-    );
-
-    await userEvent.type(inputSearchComponent, 'Twitter');
-
-    const discordAccordion = screen.getByText('Discord');
-    await waitForElementToBeRemoved(discordAccordion);
-
-    const accordion = screen.getByText('Twitter');
-    await userEvent.click(accordion);
-
-    const evidence = screen.getByText('Twitter User 14');
-
-    expect(evidence).toBeInTheDocument();
-    expect(discordAccordion).not.toBeInTheDocument();
-  });
-
-  it('returns a message when there is no search result', async () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
-      socialMedias: mockSocialMedias,
-    });
-
-    render(<Sidebar />);
-
-    const inputSearchComponent = screen.getByPlaceholderText(
-      'Search for social media'
-    );
-
-    await userEvent.type(inputSearchComponent, 'non existent name');
-
-    const discordAccordion = screen.getByText('Discord');
-    await waitForElementToBeRemoved(discordAccordion);
-
-    const textNoResult = screen.getByText('Não há resultados para essa busca');
-
-    expect(textNoResult).toBeInTheDocument();
-    expect(discordAccordion).not.toBeInTheDocument();
-  });
-});
-
 describe('Sidebar component', () => {
   it('renders correctly', () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
@@ -303,5 +252,56 @@ describe('Sidebar component', () => {
     await waitFor(() => {
       expect(modalBackgroundEvidence).not.toBeInTheDocument();
     });
+  });
+});
+
+describe('Input search filter', () => {
+  it('filters the accounts by username', async () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
+    render(<Sidebar />);
+
+    const inputSearchComponent = screen.getByPlaceholderText(
+      'Search for social media'
+    );
+
+    await userEvent.type(inputSearchComponent, 'Twitter');
+
+    const discordAccordion = screen.getByText('Discord');
+    await waitForElementToBeRemoved(discordAccordion);
+
+    const accordion = screen.getByText('Twitter');
+    await userEvent.click(accordion);
+
+    const evidence = screen.getByText('Twitter User 14');
+
+    expect(evidence).toBeInTheDocument();
+    expect(discordAccordion).not.toBeInTheDocument();
+  });
+
+  it('returns a message when there is no search result', async () => {
+    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
+      accounts: mockAccounts,
+      socialMedias: mockSocialMedias,
+    });
+
+    render(<Sidebar />);
+
+    const inputSearchComponent = screen.getByPlaceholderText(
+      'Search for social media'
+    );
+
+    await userEvent.type(inputSearchComponent, 'non existent name');
+
+    const discordAccordion = screen.getByText('Discord');
+    await waitForElementToBeRemoved(discordAccordion);
+
+    const textNoResult = screen.getByText('Não há resultados para essa busca');
+
+    expect(textNoResult).toBeInTheDocument();
+    expect(discordAccordion).not.toBeInTheDocument();
   });
 });
