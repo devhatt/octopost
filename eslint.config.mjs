@@ -25,12 +25,12 @@ import 'eslint-plugin-only-warn';
 export default defineFlatConfig([
   {
     ignores: [
-      'dist/*',
-      'dist-electron/*',
-      'node_modules/*',
-      'playwright-report/*',
-      'playwright/.cache/*',
-      'coverage/*',
+      'dist',
+      'dist-electron',
+      'node_modules',
+      'playwright-report',
+      'playwright/.cache',
+      'coverage',
     ],
   },
   js.configs.recommended,
@@ -185,12 +185,22 @@ export default defineFlatConfig([
       'no-magic-numbers': 'off',
       'no-unused-vars': 'off',
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: ['./tsconfig.json', './tsconfig.node.json'],
+        },
+      },
+    }
   },
 
   // React
   {
     files: ['**/*.jsx', '**/*.tsx'],
     languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -308,16 +318,17 @@ export default defineFlatConfig([
       'react/style-prop-object': 'warn',
       'react/void-dom-elements-no-children': 'warn',
     },
+    settings: {
+      react: {
+        version: '18.2.0',
+      },
+    }
   },
 
   // All JS/TS
   {
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
     languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -334,6 +345,7 @@ export default defineFlatConfig([
       unicorn: eslintPluginUnicorn,
     },
     rules: {
+      'no-console': 'warn',
       'array-func/avoid-reverse': 'warn',
       'array-func/from-map': 'warn',
       'array-func/no-unnecessary-this-arg': 'warn',
@@ -533,14 +545,7 @@ export default defineFlatConfig([
       'import/parsers': {
         espree: ['.js', '.cjs', '.jsx'],
       },
-      'import/resolver': {
-        typescript: {
-          project: ['./tsconfig.json', './tsconfig.node.json'],
-        },
-      },
-      react: {
-        version: '18.2.0',
-      },
+
     },
   },
 
@@ -560,10 +565,7 @@ export default defineFlatConfig([
   // Vitest
   {
     files: [
-      '**/*.spec.js',
-      '**/*.spec.jsx',
-      '**/*.spec.ts',
-      '**/*.spec.tsx',
+      '**/*.spec.*',
       '**/setupTests.ts',
     ],
     ignores: ['**/*.ct.spec.tsx', '**/*.ct.test.ts'],
@@ -614,10 +616,7 @@ export default defineFlatConfig([
   // Playwright
   {
     files: [
-      '**/*.ct.spec.js',
-      '**/*.ct.spec.tsx',
-      '**/*.ct.spec.ts',
-      '**/*.ct.spec.tsx',
+      '**/*.ct.spec.*',
     ],
     languageOptions: {
       globals: {
@@ -635,7 +634,7 @@ export default defineFlatConfig([
 
   // Story
   {
-    files: ['**/*.stories.js', '**/*.stories.jsx', '**/*.stories.tsx'],
+    files: ['**/*.stories.*'],
     rules: {
       '@typescript-eslint/no-magic-numbers': 'off',
       'no-console': 'off',
@@ -680,7 +679,7 @@ export default defineFlatConfig([
 
   // Playwright config folder
   {
-    files: ['**/playwright/*'],
+    files: ['playwright/**/*'],
     rules: {
       'react/jsx-filename-extension': 'off',
       'unicorn/no-empty-file': 'off',
@@ -689,7 +688,7 @@ export default defineFlatConfig([
 
   // Ladle config folder
   {
-    files: ['**/.ladle/*'],
+    files: ['.ladle/**/*'],
     rules: {
       'react/function-component-definition': 'off',
       'react/jsx-filename-extension': 'off',
@@ -698,12 +697,13 @@ export default defineFlatConfig([
     },
   },
 
-  // Config filles
+  // Config files
   {
-    files: ['**/*.config.ts', '**/*.config.js'],
+    files: ['**/*.config.*'],
     rules: {
       '@typescript-eslint/no-magic-numbers': 'off',
     },
   },
+
   eslintConfigPrettier,
 ]);
