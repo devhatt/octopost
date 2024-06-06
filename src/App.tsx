@@ -11,6 +11,7 @@ import './styles/base.scss';
 
 // TODO: Fazer o projeto DEIXAR de ser monorepo
 function App(): ReactNode {
+  console.log('oi')
   return (
     <ErrorBoundary fallback={<p>Ocorreu um erro inesperado!</p>}>
       <div>
