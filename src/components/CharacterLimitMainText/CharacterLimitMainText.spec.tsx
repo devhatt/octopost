@@ -1,10 +1,7 @@
-/* eslint-disable testing-library/no-node-access -- esses comentários devem ser resolvidos quando o TODO desse arquivo for resolvido */
-/* eslint-disable testing-library/no-container -- esses comentários devem ser resolvidos quando o TODO desse arquivo for resolvido */
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import CharacterLimitMainText from './CharacterLimitMainText';
 
-// TODO: reescrever esses testes usando getByText e getByRole, não usar os selectors de classes que tao sendo usado
 describe('CharacterLimitMainText map test', () => {
   it('renders the correct number of elements', () => {
     const modules = [
@@ -13,9 +10,9 @@ describe('CharacterLimitMainText map test', () => {
       { id: '3', maxLength: 20, svg: <svg />, value: 'Option 3' },
     ];
 
-    const { container } = render(<CharacterLimitMainText module={modules} />);
+    render(<CharacterLimitMainText module={modules} />);
 
-    const optionElements = container.querySelectorAll('.characterLimit');
+    const optionElements = screen.getAllByText(/\d+/);
     expect(optionElements).toHaveLength(modules.length);
   });
 });
