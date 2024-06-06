@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
 import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
 
@@ -10,17 +10,9 @@ import { Social, TComposerEditorProps } from './ComposerEditor.types';
 function ComposerEditor(props: TComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const [inputValue, setInputValue] = useState('');
-  const [socials, setSocials] = useState<Social[]>([]);
-  const [totalMaxLength, setTotalMaxLength] = useState(0);
-  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-    if (props.onChange) {
-      props.onChange(newValue);
-    }
-  };
-
-  useEffect(() => {
+  const socials = useCallback(() => {
+    let totalMax = 0;
+    let social: Social[] = [];
     for (const [, socialMedia] of socialMedias) {
       const max = socialMedia.postModes.reduce((acc, data): number => {
         if (!('text' in data.validators)) {
@@ -35,10 +27,22 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
         socialName: socialMedia.name,
         svg: socialMedia.icon,
       };
-      setTotalMaxLength((prev) => (max > prev ? max : prev));
-      setSocials((prev) => [...prev, result]);
+      totalMax = max > totalMax ? max : totalMax;
+      social = [...social, result];
     }
+    return {
+      social: social,
+      totalMaxLength: totalMax,
+    };
   }, [socialMedias]);
+
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+    if (props.onChange) {
+      props.onChange(newValue);
+    }
+  };
 
   return (
     <div className={scss.inputContainer}>
@@ -50,12 +54,12 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
-          maxLength={totalMaxLength}
+          maxLength={socials().totalMaxLength}
           svg={null}
           value={inputValue}
         />
         <div className={scss.characterLimitWrapper}>
-          {socials.map((module) => (
+          {socials().social.map((module) => (
             <CharacterLimit
               key={module.id}
               maxLength={module.maxLength}
