@@ -329,6 +329,10 @@ export default defineFlatConfig([
   {
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.mjs'],
     languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -345,7 +349,6 @@ export default defineFlatConfig([
       unicorn: eslintPluginUnicorn,
     },
     rules: {
-      'no-console': 'warn',
       'array-func/avoid-reverse': 'warn',
       'array-func/from-map': 'warn',
       'array-func/no-unnecessary-this-arg': 'warn',
@@ -402,6 +405,7 @@ export default defineFlatConfig([
       'import/no-self-import': 'warn',
       'import/no-unused-modules': 'warn',
       'import/order': 'off', // keep disable to not conflict with import-helpers/order-imports
+      'no-console': 'warn',
       'no-loop-func': 'off',
       'no-secrets/no-secrets': 'warn',
       'perfectionist/sort-array-includes': 'warn',
@@ -545,13 +549,12 @@ export default defineFlatConfig([
       'import/parsers': {
         espree: ['.js', '.cjs', '.jsx'],
       },
-
     },
   },
 
   // Hooks
   {
-    files: ['**/use*.ts', '**/use*.tsx'],
+    files: ['**/use*.*'],
     plugins: {
       'react-hooks': eslintPluginReactHook,
     },
@@ -568,7 +571,7 @@ export default defineFlatConfig([
       '**/*.spec.*',
       '**/setupTests.ts',
     ],
-    ignores: ['**/*.ct.spec.tsx', '**/*.ct.test.ts'],
+    ignores: ['**/*.ct.spec.*', '**/*.ct.test.*'],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -621,6 +624,8 @@ export default defineFlatConfig([
     languageOptions: {
       globals: {
         ...globals.jest,
+        ...globals.node,
+        ...globals.browser,
       },
     },
     plugins: {
@@ -658,9 +663,6 @@ export default defineFlatConfig([
   {
     files: ['**/electron/*'],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
       parserOptions: {
         project: ['./tsconfig.node.json', './electron/tsconfig.json'],
       },
@@ -700,6 +702,13 @@ export default defineFlatConfig([
   // Config files
   {
     files: ['**/*.config.*'],
+    languageOptions: {
+
+    globals: {
+      ...globals.node,
+      ...globals.browser,
+    },
+    },
     rules: {
       '@typescript-eslint/no-magic-numbers': 'off',
     },
