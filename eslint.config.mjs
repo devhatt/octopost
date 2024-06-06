@@ -191,7 +191,7 @@ export default defineFlatConfig([
           project: ['./tsconfig.json', './tsconfig.node.json'],
         },
       },
-    }
+    },
   },
 
   // React
@@ -322,7 +322,7 @@ export default defineFlatConfig([
       react: {
         version: '18.2.0',
       },
-    }
+    },
   },
 
   // All JS/TS
@@ -565,12 +565,17 @@ export default defineFlatConfig([
     },
   },
 
+  // Services
+  {
+    files: ['**/services/**/*.ts'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+
   // Vitest
   {
-    files: [
-      '**/*.spec.*',
-      '**/setupTests.ts',
-    ],
+    files: ['**/*.spec.*', '**/setupTests.ts'],
     ignores: ['**/*.ct.spec.*', '**/*.ct.test.*'],
     languageOptions: {
       globals: {
@@ -618,9 +623,7 @@ export default defineFlatConfig([
 
   // Playwright
   {
-    files: [
-      '**/*.ct.spec.*',
-    ],
+    files: ['**/*.ct.spec.*'],
     languageOptions: {
       globals: {
         ...globals.jest,
@@ -674,6 +677,7 @@ export default defineFlatConfig([
       '@typescript-eslint/no-magic-numbers': 'off',
       '@typescript-eslint/no-misused-promises': 'off',
       '@typescript-eslint/strict-boolean-expressions': 'off',
+      'no-console': 'off',
       'no-undef': 'off',
       'react-hooks/rules-of-hooks': 'off',
     },
@@ -703,11 +707,10 @@ export default defineFlatConfig([
   {
     files: ['**/*.config.*'],
     languageOptions: {
-
-    globals: {
-      ...globals.node,
-      ...globals.browser,
-    },
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
     },
     rules: {
       '@typescript-eslint/no-magic-numbers': 'off',
