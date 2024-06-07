@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
@@ -31,6 +31,7 @@ function Sidebar(): React.ReactNode {
   const [inputValue, setInputValue] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
+  const isSearching = isEmpty(filteredAccounts) && inputValue;
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -42,11 +43,7 @@ function Sidebar(): React.ReactNode {
   };
 
   const getAccounts = (): StoreAccount[] =>
-    isEmpty(filteredAccounts)
-      ? isEmpty(inputValue)
-        ? accounts
-        : []
-      : filteredAccounts;
+    isEmpty(filteredAccounts) ? accounts : filteredAccounts;
 
   const debouncedSearch = debounce((value: string): void => {
     const userName = format(value);
@@ -57,6 +54,24 @@ function Sidebar(): React.ReactNode {
     setInputValue(value);
     setFilteredAccounts(filtered);
   }, HALF_SECOND);
+
+  const renderEmptyResult = (): ReactNode => (
+    <p> Não há resultados para essa busca</p>
+  );
+  const renderData = (): ReactNode => (
+    <div className={scss.accordionContainer}>
+      {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
+        ([socialMediaId, socialMediaAccounts]) => (
+          <SocialAccordion
+            accounts={socialMediaAccounts}
+            error={false}
+            key={socialMediaId}
+            socialMediaId={socialMediaId}
+          />
+        )
+      )}
+    </div>
+  );
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -79,22 +94,7 @@ function Sidebar(): React.ReactNode {
             ref={inputSearchRef}
           />
 
-          {!isEmpty(inputValue) && isEmpty(filteredAccounts) && (
-            <p> Não há resultados para essa busca</p>
-          )}
-
-          <div className={scss.accordionContainer}>
-            {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
-              ([socialMediaId, socialMediaAccounts]) => (
-                <SocialAccordion
-                  accounts={socialMediaAccounts}
-                  error={false}
-                  key={socialMediaId}
-                  socialMediaId={socialMediaId}
-                />
-              )
-            )}
-          </div>
+          {isSearching ? renderEmptyResult() : renderData()}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
