@@ -2,9 +2,18 @@ import { renderHook } from '@testing-library/react';
 
 import { useMediaQuery } from './useMediaQuery';
 
+vi.mock('../../styles/breakpoints.module.scss', () => ({
+  default: {
+    desktopScreen: '1240px',
+    largeDesktopScreen: '1440px',
+    phoneScreen: '600px',
+    tabletScreen: '905px',
+  },
+}));
+
 window.matchMedia = vi.fn().mockImplementation((query: string) => {
-  const width = window.innerWidth; // Returns the size of the screen
-  const queryValue = query.match(/\d+/g) as RegExpMatchArray; // converts (min-width: 600px) to ['600']
+  const width = window.innerWidth;
+  const queryValue = query.match(/\d+/g) as RegExpMatchArray;
   const matches = width >= Number(queryValue[0]);
 
   return {
@@ -18,7 +27,6 @@ window.matchMedia = vi.fn().mockImplementation((query: string) => {
 
 describe('useMediaQuery', () => {
   it('should return true for matching media query', () => {
-    // Simulate a screen with width greater than sm
     window.innerWidth = 800;
 
     const queryString = 'from600';
@@ -28,7 +36,6 @@ describe('useMediaQuery', () => {
   });
 
   it('should return false for non-matching media query', () => {
-    // Simulate a screen with width less than sm
     window.innerWidth = 500;
 
     const queryString = 'from600';

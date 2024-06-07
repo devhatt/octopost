@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
+
 import variables from '../../styles/breakpoints.module.scss';
 
-const {phoneScreen, 
-  tabletScreen, 
-  desktopScreen,
-largeDesktopScreen,
-} = variables
+console.log('VARIABLES ====>', variables);
+
+const { desktopScreen, largeDesktopScreen, phoneScreen, tabletScreen } =
+  variables;
 
 const breakpoints = {
-  from600: phoneScreen,
-  from905: tabletScreen,
   from1240: desktopScreen,
   from1440: largeDesktopScreen,
+  from600: phoneScreen,
+  from905: tabletScreen,
 } as const;
 
 type Breakpoints = keyof typeof breakpoints;
