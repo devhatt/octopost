@@ -31,7 +31,7 @@ function Sidebar(): React.ReactNode {
   const [inputValue, setInputValue] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
-  const isSearching = isEmpty(filteredAccounts) && inputValue;
+  const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -94,7 +94,7 @@ function Sidebar(): React.ReactNode {
             ref={inputSearchRef}
           />
 
-          {isSearching ? renderEmptyResult() : renderSearchData()}
+          {isEmptyResult ? renderEmptyResult() : renderSearchData()}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
