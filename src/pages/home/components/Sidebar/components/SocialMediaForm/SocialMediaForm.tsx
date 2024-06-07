@@ -19,7 +19,7 @@ function SocialMediaForm({
     <Modal
       isOpen={isOpen}
       onClickOutside={() => setIsOpen(false)}
-      title="selecione sua rede social"
+      title="Connect a social media"
     >
       <ul className={scss.selection}>
         <li className={scss.socialItem}>
