@@ -58,7 +58,7 @@ function Sidebar(): React.ReactNode {
   const renderEmptyResult = (): ReactNode => (
     <p> Não há resultados para essa busca</p>
   );
-  const renderData = (): ReactNode => (
+  const renderSearchData = (): ReactNode => (
     <div className={scss.accordionContainer}>
       {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
         ([socialMediaId, socialMediaAccounts]) => (
@@ -94,7 +94,7 @@ function Sidebar(): React.ReactNode {
             ref={inputSearchRef}
           />
 
-          {isSearching ? renderEmptyResult() : renderData()}
+          {isSearching ? renderEmptyResult() : renderSearchData()}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
