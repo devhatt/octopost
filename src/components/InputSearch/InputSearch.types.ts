@@ -1,6 +1,8 @@
 import { ForwardedRef, HTMLProps } from 'react';
 
-export type TInputProps = HTMLProps<HTMLInputElement> & {
+type HtmlInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'>;
+
+export type TInputProps = HtmlInputProps & {
   error?: boolean;
   errorMessage?: string;
   onChange?: (value: string) => void;

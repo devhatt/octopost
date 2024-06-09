@@ -1,10 +1,13 @@
-import { ReactNode, useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
+import debounce from 'lodash.debounce';
 import groupBy from 'lodash.groupby';
+import isEmpty from 'lodash.isempty';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -18,10 +21,17 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
-function Sidebar(): ReactNode {
+const HALF_SECOND = 500;
+
+const format = (userName: string): string => userName.toLowerCase().trim();
+
+function Sidebar(): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
+  const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
@@ -31,6 +41,37 @@ function Sidebar(): ReactNode {
     addAccount(addonId);
     setIsOpen(false);
   };
+
+  const getAccounts = (): StoreAccount[] =>
+    isEmpty(filteredAccounts) ? accounts : filteredAccounts;
+
+  const debouncedSearch = debounce((value: string): void => {
+    const userName = format(value);
+    const filtered = accounts.filter((account) =>
+      format(account.userName).includes(userName)
+    );
+
+    setInputValue(value);
+    setFilteredAccounts(filtered);
+  }, HALF_SECOND);
+
+  const renderEmptyResult = (): ReactNode => (
+    <p> Não há resultados para essa busca</p>
+  );
+  const renderSearchData = (): ReactNode => (
+    <div className={scss.accordionContainer}>
+      {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
+        ([socialMediaId, socialMediaAccounts]) => (
+          <SocialAccordion
+            accounts={socialMediaAccounts}
+            error={false}
+            key={socialMediaId}
+            socialMediaId={socialMediaId}
+          />
+        )
+      )}
+    </div>
+  );
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -48,22 +89,12 @@ function Sidebar(): ReactNode {
         <div className={scss.content}>
           <InputSearch
             error={false}
+            onChange={debouncedSearch}
             placeholder="Search for social media"
             ref={inputSearchRef}
           />
 
-          <div className={scss.accordionContainer}>
-            {Object.entries(groupBy(accounts, 'socialMediaId')).map(
-              ([socialMediaId, socialMediaAccounts]) => (
-                <SocialAccordion
-                  accounts={socialMediaAccounts}
-                  error={false}
-                  key={socialMediaId}
-                  socialMediaId={socialMediaId}
-                />
-              )
-            )}
-          </div>
+          {isEmptyResult ? renderEmptyResult() : renderSearchData()}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
