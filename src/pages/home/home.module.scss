@@ -1,6 +1,8 @@
 @use '~styles/breakpoints.scss' as *;
 
 .content {
+  overflow: hidden;
+
   display: grid;
   grid-template-areas:
     'editor aside'
@@ -21,7 +23,7 @@
   }
 }
 
-@include from600 {
+@include from905 {
   .content {
     width: 90%;
     max-width: 128rem;
