@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import variables from '../../styles/breakpoints.module.scss';
-
-console.log('VARIABLES ====>', variables);
+import variables from '~/styles/breakpoints.module.scss';
 
 const { desktopScreen, largeDesktopScreen, phoneScreen, tabletScreen } =
   variables;
