@@ -1,4 +1,4 @@
-# Revisão de códigos - Octopost 
+# Revisão de códigos - Octopost
 
 ## Sumário:
 
@@ -21,7 +21,7 @@
 ## Estrutura do Pr
 
 - Verificar estrutura do pr está certa, template, título e commits (commits precisa estar tudo perfeito, não pode ter commits trolls como "agora vai", checklists do template tem que estar todas feitas também)
-Rodar as pipelines (hats)
+  Rodar as pipelines (hats)
 
 ## Sobre a revisão do código em si
 
@@ -33,7 +33,7 @@ Rodar as pipelines (hats)
 Sobre testes:
 
 - Ter o describe com a primeira letra em maiúsculo
-- Os testes devem ter uma boa escrita para serem lidos como um texto 
+- Os testes devem ter uma boa escrita para que sejam lidos como um texto
 
 - Atenção a mais de um expect (as vezes precisa)
 - Atenção ao uso de SpyOn (as vezes precisa)
@@ -43,7 +43,6 @@ Sobre testes:
 
 É interessante ver o css pela inspeção do browser, porque você consegue verificar se tem algo denecessário ou não
 
-Para pegar o fork de alguém: 
+Para pegar o fork de alguém:
 
 Abre o projeto -> git remote add [ssh do fork da pessoa] -> git fetch [pessoa-fork] (pegar alterações da pessoa-fork) -> git checkout [nome-da-branch] -> pnpm i -f -> git pull
-
