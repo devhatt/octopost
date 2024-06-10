@@ -9,7 +9,7 @@ test.describe.skip('ManyInputs', () => {
       const component = await mount(<MediaInputs />);
 
       await component
-        .getByTestId('imageInput')
+        .getByLabel('Upload media files')
         .setInputFiles('src/assets/logo.png');
 
       await expect(
@@ -21,7 +21,7 @@ test.describe.skip('ManyInputs', () => {
       const component = await mount(<MediaInputs />);
 
       await component
-        .getByTestId('imageInput')
+        .getByLabel('Upload media files')
         .setInputFiles(['src/assets/logo.png', 'src/assets/imagetest.jpg']);
 
       await expect(
@@ -38,7 +38,7 @@ test.describe.skip('ManyInputs', () => {
 
         const component = await mount(<MediaInputs />);
         await component
-          .getByTestId('imageInput')
+          .getByLabel('Upload media files')
           .setInputFiles('public/robots.txt');
 
         expect(mediaSelected).toBeNull();
@@ -50,7 +50,7 @@ test.describe.skip('ManyInputs', () => {
         const component = await mount(<MediaInputs />);
 
         await component
-          .getByTestId('imageInput')
+          .getByLabel('Upload media files')
           .setInputFiles('src/assets/logo.png');
 
         await expect(

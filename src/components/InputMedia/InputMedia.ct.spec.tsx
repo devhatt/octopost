@@ -14,7 +14,7 @@ test.describe('InputMedia', () => {
       );
 
       await component
-        .getByTestId('imageInput')
+        .getByLabel('Upload media files')
         .setInputFiles('src/assets/logo.png');
 
       await expect.poll(() => mediaSelected).toBe('logo.png');
@@ -30,7 +30,7 @@ test.describe('InputMedia', () => {
           />
         );
         await component
-          .getByTestId('imageInput')
+          .getByLabel('Upload media files')
           .setInputFiles('public/robots.txt');
         await expect(mediaSelected).toBeNull();
       });
