@@ -1,5 +1,5 @@
-@use '../../styles/global.scss' as *;
-@use '~styles/breakpoints.scss';
+@use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as *;
 
 .header {
   display: none;
@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-@include breakpoints.from600 {
+@include from905 {
   .container {
     display: flex;
     flex-direction: column;

@@ -4,16 +4,17 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 9.7rem));
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
   gap: 1.4rem;
 
   align-items: center;
   justify-content: start;
 
   .imageGroup {
-    width: 11.2rem;
+    width: 100%;
 
     position: relative;
+    aspect-ratio: 1 / 1;
 
     background-color: global.$tertiaryWhite;
 
@@ -23,9 +24,13 @@
       }
     }
 
+    .imageContainer {
+      width: 100%;
+      height: 100%;
+    }
+
     .removeButton {
       width: 2.2rem;
-      height: 2.2rem;
 
       color: global.$tertiaryPurple;
       text-align: center;

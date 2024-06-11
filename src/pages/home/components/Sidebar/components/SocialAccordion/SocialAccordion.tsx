@@ -1,54 +1,61 @@
-/* eslint-disable -- TODO @alvarogfn [2024-02-29]: to be fixed in next pull request */
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
+
+import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+
+import Accordion from '~components/Accordion/Accordion';
+import { AccountCard } from '~components/AccountCard/AccountCard';
+import Icon from '~components/Icon/Icon';
 
 import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
-import Accordion from '~components/Accordion/Accordion';
-import { AccountCard } from '~components/AccountCard/AccountCard';
 import { SocialAccordionProps } from './SocialAccordion.type';
-import Icon from '~components/Icon/Icon';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
-function SocialAccordion(props: SocialAccordionProps) {
+function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const { socialMedias } = useSocialMediaStore();
 
-  const handleOpenAccordion = () => setIsOpen((prev) => !prev);
+  const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
-  const renderError = () => <span className={scss.error}>error!!!!</span>;
+  const renderError = (): ReactNode => (
+    <span className={scss.error}>error!!!!</span>
+  );
 
-  const renderAccordionMap = () =>
+  const renderAccordionMap = (): ReactNode =>
     props.accounts.map((account) => (
       <li key={account.id}>
         <AccountCard
+          avatarURL={account.avatar}
           isEnabled={account.valid}
           username={account.userName}
-          avatarURL={account.avatar}
         />
       </li>
     ));
 
-  const renderAccordionContent = () => (
+  const renderAccordionContent = (): ReactNode => (
     <ul role="listitem">{renderAccordionMap()}</ul>
   );
 
   return (
     <Accordion
       className={scss.wrapper}
-      isOpen={isOpen}
+      content={renderAccordionContent()}
       header={
         <button
+          aria-controls="content-accordion"
+          aria-expanded={isOpen}
           className={scss.container}
           id="btn-accordion"
-          aria-expanded={isOpen}
           onClick={handleOpenAccordion}
-          aria-controls="content-accordion"
         >
           <div className={scss.header}>
             <div className={scss.socialInfo}>
-              <img className={scss.icon} src={iconPlaceholderForIcon} />
+              <img
+                alt="social media"
+                className={scss.icon}
+                src={iconPlaceholderForIcon}
+              />
               <span>{socialMedias.get(props.socialMediaId)?.name}</span>
             </div>
             {props.error && renderError()}
@@ -57,17 +64,17 @@ function SocialAccordion(props: SocialAccordionProps) {
                 {props.accounts.length}+
               </span>
               <Icon
-                size={16}
-                icon={isOpen ? 'dropDownArrow' : 'left-arrow'}
                 aria-label={
                   isOpen ? 'Accordion is open' : 'Accordion is closed'
                 }
+                icon={isOpen ? 'dropDownArrow' : 'left-arrow'}
+                size={16}
               />
             </div>
           </div>
         </button>
       }
-      content={renderAccordionContent()}
+      isOpen={isOpen}
     />
   );
 }
