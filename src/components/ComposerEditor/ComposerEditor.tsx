@@ -9,7 +9,10 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
 import scss from './ComposerEditor.module.scss';
 
 import CharacterLimit from '../CharacterLimitMainText/CharacterLimit.tsx';
-import { TComposerEditorProps } from './ComposerEditor.types';
+import {
+  HigherLimitSocial,
+  TComposerEditorProps,
+} from './ComposerEditor.types';
 
 function ComposerEditor(props: TComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
@@ -25,41 +28,29 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
     [socialMedias]
   );
 
-  //TODO: rename this function
-  const getBiggestPostModeLimitsBySocialMedia = useCallback(() => {
+  const getBiggestLimitBySocial = useCallback(() => {
     const socialLimits = [];
     for (const [, socialMedia] of socialMedias) {
-      //TODO: Create a type of result with {limit: number, socialMediaId: string} | rename result to a better name
-      const result = socialMedia.postModes.reduce<{
-        limit: number;
-        socialMediaId: string;
-      }>(
-        (
-          acc,
-          postMode
-        ): {
-          limit: number;
-          socialMediaId: string;
-        } => {
+      const higherLimit = socialMedia.postModes.reduce<HigherLimitSocial>(
+        (acc, postMode): HigherLimitSocial => {
           if (isBigger(postMode.validators, acc.limit))
             acc.limit = postMode.validators.text.maxLength;
           return acc;
         },
         { limit: 0, socialMediaId: socialMedia.id }
       );
-      socialLimits.push(result);
+      socialLimits.push(higherLimit);
     }
     return socialLimits;
   }, [socialMedias]);
-  //TODO: rename this function
-  const getBiggestPostModeLimitAndSocials = useCallback(() => {
-    const socialLimits = getBiggestPostModeLimitsBySocialMedia();
+  const getGreatestLimitsSocial = useCallback(() => {
+    const socialLimits = getBiggestLimitBySocial();
     const maxLimit = socialLimits.reduce(
       (acc, current) => (acc > current.limit ? acc : current.limit),
       0
     );
     return { maxLimit, socialLimits };
-  }, [getBiggestPostModeLimitsBySocialMedia]);
+  }, [getBiggestLimitBySocial]);
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
@@ -68,7 +59,7 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
       props.onChange(newValue);
     }
   };
-  const socialLimits = getBiggestPostModeLimitAndSocials();
+  const socialLimits = getGreatestLimitsSocial();
   return (
     <div className={scss.inputContainer}>
       <textarea
