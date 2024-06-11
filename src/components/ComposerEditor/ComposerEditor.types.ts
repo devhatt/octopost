@@ -7,9 +7,7 @@ export type TComposerEditorProps = PropsWithChildren<{
   value?: string;
 }>;
 
-export type Social = {
-  id: string;
-  maxLength: number;
-  socialName: string;
-  svg: string;
+export type HigherLimitSocial = {
+  limit: number;
+  socialMediaId: string;
 };
