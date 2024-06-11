@@ -41,14 +41,19 @@ vi.mock('~services/api/accounts/accounts', () => ({
 }));
 
 /*
-in the store file
 
-the getAllAccount dont mock wen called this way
+The expected behavior of the useSocialMediaStore hook is that, when its called, 
+it calls the getAllAccounts method and it happens when the hook is used on the 
+components.
 
-so we need to manually call it to be able to mock on the tests below
+On the tests we need to manually call for getAllAccounts on the renderHook to force 
+its call and mock its return.
+
+The way we're doing the store initialization was based on this thread: pmndrs/zustand#2563 
 
 You can check here:
 https://github.com/pmndrs/zustand/discussions/2563#discussioncomment-9489004
+
 */
 
 describe('useSocialMediaStore', () => {
