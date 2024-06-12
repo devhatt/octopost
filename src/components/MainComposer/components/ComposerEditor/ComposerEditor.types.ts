@@ -19,3 +19,8 @@ export type ErrorText = {
 };
 
 export type ErrorMapText = Record<string, ErrorText[]>;
+
+export type HigherLimitSocial = {
+  limit: number;
+  socialMediaId: string;
+};

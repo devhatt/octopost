@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/ComposerEditor/ComposerEditor.tsx
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
@@ -57,6 +58,9 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
 =======
 >>>>>>> f2f6165 (fix: eslint fix)
+=======
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- for onChange and value change correctly   */
+>>>>>>> 358a55c (fix: onchange composerEditor fixed)
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { TextValidator } from '~services/api/social-media/social-media.types';
@@ -118,9 +122,9 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={props.onChange ?? handleInputChange}
+        onChange={props.onChange || handleInputChange}
         placeholder="Digite algo aqui..."
-        value={props.value ?? inputValue}
+        value={props.value || inputValue}
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
