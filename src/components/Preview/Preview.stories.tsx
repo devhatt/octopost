@@ -1,11 +1,9 @@
-import type { Story } from '@ladle/react';
+import { Story } from '@ladle/react';
 
 import Preview from './Preview';
 
-export const PreviewComponent: Story<{ previewText: string }> = ({
-  previewText,
-}) => <Preview>{previewText}</Preview>;
-
-PreviewComponent.args = {
-  previewText: 'preview',
-};
+export const PreviewStories: Story = () => (
+  <div>
+    <Preview>teste</Preview>
+  </div>
+);

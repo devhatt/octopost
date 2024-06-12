@@ -7,6 +7,7 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 import { accountsToTabs } from './utils';
 
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
+import Preview from '~components/Preview/Preview';
 import scss from '~components/Tabber/Tabber.module.scss';
 
 import PostModes from './PostModes/PostModes';
@@ -85,6 +86,7 @@ function Tabber(): ReactNode {
         </div>
         <div className={scss.previewContainer}>
           {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
+          <Preview>Preview</Preview>
         </div>
       </div>
     </div>
