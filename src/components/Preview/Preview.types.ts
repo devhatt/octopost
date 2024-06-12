@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export type IPreviewContainerProps = {
+export type IPreviewProps = {
   children: ReactNode;
 };
