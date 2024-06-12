@@ -171,9 +171,6 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-<<<<<<< HEAD
-              "maxLength": 10
-=======
               "maxLength": 3
             },
             "media": {
@@ -182,7 +179,6 @@
               "maxHeight": 700,
               "ar": ["16:9"],
               "maxDuration": 1100
->>>>>>> 82f1af8 (chore: medias validator)
             }
           },
           "widgets": [
@@ -199,9 +195,6 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-<<<<<<< HEAD
-              "maxLength": 7
-=======
               "maxLength": 3
             },
             "media": {
@@ -210,7 +203,6 @@
               "maxHeight": 1080,
               "ar": ["5:3"],
               "maxDuration": 5000
->>>>>>> 82f1af8 (chore: medias validator)
             }
           },
           "widgets": [
@@ -258,9 +250,6 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-<<<<<<< HEAD
-              "maxLength": 20
-=======
               "maxLength": 3
             },
             "media": {
@@ -269,7 +258,6 @@
               "maxHeight": 600,
               "ar": ["4:3"],
               "maxDuration": 1000
->>>>>>> 82f1af8 (chore: medias validator)
             }
           },
           "widgets": [

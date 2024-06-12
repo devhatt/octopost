@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/ComposerEditor/ComposerEditor.tsx
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
@@ -54,6 +55,8 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
   }, [getBiggestLimitBySocial]);
 =======
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
+=======
+>>>>>>> f2f6165 (fix: eslint fix)
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { TextValidator } from '~services/api/social-media/social-media.types';
