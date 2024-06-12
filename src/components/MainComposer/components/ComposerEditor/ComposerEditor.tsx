@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/components/ComposerEditor/ComposerEditor.tsx
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
 import {
@@ -51,22 +52,72 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
     );
     return { maxLimit, socialLimits };
   }, [getBiggestLimitBySocial]);
+=======
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
+import { ChangeEvent, ReactNode, useState } from 'react';
+
+import { TextValidator } from '~services/api/social-media/social-media.types';
+
+import { TextValidators } from './utils/textValidator/textValidators';
+
+import CharacterLimitMainText from '~components/CharacterLimitMainText/CharacterLimitMainText';
+
+import scss from './ComposerEditor.module.scss';
+
+import {
+  ComposerEditorProps,
+  ErrorMapText,
+  ErrorText,
+} from './ComposerEditor.types';
+
+function ComposerEditor(props: ComposerEditorProps): ReactNode {
+  const [inputValue, setInputValue] = useState('');
+  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
+
+  const validatorText = (text: string): ErrorText[] => {
+    const textValidators = new TextValidators(text);
+    const validators = props.postMode?.validators as TextValidator;
+    const errors: ErrorText[] = [];
+
+    if (
+      props.postMode &&
+      textValidators.textLength(validators.text.maxLength)
+    ) {
+      errors.push({
+        accountId: props.accountId,
+        message: 'text exceeded the limit',
+        postModeId: props.postMode.id,
+      });
+    }
+
+    return errors;
+  };
+>>>>>>> 82f1af8 (chore: medias validator):src/components/MainComposer/components/ComposerEditor/ComposerEditor.tsx
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
-    setInputValue(newValue);
-    if (props.onChange) {
-      props.onChange(newValue);
+    const textErrors = validatorText(newValue);
+    const newErrorMap = { ...errorMap };
+
+    if (textErrors.length > 0) {
+      newErrorMap[newValue] = textErrors;
+      setErrorMap((prevErrorMap: ErrorMapText) => {
+        const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
+        props.onError?.(updatedErrorMap);
+        return updatedErrorMap;
+      });
     }
+
+    setInputValue(newValue);
   };
   const socialLimits = getGreatestLimitsSocial();
   return (
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={handleInputChange}
+        onChange={props.onChange ?? handleInputChange}
         placeholder="Digite algo aqui..."
-        value={inputValue}
+        value={props.value ?? inputValue}
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit

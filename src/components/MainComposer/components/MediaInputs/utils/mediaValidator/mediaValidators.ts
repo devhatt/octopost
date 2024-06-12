@@ -1,9 +1,10 @@
 import { ImageValidator } from './imageValidator/imageValidator';
-import { FileValidator } from './interfaces/fileValidator';
 import { VideoValidator } from './videoValidator/videoValidator';
 
-export class MediaValidator implements FileValidator {
-  public media: ImageValidator | VideoValidator;
+import { FileValidator } from './interfaces/fileValidator.types';
+
+export class MediaValidators implements FileValidator {
+  private readonly media: ImageValidator | VideoValidator;
 
   constructor(file: File) {
     this.media = file.type.includes('video')
@@ -11,8 +12,7 @@ export class MediaValidator implements FileValidator {
       : new ImageValidator(file);
   }
 
-  public checkSize = (limitSize: number): boolean =>
-    this.media.checkSize(limitSize);
+  public size = (limitSize: number): boolean => this.media.size(limitSize);
 
   public resolution = async (
     limitWidth: number,
@@ -28,5 +28,6 @@ export class MediaValidator implements FileValidator {
     if (this.media instanceof VideoValidator) {
       return this.media.duration(limitDuration);
     }
+    return true;
   };
 }

@@ -3,13 +3,13 @@ import { Story } from '@ladle/react';
 
 import ComposerEditor from './ComposerEditor';
 
-import { TComposerEditorProps } from './ComposerEditor.types';
+import { ComposerEditorProps } from './ComposerEditor.types';
 
 export default {
   title: 'Composer Editor',
 } satisfies StoryDefault;
 
-export const ComposerEditorStories: Story<TComposerEditorProps> = (props) => (
+export const ComposerEditorStories: Story<ComposerEditorProps> = (props) => (
   <ComposerEditor {...props} />
 );
 

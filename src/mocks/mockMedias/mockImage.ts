@@ -15,10 +15,12 @@ export function mockImage(): Image {
         }
       }, intervalTime);
     },
+    height: 900,
     set src(value: string) {
       setTimeout(() => {
         img = value;
       }, timeoutTime);
     },
+    width: 1300,
   };
 }

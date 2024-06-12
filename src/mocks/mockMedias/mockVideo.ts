@@ -3,7 +3,11 @@ import { Video } from './mockMedia.type';
 const intervalTime = 100;
 const timeoutTime = 1000;
 
-export function mockVideo(width: number, height: number, duration: number) {
+export function mockVideo(
+  videoWidth: number,
+  videoHeight: number,
+  duration: number
+) {
   let video = '';
 
   return (elementType: string): Video | undefined => {
@@ -18,13 +22,13 @@ export function mockVideo(width: number, height: number, duration: number) {
           }, intervalTime);
         },
         duration,
-        height,
         set src(value: string) {
           setTimeout(() => {
             video = value;
           }, timeoutTime);
         },
-        width,
+        videoHeight,
+        videoWidth,
       };
     }
   };

@@ -1,7 +1,7 @@
-const _10_MB_FILE = 1;
+const sizeFile = 10_000;
 
 export const mockFileImage = new File(
-  [new ArrayBuffer(_10_MB_FILE)],
+  [new ArrayBuffer(sizeFile)],
   'mockfile.jpg',
   {
     type: 'image/jpeg',
@@ -9,7 +9,7 @@ export const mockFileImage = new File(
 );
 
 export const mockFileVideo = new File(
-  [new ArrayBuffer(_10_MB_FILE)],
+  [new ArrayBuffer(sizeFile)],
   'mockfile.mp4',
   {
     type: 'video/mp4',

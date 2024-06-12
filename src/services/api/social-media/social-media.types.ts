@@ -42,7 +42,10 @@ export type MediaValidator = {
   media: {
     allowedFormats: MediaFormats[];
     ar: AspectRatio[];
+    maxDuration: number;
     maxFileSize: number;
+    maxHeight: number;
+    maxWidth: number;
     mediaQtyLimit: number;
   };
 };

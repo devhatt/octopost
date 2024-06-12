@@ -1,17 +1,16 @@
-import { FileValidator } from '../interfaces/fileValidator';
 import { getAspectRatio } from '../utils/getAspectRatio';
 
+import { FileValidator } from '../interfaces/fileValidator.types';
 import { VideoData } from './videoData.type';
 
 export class VideoValidator implements FileValidator {
-  public video: File;
+  private readonly video: File;
 
   constructor(file: File) {
     this.video = file;
   }
 
-  public checkSize = (limitSize: number): boolean =>
-    this.video.size <= limitSize;
+  public size = (limitSize: number): boolean => this.video.size <= limitSize;
 
   public resolution = async (
     limitWidth: number,
@@ -49,7 +48,6 @@ export class VideoValidator implements FileValidator {
             width: video.videoWidth,
           })
         );
-
         video.src = reader.result as string;
       });
 

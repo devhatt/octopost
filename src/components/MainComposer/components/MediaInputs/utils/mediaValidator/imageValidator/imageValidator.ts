@@ -1,17 +1,16 @@
-import { FileValidator } from '../interfaces/fileValidator';
 import { getAspectRatio } from '../utils/getAspectRatio';
 
+import { FileValidator } from '../interfaces/fileValidator.types';
 import { ImageData } from './imageData.type';
 
 export class ImageValidator implements FileValidator {
-  public image: File;
+  private readonly image: File;
 
   constructor(file: File) {
     this.image = file;
   }
 
-  public checkSize = (limitSize: number): boolean =>
-    this.image.size <= limitSize;
+  public size = (limitSize: number): boolean => this.image.size <= limitSize;
 
   public resolution = async (
     limitWidth: number,
@@ -40,8 +39,8 @@ export class ImageValidator implements FileValidator {
 
         img.addEventListener('load', () => {
           resolve({
-            height: img.naturalHeight,
-            width: img.naturalWidth,
+            height: img.height,
+            width: img.width,
           });
         });
       });

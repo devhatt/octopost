@@ -1,5 +1,5 @@
-export class TextValidator {
-  public text: string;
+export class TextValidators {
+  private readonly text: string;
 
   constructor(text: string) {
     this.text = text;

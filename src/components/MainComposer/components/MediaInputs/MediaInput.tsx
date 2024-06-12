@@ -1,16 +1,39 @@
 import { ReactNode, useState } from 'react';
 
+import { MediaValidator } from '~services/api/social-media/social-media.types';
+
+import { fileValidators } from './utils/fileValidator/fileValidator';
+
 import { IMedia } from '~components/InputMedia/InputMedia.types';
 
-import InputMedia from '../InputMedia/InputMedia';
 import MediaGroup from './MediaGroup/MediaGroup';
 
 import scss from './MediaInput.module.scss';
 
-function MediaInputs(): ReactNode {
+import InputMedia from '../../../InputMedia/InputMedia';
+import { MediaInput } from './MediaInput.type';
+
+function MediaInputs(props: MediaInput): ReactNode {
   const [medias, setMedias] = useState<IMedia[]>([]);
 
+  const validateFile = (file: IMedia): void => {
+    const media = file.file;
+    const validator = props.postMode?.validators as MediaValidator;
+
+    const fileValidator = Object.values(fileValidators({ media, validator }));
+
+    for (const validators of fileValidator) {
+      validators(props);
+    }
+  };
+
   const addMedia = (files: IMedia[]): void => {
+    if (props.postMode) {
+      for (const file of files) {
+        validateFile(file);
+      }
+    }
+
     setMedias([...medias, ...files]);
   };
 
@@ -29,10 +52,17 @@ function MediaInputs(): ReactNode {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
+    if (props.postMode) {
+      for (const file of files) {
+        validateFile(file);
+      }
+    }
+
     if (indexToUpdate !== -1) {
       list.splice(indexToUpdate, 1);
       list.splice(indexToUpdate, 0, ...files);
     }
+
     setMedias(list);
   };
 

@@ -1,8 +1,10 @@
 import { ReactNode } from 'react';
 
+import Icon from '~components/Icon/Icon';
+
 import scss from '../MediaInput.module.scss';
 
-import InputMedia from '../../InputMedia/InputMedia';
+import InputMedia from '../../../../InputMedia/InputMedia';
 import { IMediaGroupProps } from './MediaGroup.types';
 
 function MediaGroup({
@@ -23,7 +25,7 @@ function MediaGroup({
           onClick={() => onRemove(media.id)}
           type="button"
         >
-          X
+          <Icon icon="close" size={10} />
         </button>
       </div>
     </div>
