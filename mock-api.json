@@ -147,7 +147,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 20
             },
             "media": {
               "maxFileSize": 20000000,
@@ -195,7 +195,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 12
             },
             "media": {
               "maxSize": 30000,
@@ -226,7 +226,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 15
             },
             "media": {
               "maxSize": 10000,
@@ -250,7 +250,7 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 21
             },
             "media": {
               "maxSize": 20000,

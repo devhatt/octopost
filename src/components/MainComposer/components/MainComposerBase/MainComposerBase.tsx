@@ -22,7 +22,7 @@ function MainComposerBase(props: TMainComposerBase): ReactNode {
     <div className={scss.container}>
       <ComposerEditor
         accountId={props.accountId}
-        onChange={props.onChange}
+        onChangePost={props.onChange}
         onError={handleTextErrors}
         postMode={props.postMode}
         value={props.value ?? ''}

@@ -2,11 +2,15 @@ import { ChangeEvent, PropsWithChildren } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
 
-export type TInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => void;
+export type TInputChange = (newText: string) => void;
+export type TInputPostChange = (
+  event: ChangeEvent<HTMLTextAreaElement>
+) => void;
 
 export type ComposerEditorProps = PropsWithChildren<{
   accountId?: string;
   onChange?: TInputChange;
+  onChangePost?: TInputPostChange;
   onError?: (error: ErrorMapText) => void;
   postMode?: PostMode;
   value?: string;

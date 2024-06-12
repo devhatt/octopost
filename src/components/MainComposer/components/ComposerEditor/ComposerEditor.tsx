@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD:src/components/ComposerEditor/ComposerEditor.tsx
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
 import {
@@ -9,17 +7,42 @@ import {
 } from '~services/api/social-media/social-media.types.ts';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
 
+import { TextValidators } from './utils/textValidator/textValidators';
+
+import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
+
 import scss from './ComposerEditor.module.scss';
 
-import CharacterLimit from '../CharacterLimitMainText/CharacterLimit.tsx';
 import {
+  ComposerEditorProps,
+  ErrorMapText,
+  ErrorText,
   HigherLimitSocial,
-  TComposerEditorProps,
 } from './ComposerEditor.types';
 
-function ComposerEditor(props: TComposerEditorProps): ReactNode {
+function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const [inputValue, setInputValue] = useState('');
+  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
+
+  const validatorText = (text: string): ErrorText[] => {
+    const textValidators = new TextValidators(text);
+    const validators = props.postMode?.validators as TextValidator;
+    const errors: ErrorText[] = [];
+
+    if (
+      props.postMode &&
+      textValidators.textLength(validators.text.maxLength)
+    ) {
+      errors.push({
+        accountId: props.accountId,
+        message: 'text exceeded the limit',
+        postModeId: props.postMode.id,
+      });
+    }
+
+    return errors;
+  };
 
   const isBigger = useCallback(
     (
@@ -54,61 +77,19 @@ function ComposerEditor(props: TComposerEditorProps): ReactNode {
     );
     return { maxLimit, socialLimits };
   }, [getBiggestLimitBySocial]);
-=======
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
-=======
->>>>>>> f2f6165 (fix: eslint fix)
-=======
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- for onChange and value change correctly   */
->>>>>>> 358a55c (fix: onchange composerEditor fixed)
-import { ChangeEvent, ReactNode, useState } from 'react';
-
-import { TextValidator } from '~services/api/social-media/social-media.types';
-
-import { TextValidators } from './utils/textValidator/textValidators';
-
-import CharacterLimitMainText from '~components/CharacterLimitMainText/CharacterLimitMainText';
-
-import scss from './ComposerEditor.module.scss';
-
-import {
-  ComposerEditorProps,
-  ErrorMapText,
-  ErrorText,
-} from './ComposerEditor.types';
-
-function ComposerEditor(props: ComposerEditorProps): ReactNode {
-  const [inputValue, setInputValue] = useState('');
-  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
-
-  const validatorText = (text: string): ErrorText[] => {
-    const textValidators = new TextValidators(text);
-    const validators = props.postMode?.validators as TextValidator;
-    const errors: ErrorText[] = [];
-
-    if (
-      props.postMode &&
-      textValidators.textLength(validators.text.maxLength)
-    ) {
-      errors.push({
-        accountId: props.accountId,
-        message: 'text exceeded the limit',
-        postModeId: props.postMode.id,
-      });
-    }
-
-    return errors;
-  };
->>>>>>> 82f1af8 (chore: medias validator):src/components/MainComposer/components/ComposerEditor/ComposerEditor.tsx
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
     const textErrors = validatorText(newValue);
     const newErrorMap = { ...errorMap };
 
+    if (props.onChange) {
+      props.onChange(newValue);
+    }
+
     if (textErrors.length > 0) {
       newErrorMap[newValue] = textErrors;
-      setErrorMap((prevErrorMap: ErrorMapText) => {
+      setErrorMap((prevErrorMap) => {
         const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
         props.onError?.(updatedErrorMap);
         return updatedErrorMap;
@@ -122,7 +103,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={props.onChange || handleInputChange}
+        onChange={props.onChangePost || handleInputChange}
         placeholder="Digite algo aqui..."
         value={props.value || inputValue}
       />
