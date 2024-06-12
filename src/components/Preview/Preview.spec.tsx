@@ -7,11 +7,11 @@ describe('Preview', () => {
     it('renders the element preview inside the container', () => {
       render(
         <Preview>
-          <h1> teste </h1>
+          <h1> test </h1>
         </Preview>
       );
 
-      const titleComponent = screen.getByText('teste');
+      const titleComponent = screen.getByText('test');
       expect(titleComponent).toBeInTheDocument();
     });
   });
