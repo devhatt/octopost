@@ -71,8 +71,8 @@ function InputMedia(props: IInputMediaProps): ReactNode {
     <button className={inputClasses} onClick={handleInputClick} type="button">
       <input
         accept="image/*, video/*"
+        aria-label="Upload media files"
         className={scss.hidden}
-        data-testid="imageInput"
         multiple
         onChange={handleFileChange}
         ref={fileInputRef}

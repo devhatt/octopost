@@ -19,7 +19,7 @@ describe('InputMedia', () => {
 
     const mockOnChange = vi.fn();
     render(<InputMedia onChange={mockOnChange} />);
-    const fileInput = screen.getByTestId('imageInput');
+    const fileInput = screen.getByLabelText('Upload media files');
 
     const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
     await userEvent.upload(fileInput, file);
@@ -34,7 +34,7 @@ describe('InputMedia', () => {
 
     const mockOnChange = vi.fn();
     render(<InputMedia onChange={mockOnChange} />);
-    const fileInput = screen.getByTestId('imageInput');
+    const fileInput = screen.getByLabelText('Upload media files');
 
     const file = new File(['(⌐□_□)'], 'test.png', { type: 'image/png' });
     await userEvent.upload(fileInput, file);
@@ -57,7 +57,7 @@ describe('InputMedia', () => {
 
       const mockOnChange = vi.fn();
       render(<InputMedia onChange={mockOnChange} />);
-      const fileInput = screen.getByTestId('imageInput');
+      const fileInput = screen.getByLabelText('Upload media files');
 
       const file = new File([''], 'filename.txt', { type: 'text/plain' });
       await userEvent.upload(fileInput, file);
@@ -73,7 +73,7 @@ describe('InputMedia', () => {
       const icon = screen.getByRole('img');
       await userEvent.click(icon);
 
-      const input = screen.getByTestId('imageInput');
+      const input = screen.getByLabelText('Upload media files');
       expect(input).toHaveAttribute('type', 'file');
     });
   });
