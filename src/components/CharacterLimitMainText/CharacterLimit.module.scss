@@ -1,11 +1,11 @@
-@use '../../../styles/global.scss';
+@use '~styles/global';
 
 .specificFill {
   fill: global.$primaryWhite !important;
 }
 
 .characterLimit {
-  width: 0.8rem;
+  width: auto;
 
   display: flex;
 
