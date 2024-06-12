@@ -180,9 +180,7 @@
               "maxSize": 10000,
               "maxWidth": 900,
               "maxHeight": 700,
-              "ar": [
-                "16:9"
-              ],
+              "ar": ["16:9"],
               "maxDuration": 1100
 >>>>>>> 82f1af8 (chore: medias validator)
             }
