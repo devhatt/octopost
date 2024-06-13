@@ -49,7 +49,7 @@ components.
 On the tests we need to manually call for getAllAccounts on the renderHook to force 
 its call and mock its return.
 
-The way we're doing the store initialization was based on this thread: pmndrs/zustand#2563 
+The way we're doing the store initialization was based on this thread:  
 
 You can check here:
 https://github.com/pmndrs/zustand/discussions/2563#discussioncomment-9489004

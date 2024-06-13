@@ -27,7 +27,7 @@ function Home(): ReactNode {
         </aside>
         <div className={scss.aditor}>
           <MainComposer />
-          {accounts.data && !isEmpty(accounts.data) && <Tabber />}
+            {accounts.data && !isEmpty(accounts.data) && <Tabber />}
           <FeedbackError />
         </div>
         <div className={scss.actions}>
@@ -39,3 +39,7 @@ function Home(): ReactNode {
 }
 
 export default Home;
+
+
+
+

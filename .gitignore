@@ -142,5 +142,5 @@ project_structure.md
 /playwright/.cache/
 
 # Environment config
-.vscode 
+vscode/ 
 .idea
