@@ -85,8 +85,9 @@ function Tabber(): ReactNode {
           />
         </div>
         <div className={scss.previewContainer}>
-          {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
-          <Preview>Preview</Preview>
+          <Preview>
+            {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
+          </Preview>
         </div>
       </div>
     </div>
