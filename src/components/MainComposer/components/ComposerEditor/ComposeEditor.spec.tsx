@@ -17,7 +17,7 @@ describe('ComposeEditor', () => {
   describe('When user type', () => {
     it('update input value', async () => {
       const mockOnChange = vi.fn();
-      render(<ComposerEditor onChange={mockOnChange} value="" />);
+      render(<ComposerEditor onChange={mockOnChange} />);
 
       const inputElement = screen.getByRole('textbox');
       const testInputValue = 'Testing TextArea input';
