@@ -2,16 +2,17 @@ import { ReactNode } from 'react';
 
 import Icon from '~components/Icon/Icon';
 
-import scss from '../MediaInput.module.scss';
+import InputMedia from '../InputMedia/InputMedia';
 
-import InputMedia from '../../../../InputMedia/InputMedia';
-import { IMediaGroupProps } from './MediaGroup.types';
+import scss from '../../InputMediaGroup.module.scss';
 
-function MediaGroup({
+import { MediaPreviewProps } from './MediaPreview.types';
+
+function MediaPreview({
   media,
   onImageChange,
   onRemove,
-}: IMediaGroupProps): ReactNode {
+}: MediaPreviewProps): ReactNode {
   return (
     <div className={scss.imageGroup}>
       <div className={scss.imageContainer}>
@@ -32,4 +33,4 @@ function MediaGroup({
   );
 }
 
-export default MediaGroup;
+export default MediaPreview;

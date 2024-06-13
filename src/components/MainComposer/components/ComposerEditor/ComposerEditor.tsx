@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing -- to change text*/
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
 import {
@@ -78,34 +77,37 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     return { maxLimit, socialLimits };
   }, [getBiggestLimitBySocial]);
 
+  const setError = (newErrorMap: ErrorMapText): void => {
+    setErrorMap((prevErrorMap) => {
+      const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
+      props.onError?.(updatedErrorMap);
+      return updatedErrorMap;
+    });
+  };
+
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
     const textErrors = validatorText(newValue);
     const newErrorMap = { ...errorMap };
 
-    if (props.onChange) {
-      props.onChange(newValue);
-    }
-
+    if (props.onChange) props.onChange(newValue);
     if (textErrors.length > 0) {
       newErrorMap[newValue] = textErrors;
-      setErrorMap((prevErrorMap) => {
-        const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
-        props.onError?.(updatedErrorMap);
-        return updatedErrorMap;
-      });
+      setError(newErrorMap);
     }
 
     setInputValue(newValue);
   };
+
   const socialLimits = getGreatestLimitsSocial();
+
   return (
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={props.onChangePost || handleInputChange}
+        onChange={props.onChangePost ?? handleInputChange}
         placeholder="Digite algo aqui..."
-        value={props.value || inputValue}
+        value={props.value ?? inputValue}
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit

@@ -3,7 +3,7 @@ export type IMedia = {
   id: string;
 };
 
-export type IInputMediaProps = {
+export type InputMediaProps = {
   files?: File;
   onChange: (media: IMedia[]) => void;
 };

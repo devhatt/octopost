@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
-import MediaInputs from '../MediaInputs/MediaInput';
+import InputMediaGroup from '../InputMediaGroup/InputMediaGroup';
 
 import scss from './MainComposerBase.module.scss';
 
 import { ErrorMapText } from '../ComposerEditor/ComposerEditor.types';
-import { ErrorMediaInput } from '../MediaInputs/MediaInput.type';
-import { TMainComposerBase } from './MainComposerBase.type';
+import { ErrorMediaInput } from '../InputMediaGroup/InputMediaGroup.type';
+import { MainComposerBaseProps } from './MainComposerBase.type';
 
-function MainComposerBase(props: TMainComposerBase): ReactNode {
+function MainComposerBase(props: MainComposerBaseProps): ReactNode {
   const handleMediaErrors = (errors: ErrorMediaInput): void => {
     props.onErrorMedia?.(errors);
   };
@@ -25,12 +25,12 @@ function MainComposerBase(props: TMainComposerBase): ReactNode {
         onChangePost={props.onChange}
         onError={handleTextErrors}
         postMode={props.postMode}
-        value={props.value ?? ''}
+        value={props.value}
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
         <div>
-          <MediaInputs
+          <InputMediaGroup
             accountId={props.accountId}
             onError={handleMediaErrors}
             postMode={props.postMode}

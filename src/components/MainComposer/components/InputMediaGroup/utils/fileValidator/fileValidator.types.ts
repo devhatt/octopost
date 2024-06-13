@@ -2,7 +2,7 @@ import { MediaValidator } from '~services/api/social-media/social-media.types';
 
 import { MediaValidators } from '../mediaValidator/mediaValidators';
 
-import { MediaInput } from '../../MediaInput.type';
+import { MediaInput } from '../../InputMediaGroup.type';
 
 export type validators = Record<
   keyof typeof MediaValidators.prototype,

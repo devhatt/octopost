@@ -7,16 +7,16 @@ import scss from './InputMedia.module.scss';
 
 import emptyInputGrey from './assets/imageEmptyGray.svg';
 
-import { IInputMediaProps } from './InputMedia.types';
+import { InputMediaProps } from './InputMedia.types';
 
-function InputMedia(props: IInputMediaProps): ReactNode {
+function InputMedia(props: InputMediaProps): ReactNode {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const inputClasses = classNames(scss.button, {
     [scss.buttonSelected]: props.files,
   });
 
-  const handleInputClick = (): void => {
+  const handleFileSelect = (): void => {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
       fileInputRef.current.click();
@@ -68,7 +68,7 @@ function InputMedia(props: IInputMediaProps): ReactNode {
       : renderVideo(props.files));
 
   return (
-    <button className={inputClasses} onClick={handleInputClick} type="button">
+    <button className={inputClasses} onClick={handleFileSelect} type="button">
       <input
         accept="image/*, video/*"
         aria-label="Upload media files"

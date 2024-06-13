@@ -4,16 +4,15 @@ import { MediaValidator } from '~services/api/social-media/social-media.types';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
-import { IMedia } from '~components/InputMedia/InputMedia.types';
+import InputMedia from './components/InputMedia/InputMedia';
+import MediaPreview from './components/MediaPreview/MediaPreview';
 
-import MediaGroup from './MediaGroup/MediaGroup';
+import scss from './InputMediaGroup.module.scss';
 
-import scss from './MediaInput.module.scss';
+import { IMedia } from './components/InputMedia/InputMedia.types';
+import { MediaInput } from './InputMediaGroup.type';
 
-import InputMedia from '../../../InputMedia/InputMedia';
-import { MediaInput } from './MediaInput.type';
-
-function MediaInputs(props: MediaInput): ReactNode {
+function InputMediaGroup(props: MediaInput): ReactNode {
   const [medias, setMedias] = useState<IMedia[]>([]);
 
   const validateFile = (file: IMedia): void => {
@@ -21,10 +20,7 @@ function MediaInputs(props: MediaInput): ReactNode {
     const validator = props.postMode?.validators as MediaValidator;
 
     const fileValidator = Object.values(fileValidators({ media, validator }));
-
-    for (const validators of fileValidator) {
-      validators(props);
-    }
+    for (const validators of fileValidator) validators(props);
   };
 
   const addMedia = (files: IMedia[]): void => {
@@ -69,7 +65,7 @@ function MediaInputs(props: MediaInput): ReactNode {
   return (
     <div className={scss.manyMediaContainer} data-testid="manyMediaInputs">
       {medias.map((media) => (
-        <MediaGroup
+        <MediaPreview
           key={media.id}
           media={media}
           onImageChange={updateMedia}
@@ -81,4 +77,4 @@ function MediaInputs(props: MediaInput): ReactNode {
   );
 }
 
-export default MediaInputs;
+export default InputMediaGroup;

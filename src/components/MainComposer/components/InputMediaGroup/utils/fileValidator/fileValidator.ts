@@ -1,6 +1,6 @@
 import { MediaValidators } from '../mediaValidator/mediaValidators';
 
-import { MediaInput } from '../../MediaInput.type';
+import { MediaInput } from '../../InputMediaGroup.type';
 import { validators, validatorsProps } from './fileValidator.types';
 
 export const fileValidators = ({
@@ -10,13 +10,11 @@ export const fileValidators = ({
   const mediaValidator = new MediaValidators(media);
   return {
     aspectRatio: async (props: MediaInput): Promise<void> => {
-      let err = 0;
-      for (const ar of validator.media.ar) {
-        if (!(await mediaValidator.aspectRatio(ar))) {
-          err += 1;
-        }
-      }
-      if (props.onError && err === validator.media.ar.length) {
+      const arChecks = await Promise.all(
+        validator.media.ar.map(async (ar) => mediaValidator.aspectRatio(ar))
+      );
+      const allError = arChecks.every((valid) => !valid);
+      if (props.onError && allError) {
         props.onError({
           accountId: props.accountId,
           message: 'Invalid file aspectRatio',

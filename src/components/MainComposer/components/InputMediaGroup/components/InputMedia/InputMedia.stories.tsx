@@ -2,9 +2,9 @@ import type { Story } from '@ladle/react';
 
 import InputMedia from './InputMedia';
 
-import { IInputMediaProps } from './InputMedia.types';
+import { InputMediaProps } from './InputMedia.types';
 
-export const InputMediaComponent: Story<IInputMediaProps> = (props) => (
+export const InputMediaComponent: Story<InputMediaProps> = (props) => (
   <InputMedia onChange={props.onChange} />
 );
 

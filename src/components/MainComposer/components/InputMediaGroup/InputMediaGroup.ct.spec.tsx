@@ -1,12 +1,12 @@
 import { expect, test } from '@playwright/experimental-ct-react';
 
-import MediaInputs from './MediaInput'; // Forna de importar diferente
+import InputMediaGroup from './InputMediaGroup'; // Forna de importar diferente
 
 // TODO: teste precisa ser revisitado pois está corrigido
 test.describe.skip('ManyInputs', () => {
   test.describe('when click on input', () => {
     test('upload the image', async ({ mount }) => {
-      const component = await mount(<MediaInputs />);
+      const component = await mount(<InputMediaGroup />);
 
       await component
         .getByLabel('Upload media files')
@@ -18,7 +18,7 @@ test.describe.skip('ManyInputs', () => {
     });
 
     test('upload two images', async ({ mount }) => {
-      const component = await mount(<MediaInputs />);
+      const component = await mount(<InputMediaGroup />);
 
       await component
         .getByLabel('Upload media files')
@@ -36,7 +36,7 @@ test.describe.skip('ManyInputs', () => {
       test('doesnt select the file', async ({ mount }) => {
         const mediaSelected: string | null = null;
 
-        const component = await mount(<MediaInputs />);
+        const component = await mount(<InputMediaGroup />);
         await component
           .getByLabel('Upload media files')
           .setInputFiles('public/robots.txt');
@@ -47,7 +47,7 @@ test.describe.skip('ManyInputs', () => {
 
     test.describe('when add img and click on remove button', () => {
       test('remove image', async ({ mount }) => {
-        const component = await mount(<MediaInputs />);
+        const component = await mount(<InputMediaGroup />);
 
         await component
           .getByLabel('Upload media files')
