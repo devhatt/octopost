@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 
 import scss from './Preview.module.scss';
 
-import { IPreviewProps } from './Preview.types';
+import { PreviewProps } from './Preview.types';
 
-function Preview(props: IPreviewProps): ReactNode {
+function Preview(props: PreviewProps): ReactNode {
   return <div className={scss.container}>{props.children}</div>;
 }
 
