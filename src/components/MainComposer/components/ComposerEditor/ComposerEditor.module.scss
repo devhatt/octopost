@@ -1,0 +1,44 @@
+@use '~styles/global.scss';
+
+.inputContainer {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.textArea {
+  width: 100%;
+
+  min-height: 20rem;
+
+  color: global.$tertiaryGray;
+
+  font-size: 1.6rem;
+
+  margin-bottom: 2.4rem;
+
+  padding: 2.4rem 1.6rem 2.6rem;
+
+  border: 0;
+  box-sizing: border-box;
+
+  background-color: global.$primaryWhite;
+
+  resize: none;
+}
+
+.charactersLimitContainer {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 1.7rem;
+}
+
+.characterLimitWrapper {
+  display: flex;
+  gap: 0.8rem;
+
+  align-items: center;
+}

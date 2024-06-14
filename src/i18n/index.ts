@@ -9,7 +9,7 @@ const resources = {
   'en-us': ENUS,
   'pt-BR': PTBR,
 };
-await use(initReactI18next).init({
+void use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },

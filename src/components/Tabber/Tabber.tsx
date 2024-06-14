@@ -1,5 +1,4 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
-
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
@@ -7,6 +6,8 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore';
 
 import { accountsToTabs } from './utils';
 
+import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
+import Preview from '~components/Preview/Preview';
 import scss from '~components/Tabber/Tabber.module.scss';
 
 import PostModes from './PostModes/PostModes';
@@ -25,7 +26,13 @@ function Tabber(): ReactNode {
     accountsToTabs(accounts, socialMedias)
   );
 
-  const handleContentChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const currentPostMode = socialMedias
+    .get(currentTab.split('-')[1])
+    ?.postModes.find(
+      (postMode: PostMode) => postMode.id === tabs[currentTab].postModeOnView
+    );
+
+  const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     const tab = { ...tabs[currentTab] };
     const postId = tab.postModeOnView;
     tab.posts[postId].text = e.target.value;
@@ -68,16 +75,19 @@ function Tabber(): ReactNode {
             currentTab={tabs[currentTab].account}
             onChangePostMode={changePostMode}
           />
-          <input
+          <MainComposerBase
+            accountId={tabs[currentTab].account.id}
             onChange={handleContentChange}
-            type="text"
+            postMode={currentPostMode}
             value={
               tabs[currentTab].posts[tabs[currentTab].postModeOnView].text ?? ''
             }
           />
         </div>
         <div className={scss.previewContainer}>
-          {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
+          <Preview>
+            {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
+          </Preview>
         </div>
       </div>
     </div>

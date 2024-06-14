@@ -39,11 +39,47 @@
           "socialMediaId": "TWITTER_EXAMPLE_ID"
         }
       ]
+    },
+    {
+      "id": "0517",
+      "posts": [
+        {
+          "data": {
+            "text": "flor"
+          },
+          "postModeId": "DISCORD_STORY_POSTMODE_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        }
+      ]
+    },
+    {
+      "id": "ea5f",
+      "posts": [
+        {
+          "data": {
+            "text": "flor"
+          },
+          "postModeId": "DISCORD_STORY_POSTMODE_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        }
+      ]
+    },
+    {
+      "id": "8c89",
+      "posts": [
+        {
+          "data": {
+            "text": "flor"
+          },
+          "postModeId": "DISCORD_STORY_POSTMODE_ID",
+          "socialMediaId": "DISCORD_EXAMPLE_ID"
+        }
+      ]
     }
   ],
   "accounts": [
     {
-      "id": 1,
+      "id": "1",
       "socialMediaId": "DISCORD_EXAMPLE_ID",
       "userName": "Discord User 1",
       "token": "DISCORD_EXAMPLE_TOKEN_1",
@@ -51,7 +87,7 @@
       "avatar": "https://example.com/image1.jpg"
     },
     {
-      "id": 14,
+      "id": "14",
       "socialMediaId": "TWITTER_EXAMPLE_ID",
       "userName": "Twitter User 14",
       "token": "TWITTER_EXAMPLE_TOKEN_14",
@@ -59,7 +95,7 @@
       "avatar": "https://example.com/image2.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "socialMediaId": "DISCORD_EXAMPLE_ID",
       "userName": "Discord User 2",
       "token": "DISCORD_EXAMPLE_TOKEN_2",
@@ -67,7 +103,7 @@
       "avatar": "https://example.com/image3.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "socialMediaId": "DISCORD_EXAMPLE_ID",
       "userName": "Discord User 3",
       "token": "DISCORD_EXAMPLE_TOKEN_3",
@@ -75,7 +111,7 @@
       "avatar": "https://example.com/image4.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "socialMediaId": "TWITTER_EXAMPLE_ID",
       "userName": "Twitter User 4",
       "token": "TWITTER_EXAMPLE_TOKEN_4",
@@ -83,7 +119,7 @@
       "avatar": "https://example.com/image2.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "socialMediaId": "DISCORD_EXAMPLE_ID",
       "userName": "Discord User 5",
       "token": "DISCORD_EXAMPLE_TOKEN_5",
@@ -91,7 +127,7 @@
       "avatar": "https://example.com/image6.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "socialMediaId": "TWITTER_EXAMPLE_ID",
       "userName": "Twitter User 6",
       "token": "TWITTER_EXAMPLE_TOKEN_6",
@@ -111,7 +147,14 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 20
+            },
+            "media": {
+              "maxFileSize": 20000000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
             }
           },
           "widgets": [
@@ -129,6 +172,13 @@
           "validators": {
             "text": {
               "maxLength": 3
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 900,
+              "maxHeight": 700,
+              "ar": ["16:9"],
+              "maxDuration": 1100
             }
           },
           "widgets": [
@@ -145,7 +195,14 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 12
+            },
+            "media": {
+              "maxSize": 30000,
+              "maxWidth": 1920,
+              "maxHeight": 1080,
+              "ar": ["5:3"],
+              "maxDuration": 5000
             }
           },
           "widgets": [
@@ -169,7 +226,14 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
             }
           },
           "widgets": [
@@ -186,7 +250,14 @@
           "previewComponent": "Teste",
           "validators": {
             "text": {
-              "maxLength": 3
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
             }
           },
           "widgets": [

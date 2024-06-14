@@ -1,0 +1,19 @@
+@use '~styles/global.scss';
+@use '~styles/breakpoints.scss';
+
+.container {
+  .bottomWrapper {
+    padding: 1.6rem;
+    padding-top: 0;
+
+    .divider {
+      width: 100%;
+      height: 1px;
+
+      margin: 1.6rem 0;
+      border: 0;
+
+      background-color: global.$primaryGray;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use '~styles/global';
+
+.specificFill {
+  fill: global.$primaryWhite !important;
+}
+
+.characterLimit {
+  width: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  color: global.$secondaryGray;
+  font-size: 1.2rem;
+
+  &.exceeded {
+    color: global.$secondaryRed;
+    font-weight: bold;
+  }
+}
+
+.svgColor {
+  display: flex;
+  gap: 0.5rem;
+
+  &.exceeded svg path {
+    fill: global.$primaryGray;
+  }
+}
