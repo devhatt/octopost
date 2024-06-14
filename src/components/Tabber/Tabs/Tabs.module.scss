@@ -1,7 +1,9 @@
-﻿@use '../../../styles/global';
+@use '../../../styles/global';
 
 .tabsContainer {
   width: 100%;
+
+  overflow-x: auto;
 
   display: flex;
 }
