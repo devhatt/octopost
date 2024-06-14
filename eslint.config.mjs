@@ -575,7 +575,7 @@ export default defineFlatConfig([
 
   // Vitest
   {
-    files: ['**/*.spec.*', '**/setupTests.ts'],
+    files: ['**/*.spec.*', '**/setupTests.ts', '**/*.mock.ts'],
     ignores: ['**/*.ct.spec.*', '**/*.ct.test.*'],
     languageOptions: {
       globals: {

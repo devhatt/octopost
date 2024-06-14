@@ -7,6 +7,7 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import { SocialMedia } from '~services/api/social-media/social-media.types';
+import { mockedAddAccount } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
@@ -216,7 +217,7 @@ describe('Sidebar component', () => {
     expect(inputSearchComponent).toHaveValue('Test text');
   });
 
-  it('renders modal when the button is clicked', async () => {
+  it('renders modal when the button more account is clicked', async () => {
     render(<Sidebar />);
 
     const buttonToOpenModal = screen.getByText(/\+ New Account/);
@@ -253,6 +254,20 @@ describe('Sidebar component', () => {
       expect(modalBackgroundEvidence).not.toBeInTheDocument();
     });
   });
+
+  test('Should add account when user add account in modal', async () => {
+    render(<Sidebar />);
+
+    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    await userEvent.click(buttonToOpenModal);
+
+    const select = screen.getByRole('combobox');
+
+    await userEvent.selectOptions(select, 'FACEBOOK_SOCIAL_MEDIA_ID');
+
+    expect(mockedAddAccount).toHaveBeenCalled();
+  });
+
   describe('when filters accordion content', () => {
     it('by account username', async () => {
       vi.spyOn(

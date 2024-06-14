@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { mockedUseSocialMediaStore } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import SocialAccordion from './SocialAccordion';
@@ -28,10 +29,12 @@ const mockList: StoreAccount[] = [
   },
 ];
 
-vi.spyOn(window, 'scrollTo');
+vi.mock('~stores/useSocialMediaStore', () => mockedUseSocialMediaStore);
 
-// TODO: revisitar esse teste pois está falhando
-describe.skip('SocialAccordion', () => {
+vi.spyOn(window, 'scrollTo');
+global.scrollTo = vi.fn((..._args: unknown[]) => _args);
+
+describe('SocialAccordion', () => {
   describe('when initilize', () => {
     it('renders the component', () => {
       render(
@@ -82,14 +85,17 @@ describe.skip('SocialAccordion', () => {
           socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
       );
+      const openAccordion = await screen.findByRole('button');
+      await userEvent.click(openAccordion);
 
-      const openAccordion = screen.getByText(/facebook/i);
-      const userCard = screen.getByText(/jhon doe/i);
+      const userCard = screen.getByText(/user 1/i);
 
       expect(userCard).toBeInTheDocument();
+
       await userEvent.click(openAccordion);
+
       await waitFor(() =>
-        expect(screen.queryByText(/jhon doe/i)).not.toBeInTheDocument()
+        expect(screen.queryByText(/user 1/i)).not.toBeInTheDocument()
       );
     });
   });
@@ -111,7 +117,7 @@ describe.skip('SocialAccordion', () => {
     it('renders with one if list have one account', () => {
       render(
         <SocialAccordion
-          accounts={mockList}
+          accounts={[mockList[0]]}
           error={false}
           socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
         />
