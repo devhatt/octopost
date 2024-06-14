@@ -1,6 +1,7 @@
 import omit from 'lodash.omit';
 import { nanoid } from 'nanoid';
-import { create } from 'zustand';
+
+import { create } from '~stores/zustand';
 
 import { IUseError } from './useError.types';
 

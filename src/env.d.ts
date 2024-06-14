@@ -15,6 +15,7 @@ declare module '*.gif';
 
 type ImportMetaEnv = {
   readonly REACT_APP_SENTRY_KEY: string;
+  readonly VITE_ENVIRONMENT: string;
   // more env variables...
 };
 
