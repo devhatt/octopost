@@ -101,7 +101,7 @@ function Tabber(): ReactNode {
         <div className={scss.postModesContainer}>
           <PostModes
             currentPostModeId={tabs[currentTab].postModeOnView}
-            currentTab={tabs[currentTab].account as Account}
+            currentTab={tabs[currentTab].account}
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
