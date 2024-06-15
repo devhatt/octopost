@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 import scss from '~components/Button/Button.module.scss';
 
-import { ICircleButtonProps, ITextButtonProps } from './Button.types';
+import { CircleButtonProps, TextButtonProps } from './Button.types';
 
-function Button(props: ICircleButtonProps | ITextButtonProps): ReactNode {
-  function RenderTextButton(textButtonProps: ITextButtonProps): ReactNode {
+function Button(props: CircleButtonProps | TextButtonProps): ReactNode {
+  function RenderTextButton(textButtonProps: TextButtonProps): ReactNode {
     const classes: string = classNames(
       textButtonProps.className,
       scss.textButton,
@@ -30,9 +30,7 @@ function Button(props: ICircleButtonProps | ITextButtonProps): ReactNode {
     );
   }
 
-  function RenderCircleButton(
-    circleButtonprops: ICircleButtonProps
-  ): ReactNode {
+  function RenderCircleButton(circleButtonprops: CircleButtonProps): ReactNode {
     const classes: string = classNames(
       circleButtonprops.className,
       scss.circleButton,

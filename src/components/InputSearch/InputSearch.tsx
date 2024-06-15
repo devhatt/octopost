@@ -1,23 +1,18 @@
-import {
-  ChangeEvent,
-  FocusEvent,
-  forwardRef,
-  ReactNode,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import { ChangeEvent, FocusEvent, ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
 
+import Button from '~components/Button/Button';
+import Icon from '~components/Icon/Icon';
+import { Icons } from '~components/Icon/Icon.types';
+
 import scss from './InputSearch.module.scss';
 
-import alertIconSvg from './assets/alertIcon.svg';
-import leftIcon from './assets/leftIcon.svg';
-import rightIconSvg from './assets/rightIcon.svg';
+import { AffixAction, InputProps } from './InputSearch.types';
 
-import { TInputComponentRef, TInputProps } from './InputSearch.types';
+const AFFIX_ICON_SIZE = 21;
 
-function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
+function Input(props: InputProps): ReactNode {
   const [value, setValue] = useState('');
 
   const labelClass = [scss.label];
@@ -27,24 +22,6 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   const containerClass = [scss.container];
 
   const [isFocused, setIsFocused] = useState(false);
-
-  const rightIcon = <img alt="right icon" src={rightIconSvg} />;
-  const alertIcon = <img alt="alert icon" src={alertIconSvg} />;
-
-  const handleClear = (): void => {
-    if (props.onChange) props.onChange('');
-    setValue('');
-  };
-
-  const handleIcons = (): ReactNode => (
-    <div
-      className={scss.iconRight}
-      data-testid="clear-button"
-      onClick={handleClear}
-    >
-      {props.error ? alertIcon : rightIcon}
-    </div>
-  );
 
   const handleValue = (e: ChangeEvent<HTMLInputElement>): void => {
     if (props.onChange) props.onChange(e.target.value);
@@ -79,6 +56,43 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
     labelClass.push(scss.labelError);
   };
 
+  const renderIconButton = (icon: Icons, action: AffixAction): ReactNode => (
+    <Button
+      circle
+      className={scss.affixButton}
+      icon={<Icon icon={icon} size={AFFIX_ICON_SIZE} />}
+      onClick={action}
+    />
+  );
+
+  const renderPreffix = (): ReactNode => {
+    let prefix = null;
+
+    if (props.prefix && 'action' in props.prefix) {
+      prefix = renderIconButton(props.prefix.icon, props.prefix.action);
+    }
+
+    if (props.prefix && !('action' in props.prefix)) {
+      prefix = <Icon icon={props.prefix.icon} size={AFFIX_ICON_SIZE} />;
+    }
+
+    return prefix && <div className={scss.affix}>{prefix}</div>;
+  };
+
+  const renderSuffix = (): ReactNode => {
+    let suffix = null;
+
+    if (props.suffix && 'action' in props.suffix) {
+      suffix = renderIconButton(props.suffix.icon, props.suffix.action);
+    }
+
+    if (props.suffix && !('action' in props.suffix)) {
+      suffix = <Icon icon={props.suffix.icon} size={AFFIX_ICON_SIZE} />;
+    }
+
+    return suffix && <div className={scss.affix}>{suffix}</div>;
+  };
+
   if (isFocused || (typeof value === 'string' && value)) {
     handleFocusedStyles();
   }
@@ -87,34 +101,33 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
     handleErrorStyles();
   }
 
-  useImperativeHandle(ref, () => ({
-    clearInput: handleClear,
-  }));
-
   return (
     <div className={classNames(containerClass)}>
-      <div className={scss.inputWrapper}>
-        <label className={classNames(labelClass)} htmlFor={props.name}>
-          {props.placeholder}
-        </label>
-        <div className={scss.iconLeft}>
-          <img alt="left icon" src={leftIcon} />
-        </div>
-        <input
-          className={classNames(inputClass)}
-          id={props.name}
-          name={props.name}
-          onBlur={(e) => onInputBlur(e)}
-          onChange={handleValue}
-          onFocus={onInputFocus}
-          placeholder={props.placeholder}
-          readOnly={props.readOnly}
-          required
-          type={props.type}
-          value={value}
-        />
+      <div className={scss.wrapper}>
+        <div className={scss.content}>
+          {renderPreffix()}
 
-        {value && handleIcons()}
+          <div className={scss.inputWrapper}>
+            <label className={classNames(labelClass)} htmlFor={props.name}>
+              {props.placeholder}
+            </label>
+            <input
+              className={classNames(inputClass)}
+              id={props.name}
+              name={props.name}
+              onBlur={(e) => onInputBlur(e)}
+              onChange={handleValue}
+              onFocus={onInputFocus}
+              placeholder={props.placeholder}
+              readOnly={props.readOnly}
+              required
+              type={props.type}
+              value={value}
+            />
+          </div>
+
+          {renderSuffix()}
+        </div>
 
         <fieldset aria-hidden="true" className={classNames(fieldsetClass)}>
           <legend className={classNames(legendClass)}>
@@ -127,5 +140,4 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   );
 }
 
-const ForwardedInputSearch = forwardRef(InputSearch);
-export default ForwardedInputSearch;
+export default Input;

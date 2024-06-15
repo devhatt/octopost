@@ -2,7 +2,7 @@ import { Story } from '@ladle/react';
 
 import Icon from './Icon';
 
-import { IconProps, IconsType } from './Icon.types';
+import { IconProps, Icons } from './Icon.types';
 
 export default {
   argTypes: {
@@ -25,7 +25,7 @@ export default {
         'star',
         'star-filled',
         'minus',
-      ] as IconsType[],
+      ] as Icons[],
     },
     size: {
       control: {

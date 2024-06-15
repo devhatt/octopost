@@ -4,7 +4,7 @@ import Icon from '~components/Icon/Icon';
 
 import Button from './Button';
 
-import { ICircleButtonProps, ITextButtonProps } from './Button.types';
+import { CircleButtonProps, TextButtonProps } from './Button.types';
 
 export default {
   argTypes: {
@@ -23,7 +23,7 @@ export default {
   },
 };
 
-export const ButtonText: Story<ITextButtonProps> = (props) => (
+export const ButtonText: Story<TextButtonProps> = (props) => (
   <Button
     color={props.color}
     disabled={props.disabled}
@@ -38,7 +38,7 @@ ButtonText.args = {
   variant: 'outlined',
 };
 
-export const CircleButton: Story<ICircleButtonProps> = (props) => (
+export const CircleButton: Story<CircleButtonProps> = (props) => (
   <Button
     circle
     color={props.color}

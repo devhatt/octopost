@@ -1,11 +1,13 @@
 @use '../../styles/global';
 
+$inputHorizontalSpacing: 0.8rem;
+
 @mixin apply-color($color) {
   &.containerFocus {
     color: $color;
   }
 
-  .inputWrapper {
+  .wrapper {
     .label {
       &.labelAnimate {
         color: $color;
@@ -37,7 +39,7 @@
     color: #34495e;
   }
 
-  .inputWrapper {
+  .wrapper {
     width: 100%;
     height: 5.6rem;
 
@@ -47,64 +49,107 @@
 
     justify-content: space-between;
 
+    padding: 0 $inputHorizontalSpacing;
+
     position: relative;
 
-    .label {
-      color: currentColor;
-      font-size: 1.4rem;
+    .content {
+      display: flex;
+
+      align-items: center;
 
       position: absolute;
+      inset: 0;
 
-      top: 19px;
-      left: 50px;
+      .affix {
+        height: 70%;
 
-      transform: translate3d(0, 0, 0);
+        display: flex;
 
-      transition: all 0.2s ease-in-out;
+        align-items: center;
+        justify-content: center;
 
-      pointer-events: none;
+        margin: 0.7rem;
 
-      &.labelAnimate {
-        color: global.$secondaryPurple;
-        font-size: 1rem;
-
-        transform: translate3d(-3.6rem, -2.45rem, 0);
+        position: relative;
+        z-index: 1;
+        aspect-ratio: 1;
       }
 
-      &.labelError {
-        color: global.$secondaryRed;
+      .affixButton {
+        height: 100%;
       }
 
-      &.labelFilled {
-        color: global.$secondaryGray;
-      }
-    }
+      .inputWrapper {
+        height: 100%;
 
-    .input {
-      width: 100%;
+        flex-grow: 1;
 
-      color: #000;
-      font-size: 1.1rem;
+        margin: 0 $inputHorizontalSpacing;
 
-      padding: 1.6rem 4rem;
-      border: 0;
-      box-sizing: border-box;
+        position: relative;
 
-      position: absolute;
+        .label {
+          display: flex;
 
-      background: none;
+          align-items: center;
 
-      &:focus {
-        outline: 0;
-      }
+          color: currentColor;
+          font-size: 1.4rem;
 
-      &::placeholder {
-        color: transparent;
+          position: absolute;
+          top: 50%;
+
+          transform: translate(0, -50%);
+
+          transition: all 0.2s ease-in-out;
+
+          pointer-events: none;
+
+          &.labelAnimate {
+            color: global.$secondaryPurple;
+            font-size: 1rem;
+
+            position: absolute;
+            top: 0;
+            left: 14px;
+          }
+
+          &.labelError {
+            color: global.$secondaryRed;
+          }
+
+          &.labelFilled {
+            color: global.$secondaryGray;
+          }
+        }
+
+        .input {
+          width: 100%;
+          height: 100%;
+
+          color: #000;
+          font-size: 1.6rem;
+
+          padding: 0 0 0 0.5rem;
+          border: 0;
+
+          background: none;
+
+          &:focus {
+            outline: 0;
+          }
+
+          &::placeholder {
+            color: transparent;
+          }
+        }
       }
     }
 
     .fieldset {
-      padding: 0 0.8rem;
+      margin: 0;
+      padding: 0 $inputHorizontalSpacing;
       border: 1px solid currentColor;
 
       position: absolute;
@@ -151,7 +196,7 @@
         .legendTitle {
           font-size: 1rem;
 
-          padding: 0 0.2rem;
+          padding: 0 0.4rem;
         }
       }
     }

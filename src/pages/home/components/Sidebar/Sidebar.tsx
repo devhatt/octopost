@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
@@ -13,7 +13,6 @@ import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
-import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 
 import AddAccount from './components/AddAccount/AddAccount';
@@ -30,7 +29,6 @@ function Sidebar(): React.ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState(accounts);
-  const inputSearchRef = useRef<TInputComponent | null>(null);
   const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
   const handleToggleModal = (): void => {
@@ -91,7 +89,6 @@ function Sidebar(): React.ReactNode {
             error={false}
             onChange={debouncedSearch}
             placeholder="Search for social media"
-            ref={inputSearchRef}
           />
 
           {isEmptyResult ? renderEmptyResult() : renderSearchData()}
