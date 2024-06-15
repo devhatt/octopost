@@ -20,7 +20,7 @@ import {
 } from './ComposerEditor.types';
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
-  const { socialMedias } = useSocialMediaStore();
+  const { socialMedias, updateMainContent } = useSocialMediaStore();
   const [inputValue, setInputValue] = useState('');
   const [errorMap, setErrorMap] = useState<ErrorMapText>({});
 
@@ -95,7 +95,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       newErrorMap[newValue] = textErrors;
       setError(newErrorMap);
     }
-
+    updateMainContent(newValue);
     setInputValue(newValue);
   };
 
