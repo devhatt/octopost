@@ -18,7 +18,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     loading: false,
   },
 
-  addAccount: async (): Promise<void> => {},
+  addAccount: async (): Promise<void> => { },
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -55,7 +55,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       },
     }));
   },
-
+  mainContent: '',
   posts: {
     data: {},
     error: '',
@@ -79,6 +79,8 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     await SocialMediaService.sendPosts(postsWithContent);
   },
   socialMedias: new Map<string, SocialMedia>(),
+  updateMainContent: (newContent: string): void =>
+    set({ mainContent: newContent }),
 }));
 
 void useSocialMediaStore.getState().getAllAccounts();
