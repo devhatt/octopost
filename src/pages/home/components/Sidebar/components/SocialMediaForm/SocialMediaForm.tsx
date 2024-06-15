@@ -12,47 +12,68 @@ function SocialMediaForm({
   return (
     <ul className={scss.selection}>
       <li className={scss.socialItem}>
-        <button onClick={onHandleToggleModal} type="button">
-          <img alt="instagram" src="./social-github.svg" />
+        <button type="button">
+          <img alt="facebook" src="./social-github.svg" />
           <p>Facebook</p>
-          <Button className={scss.button} variant="outlined">
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="outlined"
+          >
             Connect Account
           </Button>
-          <Button className={scss.button} variant="container">
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="container"
+          >
             Connect Group
           </Button>
         </button>
       </li>
       <li className={scss.socialItem}>
-        <button onClick={onHandleToggleModal} type="button">
-          <img alt="" src="./social-github.svg" />
+        <button type="button">
+          <img alt="linkedin" src="./social-github.svg" />
           <p>linkedin</p>
-          <Button className={scss.button} variant="outlined">
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="outlined"
+          >
             Connect Account
           </Button>
-          <Button className={scss.button} variant="container">
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="container"
+          >
             Connect Group
           </Button>
         </button>
       </li>
       <li className={scss.socialItem}>
-        <button onClick={onHandleToggleModal} type="button">
-          <img alt="" src="./social-github.svg" />
+        <button type="button">
+          <img alt="twitter" src="./social-github.svg" />
           <p>twitter</p>
-          <Button className={scss.button} variant="container">
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="container"
+          >
             Connect Account
           </Button>
         </button>
       </li>
       <li className={scss.socialItem}>
-        <button onClick={onHandleToggleModal} type="button">
-          <img alt="" src="./social-github.svg" />
-          <p>facebook</p>
-          <Button className={scss.button} variant="outlined">
+        <button type="button">
+          <img alt="instagram" src="./social-github.svg" />
+          <p>Instagram</p>
+          <Button
+            className={scss.button}
+            onClick={onHandleToggleModal}
+            variant="outlined"
+          >
             Connect Account
-          </Button>
-          <Button className={scss.button} variant="container">
-            Connect Group
           </Button>
         </button>
       </li>
