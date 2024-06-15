@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
@@ -14,17 +14,23 @@ import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
-// import Modal from '~components/Modal/Modal';
+import Modal from '~components/Modal/Modal';
 
+// import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 import SocialMediaForm from './components/SocialMediaForm/SocialMediaForm';
 
 import scss from './Sidebar.module.scss';
 
-function Sidebar(): ReactNode {
+const HALF_SECOND = 500;
+
+const format = (userName: string): string => userName.toLowerCase().trim();
+
+function Sidebar(): React.ReactNode {
   const { accounts } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
-  // const [mobileIsOpen, setMobileIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [filteredAccounts, setFilteredAccounts] = useState(accounts);
   const inputSearchRef = useRef<TInputComponent | null>(null);
   const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
 
@@ -108,7 +114,18 @@ function Sidebar(): ReactNode {
                 variant="container"
               />
             </div>
-            <SocialMediaForm isOpen={isOpen} setIsOpen={setIsOpen} />
+            <Modal
+              isOpen={isOpen}
+              onClickOutside={() => setIsOpen(false)}
+              title="Connect a social media"
+            >
+              {/* <AddAccount onChange={handleSelectSocialMedia} /> */}
+              <SocialMediaForm
+                isOpen
+                onHandleToggleModal={handleToggleModal}
+                setIsOpen={(p) => !p}
+              />
+            </Modal>
           </div>
         </div>
       </AccordionTab>
