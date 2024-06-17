@@ -48,14 +48,12 @@ function Sidebar(): React.ReactNode {
   const debouncedSearch = debounce((value: string): void => {
     const userName = format(value);
 
-
-   if(accounts.data) {
-    const filtered = accounts.data.filter((account) =>
-      format(account.userName).includes(userName)
-    );
-    setFilteredAccounts(filtered);
-
-  }
+    if (accounts.data) {
+      const filtered = accounts.data.filter((account) =>
+        format(account.userName).includes(userName)
+      );
+      setFilteredAccounts(filtered);
+    }
 
     setInputValue(value);
   }, HALF_SECOND);
