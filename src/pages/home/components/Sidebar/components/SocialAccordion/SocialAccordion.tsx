@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';

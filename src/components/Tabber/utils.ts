@@ -1,6 +1,6 @@
 ﻿import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-import { SocialMediaState } from '~stores/useSocialMediaStore.types';
+import { SocialMediaState } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import { Tab, TabId, Tabs } from './Tabber.types';
 

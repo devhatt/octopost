@@ -2,7 +2,7 @@
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { accountsToTabs } from './utils';
 
@@ -19,11 +19,11 @@ function Tabber(): ReactNode {
   const { accounts, socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
-    `${accounts[0].id}-${accounts[0].socialMediaId}`
+    `${accounts.data?.[0]?.id}-${accounts.data?.[0]?.socialMediaId}`
   );
 
   const [tabs, setTabs] = useState<TabsType>(
-    accountsToTabs(accounts, socialMedias)
+    accountsToTabs(accounts.data ?? [], socialMedias)
   );
 
   const currentPostMode = socialMedias
@@ -76,7 +76,7 @@ function Tabber(): ReactNode {
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
-            accountId={tabs[currentTab].account.id}
+            accountId={tabs[currentTab].account.id.toString()}
             onChange={handleContentChange}
             postMode={currentPostMode}
             value={

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import SocialAccordion from './SocialAccordion';
 
@@ -10,7 +10,7 @@ const mockList: StoreAccount[] = [
     avatar: 'https://example.com/avatar1.jpg',
     expiresAt: '2022-12-31T23:59:59Z',
     generatedAt: '2022-01-01T00:00:00Z',
-    id: '1',
+    id: 1,
     socialMediaId: 'social1',
     token: 'token1',
     userName: 'User 1',
@@ -20,7 +20,7 @@ const mockList: StoreAccount[] = [
     avatar: 'https://example.com/avatar2.jpg',
     expiresAt: '2023-12-31T23:59:59Z',
     generatedAt: '2023-01-01T00:00:00Z',
-    id: '2',
+    id: 2,
     socialMediaId: 'social2',
     token: 'token2',
     userName: 'User 2',
