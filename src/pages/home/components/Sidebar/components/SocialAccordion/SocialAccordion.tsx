@@ -1,6 +1,8 @@
 import { ReactNode, useState } from 'react';
 
+import { useAccountStore } from '~stores/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore.types';
 
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
@@ -15,8 +17,17 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const { socialMedias } = useSocialMediaStore();
+  const { addAccount, removeAccount } = useAccountStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
+
+  const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
+    if (enabled) {
+      addAccount(account);
+    } else {
+      removeAccount(account.id);
+    }
+  };
 
   const renderError = (): ReactNode => (
     <span className={scss.error}>error!!!!</span>
@@ -28,6 +39,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
         <AccountCard
           avatarURL={account.avatar}
           isEnabled={account.valid}
+          onEnableChange={(enable) => activateSocialTab(enable, account)}
           username={account.userName}
         />
       </li>

@@ -14,24 +14,19 @@ import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
 
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
+import { useAccountStore } from '~stores/useAccountStore';
 
 function Tabber(): ReactNode {
-  const { accounts, socialMedias } = useSocialMediaStore();
+  const { accounts: acc } = useAccountStore();
+  // const { accounts, socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     `${accounts[0].id}-${accounts[0].socialMediaId}`
   );
 
-  const [tabs, setTabs] = useState<TabsType>(
-    accountsToTabs(accounts, socialMedias)
-  );
+  const [tabs, setTabs] = useState<TabsType>(accountsToTabs(accounts));
 
-  const currentPostMode = socialMedias
-    .get(currentTab.split('-')[1])
-    ?.postModes.find(
-      (postMode: PostMode) => postMode.id === tabs[currentTab].postModeOnView
-    );
-
+  const currentPostMode = null;
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     const tab = { ...tabs[currentTab] };
     const postId = tab.postModeOnView;
