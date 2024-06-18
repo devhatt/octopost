@@ -6,6 +6,32 @@
   overflow-x: auto;
 
   display: flex;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  background:
+    linear-gradient(90deg, global.$primaryWhite 30%, rgba(255, 255, 255, 0))
+      left,
+    linear-gradient(90deg, rgba(255, 255, 255, 0), global.$primaryWhite 70%)
+      right,
+    radial-gradient(farthest-side at 0 50%, #6650a430, rgba(0, 0, 0, 0)) left,
+    radial-gradient(farthest-side at 100% 50%, #6650a430, rgba(0, 0, 0, 0))
+      right;
+
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size:
+    40px 100%,
+    40px 100%,
+    14px 100%,
+    14px 100%;
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
@@ -16,6 +42,8 @@
   align-items: center;
 
   color: global.$tertiaryGray;
+
+  white-space: nowrap;
 
   padding: 0.75rem 1rem;
 
