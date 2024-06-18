@@ -3,22 +3,38 @@ import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { SocialMediaState } from '~stores/useSocialMediaStore.types';
 
 import { Tab, TabId, Tabs } from './Tabber.types';
+import { AccountPost } from '~stores/useAccountStore';
 
 export const getFirstPostModeId = (
   socialMedia: SocialMedia
-): SocialMedia['postModes'][number]['id'] => socialMedia.postModes[0].id;
+): SocialMedia['postModes'][number]['id'] => {
+  if (
+    !socialMedia ||
+    !socialMedia.postModes ||
+    socialMedia.postModes.length === 0
+  ) {
+    throw new Error('Invalid social media or no post modes available');
+  }
+  return socialMedia.postModes[0].id;
+};
 
-export const createTabId = (account: Account): TabId =>
-  `${account.id}-${account.socialMediaId}`;
+export const createTabId = (account: Account): TabId => {
+  if (!account) throw new Error('Account is required to create a TabId');
+  return `${account.id}-${account.socialMediaId}`;
+};
 
 export const accountsToTabs = (
-  accounts: Account[],
+  accounts: AccountPost[],
   socialMedias: SocialMediaState['socialMedias']
-): Record<TabId, Tab> =>
-  accounts.reduce<Tabs>((acc, account) => {
-    const tabId = createTabId(account);
+): Record<TabId, Tab> => {
+  if (!accounts || accounts.length === 0) {
+    return {};
+  }
+
+  return accounts.reduce<Tabs>((acc, account) => {
+    const tabId = createTabId(account as Account);
     const socialMedia = socialMedias.get(account.socialMediaId);
-    if (!socialMedia) throw new Error('No social media found');
+    if (!socialMedia) throw new Error('No social media found for the account');
 
     const postModeOnView = getFirstPostModeId(socialMedia);
 
@@ -33,3 +49,4 @@ export const accountsToTabs = (
 
     return acc;
   }, {});
+};

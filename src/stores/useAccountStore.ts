@@ -2,7 +2,10 @@ import { create } from './zustand';
 
 import { StoreAccount } from './useSocialMediaStore.types';
 
-type AccountPost = Pick<StoreAccount, 'id' | 'socialMediaId' | 'userName'>;
+export type AccountPost = Pick<
+  StoreAccount,
+  'id' | 'socialMediaId' | 'userName'
+>;
 
 type StoreState = {
   accounts: AccountPost[];

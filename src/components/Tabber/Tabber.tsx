@@ -1,36 +1,61 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
-import { ChangeEvent, ReactNode, useState } from 'react';
-
+import { ChangeEvent, ReactNode, useState, useEffect } from 'react';
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-
 import { accountsToTabs } from './utils';
-
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
 import Preview from '~components/Preview/Preview';
 import scss from '~components/Tabber/Tabber.module.scss';
-
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
-
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
-import { useAccountStore } from '~stores/useAccountStore';
+import { AccountPost, useAccountStore } from '~stores/useAccountStore';
+import { Account } from '~services/api/accounts/accounts.types';
+
+const makeId = (account: AccountPost): `${string}-${string}` => {
+  return `${account.id}-${account.socialMediaId}`;
+};
 
 function Tabber(): ReactNode {
-  const { accounts: acc } = useAccountStore();
-  // const { accounts, socialMedias } = useSocialMediaStore();
+  const { accounts } = useAccountStore();
+  const { socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
-    `${accounts[0].id}-${accounts[0].socialMediaId}`
+    makeId(accounts[0] || {})
   );
+  const [tabs, setTabs] = useState<TabsType>({});
 
-  const [tabs, setTabs] = useState<TabsType>(accountsToTabs(accounts));
+  useEffect(() => {
+    if (accounts.length > 0) {
+      const initialTabId = accounts.length > 0 ? makeId(accounts[0]) : '';
+      setCurrentTab(initialTabId as TabId);
+      setTabs(accountsToTabs(accounts, socialMedias));
+    } else {
+      setTabs({});
+      setCurrentTab('' as unknown as TabId);
+    }
+  }, [accounts, socialMedias]);
 
-  const currentPostMode = null;
+  const getCurrentPostMode = () => {
+    if (!currentTab) return null;
+    const socialMediaId = currentTab.split('-')[1];
+    const socialMedia = socialMedias.get(socialMediaId);
+    if (!socialMedia) return null;
+    const postModeOnView = tabs[currentTab]?.postModeOnView;
+    return socialMedia.postModes.find(
+      (postMode: PostMode) => postMode.id === postModeOnView
+    );
+  };
+
+  const currentPostMode = getCurrentPostMode();
+
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    if (!currentTab || !tabs[currentTab]) return;
     const tab = { ...tabs[currentTab] };
     const postId = tab.postModeOnView;
-    tab.posts[postId].text = e.target.value;
+    if (tab.posts[postId]) {
+      tab.posts[postId].text = e.target.value;
+    }
 
     setTabs({
       ...tabs,
@@ -43,6 +68,7 @@ function Tabber(): ReactNode {
   };
 
   const changePostMode = (postMode: PostMode): void => {
+    if (!currentTab || !tabs[currentTab]) return;
     const tab = { ...tabs[currentTab] };
     tab.postModeOnView = postMode.id;
 
@@ -56,6 +82,10 @@ function Tabber(): ReactNode {
     });
   };
 
+  if (!currentTab || !tabs[currentTab]) {
+    return <div>No tabs available</div>;
+  }
+
   return (
     <div>
       <Tabs
@@ -67,21 +97,22 @@ function Tabber(): ReactNode {
         <div className={scss.postModesContainer}>
           <PostModes
             currentPostModeId={tabs[currentTab].postModeOnView}
-            currentTab={tabs[currentTab].account}
+            currentTab={tabs[currentTab].account as Account}
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
             accountId={tabs[currentTab].account.id}
             onChange={handleContentChange}
-            postMode={currentPostMode}
+            postMode={currentPostMode ?? undefined}
             value={
-              tabs[currentTab].posts[tabs[currentTab].postModeOnView].text ?? ''
+              tabs[currentTab].posts[tabs[currentTab].postModeOnView]?.text ??
+              ''
             }
           />
         </div>
         <div className={scss.previewContainer}>
           <Preview>
-            {tabs[currentTab].posts[tabs[currentTab].postModeOnView].text}
+            {tabs[currentTab].posts[tabs[currentTab].postModeOnView]?.text}
           </Preview>
         </div>
       </div>
