@@ -1,26 +1,34 @@
-/* eslint-disable unicorn/no-await-expression-member */
 /* eslint-disable @typescript-eslint/no-empty-function */
+
 import { create } from 'zustand';
+
+import { Tab, Tabs } from '~components/Tabber/Tabber.types';
 
 import { AccountsService } from '~services/api/accounts/accounts';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { MultiMap } from '~utils/multimap/multimap';
 
-import { Tab, Tabs } from '~components/Tabber/Tabber.types';
-
 import { SocialMediaState, StoreAccount } from './useSocialMediaStore.types';
 
 export const useSocialMediaStore = create<SocialMediaState>((set) => ({
-  accounts: [],
-  // TODO: Implement addAccount based on the examples of service communication
+  accounts: {
+    data: null,
+    error: '',
+    loading: false,
+  },
+
   addAccount: async (): Promise<void> => {},
+
   getAllAccounts: async (): Promise<void> => {
-    const accounts = await AccountsService.fetchAll();
+    set((state) => ({ accounts: { ...state.accounts, loading: true } }));
+
+    const fetchedAccounts = await AccountsService.fetchAll();
+
     const userSocialMedias = new Set<string>();
     const accountsBySocialMedia = new MultiMap<StoreAccount>();
 
-    for (const account of accounts) {
+    for (const account of fetchedAccounts) {
       userSocialMedias.add(account.socialMediaId);
       accountsBySocialMedia.add(account.socialMediaId, {
         ...account,
@@ -28,24 +36,34 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       });
     }
 
-    //  TODO: isso aqui ta uma porcaria, arrumar
-    const socialMedias = (
-      await SocialMediaService.fetch(Array.from(userSocialMedias))
-    ).reduce<Map<SocialMedia['id'], SocialMedia>>((acc, socialMedia) => {
-      acc.set(socialMedia.id, socialMedia);
-      return acc;
-    }, new Map());
+    const fetchedSocialMedias = await SocialMediaService.fetch(
+      Array.from(userSocialMedias),
+    );
 
-    set(() => ({ socialMedias: socialMedias }));
-    set(() => ({ accounts: accountsBySocialMedia.toArray() }));
+    const fetchedSocialMediasMap = new Map<SocialMedia['id'], SocialMedia>();
+
+    for (const socialMedia of fetchedSocialMedias) {
+      fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
+    }
+
+    set(() => ({ socialMedias: fetchedSocialMediasMap }));
+    set(() => ({
+      accounts: {
+        data: accountsBySocialMedia.toArray(),
+        error: '',
+        loading: false,
+      },
+    }));
   },
+
   posts: {
     data: {},
     error: '',
     loading: false,
   },
+
   sendPosts: async (tabs: Tabs): Promise<void> => {
-    const posts = Object.values(tabs).map((tab: Tab) => {
+    const postsToBeSent = Object.values(tabs).map((tab: Tab) => {
       const { socialMediaId } = tab.account;
       return Object.entries(tab.posts).map(([postModeId, data]) => ({
         data,
@@ -54,12 +72,13 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       }));
     });
 
-    // TODO: all posts will have data on the future, dont need to filter it
-    const postsWithContent = posts.flat().filter((post) => post.data.text);
+    const postsWithContent = postsToBeSent
+      .flat()
+      .filter((post) => post.data.text);
     set((state) => ({ posts: { ...state.posts, loading: true } }));
     await SocialMediaService.sendPosts(postsWithContent);
   },
   socialMedias: new Map<string, SocialMedia>(),
 }));
 
-export const socialMediaStore = useSocialMediaStore.getState();
+void useSocialMediaStore.getState().getAllAccounts();

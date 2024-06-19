@@ -1,4 +1,4 @@
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 export type SocialAccordionProps = {
   accounts: StoreAccount[];

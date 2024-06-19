@@ -1,11 +1,10 @@
-﻿import { ReactNode } from 'react';
-
-import classNames from 'classnames';
-
-import { Account } from '~services/api/accounts/accounts.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+﻿import classNames from 'classnames';
+import { ReactNode } from 'react';
 
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
+
+import { Account } from '~services/api/accounts/accounts.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { Tab, TabId } from '../Tabber.types';
 import { TabsProps } from './Tabs.types';

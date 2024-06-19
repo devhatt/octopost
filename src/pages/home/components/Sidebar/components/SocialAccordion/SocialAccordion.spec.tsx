@@ -1,21 +1,21 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import {
-  mockedAccounts,
-  mockedUseSocialMediaStore,
-} from '~stores/__mocks__/useSocialMediaStore.mock.ts';
+import { mockedAccounts, mockedUseSocialMediaStore } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 
 import SocialAccordion from './SocialAccordion';
 
-vi.mock('~stores/useSocialMediaStore', () => mockedUseSocialMediaStore);
+vi.mock(
+  '~stores/useSocialMediaStore/useSocialMediaStore',
+  () => mockedUseSocialMediaStore,
+);
 
 describe('SocialAccordion', () => {
   describe('when initilize', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts()}
+          accounts={mockedAccounts().data}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
@@ -28,7 +28,7 @@ describe('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts()}
+          accounts={mockedAccounts().data}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
@@ -56,12 +56,12 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts()}
+          accounts={mockedAccounts().data}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const [account] = mockedAccounts();
+      const [account] = mockedAccounts().data;
 
       const openAccordion = await screen.findByRole('button');
       await userEvent.click(openAccordion);
@@ -95,7 +95,7 @@ describe('SocialAccordion', () => {
     });
 
     it('renders with one if list have one account', () => {
-      const [account] = mockedAccounts();
+      const [account] = mockedAccounts().data;
 
       render(
         <SocialAccordion
@@ -104,7 +104,9 @@ describe('SocialAccordion', () => {
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const accountQuantity = screen.getByText(new RegExp(account.id, 'i'));
+      const accountQuantity = screen.getByText(
+        new RegExp(String(account.id), 'i'),
+      );
 
       expect(accountQuantity).toBeInTheDocument();
     });

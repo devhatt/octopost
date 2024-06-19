@@ -1,14 +1,14 @@
 import { ReactNode, useState } from 'react';
 
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
 import Icon from '~components/Icon/Icon';
 
-import scss from './SocialAccordion.module.scss';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
+
+import scss from './SocialAccordion.module.scss';
 
 import { SocialAccordionProps } from './SocialAccordion.type';
 

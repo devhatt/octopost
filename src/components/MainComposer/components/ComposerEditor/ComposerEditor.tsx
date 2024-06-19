@@ -1,23 +1,15 @@
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
-import {
-  PostMode,
-  TextValidator,
-} from '~services/api/social-media/social-media.types.ts';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
-
-import { TextValidators } from './utils/textValidator/textValidators';
-
 import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
+
+import { PostMode, TextValidator } from '~services/api/social-media/social-media.types.ts';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import scss from './ComposerEditor.module.scss';
 
-import {
-  ComposerEditorProps,
-  ErrorMapText,
-  ErrorText,
-  HigherLimitSocial,
-} from './ComposerEditor.types';
+import { ComposerEditorProps, ErrorMapText, ErrorText, HigherLimitSocial } from './ComposerEditor.types';
+
+import { TextValidators } from './utils/textValidator/textValidators';
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();

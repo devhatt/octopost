@@ -1,9 +1,4 @@
-import {
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { SocialMedia } from '~services/api/social-media/social-media.types';
@@ -13,11 +8,13 @@ import {
   mockedSocialMedias,
   mockedUseSocialMediaStore,
 } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
-import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
 
-vi.mock('~stores/useSocialMediaStore', () => mockedUseSocialMediaStore);
+vi.mock(
+  '~stores/useSocialMediaStore/useSocialMediaStore',
+  () => mockedUseSocialMediaStore,
+);
 
 beforeEach(() => {
   vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockImplementation(
@@ -41,7 +38,7 @@ describe('Sidebar component', () => {
   it('renders all accounts from store', async () => {
     render(<Sidebar />);
 
-    const [account] = mockedAccounts();
+    const [account] = mockedAccounts().data;
     const socialMedia = mockedSocialMedias().get(account.socialMediaId);
 
     const accordionEvidence = screen.getByText(
@@ -56,14 +53,19 @@ describe('Sidebar component', () => {
   });
 
   it('dont render accounts when accounts store is empty', () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: [],
+    vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockReturnValue({
+      accounts: {
+        data: [],
+        error: '',
+        loading: false,
+      },
+      addAccount: mockedAddAccount,
       socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
     });
 
     render(<Sidebar />);
 
-    const [account] = mockedAccounts();
+    const [account] = mockedAccounts().data;
     const socialMedia = mockedSocialMedias().get(account.socialMediaId);
 
     const accordionEvidence = screen.queryByText(
@@ -137,7 +139,7 @@ describe('Sidebar component', () => {
       const discordAccordion = screen.getByText(/discord/i);
       await waitForElementToBeRemoved(discordAccordion);
 
-      const accordion = screen.getByText('Twitter');
+      const accordion = screen.getByText(/twitter/i);
       await userEvent.click(accordion);
 
       const evidence = screen.getByText('Twitter User 14');

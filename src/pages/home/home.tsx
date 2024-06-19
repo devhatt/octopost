@@ -1,11 +1,11 @@
-import { ReactNode, useEffect } from 'react';
-
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import isEmpty from '~utils/isEmpty/isEmpty';
+import { ReactNode } from 'react';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import MainComposer from '~components/MainComposer/MainComposer';
 import Tabber from '~components/Tabber/Tabber';
+
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import isEmpty from '~utils/isEmpty/isEmpty';
 
 import ActionBar from './components/ActionBar/ActionBar';
 import Header from './components/Header/Header';
@@ -14,11 +14,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
-  const { accounts, getAllAccounts } = useSocialMediaStore();
-
-  useEffect(() => {
-    if (isEmpty(accounts)) getAllAccounts();
-  }, [accounts, getAllAccounts]);
+  const { accounts } = useSocialMediaStore();
 
   return (
     <>
@@ -29,7 +25,7 @@ function Home(): ReactNode {
         </aside>
         <div className={scss.aditor}>
           <MainComposer />
-          {!isEmpty(accounts) && <Tabber />}
+          {accounts.data && !isEmpty(accounts.data) && <Tabber />}
           <FeedbackError />
         </div>
         <div className={scss.actions}>

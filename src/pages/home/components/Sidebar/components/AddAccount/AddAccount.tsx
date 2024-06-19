@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactNode } from 'react';
 
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { AddAccountProps } from './AddAccount.types';
 

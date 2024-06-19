@@ -1,29 +1,29 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
 import { ChangeEvent, ReactNode, useState } from 'react';
 
-import { PostMode } from '~services/api/social-media/social-media.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-
-import { accountsToTabs } from './utils';
-
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
 import Preview from '~components/Preview/Preview';
 import scss from '~components/Tabber/Tabber.module.scss';
 
+import { PostMode } from '~services/api/social-media/social-media.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+
 import PostModes from './PostModes/PostModes';
-import Tabs from './Tabs/Tabs';
 
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
+import Tabs from './Tabs/Tabs';
+
+import { accountsToTabs } from './utils';
 
 function Tabber(): ReactNode {
   const { accounts, socialMedias } = useSocialMediaStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
-    `${accounts[0].id}-${accounts[0].socialMediaId}`
+    `${accounts.data?.[0]?.id}-${accounts.data?.[0]?.socialMediaId}`,
   );
 
   const [tabs, setTabs] = useState<TabsType>(
-    accountsToTabs(accounts, socialMedias)
+    accountsToTabs(accounts.data ?? [], socialMedias),
   );
 
   const currentPostMode = socialMedias
@@ -76,7 +76,7 @@ function Tabber(): ReactNode {
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
-            accountId={tabs[currentTab].account.id}
+            accountId={tabs[currentTab].account.id.toString()}
             onChange={handleContentChange}
             postMode={currentPostMode}
             value={
