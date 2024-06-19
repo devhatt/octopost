@@ -1,20 +1,24 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
-import { ChangeEvent, ReactNode, useState, useEffect } from 'react';
+import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+
+import { Account } from '~services/api/accounts/accounts.types';
 import { PostMode } from '~services/api/social-media/social-media.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { AccountPost, useAccountStore } from '~stores/useAccountStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+
 import { accountsToTabs } from './utils';
+
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
 import Preview from '~components/Preview/Preview';
 import scss from '~components/Tabber/Tabber.module.scss';
+
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
-import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
-import { AccountPost, useAccountStore } from '~stores/useAccountStore';
-import { Account } from '~services/api/accounts/accounts.types';
 
-const makeId = (account: AccountPost): `${string}-${string}` => {
-  return `${account.id}-${account.socialMediaId}`;
-};
+import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
+
+const makeId = (account: AccountPost): `${string}-${string}` =>
+  `${account.id}-${account.socialMediaId}`;
 
 function Tabber(): ReactNode {
   const { accounts } = useAccountStore();
@@ -36,11 +40,11 @@ function Tabber(): ReactNode {
     }
   }, [accounts, socialMedias]);
 
-  const getCurrentPostMode = () => {
-    if (!currentTab) return null;
-    const socialMediaId = currentTab.split('-')[1];
+  const getCurrentPostMode = (): PostMode | undefined => {
+    if (!currentTab) return;
+    const [, socialMediaId] = currentTab.split('-');
     const socialMedia = socialMedias.get(socialMediaId);
-    if (!socialMedia) return null;
+    if (!socialMedia) return;
     const postModeOnView = tabs[currentTab]?.postModeOnView;
     return socialMedia.postModes.find(
       (postMode: PostMode) => postMode.id === postModeOnView
@@ -101,7 +105,7 @@ function Tabber(): ReactNode {
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
-            accountId={tabs[currentTab].account.id}
+            accountId={tabs[currentTab].account.id.toString()}
             onChange={handleContentChange}
             postMode={currentPostMode ?? undefined}
             value={

@@ -9,7 +9,7 @@ const accounts: SocialAccordionProps['accounts'] = [
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
     generatedAt: '2022-01-01T00:00:00Z',
-    id: 'jdoiawdawiodj',
+    id: '21_231',
     socialMediaId: '123',
     token: 'token1',
     userName: 'jhon doe',

@@ -6,7 +6,7 @@ import {
   PostMode,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import scss from './PostModes.module.scss';
 

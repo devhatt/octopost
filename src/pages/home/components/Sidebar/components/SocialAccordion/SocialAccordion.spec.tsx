@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import SocialAccordion from './SocialAccordion';
 

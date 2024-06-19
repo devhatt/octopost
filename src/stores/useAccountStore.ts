@@ -1,6 +1,6 @@
 import { create } from './zustand';
 
-import { StoreAccount } from './useSocialMediaStore.types';
+import { StoreAccount } from './useSocialMediaStore/useSocialMediaStore.types';
 
 export type AccountPost = Pick<
   StoreAccount,

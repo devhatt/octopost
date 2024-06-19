@@ -7,7 +7,7 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
+import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
 
@@ -169,7 +169,11 @@ describe('Sidebar component', () => {
 
   it('renders all accounts from store', async () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
+      accounts: {
+        data: mockAccounts,
+        error: '',
+        loading: false,
+      },
       socialMedias: mockSocialMedias,
     });
 
@@ -189,7 +193,11 @@ describe('Sidebar component', () => {
 
   it('dont render accounts when accounts store is empty', () => {
     vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: [],
+      accounts: {
+        data: mockAccounts,
+        error: '',
+        loading: false,
+      },
       socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
     });
 
@@ -259,7 +267,11 @@ describe('Sidebar component', () => {
         useSocialMediaStoreModule,
         'useSocialMediaStore'
       ).mockReturnValue({
-        accounts: mockAccounts,
+        accounts: {
+          data: mockAccounts,
+          error: '',
+          loading: false,
+        },
         socialMedias: mockSocialMedias,
       });
 
@@ -288,7 +300,11 @@ describe('Sidebar component', () => {
         useSocialMediaStoreModule,
         'useSocialMediaStore'
       ).mockReturnValue({
-        accounts: mockAccounts,
+        accounts: {
+          data: mockAccounts,
+          error: '',
+          loading: false,
+        },
         socialMedias: mockSocialMedias,
       });
 

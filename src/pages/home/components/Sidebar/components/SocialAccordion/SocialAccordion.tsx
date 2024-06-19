@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
 
 import { useAccountStore } from '~stores/useAccountStore';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
