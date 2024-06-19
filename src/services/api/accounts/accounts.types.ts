@@ -2,7 +2,7 @@ export type Account = {
   avatar: string;
   expiresAt: string;
   generatedAt: string;
-  id: number;
+  id: string;
   socialMediaId: string;
   token: string;
   userName: string;
