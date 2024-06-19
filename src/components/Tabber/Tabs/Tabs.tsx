@@ -25,7 +25,7 @@ function Tabs(props: TabsProps): ReactNode {
       key={tabId}
       onClick={() => props.onChangeTab(tab, tabId)}
     >
-      {renderSocialMediaIcon(tab.account)}
+      {renderSocialMediaIcon(tab.account as Account)}
       <span className={scss.tabTitle}>{tab.account.userName}</span>
     </div>
   );
