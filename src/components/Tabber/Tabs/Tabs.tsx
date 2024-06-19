@@ -1,10 +1,11 @@
-﻿import classNames from 'classnames';
-import { ReactNode } from 'react';
+﻿import { ReactNode } from 'react';
 
-import scss from '~components/Tabber/Tabs/Tabs.module.scss';
+import classNames from 'classnames';
 
 import { Account } from '~services/api/accounts/accounts.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+
+import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
 import { Tab, TabId } from '../Tabber.types';
 import { TabsProps } from './Tabs.types';
@@ -24,7 +25,7 @@ function Tabs(props: TabsProps): ReactNode {
       key={tabId}
       onClick={() => props.onChangeTab(tab, tabId)}
     >
-      {renderSocialMediaIcon(tab.account)}
+      {renderSocialMediaIcon(tab.account as Account)}
       <span className={scss.tabTitle}>{tab.account.userName}</span>
     </div>
   );

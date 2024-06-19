@@ -1,8 +1,13 @@
+import React, { ReactNode, useRef, useState } from 'react';
+
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
 import groupBy from 'lodash.groupby';
 import isEmpty from 'lodash.isempty';
-import React, { ReactNode, useRef, useState } from 'react';
+
+import useKeyPress from '~hooks/useKeyPress/useKeyPress';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -10,10 +15,6 @@ import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
-
-import useKeyPress from '~hooks/useKeyPress/useKeyPress';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
@@ -49,7 +50,7 @@ function Sidebar(): React.ReactNode {
 
     if (accounts.data) {
       const filtered = accounts.data.filter((account) =>
-        format(account.userName).includes(userName),
+        format(account.userName).includes(userName)
       );
       setFilteredAccounts(filtered);
     }

@@ -1,7 +1,8 @@
-import { Tabs } from '~components/Tabber/Tabber.types';
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { GenericObject } from '~types/object';
+
+import { Tabs } from '~components/Tabber/Tabber.types';
 
 export type StoreAccount = Account & { valid: boolean };
 

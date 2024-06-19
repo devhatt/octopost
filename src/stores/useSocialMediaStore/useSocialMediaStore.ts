@@ -2,12 +2,12 @@
 
 import { create } from 'zustand';
 
-import { Tab, Tabs } from '~components/Tabber/Tabber.types';
-
 import { AccountsService } from '~services/api/accounts/accounts';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { MultiMap } from '~utils/multimap/multimap';
+
+import { Tab, Tabs } from '~components/Tabber/Tabber.types';
 
 import { SocialMediaState, StoreAccount } from './useSocialMediaStore.types';
 
@@ -37,7 +37,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     }
 
     const fetchedSocialMedias = await SocialMediaService.fetch(
-      Array.from(userSocialMedias),
+      Array.from(userSocialMedias)
     );
 
     const fetchedSocialMediasMap = new Map<SocialMedia['id'], SocialMedia>();
