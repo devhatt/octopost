@@ -4,7 +4,7 @@ import {
   PostMode,
   TextValidator,
 } from '~services/api/social-media/social-media.types.ts';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore.ts';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { TextValidators } from './utils/textValidator/textValidators';
 

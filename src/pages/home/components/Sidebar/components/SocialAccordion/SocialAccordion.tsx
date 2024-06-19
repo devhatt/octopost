@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
 
 import { useAccountStore } from '~stores/useAccountStore';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import Accordion from '~components/Accordion/Accordion';
 import { AccountCard } from '~components/AccountCard/AccountCard';
@@ -22,11 +22,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
-    if (enabled) {
-      addAccount(account);
-    } else {
-      removeAccount(account.id);
-    }
+    enabled ? addAccount(account) : removeAccount(account.id);
   };
 
   const renderError = (): ReactNode => (
