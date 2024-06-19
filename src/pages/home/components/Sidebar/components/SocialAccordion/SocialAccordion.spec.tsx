@@ -1,50 +1,26 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { mockedUseSocialMediaStore } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
-import { StoreAccount } from '~stores/useSocialMediaStore.types';
+import {
+  mockedAccounts,
+  mockedUseSocialMediaStore,
+} from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 
 import SocialAccordion from './SocialAccordion';
 
-const mockList: StoreAccount[] = [
-  {
-    avatar: 'https://example.com/avatar1.jpg',
-    expiresAt: '2022-12-31T23:59:59Z',
-    generatedAt: '2022-01-01T00:00:00Z',
-    id: '1',
-    socialMediaId: 'social1',
-    token: 'token1',
-    userName: 'User 1',
-    valid: true,
-  },
-  {
-    avatar: 'https://example.com/avatar2.jpg',
-    expiresAt: '2023-12-31T23:59:59Z',
-    generatedAt: '2023-01-01T00:00:00Z',
-    id: '2',
-    socialMediaId: 'social2',
-    token: 'token2',
-    userName: 'User 2',
-    valid: false,
-  },
-];
-
 vi.mock('~stores/useSocialMediaStore', () => mockedUseSocialMediaStore);
-
-vi.spyOn(window, 'scrollTo');
-global.scrollTo = vi.fn((..._args: unknown[]) => _args);
 
 describe('SocialAccordion', () => {
   describe('when initilize', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          accounts={mockList}
+          accounts={mockedAccounts()}
           error={false}
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const accordion = screen.getByText(/facebook/i);
+      const accordion = screen.getByText(/discord/i);
 
       expect(accordion).toBeInTheDocument();
     });
@@ -52,12 +28,12 @@ describe('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          accounts={mockList}
+          accounts={mockedAccounts()}
           error={false}
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const innerContent = screen.getByText(/facebook/i);
+      const innerContent = screen.getByText(/discord/i);
 
       expect(innerContent).toBeInTheDocument();
     });
@@ -67,7 +43,7 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={[]}
           error
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
       const error = screen.getByText(/error/i);
@@ -80,22 +56,26 @@ describe('SocialAccordion', () => {
     it('closes the accordion', async () => {
       render(
         <SocialAccordion
-          accounts={mockList}
+          accounts={mockedAccounts()}
           error={false}
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
+      const [account] = mockedAccounts();
+
       const openAccordion = await screen.findByRole('button');
       await userEvent.click(openAccordion);
 
-      const userCard = screen.getByText(/user 1/i);
+      const userCard = screen.getByText(new RegExp(account.userName, 'i'));
 
       expect(userCard).toBeInTheDocument();
 
       await userEvent.click(openAccordion);
 
       await waitFor(() =>
-        expect(screen.queryByText(/user 1/i)).not.toBeInTheDocument()
+        expect(
+          screen.queryByText(new RegExp(account.userName, 'i'))
+        ).not.toBeInTheDocument()
       );
     });
   });
@@ -106,7 +86,7 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={[]}
           error={false}
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
       const accountQuantity = screen.getByText(/0/);
@@ -115,14 +95,16 @@ describe('SocialAccordion', () => {
     });
 
     it('renders with one if list have one account', () => {
+      const [account] = mockedAccounts();
+
       render(
         <SocialAccordion
-          accounts={[mockList[0]]}
+          accounts={[account]}
           error={false}
-          socialMediaId="FACEBOOK_SOCIAL_MEDIA_ID"
+          socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const accountQuantity = screen.getByText(/1/);
+      const accountQuantity = screen.getByText(new RegExp(account.id, 'i'));
 
       expect(accountQuantity).toBeInTheDocument();
     });

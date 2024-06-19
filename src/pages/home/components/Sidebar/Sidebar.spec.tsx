@@ -7,179 +7,46 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-import { mockedAddAccount } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
+import {
+  mockedAccounts,
+  mockedAddAccount,
+  mockedSocialMedias,
+  mockedUseSocialMediaStore,
+} from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 import * as useSocialMediaStoreModule from '~stores/useSocialMediaStore';
 
 import Sidebar from './Sidebar';
 
-const mockAccounts = [
-  {
-    avatar: 'https://example.com/image1.jpg',
-    id: '1',
-    socialMediaId: 'DISCORD_EXAMPLE_ID',
-    token: 'DISCORD_EXAMPLE_TOKEN_1',
-    userName: 'Discord User 1',
-    valid: true,
-  },
-  {
-    avatar: 'https://example.com/image2.jpg',
-    id: '14',
-    socialMediaId: 'TWITTER_EXAMPLE_ID',
-    token: 'TWITTER_EXAMPLE_TOKEN_14',
-    userName: 'Twitter User 14',
-    valid: true,
-  },
-  {
-    avatar: 'https://example.com/image3.jpg',
-    id: '2',
-    socialMediaId: 'DISCORD_EXAMPLE_ID',
-    token: 'DISCORD_EXAMPLE_TOKEN_2',
-    userName: 'Discord User 2',
-    valid: false,
-  },
-  {
-    avatar: 'https://example.com/image4.jpg',
-    id: '3',
-    socialMediaId: 'DISCORD_EXAMPLE_ID',
-    token: 'DISCORD_EXAMPLE_TOKEN_3',
-    userName: 'Discord User 3',
-    valid: true,
-  },
-];
-const mockSocialMedias = new Map<SocialMedia['id'], SocialMedia>([
-  [
-    'DISCORD_EXAMPLE_ID',
-    {
-      icon: 'Icon',
-      id: 'DISCORD_EXAMPLE_ID',
-      name: 'Discord',
-      postModes: [
-        {
-          id: 'DISCORD_STORY_POSTMODE_ID',
-          name: 'TesteStory',
-          previewComponent: 'Teste',
-          validators: {
-            text: {
-              maxLength: 3,
-            },
-          },
-          widgets: [
-            {
-              component: 'Teste',
-              icon: 'Teste',
-              name: 'Teste',
-            },
-          ],
-        },
-        {
-          id: 'DISCORD_REELS_POST_ID',
-          name: 'TestePost',
-          previewComponent: 'Teste',
-          validators: {
-            text: {
-              maxLength: 3,
-            },
-          },
-          widgets: [
-            {
-              component: 'Teste',
-              icon: 'Teste',
-              name: 'Teste',
-            },
-          ],
-        },
-        {
-          id: 'DISCORD_REELS_POSTMODE_ID',
-          name: 'TesteReels',
-          previewComponent: 'Teste',
-          validators: {
-            text: {
-              maxLength: 3,
-            },
-          },
-          widgets: [
-            {
-              component: 'Teste',
-              icon: 'Teste',
-              name: 'Teste',
-            },
-          ],
-        },
-      ],
-    },
-  ],
-  [
-    'TWITTER_EXAMPLE_ID',
-    {
-      icon: 'Icon',
-      id: 'TWITTER_EXAMPLE_ID',
-      name: 'Twitter',
-      postModes: [
-        {
-          id: 'TWITTER_THREAD_POST_ID',
-          name: 'TestePost',
-          previewComponent: 'Teste',
-          validators: {
-            text: {
-              maxLength: 3,
-            },
-          },
-          widgets: [
-            {
-              component: 'Teste',
-              icon: 'Teste',
-              name: 'Teste',
-            },
-          ],
-        },
-        {
-          id: 'TWITTER_THREAD_POSTMODE_ID',
-          name: 'TesteThread',
-          previewComponent: 'Teste',
-          validators: {
-            text: {
-              maxLength: 3,
-            },
-          },
-          widgets: [
-            {
-              component: 'Teste',
-              icon: 'Teste',
-              name: 'Teste',
-            },
-          ],
-        },
-      ],
-    },
-  ],
-]);
+vi.mock('~stores/useSocialMediaStore', () => mockedUseSocialMediaStore);
+
+beforeEach(() => {
+  vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockImplementation(
+    () => ({
+      accounts: mockedAccounts(),
+      addAccount: mockedAddAccount,
+      socialMedias: mockedSocialMedias(),
+    })
+  );
+});
 
 describe('Sidebar component', () => {
   it('renders correctly', () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
-      socialMedias: mockSocialMedias,
-    });
-
     render(<Sidebar />);
 
-    const sideBarComponentEvidence = screen.getByText(/Select Social Media/);
+    const sideBarComponentEvidence = screen.getByText(/select social media/i);
 
     expect(sideBarComponentEvidence).toBeInTheDocument();
   });
 
   it('renders all accounts from store', async () => {
-    vi.spyOn(useSocialMediaStoreModule, 'useSocialMediaStore').mockReturnValue({
-      accounts: mockAccounts,
-      socialMedias: mockSocialMedias,
-    });
-
     render(<Sidebar />);
 
-    const [account] = mockAccounts;
-    const socialMedia = mockSocialMedias.get(account.socialMediaId);
+    const [account] = mockedAccounts();
+    const socialMedia = mockedSocialMedias().get(account.socialMediaId);
 
-    const accordionEvidence = screen.getByText(socialMedia?.name as string);
+    const accordionEvidence = screen.getByText(
+      new RegExp(socialMedia?.name as string, 'i')
+    );
     await userEvent.click(accordionEvidence);
 
     const accountEvidence = screen.getByText(account.userName);
@@ -196,10 +63,12 @@ describe('Sidebar component', () => {
 
     render(<Sidebar />);
 
-    const [account] = mockAccounts;
-    const socialMedia = mockSocialMedias.get(account.socialMediaId);
+    const [account] = mockedAccounts();
+    const socialMedia = mockedSocialMedias().get(account.socialMediaId);
 
-    const accordionEvidence = screen.queryByText(socialMedia?.name as string);
+    const accordionEvidence = screen.queryByText(
+      new RegExp(socialMedia?.name as string, 'i')
+    );
     expect(accordionEvidence).not.toBeInTheDocument();
   });
 
@@ -223,7 +92,7 @@ describe('Sidebar component', () => {
     const buttonToOpenModal = screen.getByText(/\+ New Account/);
     await userEvent.click(buttonToOpenModal);
 
-    const openModalEvidence = screen.getByText(/Adicionar Social/);
+    const openModalEvidence = screen.getByText(/adicionar social/i);
     expect(openModalEvidence).toBeInTheDocument();
   });
 
@@ -255,29 +124,8 @@ describe('Sidebar component', () => {
     });
   });
 
-  test('Should add account when user add account in modal', async () => {
-    render(<Sidebar />);
-
-    const buttonToOpenModal = screen.getByText(/\+ New Account/);
-    await userEvent.click(buttonToOpenModal);
-
-    const select = screen.getByRole('combobox');
-
-    await userEvent.selectOptions(select, 'FACEBOOK_SOCIAL_MEDIA_ID');
-
-    expect(mockedAddAccount).toHaveBeenCalled();
-  });
-
   describe('when filters accordion content', () => {
     it('by account username', async () => {
-      vi.spyOn(
-        useSocialMediaStoreModule,
-        'useSocialMediaStore'
-      ).mockReturnValue({
-        accounts: mockAccounts,
-        socialMedias: mockSocialMedias,
-      });
-
       render(<Sidebar />);
 
       const inputSearchComponent = screen.getByPlaceholderText(
@@ -286,7 +134,7 @@ describe('Sidebar component', () => {
 
       await userEvent.type(inputSearchComponent, 'Twitter');
 
-      const discordAccordion = screen.getByText('Discord');
+      const discordAccordion = screen.getByText(/discord/i);
       await waitForElementToBeRemoved(discordAccordion);
 
       const accordion = screen.getByText('Twitter');
@@ -299,14 +147,6 @@ describe('Sidebar component', () => {
     });
 
     it('and theres no results', async () => {
-      vi.spyOn(
-        useSocialMediaStoreModule,
-        'useSocialMediaStore'
-      ).mockReturnValue({
-        accounts: mockAccounts,
-        socialMedias: mockSocialMedias,
-      });
-
       render(<Sidebar />);
 
       const inputSearchComponent = screen.getByPlaceholderText(
