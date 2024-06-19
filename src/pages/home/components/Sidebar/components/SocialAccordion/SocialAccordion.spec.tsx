@@ -69,14 +69,14 @@ describe.skip('SocialAccordion', () => {
       );
       const [account] = mockedAccounts().data;
 
-      const openAccordion = await screen.findByRole('button');
-      await userEvent.click(openAccordion);
+      const accordion = await screen.findByRole('button');
+      await userEvent.click(accordion);
 
       const userCard = screen.getByText(new RegExp(account.userName, 'i'));
 
       expect(userCard).toBeInTheDocument();
 
-      await userEvent.click(openAccordion);
+      await userEvent.click(accordion);
 
       await waitFor(() =>
         expect(
