@@ -22,11 +22,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
-    if (enabled) {
-      addAccount(account);
-    } else {
-      removeAccount(account.id);
-    }
+    if (enabled) addAccount(account);
+    if (!enabled) removeAccount(account.id);
   };
 
   const renderError = (): ReactNode => (
