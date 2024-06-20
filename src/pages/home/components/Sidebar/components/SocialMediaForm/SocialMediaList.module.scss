@@ -28,13 +28,15 @@
       scale: 0.98;
     }
 
-    p {
+    .socialTitle {
+      display: block;
+
       font-weight: 700;
 
       margin-bottom: 2rem;
     }
 
-    .button {
+    .socialButton {
       display: block;
 
       font-size: 1.4rem;
@@ -44,7 +46,7 @@
       padding: 1rem 3rem;
     }
 
-    > img {
+    > .socialImage {
       overflow: visible;
 
       padding: 2rem;
