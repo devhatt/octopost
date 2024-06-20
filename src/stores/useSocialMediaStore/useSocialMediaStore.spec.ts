@@ -59,7 +59,7 @@ https://github.com/pmndrs/zustand/discussions/2563#discussioncomment-9489004
 describe('useSocialMediaStore', () => {
   it('populates the socialMedias store from user accounts data', async () => {
     const { result } = renderHook(() =>
-      useSocialMediaStoreHook.useSocialMediaStore(),
+      useSocialMediaStoreHook.useSocialMediaStore()
     );
 
     await act(async () => {
@@ -95,7 +95,7 @@ describe('useSocialMediaStore', () => {
     ];
 
     const { result } = renderHook(() =>
-      useSocialMediaStoreHook.useSocialMediaStore(),
+      useSocialMediaStoreHook.useSocialMediaStore()
     );
 
     await act(async () => {
@@ -104,8 +104,8 @@ describe('useSocialMediaStore', () => {
 
     expect(result.current.accounts.data).toEqual(
       expect.arrayContaining(
-        updatedAccounts.map((account) => expect.objectContaining(account)),
-      ),
+        updatedAccounts.map((account) => expect.objectContaining(account))
+      )
     );
   });
 });

@@ -1,4 +1,9 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { SocialMedia } from '~services/api/social-media/social-media.types';
@@ -13,7 +18,7 @@ import Sidebar from './Sidebar';
 
 vi.mock(
   '~stores/useSocialMediaStore/useSocialMediaStore',
-  () => mockedUseSocialMediaStore,
+  () => mockedUseSocialMediaStore
 );
 
 beforeEach(() => {
