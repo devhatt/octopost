@@ -24,7 +24,7 @@
       gap: 3rem;
 
       .item {
-        display: flex;
+        display: none;
 
         align-items: center;
         justify-content: center;
@@ -40,6 +40,22 @@
 
       align-items: center;
       justify-content: center;
+    }
+  }
+}
+
+@include from905 {
+  .header {
+    .nav {
+      .list {
+        .item {
+          display: flex;
+        }
+      }
+
+      .hamburguerIcon {
+        display: none;
+      }
     }
   }
 }

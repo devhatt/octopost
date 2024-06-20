@@ -9,7 +9,7 @@
 .accordionContainer {
   width: 100%;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   flex-grow: 1;
   gap: 0.8rem;
@@ -20,8 +20,6 @@
   height: 100%;
 
   padding: 0.8rem 1.6rem 4.8rem;
-
-  position: fixed;
 
   z-index: 1;
 
@@ -47,9 +45,15 @@
 .newAccountButtonMobileContainer {
   display: flex;
 
+  justify-content: space-between;
+
   margin-top: auto;
 
-  place-content: center;
+  .mobileContainer {
+    .selectSocialAccountText {
+      font-size: 1.6rem;
+    }
+  }
 }
 
 .newAccountButton {
@@ -59,11 +63,22 @@
 .content {
   height: 100%;
 
-  display: flex;
   flex-direction: column;
 }
 
-@include from480 {
+@include from905 {
+  .accordionContainer {
+    display: flex;
+  }
+
+  .newAccountButtonMobileContainer {
+    .mobileContainer {
+      .selectSocialAccountText {
+        display: none;
+      }
+    }
+  }
+
   .header {
     display: flex;
     gap: 2.1rem;

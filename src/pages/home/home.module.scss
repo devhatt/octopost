@@ -5,8 +5,10 @@
 
   display: grid;
   grid-template-areas:
-    'editor aside'
-    'actions aside';
+    'header'
+    'actions'
+    'aside'
+    'editor';
 
   grid-template-columns: 100vw;
 

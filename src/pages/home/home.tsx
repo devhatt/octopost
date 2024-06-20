@@ -18,12 +18,14 @@ function Home(): ReactNode {
 
   return (
     <>
-      <Header />
+      <div className={scss.header}>
+        <Header />
+      </div>
       <main className={scss.content}>
         <aside className={scss.aside}>
           <Sidebar />
         </aside>
-        <div className={scss.aditor}>
+        <div className={scss.editor}>
           <MainComposer />
           {accounts.data && !isEmpty(accounts.data) && <Tabber />}
           <FeedbackError />

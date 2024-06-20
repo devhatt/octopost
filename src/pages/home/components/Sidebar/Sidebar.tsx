@@ -100,13 +100,19 @@ function Sidebar(): React.ReactNode {
           {isEmptyResult ? renderEmptyResult() : renderSearchData()}
 
           <div className={scss.newAccountButtonMobileContainer}>
-            <Button
-              className={scss.newAccountButton}
-              onClick={handleToggleModal}
-              variant="container"
-            >
-              + New Account
-            </Button>
+            <div className={scss.mobileContainer}>
+              <p className={scss.selectSocialAccountText}>
+                Select social account
+              </p>
+              <Button
+                className={scss.newAccountButton}
+                onClick={handleToggleModal}
+                variant="container"
+              >
+                + New Account
+              </Button>
+            </div>
+
             <div className={scss.newAccountButtonMobileContainer}>
               <Button
                 circle
