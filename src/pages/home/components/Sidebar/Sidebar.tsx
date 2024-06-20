@@ -16,7 +16,6 @@ import InputSearch from '~components/InputSearch/InputSearch';
 import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 
-// import AddAccount from './components/AddAccount/AddAccount';
 import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 import SocialMediaForm from './components/SocialMediaForm/SocialMediaForm';
 
@@ -37,11 +36,6 @@ function Sidebar(): React.ReactNode {
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
   };
-
-  // const handleSelectSocialMedia = (addonId: string): void => {
-  //   addAccount(addonId);
-  //   setIsOpen(false);
-  // };
 
   const getAccounts = (): StoreAccount[] =>
     isEmpty(filteredAccounts) ? accounts : filteredAccounts;
@@ -119,7 +113,6 @@ function Sidebar(): React.ReactNode {
               onClickOutside={() => setIsOpen(false)}
               title="Connect a social media"
             >
-              {/* <AddAccount onChange={handleSelectSocialMedia} /> */}
               <SocialMediaForm
                 isOpen
                 onHandleToggleModal={handleToggleModal}
