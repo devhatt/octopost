@@ -21,11 +21,13 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
+import { SidebarProps } from './Sidebar.types';
+
 const HALF_SECOND = 500;
 
 const format = (userName: string): string => userName.toLowerCase().trim();
 
-function Sidebar(): React.ReactNode {
+function Sidebar(props: SidebarProps): React.ReactNode {
   const { accounts, addAccount } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -70,6 +72,8 @@ function Sidebar(): React.ReactNode {
             accounts={socialMediaAccounts}
             error={false}
             key={socialMediaId}
+            onDisableAccount={props.onDisableAccount}
+            onEnableAccount={props.onEnableAccount}
             socialMediaId={socialMediaId}
           />
         )

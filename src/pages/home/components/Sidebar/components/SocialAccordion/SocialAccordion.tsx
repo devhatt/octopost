@@ -17,13 +17,12 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const { socialMedias } = useSocialMediaStore();
-  const { addPost, removePost } = usePostStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
-    if (enabled) addPost(account);
-    if (!enabled) removePost(account.id);
+    if (enabled) props.onEnableAccount(account);
+    if (!enabled) props.onDisableAccount(account.id);
   };
 
   const renderError = (): ReactNode => (

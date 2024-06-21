@@ -7,7 +7,7 @@ import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { MultiMap } from '~utils/multimap/multimap';
 
-import { Tab, Tabs } from '~components/Tabber/Tabber.types';
+import { Tab, Tabs } from '~pages/home/components/Tabber/Tabber.types';
 
 import { SocialMediaState, StoreAccount } from './useSocialMediaStore.types';
 

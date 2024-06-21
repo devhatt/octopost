@@ -3,6 +3,8 @@ import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.ty
 export type SocialAccordionProps = {
   accounts: StoreAccount[];
   error: boolean;
+  onDisableAccount: (accountId: StoreAccount['id']) => void;
+  onEnableAccount: (account: StoreAccount) => void;
   socialMediaId: string;
 };
 
