@@ -61,6 +61,7 @@ function Sidebar(): React.ReactNode {
   const renderEmptyResult = (): ReactNode => (
     <p> Não há resultados para essa busca</p>
   );
+
   const renderSearchData = (): ReactNode => (
     <div className={scss.accordionContainer}>
       {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(

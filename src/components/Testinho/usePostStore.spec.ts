@@ -3,7 +3,7 @@ import * as zustand from 'zustand';
 
 import { myCustomCreate, storeResetFns } from '~stores/__mocks__/zunstandMock';
 
-import { usePostsStore } from './usePostsStore';
+import { usePostsStore } from './usePostStore';
 
 vi.mock('zustand', async () => {
   const zustandMock = await vi.importActual('zustand');

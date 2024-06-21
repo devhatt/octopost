@@ -9,7 +9,7 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "mock-api": "json-server mock-api.json",
-    "start": "pnpm build && vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",

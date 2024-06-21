@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { usePostsStore } from '~stores/usePostsStore';
+import { usePostsStore } from './usePostStore';
 
 function Testinho(props: { name?: string }): ReactNode {
   const posts = usePostsStore((state) => state.postsQuantity);

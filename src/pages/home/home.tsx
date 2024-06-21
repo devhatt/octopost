@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import isEmpty from '~utils/isEmpty/isEmpty';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
@@ -14,7 +14,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import scss from './home.module.scss';
 
 function Home(): ReactNode {
-  const { accounts } = useSocialMediaStore();
+  const { posts } = usePostStore();
+  const hasPosts = posts.size > 0;
 
   return (
     <>
@@ -25,7 +26,7 @@ function Home(): ReactNode {
         </aside>
         <div className={scss.aditor}>
           <MainComposer />
-          {accounts.data && !isEmpty(accounts.data) && <Tabber />}
+          {hasPosts && <Tabber />}
           <FeedbackError />
         </div>
         <div className={scss.actions}>

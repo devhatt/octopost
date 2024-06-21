@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { IPostsStore } from './usePostsStore.types';
+import { IPostsStore } from './usePostStore.types';
 
 export const usePostsStore = create<IPostsStore>((set) => ({
   increase: (increaseBy): void =>
