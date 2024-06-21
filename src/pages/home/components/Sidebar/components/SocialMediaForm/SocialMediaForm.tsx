@@ -2,8 +2,13 @@ import { ReactNode } from 'react';
 
 import Button from '~components/Button/Button';
 
+// import FacebookIcon from './images/facebook.svg?react'
 import scss from './SocialMediaList.module.scss';
 
+import FacebookIcon from './images/facebook.svg?react';
+import InstagramIcon from './images/instagram.svg?react';
+import TiktokIcon from './images/tiktok.svg?react';
+import TwitterIcon from './images/twitter.svg?react';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
 function SocialMediaForm({
@@ -13,11 +18,7 @@ function SocialMediaForm({
     <ul className={scss.selection}>
       <li className={scss.socialItem}>
         <button type="button">
-          <img
-            alt="facebook"
-            className={scss.socialImage}
-            src="./social-github.svg"
-          />
+          <FacebookIcon className={scss.socialImage} fill="#000" width={50} />
           <span className={scss.socialTitle}>Facebook</span>
           <Button
             className={scss.socialButton}
@@ -37,12 +38,8 @@ function SocialMediaForm({
       </li>
       <li className={scss.socialItem}>
         <button type="button">
-          <img
-            alt="linkedin"
-            className={scss.socialImage}
-            src="./social-github.svg"
-          />
-          <span className={scss.socialTitle}>Linkedin</span>
+          <TiktokIcon className={scss.socialImage} fill="#000" width={50} />
+          <span className={scss.socialTitle}>TikTok</span>
           <Button
             className={scss.socialButton}
             onClick={onHandleToggleModal}
@@ -61,11 +58,7 @@ function SocialMediaForm({
       </li>
       <li className={scss.socialItem}>
         <button type="button">
-          <img
-            alt="twitter"
-            className={scss.socialImage}
-            src="./social-github.svg"
-          />
+          <TwitterIcon className={scss.socialImage} fill="#000" width={50} />
           <span className={scss.socialTitle}>Twitter</span>
           <Button
             className={scss.socialButton}
@@ -78,11 +71,7 @@ function SocialMediaForm({
       </li>
       <li className={scss.socialItem}>
         <button type="button">
-          <img
-            alt="instagram"
-            className={scss.socialImage}
-            src="./social-github.svg"
-          />
+          <InstagramIcon className={scss.socialImage} fill="#000" width={50} />
           <span className={scss.socialTitle}>Instagram</span>
           <Button
             className={scss.socialButton}
