@@ -97,7 +97,6 @@ function Sidebar(): React.ReactNode {
           <div className={scss.scrollableContent}>
             {isEmptyResult ? renderEmptyResult() : renderSearchData()}
           </div>
-          {/* {isEmptyResult ? renderEmptyResult() : renderSearchData()} */}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
