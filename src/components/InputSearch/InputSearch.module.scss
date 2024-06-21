@@ -23,8 +23,6 @@
 
   margin-top: 1rem;
 
-  margin-bottom: 2.4rem;
-
   letter-spacing: 0;
 
   &.containerError {
@@ -213,6 +211,8 @@
 
 @include from905 {
   .container {
+    margin-bottom: 2.4rem;
+
     .inputWrapper {
       display: flex;
     }

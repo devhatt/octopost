@@ -20,6 +20,12 @@
     grid-area: editor;
   }
 
+  .editor {
+    > :first-child {
+      display: none;
+    }
+  }
+
   .actions {
     grid-area: actions;
   }
@@ -37,5 +43,13 @@
     gap: 2.4rem;
 
     margin: 0 auto;
+  }
+
+  .content {
+    .editor {
+      > :first-child {
+        display: flex;
+      }
+    }
   }
 }

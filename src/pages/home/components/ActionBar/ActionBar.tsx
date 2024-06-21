@@ -12,9 +12,9 @@ function ActionBar(): ReactNode {
         <Icon className={scss.closeIcon} icon="close" size={14} />
         <p>Compose</p>
       </div>
-      <div className={scss.navigationIconContainer}>
+      <button className={scss.navigationIconContainer}>
         <Icon className={scss.arrowIcon} icon="right-arrow" size={12} />
-      </div>
+      </button>
 
       <Button className={scss.submit} variant="container">
         Postar

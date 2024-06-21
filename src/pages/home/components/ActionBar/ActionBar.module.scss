@@ -9,12 +9,12 @@
 
   justify-content: space-between;
 
-  padding: 1.6rem;
+  padding: 1.1rem;
   border-bottom: 1px solid global.$tertiaryWhite;
 
   .composeContainer {
     display: flex;
-    gap: 0.8rem;
+    gap: 2rem;
 
     align-items: center;
 
@@ -24,8 +24,8 @@
   }
 
   .navigationIconContainer {
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
 
     display: flex;
 
@@ -49,6 +49,14 @@
   .container {
     .submit {
       display: block;
+    }
+
+    .composeContainer {
+      display: none;
+    }
+
+    .navigationIconContainer {
+      display: none;
     }
   }
 }
