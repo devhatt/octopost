@@ -13,7 +13,7 @@ function ActionBar(): ReactNode {
         <p>Compose</p>
       </div>
       <button className={scss.navigationIconContainer}>
-        <Icon className={scss.arrowIcon} icon="right-arrow" size={12} />
+        <Icon className={scss.arrowIcon} icon="arrowRight" size={12} />
       </button>
 
       <Button className={scss.submit} variant="container">

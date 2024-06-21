@@ -1,4 +1,4 @@
-@use '~styles/global';
+@use '~styles/global.scss' as *;
 
 @use '~styles/breakpoints.scss' as *;
 
@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   padding: 1.1rem;
-  border-bottom: 1px solid global.$tertiaryWhite;
+  border-bottom: 1px solid $tertiaryWhite;
 
   .composeContainer {
     display: flex;
@@ -24,8 +24,8 @@
   }
 
   .navigationIconContainer {
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
 
     display: flex;
 
@@ -33,9 +33,13 @@
 
     justify-content: center;
 
-    background-color: global.$tertiaryWhite;
+    background-color: $secondaryPurple;
 
     border-radius: 50%;
+
+    .arrowIcon {
+      color: $primaryWhite;
+    }
   }
 
   .submit {

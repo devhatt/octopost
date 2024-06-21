@@ -22,7 +22,7 @@
   width: 100%;
   height: 100%;
 
-  padding: 0.8rem;
+  padding: 0.8rem 2.5rem 0.8rem 1.1rem;
 
   z-index: 1;
 
@@ -40,7 +40,7 @@
 }
 
 .newAccountButtonMobile {
-  min-width: 48px;
+  min-width: 38px;
 
   display: block;
 }
@@ -49,8 +49,6 @@
   display: flex;
 
   justify-content: space-between;
-
-  margin-top: auto;
 
   .mobileContainer {
     .selectSocialAccountText {
@@ -75,6 +73,8 @@
   }
 
   .newAccountButtonMobileContainer {
+    margin-top: auto;
+
     .mobileContainer {
       .selectSocialAccountText {
         display: none;

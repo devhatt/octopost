@@ -117,7 +117,7 @@ function Sidebar(): React.ReactNode {
               <Button
                 circle
                 className={scss.newAccountButtonMobile}
-                icon={<Icon icon="plus" size={16} />}
+                icon={<Icon icon="plus" size={12} />}
                 onClick={handleToggleModal}
                 variant="container"
               />
