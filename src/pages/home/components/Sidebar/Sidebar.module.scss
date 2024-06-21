@@ -4,7 +4,6 @@
 .container {
   width: 100%;
   height: 100%;
-  height: 100%;
   max-height: 80vh;
 
   flex-direction: column;
@@ -23,14 +22,14 @@
 
   flex: 1;
 
-  padding: 0 5px;
+  padding: 0 0.5rem;
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 0.4rem;
 
-    margin-left: 3px;
+    margin-left: 0.3rem;
 
-    background: #7a757f;
+    background: #9f99a6;
     border-radius: 10px;
   }
 
@@ -40,10 +39,11 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
+    background: #57535b;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #57535b;
+    background: #242226;
   }
 }
 
