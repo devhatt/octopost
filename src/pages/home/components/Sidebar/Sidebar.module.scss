@@ -40,7 +40,7 @@
 }
 
 .newAccountButtonMobile {
-  min-width: 38px;
+  min-height: 38px;
 
   display: block;
 }
@@ -49,6 +49,8 @@
   display: flex;
 
   justify-content: space-between;
+
+  padding-right: 1rem;
 
   .mobileContainer {
     .selectSocialAccountText {

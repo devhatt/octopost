@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   padding: 1.1rem;
-  border-bottom: 1px solid $tertiaryWhite;
+  border-bottom: 1px solid $secondaryGray;
 
   .composeContainer {
     display: flex;
@@ -51,6 +51,8 @@
 
 @include from905 {
   .container {
+    border-bottom: 0;
+
     .submit {
       display: block;
     }

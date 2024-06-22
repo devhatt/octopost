@@ -48,7 +48,6 @@ function Header(): ReactNode {
           </li>
           <li>
             <button className={scss.hamburguerIcon}>
-              {' '}
               <Icon
                 className={scss.dropDownIcon}
                 data-testid="dropdown-arrow"
