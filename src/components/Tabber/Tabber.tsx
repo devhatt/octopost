@@ -1,7 +1,6 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
-import { Account } from '~services/api/accounts/accounts.types';
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { AccountPost, useAccountStore } from '~stores/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
@@ -23,6 +22,7 @@ const makeId = (account: AccountPost): `${string}-${string}` =>
 function Tabber(): ReactNode {
   const { accounts } = useAccountStore();
   const { socialMedias } = useSocialMediaStore();
+  const { mainContent } = useAccountStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     makeId(accounts[0] || {})
@@ -31,14 +31,32 @@ function Tabber(): ReactNode {
 
   useEffect(() => {
     if (accounts.length > 0) {
-      const initialTabId = accounts.length > 0 ? makeId(accounts[0]) : '';
-      setCurrentTab(initialTabId as TabId);
-      setTabs(accountsToTabs(accounts, socialMedias));
+      const newTabs = accountsToTabs(accounts, socialMedias);
+      setTabs(newTabs);
+      const initialTabId = makeId(accounts[0]);
+      setCurrentTab(initialTabId);
+
+      for (const tab of Object.values(newTabs)) {
+        const currentSocialMediaPostModes = socialMedias.get(
+          tab.id.split('-')[1]
+        )?.postModes;
+
+        if (currentSocialMediaPostModes) {
+          for (const postMode of currentSocialMediaPostModes) {
+            if (!tab.posts[postMode.id]) {
+              tab.posts[postMode.id] = { text: mainContent || '' };
+            }
+            tab.posts[postMode.id].text = mainContent || '';
+          }
+        }
+      }
+
+      setTabs(newTabs);
     } else {
       setTabs({});
       setCurrentTab('' as unknown as TabId);
     }
-  }, [accounts, socialMedias]);
+  }, [accounts, socialMedias, mainContent]);
 
   const getCurrentPostMode = (): PostMode | undefined => {
     if (!currentTab) return;
