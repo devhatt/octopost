@@ -55,7 +55,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       },
     }));
   },
-
   posts: {
     data: {},
     error: '',

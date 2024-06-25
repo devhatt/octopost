@@ -4,6 +4,7 @@ import {
   PostMode,
   TextValidator,
 } from '~services/api/social-media/social-media.types.ts';
+import { useAccountStore } from '~stores/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { TextValidators } from './utils/textValidator/textValidators';
@@ -21,6 +22,7 @@ import {
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
+  const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
   const [errorMap, setErrorMap] = useState<ErrorMapText>({});
 
@@ -95,7 +97,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       newErrorMap[newValue] = textErrors;
       setError(newErrorMap);
     }
-
+    updateMainContent(newValue);
     setInputValue(newValue);
   };
 

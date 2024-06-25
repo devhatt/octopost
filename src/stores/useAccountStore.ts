@@ -10,7 +10,9 @@ export type AccountPost = Pick<
 type StoreState = {
   accounts: AccountPost[];
   addAccount: (account: StoreAccount) => void;
+  mainContent: string;
   removeAccount: (accountId: string) => void;
+  updateMainContent: (value: string) => void;
 };
 
 export const useAccountStore = create<StoreState>((set) => ({
@@ -29,9 +31,13 @@ export const useAccountStore = create<StoreState>((set) => ({
     }));
   },
 
+  mainContent: '',
   removeAccount: (accountId: string): void => {
     set((state) => ({
       accounts: state.accounts.filter((account) => account.id !== accountId),
     }));
   },
+
+  updateMainContent: (newContent: string): void =>
+    set({ mainContent: newContent }),
 }));
