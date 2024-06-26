@@ -6,7 +6,7 @@
   width: 100%;
   height: 100%;
 
-  border-bottom: 1px solid $tertiaryWhite;
+  border-bottom: 1px solid $primaryGray;
 }
 
 .accordionContainer {
@@ -21,8 +21,6 @@
 .mobile {
   width: 100%;
   height: 100%;
-
-  padding: 0.8rem 2.5rem 0.8rem 1.1rem;
 
   z-index: 1;
 
@@ -40,7 +38,8 @@
 }
 
 .newAccountButtonMobile {
-  min-height: 38px;
+  width: 3.2rem;
+  height: 3.2rem;
 
   display: block;
 }
@@ -48,9 +47,11 @@
 .newAccountButtonMobileContainer {
   display: flex;
 
+  align-items: center;
+
   justify-content: space-between;
 
-  padding-right: 1rem;
+  padding: 1.2rem 1.6rem;
 
   .mobileContainer {
     .selectSocialAccountText {
