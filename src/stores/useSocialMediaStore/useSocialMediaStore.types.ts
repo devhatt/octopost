@@ -6,14 +6,19 @@ import { Tabs } from '~components/Tabber/Tabber.types';
 
 export type StoreAccount = Account & { valid: boolean };
 
+export type SocialMediaAccounts = {
+  account: Account[];
+  socialMediaId: Account['socialMediaId'];
+}[];
+
 export type SocialMediaState = {
   accounts: {
-    data: StoreAccount[] | null;
+    data: StoreAccount[];
     error: string;
     loading: boolean;
   };
 
-  addAccount: () => Promise<void>;
+  addAccount: (newAccount: StoreAccount) => Promise<GenericObject>;
 
   getAllAccounts: () => Promise<void>;
 

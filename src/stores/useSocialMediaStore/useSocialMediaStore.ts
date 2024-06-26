@@ -2,10 +2,11 @@
 
 import { create } from 'zustand';
 
+import { octopostApi } from '~services/api';
 import { AccountsService } from '~services/api/accounts/accounts';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-import { MultiMap } from '~utils/multimap/multimap';
+import { GenericObject } from '~types/object';
 
 import { Tab, Tabs } from '~components/Tabber/Tabber.types';
 
@@ -13,32 +14,43 @@ import { SocialMediaState, StoreAccount } from './useSocialMediaStore.types';
 
 export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   accounts: {
-    data: null,
+    data: [],
     error: '',
     loading: false,
   },
 
-  addAccount: async (): Promise<void> => {},
+  addAccount: async (newAccount: StoreAccount): Promise<GenericObject> => {
+    set((state) => ({ accounts: { ...state.accounts, loading: true } }));
+
+    const res = await octopostApi.post('/accounts', newAccount);
+    set((state) => ({
+      accounts: {
+        ...state.accounts,
+        data: [...state.accounts.data, res.data],
+        loading: false,
+      },
+    }));
+    return res.data;
+  },
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
     const fetchedAccounts = await AccountsService.fetchAll();
 
-    const userSocialMedias = new Set<string>();
-    const accountsBySocialMedia = new MultiMap<StoreAccount>();
+    const userSocialMedias: string[] = [];
+    const accountsBySocialMedia: StoreAccount[] = [];
 
     for (const account of fetchedAccounts) {
-      userSocialMedias.add(account.socialMediaId);
-      accountsBySocialMedia.add(account.socialMediaId, {
+      userSocialMedias.push(account.socialMediaId);
+      accountsBySocialMedia.push({
         ...account,
         valid: false,
       });
     }
 
-    const fetchedSocialMedias = await SocialMediaService.fetch(
-      Array.from(userSocialMedias)
-    );
+    const fetchedSocialMedias =
+      await SocialMediaService.fetch(userSocialMedias);
 
     const fetchedSocialMediasMap = new Map<SocialMedia['id'], SocialMedia>();
 
@@ -49,7 +61,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     set(() => ({ socialMedias: fetchedSocialMediasMap }));
     set(() => ({
       accounts: {
-        data: accountsBySocialMedia.toArray(),
+        data: accountsBySocialMedia,
         error: '',
         loading: false,
       },
@@ -72,11 +84,10 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       }));
     });
 
-    const postsWithContent = postsToBeSent
-      .flat()
-      .filter((post) => post.data.text);
+    const posts = postsToBeSent.flat();
+
     set((state) => ({ posts: { ...state.posts, loading: true } }));
-    await SocialMediaService.sendPosts(postsWithContent);
+    await SocialMediaService.sendPosts(posts);
   },
   socialMedias: new Map<string, SocialMedia>(),
 }));

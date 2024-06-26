@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
-import isEmpty from '~utils/isEmpty/isEmpty';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import MainComposer from '~components/MainComposer/MainComposer';
@@ -25,7 +24,7 @@ function Home(): ReactNode {
         </aside>
         <div className={scss.aditor}>
           <MainComposer />
-          {accounts.data && !isEmpty(accounts.data) && <Tabber />}
+          {accounts.data.length > 0 && <Tabber />}
           <FeedbackError />
         </div>
         <div className={scss.actions}>

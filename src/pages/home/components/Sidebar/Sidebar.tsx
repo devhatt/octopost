@@ -1,9 +1,8 @@
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
 import groupBy from 'lodash.groupby';
-import isEmpty from 'lodash.isempty';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
@@ -13,7 +12,6 @@ import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
-import { TInputComponent } from '~components/InputSearch/InputSearch.types';
 import Modal from '~components/Modal/Modal';
 
 import AddAccount from './components/AddAccount/AddAccount';
@@ -26,55 +24,36 @@ const HALF_SECOND = 500;
 const format = (userName: string): string => userName.toLowerCase().trim();
 
 function Sidebar(): React.ReactNode {
-  const { accounts, addAccount } = useSocialMediaStore();
+  const { accounts } = useSocialMediaStore();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [filteredAccounts, setFilteredAccounts] = useState(accounts.data);
-  const inputSearchRef = useRef<TInputComponent | null>(null);
-  const isEmptyResult = isEmpty(filteredAccounts) && inputValue;
+
+  const filteredAccounts = useMemo(() => {
+    if (accounts.data.length === 0) return [];
+    let data: StoreAccount[] = [];
+
+    data = accounts.data.filter((account) =>
+      format(account.userName).includes(format(inputValue))
+    );
+    return Object.entries(groupBy(data, 'socialMediaId')).map(
+      ([socialMediaId, socialMediaAccounts]) => ({
+        socialMediaAccounts,
+        socialMediaId,
+      })
+    );
+  }, [accounts, inputValue]);
 
   const handleToggleModal = (): void => {
     setIsOpen((prev) => !prev);
   };
 
   const handleSelectSocialMedia = (): void => {
-    void addAccount();
     setIsOpen(false);
   };
 
-  const getAccounts = (): StoreAccount[] | null =>
-    isEmpty(filteredAccounts) ? accounts.data : filteredAccounts;
-
   const debouncedSearch = debounce((value: string): void => {
-    const userName = format(value);
-
-    if (accounts.data) {
-      const filtered = accounts.data.filter((account) =>
-        format(account.userName).includes(userName)
-      );
-      setFilteredAccounts(filtered);
-    }
-
     setInputValue(value);
   }, HALF_SECOND);
-
-  const renderEmptyResult = (): ReactNode => (
-    <p> Não há resultados para essa busca</p>
-  );
-  const renderSearchData = (): ReactNode => (
-    <div className={scss.accordionContainer}>
-      {Object.entries(groupBy(getAccounts(), 'socialMediaId')).map(
-        ([socialMediaId, socialMediaAccounts]) => (
-          <SocialAccordion
-            accounts={socialMediaAccounts}
-            error={false}
-            key={socialMediaId}
-            socialMediaId={socialMediaId}
-          />
-        )
-      )}
-    </div>
-  );
 
   useKeyPress('Escape', (e: KeyboardEvent) => {
     e.preventDefault();
@@ -94,10 +73,24 @@ function Sidebar(): React.ReactNode {
             error={false}
             onChange={debouncedSearch}
             placeholder="Search for social media"
-            ref={inputSearchRef}
           />
 
-          {isEmptyResult ? renderEmptyResult() : renderSearchData()}
+          {filteredAccounts.length > 0 ? (
+            <div className={scss.accordionContainer}>
+              {filteredAccounts.map(
+                ({ socialMediaAccounts, socialMediaId }) => (
+                  <SocialAccordion
+                    accounts={socialMediaAccounts}
+                    error={false}
+                    key={socialMediaId}
+                    socialMediaId={socialMediaId}
+                  />
+                )
+              )}
+            </div>
+          ) : (
+            <p> Não há resultados para essa busca</p>
+          )}
 
           <div className={scss.newAccountButtonMobileContainer}>
             <Button
