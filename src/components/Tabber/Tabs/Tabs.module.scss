@@ -1,4 +1,4 @@
-@use '../../../styles/global';
+@use '~styles/global';
 
 .tabsContainer {
   width: 100%;
@@ -6,11 +6,6 @@
   overflow-x: auto;
 
   display: flex;
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  -webkit-overflow-scrolling: touch;
 
   background:
     linear-gradient(90deg, global.$primaryWhite 30%, rgba(255, 255, 255, 0))
@@ -28,6 +23,10 @@
     40px 100%,
     14px 100%,
     14px 100%;
+
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .tabsContainer::-webkit-scrollbar {
