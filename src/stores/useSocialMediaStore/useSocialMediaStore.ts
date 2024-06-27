@@ -6,11 +6,14 @@ import { octopostApi } from '~services/api';
 import { AccountsService } from '~services/api/accounts/accounts';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-import { GenericObject } from '~types/object';
 
 import { Tab, Tabs } from '~components/Tabber/Tabber.types';
 
-import { SocialMediaState, StoreAccount } from './useSocialMediaStore.types';
+import {
+  NewAccount,
+  SocialMediaState,
+  StoreAccount,
+} from './useSocialMediaStore.types';
 
 export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   accounts: {
@@ -19,7 +22,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     loading: false,
   },
 
-  addAccount: async (newAccount: StoreAccount): Promise<GenericObject> => {
+  addSocialMedia: async (newAccount: NewAccount): Promise<NewAccount> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
     const res = await octopostApi.post('/accounts', newAccount);

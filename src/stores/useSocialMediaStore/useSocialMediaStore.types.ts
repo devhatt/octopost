@@ -11,6 +11,8 @@ export type SocialMediaAccounts = {
   socialMediaId: Account['socialMediaId'];
 }[];
 
+export type NewAccount = Omit<StoreAccount, 'id'>;
+
 export type SocialMediaState = {
   accounts: {
     data: StoreAccount[];
@@ -18,7 +20,7 @@ export type SocialMediaState = {
     loading: boolean;
   };
 
-  addAccount: (newAccount: StoreAccount) => Promise<GenericObject>;
+  addSocialMedia: (newAccount: NewAccount) => Promise<GenericObject>;
 
   getAllAccounts: () => Promise<void>;
 
