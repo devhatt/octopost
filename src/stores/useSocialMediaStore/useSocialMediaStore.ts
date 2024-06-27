@@ -22,7 +22,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     loading: false,
   },
 
-  addSocialMedia: async (newAccount: NewAccount): Promise<NewAccount> => {
+  addSocialMedia: async (newAccount: NewAccount): Promise<StoreAccount> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
     const res = await octopostApi.post('/accounts', newAccount);
