@@ -20,7 +20,7 @@ export type SocialMediaState = {
     loading: boolean;
   };
 
-  addSocialMedia: (newAccount: NewAccount) => Promise<GenericObject>;
+  addSocialMedia: (newAccount: NewAccount) => Promise<NewAccount>;
 
   getAllAccounts: () => Promise<void>;
 
