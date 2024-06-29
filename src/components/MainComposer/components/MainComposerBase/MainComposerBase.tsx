@@ -22,6 +22,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     <div className={scss.container}>
       <ComposerEditor
         accountId={props.accountId}
+        currentMaxLimit={props.currentMaxLimit ?? undefined}
         onChangePost={props.onChange}
         onError={handleTextErrors}
         postMode={props.postMode}
