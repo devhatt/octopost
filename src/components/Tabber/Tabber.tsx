@@ -22,11 +22,11 @@ const makeId = (account: AccountPost): `${string}-${string}` =>
 function getCurrentPostModeMaxLimit(
   currentValidator: PostMode['validators'] | undefined
 ): number | null {
-  if (!currentValidator) return null;
-  if ('text' in currentValidator) {
-    return currentValidator.text.maxLength;
+  let limit = null;
+  if (currentValidator && 'text' in currentValidator) {
+    limit = currentValidator.text.maxLength;
   }
-  return null;
+  return limit;
 }
 
 function Tabber(): ReactNode {
