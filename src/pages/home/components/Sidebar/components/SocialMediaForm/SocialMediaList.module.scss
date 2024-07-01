@@ -28,6 +28,18 @@
       scale: 0.98;
     }
 
+    .socialCard {
+      min-height: 25rem;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 2rem;
+
+      place-items: center;
+      justify-content: space-evenly;
+    }
+
     .socialTitle {
       display: block;
 
