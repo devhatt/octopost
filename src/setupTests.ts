@@ -10,3 +10,6 @@ afterEach(() => {
   vi.clearAllMocks();
   cleanup();
 });
+
+// global mocks
+window.scrollTo = vi.fn<unknown[]>();

@@ -1,9 +1,9 @@
 import { act, renderHook } from '@testing-library/react';
 import * as zustand from 'zustand';
 
-import { usePostsStore } from './usePostsStore';
+import { myCustomCreate, storeResetFns } from '~stores/__mocks__/zunstandMock';
 
-import { myCustomCreate, storeResetFns } from './__mocks__/zunstandMock';
+import { usePostsStore } from './usePostsStore';
 
 vi.mock('zustand', async () => {
   const zustandMock = await vi.importActual('zustand');
