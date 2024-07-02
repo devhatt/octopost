@@ -109,7 +109,8 @@ function Sidebar(): React.ReactNode {
                 onClick={handleToggleModal}
                 variant="container"
               >
-                + New Account
+                <Icon icon="plus" size={12} />
+                New Account
               </Button>
             </div>
 

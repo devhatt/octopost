@@ -10,7 +10,7 @@ function ActionBar(): ReactNode {
     <div className={scss.container}>
       <div className={scss.composeContainer}>
         <Icon className={scss.closeIcon} icon="close" size={14} />
-        <p>Compose</p>
+        <p className={scss.composeLabel}>Compose</p>
       </div>
       <button className={scss.navigationIconContainer}>
         <Icon className={scss.arrowIcon} icon="arrowRight" size={12} />
