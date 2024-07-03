@@ -11,14 +11,16 @@ function SocialMediaForm({
   onHandleToggleModal,
 }: SocialMediaFormProps): ReactNode {
   return (
-    <ul className={scss.selection}>
+    <ul className={scss.selectionGrid}>
       {socialMedias.map((socialMedia) => (
-        <li className={scss.socialItem} key={socialMedia.id}>
+        <li className={scss.socialItem} key={socialMedia.name}>
           <button className={scss.socialCard} type="button">
-            {/* {socialMedias.map(icon => <icon.icon />)} */}
-
-            <span className={scss.socialTitle}>{socialMedia.name}</span>
             <div>
+              <socialMedia.icon className={scss.socialIcon} />
+              <span className={scss.socialTitle}>{socialMedia.name}</span>
+            </div>
+
+            <div className={scss.buttonContainer}>
               <Button
                 className={scss.socialButton}
                 onClick={onHandleToggleModal}

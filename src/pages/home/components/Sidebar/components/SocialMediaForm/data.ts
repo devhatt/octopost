@@ -1,33 +1,32 @@
-export type socialMediasType = {
-  hasGroup: boolean;
-  id: string;
-  name: string;
-};
+import FacebookIcon from './images/facebook.svg?react';
+import InstagramIcon from './images/instagram.svg?react';
+import TiktokIcon from './images/tiktok.svg?react';
+import TwitterIcon from './images/twitter.svg?react';
 
-const socialMedias: socialMediasType[] = [
+const socialMedias = [
   {
     hasGroup: true,
-    id: crypto.randomUUID(),
+    icon: FacebookIcon, // FALTA TIPAR O ICON
     name: 'Facebook',
   },
   {
     hasGroup: false,
-    id: crypto.randomUUID(),
+    icon: InstagramIcon,
     name: 'Instagram',
   },
   {
     hasGroup: false,
-    id: crypto.randomUUID(),
+    icon: TwitterIcon,
     name: 'Twitter',
   },
   {
     hasGroup: false,
-    id: crypto.randomUUID(),
+    icon: TiktokIcon,
     name: 'Tiktok',
   },
   {
     hasGroup: false,
-    id: crypto.randomUUID(),
+    icon: FacebookIcon,
     name: 'LinkedIn',
   },
 ];

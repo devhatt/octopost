@@ -1,11 +1,13 @@
 @use '~styles/global.scss' as *;
 @use '~styles/breakpoints.scss' as breakpoints;
 
-.selection {
+.selectionGrid {
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
   gap: 1.6rem;
+
+  margin: 0 auto;
 
   .socialItem {
     display: flex;
@@ -22,7 +24,7 @@
 
     transition: 0.09s ease-in-out;
 
-    cursor: pointer;
+    // cursor: pointer;
 
     &:hover {
       scale: 0.98;
@@ -38,6 +40,14 @@
 
       place-items: center;
       justify-content: space-evenly;
+
+      .socialIcon {
+        height: 7rem;
+
+        margin-top: 2rem;
+
+        fill: #000;
+      }
     }
 
     .socialTitle {
@@ -48,14 +58,23 @@
       margin: 2rem;
     }
 
-    .socialButton {
-      display: block;
+    .buttonContainer {
+      min-height: 8rem;
 
-      font-size: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
 
-      margin-top: 1rem;
+      align-items: center;
+      justify-content: flex-end;
 
-      padding: 1rem 3rem;
+      .socialButton {
+        font-size: 1.4rem;
+
+        margin-top: 1rem;
+
+        padding: 1rem 3rem;
+      }
     }
 
     > .socialImage {
