@@ -5,23 +5,7 @@ import { ScrollToPlugin } from 'gsap/all';
 
 gsap.registerPlugin(ScrollToPlugin);
 
-const calcNewScrollPosition = (
-  currentPosition: number,
-  offset: number,
-  maxPosition: number
-): number => {
-  let newPosition = currentPosition + offset;
-
-  if (newPosition > maxPosition) {
-    newPosition = maxPosition;
-  }
-
-  if (newPosition < 0) {
-    newPosition = 0;
-  }
-
-  return newPosition;
-};
+const TWO = 2;
 
 export const useHorizontalScroll = (): {
   containerRef: RefObject<HTMLDivElement>;
@@ -61,25 +45,18 @@ export const useHorizontalScroll = (): {
       const containerRect = container.getBoundingClientRect();
       const elementRect = element.getBoundingClientRect();
 
-      const isElementVisible =
-        elementRect.left >= containerRect.left &&
-        elementRect.right <= containerRect.right;
+      const offset = elementRect.left - containerRect.left;
+      const newScrollPosition =
+        container.scrollLeft +
+        offset -
+        container.clientWidth / TWO +
+        elementRect.width / TWO;
 
-      if (!isElementVisible) {
-        const offset = elementRect.left - containerRect.left;
-        const maxScrollLeft = container.scrollWidth - container.clientWidth;
-        const newScrollPosition = calcNewScrollPosition(
-          container.scrollLeft,
-          offset,
-          maxScrollLeft
-        );
-
-        gsap.to(container, {
-          duration: 1,
-          ease: 'power3.out',
-          scrollTo: { x: newScrollPosition },
-        });
-      }
+      gsap.to(container, {
+        duration: 1,
+        ease: 'power3.out',
+        scrollTo: { x: newScrollPosition },
+      });
     }
   }, []);
 
