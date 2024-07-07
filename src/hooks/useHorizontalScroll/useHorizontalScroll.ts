@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
@@ -41,7 +41,7 @@ export const useHorizontalScroll = (): {
         gsap.to(container, {
           duration: 0.5,
           ease: 'power3.out',
-          onUpdate: updateScrollStatus,
+          onComplete: updateScrollStatus,
           scrollTo: { x: newScrollPosition },
         });
       }
@@ -51,8 +51,7 @@ export const useHorizontalScroll = (): {
 
   const handleMouseEnter = useCallback(() => {
     window.addEventListener('wheel', scrollHorizontally, { passive: false });
-    updateScrollStatus();
-  }, [scrollHorizontally, updateScrollStatus]);
+  }, [scrollHorizontally]);
 
   const handleMouseLeave = useCallback(() => {
     window.removeEventListener('wheel', scrollHorizontally);
@@ -81,7 +80,7 @@ export const useHorizontalScroll = (): {
           gsap.to(container, {
             duration: 0.6,
             ease: 'power3.out',
-            onUpdate: updateScrollStatus,
+            onComplete: updateScrollStatus,
             scrollTo: { x: newScrollPosition },
           });
         }
@@ -89,6 +88,21 @@ export const useHorizontalScroll = (): {
     },
     [updateScrollStatus]
   );
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (container) {
+      const observer = new MutationObserver(updateScrollStatus);
+      observer.observe(container, { childList: true, subtree: true });
+
+      updateScrollStatus();
+
+      return (): void => {
+        observer.disconnect();
+      };
+    }
+  }, [containerRef, updateScrollStatus]);
 
   return {
     containerRef,
