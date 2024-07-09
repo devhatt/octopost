@@ -81,25 +81,19 @@ export const useHorizontalScroll = (): {
         const containerRect = container.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
 
-        const isElementVisible =
-          elementRect.left >= containerRect.left &&
-          elementRect.right <= containerRect.right;
+        const offset = elementRect.left - containerRect.left;
+        const newScrollPosition =
+          container.scrollLeft +
+          offset -
+          container.clientWidth / TWO +
+          elementRect.width / TWO;
 
-        if (!isElementVisible) {
-          const offset = elementRect.left - containerRect.left;
-          const newScrollPosition =
-            container.scrollLeft +
-            offset -
-            container.clientWidth / TWO +
-            elementRect.width / TWO;
-
-          gsap.to(container, {
-            duration: 0.6,
-            ease: 'power3.out',
-            onComplete: updateScrollStatus,
-            scrollTo: { x: newScrollPosition },
-          });
-        }
+        gsap.to(container, {
+          duration: 0.6,
+          ease: 'power3.out',
+          onComplete: updateScrollStatus,
+          scrollTo: { x: newScrollPosition },
+        });
       }
     },
     [updateScrollStatus]
