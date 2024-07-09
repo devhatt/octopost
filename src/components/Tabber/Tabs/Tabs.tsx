@@ -13,8 +13,14 @@ import { TabsProps } from './Tabs.types';
 
 function Tabs(props: TabsProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { containerRef, handleMouseEnter, handleMouseLeave, scrollToElement } =
-    useHorizontalScroll();
+  const {
+    containerRef,
+    firstGradient,
+    handleMouseEnter,
+    handleMouseLeave,
+    lastGradient,
+    scrollToElement,
+  } = useHorizontalScroll();
 
   const tabClasses = (id: TabId): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
@@ -43,16 +49,20 @@ function Tabs(props: TabsProps): ReactNode {
   );
 
   return (
-    <div
-      className={scss.tabsContainer}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      ref={containerRef}
-    >
-      {Object.entries(props.tabs).map(([tabId, tab]) =>
-        renderTabs(tabId as TabId, tab)
-      )}
-    </div>
+    <>
+      <span className={scss.firstGradient} ref={firstGradient} />
+      <div
+        className={scss.tabsContainer}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        ref={containerRef}
+      >
+        {Object.entries(props.tabs).map(([tabId, tab]) =>
+          renderTabs(tabId as TabId, tab)
+        )}
+      </div>
+      <span className={scss.lastGradient} ref={lastGradient} />
+    </>
   );
 }
 

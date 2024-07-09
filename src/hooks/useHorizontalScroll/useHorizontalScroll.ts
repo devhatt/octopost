@@ -7,17 +7,33 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const TWO = 2;
 
+const updateGradientVisibility = (
+  element: RefObject<HTMLDivElement>,
+  condition: boolean
+): void => {
+  if (element.current) {
+    element.current.style.display = condition ? 'block' : 'none';
+  }
+};
+
 export const useHorizontalScroll = (): {
   containerRef: RefObject<HTMLDivElement>;
+  firstGradient: RefObject<HTMLDivElement>;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
   hasMoreOnLeft: boolean;
   hasMoreOnRight: boolean;
+  lastGradient: RefObject<HTMLDivElement>;
   scrollToElement: (element: HTMLElement) => void;
 } => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const firstGradient = useRef<HTMLDivElement>(null);
+  const lastGradient = useRef<HTMLDivElement>(null);
   const [hasMoreOnRight, setHasMoreOnRight] = useState(false);
   const [hasMoreOnLeft, setHasMoreOnLeft] = useState(false);
+
+  updateGradientVisibility(firstGradient, hasMoreOnLeft);
+  updateGradientVisibility(lastGradient, hasMoreOnRight);
 
   const updateScrollStatus = useCallback(() => {
     const container = containerRef.current;
@@ -106,10 +122,12 @@ export const useHorizontalScroll = (): {
 
   return {
     containerRef,
+    firstGradient,
     handleMouseEnter,
     handleMouseLeave,
     hasMoreOnLeft,
     hasMoreOnRight,
+    lastGradient,
     scrollToElement,
   };
 };
