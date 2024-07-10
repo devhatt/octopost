@@ -1,11 +1,68 @@
 @use '~styles/global.scss' as *;
 
+@use '~styles/breakpoints.scss' as *;
+
 .container {
   display: flex;
 
-  justify-content: flex-end;
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1.1rem;
+  border-bottom: 1px solid $secondaryGray;
+
+  .composeContainer {
+    display: flex;
+    gap: 2rem;
+
+    align-items: center;
+
+    .composeLabel {
+      font-size: 1.6rem;
+    }
+  }
+
+  .navigationIconContainer {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: $secondaryPurple;
+
+    border-radius: 50%;
+
+    .arrowIcon {
+      color: $primaryWhite;
+    }
+  }
 
   .submit {
     max-width: max-content;
+
+    display: none;
+  }
+}
+
+@include from905 {
+  .container {
+    border-bottom: 0;
+
+    .submit {
+      display: block;
+    }
+
+    .composeContainer {
+      display: none;
+    }
+
+    .navigationIconContainer {
+      display: none;
+    }
   }
 }

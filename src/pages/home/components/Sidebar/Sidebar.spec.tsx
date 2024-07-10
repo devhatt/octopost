@@ -96,7 +96,9 @@ describe('Sidebar component', () => {
   it('renders modal when the button more account is clicked', async () => {
     render(<Sidebar />);
 
-    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    const buttonToOpenModal = screen.getByRole('button', {
+      name: 'New Account',
+    });
     await userEvent.click(buttonToOpenModal);
 
     const openModalEvidence = screen.getByText(/adicionar social/i);
@@ -106,7 +108,9 @@ describe('Sidebar component', () => {
   it('closes when the esc key is pressed', async () => {
     render(<Sidebar />);
 
-    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    const buttonToOpenModal = screen.getByRole('button', {
+      name: 'New Account',
+    });
     await userEvent.click(buttonToOpenModal);
 
     await userEvent.type(document.body, '{Escape}');
@@ -120,7 +124,9 @@ describe('Sidebar component', () => {
   test('Closes modal when clicked outside', async () => {
     render(<Sidebar />);
 
-    const buttonToOpenModal = screen.getByText(/\+ New Account/);
+    const buttonToOpenModal = screen.getByRole('button', {
+      name: 'New Account',
+    });
     await userEvent.click(buttonToOpenModal);
 
     const modalBackgroundEvidence = screen.getByTestId('portal');

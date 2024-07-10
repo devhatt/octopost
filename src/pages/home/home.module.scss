@@ -5,8 +5,10 @@
 
   display: grid;
   grid-template-areas:
-    'editor aside'
-    'actions aside';
+    'header'
+    'actions'
+    'aside'
+    'editor';
 
   grid-template-columns: 100vw;
 
@@ -16,6 +18,12 @@
 
   .editor {
     grid-area: editor;
+  }
+
+  .editor {
+    > :first-child {
+      display: none;
+    }
   }
 
   .actions {
@@ -35,5 +43,13 @@
     gap: 2.4rem;
 
     margin: 0 auto;
+  }
+
+  .content {
+    .editor {
+      > :first-child {
+        display: flex;
+      }
+    }
   }
 }

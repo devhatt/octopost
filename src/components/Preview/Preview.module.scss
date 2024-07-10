@@ -1,10 +1,11 @@
 @use '../../styles/global';
+@use '~styles/breakpoints.scss' as *;
 
 .container {
   width: 54.2rem;
   height: 69.7rem;
 
-  display: flex;
+  display: none;
   flex-direction: column;
 
   align-items: center;
@@ -15,4 +16,10 @@
   background-color: global.$tertiaryWhite;
 
   border-radius: 12px;
+}
+
+@include from905 {
+  .container {
+    display: flex;
+  }
 }

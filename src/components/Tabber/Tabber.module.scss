@@ -1,10 +1,8 @@
 ﻿@use '../../styles/global';
+@use '~styles/breakpoints.scss' as *;
 
 .gridContainer {
   min-height: 25rem;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 
   align-items: center;
   justify-content: center;
@@ -27,4 +25,11 @@
 
 .previewContainer {
   text-align: center;
+}
+
+@include from905 {
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
