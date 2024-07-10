@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import { SOCIAL_MEDIAS } from '~constants/social-medias';
 
+import Icon from '~components/Icon/Icon';
+
 import scss from './Header.module.scss';
 
 import InstagramIcon from './images/instagram.svg?react';
@@ -43,6 +45,16 @@ function Header(): ReactNode {
             >
               <InstagramIcon />
             </a>
+          </li>
+          <li>
+            <button className={scss.hamburguerIcon}>
+              <Icon
+                className={scss.dropDownIcon}
+                data-testid="dropdown-arrow"
+                icon="hamburguer"
+                size={24}
+              />
+            </button>
           </li>
         </ul>
       </nav>

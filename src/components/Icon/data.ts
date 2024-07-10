@@ -1,4 +1,5 @@
 import Alert from './icons/alert.svg?react';
+import ArrowRight from './icons/arrow-right.svg?react';
 import Check from './icons/check.svg?react';
 import Close from './icons/close.svg?react';
 import DropDownArrow from './icons/drop-down.svg?react';
@@ -14,6 +15,7 @@ import Star from './icons/star.svg?react';
 
 export const icons = {
   alert: Alert,
+  arrowRight: ArrowRight,
   check: Check,
   close: Close,
   dropDownArrow: DropDownArrow,
