@@ -26,7 +26,7 @@
 ## Índice
 
 - [Projeto](#projeto)
-  - [Recursos](#recursos-principais)
+- [Recursos](#recursos-principais)
 - [Como rodar](#como-rodar)
 - [Tirar Dúvidas](#tirar-dúvidas)
 - [Como Contribuir](#como-contribuir)
@@ -66,7 +66,7 @@ Foi projetado para simplificar o processo de compartilhamento de conteúdo em v�
 
 ## Tirar Dúvidas
 
-- **Canal de Help no Discord:** Para dúvidas sobre o projeto utilize o [nosso chat do projeto](https://discord.com/channels/1032763359835213954/1137214858346119209).
+- **Fórum de Dúvidas no Discord:** Para dúvidas sobre o projeto utilize o [nosso chat do projeto](https://discord.com/channels/1032763359835213954/1235738396274724977).
 - **Salas Interativas:** Prefere uma interação mais direta? Junte-se a qualquer sala aberta no Discord e converse com outros membros que podem ajudar com suas dúvidas em tempo real.
 - **Plantões de Dúvidas:** Organizamos sessões especiais em horários determinados onde mentores estão disponíveis para ajudar com questões mais complexas.
 - **One-a-One:** Você também pode marcar um 1:1 com o mentor do projeto.
@@ -87,7 +87,7 @@ Para garantir um ambiente saudável, respeitoso e receptivo, toda boa comunidade
 
 Para melhorar as regras, não as explore; em vez disso, nos reporte. Caso haja exploração de alguma falha, a atualizaremos imediatamente, e as regras se aplicarão ao caso, mesmo que tenha ocorrido antes da atualização. Contamos com a colaboração de todos para evitar incentivos ao mau comportamento.
 
-É fundamental ressaltar que todas as sugestões são muito bem-vindas! Se tiver alguma, procure diretamente um dos membros da nossa moderação, identificados pelos cargos de Dono do Parquinho 🎠, Hatter 🤠 ou De Capa 🐱‍🏍. Abaixo, você pode conhecer mais detalhes sobre cada uma de nossas regras e quais punições elas geram.
+É fundamental ressaltar que todas as sugestões são muito bem-vindas! Se tiver alguma, procure diretamente um dos membros da nossa moderação, identificados pelos cargos de Dono do Parquinho 🎠, Hatts 🤠 ou De Capa 🐱‍🏍. Abaixo, você pode conhecer mais detalhes sobre cada uma de nossas regras e quais punições elas geram.
 
 ---
 
