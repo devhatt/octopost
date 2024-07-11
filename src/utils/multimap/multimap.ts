@@ -44,7 +44,11 @@ export class MultiMap<V> {
     this.map.clear();
   }
 
-  public toArray(): V[] {
-    return Array.from(this.map.values()).flat();
+  public toObject(): Record<string, V[]> {
+    const obj: Record<string, V[]> = {};
+    for (const [key, value] of this.map.entries()) {
+      obj[key] = value;
+    }
+    return obj;
   }
 }

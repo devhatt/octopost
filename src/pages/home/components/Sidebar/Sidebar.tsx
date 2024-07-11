@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
-import groupBy from 'lodash.groupby';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
@@ -28,19 +27,24 @@ function Sidebar(): React.ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  const filteredAccounts = useMemo(() => {
-    if (accounts.data.length === 0) return [];
-    let data: StoreAccount[] = [];
+  const filteredAccountsResult = useMemo(() => {
+    const accountsArray = Object.entries(accounts.data);
+    if (accountsArray.length === 0) return [];
 
-    data = accounts.data.filter((account) =>
-      format(account.userName).includes(format(inputValue))
-    );
-    return Object.entries(groupBy(data, 'socialMediaId')).map(
-      ([socialMediaId, socialMediaAccounts]) => ({
-        socialMediaAccounts,
-        socialMediaId,
-      })
-    );
+    let data: { socialMediaAccounts: StoreAccount[]; socialMediaId: string }[] =
+      [];
+
+    for (const [socialMediaId, socialMediaAccounts] of accountsArray) {
+      const filteredAccounts = socialMediaAccounts.filter((account) =>
+        format(account.userName).includes(format(inputValue))
+      );
+
+      if (filteredAccounts.length > 0) {
+        data.push({ socialMediaAccounts: filteredAccounts, socialMediaId });
+      }
+    }
+
+    return data;
   }, [accounts, inputValue]);
 
   const handleToggleModal = (): void => {
@@ -75,9 +79,9 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
           />
 
-          {filteredAccounts.length > 0 ? (
+          {filteredAccountsResult.length > 0 ? (
             <div className={scss.accordionContainer}>
-              {filteredAccounts.map(
+              {filteredAccountsResult.map(
                 ({ socialMediaAccounts, socialMediaId }) => (
                   <SocialAccordion
                     accounts={socialMediaAccounts}

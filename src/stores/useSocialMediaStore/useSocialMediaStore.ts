@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-
 import { create } from 'zustand';
 
 import { octopostApi } from '~services/api';
 import { AccountsService } from '~services/api/accounts/accounts';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
-
-import { Tab, Tabs } from '~components/Tabber/Tabber.types';
 
 import {
   NewAccount,
@@ -17,23 +13,31 @@ import {
 
 export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   accounts: {
-    data: [],
+    data: {},
     error: '',
     loading: false,
   },
 
-  addSocialMedia: async (newAccount: NewAccount): Promise<StoreAccount> => {
+  addAccount: async (newAccount: NewAccount): Promise<StoreAccount> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
     const res = await octopostApi.post('/accounts', newAccount);
-    set((state) => ({
-      accounts: {
-        ...state.accounts,
-        data: [...state.accounts.data, res.data],
-        loading: false,
-      },
-    }));
-    return res.data;
+    const addedAccount: StoreAccount = { ...res.data, valid: false };
+
+    set((state) => {
+      const currentAccounts = state.accounts.data[addedAccount.socialMediaId];
+      return {
+        accounts: {
+          ...state.accounts,
+          data: {
+            ...state.accounts.data,
+            [addedAccount.socialMediaId]: [...currentAccounts, addedAccount],
+          },
+          loading: false,
+        },
+      };
+    });
+    return addedAccount;
   },
 
   getAllAccounts: async (): Promise<void> => {
@@ -42,11 +46,12 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     const fetchedAccounts = await AccountsService.fetchAll();
 
     const userSocialMedias: string[] = [];
-    const accountsBySocialMedia: StoreAccount[] = [];
+    const accountsBySocialMedia: Record<string, StoreAccount[]> = {};
 
     for (const account of fetchedAccounts) {
-      userSocialMedias.push(account.socialMediaId);
-      accountsBySocialMedia.push({
+      accountsBySocialMedia[account.socialMediaId] =
+        accountsBySocialMedia[account.socialMediaId] ?? [];
+      accountsBySocialMedia[account.socialMediaId].push({
         ...account,
         valid: false,
       });
@@ -70,27 +75,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       },
     }));
   },
-  posts: {
-    data: {},
-    error: '',
-    loading: false,
-  },
 
-  sendPosts: async (tabs: Tabs): Promise<void> => {
-    const postsToBeSent = Object.values(tabs).map((tab: Tab) => {
-      const { socialMediaId } = tab.account;
-      return Object.entries(tab.posts).map(([postModeId, data]) => ({
-        data,
-        postModeId,
-        socialMediaId,
-      }));
-    });
-
-    const posts = postsToBeSent.flat();
-
-    set((state) => ({ posts: { ...state.posts, loading: true } }));
-    await SocialMediaService.sendPosts(posts);
-  },
   socialMedias: new Map<string, SocialMedia>(),
 }));
 
