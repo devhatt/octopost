@@ -3,9 +3,19 @@ import { nanoid } from 'nanoid';
 
 import { create } from '~stores/zustand';
 
-import { IUseError } from './useError.types';
+import { UseError } from './useError.types';
 
-export const useError = create<IUseError>((set) => ({
+export const useError = create<UseError>((set) => ({
+  addError: (error): string => {
+    const id = nanoid();
+
+    set((state) => ({
+      errors: { ...state.errors, [id]: { message: error.message } },
+    }));
+
+    return id;
+  },
+
   errors: {},
 
   removeError: (idToRemove: string): void => {
@@ -13,15 +23,5 @@ export const useError = create<IUseError>((set) => ({
       const errors = omit(state.errors, idToRemove);
       return { errors };
     });
-  },
-
-  setError: (newErrorMessage): string => {
-    const id = nanoid();
-
-    set((state) => ({
-      errors: { ...state.errors, [id]: { id, message: newErrorMessage } },
-    }));
-
-    return id;
   },
 }));

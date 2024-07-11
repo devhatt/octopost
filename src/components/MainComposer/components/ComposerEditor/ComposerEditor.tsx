@@ -1,5 +1,7 @@
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
+import { nanoid } from 'nanoid';
+
 import {
   PostMode,
   TextValidator,
@@ -13,36 +15,53 @@ import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
 
 import scss from './ComposerEditor.module.scss';
 
+import { Action } from '../MainComposerBase/MainComposerBase.type';
 import {
   ComposerEditorProps,
-  ErrorMapText,
-  ErrorText,
   HigherLimitSocial,
+  TEXT_ERRORS,
+  TextErrorMap,
 } from './ComposerEditor.types';
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
-  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
+  const [errors, setErrors] = useState<TextErrorMap>();
 
-  const validatorText = (text: string): ErrorText[] => {
+  const removeErrors = (textErrors: TEXT_ERRORS): void => {
+    const newError = { ...errors };
+    const errorId = newError[textErrors];
+    const updateErrors = Object.entries(newError).reduce<TextErrorMap>(
+      (acc, [key, value]) => {
+        acc[key as unknown as TEXT_ERRORS] = value;
+        return acc;
+      },
+      {}
+    );
+    props.removeError?.(errorId);
+    setErrors(updateErrors);
+  };
+
+  const emitErrors = (text: string): void => {
     const textValidators = new TextValidators(text);
     const validators = props.postMode?.validators as TextValidator;
-    const errors: ErrorText[] = [];
 
     if (
       props.postMode &&
-      textValidators.textLength(validators.text.maxLength)
+      !textValidators.textLength(validators.text.maxLength)
     ) {
-      errors.push({
+      const errorId = nanoid();
+      setErrors({ ...errors, [TEXT_ERRORS.MAX_LENGTH_EXCEED]: errorId });
+      props.addError?.(errorId, {
         accountId: props.accountId,
-        message: 'text exceeded the limit',
+        action: Action.APPLY_ERROR,
+        message: `Account ${props.accountId} on ${props.postMode.id} type of post overflowed the character limit`,
         postModeId: props.postMode.id,
       });
+    } else {
+      removeErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
     }
-
-    return errors;
   };
 
   const isBigger = useCallback(
@@ -70,6 +89,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     }
     return socialLimits;
   }, [socialMedias]);
+
   const getGreatestLimitsSocial = useCallback(() => {
     const socialLimits = getBiggestLimitBySocial();
     const maxLimit = socialLimits.reduce(
@@ -79,25 +99,13 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     return { maxLimit, socialLimits };
   }, [getBiggestLimitBySocial]);
 
-  const setError = (newErrorMap: ErrorMapText): void => {
-    setErrorMap((prevErrorMap) => {
-      const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
-      props.onError?.(updatedErrorMap);
-      return updatedErrorMap;
-    });
-  };
-
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
-    const textErrors = validatorText(newValue);
-    const newErrorMap = { ...errorMap };
-
-    if (props.onChange) props.onChange(newValue);
-    if (textErrors.length > 0) {
-      newErrorMap[newValue] = textErrors;
-      setError(newErrorMap);
-    }
     updateMainContent(newValue);
+
+    if (props.onChange) props.onChange(event);
+
+    emitErrors(newValue);
     setInputValue(newValue);
   };
 
@@ -107,7 +115,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={props.onChangePost ?? handleInputChange}
+        onChange={handleInputChange}
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}
       />
@@ -115,7 +123,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
         <CharacterLimit
           maxLength={socialLimits.maxLimit}
           svg={null}
-          value={inputValue}
+          value={props.value ?? inputValue}
         />
         <div className={scss.characterLimitWrapper}>
           {socialLimits.socialLimits.map((postMode) => (
@@ -123,7 +131,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
               key={postMode.socialMediaId}
               maxLength={postMode.limit}
               svg={socialMedias.get(postMode.socialMediaId)?.icon}
-              value={inputValue}
+              value={props.value ?? inputValue}
             />
           ))}
         </div>

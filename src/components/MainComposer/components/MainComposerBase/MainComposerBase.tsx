@@ -1,30 +1,41 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
+
+import { useError } from '~stores/useError/useError';
 
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 import InputMediaGroup from '../InputMediaGroup/InputMediaGroup';
 
 import scss from './MainComposerBase.module.scss';
 
-import { ErrorMapText } from '../ComposerEditor/ComposerEditor.types';
-import { ErrorMediaInput } from '../InputMediaGroup/InputMediaGroup.type';
-import { MainComposerBaseProps } from './MainComposerBase.type';
+import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
-  const handleMediaErrors = (errors: ErrorMediaInput): void => {
-    props.onErrorMedia?.(errors);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const { addError, removeError } = useError();
+
+  const handleErrors = (id: string, error: Error): void => {
+    const { message } = error;
+    if (message) {
+      const useErrorId = addError({ message });
+      setErrors({ ...errors, [id]: useErrorId });
+    }
+
+    props.onError?.(false);
   };
 
-  const handleTextErrors = (errors: ErrorMapText): void => {
-    props.onErrorText?.(errors);
+  const errorRemover = (id: string | undefined): void => {
+    if (id) removeError(errors[id]);
   };
 
   return (
     <div className={scss.container}>
       <ComposerEditor
         accountId={props.accountId}
-        onChangePost={props.onChange}
-        onError={handleTextErrors}
+        addError={handleErrors}
+        onChange={props.onChange}
         postMode={props.postMode}
+        removeError={errorRemover}
         value={props.value}
       />
       <div className={scss.bottomWrapper}>
@@ -32,8 +43,9 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
         <div>
           <InputMediaGroup
             accountId={props.accountId}
-            onError={handleMediaErrors}
+            addError={handleErrors}
             postMode={props.postMode}
+            removeError={errorRemover}
           />
         </div>
       </div>

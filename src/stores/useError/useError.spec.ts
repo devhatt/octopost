@@ -14,7 +14,7 @@ describe('useError', () => {
 
     let errorId = '';
     act(() => {
-      errorId = result.current.setError('Something went wrong');
+      errorId = result.current.addError({ message: 'Something went wrong' });
     });
 
     expect(result.current.errors[errorId]).toEqual({
@@ -28,7 +28,7 @@ describe('useError', () => {
 
     let errorId = '';
     act(() => {
-      errorId = result.current.setError('Something went wrong');
+      errorId = result.current.addError({ message: 'Something went wrong' });
     });
 
     act(() => {

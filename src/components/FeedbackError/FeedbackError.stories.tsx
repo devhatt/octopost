@@ -9,10 +9,10 @@ import FeedbackError from './FeedbackError';
 import { TFeedbackErrorProps } from './FeedbackError.type';
 
 export const FeedbackErrorComponent: Story<TFeedbackErrorProps> = (props) => {
-  const setErrors = useError((state) => state.setError);
+  const setErrors = useError((state) => state.addError);
   useEffect(() => {
     for (const error of props.errors) {
-      setErrors(error.message);
+      setErrors(error);
     }
   }, [props.errors, setErrors]);
   return <FeedbackError />;

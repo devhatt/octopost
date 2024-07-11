@@ -1,13 +1,19 @@
 import { PostMode } from '~services/api/social-media/social-media.types';
 
+import { MainComposerErrorEmiter } from '../MainComposerBase/MainComposerBase.type';
+
 export type MediaInput = {
   accountId?: string;
-  onError?: (error: ErrorMediaInput) => void;
+  addError?: MainComposerErrorEmiter;
   postMode?: PostMode;
+  removeError?: (id: string | undefined) => void;
 };
 
-export type ErrorMediaInput = {
-  accountId: string | undefined;
-  message: string;
-  postModeId: string | undefined;
-};
+export enum MEDIA_ERRORS {
+  MAX_AR_EXCEED = 1,
+  MAX_DURATION_EXCEED = 2,
+  MAX_RESOLUTION_EXCEED = 3,
+  MAX_SIZE_EXCEED = 4,
+}
+
+export type MediaErrorMap = Record<MEDIA_ERRORS | number, string>;
