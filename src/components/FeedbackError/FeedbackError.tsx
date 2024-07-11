@@ -54,7 +54,7 @@ function FeedbackError(): ReactNode {
             <Icon
               className={scss.dropDownIcon}
               data-testid="dropdown-arrow"
-              icon="dropDownArrow"
+              icon="TriangleDropArrow"
               size={10}
             />
           </button>
