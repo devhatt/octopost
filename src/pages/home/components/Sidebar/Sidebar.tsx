@@ -102,18 +102,25 @@ function Sidebar(): React.ReactNode {
           </div>
 
           <div className={scss.newAccountButtonMobileContainer}>
-            <Button
-              className={scss.newAccountButton}
-              onClick={handleToggleModal}
-              variant="container"
-            >
-              + New Account
-            </Button>
+            <div className={scss.mobileContainer}>
+              <p className={scss.selectSocialAccountText}>
+                Select social account
+              </p>
+              <Button
+                className={scss.newAccountButton}
+                onClick={handleToggleModal}
+                variant="container"
+              >
+                <Icon icon="plus" size={12} />
+                New Account
+              </Button>
+            </div>
+
             <div className={scss.newAccountButtonMobileContainer}>
               <Button
                 circle
                 className={scss.newAccountButtonMobile}
-                icon={<Icon icon="plus" size={16} />}
+                icon={<Icon icon="plus" size={10} />}
                 onClick={handleToggleModal}
                 variant="container"
               />
