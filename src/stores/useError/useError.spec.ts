@@ -18,7 +18,6 @@ describe('useError', () => {
     });
 
     expect(result.current.errors[errorId]).toEqual({
-      id: errorId,
       message: 'Something went wrong',
     });
   });
