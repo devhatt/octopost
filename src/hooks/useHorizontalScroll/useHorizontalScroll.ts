@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/all';
@@ -21,28 +21,23 @@ export const useHorizontalScroll = (): {
   firstGradient: RefObject<HTMLDivElement>;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
-  hasMoreOnLeft: boolean;
-  hasMoreOnRight: boolean;
   lastGradient: RefObject<HTMLDivElement>;
   scrollToElement: (element: HTMLElement) => void;
 } => {
   const containerRef = useRef<HTMLDivElement>(null);
   const firstGradient = useRef<HTMLDivElement>(null);
   const lastGradient = useRef<HTMLDivElement>(null);
-  const [hasMoreOnRight, setHasMoreOnRight] = useState(false);
-  const [hasMoreOnLeft, setHasMoreOnLeft] = useState(false);
-
-  updateGradientVisibility(firstGradient, hasMoreOnLeft);
-  updateGradientVisibility(lastGradient, hasMoreOnRight);
 
   const updateScrollStatus = useCallback(() => {
     const container = containerRef.current;
 
     if (container) {
       const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      const hasMoreOnLeft = container.scrollLeft > 0;
+      const hasMoreOnRight = container.scrollLeft < maxScrollLeft;
 
-      setHasMoreOnLeft(container.scrollLeft > 0);
-      setHasMoreOnRight(container.scrollLeft < maxScrollLeft);
+      updateGradientVisibility(firstGradient, hasMoreOnLeft);
+      updateGradientVisibility(lastGradient, hasMoreOnRight);
     }
   }, []);
 
@@ -119,8 +114,6 @@ export const useHorizontalScroll = (): {
     firstGradient,
     handleMouseEnter,
     handleMouseLeave,
-    hasMoreOnLeft,
-    hasMoreOnRight,
     lastGradient,
     scrollToElement,
   };
