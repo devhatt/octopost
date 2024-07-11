@@ -552,6 +552,14 @@ export default defineFlatConfig([
     },
   },
 
+  // JS/MJS
+  {
+    files: ['**/*.js', '**/*.mjs'],
+    rules: {
+      'no-console': 'off',
+    }
+  },
+
   // Hooks
   {
     files: ['**/use*.*'],
