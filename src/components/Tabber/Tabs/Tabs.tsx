@@ -49,7 +49,7 @@ function Tabs(props: TabsProps): ReactNode {
   );
 
   return (
-    <>
+    <div className={scss.tabsWrapper}>
       <span className={scss.firstGradient} ref={firstGradient} />
       <div
         className={scss.tabsContainer}
@@ -62,7 +62,7 @@ function Tabs(props: TabsProps): ReactNode {
         )}
       </div>
       <span className={scss.lastGradient} ref={lastGradient} />
-    </>
+    </div>
   );
 }
 

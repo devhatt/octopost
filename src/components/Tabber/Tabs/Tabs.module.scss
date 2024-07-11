@@ -9,16 +9,22 @@
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.tabsContainer::-webkit-scrollbar {
-  display: none;
+.tabsWrapper {
+  height: 100%;
+
+  position: relative;
 }
 
 .firstGradient,
 .lastGradient {
   width: 35px;
-  height: 43px;
+  height: 100%;
 
   position: absolute;
   z-index: 1;

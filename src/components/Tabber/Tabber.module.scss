@@ -1,9 +1,5 @@
-﻿@use '../../styles/global';
+﻿@use '~styles/global';
 @use '~styles/breakpoints.scss' as *;
-
-.tabber {
-  position: relative;
-}
 
 .gridContainer {
   min-height: 25rem;

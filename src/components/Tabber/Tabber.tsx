@@ -109,7 +109,7 @@ function Tabber(): ReactNode {
   }
 
   return (
-    <div className={scss.tabber}>
+    <div>
       <Tabs
         currentTab={tabs[currentTab]}
         onChangeTab={changeCurrentTab}
