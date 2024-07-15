@@ -554,7 +554,7 @@ export default defineFlatConfig([
 
   // JS/MJS
   {
-    files: ['**/*.js', '**/*.mjs'],
+    files: ['/*.js', '/*.mjs'],
     rules: {
       'no-console': 'off',
     },
