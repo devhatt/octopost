@@ -16,15 +16,13 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
 
   const handleErrors = (id: string, error: Error): void => {
     const { message } = error;
-    if (message) {
-      const useErrorId = addError({ message });
-      setErrors({ ...errors, [id]: useErrorId });
-    }
+    const useErrorId = addError({ message });
 
+    setErrors({ ...errors, [id]: useErrorId });
     props.onError?.(false);
   };
 
-  const errorRemover = (id: string | undefined): void => {
+  const errorRemover = (id: string): void => {
     if (id) removeError(errors[id]);
   };
 

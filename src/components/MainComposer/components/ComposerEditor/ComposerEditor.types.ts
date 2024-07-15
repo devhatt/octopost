@@ -11,7 +11,7 @@ export type ComposerEditorProps = PropsWithChildren<{
   addError?: MainComposerErrorEmiter;
   onChange?: InputChange;
   postMode?: PostMode;
-  removeError?: (id: string | undefined) => void;
+  removeError?: (id: string) => void;
   value?: string;
 }>;
 
@@ -24,4 +24,4 @@ export enum TEXT_ERRORS {
   MAX_LENGTH_EXCEED = 1,
 }
 
-export type TextErrorMap = Record<TEXT_ERRORS | number, string>;
+export type TextErrorMap = Record<TEXT_ERRORS, string>;

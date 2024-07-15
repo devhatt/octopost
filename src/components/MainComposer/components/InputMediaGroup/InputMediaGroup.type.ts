@@ -6,7 +6,7 @@ export type MediaInput = {
   accountId?: string;
   addError?: MainComposerErrorEmiter;
   postMode?: PostMode;
-  removeError?: (id: string | undefined) => void;
+  removeError?: (id: string) => void;
 };
 
 export enum MEDIA_ERRORS {

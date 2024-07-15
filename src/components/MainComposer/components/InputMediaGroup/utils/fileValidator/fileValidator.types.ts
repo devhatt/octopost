@@ -2,17 +2,24 @@ import { MediaValidator } from '~services/api/social-media/social-media.types';
 
 import { MediaValidators } from '../mediaValidator/mediaValidators';
 
-import { MediaErrorMap, MediaInput } from '../../InputMediaGroup.type';
+import { Error } from '~components/MainComposer/components/MainComposerBase/MainComposerBase.type';
+
+import { MEDIA_ERRORS, MediaInput } from '../../InputMediaGroup.type';
 
 export type validators = Record<
   keyof typeof MediaValidators.prototype,
   (
     props: MediaInput,
-    errors: MediaErrorMap
-  ) => MediaErrorMap | Promise<MediaErrorMap>
+    fileId: string
+  ) => Promise<ValidatorError> | ValidatorError
 >;
 
 export type validatorsProps = {
   media: File;
   validator: MediaValidator;
+};
+
+export type ValidatorError = {
+  error?: Error;
+  type: MEDIA_ERRORS;
 };

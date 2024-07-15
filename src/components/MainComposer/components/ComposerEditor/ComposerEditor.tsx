@@ -1,5 +1,6 @@
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
+import omit from 'lodash.omit';
 import { nanoid } from 'nanoid';
 
 import {
@@ -15,7 +16,6 @@ import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
 
 import scss from './ComposerEditor.module.scss';
 
-import { Action } from '../MainComposerBase/MainComposerBase.type';
 import {
   ComposerEditorProps,
   HigherLimitSocial,
@@ -27,20 +27,29 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
-  const [errors, setErrors] = useState<TextErrorMap>();
+  const [errors, setErrors] = useState<TextErrorMap>({} as TextErrorMap);
+
+  const addErrors = (textErrors: TEXT_ERRORS): void => {
+    const errorId = nanoid();
+    const newError = { ...errors };
+    const error = newError[textErrors];
+
+    if (!error) {
+      setErrors({ ...errors, [textErrors]: errorId });
+      props.addError?.(errorId, {
+        accountId: props.accountId,
+        message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the character limit`,
+        postModeId: props.postMode?.id,
+      });
+    }
+  };
 
   const removeErrors = (textErrors: TEXT_ERRORS): void => {
     const newError = { ...errors };
     const errorId = newError[textErrors];
-    const updateErrors = Object.entries(newError).reduce<TextErrorMap>(
-      (acc, [key, value]) => {
-        acc[key as unknown as TEXT_ERRORS] = value;
-        return acc;
-      },
-      {}
-    );
+    const newErrors = omit(errors, [textErrors]);
     props.removeError?.(errorId);
-    setErrors(updateErrors);
+    setErrors(newErrors as TextErrorMap);
   };
 
   const emitErrors = (text: string): void => {
@@ -51,14 +60,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       props.postMode &&
       !textValidators.textLength(validators.text.maxLength)
     ) {
-      const errorId = nanoid();
-      setErrors({ ...errors, [TEXT_ERRORS.MAX_LENGTH_EXCEED]: errorId });
-      props.addError?.(errorId, {
-        accountId: props.accountId,
-        action: Action.APPLY_ERROR,
-        message: `Account ${props.accountId} on ${props.postMode.id} type of post overflowed the character limit`,
-        postModeId: props.postMode.id,
-      });
+      addErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
     } else {
       removeErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
     }
@@ -103,7 +105,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     const newValue = event.target.value;
     updateMainContent(newValue);
 
-    if (props.onChange) props.onChange(event);
+    props.onChange?.(event);
 
     emitErrors(newValue);
     setInputValue(newValue);
