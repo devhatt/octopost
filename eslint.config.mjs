@@ -552,9 +552,10 @@ export default defineFlatConfig([
     },
   },
 
-  // JS/MJS
+  // JS/MJS in root
   {
-    files: ['/*.js', '/*.mjs'],
+    files: ['*.js', '*.mjs'],
+    ignores: ['src', 'electron'],
     rules: {
       'no-console': 'off',
     },
