@@ -1,5 +1,5 @@
 export type SocialMediaFormProps = {
-  isOpen: boolean;
+  isOpen?: boolean;
   onHandleToggleModal: () => void;
-  setIsOpen: (prev: boolean) => boolean;
+  setIsOpen?: (prev: boolean) => boolean;
 };
