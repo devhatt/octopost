@@ -19,6 +19,16 @@ import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
 const makeId = (account: AccountPost): `${string}-${string}` =>
   `${account.id}-${account.socialMediaId}`;
 
+function getCurrentPostModeMaxLimit(
+  currentValidator: PostMode['validators'] | undefined
+): number | null {
+  let limit = null;
+  if (currentValidator && 'text' in currentValidator) {
+    limit = currentValidator.text.maxLength;
+  }
+  return limit;
+}
+
 function Tabber(): ReactNode {
   const { accounts } = useAccountStore();
   const { socialMedias } = useSocialMediaStore();
@@ -70,6 +80,10 @@ function Tabber(): ReactNode {
   };
 
   const currentPostMode = getCurrentPostMode();
+
+  const currentPostModeMaxLimit = getCurrentPostModeMaxLimit(
+    currentPostMode?.validators
+  );
 
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     if (!currentTab || !tabs[currentTab]) return;
@@ -124,6 +138,7 @@ function Tabber(): ReactNode {
           />
           <MainComposerBase
             accountId={tabs[currentTab].account.id.toString()}
+            currentMaxLimit={currentPostModeMaxLimit ?? undefined}
             onChange={handleContentChange}
             postMode={currentPostMode ?? undefined}
             value={
