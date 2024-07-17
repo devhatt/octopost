@@ -14,7 +14,7 @@ function SocialMediaForm({
     <ul className={scss.selectionGrid}>
       {socialMedias.map((socialMedia) => (
         <li className={scss.socialItem} key={socialMedia.name}>
-          <button className={scss.socialCard} type="button">
+          <div className={scss.socialCard}>
             <div>
               <socialMedia.icon className={scss.socialIcon} />
               <span className={scss.socialTitle}>{socialMedia.name}</span>
@@ -38,7 +38,7 @@ function SocialMediaForm({
                 </Button>
               )}
             </div>
-          </button>
+          </div>
         </li>
       ))}
     </ul>
