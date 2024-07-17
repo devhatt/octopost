@@ -1,11 +1,11 @@
-﻿import { Account } from '~services/api/accounts/accounts.types';
-import {
+﻿import {
   PostMode,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
+import { AccountPost } from '~stores/useAccountStore';
 
-export type IPostModesProps = {
+export type PostModesProps = {
   currentPostModeId: SocialMedia['postModes'][number]['id'];
-  currentTab: Account;
+  currentTab: AccountPost;
   onChangePostMode: (postMode: PostMode) => void;
 };

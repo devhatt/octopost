@@ -6,13 +6,13 @@ import {
   PostMode,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
-import { useSocialMediaStore } from '~stores/useSocialMediaStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import scss from './PostModes.module.scss';
 
-import { IPostModesProps } from './PostModes.types';
+import { PostModesProps } from './PostModes.types';
 
-function PostModes(props: IPostModesProps): ReactNode {
+function PostModes(props: PostModesProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const socialMedia = socialMedias.get(props.currentTab.socialMediaId);
 
