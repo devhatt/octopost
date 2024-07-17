@@ -125,14 +125,6 @@
       "token": "DISCORD_EXAMPLE_TOKEN_5",
       "valid": false,
       "avatar": "https://example.com/image6.jpg"
-    },
-    {
-      "id": "6",
-      "socialMediaId": "TWITTER_EXAMPLE_ID",
-      "userName": "Twitter User 6",
-      "token": "TWITTER_EXAMPLE_TOKEN_6",
-      "valid": true,
-      "avatar": "https://example.com/image2.jpg"
     }
   ],
   "social-medias": [
@@ -153,7 +145,9 @@
               "maxFileSize": 20000000,
               "maxWidth": 700,
               "maxHeight": 600,
-              "ar": ["4:3"],
+              "ar": [
+                "4:3"
+              ],
               "maxDuration": 1000
             }
           },
@@ -177,7 +171,9 @@
               "maxSize": 10000,
               "maxWidth": 900,
               "maxHeight": 700,
-              "ar": ["16:9"],
+              "ar": [
+                "16:9"
+              ],
               "maxDuration": 1100
             }
           },
@@ -201,7 +197,9 @@
               "maxSize": 30000,
               "maxWidth": 1920,
               "maxHeight": 1080,
-              "ar": ["5:3"],
+              "ar": [
+                "5:3"
+              ],
               "maxDuration": 5000
             }
           },
@@ -232,7 +230,9 @@
               "maxSize": 10000,
               "maxWidth": 700,
               "maxHeight": 600,
-              "ar": ["16:9"],
+              "ar": [
+                "16:9"
+              ],
               "maxDuration": 500
             }
           },
@@ -256,7 +256,9 @@
               "maxSize": 20000,
               "maxWidth": 700,
               "maxHeight": 600,
-              "ar": ["4:3"],
+              "ar": [
+                "4:3"
+              ],
               "maxDuration": 1000
             }
           },

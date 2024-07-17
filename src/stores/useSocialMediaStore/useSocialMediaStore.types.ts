@@ -3,16 +3,11 @@ import { SocialMedia } from '~services/api/social-media/social-media.types';
 
 export type StoreAccount = Account & { valid: boolean };
 
-export type SocialMediaAccounts = {
-  account: Account[];
-  socialMediaId: Account['socialMediaId'];
-}[];
-
 export type NewAccount = Omit<StoreAccount, 'id'>;
 
 export type SocialMediaState = {
   accounts: {
-    data: Record<string, StoreAccount[]>;
+    data: Record<string, StoreAccount[] | undefined>;
     error: string;
     loading: boolean;
   };
@@ -23,3 +18,5 @@ export type SocialMediaState = {
 
   socialMedias: Map<string, SocialMedia>;
 };
+
+export type SocialMediaData = Pick<SocialMediaState['accounts'], 'data'>;

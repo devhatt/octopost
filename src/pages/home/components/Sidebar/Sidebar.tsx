@@ -28,13 +28,15 @@ function Sidebar(): React.ReactNode {
   const [inputValue, setInputValue] = useState('');
 
   const filteredAccountsResult = useMemo(() => {
-    const accountsArray = Object.entries(accounts.data);
-    if (accountsArray.length === 0) return [];
+    const data: {
+      socialMediaAccounts: StoreAccount[];
+      socialMediaId: string;
+    }[] = [];
 
-    let data: { socialMediaAccounts: StoreAccount[]; socialMediaId: string }[] =
-      [];
-
-    for (const [socialMediaId, socialMediaAccounts] of accountsArray) {
+    for (const [socialMediaId, socialMediaAccounts] of Object.entries(
+      accounts.data
+    )) {
+      if (!socialMediaAccounts) return;
       const filteredAccounts = socialMediaAccounts.filter((account) =>
         format(account.userName).includes(format(inputValue))
       );
@@ -79,7 +81,7 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
           />
 
-          {filteredAccountsResult.length > 0 ? (
+          {filteredAccountsResult && filteredAccountsResult.length > 0 ? (
             <div className={scss.accordionContainer}>
               {filteredAccountsResult.map(
                 ({ socialMediaAccounts, socialMediaId }) => (
