@@ -16,7 +16,7 @@ import TriangleLeftArrow from './icons/TriangleLeftArrow.svg?react';
 
 export const icons = {
   alert: Alert,
-  arrowRight: ArrowRight,
+  'arrow-right': ArrowRight,
   check: Check,
   close: Close,
   hamburguer: Hamburguer,
@@ -28,6 +28,6 @@ export const icons = {
   'small-circle-filled': SmallCircleFilled,
   star: Star,
   'star-filled': StarFilled,
-  TriangleDropArrow: TriangleDropArrow,
-  TriangleLeftArrow: TriangleLeftArrow,
+  'triangle-drop-arrow': TriangleDropArrow,
+  'triangle-left-arrow': TriangleLeftArrow,
 };
