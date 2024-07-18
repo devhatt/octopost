@@ -19,12 +19,10 @@
     color: $primaryGray;
     font-weight: bold;
 
-    padding: 1.2rem;
+    padding: 1.2rem 0;
     border: 1px solid $primaryGray;
 
     transition: 0.09s ease-in-out;
-
-    // cursor: pointer;
 
     &:hover {
       scale: 0.98;
@@ -41,6 +39,11 @@
       place-items: center;
       justify-content: space-evenly;
 
+      .socialIconGroup {
+        display: flex;
+        flex-direction: column;
+      }
+
       .socialIcon {
         height: 7rem;
 
@@ -53,7 +56,9 @@
     .socialTitle {
       display: block;
 
-      font-weight: 600;
+      color: $darkPurple;
+
+      font-weight: bold;
 
       margin: 2rem;
     }
