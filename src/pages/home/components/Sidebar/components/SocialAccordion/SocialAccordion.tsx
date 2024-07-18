@@ -17,7 +17,7 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const { addFavoriteAccount, removeFavoriteAccount, socialMedias } =
+  const { removeFavoriteAccount, setFavoriteAccount, socialMedias } =
     useSocialMediaStore();
   const { addAccount, removeAccount } = useAccountStore();
 
@@ -32,7 +32,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     isFavorited: boolean,
     account: StoreAccount
   ): void => {
-    if (isFavorited) return addFavoriteAccount(account);
+    if (isFavorited) return setFavoriteAccount(account.id);
     removeFavoriteAccount(account.id);
   };
 

@@ -1,7 +1,7 @@
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 
-export type StoreAccount = Account & { valid: boolean };
+export type StoreAccount = Account & { favorited: boolean; valid: boolean };
 
 export type NewAccount = Omit<StoreAccount, 'id'>;
 
