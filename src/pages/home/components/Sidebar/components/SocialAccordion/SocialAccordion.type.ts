@@ -1,8 +1,12 @@
+import { ReactElement } from 'react';
+
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 export type SocialAccordionProps = {
   accounts: StoreAccount[];
   error: boolean;
+  icon?: ReactElement;
+  isFavoriteAccordion?: boolean;
   socialMediaId: string;
 };
 
