@@ -22,9 +22,11 @@ export function AccountCard({
   ...props
 }: AccountCardProps): ReactNode {
   const [enabled, setEnabled] = useState(isEnabled);
+  const [favorited, setFavorited] = useState(isFavorited);
 
   const handleFavoriteChange = (): void => {
-    if (onFavoriteChange) onFavoriteChange(!isFavorited);
+    setFavorited(!favorited);
+    if (onFavoriteChange) onFavoriteChange(!favorited);
   };
 
   const handleEnableChange = (): void => {
@@ -42,7 +44,13 @@ export function AccountCard({
     <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
-      <button className={scss.star} onClick={handleFavoriteChange} />
+      <Button
+        circle
+        className={scss.favorite}
+        color="primary"
+        icon={<Icon icon={favorited ? 'star-filled' : 'star'} size={20} />}
+        onClick={handleFavoriteChange}
+      />
       <Switch
         checked={enabled}
         invalid={invalid}
