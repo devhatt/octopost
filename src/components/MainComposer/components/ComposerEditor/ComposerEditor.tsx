@@ -113,20 +113,22 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
-          maxLength={socialLimits.maxLimit}
+          maxLength={props.currentMaxLimit ?? socialLimits.maxLimit}
           svg={null}
-          value={inputValue}
+          value={props.value ?? inputValue}
         />
-        <div className={scss.characterLimitWrapper}>
-          {socialLimits.socialLimits.map((postMode) => (
-            <CharacterLimit
-              key={postMode.socialMediaId}
-              maxLength={postMode.limit}
-              svg={socialMedias.get(postMode.socialMediaId)?.icon}
-              value={inputValue}
-            />
-          ))}
-        </div>
+        {!props.postMode && (
+          <div className={scss.characterLimitWrapper}>
+            {socialLimits.socialLimits.map((postMode) => (
+              <CharacterLimit
+                key={postMode.socialMediaId}
+                maxLength={postMode.limit}
+                svg={socialMedias.get(postMode.socialMediaId)?.icon}
+                value={props.value ?? inputValue}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
