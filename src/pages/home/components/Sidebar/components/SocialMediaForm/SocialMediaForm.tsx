@@ -15,19 +15,29 @@ function SocialMediaForm({
       {socialMedias.map((socialMedia) => (
         <li className={scss.socialItem} key={socialMedia.name}>
           <div className={scss.socialCard}>
-            <div>
+            <div className={scss.socialIconGroup}>
               <socialMedia.icon className={scss.socialIcon} />
               <span className={scss.socialTitle}>{socialMedia.name}</span>
             </div>
 
             <div className={scss.buttonContainer}>
-              <Button
-                className={scss.socialButton}
-                onClick={onHandleToggleModal}
-                variant="outlined"
-              >
-                Connect Account
-              </Button>
+              {socialMedia.hasAccount ? (
+                <Button
+                  className={scss.socialButton}
+                  onClick={onHandleToggleModal}
+                  variant="outlined"
+                >
+                  Connect Account
+                </Button>
+              ) : (
+                <Button
+                  className={scss.socialButton}
+                  disabled
+                  variant="outlined"
+                >
+                  Connect Account
+                </Button>
+              )}
               {socialMedia.hasGroup && (
                 <Button
                   className={scss.socialButton}
