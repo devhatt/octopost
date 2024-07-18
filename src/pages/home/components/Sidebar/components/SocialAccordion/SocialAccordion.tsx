@@ -16,7 +16,8 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const { socialMedias } = useSocialMediaStore();
+  const { addFavoriteAccount, removeFavoriteAccount, socialMedias } =
+    useSocialMediaStore();
   const { addAccount, removeAccount } = useAccountStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
@@ -24,6 +25,14 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
     if (enabled) addAccount(account);
     if (!enabled) removeAccount(account.id);
+  };
+
+  const favoriteAccount = (
+    isFavorited: boolean,
+    account: StoreAccount
+  ): void => {
+    if (isFavorited) return addFavoriteAccount(account);
+    removeFavoriteAccount(account.id);
   };
 
   const renderError = (): ReactNode => (
@@ -36,7 +45,11 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
         <AccountCard
           avatarURL={account.avatar}
           isEnabled={account.valid}
+          isFavorited={props.isFavoriteAccordion}
           onEnableChange={(enable) => activateSocialTab(enable, account)}
+          onFavoriteChange={(isFavorited) => {
+            favoriteAccount(isFavorited, account);
+          }}
           username={account.userName}
         />
       </li>
@@ -45,6 +58,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const renderAccordionContent = (): ReactNode => (
     <ul role="listitem">{renderAccordionMap()}</ul>
   );
+
+  const socialMediaName = socialMedias.get(props.socialMediaId)?.name;
 
   return (
     <Accordion
@@ -65,7 +80,9 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
                 className={scss.icon}
                 src={iconPlaceholderForIcon}
               />
-              <span>{socialMedias.get(props.socialMediaId)?.name}</span>
+              <span>
+                {props.isFavoriteAccordion ? 'Favoritos' : socialMediaName}
+              </span>
             </div>
             {props.error && renderError()}
             <div className={scss.accordionInfo}>
