@@ -1,6 +1,7 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { MediaValidator } from '~services/api/social-media/social-media.types';
+import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -14,6 +15,13 @@ import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
   const [medias, setMedias] = useState<IMedia[]>([]);
+  const { mainContentImage, updateMainContentImage } = useAccountStore();
+
+  useEffect(() => {
+    if (mainContentImage) {
+      setMedias(mainContentImage);
+    }
+  }, [mainContentImage]);
 
   const validateFile = (file: IMedia): void => {
     const media = file.file;
@@ -30,7 +38,9 @@ function InputMediaGroup(props: MediaInput): ReactNode {
       }
     }
 
-    setMedias([...medias, ...files]);
+    const updatedMedias = [...medias, ...files];
+    setMedias(updatedMedias);
+    updateMainContentImage(updatedMedias);
   };
 
   const removeMedia = (id: IMedia['id']): void => {
@@ -42,6 +52,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
+    updateMainContentImage(list);
   };
 
   const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
@@ -60,6 +71,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
+    updateMainContentImage(list);
   };
 
   return (

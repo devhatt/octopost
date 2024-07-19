@@ -2,10 +2,10 @@
   PostMode,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
-import { AccountPost } from '~stores/useAccountStore';
+import { TAccountPost } from '~stores/useAccountStore/useAccountStore.types';
 
 export type PostModesProps = {
   currentPostModeId: SocialMedia['postModes'][number]['id'];
-  currentTab: AccountPost;
+  currentTab: TAccountPost;
   onChangePostMode: (postMode: PostMode) => void;
 };
