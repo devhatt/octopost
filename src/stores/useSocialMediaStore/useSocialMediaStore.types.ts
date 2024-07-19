@@ -17,6 +17,8 @@ export type SocialMediaState = {
   getAllAccounts: () => Promise<void>;
 
   socialMedias: Map<string, SocialMedia>;
+
+  updateAccount: (account: Account) => Promise<Account | undefined>;
 };
 
 export type SocialMediaData = Pick<SocialMediaState['accounts'], 'data'>;
