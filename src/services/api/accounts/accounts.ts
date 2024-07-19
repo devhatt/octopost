@@ -12,6 +12,14 @@ const AccountsService = {
       return [];
     }
   },
+  async update(account: Account): Promise<Account | undefined> {
+    try {
+      const res = await octopostApi.post(`account/${account.id}`, account);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 export { AccountsService };

@@ -8,7 +8,7 @@ const accounts: SocialAccordionProps['accounts'] = [
   {
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
-    favorited: false,
+    favorite: false,
     generatedAt: '2022-01-01T00:00:00Z',
     id: '21_231',
     socialMediaId: '123',
@@ -19,7 +19,7 @@ const accounts: SocialAccordionProps['accounts'] = [
   {
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
-    favorited: false,
+    favorite: true,
     generatedAt: '2022-01-01T00:00:00Z',
     id: '1234',
     socialMediaId: '456',

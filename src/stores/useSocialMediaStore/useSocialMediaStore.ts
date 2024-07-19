@@ -90,6 +90,9 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   },
 
   socialMedias: new Map<string, SocialMedia>(),
+
+  updateAccount: async (account: Account): Promise<Account | undefined> =>
+    AccountsService.update(account),
 }));
 
 void useSocialMediaStore.getState().getAllAccounts();

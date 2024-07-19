@@ -17,8 +17,7 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const { removeFavoriteAccount, setFavoriteAccount, socialMedias } =
-    useSocialMediaStore();
+  const { socialMedias, updateAccount } = useSocialMediaStore();
   const { addAccount, removeAccount } = useAccountStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
@@ -28,12 +27,11 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     if (!enabled) removeAccount(account.id);
   };
 
-  const favoriteAccount = (
+  const favoriteAccount = async (
     isFavorited: boolean,
     account: StoreAccount
-  ): void => {
-    if (isFavorited) return setFavoriteAccount(account.id);
-    removeFavoriteAccount(account.id);
+  ): Promise<void> => {
+    await updateAccount({ ...account, favorite: isFavorited });
   };
 
   const renderError = (): ReactNode => (
@@ -49,8 +47,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
           isEnabled={account.valid}
           isFavorited={props.isFavoriteAccordion}
           onEnableChange={(enable) => activateSocialTab(enable, account)}
-          onFavoriteChange={(isFavorited) => {
-            favoriteAccount(isFavorited, account);
+          onFavoriteChange={async (isFavorited) => {
+            await favoriteAccount(isFavorited, account);
           }}
           username={account.userName}
         />
