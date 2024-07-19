@@ -37,7 +37,7 @@ function Sidebar(): React.ReactNode {
           format(account.userName).includes(format(inputValue))
         );
 
-        if (filteredAccounts.length > 0) {
+        if (filteredAccounts.length) {
           filtered.push({
             socialMediaAccounts: filteredAccounts,
             socialMediaId,
@@ -81,7 +81,7 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
           />
 
-          {filteredAccountsResult.length > 0 ? (
+          {filteredAccountsResult.length ? (
             <div className={scss.accordionContainer}>
               {filteredAccountsResult.map(
                 ({ socialMediaAccounts, socialMediaId }) => (
