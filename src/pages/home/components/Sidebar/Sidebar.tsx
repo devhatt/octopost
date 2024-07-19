@@ -5,7 +5,6 @@ import debounce from 'lodash.debounce';
 
 import useKeyPress from '~hooks/useKeyPress/useKeyPress';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
-import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import AccordionTab from '~components/AccordionTab/AccordionTab';
 import Button from '~components/Button/Button';
@@ -18,6 +17,8 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
+import { filteredSocialMedia } from './Sidebar.types';
+
 const HALF_SECOND = 500;
 
 const format = (userName: string): string => userName.toLowerCase().trim();
@@ -28,25 +29,24 @@ function Sidebar(): React.ReactNode {
   const [inputValue, setInputValue] = useState('');
 
   const filteredAccountsResult = useMemo(() => {
-    const data: {
-      socialMediaAccounts: StoreAccount[];
-      socialMediaId: string;
-    }[] = [];
+    const filtered: filteredSocialMedia[] = [];
 
-    for (const [socialMediaId, socialMediaAccounts] of Object.entries(
-      accounts.data
-    )) {
-      if (!socialMediaAccounts) return;
-      const filteredAccounts = socialMediaAccounts.filter((account) =>
-        format(account.userName).includes(format(inputValue))
-      );
+    Object.entries(accounts.data).forEach(
+      ([socialMediaId, socialMediaAccounts]) => {
+        const filteredAccounts = socialMediaAccounts.filter((account) =>
+          format(account.userName).includes(format(inputValue))
+        );
 
-      if (filteredAccounts.length > 0) {
-        data.push({ socialMediaAccounts: filteredAccounts, socialMediaId });
+        if (filteredAccounts.length > 0) {
+          filtered.push({
+            socialMediaAccounts: filteredAccounts,
+            socialMediaId,
+          });
+        }
       }
-    }
+    );
 
-    return data;
+    return filtered;
   }, [accounts, inputValue]);
 
   const handleToggleModal = (): void => {
@@ -81,7 +81,7 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
           />
 
-          {filteredAccountsResult && filteredAccountsResult.length > 0 ? (
+          {filteredAccountsResult.length > 0 ? (
             <div className={scss.accordionContainer}>
               {filteredAccountsResult.map(
                 ({ socialMediaAccounts, socialMediaId }) => (
