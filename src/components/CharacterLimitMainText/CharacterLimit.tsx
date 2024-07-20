@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 
 import classNames from 'classnames';
 
+import Icon from '~components/Icon/Icon.tsx';
+
 import scss from './CharacterLimit.module.scss';
 
 import { ModuleProps } from './CharacterLimit.types.ts';
@@ -20,7 +22,7 @@ function CharacterLimit(props: ModuleProps): ReactNode {
   function renderWithIcon(): ReactNode {
     return (
       <div className={svgColor} data-testid="characterLimitWithIcon">
-        {props.svg}
+        {props.svg ? <Icon icon={props.svg} size={24} /> : null}
         <div className={characterLimitClass}>
           <span>{remainingCharacters}</span>
         </div>

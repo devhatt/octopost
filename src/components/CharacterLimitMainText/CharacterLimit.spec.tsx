@@ -10,7 +10,7 @@ describe('CharacterLimit Component', () => {
   });
 
   it('render a svg component', () => {
-    render(<CharacterLimit maxLength={10} svg={<svg />} value="1234" />);
+    render(<CharacterLimit maxLength={10} svg={'discord'} value="1234" />);
     const characterLimit = screen.getByTestId('characterLimitWithIcon');
     expect(characterLimit).toBeInTheDocument();
   });

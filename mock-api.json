@@ -137,7 +137,7 @@
   ],
   "social-medias": [
     {
-      "icon": "Icon",
+      "icon": "discord",
       "id": "DISCORD_EXAMPLE_ID",
       "name": "Discord",
       "postModes": [
@@ -216,7 +216,86 @@
       ]
     },
     {
-      "icon": "Icon",
+      "icon": "tiktok",
+      "id": "TIKTOK_EXAMPLE_ID",
+      "name": "Tiktok",
+      "postModes": [
+        {
+          "id": "TIKTOK_STORY_POSTMODE_ID",
+          "name": "TesteStory",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 20
+            },
+            "media": {
+              "maxFileSize": 20000000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "TIKTOK_REELS_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 3
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 900,
+              "maxHeight": 700,
+              "ar": ["16:9"],
+              "maxDuration": 1100
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "TIKTOK_REELS_POSTMODE_ID",
+          "name": "TesteReels",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 12
+            },
+            "media": {
+              "maxSize": 30000,
+              "maxWidth": 1920,
+              "maxHeight": 1080,
+              "ar": ["5:3"],
+              "maxDuration": 5000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "twitter",
       "id": "TWITTER_EXAMPLE_ID",
       "name": "Twitter",
       "postModes": [
@@ -246,6 +325,116 @@
         },
         {
           "id": "TWITTER_THREAD_POSTMODE_ID",
+          "name": "TesteThread",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "facebook",
+      "id": "FACEBOOK_EXAMPLE_ID",
+      "name": "Twitter",
+      "postModes": [
+        {
+          "id": "FACEBOOK_THREAD_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "FACEBOOK_THREAD_POSTMODE_ID",
+          "name": "TesteThread",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "instagram",
+      "id": "INSTAGRAM_EXAMPLE_ID",
+      "name": "Instagram",
+      "postModes": [
+        {
+          "id": "INSTAGRAM_THREAD_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "INSTAGRAM_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
           "validators": {
