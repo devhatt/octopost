@@ -16,4 +16,6 @@ export enum MEDIA_ERRORS {
   MAX_SIZE_EXCEED = 4,
 }
 
-export type MediaErrorMap = Record<MEDIA_ERRORS | number, string>;
+export type ErrorMap = Record<MEDIA_ERRORS, string>;
+
+export type MediaErrorMap = Record<string, ErrorMap>;
