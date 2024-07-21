@@ -43,7 +43,7 @@ function FeedbackError(): ReactNode {
           <div className={scss.errorMessageContainer}>
             <p className={scss.errorMessage}>
               Failed to progress, please click on the <span> button </span>on
-              the side to see the errors
+              the side to see the errors, try again later.
             </p>
           </div>
           <button
