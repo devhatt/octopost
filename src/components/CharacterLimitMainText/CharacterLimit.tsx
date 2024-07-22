@@ -22,7 +22,7 @@ function CharacterLimit(props: ModuleProps): ReactNode {
   function renderWithIcon(): ReactNode {
     return (
       <div className={svgColor} data-testid="characterLimitWithIcon">
-        {props.svg ? <Icon icon={props.svg} size={24} /> : null}
+        {props.svg && <Icon icon={props.svg} size={24} />}
         <div className={characterLimitClass}>
           <span>{remainingCharacters}</span>
         </div>
