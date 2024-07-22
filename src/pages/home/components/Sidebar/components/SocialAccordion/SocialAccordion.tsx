@@ -76,7 +76,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
                 aria-label={
                   isOpen ? 'Accordion is open' : 'Accordion is closed'
                 }
-                icon={isOpen ? 'dropDownArrow' : 'left-arrow'}
+                className={isOpen ? scss.rotateIconUp : scss.rotateIconDown}
+                icon={isOpen ? 'triangle-drop-arrow' : 'triangle-left-arrow'}
                 size={16}
               />
             </div>
