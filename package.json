@@ -9,7 +9,7 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "mock-api": "json-server mock-api.json",
-    "start": "pnpm build && vite",
+    "start": "concurrently \"node setup.mjs\" \"pnpm build\" \"vite\"",
     "build": "tsc && vite build",
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
@@ -40,6 +40,7 @@
     "classnames": "2.5.1",
     "cors": "2.8.5",
     "framer-motion": "10.17.9",
+    "gsap": "3.12.5",
     "i18next": "23.9.0",
     "i18next-browser-languagedetector": "7.2.0",
     "lodash.debounce": "4.0.8",

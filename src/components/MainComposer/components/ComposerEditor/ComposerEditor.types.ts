@@ -10,6 +10,8 @@ export type ComposerEditorProps = PropsWithChildren<{
   accountId?: string;
   addError?: MainComposerErrorEmiter;
   onChange?: InputChange;
+  currentMaxLimit?: number;
+  onError?: (error: ErrorMapText) => void
   postMode?: PostMode;
   removeError?: (id: string) => void;
   value?: string;

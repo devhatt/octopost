@@ -45,6 +45,9 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
         accountId={props.accountId}
         addError={addErrors}
         onChange={props.onChange}
+        currentMaxLimit={props.currentMaxLimit ?? undefined}
+        onChangePost={props.onChange}
+        onError={handleTextErrors}
         postMode={props.postMode}
         removeError={errorRemover}
         value={props.value}

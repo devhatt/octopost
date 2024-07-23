@@ -11,6 +11,7 @@ export type Error = {
 
 export type MainComposerBaseProps = {
   accountId?: string;
+  currentMaxLimit?: number;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onError?: (hasError: boolean) => void;
   postMode?: PostMode;
