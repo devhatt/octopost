@@ -14,7 +14,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
 
   const { addError, removeError } = useError();
 
-  const handleErrors = (id: string, error: Error): void => {
+  const addErrors = (id: string, error: Error): void => {
     const { message } = error;
     const useErrorId = addError({ message });
 
@@ -31,7 +31,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       return (
         <InputMediaGroup
           accountId={props.accountId}
-          addError={handleErrors}
+          addError={addErrors}
           postMode={props.postMode}
           removeError={errorRemover}
         />
@@ -43,7 +43,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     <div className={scss.container}>
       <ComposerEditor
         accountId={props.accountId}
-        addError={handleErrors}
+        addError={addErrors}
         onChange={props.onChange}
         postMode={props.postMode}
         removeError={errorRemover}
