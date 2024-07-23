@@ -9,9 +9,8 @@ export type InputChange = (event: ChangeEvent<HTMLTextAreaElement>) => void;
 export type ComposerEditorProps = PropsWithChildren<{
   accountId?: string;
   addError?: MainComposerErrorEmiter;
-  onChange?: InputChange;
   currentMaxLimit?: number;
-  onError?: (error: ErrorMapText) => void
+  onChange?: InputChange;
   postMode?: PostMode;
   removeError?: (id: string) => void;
   value?: string;

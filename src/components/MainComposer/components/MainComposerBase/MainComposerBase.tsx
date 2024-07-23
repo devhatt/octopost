@@ -44,10 +44,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       <ComposerEditor
         accountId={props.accountId}
         addError={addErrors}
-        onChange={props.onChange}
         currentMaxLimit={props.currentMaxLimit ?? undefined}
-        onChangePost={props.onChange}
-        onError={handleTextErrors}
+        onChange={props.onChange}
         postMode={props.postMode}
         removeError={errorRemover}
         value={props.value}
