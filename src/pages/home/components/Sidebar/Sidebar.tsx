@@ -17,7 +17,7 @@ import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
-import { filteredSocialMedia } from './Sidebar.types';
+import { FilteredSocialMedia } from './Sidebar.types';
 
 const HALF_SECOND = 500;
 
@@ -29,7 +29,7 @@ function Sidebar(): React.ReactNode {
   const [inputValue, setInputValue] = useState('');
 
   const filteredAccountsResult = useMemo(() => {
-    const filtered: filteredSocialMedia[] = [];
+    const filtered: FilteredSocialMedia[] = [];
 
     Object.entries(accounts.data).forEach(
       ([socialMediaId, socialMediaAccounts]) => {
@@ -37,7 +37,7 @@ function Sidebar(): React.ReactNode {
           format(account.userName).includes(format(inputValue))
         );
 
-        if (filteredAccounts.length) {
+        if (filteredAccounts.length > 0) {
           filtered.push({
             socialMediaAccounts: filteredAccounts,
             socialMediaId,
@@ -81,7 +81,7 @@ function Sidebar(): React.ReactNode {
             placeholder="Search for social media"
           />
 
-          {filteredAccountsResult.length ? (
+          {filteredAccountsResult.length > 0 ? (
             <div className={scss.accordionContainer}>
               {filteredAccountsResult.map(
                 ({ socialMediaAccounts, socialMediaId }) => (
