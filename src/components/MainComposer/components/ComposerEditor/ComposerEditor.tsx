@@ -140,7 +140,6 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
             ))}
           </div>
         )}
-
       </div>
     </div>
   );
