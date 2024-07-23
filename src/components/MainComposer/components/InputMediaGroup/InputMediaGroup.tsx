@@ -69,7 +69,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
-    removeErrors(id);
+    if (props.postMode) removeErrors(id);
 
     if (indexToRemove !== -1) {
       list.splice(indexToRemove, 1);
@@ -85,7 +85,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
-    removeErrors(id);
+    if (props.postMode) removeErrors(id);
 
     if (props.postMode) {
       for (const file of files) {
