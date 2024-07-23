@@ -2,8 +2,6 @@ import { ReactNode, useState } from 'react';
 
 import { nanoid } from 'nanoid';
 
-import { MediaValidator } from '~services/api/social-media/social-media.types';
-
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
 import InputMedia from './components/InputMedia/InputMedia';
@@ -21,7 +19,7 @@ import {
 
 function InputMediaGroup(props: MediaInput): ReactNode {
   const [medias, setMedias] = useState<IMedia[]>([]);
-  const [errors, setErrors] = useState<MediaErrorMap>({} as MediaErrorMap);
+  const [errors, setErrors] = useState<MediaErrorMap>({});
 
   const removeErrors = (fileId: IMedia['id']): void => {
     const errorsForFile = errors[fileId];
@@ -32,7 +30,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
 
   const validateFile = async (file: IMedia): Promise<void> => {
     const media = file.file;
-    const validator = props.postMode?.validators as MediaValidator;
+    const validator = props.postMode?.validators.media;
 
     const fileErrors: ErrorMap = {
       [MEDIA_ERRORS.MAX_AR_EXCEED]: '',
@@ -40,19 +38,21 @@ function InputMediaGroup(props: MediaInput): ReactNode {
       [MEDIA_ERRORS.MAX_RESOLUTION_EXCEED]: '',
       [MEDIA_ERRORS.MAX_SIZE_EXCEED]: '',
     };
-    const fileValidator = Object.values(fileValidators({ media, validator }));
-    for (const validators of fileValidator) {
-      const validate = await validators(props, media.name);
-      const errorId = nanoid();
 
-      if (validate.error) {
-        fileErrors[validate.type] = errorId;
-        props.addError?.(errorId, validate.error);
+    if (validator) {
+      const fileValidator = Object.values(fileValidators({ media, validator }));
+      for (const validators of fileValidator) {
+        const validate = await validators(props, media.name);
+        const errorId = nanoid();
+
+        if (validate.error) {
+          fileErrors[validate.type] = errorId;
+          props.addError?.(errorId, validate.error);
+        }
       }
+      if (Object.keys(fileErrors).length > 0)
+        setErrors({ ...errors, [file.id]: fileErrors });
     }
-
-    if (Object.keys(errors).length > 0)
-      setErrors({ ...errors, [file.id]: fileErrors });
   };
 
   const addMedia = async (files: IMedia[]): Promise<void> => {
@@ -69,11 +69,12 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
+    removeErrors(id);
+
     if (indexToRemove !== -1) {
       list.splice(indexToRemove, 1);
     }
 
-    removeErrors(id);
     setMedias(list);
   };
 

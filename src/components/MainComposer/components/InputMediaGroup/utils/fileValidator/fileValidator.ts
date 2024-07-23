@@ -18,7 +18,7 @@ export const fileValidators = ({
       fileName: string
     ): Promise<ValidatorError> => {
       const arChecks = await Promise.all(
-        validator.media.ar.map(async (ar) => mediaValidator.aspectRatio(ar))
+        validator.ar.map(async (ar) => mediaValidator.aspectRatio(ar))
       );
       const allError = arChecks.every((valid) => !valid);
       if (props.addError && allError) {
@@ -43,7 +43,7 @@ export const fileValidators = ({
     ): Promise<ValidatorError> => {
       if (
         props.addError &&
-        !(await mediaValidator.duration(validator.media.maxDuration))
+        !(await mediaValidator.duration(validator.maxDuration))
       ) {
         return {
           error: {
@@ -67,8 +67,8 @@ export const fileValidators = ({
       if (
         props.addError &&
         !(await mediaValidator.resolution(
-          validator.media.maxWidth,
-          validator.media.maxHeight
+          validator.maxWidth,
+          validator.maxHeight
         ))
       ) {
         return {
@@ -87,7 +87,7 @@ export const fileValidators = ({
     },
 
     size: (props: MediaInput, fileName: string): ValidatorError => {
-      if (props.addError && !mediaValidator.size(validator.media.maxFileSize)) {
+      if (props.addError && !mediaValidator.size(validator.maxFileSize)) {
         return {
           error: {
             accountId: props.accountId,

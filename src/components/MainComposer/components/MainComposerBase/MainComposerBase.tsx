@@ -26,6 +26,19 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     if (id) removeError(errors[id]);
   };
 
+  const renderImputMediaGroup = (): ReactNode => {
+    if (props.postMode && 'media' in props.postMode.validators) {
+      return (
+        <InputMediaGroup
+          accountId={props.accountId}
+          addError={handleErrors}
+          postMode={props.postMode}
+          removeError={errorRemover}
+        />
+      );
+    }
+  };
+
   return (
     <div className={scss.container}>
       <ComposerEditor
@@ -38,14 +51,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
-        <div>
-          <InputMediaGroup
-            accountId={props.accountId}
-            addError={handleErrors}
-            postMode={props.postMode}
-            removeError={errorRemover}
-          />
-        </div>
+        {props.postMode ? renderImputMediaGroup() : <InputMediaGroup />}
+        <div />
       </div>
     </div>
   );

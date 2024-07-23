@@ -54,11 +54,12 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
 
   const emitErrors = (text: string): void => {
     const textValidators = new TextValidators(text);
-    const validators = props.postMode?.validators as TextValidator;
+    const validators = props.postMode?.validators.text;
 
     if (
       props.postMode &&
-      !textValidators.textLength(validators.text.maxLength)
+      validators &&
+      !textValidators.textLength(validators.maxLength)
     ) {
       addErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
     } else {
@@ -70,8 +71,8 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     (
       currentValidator: PostMode['validators'],
       currentMax: number
-    ): currentValidator is TextValidator =>
-      'text' in currentValidator &&
+    ): currentValidator is { text: TextValidator } =>
+      currentValidator.text !== undefined &&
       currentValidator.text.maxLength > currentMax,
     [socialMedias]
   );
