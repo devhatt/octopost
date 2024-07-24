@@ -13,10 +13,10 @@ import InputSearch from '~components/InputSearch/InputSearch';
 import Modal from '~components/Modal/Modal';
 
 import AddAccount from './components/AddAccount/AddAccount';
-import SocialAccordion from './components/SocialAccordion/SocialAccordion';
 
 import scss from './Sidebar.module.scss';
 
+import { EmptyResult, FilteredAccounts } from './Sidebar.components';
 import { FilteredSocialMedia } from './Sidebar.types';
 
 const HALF_SECOND = 500;
@@ -82,20 +82,9 @@ function Sidebar(): React.ReactNode {
           />
 
           {filteredAccountsResult.length > 0 ? (
-            <div className={scss.accordionContainer}>
-              {filteredAccountsResult.map(
-                ({ socialMediaAccounts, socialMediaId }) => (
-                  <SocialAccordion
-                    accounts={socialMediaAccounts}
-                    error={false}
-                    key={socialMediaId}
-                    socialMediaId={socialMediaId}
-                  />
-                )
-              )}
-            </div>
+            <FilteredAccounts socialMedia={filteredAccountsResult} />
           ) : (
-            <p> Não há resultados para essa busca</p>
+            <EmptyResult />
           )}
 
           <div className={scss.newAccountButtonMobileContainer}>
