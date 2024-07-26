@@ -9,12 +9,16 @@ import FeedbackError from './FeedbackError';
 import { TFeedbackErrorProps } from './FeedbackError.type';
 
 export const FeedbackErrorComponent: Story<TFeedbackErrorProps> = (props) => {
-  const setErrors = useError((state) => state.addError);
+  const { addError, removeError } = useError();
+
   useEffect(() => {
-    for (const error of props.errors) {
-      setErrors(error);
-    }
-  }, [props.errors, setErrors]);
+    const newErrorIds = props.errors.map((error) => addError(error));
+
+    return (): void => {
+      for (const errorId of newErrorIds) removeError(errorId);
+    };
+  }, []);
+
   return <FeedbackError />;
 };
 

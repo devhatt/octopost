@@ -55,12 +55,12 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const emitErrors = (text: string): void => {
     const textValidators = new TextValidators(text);
     const validators = props.postMode?.validators.text;
-
-    if (
+    const isTextTooLong =
       props.postMode &&
       validators &&
-      !textValidators.textLength(validators.maxLength)
-    ) {
+      !textValidators.textLength(validators.maxLength);
+
+    if (isTextTooLong) {
       addErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
     } else {
       removeErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
