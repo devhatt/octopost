@@ -101,7 +101,7 @@ describe('Sidebar component', () => {
     });
     await userEvent.click(buttonToOpenModal);
 
-    const openModalEvidence = screen.getByText(/adicionar social/i);
+    const openModalEvidence = screen.getByText(/new account/i);
     expect(openModalEvidence).toBeInTheDocument();
   });
 

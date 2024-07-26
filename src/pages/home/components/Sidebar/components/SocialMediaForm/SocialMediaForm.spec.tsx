@@ -8,11 +8,7 @@ const setIsOpenMock = (): boolean => !true;
 describe.only('Social Media Form', () => {
   it('renders correctly', () => {
     const { container } = render(
-      <SocialMediaForm
-        isOpen
-        onHandleToggleModal={() => setIsOpenMock}
-        setIsOpen={setIsOpenMock}
-      />
+      <SocialMediaForm onHandleToggleModal={() => setIsOpenMock} />
     );
 
     expect(container).toBeDefined();
