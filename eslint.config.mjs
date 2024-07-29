@@ -468,7 +468,6 @@ export default defineFlatConfig([
       'unicorn/explicit-length-check': 'warn',
       'unicorn/new-for-builtins': 'warn',
       'unicorn/no-array-callback-reference': 'off',
-      'unicorn/no-array-for-each': 'warn',
       'unicorn/no-array-method-this-argument': 'warn',
       'unicorn/no-array-push-push': 'warn',
       'unicorn/no-await-expression-member': 'warn',

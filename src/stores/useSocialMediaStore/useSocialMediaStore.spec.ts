@@ -89,10 +89,36 @@ describe('useSocialMediaStore', () => {
   });
 
   it('checks if getAllAccounts correctly retrieves and validates social media accounts', async () => {
-    const updatedAccounts = [
-      { id: 1, socialMediaId: 'DISCORD_EXAMPLE_ID', valid: false },
-      { id: 14, socialMediaId: 'TWITTER_EXAMPLE_ID', valid: false },
-    ];
+    const updatedAccounts = {
+      DISCORD_EXAMPLE_ID: [
+        {
+          avatar: 'https://example.com/image1.jpg',
+          expiresAt:
+            'Fri May 17 2024 22:57:54 GMT-0300 (Brasilia Standard Time)',
+          generatedAt:
+            'Fri May 17 2024 22:57:54 GMT-0300 (Brasilia Standard Time)',
+          id: 1,
+          socialMediaId: 'DISCORD_EXAMPLE_ID',
+          token: 'DISCORD_EXAMPLE_TOKEN_1',
+          userName: 'Discord User 1',
+          valid: false,
+        },
+      ],
+      TWITTER_EXAMPLE_ID: [
+        {
+          avatar: 'https://example.com/image2.jpg',
+          expiresAt:
+            'Fri May 17 2024 22:57:54 GMT-0300 (Brasilia Standard Time)',
+          generatedAt:
+            'Fri May 17 2024 22:57:54 GMT-0300 (Brasilia Standard Time)',
+          id: 14,
+          socialMediaId: 'TWITTER_EXAMPLE_ID',
+          token: 'TWITTER_EXAMPLE_TOKEN_14',
+          userName: 'Twitter User 14',
+          valid: false,
+        },
+      ],
+    };
 
     const { result } = renderHook(() =>
       useSocialMediaStoreHook.useSocialMediaStore()
@@ -102,10 +128,6 @@ describe('useSocialMediaStore', () => {
       await result.current.getAllAccounts();
     });
 
-    expect(result.current.accounts.data).toEqual(
-      expect.arrayContaining(
-        updatedAccounts.map((account) => expect.objectContaining(account))
-      )
-    );
+    expect(result.current.accounts.data).toEqual(updatedAccounts);
   });
 });
