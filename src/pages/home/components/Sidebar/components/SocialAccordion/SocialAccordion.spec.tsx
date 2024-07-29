@@ -21,7 +21,7 @@ describe.skip('SocialAccordion', () => {
     it('renders the component', () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts().data}
+          accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
@@ -34,7 +34,7 @@ describe.skip('SocialAccordion', () => {
     it('renders the intern content of accordion when is open', () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts().data}
+          accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
@@ -59,30 +59,32 @@ describe.skip('SocialAccordion', () => {
   });
 
   describe('when click', () => {
-    it('closes the accordion', async () => {
+    it('closes the accordion', () => {
       render(
         <SocialAccordion
-          accounts={mockedAccounts().data}
+          accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const [account] = mockedAccounts().data;
+      const accounts = mockedAccounts().data;
 
-      const accordion = await screen.findByRole('button');
-      await userEvent.click(accordion);
+      Object.values(accounts.DISCORD_EXAMPLE_ID).forEach(async (account) => {
+        const accordion = await screen.findByRole('button');
+        await userEvent.click(accordion);
 
-      const userCard = screen.getByText(new RegExp(account.userName, 'i'));
+        const userCard = screen.getByText(new RegExp(account.userName, 'i'));
 
-      expect(userCard).toBeInTheDocument();
+        expect(userCard).toBeInTheDocument();
 
-      await userEvent.click(accordion);
+        await userEvent.click(accordion);
 
-      await waitFor(() =>
-        expect(
-          screen.queryByText(new RegExp(account.userName, 'i'))
-        ).not.toBeInTheDocument()
-      );
+        await waitFor(() =>
+          expect(
+            screen.queryByText(new RegExp(account.userName, 'i'))
+          ).not.toBeInTheDocument()
+        );
+      });
     });
   });
 
@@ -101,20 +103,23 @@ describe.skip('SocialAccordion', () => {
     });
 
     it('renders with one if list have one account', () => {
-      const [account] = mockedAccounts().data;
+      const accounts = mockedAccounts().data;
 
       render(
         <SocialAccordion
-          accounts={[account]}
+          accounts={accounts.DISCORD_EXAMPLE_ID}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
       );
-      const accountQuantity = screen.getByText(
-        new RegExp(String(account.id), 'i')
-      );
 
-      expect(accountQuantity).toBeInTheDocument();
+      Object.values(accounts.DISCORD_EXAMPLE_ID).forEach((account) => {
+        const accountQuantity = screen.getByText(
+          new RegExp(String(account.id), 'i')
+        );
+
+        expect(accountQuantity).toBeInTheDocument();
+      });
     });
   });
 });
