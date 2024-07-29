@@ -5,7 +5,7 @@ import SocialMediaForm from './SocialMediaForm';
 
 const setIsOpenMock = (): boolean => !true;
 
-describe.only('Social Media Form', () => {
+describe('Social Media Form', () => {
   it('renders correctly', () => {
     const { container } = render(
       <SocialMediaForm onHandleToggleModal={() => setIsOpenMock} />
@@ -18,8 +18,8 @@ describe.only('Social Media Form', () => {
 
     render(<SocialMediaForm onHandleToggleModal={handleClick} />);
 
-    const button = screen.getAllByRole('button');
-    await userEvent.click(button[0]);
+    const [button] = screen.getAllByRole('button');
+    await userEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
