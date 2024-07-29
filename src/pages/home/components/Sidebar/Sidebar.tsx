@@ -33,6 +33,7 @@ function Sidebar(): React.ReactNode {
 
     Object.entries(accounts.data).forEach(
       ([socialMediaId, socialMediaAccounts]) => {
+        if (!socialMediaAccounts) return;
         const filteredAccounts = socialMediaAccounts.filter((account) =>
           format(account.userName).includes(format(inputValue))
         );

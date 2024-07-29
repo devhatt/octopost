@@ -7,7 +7,7 @@ export type NewAccount = Omit<StoreAccount, 'id'>;
 
 export type SocialMediaState = {
   accounts: {
-    data: Record<string, StoreAccount[]>;
+    data: Record<string, StoreAccount[] | null>;
     error: string;
     loading: boolean;
   };
