@@ -4,6 +4,7 @@ import { Mock } from 'vitest';
 
 import {
   mockedAccounts,
+  mockedSocialMedias,
   mockedUseSocialMediaStore,
 } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 
@@ -77,7 +78,8 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockDiscordData}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
 
@@ -121,7 +123,8 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
 
@@ -142,11 +145,14 @@ describe('SocialAccordion', () => {
 
   describe('account list', () => {
     it('renders with zero if list is empty', () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={[]}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const accountQuantity = screen.getByText(/0/);
@@ -161,7 +167,8 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={[{ ...account, valid: true }]}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
 

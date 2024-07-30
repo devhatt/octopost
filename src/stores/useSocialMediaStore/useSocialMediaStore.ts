@@ -46,6 +46,14 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     return addedAccount;
   },
 
+  favoriteAccount: async (
+    accountId: Account['id'],
+    favorite: boolean
+  ): Promise<Account | undefined> =>
+    AccountsService.favorite(accountId, favorite),
+
+  favoriteAccounts: [],
+
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
@@ -90,9 +98,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   },
 
   socialMedias: new Map<string, SocialMedia>(),
-
-  updateAccount: async (account: Account): Promise<Account | undefined> =>
-    AccountsService.update(account),
 }));
 
 void useSocialMediaStore.getState().getAllAccounts();

@@ -10,6 +10,7 @@ import { SocialMedia } from '~services/api/social-media/social-media.types';
 import {
   mockedAccounts,
   mockedAddAccount,
+  mockedFavoriteAccounts,
   mockedSocialMedias,
   mockedUseSocialMediaStore,
 } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
@@ -26,6 +27,7 @@ beforeEach(() => {
     () => ({
       accounts: mockedAccounts(),
       addAccount: mockedAddAccount,
+      favoriteAccounts: mockedFavoriteAccounts,
       socialMedias: mockedSocialMedias(),
     })
   );
@@ -77,6 +79,7 @@ describe('Sidebar component', () => {
         loading: false,
       },
       addAccount: mockedAddAccount,
+      favoriteAccounts: mockedFavoriteAccounts,
       socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
     });
 

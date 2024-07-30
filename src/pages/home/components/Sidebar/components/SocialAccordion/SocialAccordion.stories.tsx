@@ -19,7 +19,7 @@ const accounts: SocialAccordionProps['accounts'] = [
   {
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
-    favorite: true,
+    favorite: false,
     generatedAt: '2022-01-01T00:00:00Z',
     id: '1234',
     socialMediaId: '456',
@@ -36,6 +36,7 @@ export const SocicialAccordionComponent: Story<SocialAccordionProps> = (
     accounts={props.accounts}
     error={props.error}
     socialMediaId={props.socialMediaId}
+    title={props.socialMediaId}
   />
 );
 

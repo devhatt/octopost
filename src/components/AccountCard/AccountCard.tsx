@@ -3,6 +3,8 @@ import { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 
 import { Avatar } from '~components/Avatar/Avatar';
+import Button from '~components/Button/Button';
+import Icon from '~components/Icon/Icon';
 import { Switch } from '~components/Switch/Switch';
 
 import scss from './AccountCard.module.scss';
@@ -26,7 +28,7 @@ export function AccountCard({
 
   const handleFavoriteChange = (): void => {
     setFavorited(!favorited);
-    if (onFavoriteChange) onFavoriteChange(!favorited);
+    onFavoriteChange?.(!favorited);
   };
 
   const handleEnableChange = (): void => {
@@ -40,6 +42,8 @@ export function AccountCard({
     [scss.invalid]: invalid,
   });
 
+  const favoriteIcon = favorited ? 'star-filled' : 'star';
+
   return (
     <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
@@ -48,7 +52,7 @@ export function AccountCard({
         circle
         className={scss.favorite}
         color="primary"
-        icon={<Icon icon={favorited ? 'star-filled' : 'star'} size={20} />}
+        icon={<Icon icon={favoriteIcon} size={20} />}
         onClick={handleFavoriteChange}
       />
       <Switch
