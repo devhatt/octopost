@@ -27,13 +27,15 @@ export function AccountCard({
 
   const handleFavoriteChange = (): void => {
     setFavorited(!favorited);
-    if (onFavoriteChange) onFavoriteChange(!favorited);
+    onFavoriteChange?.(!favorited);
   };
 
   const handleEnableChange = (): void => {
     setEnabled(!enabled);
     if (onEnableChange) onEnableChange(!enabled);
   };
+
+  const favoriteIcon = favorited ? 'star-filled' : 'star';
 
   return (
     <div className={classNames(scss.container, className)} {...props}>
@@ -43,7 +45,7 @@ export function AccountCard({
         circle
         className={scss.favorite}
         color="primary"
-        icon={<Icon icon={favorited ? 'star-filled' : 'star'} size={20} />}
+        icon={<Icon icon={favoriteIcon} size={20} />}
         onClick={handleFavoriteChange}
       />
       <Switch

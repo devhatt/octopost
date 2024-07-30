@@ -6,8 +6,8 @@ export type SocialAccordionProps = {
   accounts: StoreAccount[];
   error: boolean;
   icon?: ReactElement;
-  isFavoriteAccordion?: boolean;
   socialMediaId: string;
+  title: string | undefined;
 };
 
 export type IAccountList = {
