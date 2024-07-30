@@ -35,7 +35,7 @@ describe('SocialAccordion', () => {
   it('renders the component', () => {
     render(
       <SocialAccordion
-        accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
+        accounts={mockDiscordData}
         error={false}
         socialMediaId="DISCORD_EXAMPLE_ID"
       />
@@ -153,7 +153,7 @@ describe('SocialAccordion', () => {
     });
 
     it('renders with one account if list have one account', () => {
-      const [account] = mockedAccounts().data.DISCORD_EXAMPLE_ID;
+      const [account] = mockDiscordData;
 
       render(
         <SocialAccordion
