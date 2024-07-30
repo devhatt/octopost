@@ -9,6 +9,7 @@ export type SocialMediaState = {
   accounts: {
     data: Record<string, StoreAccount[] | null>;
     error: string;
+    favorites: StoreAccount[];
     loading: boolean;
   };
   addAccount: (newAccount: NewAccount) => Promise<StoreAccount>;
@@ -17,8 +18,6 @@ export type SocialMediaState = {
     accountId: Account['id'],
     favorite: boolean
   ) => Promise<Account | undefined>;
-
-  favoriteAccounts: StoreAccount[];
 
   getAllAccounts: () => Promise<void>;
 
