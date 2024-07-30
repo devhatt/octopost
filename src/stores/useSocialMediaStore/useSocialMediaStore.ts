@@ -18,6 +18,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   accounts: {
     data: {},
     error: '',
+    favorites: [],
     loading: false,
   },
 
@@ -52,8 +53,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     favorite: boolean
   ): Promise<Account | undefined> =>
     AccountsService.favorite(accountId, favorite),
-
-  favoriteAccounts: [],
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -103,11 +102,9 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       accounts: {
         data: accountsBySocialMedia.data,
         error: '',
+        favorites: favoriteSocialMedias,
         loading: false,
       },
-    }));
-    set(() => ({
-      favoriteAccounts: favoriteSocialMedias,
     }));
   },
 
