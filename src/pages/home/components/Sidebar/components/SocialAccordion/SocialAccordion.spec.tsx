@@ -72,7 +72,7 @@ describe('SocialAccordion', () => {
   });
 
   describe('social tab switch', () => {
-    it('activates social tab when switch is enable', async () => {
+    it('activates social tab when is enable', async () => {
       render(
         <SocialAccordion
           accounts={mockDiscordData}
@@ -89,7 +89,7 @@ describe('SocialAccordion', () => {
 
       expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
     });
-    it('deactivates social tab when switch is enable', async () => {
+    it('deactivates social tab when is disable', async () => {
       render(
         <SocialAccordion
           accounts={mockDiscordData}
