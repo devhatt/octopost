@@ -1,3 +1,4 @@
+import isEmpty from 'lodash.isempty';
 import { create } from 'zustand';
 
 import { octopostApi } from '~services/api';
@@ -63,6 +64,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     const accountsBySocialMedia: SocialMediaData = {
       data: {},
     };
+    let favoriteSocialMedias: StoreAccount[] = [];
 
     accountsBySocialMedia.data = fetchedAccounts.reduce(
       (agg, account) => ({
@@ -77,6 +79,15 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       }),
       accountsBySocialMedia.data
     );
+
+    if (!isEmpty(accountsBySocialMedia.data)) {
+      favoriteSocialMedias = Object.values(accountsBySocialMedia.data)
+        .flat()
+        .filter(
+          (socialMedia): socialMedia is StoreAccount =>
+            socialMedia?.favorite === true
+        );
+    }
 
     const fetchedSocialMedias =
       await SocialMediaService.fetch(userSocialMedias);
@@ -94,6 +105,9 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
         error: '',
         loading: false,
       },
+    }));
+    set(() => ({
+      favoriteAccounts: favoriteSocialMedias,
     }));
   },
 
