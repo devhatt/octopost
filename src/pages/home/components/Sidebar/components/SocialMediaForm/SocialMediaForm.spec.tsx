@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import SocialMediaForm from './SocialMediaForm';
 
-const setIsOpenMock = (): boolean => !true;
+const setIsOpenMock = (): boolean => false;
 
 describe('Social Media Form', () => {
   it('renders correctly', () => {
