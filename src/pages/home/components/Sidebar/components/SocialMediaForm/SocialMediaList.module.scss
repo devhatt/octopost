@@ -4,7 +4,7 @@
 .selectionGrid {
   display: grid;
   flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
   gap: 1.6rem;
 
   margin: 0 auto;
