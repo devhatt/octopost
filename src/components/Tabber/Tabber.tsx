@@ -3,7 +3,7 @@ import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
-import { TAccountPost } from '~stores/useAccountStore/useAccountStore.types';
+import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { accountsToTabs } from './utils';
@@ -17,7 +17,7 @@ import Tabs from './Tabs/Tabs';
 
 import { Tab, TabId, Tabs as TabsType } from './Tabber.types';
 
-const makeId = (account: TAccountPost): `${string}-${string}` =>
+const makeId = (account: AccountPost): `${string}-${string}` =>
   `${account.id}-${account.socialMediaId}`;
 
 function getCurrentPostModeMaxLimit(
@@ -32,7 +32,7 @@ function getCurrentPostModeMaxLimit(
 
 function Tabber(): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { accounts, mainContent } = useAccountStore();
+  const { accounts, mainComposerContent } = useAccountStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     makeId(accounts[0] || {})
@@ -54,9 +54,11 @@ function Tabber(): ReactNode {
         if (currentSocialMediaPostModes) {
           for (const postMode of currentSocialMediaPostModes) {
             if (!tab.posts[postMode.id]) {
-              tab.posts[postMode.id] = { text: mainContent || '' };
+              tab.posts[postMode.id] = {
+                text: mainComposerContent.text ?? '',
+              };
             }
-            tab.posts[postMode.id].text = mainContent || '';
+            tab.posts[postMode.id].text = mainComposerContent.text ?? '';
           }
         }
       }
@@ -66,7 +68,7 @@ function Tabber(): ReactNode {
       setTabs({});
       setCurrentTab('' as unknown as TabId);
     }
-  }, [accounts, socialMedias, mainContent]);
+  }, [accounts, socialMedias, mainComposerContent.text]);
 
   const getCurrentPostMode = (): PostMode | undefined => {
     if (!currentTab) return;

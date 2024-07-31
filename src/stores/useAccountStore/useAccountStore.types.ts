@@ -2,18 +2,24 @@ import { IMedia } from '~components/MainComposer/components/InputMediaGroup/comp
 
 import { StoreAccount } from '../useSocialMediaStore/useSocialMediaStore.types';
 
-export type TAccountPost = Pick<
+export type AccountPost = Pick<
   StoreAccount,
   'id' | 'socialMediaId' | 'userName'
 >;
 
+export type contentToUpdate = IMedia[] | string | null;
+
+export type MainContent = {
+  medias?: IMedia[] | null;
+  text?: string;
+};
+
 export type TStoreAccountStore = {
-  accounts: TAccountPost[];
+  accounts: AccountPost[];
   addAccount: (account: StoreAccount) => void;
-  clearMainContentImage: () => void;
-  mainContent: string;
-  mainContentImage: IMedia[] | null;
+
+  mainComposerContent: MainContent;
+
   removeAccount: (accountId: string) => void;
-  updateMainContent: (value: string) => void;
-  updateMainContentImage: (images: IMedia[]) => void;
+  updateMainComposerContent: (contentToUpdate: MainContent) => void;
 };

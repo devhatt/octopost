@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 
 import { MediaValidator } from '~services/api/social-media/social-media.types';
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
@@ -14,14 +14,12 @@ import { IMedia } from './components/InputMedia/InputMedia.types';
 import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const [medias, setMedias] = useState<IMedia[]>([]);
-  const { mainContentImage, updateMainContentImage } = useAccountStore();
+  const { mainComposerContent, updateMainComposerContent } = useAccountStore();
+  const setMedias = (medias: IMedia[]): void => {
+    updateMainComposerContent({ medias: medias });
+  };
 
-  useEffect(() => {
-    if (mainContentImage) {
-      setMedias(mainContentImage);
-    }
-  }, [mainContentImage]);
+  const medias = mainComposerContent.medias ?? [];
 
   const validateFile = (file: IMedia): void => {
     const media = file.file;
@@ -40,7 +38,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
 
     const updatedMedias = [...medias, ...files];
     setMedias(updatedMedias);
-    updateMainContentImage(updatedMedias);
+    updateMainComposerContent({ medias: updatedMedias });
   };
 
   const removeMedia = (id: IMedia['id']): void => {
@@ -52,7 +50,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
-    updateMainContentImage(list);
+    updateMainComposerContent({ medias: list });
   };
 
   const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
@@ -71,7 +69,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
-    updateMainContentImage(list);
+    updateMainComposerContent({ medias: list });
   };
 
   return (

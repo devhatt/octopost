@@ -3,12 +3,12 @@ import {
   Post,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
-import { TAccountPost } from '~stores/useAccountStore/useAccountStore.types';
+import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
 
 export type TabId = `${Account['socialMediaId']}-${SocialMedia['id']}`;
 
 export type Tab = {
-  account: TAccountPost;
+  account: AccountPost;
   id: TabId;
   postModeOnView: SocialMedia['postModes'][number]['id'];
   posts: Record<SocialMedia['postModes'][number]['id'], Post['data']>;
