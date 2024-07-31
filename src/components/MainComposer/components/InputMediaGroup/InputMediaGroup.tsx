@@ -38,7 +38,6 @@ function InputMediaGroup(props: MediaInput): ReactNode {
 
     const updatedMedias = [...medias, ...files];
     setMedias(updatedMedias);
-    updateMainComposerContent({ medias: updatedMedias });
   };
 
   const removeMedia = (id: IMedia['id']): void => {
@@ -50,7 +49,6 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
-    updateMainComposerContent({ medias: list });
   };
 
   const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
@@ -69,7 +67,6 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
 
     setMedias(list);
-    updateMainComposerContent({ medias: list });
   };
 
   return (
