@@ -150,6 +150,7 @@ export default defineFlatConfig([
       '@typescript-eslint/no-var-requires': 'warn',
       '@typescript-eslint/parameter-properties': 'warn',
       '@typescript-eslint/prefer-as-const': 'warn',
+      '@typescript-eslint/prefer-destructuring': 'warn',
       '@typescript-eslint/prefer-enum-initializers': 'warn',
       '@typescript-eslint/prefer-for-of': 'warn',
       '@typescript-eslint/prefer-function-type': 'warn',

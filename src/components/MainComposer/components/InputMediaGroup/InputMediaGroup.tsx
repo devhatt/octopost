@@ -14,12 +14,12 @@ import { IMedia } from './components/InputMedia/InputMedia.types';
 import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const { mainComposerContent, updateMainComposerContent } = useAccountStore();
+  const { MainContent, updateMainContent } = useAccountStore();
   const setMedias = (medias: IMedia[]): void => {
-    updateMainComposerContent({ medias: medias });
+    updateMainContent({ medias: medias });
   };
 
-  const medias = mainComposerContent.medias ?? [];
+  const medias = MainContent.medias ?? [];
 
   const validateFile = (file: IMedia): void => {
     const media = file.file;
@@ -35,9 +35,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
         validateFile(file);
       }
     }
-
-    const updatedMedias = [...medias, ...files];
-    setMedias(updatedMedias);
+    setMedias([...medias, ...files]);
   };
 
   const removeMedia = (id: IMedia['id']): void => {

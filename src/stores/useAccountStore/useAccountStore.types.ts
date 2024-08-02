@@ -10,7 +10,7 @@ export type AccountPost = Pick<
 export type contentToUpdate = IMedia[] | string | null;
 
 export type MainContent = {
-  medias?: IMedia[] | null;
+  medias?: IMedia[];
   text?: string;
 };
 
@@ -18,8 +18,8 @@ export type TStoreAccountStore = {
   accounts: AccountPost[];
   addAccount: (account: StoreAccount) => void;
 
-  mainComposerContent: MainContent;
+  MainContent: MainContent;
 
   removeAccount: (accountId: string) => void;
-  updateMainComposerContent: (contentToUpdate: MainContent) => void;
+  updateMainContent: (contentToUpdate: MainContent) => void;
 };

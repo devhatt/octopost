@@ -22,7 +22,10 @@ export const useAccountStore = create<TStoreAccountStore>((set) => ({
     }));
   },
 
-  mainComposerContent: {},
+  MainContent: {
+    medias: [],
+    text: '',
+  },
 
   removeAccount: (accountId: string): void => {
     set((state) => ({
@@ -30,8 +33,8 @@ export const useAccountStore = create<TStoreAccountStore>((set) => ({
     }));
   },
 
-  updateMainComposerContent: (contentToUpdate: MainContent): void =>
+  updateMainContent: (contentToUpdate: MainContent): void =>
     set((state) => ({
-      mainComposerContent: { ...state.mainComposerContent, ...contentToUpdate },
+      MainContent: { ...state.MainContent, ...contentToUpdate },
     })),
 }));

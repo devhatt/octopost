@@ -32,7 +32,7 @@ function getCurrentPostModeMaxLimit(
 
 function Tabber(): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { accounts, mainComposerContent } = useAccountStore();
+  const { accounts, MainContent } = useAccountStore();
 
   const [currentTab, setCurrentTab] = useState<TabId>(
     makeId(accounts[0] || {})
@@ -55,10 +55,10 @@ function Tabber(): ReactNode {
           for (const postMode of currentSocialMediaPostModes) {
             if (!tab.posts[postMode.id]) {
               tab.posts[postMode.id] = {
-                text: mainComposerContent.text ?? '',
+                text: MainContent.text ?? '',
               };
             }
-            tab.posts[postMode.id].text = mainComposerContent.text ?? '';
+            tab.posts[postMode.id].text = MainContent.text ?? '';
           }
         }
       }
@@ -68,7 +68,7 @@ function Tabber(): ReactNode {
       setTabs({});
       setCurrentTab('' as unknown as TabId);
     }
-  }, [accounts, socialMedias, mainComposerContent.text]);
+  }, [accounts, socialMedias, MainContent.text]);
 
   const getCurrentPostMode = (): PostMode | undefined => {
     if (!currentTab) return;
