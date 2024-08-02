@@ -1,5 +1,19 @@
 import { SocialMedia } from '~services/api/social-media/social-media.types.ts';
 
+export const mockedFavoriteAccounts = [
+  {
+    avatar: 'https://example.com/image1.jpg',
+    expiresAt: '',
+    favorite: false,
+    generatedAt: '',
+    id: '1',
+    socialMediaId: 'DISCORD_EXAMPLE_ID',
+    token: 'DISCORD_EXAMPLE_TOKEN_1',
+    userName: 'Conta Favorita',
+    valid: false,
+  },
+];
+
 export const mockedAddAccount = vi.fn();
 
 export const mockedAccounts = vi.fn(() => ({
@@ -8,6 +22,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image1.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '1',
         socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -18,6 +33,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image3.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '2',
         socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -28,6 +44,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image4.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '3',
         socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -38,6 +55,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image6.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '5',
         socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -50,6 +68,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image2.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '14',
         socialMediaId: 'TWITTER_EXAMPLE_ID',
@@ -60,6 +79,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image2.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '4',
         socialMediaId: 'TWITTER_EXAMPLE_ID',
@@ -70,6 +90,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image2.jpg',
         expiresAt: '',
+        favorite: false,
         generatedAt: '',
         id: '6',
         socialMediaId: 'TWITTER_EXAMPLE_ID',
@@ -80,6 +101,7 @@ export const mockedAccounts = vi.fn(() => ({
     ],
   },
   error: '',
+  favorites: mockedFavoriteAccounts,
   loading: false,
 }));
 

@@ -66,6 +66,26 @@ describe('Sidebar component', () => {
     });
   });
 
+  it('renders favorites accounts when exists in store', async () => {
+    vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockReturnValue({
+      accounts: {
+        data: mockedAccounts().data,
+        error: '',
+        favorites: mockedAccounts().favorites,
+        loading: false,
+      },
+      addAccount: mockedAddAccount,
+      socialMedias: new Map<SocialMedia['id'], SocialMedia>(),
+    });
+    render(<Sidebar />);
+
+    const favoriteAccordion = screen.getByText('Contas favoritas');
+    await userEvent.click(favoriteAccordion);
+
+    const favoriteAccount = screen.getByText('Conta Favorita');
+    expect(favoriteAccount).toBeInTheDocument();
+  });
+
   it('dont render accounts when accounts store is empty', () => {
     vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockReturnValue({
       accounts: {
@@ -74,6 +94,7 @@ describe('Sidebar component', () => {
           TWITTER_EXAMPLE_ID: [],
         },
         error: '',
+        favorites: [],
         loading: false,
       },
       addAccount: mockedAddAccount,

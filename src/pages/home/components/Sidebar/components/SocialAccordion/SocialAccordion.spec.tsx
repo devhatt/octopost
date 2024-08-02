@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import {
   mockedAccounts,
+  mockedSocialMedias,
   mockedUseSocialMediaStore,
 } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
 
@@ -19,11 +20,13 @@ vi.spyOn(window, 'scrollTo');
 describe.skip('SocialAccordion', () => {
   describe('when initilize', () => {
     it('renders the component', () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
       render(
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const accordion = screen.getByText(/discord/i);
@@ -32,11 +35,14 @@ describe.skip('SocialAccordion', () => {
     });
 
     it('renders the intern content of accordion when is open', () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const innerContent = screen.getByText(/discord/i);
@@ -45,11 +51,14 @@ describe.skip('SocialAccordion', () => {
     });
 
     it('shows the error on screen if error={true}', () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={[]}
           error
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const error = screen.getByText(/error/i);
@@ -59,12 +68,15 @@ describe.skip('SocialAccordion', () => {
   });
 
   describe('when click', () => {
+    const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
     it('closes the accordion', () => {
       render(
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const accounts = mockedAccounts().data;
@@ -90,11 +102,14 @@ describe.skip('SocialAccordion', () => {
 
   describe('account list', () => {
     it('renders with zero if list is empty', () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={[]}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
       const accountQuantity = screen.getByText(/0/);
@@ -104,12 +119,14 @@ describe.skip('SocialAccordion', () => {
 
     it('renders with one if list have one account', () => {
       const accounts = mockedAccounts().data;
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
 
       render(
         <SocialAccordion
           accounts={accounts.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
 
