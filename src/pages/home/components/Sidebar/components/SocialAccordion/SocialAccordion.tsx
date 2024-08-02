@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import { useAccountStore } from '~stores/useAccountStore';
+import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
