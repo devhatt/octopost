@@ -1,6 +1,18 @@
 import { SocialMedia } from '~services/api/social-media/social-media.types.ts';
 
-export const mockedFavoriteAccounts = [];
+export const mockedFavoriteAccounts = [
+  {
+    avatar: 'https://example.com/image1.jpg',
+    expiresAt: '',
+    favorite: false,
+    generatedAt: '',
+    id: '1',
+    socialMediaId: 'DISCORD_EXAMPLE_ID',
+    token: 'DISCORD_EXAMPLE_TOKEN_1',
+    userName: 'Conta Favorita',
+    valid: false,
+  },
+];
 
 export const mockedAddAccount = vi.fn();
 
@@ -89,6 +101,7 @@ export const mockedAccounts = vi.fn(() => ({
     ],
   },
   error: '',
+  favorites: mockedFavoriteAccounts,
   loading: false,
 }));
 
@@ -207,7 +220,6 @@ export const mockedUseSocialMediaStore = {
   useSocialMediaStore: vi.fn(() => ({
     accounts: mockedAccounts(),
     addAccount: mockedAddAccount,
-    favoriteAccounts: mockedFavoriteAccounts,
     socialMedias: mockedSocialMedias(),
   })),
 };
