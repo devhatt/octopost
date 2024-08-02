@@ -84,8 +84,8 @@ describe('SocialAccordion', () => {
       const accordion = screen.getByText(/discord/i);
       await userEvent.click(accordion);
 
-      const switchesComponent = screen.getAllByRole('checkbox');
-      await userEvent.click(switchesComponent[0]);
+      const [firstAccountSwitch] = screen.getAllByRole('checkbox');
+      await userEvent.click(firstAccountSwitch);
 
       expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
     });
@@ -101,8 +101,7 @@ describe('SocialAccordion', () => {
       const accordion = screen.getByText(/discord/i);
       await userEvent.click(accordion);
 
-      const switchesComponent = screen.getAllByRole('checkbox');
-      const [firstAccountSwitch] = switchesComponent;
+      const [firstAccountSwitch] = screen.getAllByRole('checkbox');
 
       await userEvent.click(firstAccountSwitch);
       await userEvent.click(firstAccountSwitch);
