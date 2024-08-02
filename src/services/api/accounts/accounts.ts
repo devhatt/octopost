@@ -8,7 +8,7 @@ const AccountsService = {
     favorite: boolean
   ): Promise<Account | undefined> {
     try {
-      const res = await octopostApi.post(`account/${accountId}`, favorite);
+      const res = await octopostApi.patch(`accounts/${accountId}`, favorite);
       return res.data;
     } catch (error) {
       console.error(error);
