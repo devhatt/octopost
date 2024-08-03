@@ -50,7 +50,7 @@ function Home(): ReactNode {
         </aside>
         <div className={scss.aditor}>
           <MainComposer />
-          {hasPosts && <Tabber />}
+          <Tabber />
           <FeedbackError />
         </div>
         <div className={scss.actions}>

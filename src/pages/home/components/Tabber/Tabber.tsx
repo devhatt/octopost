@@ -1,4 +1,4 @@
-﻿import { ChangeEvent, ReactNode, useState } from 'react';
+﻿import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
@@ -22,8 +22,14 @@ function Tabber(): ReactNode {
   const { posts, setPostText } = usePostStore();
   const { socialMedias } = useSocialMediaStore();
 
-  const [tabs, setTabs] = useState<TabsType>(postToTab(posts, socialMedias));
+  const [tabs, setTabs] = useState<TabsType>({});
   const [currentTabId, setCurrentTabId] = useState<TabId>(createTabId(posts));
+
+  tabs = // Tab[]
+  current = //{ postModeId: 'asdfasdfasdf', postId/accountId: 'asdfasdfasdf' }
+
+
+
 
   const currentTab = tabs[currentTabId];
   const currentPostMode = socialMedias
@@ -31,6 +37,30 @@ function Tabber(): ReactNode {
     ?.postModes.find(
       (postMode: PostMode) => postMode.id === currentTab.postModeOnView
     );
+
+
+  posts[tabId] // conta atual
+
+  // state
+  tabs = {
+    asdfasdfasdfas:{
+      socialMediaId: 'asiuydugasyufa',
+      userName: 'asdfasdf',
+      accountId: 'asdfasdfasdf',
+      postModes: {
+        asdfasdfasdf: {
+          postModeId: 'asdfasdfasdf',
+          text: 'asdfasdfasdf',
+          sync: false
+        },
+        asdfasdfasdf: {
+          postModeId: 'asdfasdfasdf',
+          text: 'asdfasdfasdf'
+        }
+      }
+    },
+    sadfasdfsdafsf
+  }
 
   const changeCurrentTab = (tab: Tab): void => setCurrentTabId(tab.id);
 
@@ -64,6 +94,18 @@ function Tabber(): ReactNode {
     });
   };
 
+  useEffect(() => {
+    if (isEmpty(tabs)) {
+      const post = Object.values(posts)[0];
+      const postMode = Object.values(post.postModes)[0];
+
+      setTabs([{
+        accountId: post.accountId,
+        postMode: postMode.id,
+      }]);
+    }	
+  }, [posts]);
+
   const renderTabs = (): ReactNode => (
     <div>
       <Tabs
@@ -74,8 +116,8 @@ function Tabber(): ReactNode {
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            currentPostModeId={currentTab.postModeOnView}
-            currentTab={currentTab.account}
+            currentPostModeId={current.postModeId}
+            currentTab={current.accountId}
             onChangePostMode={changePostMode}
           />
           <MainComposerBase
@@ -94,7 +136,7 @@ function Tabber(): ReactNode {
     </div>
   );
 
-  return isEmpty(currentTab) ? 'No tabs available' : renderTabs();
+  return isEmpty(tabs) ? 'No tabs available' : renderTabs();
 }
 
 export default Tabber;

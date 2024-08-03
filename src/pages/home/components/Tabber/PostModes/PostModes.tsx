@@ -24,6 +24,8 @@ function PostModes(props: PostModesProps): ReactNode {
       [scss.postModeTitle]: true,
     });
 
+  postModes[postModeId];
+
   const renderPostMode = (postMode: PostMode): ReactNode => (
     <span
       className={postModeClasses(postMode.id)}
