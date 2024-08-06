@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import isEmpty from '~utils/isEmpty/isEmpty';
+import isEmpty from 'lodash.isempty';
 
 import scss from './SocialMediaList.module.scss';
 

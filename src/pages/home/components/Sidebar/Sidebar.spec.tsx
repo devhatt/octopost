@@ -43,24 +43,36 @@ describe('Sidebar component', () => {
   it('renders all accounts from store', async () => {
     render(<Sidebar />);
 
-    const [account] = mockedAccounts().data;
-    const socialMedia = mockedSocialMedias().get(account.socialMediaId);
+    const accounts = mockedAccounts().data;
 
-    const accordionEvidence = screen.getByText(
-      new RegExp(socialMedia?.name as string, 'i')
-    );
-    await userEvent.click(accordionEvidence);
+    for (var account in accounts) {
+      const socialMedia = mockedSocialMedias().get(account);
 
-    const accountEvidence = screen.getByText(account.userName);
+      const accordionEvidence = screen.getByText(
+        new RegExp(socialMedia?.name as string, 'i')
+      );
 
-    expect(accordionEvidence).toBeInTheDocument();
-    expect(accountEvidence).toBeInTheDocument();
+      await userEvent.click(accordionEvidence);
+
+      expect(accordionEvidence).toBeInTheDocument();
+    }
+
+    Object.values(accounts).forEach((values) => {
+      values.forEach((value) => {
+        const accountEvidence = screen.getByText(value.userName);
+
+        expect(accountEvidence).toBeInTheDocument();
+      });
+    });
   });
 
   it('dont render accounts when accounts store is empty', () => {
     vi.spyOn(mockedUseSocialMediaStore, 'useSocialMediaStore').mockReturnValue({
       accounts: {
-        data: [],
+        data: {
+          DISCORD_EXAMPLE_ID: [],
+          TWITTER_EXAMPLE_ID: [],
+        },
         error: '',
         loading: false,
       },
@@ -70,13 +82,16 @@ describe('Sidebar component', () => {
 
     render(<Sidebar />);
 
-    const [account] = mockedAccounts().data;
-    const socialMedia = mockedSocialMedias().get(account.socialMediaId);
+    const accounts = mockedAccounts().data;
 
-    const accordionEvidence = screen.queryByText(
-      new RegExp(socialMedia?.name as string, 'i')
-    );
-    expect(accordionEvidence).not.toBeInTheDocument();
+    for (let account in accounts) {
+      const socialMedia = mockedSocialMedias().get(account);
+
+      const accordionEvidence = screen.queryByText(
+        new RegExp(socialMedia?.name as string, 'i')
+      );
+      expect(accordionEvidence).not.toBeInTheDocument();
+    }
   });
 
   it('renders the InputSearch', async () => {
