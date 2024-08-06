@@ -10,12 +10,13 @@ import {
 import { useAccountStore } from '~stores/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
-import { TextValidators } from './utils/textValidator/textValidators';
+import { textValidator } from './utils/textValidator/textValidator';
 
 import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
 
 import scss from './ComposerEditor.module.scss';
 
+import { Error } from '../MainComposerBase/MainComposerBase.type';
 import {
   ComposerEditorProps,
   HigherLimitSocial,
@@ -29,18 +30,14 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const [inputValue, setInputValue] = useState('');
   const [errors, setErrors] = useState<TextErrorMap>({} as TextErrorMap);
 
-  const addErrors = (textErrors: TEXT_ERRORS): void => {
+  const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
     const errorId = nanoid();
     const newError = { ...errors };
     const error = newError[textErrors];
 
     if (!error) {
       setErrors({ ...errors, [textErrors]: errorId });
-      props.addError?.(errorId, {
-        accountId: props.accountId,
-        message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the character limit`,
-        postModeId: props.postMode?.id,
-      });
+      props.addError?.(errorId, errorForAdd);
     }
   };
 
@@ -53,17 +50,19 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   };
 
   const emitErrors = (text: string): void => {
-    const textValidators = new TextValidators(text);
-    const validators = props.postMode?.validators.text;
-    const isTextTooLong =
-      props.postMode &&
-      validators &&
-      !textValidators.textLength(validators.maxLength);
+    const validator = props.postMode?.validators.text;
 
-    if (isTextTooLong) {
-      addErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
-    } else {
-      removeErrors(TEXT_ERRORS.MAX_LENGTH_EXCEED);
+    if (validator) {
+      const textValidators = Object.values(textValidator({ text, validator }));
+      for (const validators of textValidators) {
+        const validate = validators(props);
+
+        if (validate.error) {
+          addErrors(validate.type, validate.error);
+        } else {
+          removeErrors(validate.type);
+        }
+      }
     }
   };
 

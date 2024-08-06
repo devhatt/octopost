@@ -19,11 +19,14 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     const useErrorId = addError({ message });
 
     setErrors({ ...errors, [id]: useErrorId });
-    props.onError?.(false);
+    props.onError?.(true);
   };
 
   const errorRemover = (id: string): void => {
-    if (id) removeError(errors[id]);
+    if (id) {
+      props.onError?.(false);
+      removeError(errors[id]);
+    }
   };
 
   const renderImputMediaGroup = (): ReactNode => {

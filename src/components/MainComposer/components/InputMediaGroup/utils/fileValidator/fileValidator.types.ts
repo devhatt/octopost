@@ -6,6 +6,11 @@ import { Error } from '~components/MainComposer/components/MainComposerBase/Main
 
 import { MEDIA_ERRORS, MediaInput } from '../../InputMediaGroup.type';
 
+export type ValidatorError = {
+  error?: Error;
+  type: MEDIA_ERRORS;
+};
+
 export type validators = Record<
   keyof typeof MediaValidators.prototype,
   (
@@ -17,9 +22,4 @@ export type validators = Record<
 export type validatorsProps = {
   media: File;
   validator: MediaValidator;
-};
-
-export type ValidatorError = {
-  error?: Error;
-  type: MEDIA_ERRORS;
 };
