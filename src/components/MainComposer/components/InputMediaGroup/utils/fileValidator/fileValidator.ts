@@ -1,7 +1,11 @@
 import { MediaValidators } from '../mediaValidator/mediaValidators';
 
-import { MediaInput } from '../../InputMediaGroup.type';
-import { validators, validatorsProps } from './fileValidator.types';
+import { MEDIA_ERRORS, MediaInput } from '../../InputMediaGroup.type';
+import {
+  ValidatorError,
+  validators,
+  validatorsProps,
+} from './fileValidator.types';
 
 export const fileValidators = ({
   media,
@@ -9,56 +13,93 @@ export const fileValidators = ({
 }: validatorsProps): validators => {
   const mediaValidator = new MediaValidators(media);
   return {
-    aspectRatio: async (props: MediaInput): Promise<void> => {
+    aspectRatio: async (
+      props: MediaInput,
+      fileName: string
+    ): Promise<ValidatorError> => {
       const arChecks = await Promise.all(
-        validator.media.ar.map(async (ar) => mediaValidator.aspectRatio(ar))
+        validator.ar.map(async (ar) => mediaValidator.aspectRatio(ar))
       );
       const allError = arChecks.every((valid) => !valid);
-      if (props.onError && allError) {
-        props.onError({
-          accountId: props.accountId,
-          message: 'Invalid file aspectRatio',
-          postModeId: props.postMode?.id,
-        });
+      if (props.addError && allError) {
+        return {
+          error: {
+            accountId: props.accountId,
+            message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the aspect ratio limit in ${fileName}`,
+            postModeId: props.postMode?.id,
+          },
+          type: MEDIA_ERRORS.MAX_AR_EXCEED,
+        };
+      } else {
+        return {
+          type: MEDIA_ERRORS.MAX_AR_EXCEED,
+        };
       }
     },
 
-    duration: async (props: MediaInput): Promise<void> => {
+    duration: async (
+      props: MediaInput,
+      fileName: string
+    ): Promise<ValidatorError> => {
       if (
-        props.onError &&
-        !(await mediaValidator.duration(validator.media.maxDuration))
+        props.addError &&
+        !(await mediaValidator.duration(validator.maxDuration))
       ) {
-        props.onError({
-          accountId: props.accountId,
-          message: 'Invalid video duration',
-          postModeId: props.postMode?.id,
-        });
+        return {
+          error: {
+            accountId: props.accountId,
+            message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the duration limit in ${fileName}`,
+            postModeId: props.postMode?.id,
+          },
+          type: MEDIA_ERRORS.MAX_DURATION_EXCEED,
+        };
+      } else {
+        return {
+          type: MEDIA_ERRORS.MAX_DURATION_EXCEED,
+        };
       }
     },
 
-    resolution: async (props: MediaInput): Promise<void> => {
+    resolution: async (
+      props: MediaInput,
+      fileName: string
+    ): Promise<ValidatorError> => {
       if (
-        props.onError &&
+        props.addError &&
         !(await mediaValidator.resolution(
-          validator.media.maxWidth,
-          validator.media.maxHeight
+          validator.maxWidth,
+          validator.maxHeight
         ))
       ) {
-        props.onError({
-          accountId: props.accountId,
-          message: 'Invalid file resolution',
-          postModeId: props.postMode?.id,
-        });
+        return {
+          error: {
+            accountId: props.accountId,
+            message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the resolution limit in ${fileName}`,
+            postModeId: props.postMode?.id,
+          },
+          type: MEDIA_ERRORS.MAX_RESOLUTION_EXCEED,
+        };
+      } else {
+        return {
+          type: MEDIA_ERRORS.MAX_RESOLUTION_EXCEED,
+        };
       }
     },
 
-    size: (props: MediaInput): void => {
-      if (props.onError && !mediaValidator.size(validator.media.maxFileSize)) {
-        props.onError({
-          accountId: props.accountId,
-          message: 'Invalid file size',
-          postModeId: props.postMode?.id,
-        });
+    size: (props: MediaInput, fileName: string): ValidatorError => {
+      if (props.addError && !mediaValidator.size(validator.maxFileSize)) {
+        return {
+          error: {
+            accountId: props.accountId,
+            message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the size limit in ${fileName}`,
+            postModeId: props.postMode?.id,
+          },
+          type: MEDIA_ERRORS.MAX_SIZE_EXCEED,
+        };
+      } else {
+        return {
+          type: MEDIA_ERRORS.MAX_SIZE_EXCEED,
+        };
       }
     },
   };

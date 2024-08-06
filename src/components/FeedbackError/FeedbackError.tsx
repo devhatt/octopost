@@ -24,7 +24,7 @@ function FeedbackError(): ReactNode {
         variants={animationVariants}
       >
         {Object.values(errors).map((error) => (
-          <li key={error.id}>{error.message}</li>
+          <li key={error.message}>{error.message}</li>
         ))}
       </motion.ul>
     </AnimatePresence>

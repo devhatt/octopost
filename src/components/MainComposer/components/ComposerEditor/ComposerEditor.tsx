@@ -1,5 +1,8 @@
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
+import omit from 'lodash.omit';
+import { nanoid } from 'nanoid';
+
 import {
   PostMode,
   TextValidator,
@@ -7,50 +10,68 @@ import {
 import { useAccountStore } from '~stores/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
-import { TextValidators } from './utils/textValidator/textValidators';
+import { textValidator } from './utils/textValidator/textValidator';
 
 import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
 
 import scss from './ComposerEditor.module.scss';
 
+import { Error } from '../MainComposerBase/MainComposerBase.type';
 import {
   ComposerEditorProps,
-  ErrorMapText,
-  ErrorText,
   HigherLimitSocial,
+  TEXT_ERRORS,
+  TextErrorMap,
 } from './ComposerEditor.types';
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
-  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
+  const [errors, setErrors] = useState<TextErrorMap>({} as TextErrorMap);
 
-  const validatorText = (text: string): ErrorText[] => {
-    const textValidators = new TextValidators(text);
-    const validators = props.postMode?.validators as TextValidator;
-    const errors: ErrorText[] = [];
+  const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
+    const errorId = nanoid();
+    const newError = { ...errors };
+    const error = newError[textErrors];
 
-    if (
-      props.postMode &&
-      textValidators.textLength(validators.text.maxLength)
-    ) {
-      errors.push({
-        accountId: props.accountId,
-        message: 'text exceeded the limit',
-        postModeId: props.postMode.id,
-      });
+    if (!error) {
+      setErrors({ ...errors, [textErrors]: errorId });
+      props.addError?.(errorId, errorForAdd);
     }
+  };
 
-    return errors;
+  const removeErrors = (textErrors: TEXT_ERRORS): void => {
+    const newError = { ...errors };
+    const errorId = newError[textErrors];
+    const newErrors = omit(errors, [textErrors]);
+    props.removeError?.(errorId);
+    setErrors(newErrors as TextErrorMap);
+  };
+
+  const emitErrors = (text: string): void => {
+    const validator = props.postMode?.validators.text;
+
+    if (validator) {
+      const textValidators = Object.values(textValidator({ text, validator }));
+      for (const validators of textValidators) {
+        const validate = validators(props);
+
+        if (validate.error) {
+          addErrors(validate.type, validate.error);
+        } else {
+          removeErrors(validate.type);
+        }
+      }
+    }
   };
 
   const isBigger = useCallback(
     (
       currentValidator: PostMode['validators'],
       currentMax: number
-    ): currentValidator is TextValidator =>
-      'text' in currentValidator &&
+    ): currentValidator is { text: TextValidator } =>
+      currentValidator.text !== undefined &&
       currentValidator.text.maxLength > currentMax,
     [socialMedias]
   );
@@ -70,6 +91,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     }
     return socialLimits;
   }, [socialMedias]);
+
   const getGreatestLimitsSocial = useCallback(() => {
     const socialLimits = getBiggestLimitBySocial();
     const maxLimit = socialLimits.reduce(
@@ -79,25 +101,13 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     return { maxLimit, socialLimits };
   }, [getBiggestLimitBySocial]);
 
-  const setError = (newErrorMap: ErrorMapText): void => {
-    setErrorMap((prevErrorMap) => {
-      const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
-      props.onError?.(updatedErrorMap);
-      return updatedErrorMap;
-    });
-  };
-
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
-    const textErrors = validatorText(newValue);
-    const newErrorMap = { ...errorMap };
-
-    if (props.onChange) props.onChange(newValue);
-    if (textErrors.length > 0) {
-      newErrorMap[newValue] = textErrors;
-      setError(newErrorMap);
-    }
     updateMainContent(newValue);
+
+    props.onChange?.(event);
+
+    emitErrors(newValue);
     setInputValue(newValue);
   };
 
@@ -107,7 +117,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     <div className={scss.inputContainer}>
       <textarea
         className={scss.textArea}
-        onChange={props.onChangePost ?? handleInputChange}
+        onChange={handleInputChange}
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}
       />
