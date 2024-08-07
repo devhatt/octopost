@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 
-import Button from '~components/Button/Button';
-
 import scss from './SocialMediaList.module.scss';
 
+import ConnectAccountButton from './components/ConnectAccountButton.tsx';
+import ConnectAccountButtonDisabled from './components/ConnectAccountButtonDisabled.tsx';
+import ConnectGroupButton from './components/ConnectGroupButton.tsx';
 import { socialMedias } from './data.ts';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
@@ -22,30 +23,15 @@ function SocialMediaForm({
 
             <div className={scss.buttonContainer}>
               {socialMedia.hasAccount ? (
-                <Button
-                  className={scss.socialButton}
-                  onClick={onHandleToggleModal}
-                  variant="outlined"
-                >
-                  Connect Account
-                </Button>
+                <ConnectAccountButton
+                  onHandleToggleModal={onHandleToggleModal}
+                />
               ) : (
-                <Button
-                  className={scss.socialButton}
-                  disabled
-                  variant="outlined"
-                >
-                  Connect Account
-                </Button>
+                <ConnectAccountButtonDisabled />
               )}
+
               {socialMedia.hasGroup && (
-                <Button
-                  className={scss.socialButton}
-                  onClick={onHandleToggleModal}
-                  variant="container"
-                >
-                  Connect Group
-                </Button>
+                <ConnectGroupButton onHandleToggleModal={onHandleToggleModal} />
               )}
             </div>
           </div>
