@@ -2,10 +2,12 @@ import { ReactNode } from 'react';
 
 import scss from './SocialMediaList.module.scss';
 
-import ConnectAccountButton from './components/ConnectAccountButton.tsx';
-import ConnectAccountButtonDisabled from './components/ConnectAccountButtonDisabled.tsx';
-import ConnectGroupButton from './components/ConnectGroupButton.tsx';
 import { socialMedias } from './data.ts';
+import {
+  ConnectAccountButton,
+  ConnectAccountButtonDisabled,
+  ConnectGroupButton,
+} from './SocialMediaForm.components.tsx';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
 function SocialMediaForm({
