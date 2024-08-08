@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
+import Tabber from '~pages/home/components/Tabber/Tabber';
 import isEmpty from 'lodash.isempty';
 
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import MainComposer from '~components/MainComposer/MainComposer';
-import Tabber from '~components/Tabber/Tabber';
 
 import ActionBar from './components/ActionBar/ActionBar';
 import Header from './components/Header/Header';

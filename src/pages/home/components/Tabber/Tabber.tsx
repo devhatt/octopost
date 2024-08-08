@@ -1,6 +1,8 @@
 ﻿/* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 
+import scss from '~pages/home/components/Tabber/Tabber.module.scss';
+
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
@@ -10,7 +12,6 @@ import { accountsToTabs } from './utils';
 
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
 import Preview from '~components/Preview/Preview';
-import scss from '~components/Tabber/Tabber.module.scss';
 
 import PostModes from './PostModes/PostModes';
 import Tabs from './Tabs/Tabs';
