@@ -16,7 +16,7 @@ import { MediaInput } from './InputMediaGroup.type';
 function InputMediaGroup(props: MediaInput): ReactNode {
   const { MainContent, updateMainContent } = useAccountStore();
   const setMedias = (medias: IMedia[]): void => {
-    updateMainContent({ medias: medias });
+    updateMainContent({ medias });
   };
 
   const medias = MainContent.medias ?? [];

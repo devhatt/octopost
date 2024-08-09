@@ -12,7 +12,7 @@ import SocialAccordion from './SocialAccordion';
 const mockAddAccount = vi.fn();
 const mockRemoveAccount = vi.fn();
 
-vi.mock('~stores/useAccountStore', () => ({
+vi.mock('~stores/useAccountStore/useAccountStore', () => ({
   useAccountStore: (): {
     addAccount: Mock;
     removeAccount: Mock;
@@ -85,7 +85,10 @@ describe('SocialAccordion', () => {
       await userEvent.click(accordion);
 
       const [firstAccountSwitch] = screen.getAllByRole('checkbox');
+
       await userEvent.click(firstAccountSwitch);
+
+      expect(mockAddAccount).toHaveBeenCalled();
 
       expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
     });
