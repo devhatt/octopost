@@ -34,11 +34,13 @@ const mockDiscordData = mockedAccounts().data.DISCORD_EXAMPLE_ID;
 
 describe('SocialAccordion', () => {
   it('renders the component', () => {
+    const socialMediaId = 'DISCORD_EXAMPLE_ID';
     render(
       <SocialAccordion
         accounts={mockDiscordData}
         error={false}
-        socialMediaId="DISCORD_EXAMPLE_ID"
+        socialMediaId={socialMediaId}
+        title={mockedSocialMedias().get(socialMediaId)?.name}
       />
     );
     const accordion = screen.getByText(/discord/i);
@@ -47,11 +49,14 @@ describe('SocialAccordion', () => {
   });
 
   it('renders the intern content of accordion when is open', async () => {
+    const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
     render(
       <SocialAccordion
         accounts={mockDiscordData}
         error={false}
-        socialMediaId="DISCORD_EXAMPLE_ID"
+        socialMediaId={socialMediaId}
+        title={mockedSocialMedias().get(socialMediaId)?.name}
       />
     );
 
@@ -64,8 +69,15 @@ describe('SocialAccordion', () => {
   });
 
   it('shows the error on screen if error={true}', () => {
+    const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
     render(
-      <SocialAccordion accounts={[]} error socialMediaId="DISCORD_EXAMPLE_ID" />
+      <SocialAccordion
+        accounts={[]}
+        error
+        socialMediaId={socialMediaId}
+        title={mockedSocialMedias().get(socialMediaId)?.name}
+      />
     );
     const error = screen.getByText(/error/i);
 
@@ -74,6 +86,8 @@ describe('SocialAccordion', () => {
 
   describe('social tab switch', () => {
     it('activates social tab when is enable', async () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={mockDiscordData}
@@ -95,11 +109,14 @@ describe('SocialAccordion', () => {
       expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
     });
     it('deactivates social tab when is disable', async () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={mockDiscordData}
           error={false}
-          socialMediaId="DISCORD_EXAMPLE_ID"
+          socialMediaId={socialMediaId}
+          title={mockedSocialMedias().get(socialMediaId)?.name}
         />
       );
 
@@ -119,6 +136,8 @@ describe('SocialAccordion', () => {
 
   describe('when click 2 times', () => {
     it('closes the accordion', async () => {
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
+
       render(
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
@@ -162,6 +181,7 @@ describe('SocialAccordion', () => {
 
     it('renders with one account if list have one account', () => {
       const [account] = mockDiscordData;
+      const socialMediaId = 'DISCORD_EXAMPLE_ID';
 
       render(
         <SocialAccordion
