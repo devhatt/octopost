@@ -28,7 +28,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
-  const [errors, setErrors] = useState<TextErrorMap>({} as TextErrorMap);
+  const [errors, setErrors] = useState<TextErrorMap>();
 
   const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
     const errorId = nanoid();
@@ -45,7 +45,9 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     const newError = { ...errors };
     const errorId = newError[textErrors];
     const newErrors = omit(errors, [textErrors]);
-    props.removeError?.(errorId);
+
+    if (errorId) props.removeError?.(errorId);
+
     setErrors(newErrors as TextErrorMap);
   };
 

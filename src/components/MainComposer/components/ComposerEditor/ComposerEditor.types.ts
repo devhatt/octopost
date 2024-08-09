@@ -25,4 +25,4 @@ export enum TEXT_ERRORS {
   MAX_LENGTH_EXCEED = 1,
 }
 
-export type TextErrorMap = Record<TEXT_ERRORS, string>;
+export type TextErrorMap = Partial<Record<TEXT_ERRORS, string>>;

@@ -12,11 +12,11 @@ import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const { addError, removeError } = useError();
+  const errorStore = useError();
 
   const addErrors = (id: string, error: Error): void => {
     const { message } = error;
-    const useErrorId = addError({ message });
+    const useErrorId = errorStore.addError({ message });
 
     setErrors({ ...errors, [id]: useErrorId });
     props.onError?.(true);
@@ -25,7 +25,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
   const errorRemover = (id: string): void => {
     if (id) {
       props.onError?.(false);
-      removeError(errors[id]);
+      errorStore.removeError(errors[id]);
     }
   };
 
