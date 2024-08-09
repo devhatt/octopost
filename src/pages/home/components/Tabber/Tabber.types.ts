@@ -8,9 +8,9 @@ import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
 export type TabId = `${Account['socialMediaId']}-${SocialMedia['id']}`;
 
 export type Tab = {
-  account: AccountPost;
-  id: TabId;
-  postModeOnView: SocialMedia['postModes'][number]['id'];
+  accountId: AccountPost['id'];
+  // id: TabId;
+  postModeId: SocialMedia['postModes'][number]['id'];
   posts: Record<SocialMedia['postModes'][number]['id'], Post['data']>;
 };
 

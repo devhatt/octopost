@@ -1,5 +1,5 @@
-import type { Story } from '@ladle/react';
+// import type { Story } from '@ladle/react';
 
-import Testinho from './Testinho';
+// import Testinho from './Testinho';
 
-export const TestinhoComponent: Story = () => <Testinho />;
+// export const TestinhoComponent: Story = () => <Testinho />;

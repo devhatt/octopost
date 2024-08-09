@@ -92,6 +92,7 @@ function Tabber(): ReactNode {
     if (!currentTab || !tabs[currentTab]) return;
     const tab = { ...tabs[currentTab] };
     const postId = tab.postModeOnView;
+
     if (tab.posts[postId]) {
       tab.posts[postId].text = e.target.value;
     }
@@ -106,19 +107,23 @@ function Tabber(): ReactNode {
     setCurrentTab(tab.id);
   };
 
-  const changePostMode = (postMode: PostMode): void => {
-    if (!currentTab || !tabs[currentTab]) return;
-    const tab = { ...tabs[currentTab] };
-    tab.postModeOnView = postMode.id;
+  // const changePostMode = (postMode: PostMode): void => {
+  //   if (!currentTab || !tabs[currentTab]) return;
+  //   const tab = { ...tabs[currentTab] };
+  //   tab.postModeOnView = postMode.id;
 
-    if (!tab.posts[postMode.id]) {
-      tab.posts[postMode.id] = { text: '' };
-    }
+  //   if (!tab.posts[postMode.id]) {
+  //     tab.posts[postMode.id] = { text: '' };
+  //   }
 
-    setTabs({
-      ...tabs,
-      [currentTab]: tab,
-    });
+  //   setTabs({
+  //     ...tabs,
+  //     [currentTab]: tab,
+  //   });
+  // };
+
+  const onChangePostMode = (postModeId: PostMode['id']) => {
+    console.log(postModeId);
   };
 
   if (!currentTab || !tabs[currentTab]) {
@@ -135,9 +140,9 @@ function Tabber(): ReactNode {
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
           <PostModes
-            currentPostModeId={tabs[currentTab].postModeOnView}
-            currentTab={tabs[currentTab].account}
-            onChangePostMode={changePostMode}
+            postModeId="aa"
+            account={tabs[currentTab].account}
+            changePostModeId={(postModeId) => onChangePostMode(postModeId)}
           />
           <div className={scss.mainComposerContainer}>
             <MainComposerBase
