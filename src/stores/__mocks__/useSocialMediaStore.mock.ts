@@ -9,7 +9,7 @@ export const mockedFavoriteAccounts = [
     id: '1',
     socialMediaId: 'DISCORD_EXAMPLE_ID',
     token: 'DISCORD_EXAMPLE_TOKEN_1',
-    userName: 'Conta Favorita',
+    userName: 'Favorite account',
     valid: false,
   },
 ];

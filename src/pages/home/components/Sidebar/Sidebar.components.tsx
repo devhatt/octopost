@@ -17,7 +17,7 @@ export function FilteredAccounts(props: FilteredAccountsProps): ReactNode {
         error={false}
         key="FavoriteAccounts"
         socialMediaId="FavoriteAccounts"
-        title="Contas favoritas"
+        title="Favorite Accounts"
       />
       {props.socialMedia.map(
         ({ socialMediaAccounts, socialMediaId }): ReactNode => (

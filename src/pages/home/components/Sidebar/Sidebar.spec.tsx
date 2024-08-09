@@ -79,10 +79,10 @@ describe('Sidebar component', () => {
     });
     render(<Sidebar />);
 
-    const favoriteAccordion = screen.getByText('Contas favoritas');
+    const favoriteAccordion = screen.getByText('Favorite Accounts');
     await userEvent.click(favoriteAccordion);
 
-    const favoriteAccount = screen.getByText('Conta Favorita');
+    const favoriteAccount = screen.getByText('Favorite account');
     expect(favoriteAccount).toBeInTheDocument();
   });
 
