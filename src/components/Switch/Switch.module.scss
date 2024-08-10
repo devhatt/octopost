@@ -44,6 +44,10 @@
     scale: 0.85;
   }
 
+  &.invalid {
+    color: $secondaryRed;
+  }
+
   &:active::before {
     transform: scale(0.8);
   }

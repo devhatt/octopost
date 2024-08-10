@@ -15,6 +15,7 @@ export function AccountCard({
   avatarURL,
   className,
   hasError = false,
+  invalid,
   isEnabled = false,
   isFavorited = false,
   onEnableChange,
@@ -34,7 +35,14 @@ export function AccountCard({
   };
 
   return (
-    <div className={classNames(scss.container, className)} {...props}>
+    <div
+      className={classNames({
+        className,
+        [scss.container]: true,
+        [scss.invalid]: invalid,
+      })}
+      {...props}
+    >
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
       <Button
@@ -46,8 +54,10 @@ export function AccountCard({
       />
       <Switch
         checked={enabled}
+        canChange={invalid}
         onChange={handleEnableChange}
         variant={hasError ? 'error' : 'default'}
+        invalid={invalid}
       />
     </div>
   );
