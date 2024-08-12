@@ -1,11 +1,11 @@
-export type IMedia = {
+export type Media = {
   file: File;
   id: string;
 };
 
 export type InputMediaProps = {
   files?: File;
-  onChange: (media: IMedia[]) => void;
+  onChange: (media: Media[]) => void;
 };
 
 export type IInputMediaTestWrapper = {
