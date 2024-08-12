@@ -8,8 +8,8 @@ import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
 export type TabId = `${Account['socialMediaId']}-${SocialMedia['id']}`;
 
 export type Tab = {
-  accountId: AccountPost['id'];
-  // id: TabId;
+  account: AccountPost;
+  id: TabId;
   postModeId: SocialMedia['postModes'][number]['id'];
   posts: Record<SocialMedia['postModes'][number]['id'], Post['data']>;
 };

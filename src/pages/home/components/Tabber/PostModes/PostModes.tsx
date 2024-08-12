@@ -14,7 +14,7 @@ import { PostModesProps } from './PostModes.types';
 
 function PostModes(props: PostModesProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const socialMedia = socialMedias.get(props.account.socialMediaId);
+  const socialMedia = socialMedias.get(props.accountSocialMediaId);
   const [postModeIdTeste, setPostModeIdTeste] = useState(props.postModeId);
 
   const postModeClasses = (
@@ -26,6 +26,7 @@ function PostModes(props: PostModesProps): ReactNode {
     });
 
   const changePostMode = (postMode: PostMode): void => {
+    props.changePostModeId(postMode.id);
     setPostModeIdTeste(postMode.id);
   };
 
