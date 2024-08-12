@@ -1,4 +1,4 @@
-import { IMedia } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
+import { Media } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
 
 import { StoreAccount } from '../useSocialMediaStore/useSocialMediaStore.types';
 
@@ -7,19 +7,19 @@ export type AccountPost = Pick<
   'id' | 'socialMediaId' | 'userName'
 >;
 
-export type contentToUpdate = IMedia[] | string | null;
+export type contentToUpdate = Media[] | string | null;
 
-export type MainContent = {
-  medias?: IMedia[];
+export type mainContent = {
+  medias?: Media[];
   text?: string;
 };
 
-export type TStoreAccountStore = {
+export type StoreAccountStore = {
   accounts: AccountPost[];
   addAccount: (account: StoreAccount) => void;
 
-  MainContent: MainContent;
+  mainContent: mainContent;
 
   removeAccount: (accountId: string) => void;
-  updateMainContent: (contentToUpdate: MainContent) => void;
+  updateMainContent: (contentToUpdate: mainContent) => void;
 };

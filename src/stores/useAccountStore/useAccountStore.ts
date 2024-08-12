@@ -2,11 +2,11 @@ import { create } from 'zustand';
 
 import {
   AccountPost,
-  MainContent,
-  TStoreAccountStore,
+  mainContent,
+  StoreAccountStore,
 } from '~stores/useAccountStore/useAccountStore.types';
 
-export const useAccountStore = create<TStoreAccountStore>((set) => ({
+export const useAccountStore = create<StoreAccountStore>((set) => ({
   accounts: [],
 
   addAccount: (account: AccountPost): void => {
@@ -22,7 +22,7 @@ export const useAccountStore = create<TStoreAccountStore>((set) => ({
     }));
   },
 
-  MainContent: {
+  mainContent: {
     medias: [],
     text: '',
   },
@@ -33,8 +33,8 @@ export const useAccountStore = create<TStoreAccountStore>((set) => ({
     }));
   },
 
-  updateMainContent: (contentToUpdate: MainContent): void =>
+  updateMainContent: (contentToUpdate: mainContent): void =>
     set((state) => ({
-      MainContent: { ...state.MainContent, ...contentToUpdate },
+      mainContent: { ...state.mainContent, ...contentToUpdate },
     })),
 }));
