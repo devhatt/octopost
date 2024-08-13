@@ -53,7 +53,6 @@ export function AccountCard({
         onClick={handleFavoriteChange}
       />
       <Switch
-        canChange={invalid}
         checked={enabled}
         invalid={invalid}
         onChange={handleEnableChange}
