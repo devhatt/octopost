@@ -1,7 +1,7 @@
-import { IMedia } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
+import { Media } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
 
 export type MediaPreviewProps = {
-  media: IMedia;
-  onImageChange: (newMedias: IMedia[], id: IMedia['id']) => void;
-  onRemove: (id: IMedia['id']) => void;
+  media: Media;
+  onImageChange: (newMedias: Media[], id: Media['id']) => void;
+  onRemove: (id: Media['id']) => void;
 };

@@ -3,7 +3,7 @@ import {
   Post,
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
-import { AccountPost } from '~stores/useAccountStore';
+import { AccountPost } from '~stores/useAccountStore/useAccountStore.types';
 
 export type TabId = `${Account['socialMediaId']}-${SocialMedia['id']}`;
 

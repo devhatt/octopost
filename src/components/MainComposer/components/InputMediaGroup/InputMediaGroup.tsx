@@ -1,6 +1,7 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import { MediaValidator } from '~services/api/social-media/social-media.types';
+import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -9,13 +10,18 @@ import MediaPreview from './components/MediaPreview/MediaPreview';
 
 import scss from './InputMediaGroup.module.scss';
 
-import { IMedia } from './components/InputMedia/InputMedia.types';
+import { Media } from './components/InputMedia/InputMedia.types';
 import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const [medias, setMedias] = useState<IMedia[]>([]);
+  const { mainContent, updateMainContent } = useAccountStore();
+  const setMedias = (medias: Media[]): void => {
+    updateMainContent({ medias });
+  };
 
-  const validateFile = (file: IMedia): void => {
+  const medias = mainContent.medias ?? [];
+
+  const validateFile = (file: Media): void => {
     const media = file.file;
     const validator = props.postMode?.validators as MediaValidator;
 
@@ -23,17 +29,16 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     for (const validators of fileValidator) validators(props);
   };
 
-  const addMedia = (files: IMedia[]): void => {
+  const addMedia = (files: Media[]): void => {
     if (props.postMode) {
       for (const file of files) {
         validateFile(file);
       }
     }
-
     setMedias([...medias, ...files]);
   };
 
-  const removeMedia = (id: IMedia['id']): void => {
+  const removeMedia = (id: Media['id']): void => {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
@@ -44,7 +49,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     setMedias(list);
   };
 
-  const updateMedia = (files: IMedia[], id: IMedia['id']): void => {
+  const updateMedia = (files: Media[], id: Media['id']): void => {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
