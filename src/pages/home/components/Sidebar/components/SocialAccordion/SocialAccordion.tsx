@@ -70,13 +70,12 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
             </div>
             {props.error && renderError()}
             <div className={scss.accordionInfo}>
-              {props.accounts.some(({ valid }) => !valid) ? (
+              {props.accounts.some(({ valid }) => !valid) && (
                 <Icon className={scss.alertIcon} icon={'alert'} size={16} />
-              ) : (
-                <span className={scss.accountQuantity}>
-                  {props.accounts.length}+
-                </span>
               )}
+              <span className={scss.accountQuantity}>
+                {props.accounts.length}+
+              </span>
               <Icon
                 aria-label={
                   isOpen ? 'Accordion is open' : 'Accordion is closed'
