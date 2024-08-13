@@ -7,7 +7,7 @@ import {
   PostMode,
   TextValidator,
 } from '~services/api/social-media/social-media.types.ts';
-import { useAccountStore } from '~stores/useAccountStore';
+import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { textValidator } from './utils/textValidator/textValidator';
@@ -105,6 +105,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
+
     updateMainContent(newValue);
 
     props.onChange?.(event);

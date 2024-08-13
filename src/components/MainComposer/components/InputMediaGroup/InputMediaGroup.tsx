@@ -1,6 +1,11 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
+
 
 import { nanoid } from 'nanoid';
+
+import { MediaValidator } from '~services/api/social-media/social-media.types';
+import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -27,6 +32,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
       props.removeError?.(error);
     }
   };
+
 
   const validateFile = async (file: IMedia): Promise<void> => {
     const media = file.file;
@@ -61,11 +67,10 @@ function InputMediaGroup(props: MediaInput): ReactNode {
         await validateFile(file);
       }
     }
-
     setMedias([...medias, ...files]);
   };
 
-  const removeMedia = (id: IMedia['id']): void => {
+  const removeMedia = (id: Media['id']): void => {
     const list = Array.from(medias);
     const indexToRemove = list.findIndex((item) => item.id === id);
 
