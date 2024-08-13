@@ -15,7 +15,7 @@ export function AccountCard({
   avatarURL,
   className,
   hasError = false,
-  invalid,
+  invalid = false,
   isEnabled = false,
   isFavorited = false,
   onEnableChange,
