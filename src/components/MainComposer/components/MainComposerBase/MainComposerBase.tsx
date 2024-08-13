@@ -29,7 +29,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     }
   };
 
-  const renderImputMediaGroup = (): ReactNode => {
+  const renderInputMediaGroupWithProps = (): ReactNode => {
     if (props.postMode && 'media' in props.postMode.validators) {
       return (
         <InputMediaGroup
@@ -55,7 +55,11 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
-        {props.postMode ? renderImputMediaGroup() : <InputMediaGroup />}
+        {props.postMode ? (
+          renderInputMediaGroupWithProps()
+        ) : (
+          <InputMediaGroup />
+        )}
         <div />
       </div>
     </div>
