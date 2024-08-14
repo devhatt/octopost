@@ -5,9 +5,11 @@ import classNames from 'classnames';
 
 import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScroll';
 import { Account } from '~services/api/accounts/accounts.types';
+import { useAccountStore } from '~stores/useAccountStore';
+import { usePostStore } from '~stores/usePost/usePost';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
-import { Tab, TabId } from '../Tabber.types';
+import { Tab } from '../Tabber.types';
 import { TabsProps } from './Tabs.types';
 
 function Tabs(props: TabsProps): ReactNode {
@@ -21,7 +23,14 @@ function Tabs(props: TabsProps): ReactNode {
     scrollToElement,
   } = useHorizontalScroll();
 
-  const tabClasses = (id: TabId): string =>
+  const {accounts} = useAccountStore();
+  const {post} = usePostStore();
+
+  const accountId = post[props.currentTab.postId]
+
+  console.log(accountId)
+
+  const tabClasses = (id: string): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
   const renderSocialMediaIcon = (account: Account): ReactNode =>

@@ -1,7 +1,7 @@
-﻿import { Tab, TabId, Tabs } from '../Tabber.types';
+﻿import { Tab, Tabs } from '../Tabber.types';
 
 export type TabsProps = {
   currentTab: Tab;
-  onChangeTab: (tab: Tab, tabId: TabId) => void;
+  onChangeTab: (tab: Tab) => void;
   tabs: Tabs;
 };
