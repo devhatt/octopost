@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Button from '~components/Button/Button.tsx';
 
-import scss from './SocialMediaList.module.scss';
+import scss from './SocialMediaForm.module.scss';
 
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 

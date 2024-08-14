@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import scss from './SocialMediaList.module.scss';
+import scss from './SocialMediaForm.module.scss';
 
 import { socialMedias } from './data.ts';
 import {
