@@ -5,8 +5,6 @@ import classNames from 'classnames';
 
 import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScroll';
 import { Account } from '~services/api/accounts/accounts.types';
-import { useAccountStore } from '~stores/useAccountStore';
-import { usePostStore } from '~stores/usePost/usePost';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { Tab } from '../Tabber.types';
@@ -23,13 +21,6 @@ function Tabs(props: TabsProps): ReactNode {
     scrollToElement,
   } = useHorizontalScroll();
 
-  const {accounts} = useAccountStore();
-  const {post} = usePostStore();
-
-  const accountId = post[props.currentTab.postId]
-
-  console.log(accountId)
-
   const tabClasses = (id: string): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
@@ -38,20 +29,19 @@ function Tabs(props: TabsProps): ReactNode {
 
   const handleTabClick = (
     tab: Tab,
-    tabId: TabId,
     tabElement: HTMLElement
   ): void => {
-    props.onChangeTab(tab, tabId);
+    props.onChangeTab(tab);
     scrollToElement(tabElement);
   };
 
-  const renderTabs = (tabId: TabId, tab: Tab): ReactNode => (
+  const renderTabs = (tab: Tab): ReactNode => (
     <div
-      className={tabClasses(tabId)}
-      key={tabId}
-      onClick={(e) => handleTabClick(tab, tabId, e.currentTarget)}
+      className={tabClasses(tab.id)}
+      key={tab.id}
+      onClick={(e) => handleTabClick(tab, e.currentTarget)}
     >
-      {renderSocialMediaIcon(tab.account as Account)}
+      {renderSocialMediaIcon(tab.account)}
       <span className={scss.tabTitle}>{tab.account.userName}</span>
     </div>
   );
@@ -65,8 +55,8 @@ function Tabs(props: TabsProps): ReactNode {
         onMouseLeave={handleMouseLeave}
         ref={containerRef}
       >
-        {Object.entries(props.tabs).map(([tabId, tab]) =>
-          renderTabs(tabId as TabId, tab)
+        {Object.entries(props.tabs).map(([, tab]) =>
+          renderTabs(tab)
         )}
       </div>
       <span className={scss.lastGradient} ref={lastGradient} />

@@ -3,6 +3,7 @@ import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { DataPost } from '~stores/usePost/usePost.types';
 
 export type Tab = {
+  account: Account;
   id: string;
   postId: DataPost['id'];
   postsModeId: SocialMedia['postModes'][number]['id'];

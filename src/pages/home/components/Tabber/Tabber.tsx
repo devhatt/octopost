@@ -8,6 +8,7 @@ import isEmpty from 'lodash.isempty';
 import { nanoid } from 'nanoid';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
+import { useAccountStore } from '~stores/useAccountStore';
 import { usePostStore } from '~stores/usePost/usePost';
 import { DataPost, PostModes as PostModesType } from '~stores/usePost/usePost.types';
 
@@ -40,12 +41,14 @@ function Tabber(): ReactNode {
   const [currentTab, setCurrentTab] = useState('');
 
   useEffect(() => {
-    if (!isEmpty(posts) && isEmpty(tabs)) {
-      const [ post ] = Object.values(posts)
+    if (!isEmpty(posts)) {
+      const  lastPost  = Object.values(posts).length - 1;
+      const post = Object.values(posts)[lastPost]
       const id = nanoid();
 
       setCurrentTab(id);
-      setTabs({[id]: {
+      setTabs({...tabs, [id]: {
+        account: post.account,
         id: id, 
         postId: post.id,
         postsModeId: getFirstPostMode(post.postModes)
@@ -80,12 +83,12 @@ function Tabber(): ReactNode {
             postId={tabs[currentTab].postId}
             postModeId={tabs[currentTab].postsModeId}
           />
-          <MainComposerBase
+          {/* <MainComposerBase
             accountId={tabs[currentTab].postId}
             onChange={handleContentChange}
             postMode={tabs[currentTab].postsModeId}
             value={''}
-          />
+          /> */}
         </div>
         <div className={scss.previewContainer}>
           <Preview>

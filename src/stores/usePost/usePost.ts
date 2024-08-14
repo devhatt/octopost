@@ -19,7 +19,7 @@ export const usePostStore = create<PostStore>((set) => ({
       posts: {
         ...state.posts, 
         [id]: {
-          accountId: account.id,
+          account: account,
           id: id,
           postModes,
           socialMediaId: account.socialMediaId
