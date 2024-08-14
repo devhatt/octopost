@@ -1,8 +1,7 @@
 import { PostMode } from '~services/api/social-media/social-media.types';
-import { AccountPost } from '~stores/useAccountStore';
+import { DataPost } from '~stores/usePost/usePost.types';
 
 export type PostModesProps = {
-  accountSocialMediaId: AccountPost['socialMediaId'];
-  changePostModeId: (postModeId: PostMode['id']) => void;
+  postId: DataPost['id'];
   postModeId: PostMode['id'] | undefined;
 };
