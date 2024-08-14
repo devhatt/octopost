@@ -1,11 +1,9 @@
-import { ReactNode } from 'react';
-
+/* eslint-disable @typescript-eslint/await-thenable -- for validate*/
+import { ReactNode, useState } from 'react';
 
 import { nanoid } from 'nanoid';
 
-import { MediaValidator } from '~services/api/social-media/social-media.types';
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
-
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -14,7 +12,7 @@ import MediaPreview from './components/MediaPreview/MediaPreview';
 
 import scss from './InputMediaGroup.module.scss';
 
-import { IMedia } from './components/InputMedia/InputMedia.types';
+import { Media } from './components/InputMedia/InputMedia.types';
 import {
   ErrorMap,
   MEDIA_ERRORS,
@@ -23,18 +21,22 @@ import {
 } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const [medias, setMedias] = useState<IMedia[]>([]);
   const [errors, setErrors] = useState<MediaErrorMap>({});
+  const { mainContent, updateMainContent } = useAccountStore();
+  const setMedias = (medias: Media[]): void => {
+    updateMainContent({ medias });
+  };
 
-  const removeErrors = (fileId: IMedia['id']): void => {
+  const medias = mainContent.medias ?? [];
+
+  const removeErrors = (fileId: Media['id']): void => {
     const errorsForFile = errors[fileId];
     for (const error of Object.values(errorsForFile)) {
       props.removeError?.(error);
     }
   };
 
-
-  const validateFile = async (file: IMedia): Promise<void> => {
+  const validateFile = async (file: Media): Promise<void> => {
     const media = file.file;
     const validator = props.postMode?.validators.media;
 
@@ -61,7 +63,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
   };
 
-  const addMedia = async (files: IMedia[]): Promise<void> => {
+  const addMedia = async (files: Media[]): Promise<void> => {
     if (props.postMode) {
       for (const file of files) {
         await validateFile(file);
@@ -84,8 +86,8 @@ function InputMediaGroup(props: MediaInput): ReactNode {
   };
 
   const updateMedia = async (
-    files: IMedia[],
-    id: IMedia['id']
+    files: Media[],
+    id: Media['id']
   ): Promise<void> => {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
