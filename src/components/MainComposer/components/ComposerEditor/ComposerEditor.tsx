@@ -106,7 +106,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = event.target.value;
 
-    updateMainContent(newValue);
+    updateMainContent({ text: newValue });
 
     props.onChange?.(event);
 
