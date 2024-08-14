@@ -159,7 +159,7 @@ describe('SocialAccordion', () => {
 
       render(
         <SocialAccordion
-          accounts={[{ ...account, valid: true }]}
+          accounts={[account]}
           error={false}
           socialMediaId="DISCORD_EXAMPLE_ID"
         />
