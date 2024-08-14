@@ -12,7 +12,7 @@ export type MainContent = {
 export type PostModes = Record<PostMode['id'], MainContent>
 
 export type DataPost = {
-  accountId: Account['id']
+  account: Account
   id: string,
   postModes: PostModes,
   socialMediaId: SocialMedia['id'],
