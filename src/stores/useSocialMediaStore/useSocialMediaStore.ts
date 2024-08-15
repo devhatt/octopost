@@ -97,6 +97,15 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
     }
 
+    const favoriteAccounts = {
+      icon: 'Icon',
+      id: 'FAVORITE_ACCOUNTS',
+      name: 'favorite',
+      postModes: [],
+    };
+
+    fetchedSocialMediasMap.set('FAVORITE_ACCOUNTS', favoriteAccounts);
+
     set(() => ({ socialMedias: fetchedSocialMediasMap }));
     set(() => ({
       accounts: {
