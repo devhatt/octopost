@@ -1,0 +1,74 @@
+@use '~styles/global.scss' as *;
+@use '~styles/breakpoints.scss' as breakpoints;
+
+.selectionGrid {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  gap: 1.6rem;
+
+  .socialItem {
+    padding: 1.2rem 0;
+    border: 1px solid $primaryGray;
+
+    transition: 0.09s ease-in-out;
+
+    &:hover {
+      scale: 0.98;
+    }
+
+    .socialCard {
+      min-height: 25rem;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 2rem;
+
+      place-items: center;
+      justify-content: space-evenly;
+
+      .socialIconGroup {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .socialIcon {
+        height: 7rem;
+
+        margin-top: 2rem;
+
+        fill: #000;
+      }
+    }
+
+    .socialTitle {
+      display: block;
+
+      color: $darkPurple;
+
+      font-weight: bold;
+
+      margin: 2rem;
+    }
+
+    .buttonContainer {
+      min-height: 8rem;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      align-items: center;
+      justify-content: flex-end;
+
+      .socialButton {
+        font-size: 1.4rem;
+
+        margin-top: 1rem;
+
+        padding: 1rem 3rem;
+      }
+    }
+  }
+}
