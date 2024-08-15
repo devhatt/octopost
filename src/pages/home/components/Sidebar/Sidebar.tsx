@@ -12,7 +12,7 @@ import Icon from '~components/Icon/Icon';
 import InputSearch from '~components/InputSearch/InputSearch';
 import Modal from '~components/Modal/Modal';
 
-import AddAccount from './components/AddAccount/AddAccount';
+import SocialMediaForm from './components/SocialMediaForm/SocialMediaForm';
 
 import scss from './Sidebar.module.scss';
 
@@ -113,12 +113,11 @@ function Sidebar(): React.ReactNode {
               />
             </div>
             <Modal
-              footer={<div>footer</div>}
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}
-              title="Adicionar Social"
+              title="Connect a social media"
             >
-              <AddAccount onChange={handleSelectSocialMedia} />
+              <SocialMediaForm onOpenModal={handleSelectSocialMedia} />
             </Modal>
           </div>
         </div>
