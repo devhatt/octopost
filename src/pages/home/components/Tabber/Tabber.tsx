@@ -12,6 +12,8 @@ import { useAccountStore } from '~stores/useAccountStore';
 import { usePostStore } from '~stores/usePost/usePost';
 import { DataPost, PostModes as PostModesType } from '~stores/usePost/usePost.types';
 
+import { useSyncTabsWithPosts } from './hooks/useSyncTabsWithPosts';
+
 import MainComposerBase from '~components/MainComposer/components/MainComposerBase/MainComposerBase';
 import Preview from '~components/Preview/Preview';
 
@@ -20,7 +22,6 @@ import Tabs from './Tabs/Tabs';
 
 import scss from './Tabber.module.scss';
 
-import { Tabs as TabsType } from './Tabber.types';
 
 
 const getFirstPostMode = (postModes: PostModesType):  DataPost['id'] => Object.keys(postModes)[0]
@@ -36,25 +37,8 @@ function getCurrentPostModeMaxLimit(
 }
 
 function Tabber(): ReactNode {
-  const { posts } = usePostStore();
-  const [tabs, setTabs] = useState<TabsType>({});
   const [currentTab, setCurrentTab] = useState('');
-
-  useEffect(() => {
-    if (!isEmpty(posts)) {
-      const  lastPost  = Object.values(posts).length - 1;
-      const post = Object.values(posts)[lastPost]
-      const id = nanoid();
-
-      setCurrentTab(id);
-      setTabs({...tabs, [id]: {
-        account: post.account,
-        id: id, 
-        postId: post.id,
-        postsModeId: getFirstPostMode(post.postModes)
-      }})
-    }
-  }, [posts])
+  const { tabs } = useSyncTabsWithPosts(setCurrentTab);
 
   function changeCurrentTab(): void {
     
@@ -79,10 +63,10 @@ function Tabber(): ReactNode {
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
-          <PostModes
+          {/* <PostModes
             postId={tabs[currentTab].postId}
             postModeId={tabs[currentTab].postsModeId}
-          />
+          /> */}
           {/* <MainComposerBase
             accountId={tabs[currentTab].postId}
             onChange={handleContentChange}

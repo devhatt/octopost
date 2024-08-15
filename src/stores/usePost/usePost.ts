@@ -1,14 +1,12 @@
+import omit from 'lodash.omit';
 import { nanoid } from 'nanoid';
-
-import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import { create } from '../zustand';
 
 import { PostModes, PostStore } from './usePost.types';
 
 export const usePostStore = create<PostStore>((set) => ({
-  addPost: (account, postsModes): void => {
-
+  add: (account, postsModes): void => {
     const id = nanoid();
     const postModes = postsModes.reduce<PostModes>((acc, postMode) => {
       acc[postMode.id] = {}
@@ -19,7 +17,7 @@ export const usePostStore = create<PostStore>((set) => ({
       posts: {
         ...state.posts, 
         [id]: {
-          account: account,
+          accountId: account.id,
           id: id,
           postModes,
           socialMediaId: account.socialMediaId
@@ -29,4 +27,13 @@ export const usePostStore = create<PostStore>((set) => ({
   },
 
   posts: {},
+
+  remove: (id): void => {
+    set((state) => {
+      const posts = omit(state.posts, id)
+      console.log(posts)
+      return { posts }
+    })
+  }
 }));
+
