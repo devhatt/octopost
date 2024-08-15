@@ -12,14 +12,14 @@ export type MainContent = {
 export type PostModes = Record<PostMode['id'], MainContent>
 
 export type DataPost = {
-  account: Account
+  accountId: Account['id']
   id: string,
   postModes: PostModes,
   socialMediaId: SocialMedia['id'],
 }
 
 export type PostStore = {
-  addPost: (account: StoreAccount, postsModes: PostMode[]) => void;
+  add: (account: StoreAccount, postsModes: PostMode[]) => void;
   posts: Record<string, DataPost>;
-
+  remove: (id: string) => void
 };

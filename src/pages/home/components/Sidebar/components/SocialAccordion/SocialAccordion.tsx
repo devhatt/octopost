@@ -2,7 +2,6 @@ import { ReactNode, useState } from 'react';
 
 import { useAccountStore } from '~stores/useAccountStore';
 import { usePostStore } from '~stores/usePost/usePost';
-import { PostsModes } from '~stores/usePost/usePost.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
@@ -20,15 +19,18 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const { socialMedias } = useSocialMediaStore();
-  const { addPost, posts } = usePostStore();
+  const { add, posts, remove } = usePostStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
     const socialMedia = socialMedias.get(account.socialMediaId);
+    const actualPost = Object.values(posts)
+      .flat()
+      .find((post) => post.accountId === account.id);
 
-    if (enabled && socialMedia?.postModes)
-      addPost(account, socialMedia.postModes);
+    if (enabled && socialMedia?.postModes) add(account, socialMedia.postModes);
+    if (!enabled && actualPost) remove(actualPost.id);
   };
 
   const renderError = (): ReactNode => (

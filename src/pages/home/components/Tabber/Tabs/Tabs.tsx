@@ -5,13 +5,15 @@ import classNames from 'classnames';
 
 import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScroll';
 import { Account } from '~services/api/accounts/accounts.types';
+import { usePostStore } from '~stores/usePost/usePost';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { Tab } from '../Tabber.types';
 import { TabsProps } from './Tabs.types';
 
 function Tabs(props: TabsProps): ReactNode {
-  const { socialMedias } = useSocialMediaStore();
+  const { accounts, socialMedias } = useSocialMediaStore();
+  const {posts} = usePostStore()
   const {
     containerRef,
     firstGradient,
@@ -35,16 +37,20 @@ function Tabs(props: TabsProps): ReactNode {
     scrollToElement(tabElement);
   };
 
-  const renderTabs = (tab: Tab): ReactNode => (
-    <div
-      className={tabClasses(tab.id)}
-      key={tab.id}
-      onClick={(e) => handleTabClick(tab, e.currentTarget)}
-    >
-      {renderSocialMediaIcon(tab.account)}
-      <span className={scss.tabTitle}>{tab.account.userName}</span>
-    </div>
-  );
+  const renderTabs = (tab: Tab): ReactNode => {
+    const account = Object.values(accounts.data).flat().find((acc) => acc?.id === tab.accountId)
+
+    return (
+      <div
+        className={tabClasses(tab.id)}
+        key={tab.id}
+        onClick={(e) => handleTabClick(tab, e.currentTarget)}
+      >
+        {renderSocialMediaIcon(account as Account)}
+        <span className={scss.tabTitle}>{account?.userName}</span>
+      </div>
+    );
+  }
 
   return (
     <div className={scss.tabsWrapper}>
