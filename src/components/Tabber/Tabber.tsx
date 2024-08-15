@@ -138,16 +138,18 @@ function Tabber(): ReactNode {
             currentTab={tabs[currentTab].account}
             onChangePostMode={changePostMode}
           />
-          <MainComposerBase
-            accountId={tabs[currentTab].account.id.toString()}
-            currentMaxLimit={currentPostModeMaxLimit ?? undefined}
-            onChange={handleContentChange}
-            postMode={currentPostMode ?? undefined}
-            value={
-              tabs[currentTab].posts[tabs[currentTab].postModeOnView]?.text ??
-              ''
-            }
-          />
+          <div className={scss.mainComposerContainer}>
+            <MainComposerBase
+              accountId={tabs[currentTab].account.id.toString()}
+              currentMaxLimit={currentPostModeMaxLimit ?? undefined}
+              onChange={handleContentChange}
+              postMode={currentPostMode ?? undefined}
+              value={
+                tabs[currentTab].posts[tabs[currentTab].postModeOnView]?.text ??
+                ''
+              }
+            />
+          </div>
         </div>
         <div className={scss.previewContainer}>
           <Preview>
