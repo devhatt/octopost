@@ -117,7 +117,7 @@ function Sidebar(): React.ReactNode {
               onClickOutside={() => setIsOpen(false)}
               title="Connect a social media"
             >
-              <SocialMediaForm onHandleToggleModal={handleSelectSocialMedia} />
+              <SocialMediaForm onOpenModal={handleSelectSocialMedia} />
             </Modal>
           </div>
         </div>

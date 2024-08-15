@@ -10,9 +10,7 @@ import {
 } from './SocialMediaForm.components.tsx';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
-function SocialMediaForm({
-  onHandleToggleModal,
-}: SocialMediaFormProps): ReactNode {
+function SocialMediaForm({ onOpenModal }: SocialMediaFormProps): ReactNode {
   return (
     <ul className={scss.selectionGrid}>
       {socialMedias.map((socialMedia) => (
@@ -25,15 +23,13 @@ function SocialMediaForm({
 
             <div className={scss.buttonContainer}>
               {socialMedia.hasAccount ? (
-                <ConnectAccountButton
-                  onHandleToggleModal={onHandleToggleModal}
-                />
+                <ConnectAccountButton onOpenModal={onOpenModal} />
               ) : (
                 <ConnectAccountButtonDisabled />
               )}
 
               {socialMedia.hasGroup && (
-                <ConnectGroupButton onHandleToggleModal={onHandleToggleModal} />
+                <ConnectGroupButton onOpenModal={onOpenModal} />
               )}
             </div>
           </div>

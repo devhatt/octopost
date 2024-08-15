@@ -8,7 +8,7 @@ const setIsOpenMock = (): boolean => false;
 describe('Social Media Form', () => {
   it('renders correctly', () => {
     const { container } = render(
-      <SocialMediaForm onHandleToggleModal={() => setIsOpenMock} />
+      <SocialMediaForm onOpenModal={() => setIsOpenMock} />
     );
 
     expect(container).toBeDefined();
@@ -16,7 +16,7 @@ describe('Social Media Form', () => {
   it('calls onClick prop when clicked', async () => {
     const handleClick = vi.fn();
 
-    render(<SocialMediaForm onHandleToggleModal={handleClick} />);
+    render(<SocialMediaForm onOpenModal={handleClick} />);
 
     const [button] = screen.getAllByRole('button');
     await userEvent.click(button);

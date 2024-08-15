@@ -1,3 +1,3 @@
 export type SocialMediaFormProps = {
-  onHandleToggleModal: () => void;
+  onOpenModal: () => void;
 };

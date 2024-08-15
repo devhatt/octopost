@@ -7,12 +7,12 @@ import scss from './SocialMediaForm.module.scss';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
 export function ConnectAccountButton({
-  onHandleToggleModal,
+  onOpenModal,
 }: SocialMediaFormProps): ReactNode {
   return (
     <Button
       className={scss.socialButton}
-      onClick={onHandleToggleModal}
+      onClick={onOpenModal}
       variant="outlined"
     >
       Connect Account
@@ -29,12 +29,12 @@ export function ConnectAccountButtonDisabled(): ReactNode {
 }
 
 export function ConnectGroupButton({
-  onHandleToggleModal,
+  onOpenModal,
 }: SocialMediaFormProps): ReactNode {
   return (
     <Button
       className={scss.socialButton}
-      onClick={onHandleToggleModal}
+      onClick={onOpenModal}
       variant="container"
     >
       Connect Group
