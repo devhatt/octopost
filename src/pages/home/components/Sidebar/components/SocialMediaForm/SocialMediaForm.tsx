@@ -5,7 +5,6 @@ import scss from './SocialMediaForm.module.scss';
 import { socialMedias } from './data.ts';
 import {
   ConnectAccountButton,
-  ConnectAccountButtonDisabled,
   ConnectGroupButton,
 } from './SocialMediaForm.components.tsx';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
@@ -25,7 +24,7 @@ function SocialMediaForm({ onOpenModal }: SocialMediaFormProps): ReactNode {
               {socialMedia.hasAccount ? (
                 <ConnectAccountButton onOpenModal={onOpenModal} />
               ) : (
-                <ConnectAccountButtonDisabled />
+                <ConnectAccountButton disabled onOpenModal={onOpenModal} />
               )}
 
               {socialMedia.hasGroup && (

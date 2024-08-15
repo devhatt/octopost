@@ -7,22 +7,16 @@ import scss from './SocialMediaForm.module.scss';
 import { SocialMediaFormProps } from './SocialMediaForm.types';
 
 export function ConnectAccountButton({
+  disabled = false,
   onOpenModal,
 }: SocialMediaFormProps): ReactNode {
   return (
     <Button
       className={scss.socialButton}
+      disabled={disabled}
       onClick={onOpenModal}
       variant="outlined"
     >
-      Connect Account
-    </Button>
-  );
-}
-
-export function ConnectAccountButtonDisabled(): ReactNode {
-  return (
-    <Button className={scss.socialButton} disabled variant="outlined">
       Connect Account
     </Button>
   );
