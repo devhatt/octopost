@@ -111,12 +111,14 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}
       />
+
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
           maxLength={props.currentMaxLimit ?? socialLimits.maxLimit}
           svg={null}
           value={props.value ?? inputValue}
         />
+
         {!props.postMode && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (

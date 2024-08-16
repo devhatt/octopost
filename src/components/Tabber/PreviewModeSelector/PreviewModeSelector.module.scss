@@ -1,0 +1,68 @@
+@use '~styles/global.scss' as *;
+
+.containerPreview {
+  overflow: hidden;
+
+  display: flex;
+
+  border: 1px solid $primaryGray;
+
+  position: relative;
+  bottom: 1.37rem;
+
+  background-color: $secondaryWhite;
+  border-radius: 16px;
+
+  &:focus-within,
+  &:active {
+    border: 1px solid $secondaryPurple;
+  }
+
+  .icon {
+    height: 100%;
+
+    display: flex;
+
+    padding: 8px;
+
+    path {
+      fill: $tertiaryGray;
+    }
+  }
+
+  .previewModeInput {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    position: absolute;
+
+    clip-path: inset(50%);
+  }
+
+  .previewModeInput:checked + label .icon {
+    background-color: $primaryWhite;
+
+    path {
+      fill: $secondaryPurple;
+    }
+  }
+
+  .previewModeLabel {
+    display: flex;
+
+    cursor: pointer;
+  }
+
+  .previewModeLabel span {
+    position: absolute;
+
+    opacity: 0;
+  }
+}
