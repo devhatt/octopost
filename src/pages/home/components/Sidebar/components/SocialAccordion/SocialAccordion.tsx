@@ -74,7 +74,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
             {props.error && renderError()}
             <div className={scss.accordionInfo}>
               {hasInvalidAccount ? (
-                <Icon className={scss.alertIcon} icon={'alert'} size={16} />
+                <Icon className={scss.alertIcon} icon="alert" size={16} />
               ) : (
                 <AccountQuantity accountQuantity={props.accounts.length} />
               )}
