@@ -48,6 +48,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     <ul role="listitem">{renderAccordionMap()}</ul>
   );
 
+  const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
+
   return (
     <Accordion
       className={scss.wrapper}
@@ -71,7 +73,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
             </div>
             {props.error && renderError()}
             <div className={scss.accordionInfo}>
-              {props.accounts.some(({ valid }) => !valid) ? (
+              {hasInvalidAccount ? (
                 <Icon className={scss.alertIcon} icon={'alert'} size={16} />
               ) : (
                 <AccountQuantity accountQuantity={props.accounts.length} />
