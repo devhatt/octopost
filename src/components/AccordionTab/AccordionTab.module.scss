@@ -19,10 +19,8 @@
   display: none;
 
   color: $primaryWhite;
-  font-size: 4rem;
-  font-weight: 900;
 
-  margin-right: 2rem;
+  margin-top: 0.2rem;
 
   cursor: pointer;
 }
@@ -57,19 +55,18 @@
     font-size: 1.6rem;
     line-height: 1;
 
-    padding: 1.2rem;
+    padding: 1.3rem;
 
     position: relative;
 
     background-color: $secondaryPurple;
     border-radius: 17px 17px 0 0;
 
-    &::before {
-      font-size: 1.8rem;
+    .innerHeader {
+      display: flex;
+      gap: 1.5rem;
 
-      margin-right: 1rem;
-
-      content: '⬤';
+      align-items: center;
     }
   }
 

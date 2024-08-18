@@ -17,7 +17,6 @@ function AccordionTab({
   const handleClose = (): void => {
     if (props.onChangeOpen) props.onChangeOpen(!isOpen);
   };
-
   const renderCloseButton = (): ReactNode => (
     <button className={scss.closeButton} onClick={handleClose} type="button">
       <Icon icon="minus" size={16} />
@@ -26,7 +25,10 @@ function AccordionTab({
 
   const renderHeader = (): ReactNode => (
     <div className={scss.header}>
-      <p className={scss.headerTitle}>{props.title}</p>
+      <div className={scss.innerHeader}>
+        <Icon icon="circle" size={12} />
+        <p className={scss.headerTitle}>{props.title}</p>
+      </div>
       {hideCloseButton ? null : renderCloseButton()}
     </div>
   );
