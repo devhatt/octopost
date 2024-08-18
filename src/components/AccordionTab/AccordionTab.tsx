@@ -19,7 +19,7 @@ function AccordionTab({
   };
   const renderCloseButton = (): ReactNode => (
     <button className={scss.closeButton} onClick={handleClose} type="button">
-      <Icon icon="minus" size={16} />
+      <Icon icon={isOpen ? 'minus' : 'plus'} size={16} />
     </button>
   );
 
