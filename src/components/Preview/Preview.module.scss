@@ -17,15 +17,11 @@
   border-radius: 12px;
 }
 
-.content {
-  display: block;
-  background: rgb(190, 80, 190);
-  justify-content: center;
-}
-
 .previewContent {
-  display: flex;
   width: 100%;
+
+  display: flex;
+
   justify-content: end;
 }
 

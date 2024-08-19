@@ -31,7 +31,7 @@ function Preview(props: PreviewProps): ReactNode {
       <div className={scss.previewContent}>
         <PreviewModeSelector list={previewModeMockList} />
       </div>
-      <div className={scss.content}>{props.children}</div>
+      <div>{props.children} </div>
     </div>
   );
 }
