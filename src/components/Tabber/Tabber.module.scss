@@ -4,12 +4,13 @@
 .gridContainer {
   min-height: 25rem;
 
-  position: relative;
-
   align-items: center;
+
   justify-content: center;
 
   padding: 2px;
+
+  position: relative;
 
   background-color: global.$tertiaryWhite;
 }
