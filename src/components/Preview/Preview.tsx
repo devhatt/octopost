@@ -14,14 +14,14 @@ const previewModeMockList = [
     name: 'mobile',
   },
   {
-    icon: 'pc' as IconsType,
-    id: 'pc',
-    name: 'pc',
-  },
-  {
     icon: 'tablet' as IconsType,
     id: 'tablet',
     name: 'tablet',
+  },
+  {
+    icon: 'pc' as IconsType,
+    id: 'pc',
+    name: 'pc',
   },
 ];
 
@@ -31,7 +31,7 @@ function Preview(props: PreviewProps): ReactNode {
       <div className={scss.previewContent}>
         <PreviewModeSelector list={previewModeMockList} />
       </div>
-      <div>{props.children} </div>
+      <div>{props.children}</div>
     </div>
   );
 }
