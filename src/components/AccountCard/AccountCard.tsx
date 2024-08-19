@@ -24,11 +24,9 @@ export function AccountCard({
   ...props
 }: AccountCardProps): ReactNode {
   const [enabled, setEnabled] = useState(isEnabled);
-  const [favorited, setFavorited] = useState(isFavorited);
 
   const handleFavoriteChange = (): void => {
-    setFavorited(!favorited);
-    onFavoriteChange?.(!favorited);
+    onFavoriteChange?.(!isFavorited);
   };
 
   const handleEnableChange = (): void => {
@@ -41,8 +39,7 @@ export function AccountCard({
     [scss.container]: true,
     [scss.invalid]: invalid,
   });
-
-  const favoriteIcon = favorited ? 'star-filled' : 'star';
+  const favoriteIcon = isFavorited ? 'star-filled' : 'star';
 
   return (
     <div className={accountCardClassNames} {...props}>

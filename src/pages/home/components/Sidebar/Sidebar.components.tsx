@@ -9,24 +9,24 @@ import scss from './Sidebar.module.scss';
 import { FilteredAccountsProps } from './Sidebar.types';
 
 export function FilteredAccounts(props: FilteredAccountsProps): ReactNode {
-  const { accounts, socialMedias } = useSocialMediaStore();
+  const { socialMedias } = useSocialMediaStore();
+
+  const socialMediasSortered = props.socialMedia.sort((a, b) => {
+    if (a.socialMediaId === 'FAVORITE_ACCOUNTS') return -1;
+    if (b.socialMediaId === 'FAVORITE_ACCOUNTS') return 1;
+    return 0;
+  });
+
   return (
     <div className={scss.accordionContainer}>
-      <SocialAccordion
-        accounts={accounts.favorites}
-        error={false}
-        key="FavoriteAccounts"
-        socialMediaId="FavoriteAccounts"
-        title="Favorite Accounts"
-      />
-      {props.socialMedia.map(
+      {socialMediasSortered.map(
         ({ socialMediaAccounts, socialMediaId }): ReactNode => (
           <SocialAccordion
             accounts={socialMediaAccounts}
             error={false}
             key={socialMediaId}
             socialMediaId={socialMediaId}
-            title={socialMedias.get(socialMediaId)?.name}
+            title={socialMedias.get(socialMediaId)?.name as string}
           />
         )
       )}

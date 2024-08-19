@@ -1,4 +1,3 @@
-import isEmpty from 'lodash.isempty';
 import { create } from 'zustand';
 
 import { octopostApi } from '~services/api';
@@ -18,7 +17,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   accounts: {
     data: {},
     error: '',
-    favorites: [],
     loading: false,
   },
 
@@ -51,8 +49,38 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   favoriteAccount: async (
     accountId: Account['id'],
     favorite: boolean
-  ): Promise<Account | undefined> =>
-    AccountsService.favorite(accountId, favorite),
+  ): Promise<void> => {
+    const account = await AccountsService.favorite(accountId, favorite);
+
+    if (account?.id) {
+      const favoritedAccount: StoreAccount = {
+        ...account,
+        favorite,
+        valid: false,
+      };
+
+      set((state) => {
+        const currentFavoriteAccounts =
+          state.accounts.data.FAVORITE_ACCOUNTS ?? [];
+        const currentSocialMediaAccounts =
+          state.accounts.data[account.socialMediaId] ?? [];
+
+        return {
+          accounts: {
+            ...state.accounts,
+            data: {
+              ...state.accounts.data,
+              [account.socialMediaId]: [
+                favoritedAccount,
+                ...currentSocialMediaAccounts,
+              ],
+              FAVORITE_ACCOUNTS: [favoritedAccount, ...currentFavoriteAccounts],
+            },
+          },
+        };
+      });
+    }
+  },
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -63,7 +91,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     const accountsBySocialMedia: SocialMediaData = {
       data: {},
     };
-    let favoriteSocialMedias: StoreAccount[] = [];
 
     accountsBySocialMedia.data = fetchedAccounts.reduce(
       (agg, account) => ({
@@ -79,39 +106,39 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       accountsBySocialMedia.data
     );
 
-    if (!isEmpty(accountsBySocialMedia.data)) {
-      favoriteSocialMedias = Object.values(accountsBySocialMedia.data)
-        .flat()
-        .filter(
-          (socialMedia): socialMedia is StoreAccount =>
-            socialMedia?.favorite === true
-        );
-    }
+    const favoriteAccounts = fetchedAccounts
+      .filter((account) => account.favorite)
+      .map((account) => ({
+        ...account,
+        socialMediaId: 'FAVORITE_ACCOUNTS',
+        valid: false,
+      }));
+
+    accountsBySocialMedia.data.FAVORITE_ACCOUNTS = favoriteAccounts;
 
     const fetchedSocialMedias =
       await SocialMediaService.fetch(userSocialMedias);
 
     const fetchedSocialMediasMap = new Map<SocialMedia['id'], SocialMedia>();
 
-    for (const socialMedia of fetchedSocialMedias) {
-      fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
-    }
-
-    const favoriteAccounts = {
+    const favoriteSocialMedia = {
       icon: 'Icon',
       id: 'FAVORITE_ACCOUNTS',
-      name: 'favorite',
+      name: 'Favorite Accounts',
       postModes: [],
     };
 
-    fetchedSocialMediasMap.set('FAVORITE_ACCOUNTS', favoriteAccounts);
+    fetchedSocialMediasMap.set('FAVORITE_ACCOUNTS', favoriteSocialMedia);
+
+    for (const socialMedia of fetchedSocialMedias) {
+      fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
+    }
 
     set(() => ({ socialMedias: fetchedSocialMediasMap }));
     set(() => ({
       accounts: {
         data: accountsBySocialMedia.data,
         error: '',
-        favorites: favoriteSocialMedias,
         loading: false,
       },
     }));

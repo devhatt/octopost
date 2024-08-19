@@ -71,7 +71,6 @@ describe('Sidebar component', () => {
       accounts: {
         data: mockedAccounts().data,
         error: '',
-        favorites: mockedAccounts().favorites,
         loading: false,
       },
       addAccount: mockedAddAccount,
@@ -94,7 +93,6 @@ describe('Sidebar component', () => {
           TWITTER_EXAMPLE_ID: [],
         },
         error: '',
-        favorites: [],
         loading: false,
       },
       addAccount: mockedAddAccount,

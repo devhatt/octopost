@@ -7,7 +7,7 @@ export type SocialAccordionProps = {
   error: boolean;
   icon?: ReactElement;
   socialMediaId: string;
-  title: string | undefined;
+  title: string;
 };
 
 export type IAccountList = {

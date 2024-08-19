@@ -40,7 +40,7 @@ describe('SocialAccordion', () => {
         accounts={mockDiscordData}
         error={false}
         socialMediaId={socialMediaId}
-        title={mockedSocialMedias().get(socialMediaId)?.name}
+        title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
     const accordion = screen.getByText(/discord/i);
@@ -56,7 +56,7 @@ describe('SocialAccordion', () => {
         accounts={mockDiscordData}
         error={false}
         socialMediaId={socialMediaId}
-        title={mockedSocialMedias().get(socialMediaId)?.name}
+        title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
 
@@ -76,7 +76,7 @@ describe('SocialAccordion', () => {
         accounts={[]}
         error
         socialMediaId={socialMediaId}
-        title={mockedSocialMedias().get(socialMediaId)?.name}
+        title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
     const error = screen.getByText(/error/i);
@@ -93,7 +93,7 @@ describe('SocialAccordion', () => {
           accounts={mockDiscordData}
           error={false}
           socialMediaId={socialMediaId}
-          title={mockedSocialMedias().get(socialMediaId)?.name}
+          title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
 
@@ -116,7 +116,7 @@ describe('SocialAccordion', () => {
           accounts={mockDiscordData}
           error={false}
           socialMediaId={socialMediaId}
-          title={mockedSocialMedias().get(socialMediaId)?.name}
+          title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
 
@@ -143,7 +143,7 @@ describe('SocialAccordion', () => {
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
           socialMediaId={socialMediaId}
-          title={mockedSocialMedias().get(socialMediaId)?.name}
+          title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
 
@@ -171,7 +171,7 @@ describe('SocialAccordion', () => {
           accounts={[]}
           error={false}
           socialMediaId={socialMediaId}
-          title={mockedSocialMedias().get(socialMediaId)?.name}
+          title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
       const accountQuantity = screen.getByText(/0/);
@@ -188,7 +188,7 @@ describe('SocialAccordion', () => {
           accounts={[{ ...account, valid: true }]}
           error={false}
           socialMediaId={socialMediaId}
-          title={mockedSocialMedias().get(socialMediaId)?.name}
+          title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
 

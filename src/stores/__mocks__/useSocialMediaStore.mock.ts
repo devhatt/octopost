@@ -98,10 +98,20 @@ export const mockedAccounts = vi.fn(() => ({
         userName: 'Twitter User 6',
         valid: false,
       },
+      {
+        avatar: 'https://example.com/image2.jpg',
+        expiresAt: '',
+        favorite: true,
+        generatedAt: '',
+        id: '7',
+        socialMediaId: 'TWITTER_EXAMPLE_ID',
+        token: 'TWITTER_EXAMPLE_TOKEN_7',
+        userName: 'Twitter User 7',
+        valid: false,
+      },
     ],
   },
   error: '',
-  favorites: mockedFavoriteAccounts,
   loading: false,
 }));
 
