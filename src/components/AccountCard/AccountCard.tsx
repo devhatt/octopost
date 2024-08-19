@@ -32,13 +32,15 @@ export function AccountCard({
     if (onEnableChange) onEnableChange(!enabled);
   };
 
-  return (
-    <div
-      className={classNames({
+  const accountCardClassNames = classNames({
         className,
         [scss.container]: true,
         [scss.invalid]: invalid,
-      })}
+  })
+
+  return (
+    <div
+      className={accountCardClassNames}
       {...props}
     >
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
