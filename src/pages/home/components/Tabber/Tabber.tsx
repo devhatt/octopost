@@ -1,8 +1,7 @@
+/* eslint-disable unicorn/prefer-at */
 /* eslint-disable unicorn/no-array-for-each */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
 import { ReactNode, useEffect, useState } from 'react';
-
-
 
 import isEmpty from 'lodash.isempty';
 import { nanoid } from 'nanoid';
@@ -10,7 +9,10 @@ import { nanoid } from 'nanoid';
 import { PostMode } from '~services/api/social-media/social-media.types';
 import { useAccountStore } from '~stores/useAccountStore';
 import { usePostStore } from '~stores/usePost/usePost';
-import { DataPost, PostModes as PostModesType } from '~stores/usePost/usePost.types';
+import {
+  DataPost,
+  PostModes as PostModesType,
+} from '~stores/usePost/usePost.types';
 
 import { useSyncTabsWithPosts } from './hooks/useSyncTabsWithPosts';
 
@@ -22,9 +24,10 @@ import Tabs from './Tabs/Tabs';
 
 import scss from './Tabber.module.scss';
 
+import { Tab } from './Tabber.types';
 
-
-const getFirstPostMode = (postModes: PostModesType):  DataPost['id'] => Object.keys(postModes)[0]
+const getFirstPostMode = (postModes: PostModesType): DataPost['id'] =>
+  Object.keys(postModes)[0];
 
 function getCurrentPostModeMaxLimit(
   currentValidator: PostMode['validators'] | undefined
@@ -38,16 +41,24 @@ function getCurrentPostModeMaxLimit(
 
 function Tabber(): ReactNode {
   const [currentTab, setCurrentTab] = useState('');
-  const { tabs } = useSyncTabsWithPosts(setCurrentTab);
+  const { changePostMode, tabs } = useSyncTabsWithPosts(setCurrentTab);
+  const { posts } = usePostStore();
 
-  function changeCurrentTab(): void {
-    
-  }
+  const changeCurrentTab = (tab: Tab): void => {
+    setCurrentTab(tab.id);
+  };
 
-  function changePostMode(): void {
-  }
+  const changePostModeId = (postModeId: PostMode['id']): void => {
+    changePostMode(currentTab, postModeId);
+  };
 
-  function handleContentChange(): void {
+  console.log(tabs);
+
+  function handleContentChange(): void {}
+
+  if (tabs && !tabs[currentTab]) {
+    const allTabs = Object.keys(tabs);
+    if (allTabs.length > 0) setCurrentTab(allTabs[allTabs.length - 1]);
   }
 
   if (!currentTab || !tabs[currentTab]) {
@@ -63,10 +74,13 @@ function Tabber(): ReactNode {
       />
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
-          {/* <PostModes
-            postId={tabs[currentTab].postId}
-            postModeId={tabs[currentTab].postsModeId}
-          /> */}
+          {posts[tabs[currentTab].postId] && (
+            <PostModes
+              changePostModeId={changePostModeId}
+              postId={tabs[currentTab].postId}
+              postModeId={tabs[currentTab].postModeId}
+            />
+          )}
           {/* <MainComposerBase
             accountId={tabs[currentTab].postId}
             onChange={handleContentChange}
@@ -75,13 +89,10 @@ function Tabber(): ReactNode {
           /> */}
         </div>
         <div className={scss.previewContainer}>
-          <Preview>
-            {''}
-          </Preview>
+          <Preview>{''}</Preview>
         </div>
       </div>
     </div>
-    
   );
 }
 

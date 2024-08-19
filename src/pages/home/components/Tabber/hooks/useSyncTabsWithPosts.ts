@@ -1,14 +1,17 @@
+/* eslint-disable unicorn/prefer-at */
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+import isEmpty from 'lodash.isempty';
 import omit from 'lodash.omit';
 
+import { PostMode } from '~services/api/social-media/social-media.types';
 import { usePostStore } from '~stores/usePost/usePost';
 import {
   DataPost,
   PostModes as PostModesType,
 } from '~stores/usePost/usePost.types';
 
-import { Tabs as TabsType } from '../Tabber.types';
+import { Tab, Tabs as TabsType } from '../Tabber.types';
 
 const getFirstPostMode = (postModes: PostModesType): DataPost['id'] =>
   Object.keys(postModes)[0];
@@ -16,7 +19,7 @@ const getFirstPostMode = (postModes: PostModesType): DataPost['id'] =>
 export function syncTabsWithDataPosts(
   posts: Record<string, DataPost>,
   tabs: TabsType,
-  setCurrentTabs: Dispatch<SetStateAction<string>>
+  setCurrentTab: Dispatch<SetStateAction<string>>,
 ): TabsType {
   for (const key in posts) {
     if (!(key in tabs)) {
@@ -25,9 +28,10 @@ export function syncTabsWithDataPosts(
         accountId: dataPost.accountId,
         id: dataPost.id,
         postId: dataPost.id,
-        postsModeId: getFirstPostMode(dataPost.postModes),
+        postModeId: getFirstPostMode(dataPost.postModes),
       };
-      setCurrentTabs(key);
+
+      if (isEmpty(tabs)) setCurrentTab(key);
     }
   }
 
@@ -41,16 +45,25 @@ export function syncTabsWithDataPosts(
 }
 
 export function useSyncTabsWithPosts(
-  setCurrentTabs: Dispatch<SetStateAction<string>>
-): { tabs: TabsType } {
+  setCurrentTab: Dispatch<SetStateAction<string>>,
+): { changePostMode: (tabId: Tab['id'], postMode: PostMode['id']) => void, tabs: TabsType } {
   const { posts } = usePostStore();
   const [tabs, setTabs] = useState<TabsType>({});
 
   useEffect(() => {
     if (Object.keys(tabs).length !== Object.keys(posts).length) {
-      setTabs(syncTabsWithDataPosts(posts, tabs, setCurrentTabs));
+      setTabs(syncTabsWithDataPosts(posts, tabs, setCurrentTab));
     }
-  }, [posts, tabs, setCurrentTabs]);
+  }, [posts, tabs, setCurrentTab]);
 
-  return { tabs };
+  const changePostMode = (tabId: Tab['id'], postModeId: PostMode['id']): void => {
+    setTabs({
+      ...tabs, 
+      [tabId]: {
+        ...tabs[tabId],
+        postModeId,
+      }
+    })
+  }
+  return { changePostMode, tabs };
 }
