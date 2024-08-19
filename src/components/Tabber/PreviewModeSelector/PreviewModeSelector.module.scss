@@ -5,12 +5,12 @@
 
   display: flex;
 
+  align-items: center;
+
   border: 1px solid $primaryGray;
 
-  position: absolute;
-  top: 1.5rem;
-
   background-color: $secondaryWhite;
+
   border-radius: 16px;
 
   &:focus-within,
@@ -19,11 +19,9 @@
   }
 
   .icon {
-    height: 100%;
-
     display: flex;
 
-    padding: 0.5rem;
+    padding: 1.25rem 1.3rem;
 
     path {
       fill: $tertiaryGray;
@@ -31,16 +29,6 @@
   }
 
   .previewModeInput {
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    margin: 0;
-    padding: 0;
-    border: 0;
-
     position: absolute;
 
     clip-path: inset(50%);
@@ -55,8 +43,6 @@
   }
 
   .previewModeLabel {
-    display: flex;
-
     cursor: pointer;
   }
 
