@@ -6,7 +6,7 @@ export type Tab = {
   accountId: Account['id'];
   id: string;
   postId: DataPost['id'];
-  postsModeId: SocialMedia['postModes'][number]['id'];
+  postModeId: SocialMedia['postModes'][number]['id'];
 };
 
 export type Tabs = Record<Tab['id'], Tab>;

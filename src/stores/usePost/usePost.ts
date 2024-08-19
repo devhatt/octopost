@@ -31,7 +31,6 @@ export const usePostStore = create<PostStore>((set) => ({
   remove: (id): void => {
     set((state) => {
       const posts = omit(state.posts, id)
-      console.log(posts)
       return { posts }
     })
   }
