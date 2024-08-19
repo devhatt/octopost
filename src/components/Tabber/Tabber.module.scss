@@ -2,8 +2,9 @@
 @use '~styles/breakpoints.scss' as *;
 
 .gridContainer {
-  position: relative;
   min-height: 25rem;
+
+  position: relative;
 
   align-items: center;
   justify-content: center;
