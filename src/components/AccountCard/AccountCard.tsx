@@ -26,7 +26,7 @@ export function AccountCard({
   const [enabled, setEnabled] = useState(isEnabled);
 
   const handleFavoriteChange = (): void => {
-    onFavoriteChange?.(!isFavorited);
+    if (onFavoriteChange) onFavoriteChange(!isFavorited);
   };
 
   const handleEnableChange = (): void => {
@@ -49,7 +49,7 @@ export function AccountCard({
         circle
         className={scss.favorite}
         color="primary"
-        icon={<Icon icon={favoriteIcon} size={20} />}
+        icon={<Icon icon={isFavorited ? 'star-filled' : 'star'} size={20} />}
         onClick={handleFavoriteChange}
       />
       <Switch
