@@ -33,16 +33,13 @@ export function AccountCard({
   };
 
   const accountCardClassNames = classNames({
-        className,
-        [scss.container]: true,
-        [scss.invalid]: invalid,
-  })
+    className,
+    [scss.container]: true,
+    [scss.invalid]: invalid,
+  });
 
   return (
-    <div
-      className={accountCardClassNames}
-      {...props}
-    >
+    <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
       <button className={scss.star} onClick={handleFavoriteChange} />
