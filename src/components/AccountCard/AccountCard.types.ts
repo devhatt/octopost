@@ -6,6 +6,7 @@ export type AccountCardProps = BaseAccountCardProps & {
   avatarURL?: string;
   hasError?: boolean;
   icon?: string;
+  invalid?: boolean;
   isEnabled?: boolean;
   isFavorited?: boolean;
   onEnableChange?: (isEnabled: boolean) => void;

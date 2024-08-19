@@ -12,3 +12,7 @@ export type IAccountList = {
   socialMediaName?: string;
   username: string;
 };
+
+export type AccountQuantityProps = {
+  accountQuantity: number;
+};

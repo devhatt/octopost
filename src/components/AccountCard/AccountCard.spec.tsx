@@ -11,7 +11,7 @@ const makeSut = ({
   username = faker.internet.userName(),
   ...props
 }: Partial<AccountCardProps>): RenderResult =>
-  render(<AccountCard username={username} {...props} />);
+  render(<AccountCard invalid={false} username={username} {...props} />);
 
 describe('AccountCard', () => {
   let user = userEvent.setup();

@@ -13,6 +13,7 @@ export function AccountCard({
   avatarURL,
   className,
   hasError = false,
+  invalid = false,
   isEnabled = false,
   isFavorited = false,
   onEnableChange,
@@ -31,13 +32,20 @@ export function AccountCard({
     if (onEnableChange) onEnableChange(!enabled);
   };
 
+  const accountCardClassNames = classNames({
+    className,
+    [scss.container]: true,
+    [scss.invalid]: invalid,
+  });
+
   return (
-    <div className={classNames(scss.container, className)} {...props}>
+    <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
       <button className={scss.star} onClick={handleFavoriteChange} />
       <Switch
         checked={enabled}
+        invalid={invalid}
         onChange={handleEnableChange}
         variant={hasError ? 'error' : 'default'}
       />
