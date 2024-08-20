@@ -1,0 +1,11 @@
+name: Base Actions
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request:
+
+jobs:
+  assignes:
+    uses: devhatt/workflows/.github/workflows/auto-assign.yml@main
+    secrets: inherit

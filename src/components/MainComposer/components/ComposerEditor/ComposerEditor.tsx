@@ -113,7 +113,6 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   return (
     <div className={scss.inputContainer}>
       <textarea
-        className={scss.textArea}
         onChange={props.onChangePost ?? handleInputChange}
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}

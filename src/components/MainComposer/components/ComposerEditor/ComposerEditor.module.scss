@@ -5,23 +5,17 @@
 
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
-.textArea {
-  width: 100%;
-
-  min-height: 20rem;
+textarea {
+  flex-grow: 1;
 
   color: global.$tertiaryGray;
-
-  font-size: 1.6rem;
-
-  margin-bottom: 2.4rem;
 
   padding: 2.4rem 1.6rem 2.6rem;
 
   border: 0;
-  box-sizing: border-box;
 
   background-color: global.$primaryWhite;
 

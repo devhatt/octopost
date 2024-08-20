@@ -2,6 +2,10 @@
 @use '~styles/breakpoints.scss';
 
 .container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
   .bottomWrapper {
     padding: 1.6rem;
     padding-top: 0;
