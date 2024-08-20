@@ -20,6 +20,10 @@
   border: 1px solid $primaryGray;
 
   cursor: pointer;
+
+  .alertIcon {
+    color: $secondaryRed;
+  }
 }
 
 .socialInfo {

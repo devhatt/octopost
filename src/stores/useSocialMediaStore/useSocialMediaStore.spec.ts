@@ -101,7 +101,7 @@ describe('useSocialMediaStore', () => {
           socialMediaId: 'DISCORD_EXAMPLE_ID',
           token: 'DISCORD_EXAMPLE_TOKEN_1',
           userName: 'Discord User 1',
-          valid: false,
+          valid: true,
         },
       ],
       TWITTER_EXAMPLE_ID: [
@@ -115,7 +115,7 @@ describe('useSocialMediaStore', () => {
           socialMediaId: 'TWITTER_EXAMPLE_ID',
           token: 'TWITTER_EXAMPLE_TOKEN_14',
           userName: 'Twitter User 14',
-          valid: false,
+          valid: true,
         },
       ],
     };
