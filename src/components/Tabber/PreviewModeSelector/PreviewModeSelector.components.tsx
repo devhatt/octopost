@@ -22,7 +22,7 @@ export function PreviewMode(props: PreviewModeProps): React.JSX.Element {
           className={scss.icon}
           icon={props.item.icon}
           name="device"
-          size={50}
+          size={48}
         />
       </label>
     </div>
