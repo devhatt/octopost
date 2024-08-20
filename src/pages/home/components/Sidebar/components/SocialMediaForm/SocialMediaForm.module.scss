@@ -2,6 +2,8 @@
 @use '~styles/breakpoints.scss' as breakpoints;
 
 .selectionGrid {
+  height: 10.4rem;
+
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));

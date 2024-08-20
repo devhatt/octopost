@@ -19,11 +19,14 @@
 }
 
 .button {
+  height: 116px;
+
   border: 2px dotted global.$baseColor;
 }
 
 .buttonSelected {
   width: 100%;
+  height: 100%;
 
   border: 2px solid global.$tertiaryPurple;
 }
