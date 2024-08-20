@@ -1,7 +1,9 @@
 /* eslint-disable unicorn/prefer-at */
 /* eslint-disable unicorn/no-array-for-each */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition -- to avoid lint error that will be remove soon on a changhe of how the data will be dealed */
-import { ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+
+
 
 import isEmpty from 'lodash.isempty';
 import { nanoid } from 'nanoid';
@@ -42,7 +44,7 @@ function getCurrentPostModeMaxLimit(
 function Tabber(): ReactNode {
   const [currentTab, setCurrentTab] = useState('');
   const { changePostMode, tabs } = useSyncTabsWithPosts(setCurrentTab);
-  const { posts } = usePostStore();
+  const {posts, updateText} = usePostStore();
 
   const changeCurrentTab = (tab: Tab): void => {
     setCurrentTab(tab.id);
@@ -50,11 +52,18 @@ function Tabber(): ReactNode {
 
   const changePostModeId = (postModeId: PostMode['id']): void => {
     changePostMode(currentTab, postModeId);
-  };
+  }
+  
 
-  console.log(tabs);
+  const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    updateText({
+      postId: tabs[currentTab].postId,
+      postModeId: tabs[currentTab].postModeId,
+      text: e.target.value
+    })
 
-  function handleContentChange(): void {}
+    console.log(posts)
+  }
 
   if (tabs && !tabs[currentTab]) {
     const allTabs = Object.keys(tabs);
@@ -76,17 +85,16 @@ function Tabber(): ReactNode {
         <div className={scss.postModesContainer}>
           {posts[tabs[currentTab].postId] && (
             <PostModes
-              changePostModeId={changePostModeId}
-              postId={tabs[currentTab].postId}
-              postModeId={tabs[currentTab].postModeId}
-            />
-          )}
-          {/* <MainComposerBase
+            changePostModeId={changePostModeId}
+            postId={tabs[currentTab].postId}
+            postModeId={tabs[currentTab].postModeId}
+          />}
+          <MainComposerBase
             accountId={tabs[currentTab].postId}
             onChange={handleContentChange}
-            postMode={tabs[currentTab].postsModeId}
-            value={''}
-          /> */}
+            postId={tabs[currentTab].postId}
+            postModeId={tabs[currentTab].postModeId}
+          />
         </div>
         <div className={scss.previewContainer}>
           <Preview>{''}</Preview>

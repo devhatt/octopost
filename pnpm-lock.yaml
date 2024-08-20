@@ -41,6 +41,9 @@ dependencies:
   lodash.isempty:
     specifier: 4.4.0
     version: 4.4.0
+  lodash.merge:
+    specifier: 4.6.2
+    version: 4.6.2
   lodash.omit:
     specifier: 4.5.0
     version: 4.5.0
@@ -8675,7 +8678,6 @@ packages:
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
 
   /lodash.mergewith@4.6.2:
     resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}

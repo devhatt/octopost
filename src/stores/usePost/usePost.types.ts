@@ -18,8 +18,17 @@ export type DataPost = {
   socialMediaId: SocialMedia['id'],
 }
 
+type UpdateText = {
+  postId: DataPost['id'];
+  postModeId: PostMode['id'];
+  text: string;
+}
+
 export type PostStore = {
   add: (account: StoreAccount, postsModes: PostMode[]) => void;
+  mainContent: string,
   posts: Record<string, DataPost>;
-  remove: (id: string) => void
+  remove: (id: string) => void,
+  updateMainContent: (newContent: string) => void,
+  updateText: ({postId, postModeId, text}: UpdateText) => void
 };

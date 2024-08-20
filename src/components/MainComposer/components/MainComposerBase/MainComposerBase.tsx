@@ -25,7 +25,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
         currentMaxLimit={props.currentMaxLimit ?? undefined}
         onChangePost={props.onChange}
         onError={handleTextErrors}
-        postMode={props.postMode}
+        postId={props.postId}
+        postModeId={props.postModeId}
         value={props.value}
       />
       <div className={scss.bottomWrapper}>

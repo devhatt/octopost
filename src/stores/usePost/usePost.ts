@@ -1,3 +1,4 @@
+import merge from 'lodash.merge';
 import omit from 'lodash.omit';
 import { nanoid } from 'nanoid';
 
@@ -26,6 +27,7 @@ export const usePostStore = create<PostStore>((set) => ({
     }));
   },
 
+  mainContent: '',
   posts: {},
 
   remove: (id): void => {
@@ -33,6 +35,27 @@ export const usePostStore = create<PostStore>((set) => ({
       const posts = omit(state.posts, id)
       return { posts }
     })
+  },
+
+  updateMainContent: (newContent: string): void =>
+    set({ mainContent: newContent }),
+
+  updateText: ({postId, postModeId, text}): void => {
+    set((state) => {
+      const result = merge({}, state, {
+        posts: {
+          [postId]: {
+            postModes: {
+              [postModeId]: {
+                text
+              } 
+            }
+          }
+        }
+      })
+      console.log(result)
+      return result
+    })  
   }
 }));
 
