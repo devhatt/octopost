@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import { MediaValidator } from '~services/api/social-media/social-media.types';
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -14,23 +14,24 @@ import { Media } from './components/InputMedia/InputMedia.types';
 import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const { mainContent, updateMainContent } = useAccountStore();
-  const setMedias = (medias: Media[]): void => {
-    updateMainContent({ medias });
+  const [medias, setMedias] = useState<IMedia[]>([]);
+  const { socialMedias } = useSocialMediaStore();
+
+  const validateFile = (file: IMedia): void => {
+    if (props.socialMediaId && props.postModeId) {
+      const postModes = socialMedias
+        .get(props.socialMediaId)
+        ?.postModes.find((postMode) => postMode.id === props.postModeId);
+      const media = file.file;
+      const validator = postModes?.validators as MediaValidator;
+
+      const fileValidator = Object.values(fileValidators({ media, validator }));
+      for (const validators of fileValidator) validators(props);
+    }
   };
 
-  const medias = mainContent.medias ?? [];
-
-  const validateFile = (file: Media): void => {
-    const media = file.file;
-    const validator = props.postMode?.validators as MediaValidator;
-
-    const fileValidator = Object.values(fileValidators({ media, validator }));
-    for (const validators of fileValidator) validators(props);
-  };
-
-  const addMedia = (files: Media[]): void => {
-    if (props.postMode) {
+  const addMedia = (files: IMedia[]): void => {
+    if (props.postModeId) {
       for (const file of files) {
         validateFile(file);
       }
@@ -53,7 +54,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     const list = Array.from(medias);
     const indexToUpdate = list.findIndex((item) => item.id === id);
 
-    if (props.postMode) {
+    if (props.postModeId) {
       for (const file of files) {
         validateFile(file);
       }

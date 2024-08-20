@@ -23,32 +23,34 @@ import {
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { posts } = usePostStore();
   const { updateMainContent } = usePostStore();
   const [inputValue, setInputValue] = useState('');
   const [errorMap, setErrorMap] = useState<ErrorMapText>({});
 
   const validatorText = (text: string): ErrorText[] => {
-    const postModes =
-      props.postId &&
-      socialMedias.get(posts[props.postId].socialMediaId)?.postModes;
-    const textValidators = new TextValidators(text);
-    console.log(postModes);
-    const validators = postModes?.validators as TextValidator;
-    const errors: ErrorText[] = [];
+    if (props.postModeId && props.socialMediaId) {
+      const postModes = socialMedias
+        .get(props.socialMediaId)
+        ?.postModes.find((postMode) => postMode.id === props.postModeId);
+      const textValidators = new TextValidators(text);
+      const validators = postModes?.validators as TextValidator;
+      const errors: ErrorText[] = [];
 
-    if (
-      props.postModeId &&
-      textValidators.textLength(validators.text.maxLength)
-    ) {
-      errors.push({
-        accountId: props.accountId,
-        message: 'text exceeded the limit',
-        postModeId: props.postModeId,
-      });
+      if (
+        props.postModeId &&
+        textValidators.textLength(validators.text.maxLength)
+      ) {
+        errors.push({
+          accountId: props.accountId,
+          message: 'text exceeded the limit',
+          postModeId: props.postModeId,
+        });
+      }
+
+      return errors;
     }
 
-    return errors;
+    return [];
   };
 
   const isBigger = useCallback(

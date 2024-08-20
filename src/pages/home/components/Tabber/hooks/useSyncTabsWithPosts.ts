@@ -25,7 +25,6 @@ export function syncTabsWithDataPosts(
     if (!(key in tabs)) {
       const dataPost = posts[key];
       tabs[key] = {
-        accountId: dataPost.accountId,
         id: dataPost.id,
         postId: dataPost.id,
         postModeId: getFirstPostMode(dataPost.postModes),

@@ -25,8 +25,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
         currentMaxLimit={props.currentMaxLimit ?? undefined}
         onChangePost={props.onChange}
         onError={handleTextErrors}
-        postId={props.postId}
         postModeId={props.postModeId}
+        socialMediaId={props.socialMediaId}
         value={props.value}
       />
       <div className={scss.bottomWrapper}>
@@ -35,7 +35,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
           <InputMediaGroup
             accountId={props.accountId}
             onError={handleMediaErrors}
-            postMode={props.postMode}
+            postModeId={props.postModeId}
+            socialMediaId={props.socialMediaId}
           />
         </div>
       </div>
