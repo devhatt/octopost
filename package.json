@@ -47,6 +47,7 @@
     "lodash.first": "3.0.0",
     "lodash.groupby": "4.6.0",
     "lodash.isempty": "4.4.0",
+    "lodash.merge": "4.6.2",
     "lodash.omit": "4.5.0",
     "nanoid": "5.0.6",
     "normalize.css": "8.0.1",

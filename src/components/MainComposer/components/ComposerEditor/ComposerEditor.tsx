@@ -4,7 +4,7 @@ import {
   PostMode,
   TextValidator,
 } from '~services/api/social-media/social-media.types.ts';
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { usePostStore } from '~stores/usePost/usePost';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { TextValidators } from './utils/textValidator/textValidators';
@@ -22,23 +22,28 @@ import {
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { updateMainContent } = useAccountStore();
+  const { posts } = usePostStore();
+  const { updateMainContent } = usePostStore();
   const [inputValue, setInputValue] = useState('');
   const [errorMap, setErrorMap] = useState<ErrorMapText>({});
 
   const validatorText = (text: string): ErrorText[] => {
+    const postModes =
+      props.postId &&
+      socialMedias.get(posts[props.postId].socialMediaId)?.postModes;
     const textValidators = new TextValidators(text);
-    const validators = props.postMode?.validators as TextValidator;
+    console.log(postModes);
+    const validators = postModes?.validators as TextValidator;
     const errors: ErrorText[] = [];
 
     if (
-      props.postMode &&
+      props.postModeId &&
       textValidators.textLength(validators.text.maxLength)
     ) {
       errors.push({
         accountId: props.accountId,
         message: 'text exceeded the limit',
-        postModeId: props.postMode.id,
+        postModeId: props.postModeId,
       });
     }
 
@@ -117,7 +122,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
           svg={null}
           value={props.value ?? inputValue}
         />
-        {!props.postMode && (
+        {!props.postModeId && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (
               <CharacterLimit
