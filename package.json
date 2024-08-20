@@ -79,6 +79,7 @@
     "@types/lodash.first": "3.0.9",
     "@types/lodash.groupby": "4.6.9",
     "@types/lodash.isempty": "4.4.9",
+    "@types/lodash.merge": "4.6.9",
     "@types/lodash.omit": "4.5.9",
     "@types/node": "20.11.19",
     "@types/react": "18.2.57",

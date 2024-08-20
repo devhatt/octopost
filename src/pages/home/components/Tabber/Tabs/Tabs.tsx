@@ -1,4 +1,4 @@
-﻿import { ReactNode } from 'react';
+﻿import { ReactNode} from 'react';
 
 import scss from '~pages/home/components/Tabber/Tabs/Tabs.module.scss';
 import classNames from 'classnames';
@@ -9,11 +9,11 @@ import { usePostStore } from '~stores/usePost/usePost';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { Tab } from '../Tabber.types';
-import { TabsProps } from './Tabs.types';
+import { FoundAccount, TabsProps } from './Tabs.types';
 
 function Tabs(props: TabsProps): ReactNode {
   const { accounts, socialMedias } = useSocialMediaStore();
-  const {posts} = usePostStore()
+  const { posts } = usePostStore();
   const {
     containerRef,
     firstGradient,
@@ -36,9 +36,13 @@ function Tabs(props: TabsProps): ReactNode {
     props.onChangeTab(tab);
     scrollToElement(tabElement);
   };
+  
+  const findAccount = (tab: Tab): FoundAccount => Object.values(accounts.data)
+    .flat()
+    .find((acc) => acc?.id === posts[tab.postId].accountId)
 
   const renderTabs = (tab: Tab): ReactNode => {
-    const account = Object.values(accounts.data).flat().find((acc) => acc?.id === tab.accountId)
+    const account = findAccount(tab)
 
     return (
       <div

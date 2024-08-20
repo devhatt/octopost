@@ -1,7 +1,6 @@
 import { ChangeEvent, PropsWithChildren } from 'react';
 
-import { PostMode } from '~services/api/social-media/social-media.types';
-import { DataPost } from '~stores/usePost/usePost.types';
+import { PostMode, SocialMedia } from '~services/api/social-media/social-media.types';
 
 export type TInputChange = (newText: string) => void;
 export type TInputPostChange = (
@@ -14,8 +13,8 @@ export type ComposerEditorProps = PropsWithChildren<{
   onChange?: TInputChange;
   onChangePost?: TInputPostChange;
   onError?: (error: ErrorMapText) => void;
-  postId?: DataPost['id'];
   postModeId?: PostMode['id'];
+  socialMediaId?: SocialMedia['id']
   value?: string;
 }>;
 

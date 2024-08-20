@@ -53,7 +53,6 @@ export const usePostStore = create<PostStore>((set) => ({
           }
         }
       })
-      console.log(result)
       return result
     })  
   }
