@@ -63,7 +63,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
           ...(agg[account.socialMediaId] ?? []),
           {
             ...account,
-            valid: false,
+            valid: true,
           },
         ],
       }),
