@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-
 import { octopostApi } from '~services/api';
 import { AccountsService } from '~services/api/accounts/accounts';
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
+
+import { create } from '../zustand';
 
 import {
   NewAccount,
