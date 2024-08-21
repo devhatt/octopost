@@ -9,7 +9,7 @@ export type TInputPostChange = (
 
 export type ComposerEditorProps = PropsWithChildren<{
   accountId?: string;
-  currentMaxLimit?: number;
+  maxCharacters?: number;
   onChange?: TInputChange;
   onChangePost?: TInputPostChange;
   onError?: (error: ErrorMapText) => void;

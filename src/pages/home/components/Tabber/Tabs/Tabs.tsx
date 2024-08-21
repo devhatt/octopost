@@ -23,6 +23,9 @@ function Tabs(props: TabsProps): ReactNode {
     scrollToElement,
   } = useHorizontalScroll();
 
+  console.log(props.tabs, 'tabs');
+  console.log(posts, 'posts')
+
   const tabClasses = (id: string): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 

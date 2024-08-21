@@ -120,7 +120,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       />
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
-          maxLength={props.currentMaxLimit ?? socialLimits.maxLimit}
+          maxLength={props.maxCharacters ?? socialLimits.maxLimit}
           svg={null}
           value={props.value ?? inputValue}
         />
