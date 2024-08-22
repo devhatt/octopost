@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { MediaValidator } from '~services/api/social-media/social-media.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
@@ -14,10 +14,10 @@ import { Media } from './components/InputMedia/InputMedia.types';
 import { MediaInput } from './InputMediaGroup.type';
 
 function InputMediaGroup(props: MediaInput): ReactNode {
-  const [medias, setMedias] = useState<IMedia[]>([]);
+  const [medias, setMedias] = useState<Media[]>([]);
   const { socialMedias } = useSocialMediaStore();
 
-  const validateFile = (file: IMedia): void => {
+  const validateFile = (file: Media): void => {
     if (props.socialMediaId && props.postModeId) {
       const postModes = socialMedias
         .get(props.socialMediaId)
@@ -30,7 +30,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
     }
   };
 
-  const addMedia = (files: IMedia[]): void => {
+  const addMedia = (files: Media[]): void => {
     if (props.postModeId) {
       for (const file of files) {
         validateFile(file);

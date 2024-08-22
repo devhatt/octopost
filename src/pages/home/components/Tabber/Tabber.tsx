@@ -52,12 +52,9 @@ function Tabber(): ReactNode {
   const changeCurrentTab = (tab: Tab): void => {
     setCurrentTab(tab.id);
   };
-    setCurrentTab(tab.id);
-  };
 
   const changePostModeId = (postModeId: PostMode['id']): void => {
     changePostMode(currentTab, postModeId);
-  };
   };
 
   const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -85,29 +82,8 @@ function Tabber(): ReactNode {
           tabs={tabs}
         />
       )}
-      {isSync && (
-        <Tabs
-          currentTab={tabs[currentTab]}
-          onChangeTab={changeCurrentTab}
-          tabs={tabs}
-        />
-      )}
       <div className={scss.gridContainer}>
         <div className={scss.postModesContainer}>
-          <PostModes
-            changePostModeId={changePostModeId}
-            postId={tabs[currentTab].postId}
-            postModeId={tabs[currentTab].postModeId}
-            socialMediaId={socialMediaId}
-          />
-          <MainComposerBase
-            accountId={accountId}
-            maxCharacters={postModeMaxCharacters}
-            onChange={handleContentChange}
-            postModeId={tabs[currentTab].postModeId}
-            socialMediaId={socialMediaId}
-            value={composerBaseText}
-          />
           <PostModes
             changePostModeId={changePostModeId}
             postId={tabs[currentTab].postId}
@@ -125,7 +101,6 @@ function Tabber(): ReactNode {
         </div>
         <div className={scss.previewContainer}>
           <Preview>{composerBaseText}</Preview>
-          <Preview>{composerBaseText}</Preview>
         </div>
       </div>
     </div>
@@ -133,4 +108,3 @@ function Tabber(): ReactNode {
 }
 
 export default Tabber;
-
