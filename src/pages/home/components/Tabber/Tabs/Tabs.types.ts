@@ -8,4 +8,4 @@ export type TabsProps = {
   tabs: Tabs;
 };
 
-export type FoundAccount = StoreAccount | null | undefined
+export type FoundAccount = StoreAccount | null | undefined;

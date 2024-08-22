@@ -1,10 +1,13 @@
-import { PostMode, SocialMedia } from '~services/api/social-media/social-media.types';
+import {
+  PostMode,
+  SocialMedia,
+} from '~services/api/social-media/social-media.types';
 
 export type MediaInput = {
   accountId?: string;
   onError?: (error: ErrorMediaInput) => void;
   postModeId?: PostMode['id'];
-  socialMediaId?: SocialMedia['id']
+  socialMediaId?: SocialMedia['id'];
 };
 
 export type ErrorMediaInput = {
