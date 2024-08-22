@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-unused-properties */
 import { act, renderHook } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 
@@ -102,7 +103,7 @@ const mockAccountSocialMedia = {
   ],
 };
 
-const postModes = mockAccountSocialMedia.postModes.reduce<PostModes>(
+const mockPostModes = mockAccountSocialMedia.postModes.reduce<PostModes>(
   (acc, postMode) => {
     acc[postMode.id] = {};
     return acc;
@@ -122,7 +123,7 @@ describe('usePostStore', () => {
       someNanoId: {
         accountId: mockAccount.id,
         id: nanoId,
-        postModes: postModes,
+        postModes: mockPostModes,
         socialMediaId: mockAccount.socialMediaId,
       },
     };
@@ -171,7 +172,7 @@ describe('usePostStore', () => {
         accountId: mockAccount.id,
         id: nanoId,
         postModes: {
-          ...postModes,
+          ...mockPostModes,
           [postModeId]: {
             text: newText,
           },

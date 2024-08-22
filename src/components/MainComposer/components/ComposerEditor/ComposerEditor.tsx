@@ -105,7 +105,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
       setError(newErrorMap);
     }
 
-    updateMainContent({ text: newValue });
+    updateMainContent(newValue);
     setInputValue(newValue);
   };
 

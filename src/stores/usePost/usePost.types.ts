@@ -5,10 +5,10 @@ import {
 } from '~services/api/social-media/social-media.types';
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
-import { IMedia } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
+import { Media } from '~components/MainComposer/components/InputMediaGroup/components/InputMedia/InputMedia.types';
 
 export type MainContent = {
-  medias?: IMedia[];
+  medias?: Media[];
   text?: string;
 };
 
