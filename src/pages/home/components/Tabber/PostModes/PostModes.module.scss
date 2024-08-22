@@ -5,9 +5,11 @@
   width: fit-content;
 
   display: flex;
-  flex-wrap: wrap;
 
   align-self: flex-end;
+
+  background-color: #f8f2f7;
+  border-radius: 3rem;
 }
 
 .postModeTitle {
@@ -24,8 +26,20 @@
   }
 }
 
-@include from1240 {
-  .postModeTitle {
-    padding: 1.2rem;
+.selectPostMode {
+  display: flex;
+  gap: 0.4rem;
+
+  align-items: center;
+
+  color: global.$tertiaryGray;
+
+  border: 0.2rem solid transparent;
+
+  &.active {
+    border-color: global.$secondaryPurple;
+
+    background-color: global.$primaryWhite;
+    border-radius: 10rem;
   }
 }
