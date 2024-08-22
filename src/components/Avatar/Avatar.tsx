@@ -9,7 +9,7 @@ import { AvatarProps } from './Avatar.types';
 export function Avatar(props: AvatarProps): ReactNode {
   const [firstLetter] = props.username.split('');
 
-  if (props.image === undefined) {
+  if (props.image !== undefined) {
     return (
       <img
         {...props}
