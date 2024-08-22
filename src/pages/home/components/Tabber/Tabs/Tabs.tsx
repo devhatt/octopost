@@ -1,4 +1,4 @@
-﻿import { ReactNode} from 'react';
+﻿import { ReactNode } from 'react';
 
 import scss from '~pages/home/components/Tabber/Tabs/Tabs.module.scss';
 import classNames from 'classnames';
@@ -23,29 +23,24 @@ function Tabs(props: TabsProps): ReactNode {
     scrollToElement,
   } = useHorizontalScroll();
 
-  console.log(props.tabs, 'tabs');
-  console.log(posts, 'posts')
-
   const tabClasses = (id: string): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
   const renderSocialMediaIcon = (account: Account): ReactNode =>
     socialMedias.get(account.socialMediaId)?.icon;
 
-  const handleTabClick = (
-    tab: Tab,
-    tabElement: HTMLElement
-  ): void => {
+  const handleTabClick = (tab: Tab, tabElement: HTMLElement): void => {
     props.onChangeTab(tab);
     scrollToElement(tabElement);
   };
-  
-  const findAccount = (tab: Tab): FoundAccount => Object.values(accounts.data)
-    .flat()
-    .find((acc) => acc?.id === posts[tab.postId].accountId)
+
+  const findAccount = (tab: Tab): FoundAccount =>
+    Object.values(accounts.data)
+      .flat()
+      .find((acc) => acc?.id === posts[tab.postId].accountId);
 
   const renderTabs = (tab: Tab): ReactNode => {
-    const account = findAccount(tab)
+    const account = findAccount(tab);
 
     return (
       <div
@@ -57,7 +52,7 @@ function Tabs(props: TabsProps): ReactNode {
         <span className={scss.tabTitle}>{account?.userName}</span>
       </div>
     );
-  }
+  };
 
   return (
     <div className={scss.tabsWrapper}>
@@ -68,9 +63,7 @@ function Tabs(props: TabsProps): ReactNode {
         onMouseLeave={handleMouseLeave}
         ref={containerRef}
       >
-        {Object.entries(props.tabs).map(([, tab]) =>
-          renderTabs(tab)
-        )}
+        {Object.entries(props.tabs).map(([, tab]) => renderTabs(tab))}
       </div>
       <span className={scss.lastGradient} ref={lastGradient} />
     </div>

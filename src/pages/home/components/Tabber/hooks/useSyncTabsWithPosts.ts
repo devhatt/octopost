@@ -19,7 +19,7 @@ const getFirstPostMode = (postModes: PostModesType): DataPost['id'] =>
 export function syncTabsWithDataPosts(
   posts: Record<string, DataPost>,
   tabs: TabsType,
-  setCurrentTab: Dispatch<SetStateAction<string>>,
+  setCurrentTab: Dispatch<SetStateAction<string>>
 ): TabsType {
   for (const key in posts) {
     if (!(key in tabs)) {
@@ -44,8 +44,11 @@ export function syncTabsWithDataPosts(
 }
 
 export function useSyncTabsWithPosts(
-  setCurrentTab: Dispatch<SetStateAction<string>>,
-): { changePostMode: (tabId: Tab['id'], postMode: PostMode['id']) => void, tabs: TabsType } {
+  setCurrentTab: Dispatch<SetStateAction<string>>
+): {
+  changePostMode: (tabId: Tab['id'], postMode: PostMode['id']) => void;
+  tabs: TabsType;
+} {
   const { posts } = usePostStore();
   const [tabs, setTabs] = useState<TabsType>({});
 
@@ -55,14 +58,17 @@ export function useSyncTabsWithPosts(
     }
   }, [posts, tabs, setCurrentTab]);
 
-  const changePostMode = (tabId: Tab['id'], postModeId: PostMode['id']): void => {
+  const changePostMode = (
+    tabId: Tab['id'],
+    postModeId: PostMode['id']
+  ): void => {
     setTabs({
-      ...tabs, 
+      ...tabs,
       [tabId]: {
         ...tabs[tabId],
         postModeId,
-      }
-    })
-  }
+      },
+    });
+  };
   return { changePostMode, tabs };
 }
