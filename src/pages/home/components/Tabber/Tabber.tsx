@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-/* eslint-disable unicorn/prefer-at */
+/* eslint-disable @typescript-eslint/no-unnecessary-condition -- eslint is saying that tabs is always not empty but in some cases, it is  */
+/* eslint-disable unicorn/prefer-at -- using at is not better than using .length - 1 */
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
@@ -33,22 +33,7 @@ function Tabber(): ReactNode {
   const { changePostMode, tabs } = useSyncTabsWithPosts(setCurrentTab);
   const { posts, updateText } = usePostStore();
   const { socialMedias } = useSocialMediaStore();
-
-  const changeCurrentTab = (tab: Tab): void => {
-    setCurrentTab(tab.id);
-  };
-
-  const changePostModeId = (postModeId: PostMode['id']): void => {
-    changePostMode(currentTab, postModeId);
-  };
-
-  const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-    updateText({
-      postId: tabs[currentTab].postId,
-      postModeId: tabs[currentTab].postModeId,
-      text: e.target.value,
-    });
-  };
+  const isSync = Object.keys(tabs).length === Object.keys(posts).length;
 
   if (tabs && !tabs[currentTab]) {
     const allTabs = Object.keys(tabs);
@@ -60,10 +45,28 @@ function Tabber(): ReactNode {
   }
 
   const { socialMediaId } = posts[tabs[currentTab].postId];
+  const { accountId } = posts[tabs[currentTab].postId];
   const composerBaseText =
     posts[tabs[currentTab].postId].postModes[tabs[currentTab].postModeId].text;
-  const { accountId } = posts[tabs[currentTab].postId];
-  const isSync = Object.keys(tabs).length === Object.keys(posts).length;
+
+  const changeCurrentTab = (tab: Tab): void => {
+    setCurrentTab(tab.id);
+  };
+    setCurrentTab(tab.id);
+  };
+
+  const changePostModeId = (postModeId: PostMode['id']): void => {
+    changePostMode(currentTab, postModeId);
+  };
+  };
+
+  const handleContentChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    updateText({
+      postId: tabs[currentTab].postId,
+      postModeId: tabs[currentTab].postModeId,
+      text: e.target.value,
+    });
+  };
 
   const postModeMaxCharacters = getPostModeMaxCharacters(
     socialMedias
@@ -75,6 +78,13 @@ function Tabber(): ReactNode {
 
   return (
     <div>
+      {isSync && (
+        <Tabs
+          currentTab={tabs[currentTab]}
+          onChangeTab={changeCurrentTab}
+          tabs={tabs}
+        />
+      )}
       {isSync && (
         <Tabs
           currentTab={tabs[currentTab]}
@@ -98,8 +108,23 @@ function Tabber(): ReactNode {
             socialMediaId={socialMediaId}
             value={composerBaseText}
           />
+          <PostModes
+            changePostModeId={changePostModeId}
+            postId={tabs[currentTab].postId}
+            postModeId={tabs[currentTab].postModeId}
+            socialMediaId={socialMediaId}
+          />
+          <MainComposerBase
+            accountId={accountId}
+            maxCharacters={postModeMaxCharacters}
+            onChange={handleContentChange}
+            postModeId={tabs[currentTab].postModeId}
+            socialMediaId={socialMediaId}
+            value={composerBaseText}
+          />
         </div>
         <div className={scss.previewContainer}>
+          <Preview>{composerBaseText}</Preview>
           <Preview>{composerBaseText}</Preview>
         </div>
       </div>
@@ -108,3 +133,4 @@ function Tabber(): ReactNode {
 }
 
 export default Tabber;
+
