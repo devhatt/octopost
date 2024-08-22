@@ -18,7 +18,7 @@ export const fileValidators = ({
         props.onError({
           accountId: props.accountId,
           message: 'Invalid file aspectRatio',
-          postModeId: props.postMode?.id,
+          postModeId: props.postModeId,
         });
       }
     },
@@ -31,7 +31,7 @@ export const fileValidators = ({
         props.onError({
           accountId: props.accountId,
           message: 'Invalid video duration',
-          postModeId: props.postMode?.id,
+          postModeId: props.postModeId,
         });
       }
     },
@@ -47,7 +47,7 @@ export const fileValidators = ({
         props.onError({
           accountId: props.accountId,
           message: 'Invalid file resolution',
-          postModeId: props.postMode?.id,
+          postModeId: props.postModeId,
         });
       }
     },
@@ -57,7 +57,7 @@ export const fileValidators = ({
         props.onError({
           accountId: props.accountId,
           message: 'Invalid file size',
-          postModeId: props.postMode?.id,
+          postModeId: props.postModeId,
         });
       }
     },
