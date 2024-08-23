@@ -2,9 +2,9 @@
 import { act, renderHook } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 
-import * as usePostStoreHook from '~stores/usePost/usePost';
+import * as usePostStoreHook from '~stores/usePostStore/usePostStore';
 
-import { PostModes } from './usePost.types';
+import { PostModes } from './usePostStore.types';
 
 vi.mock('nanoid', () => ({
   nanoid: vi.fn(() => 'someNanoId'),

@@ -19,7 +19,7 @@ vi.mock(
   () => mockedUseSocialMediaStore
 );
 
-vi.mock('~stores/usePost/usePost', () => mockedUsePostStore);
+vi.mock('~stores/usePostStore/usePostStore', () => mockedUsePostStore);
 
 vi.spyOn(window, 'scrollTo');
 

@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import { usePostStore } from '~stores/usePost/usePost';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 

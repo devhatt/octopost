@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { useError } from '~stores/useError/useError';
+import { useError } from '~stores/useErrorStore/useErrorStore';
 
 import Icon from '~components/Icon/Icon';
 

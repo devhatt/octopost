@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScroll';
 import { Account } from '~services/api/accounts/accounts.types';
-import { usePostStore } from '~stores/usePost/usePost';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { Tab } from '../Tabber.types';

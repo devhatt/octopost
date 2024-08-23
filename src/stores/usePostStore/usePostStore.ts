@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 import { create } from '../zustand';
 
-import { PostModes, PostStore } from './usePost.types';
+import { PostModes, PostStore } from './usePostStore.types';
 
 export const usePostStore = create<PostStore>((set) => ({
   add: (account, postsModes): void => {

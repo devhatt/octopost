@@ -5,11 +5,11 @@ import isEmpty from 'lodash.isempty';
 import omit from 'lodash.omit';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
-import { usePostStore } from '~stores/usePost/usePost';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import {
   DataPost,
   PostModes as PostModesType,
-} from '~stores/usePost/usePost.types';
+} from '~stores/usePostStore/usePostStore.types';
 
 import { Tab, Tabs as TabsType } from '../Tabber.types';
 
