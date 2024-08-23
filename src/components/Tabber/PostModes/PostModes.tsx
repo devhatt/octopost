@@ -63,18 +63,6 @@ function PostModes(props: PostModesProps): ReactNode {
       [scss.postModeTitle]: true,
     });
 
-  const onChangeCheckBox = (postModeId: string, isChecked: boolean): void => {
-    setSelectedPostModes((prev) => {
-      const newSelection = new Set(prev);
-      if (isChecked) {
-        newSelection.add(postModeId);
-      } else {
-        newSelection.delete(postModeId);
-      }
-      return newSelection;
-    });
-  };
-
   const renderPostMode = (postMode: PostMode): ReactNode => (
     <button
       className={`${scss.selectPostMode} ${postModeClasses(postMode.id)}`}
