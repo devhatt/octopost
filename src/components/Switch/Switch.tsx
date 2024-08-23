@@ -7,13 +7,14 @@ import scss from './Switch.module.scss';
 import { SwitchProps } from './Switch.types';
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  ({ variant = 'default', ...props }, ref) => {
+  ({ invalid, variant = 'default', ...props }, ref) => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
       if (props.onChange) props.onChange(event.target.checked);
     };
 
     const classes = classNames(scss.input, {
       [scss.error]: variant === 'error',
+      [scss.invalid]: invalid,
     });
 
     return (
