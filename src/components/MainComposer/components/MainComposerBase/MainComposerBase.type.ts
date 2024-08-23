@@ -2,6 +2,13 @@ import { ChangeEvent } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
 
+export type MainComposerChildrens = {
+  accountId?: string;
+  addError?: MainComposerErrorEmiter;
+  postMode?: PostMode;
+  removeError?: (id: string) => void;
+};
+
 export type Error = {
   accountId: string | undefined;
   fileId?: string;

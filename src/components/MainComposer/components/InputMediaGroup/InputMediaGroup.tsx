@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/await-thenable -- for validate*/
 import { ReactNode, useState } from 'react';
 
+import isEmpty from 'lodash.isempty';
 import { nanoid } from 'nanoid';
 
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
@@ -17,17 +17,18 @@ import {
   ErrorMap,
   MEDIA_ERRORS,
   MediaErrorMap,
-  MediaInput,
+  MediaInputProps,
 } from './InputMediaGroup.type';
 
-function InputMediaGroup(props: MediaInput): ReactNode {
+function InputMediaGroup(props: MediaInputProps): ReactNode {
   const [errors, setErrors] = useState<MediaErrorMap>({});
   const { mainContent, updateMainContent } = useAccountStore();
-  const setMedias = (medias: Media[]): void => {
-    updateMainContent({ medias });
-  };
-
   const medias = mainContent.medias ?? [];
+  const hasValidation = Boolean(props.postMode);
+
+  const setMedias = (newMedias: Media[]): void => {
+    updateMainContent({ medias: newMedias });
+  };
 
   const removeErrors = (fileId: Media['id']): void => {
     const errorsForFile = errors[fileId];
@@ -38,7 +39,7 @@ function InputMediaGroup(props: MediaInput): ReactNode {
 
   const validateFile = async (file: Media): Promise<void> => {
     const media = file.file;
-    const validator = props.postMode?.validators.media;
+    const validatorRules = props.postMode?.validators.media;
 
     const fileErrors: ErrorMap = {
       [MEDIA_ERRORS.MAX_AR_EXCEED]: '',
@@ -47,10 +48,12 @@ function InputMediaGroup(props: MediaInput): ReactNode {
       [MEDIA_ERRORS.MAX_SIZE_EXCEED]: '',
     };
 
-    if (validator) {
-      const fileValidator = Object.values(fileValidators({ media, validator }));
-      for (const validators of fileValidator) {
-        const validate = await validators(props, media.name);
+    if (validatorRules) {
+      const validators = Object.values(
+        fileValidators({ media, validatorRules })
+      );
+      for (const validator of validators) {
+        const validate = await validator(props, media.name);
         const errorId = nanoid();
 
         if (validate.error) {
@@ -58,13 +61,14 @@ function InputMediaGroup(props: MediaInput): ReactNode {
           props.addError?.(errorId, validate.error);
         }
       }
-      if (Object.keys(fileErrors).length > 0)
+      if (!isEmpty(fileErrors)) {
         setErrors({ ...errors, [file.id]: fileErrors });
+      }
     }
   };
 
   const addMedia = async (files: Media[]): Promise<void> => {
-    if (props.postMode) {
+    if (hasValidation) {
       for (const file of files) {
         await validateFile(file);
       }
@@ -73,39 +77,29 @@ function InputMediaGroup(props: MediaInput): ReactNode {
   };
 
   const removeMedia = (id: Media['id']): void => {
-    const list = Array.from(medias);
-    const indexToRemove = list.findIndex((item) => item.id === id);
+    const newMedias = medias.filter((item) => item.id !== id);
 
-    if (props.postMode) removeErrors(id);
+    if (hasValidation) removeErrors(id);
 
-    if (indexToRemove !== -1) {
-      list.splice(indexToRemove, 1);
-    }
-
-    setMedias(list);
+    setMedias(newMedias);
   };
 
   const updateMedia = async (
     files: Media[],
     id: Media['id']
   ): Promise<void> => {
-    const list = Array.from(medias);
-    const indexToUpdate = list.findIndex((item) => item.id === id);
+    const newMedias = medias.flatMap((media) =>
+      media.id === id ? files : media
+    );
 
-    if (props.postMode) removeErrors(id);
-
-    if (props.postMode) {
+    if (hasValidation) {
+      removeErrors(id);
       for (const file of files) {
         await validateFile(file);
       }
     }
 
-    if (indexToUpdate !== -1) {
-      list.splice(indexToUpdate, 1);
-      list.splice(indexToUpdate, 0, ...files);
-    }
-
-    setMedias(list);
+    setMedias(newMedias);
   };
 
   return (

@@ -4,22 +4,27 @@ import { MediaValidators } from '../mediaValidator/mediaValidators';
 
 import { Error } from '~components/MainComposer/components/MainComposerBase/MainComposerBase.type';
 
-import { MEDIA_ERRORS, MediaInput } from '../../InputMediaGroup.type';
+import { MEDIA_ERRORS, MediaInputProps } from '../../InputMediaGroup.type';
 
 export type ValidatorError = {
   error?: Error;
   type: MEDIA_ERRORS;
 };
 
-export type validators = Record<
+export type Validators = Record<
   keyof typeof MediaValidators.prototype,
   (
-    props: MediaInput,
+    props: MediaInputProps,
     fileId: string
   ) => Promise<ValidatorError> | ValidatorError
 >;
 
-export type validatorsProps = {
+export type Validator = {
   media: File;
-  validator: MediaValidator;
+  validatorRules: MediaValidator;
+};
+
+export type Payload = {
+  error?: Error;
+  type: MEDIA_ERRORS;
 };

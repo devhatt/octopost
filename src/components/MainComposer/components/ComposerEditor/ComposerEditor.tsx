@@ -28,12 +28,12 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
-  const [errors, setErrors] = useState<TextErrorMap>();
+  const [errors, setErrors] = useState<TextErrorMap>({});
+  const hasValidation = Boolean(props.postMode);
 
   const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
     const errorId = nanoid();
-    const newError = { ...errors };
-    const error = newError[textErrors];
+    const error = errors[textErrors];
 
     if (!error) {
       setErrors({ ...errors, [textErrors]: errorId });
@@ -42,28 +42,24 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   };
 
   const removeErrors = (textErrors: TEXT_ERRORS): void => {
-    const newError = { ...errors };
-    const errorId = newError[textErrors];
-    const newErrors = omit(errors, [textErrors]);
+    const errorId = errors[textErrors];
+    const nextErrors = omit(errors, [textErrors]);
 
     if (errorId) props.removeError?.(errorId);
 
-    setErrors(newErrors as TextErrorMap);
+    setErrors(nextErrors as TextErrorMap);
   };
 
   const emitErrors = (text: string): void => {
-    const validator = props.postMode?.validators.text;
+    const validatorRules = props.postMode?.validators.text;
 
-    if (validator) {
-      const textValidators = Object.values(textValidator({ text, validator }));
-      for (const validators of textValidators) {
-        const validate = validators(props);
+    if (validatorRules) {
+      const validators = Object.values(textValidator({ text, validatorRules }));
+      for (const validator of validators) {
+        const validate = validator(props);
 
-        if (validate.error) {
-          addErrors(validate.type, validate.error);
-        } else {
-          removeErrors(validate.type);
-        }
+        if (validate.error) addErrors(validate.type, validate.error);
+        else removeErrors(validate.type);
       }
     }
   };
@@ -104,14 +100,14 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   }, [getBiggestLimitBySocial]);
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-    const newValue = event.target.value;
+    const { value } = event.target;
 
-    updateMainContent({ text: newValue });
+    updateMainContent({ text: value });
 
     props.onChange?.(event);
 
-    emitErrors(newValue);
-    setInputValue(newValue);
+    emitErrors(value);
+    setInputValue(value);
   };
 
   const socialLimits = getGreatestLimitsSocial();
@@ -130,7 +126,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
           svg={null}
           value={props.value ?? inputValue}
         />
-        {!props.postMode && (
+        {!hasValidation && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (
               <CharacterLimit

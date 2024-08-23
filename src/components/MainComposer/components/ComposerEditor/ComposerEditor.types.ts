@@ -1,20 +1,15 @@
 import { ChangeEvent, PropsWithChildren } from 'react';
 
-import { PostMode } from '~services/api/social-media/social-media.types';
-
-import { MainComposerErrorEmiter } from '../MainComposerBase/MainComposerBase.type';
+import { MainComposerChildrens } from '../MainComposerBase/MainComposerBase.type';
 
 export type InputChange = (event: ChangeEvent<HTMLTextAreaElement>) => void;
 
-export type ComposerEditorProps = PropsWithChildren<{
-  accountId?: string;
-  addError?: MainComposerErrorEmiter;
-  currentMaxLimit?: number;
-  onChange?: InputChange;
-  postMode?: PostMode;
-  removeError?: (id: string) => void;
-  value?: string;
-}>;
+export type ComposerEditorProps = MainComposerChildrens &
+  PropsWithChildren<{
+    currentMaxLimit?: number;
+    onChange?: InputChange;
+    value?: string;
+  }>;
 
 export type HigherLimitSocial = {
   limit: number;

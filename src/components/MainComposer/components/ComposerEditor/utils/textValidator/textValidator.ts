@@ -2,36 +2,34 @@ import { TextValidators } from './textValidators';
 
 import { ComposerEditorProps, TEXT_ERRORS } from '../../ComposerEditor.types';
 import {
+  Payload,
+  Validator,
   ValidatorError,
-  validators,
-  validatorsProps,
+  Validators,
 } from './textValidator.types';
 
 export const textValidator = ({
   text,
-  validator,
-}: validatorsProps): validators => {
+  validatorRules,
+}: Validator): Validators => {
   const textValidators = new TextValidators(text);
 
   return {
     textLength: (props: ComposerEditorProps): ValidatorError => {
       const isTextTooLong =
-        props.postMode && !textValidators.textLength(validator.maxLength);
+        props.postMode && !textValidators.textLength(validatorRules.maxLength);
 
+      const payload: Payload = {
+        type: TEXT_ERRORS.MAX_LENGTH_EXCEED,
+      };
       if (isTextTooLong) {
-        return {
-          error: {
-            accountId: props.accountId,
-            message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the character limit`,
-            postModeId: props.postMode?.id,
-          },
-          type: TEXT_ERRORS.MAX_LENGTH_EXCEED,
-        };
-      } else {
-        return {
-          type: TEXT_ERRORS.MAX_LENGTH_EXCEED,
+        payload.error = {
+          accountId: props.accountId,
+          message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the character limit`,
+          postModeId: props.postMode?.id,
         };
       }
+      return payload;
     },
   };
 };

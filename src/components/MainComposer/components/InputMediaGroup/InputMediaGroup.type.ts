@@ -1,13 +1,6 @@
-import { PostMode } from '~services/api/social-media/social-media.types';
+import { MainComposerChildrens } from '../MainComposerBase/MainComposerBase.type';
 
-import { MainComposerErrorEmiter } from '../MainComposerBase/MainComposerBase.type';
-
-export type MediaInput = {
-  accountId?: string;
-  addError?: MainComposerErrorEmiter;
-  postMode?: PostMode;
-  removeError?: (id: string) => void;
-};
+export type MediaInputProps = MainComposerChildrens;
 
 export enum MEDIA_ERRORS {
   MAX_AR_EXCEED = 1,

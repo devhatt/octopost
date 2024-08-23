@@ -6,17 +6,22 @@ import { Error } from '~components/MainComposer/components/MainComposerBase/Main
 
 import { ComposerEditorProps, TEXT_ERRORS } from '../../ComposerEditor.types';
 
-export type validators = Record<
+export type Validators = Record<
   keyof typeof TextValidators.prototype,
   (props: ComposerEditorProps) => ValidatorError
 >;
 
-export type validatorsProps = {
+export type Validator = {
   text: string;
-  validator: TextValidator;
+  validatorRules: TextValidator;
 };
 
 export type ValidatorError = {
+  error?: Error;
+  type: TEXT_ERRORS;
+};
+
+export type Payload = {
   error?: Error;
   type: TEXT_ERRORS;
 };
