@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-unused-properties */
-import { PostModes } from '~stores/usePost/usePost.types';
+import { PostModes } from '~stores/usePostStore/usePostStore.types';
 
 const mockAccount = {
   avatar: 'https://example.com/image1.jpg',

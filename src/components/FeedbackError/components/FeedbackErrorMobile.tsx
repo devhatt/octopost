@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
-import { useError } from '~stores/useError/useError';
+import { useError } from '~stores/useErrorStore/useErrorStore';
 
 import Icon from '~components/Icon/Icon';
 

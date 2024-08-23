@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import type { Story } from '@ladle/react';
 
-import { useError } from '~stores/useError/useError';
+import { useError } from '~stores/useErrorStore/useErrorStore';
 
 import FeedbackErrorMobile from './FeedbackErrorMobile';
 

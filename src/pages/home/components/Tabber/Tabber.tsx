@@ -3,7 +3,7 @@
 import { ChangeEvent, ReactNode, useState } from 'react';
 
 import { PostMode } from '~services/api/social-media/social-media.types';
-import { usePostStore } from '~stores/usePost/usePost';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { useSyncTabsWithPosts } from './hooks/useSyncTabsWithPosts';

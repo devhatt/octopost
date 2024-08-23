@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import * as useErrorHook from '~stores/useError/useError';
+import * as useErrorHook from '~stores/useErrorStore/useErrorStore';
 
 import FeedbackErrorMobile from './FeedbackErrorMobile';
 

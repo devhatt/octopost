@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 import { create } from '~stores/zustand';
 
-import { IUseError } from './useError.types';
+import { IUseError } from './useErrorStore.types';
 
 export const useError = create<IUseError>((set) => ({
   errors: {},
