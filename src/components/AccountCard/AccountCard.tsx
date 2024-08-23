@@ -49,7 +49,7 @@ export function AccountCard({
         circle
         className={scss.favorite}
         color="primary"
-        icon={<Icon icon={isFavorited ? 'star-filled' : 'star'} size={20} />}
+        icon={<Icon icon={favoriteIcon} size={20} />}
         onClick={handleFavoriteChange}
       />
       <Switch

@@ -55,8 +55,6 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
 
   const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
 
-  const socialMediaName = socialMedias.get(props.socialMediaId)?.name;
-
   return (
     <Accordion
       className={scss.wrapper}
