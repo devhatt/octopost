@@ -1,19 +1,5 @@
 import { SocialMedia } from '~services/api/social-media/social-media.types.ts';
 
-export const mockedFavoriteAccounts = [
-  {
-    avatar: 'https://example.com/image1.jpg',
-    expiresAt: '',
-    favorite: false,
-    generatedAt: '',
-    id: '1',
-    socialMediaId: 'DISCORD_EXAMPLE_ID',
-    token: 'DISCORD_EXAMPLE_TOKEN_1',
-    userName: 'Favorite account',
-    valid: false,
-  },
-];
-
 export const mockedAddAccount = vi.fn();
 
 export const mockedAccounts = vi.fn(() => ({
@@ -22,7 +8,7 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image1.jpg',
         expiresAt: '',
-        favorite: false,
+        favorite: true,
         generatedAt: '',
         id: '1',
         socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -39,7 +25,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'DISCORD_EXAMPLE_ID',
         token: 'DISCORD_EXAMPLE_TOKEN_2',
         userName: 'Discord User 2',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image4.jpg',
@@ -62,6 +48,19 @@ export const mockedAccounts = vi.fn(() => ({
         token: 'DISCORD_EXAMPLE_TOKEN_5',
         userName: 'Discord User 5',
         valid: false,
+      },
+    ],
+    FAVORITE_ACCOUNTS_ID: [
+      {
+        avatar: 'https://example.com/image2.jpg',
+        expiresAt: '',
+        favorite: true,
+        generatedAt: '',
+        id: '15',
+        socialMediaId: 'FAVORITE_ACCOUNTS_ID',
+        token: 'FAVORITE_EXAMPLE_TOKEN_15',
+        userName: 'Favorite User 15',
+        valid: true,
       },
     ],
     TWITTER_EXAMPLE_ID: [
@@ -101,13 +100,13 @@ export const mockedAccounts = vi.fn(() => ({
       {
         avatar: 'https://example.com/image2.jpg',
         expiresAt: '',
-        favorite: true,
+        favorite: false,
         generatedAt: '',
         id: '7',
         socialMediaId: 'TWITTER_EXAMPLE_ID',
         token: 'TWITTER_EXAMPLE_TOKEN_7',
         userName: 'Twitter User 7',
-        valid: false,
+        valid: true,
       },
     ],
   },
@@ -177,6 +176,15 @@ export const mockedSocialMedias = vi.fn(
               ],
             },
           ],
+        },
+      ],
+      [
+        'FAVORITE_ACCOUNTS_ID',
+        {
+          icon: 'Icon',
+          id: 'FAVORITE_ACCOUNTS_ID',
+          name: 'Favorite',
+          postModes: [],
         },
       ],
       [
