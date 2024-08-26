@@ -66,7 +66,7 @@ describe('Sidebar component', () => {
     });
   });
 
-  it.only('renders favorites accounts when exists in store', async () => {
+  it('renders favorites accounts when exists in store', async () => {
     render(<Sidebar />);
 
     const favoriteAccordion = screen.getByText('Favorite');
