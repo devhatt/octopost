@@ -4,7 +4,7 @@ import { IconsType } from '~components/Icon/Icon.types';
 
 import { PreviewModeSelector } from './PreviewModeSelector';
 
-const previewModeMockList = [
+const previewModes = [
   {
     icon: 'mobile' as IconsType,
     id: 'mobile',
@@ -23,5 +23,5 @@ const previewModeMockList = [
 ];
 
 export const PreviewModeSelectorStories: Story = () => (
-  <PreviewModeSelector list={previewModeMockList} />
+  <PreviewModeSelector list={previewModes} />
 );

@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { changeDevice } from '../utils';
+
 import { IconsType } from '~components/Icon/Icon.types';
 
 import { PreviewMode } from './PreviewModeSelector.components';
@@ -14,7 +16,7 @@ describe('PreviewModeSelector', () => {
 
   describe('PreviewMode', () => {
     it('[Icon] should render the icons', () => {
-      render(<PreviewMode item={item} />);
+      render(<PreviewMode item={item} onSelect={changeDevice} />);
 
       const icon = screen.getByRole('img');
 
@@ -22,7 +24,7 @@ describe('PreviewModeSelector', () => {
     });
 
     it('[Icon] When clicked, it should change to checked', async () => {
-      render(<PreviewMode item={item} />);
+      render(<PreviewMode item={item} onSelect={changeDevice} />);
 
       const inputElement = screen.getByRole('radio', { name: 'some-name' });
 
@@ -32,7 +34,7 @@ describe('PreviewModeSelector', () => {
     });
 
     it('[Icon] When clicked, it should change to background', async () => {
-      render(<PreviewMode item={item} />);
+      render(<PreviewMode item={item} onSelect={changeDevice} />);
 
       const inputElement = screen.getByRole('radio', { name: 'some-name' });
 

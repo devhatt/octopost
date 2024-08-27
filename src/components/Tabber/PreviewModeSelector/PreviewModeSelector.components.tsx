@@ -4,7 +4,7 @@ import Icon from '~components/Icon/Icon';
 
 import scss from './PreviewModeSelector.module.scss';
 
-import { PreviewModeProps } from './PreviewModeSelector.type';
+import { PreviewModeProps } from './PreviewModeSelector.types';
 
 export function PreviewMode(props: PreviewModeProps): React.JSX.Element {
   return (
@@ -13,11 +13,16 @@ export function PreviewMode(props: PreviewModeProps): React.JSX.Element {
         className={scss.previewModeInput}
         id={props.item.id}
         name="device"
+        onChange={props.onSelect}
         type="radio"
+        value={props.item.id}
       />
 
-      <label className={scss.previewModeLabel} htmlFor={props.item.id}>
-        <span>{props.item.name}</span>
+      <label
+        aria-label={props.item.name}
+        className={scss.previewModeLabel}
+        htmlFor={props.item.id}
+      >
         <Icon
           className={scss.icon}
           icon={props.item.icon}

@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { changeDevice } from '../utils';
+
 import scss from './PreviewModeSelector.module.scss';
 
 import { PreviewMode } from './PreviewModeSelector.components';
-import { PreviewModeSelectorProps } from './PreviewModeSelector.type';
+import { PreviewModeSelectorProps } from './PreviewModeSelector.types';
 
 export function PreviewModeSelector(
   props: PreviewModeSelectorProps
@@ -11,7 +13,7 @@ export function PreviewModeSelector(
   return (
     <div className={scss.containerPreview}>
       {props.list.map((item) => (
-        <PreviewMode item={item} key={item.id} />
+        <PreviewMode item={item} key={item.id} onSelect={changeDevice} />
       ))}
     </div>
   );

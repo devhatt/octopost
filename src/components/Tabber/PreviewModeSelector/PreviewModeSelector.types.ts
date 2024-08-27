@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react';
+
 import { IconsType } from '~components/Icon/Icon.types';
 
 export type PreviewMode = {
@@ -8,6 +10,7 @@ export type PreviewMode = {
 
 export type PreviewModeProps = {
   item: PreviewMode;
+  onSelect: (e: ChangeEvent<HTMLInputElement>) => string;
 };
 
 export type PreviewModeSelectorProps = {
