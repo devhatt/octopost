@@ -1,8 +1,6 @@
 ﻿/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 // @ts-nocheck
-import { ChangeEvent } from 'react';
-
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 import { AccountPost } from '~stores/useAccountStore';
@@ -22,11 +20,6 @@ export const getFirstPostModeId = (
 export const createTabId = (account: Account): TabId => {
   if (!account) throw new Error('Account is required to create a TabId');
   return `${account.id}-${account.socialMediaId}`;
-};
-
-export const changeDevice = (e: ChangeEvent<HTMLInputElement>): string => {
-  const targetValuePreview = e.target.value;
-  return targetValuePreview;
 };
 
 export const accountsToTabs = (

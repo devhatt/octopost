@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 import { IconsType } from '~components/Icon/Icon.types';
 import { PreviewModeSelector } from '~components/Tabber/PreviewModeSelector/PreviewModeSelector';
@@ -25,11 +25,17 @@ const previewModeMockList = [
   },
 ];
 
+const getTargetValue = (e: ChangeEvent<HTMLInputElement>): string =>
+  e.target.value;
+
 function Preview(props: PreviewProps): ReactNode {
   return (
     <div className={scss.container}>
       <div className={scss.previewContent}>
-        <PreviewModeSelector list={previewModeMockList} />
+        <PreviewModeSelector
+          changeDevice={getTargetValue}
+          list={previewModeMockList}
+        />
       </div>
       <div>{props.children}</div>
     </div>

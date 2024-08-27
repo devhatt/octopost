@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react';
+
 import { Story } from '@ladle/react';
 
 import { IconsType } from '~components/Icon/Icon.types';
@@ -23,5 +25,8 @@ const previewModes = [
 ];
 
 export const PreviewModeSelectorStories: Story = () => (
-  <PreviewModeSelector list={previewModes} />
+  <PreviewModeSelector
+    changeDevice={(e: ChangeEvent<HTMLInputElement>) => e.target.value}
+    list={previewModes}
+  />
 );

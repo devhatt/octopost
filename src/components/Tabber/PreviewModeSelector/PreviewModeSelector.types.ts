@@ -14,5 +14,6 @@ export type PreviewModeProps = {
 };
 
 export type PreviewModeSelectorProps = {
+  changeDevice: (e: ChangeEvent<HTMLInputElement>) => string;
   list: PreviewMode[];
 };

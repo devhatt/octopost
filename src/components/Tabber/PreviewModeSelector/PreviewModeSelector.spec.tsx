@@ -1,7 +1,7 @@
+import { ChangeEvent } from 'react';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import { changeDevice } from '../utils';
 
 import { IconsType } from '~components/Icon/Icon.types';
 
@@ -13,18 +13,24 @@ describe('PreviewModeSelector', () => {
     id: 'some-id',
     name: 'some-name',
   };
+  let getTargetValue: (e: ChangeEvent<HTMLInputElement>) => string;
+
+  beforeEach(() => {
+    getTargetValue = (e: ChangeEvent<HTMLInputElement>): string =>
+      e.target.value;
+  });
 
   describe('PreviewMode', () => {
-    it('[Icon] should render the icons', () => {
-      render(<PreviewMode item={item} onSelect={changeDevice} />);
+    it('render the icons when passed', () => {
+      render(<PreviewMode item={item} onSelect={getTargetValue} />);
 
       const icon = screen.getByRole('img');
 
       expect(icon).toBeInTheDocument();
     });
 
-    it('[Icon] When clicked, it should change to checked', async () => {
-      render(<PreviewMode item={item} onSelect={changeDevice} />);
+    it('When clicked, it  change to checked', async () => {
+      render(<PreviewMode item={item} onSelect={getTargetValue} />);
 
       const inputElement = screen.getByRole('radio', { name: 'some-name' });
 
@@ -33,8 +39,8 @@ describe('PreviewModeSelector', () => {
       expect(inputElement).toBeChecked();
     });
 
-    it('[Icon] When clicked, it should change to background', async () => {
-      render(<PreviewMode item={item} onSelect={changeDevice} />);
+    it('changes the background when clicked', async () => {
+      render(<PreviewMode item={item} onSelect={getTargetValue} />);
 
       const inputElement = screen.getByRole('radio', { name: 'some-name' });
 
