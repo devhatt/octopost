@@ -52,9 +52,8 @@ function PostModes(props: PostModesProps): ReactNode {
   const isChecked = (postModeId: PostMode['id']): boolean => {
     let checked = false;
 
-    if (selectedPostModes[currentTab]) {
-      checked = selectedPostModes[currentTab].includes(postModeId);
-    }
+    checked = Boolean(selectedPostModes[currentTab]?.includes(postModeId));
+
     return checked;
   };
 
