@@ -1,0 +1,84 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss' as *;
+
+.main {
+  width: 100%;
+
+  display: grid;
+
+  background: linear-gradient(0deg, #894df6, #894df6),
+    linear-gradient(
+      109.54deg,
+      rgba(123, 80, 255, 0.2) 0%,
+      rgba(81, 202, 212, 0.2) 100%
+    );
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.5rem 2rem;
+}
+
+.signin {
+  width: 92px;
+  height: 40px;
+
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+  padding: 0.625rem 1.5rem;
+  border: 1px solid #fff;
+
+  border-radius: 100px;
+  letter-spacing: 0.1px;
+}
+
+.hero {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+  gap: 4px;
+
+  align-items: flex-end;
+
+  color: #fff;
+
+  text-align: right;
+
+  padding: 1.5rem;
+
+  .title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 44px;
+
+    margin: 0;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+}
+
+.octo {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,57 @@
+@use '~styles/breakpoints.scss' as *;
+
+.content {
+  overflow: hidden;
+
+  display: grid;
+  grid-template-areas:
+    'header'
+    'actions'
+    'aside'
+    'editor';
+
+  grid-template-columns: 100vw;
+
+  .aside {
+    grid-area: aside;
+  }
+
+  .editor {
+    overflow-x: hidden;
+
+    grid-area: editor;
+  }
+
+  .editor {
+    > :first-child {
+      display: none;
+    }
+  }
+
+  .actions {
+    grid-area: actions;
+  }
+}
+
+@include from905 {
+  .content {
+    width: 90%;
+    max-width: 128rem;
+
+    grid-template-areas:
+      'aside editor'
+      'aside actions';
+    grid-template-columns: 30rem 1fr;
+    gap: 2.4rem;
+
+    margin: 0 auto;
+  }
+
+  .content {
+    .editor {
+      > :first-child {
+        display: flex;
+      }
+    }
+  }
+}

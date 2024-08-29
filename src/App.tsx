@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import { ErrorBoundary } from '@sentry/react';
 
 import Home from './pages/home/home';
+import Register from './pages/register/register';
 
 import SentryRoutes from '~components/SentrySetup/SentrySetup';
 
@@ -17,6 +18,7 @@ function App(): ReactNode {
         <Router>
           <SentryRoutes>
             <Route element={<Home />} path="/" />
+            <Route element={<Register />} path="/register" />
           </SentryRoutes>
         </Router>
       </div>
