@@ -9,13 +9,20 @@
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
 
-  padding: 4.2rem 1.6rem;
+  padding: 2.25rem 0.75rem;
 
   background-color: global.$tertiaryWhite;
 
   border-radius: 12px;
+}
+
+.previewContent {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: end;
 }
 
 @include from905 {

@@ -11,11 +11,14 @@ import Instagram from './icons/instagram.svg?react';
 import LeftArrow from './icons/left-arrow.svg?react';
 import Mag from './icons/mag.svg?react';
 import Minus from './icons/minus.svg?react';
+import Mobile from './icons/Mobile.svg?react';
+import Pc from './icons/Pc.svg?react';
 import Plus from './icons/plus.svg?react';
 import RightArrow from './icons/right-arrow.svg?react';
 import SmallCircleFilled from './icons/small-circle-filled.svg?react';
 import StarFilled from './icons/star-filled.svg?react';
 import Star from './icons/star.svg?react';
+import Tablet from './icons/Tablet.svg?react';
 import TikTok from './icons/tiktok.svg?react';
 import TriangleLeftArrow from './icons/TriangleLeftArrow.svg?react';
 import Twitter from './icons/twitter.svg?react';
@@ -33,11 +36,14 @@ export const icons = {
   'left-arrow': LeftArrow,
   mag: Mag,
   minus: Minus,
+  mobile: Mobile,
+  pc: Pc,
   plus: Plus,
   'right-arrow': RightArrow,
   'small-circle-filled': SmallCircleFilled,
   star: Star,
   'star-filled': StarFilled,
+  tablet: Tablet,
   tiktok: TikTok,
   'triangle-drop-arrow': TriangleDropArrow,
   'triangle-left-arrow': TriangleLeftArrow,
