@@ -26,3 +26,10 @@ export type MainComposerBaseProps = {
 };
 
 export type MainComposerErrorEmiter = (key: string, error: Error) => void;
+
+export type PostModeInputMediaGroupProps = {
+  accountId?: string;
+  addError: (id: string, error: Error) => void;
+  errorRemover: (id: string) => void;
+  postMode?: PostMode;
+};

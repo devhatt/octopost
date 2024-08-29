@@ -7,6 +7,7 @@ import InputMediaGroup from '../InputMediaGroup/InputMediaGroup';
 
 import scss from './MainComposerBase.module.scss';
 
+import { PostModeInputMediaGroup } from './MainComposerBase.components';
 import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
@@ -29,19 +30,6 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
     }
   };
 
-  const renderInputMediaGroupWithProps = (): ReactNode => {
-    if (props.postMode && 'media' in props.postMode.validators) {
-      return (
-        <InputMediaGroup
-          accountId={props.accountId}
-          addError={addErrors}
-          postMode={props.postMode}
-          removeError={errorRemover}
-        />
-      );
-    }
-  };
-
   return (
     <div className={scss.container}>
       <ComposerEditor
@@ -55,8 +43,13 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
-        {props.postMode ? (
-          renderInputMediaGroupWithProps()
+        {props.postMode && 'media' in props.postMode.validators ? (
+          <PostModeInputMediaGroup
+            accountId={props.accountId}
+            addError={addErrors}
+            errorRemover={errorRemover}
+            postMode={props.postMode}
+          />
         ) : (
           <InputMediaGroup />
         )}

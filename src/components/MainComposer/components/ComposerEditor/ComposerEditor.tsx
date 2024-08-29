@@ -68,9 +68,15 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     (
       currentValidator: PostMode['validators'],
       currentMax: number
-    ): currentValidator is { text: TextValidator } =>
-      currentValidator.text !== undefined &&
-      currentValidator.text.maxLength > currentMax,
+    ): currentValidator is { text: TextValidator } => {
+      let bigger = false;
+
+      if (currentValidator.text && 'text' in currentValidator) {
+        bigger = currentValidator.text.maxLength > currentMax;
+      }
+
+      return bigger;
+    },
     [socialMedias]
   );
 
