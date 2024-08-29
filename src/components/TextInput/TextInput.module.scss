@@ -1,0 +1,112 @@
+@use '../../styles/global';
+@use '~styles/breakpoints.scss' as *;
+
+@mixin apply-color($color) {
+  &.containerFocus {
+    color: $color;
+  }
+
+  .inputWrapper {
+    .label {
+      &.labelAnimate {
+        color: $color;
+      }
+    }
+  }
+}
+
+.container {
+  &.containerError {
+    color: global.$secondaryRed;
+  }
+
+  &.containerFocus {
+    color: global.$secondaryPurple;
+  }
+
+  .input {
+    width: 100%;
+
+    font-size: 1rem;
+    font-weight: 400;
+
+    border: 0;
+    letter-spacing: 0.03rem;
+
+    &.inputFocus {
+      caret-color: global.$secondaryPurple;
+    }
+
+    &.inputError {
+      caret-color: global.$secondaryRed;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .fieldset {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid #7a757f;
+
+    border-radius: 4px;
+
+    &.fieldsetFocus {
+      border: 2px solid global.$secondaryPurple;
+    }
+
+    &.fieldsetError {
+      border: 2px solid global.$secondaryRed;
+    }
+  }
+
+  .legend {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 0;
+
+    padding: 0 0.25rem;
+  }
+
+  .rightIcon {
+    width: 1.5rem;
+
+    display: flex;
+
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.rightIconError {
+      color: global.$secondaryRed;
+    }
+  }
+
+  .supportText {
+    height: 1.5rem;
+
+    color: global.$secondaryGray;
+    font-size: 0.75rem;
+    font-weight: 400;
+
+    padding: 0.25rem 1rem;
+
+    visibility: hidden;
+
+    &.supportTextExists {
+      visibility: visible;
+    }
+
+    &.supportTextError {
+      color: global.$secondaryRed;
+    }
+  }
+}

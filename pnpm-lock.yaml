@@ -56,6 +56,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: 7.53.0
+    version: 7.53.0(react@18.2.0)
   react-i18next:
     specifier: 13.5.0
     version: 13.5.0(i18next@23.9.0)(react-dom@18.2.0)(react@18.2.0)
@@ -10518,6 +10521,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.2
+
+  /react-hook-form@7.53.0(react@18.2.0):
+    resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-hotkeys-hook@4.5.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Samb85GSgAWFQNvVt3PS90LPPGSf9mkH/r4au81ZP1yOIFayLC3QAvqTgGtJ8YEDMXtPmaVBs6NgipHO6h4Mug==}
