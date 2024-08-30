@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@hookform/resolvers':
+    specifier: 3.9.0
+    version: 3.9.0(react-hook-form@7.53.0)
   '@redux-devtools/extension':
     specifier: 3.3.0
     version: 3.3.0(redux@5.0.1)
@@ -65,6 +68,9 @@ dependencies:
   react-router-dom:
     specifier: 6.22.1
     version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: 3.23.8
+    version: 3.23.8
   zustand:
     specifier: 4.5.1
     version: 4.5.1(@types/react@18.2.57)(react@18.2.0)
@@ -1654,6 +1660,14 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
     dev: true
+
+  /@hookform/resolvers@3.9.0(react-hook-form@7.53.0):
+    resolution: {integrity: sha512-bU0Gr4EepJ/EQsH/IwEzYLsT/PEj5C0ynLQ4m+GSHS+xKH4TfSelhluTgOaoc4kA5s7eCsQbM4wvZLzELmWzUg==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.53.0(react@18.2.0)
+    dev: false
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -13009,6 +13023,10 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
 
   /zustand@4.5.1(@types/react@18.2.57)(react@18.2.0):
     resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}

@@ -1,0 +1,43 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss';
+
+.socialLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  align-items: center;
+
+  .title {
+    color: global.$secondaryGray;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .iconsContainer {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    border: 2px solid global.$primaryGray;
+
+    border-radius: 100%;
+
+    cursor: pointer;
+
+    fill: global.$secondaryGray;
+
+    &:hover {
+      transform: scale(0.95);
+
+      fill: global.$primaryGray;
+    }
+  }
+}

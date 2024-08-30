@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Hero from './Hero';
+import Hero from './Form';
 
 vi.mock('react-router-dom', () => ({
   useNavigate: vi.fn(() => ({
