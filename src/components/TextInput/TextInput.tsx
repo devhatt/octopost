@@ -10,25 +10,25 @@ import { TInputProps } from './TextInput.types';
 
 function TextInput(props: TInputProps): ReactNode {
   const inputClass = [scss.input];
-  const legendClass = [scss.legend];
-  const fieldsetClass = [scss.fieldset];
+  const labelClass = [scss.label];
   const containerClass = [scss.container];
+  const innerContainerClass = [scss.innerContainer];
   const supportTextClass = [scss.supportText];
   const rightIconClass = [scss.rightIcon];
 
   const [isFocused, setIsFocused] = useState(false);
 
   if (props.error) {
-    fieldsetClass.push(scss.fieldsetError);
     containerClass.push(scss.containerError);
+    innerContainerClass.push(scss.innerContainerError);
     rightIconClass.push(scss.rightIconError);
     supportTextClass.push(scss.supportTextError);
     inputClass.push(scss.inputError);
   }
 
   if (isFocused && !props.error) {
-    fieldsetClass.push(scss.fieldsetFocus);
     containerClass.push(scss.containerFocus);
+    innerContainerClass.push(scss.innerContainerFocus);
     inputClass.push(scss.inputFocus);
   }
 
@@ -47,10 +47,10 @@ function TextInput(props: TInputProps): ReactNode {
 
   return (
     <div className={classNames(containerClass)}>
-      <fieldset aria-hidden="true" className={classNames(fieldsetClass)}>
-        <legend className={classNames(legendClass)}>
-          <span>{props.label}</span>
-        </legend>
+      <label className={classNames(labelClass)} htmlFor={props.name}>
+        <span>{props.label}</span>
+      </label>
+      <div className={classNames(innerContainerClass)}>
         <input
           className={classNames(inputClass)}
           id={props.name}
@@ -63,13 +63,18 @@ function TextInput(props: TInputProps): ReactNode {
           type={props.type}
           {...props}
         />
-        {!!props.rightIcon && (
+        {!!props.RightIcon && (
           <button className={classNames(rightIconClass)}>
-            {props.error ? <Icon icon="alert" /> : props.rightIcon}
+            {props.error ? <Icon icon="alert" /> : props.RightIcon}
           </button>
         )}
-      </fieldset>
-      <div className={classNames(supportTextClass)}>{props.supportText}</div>
+      </div>
+      <div
+        className={classNames(supportTextClass)}
+        data-testid={`${props.name}-support-text`}
+      >
+        {props.supportText}
+      </div>
     </div>
   );
 }

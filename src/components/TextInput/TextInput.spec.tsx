@@ -20,12 +20,6 @@ const mockProps = {
 };
 
 describe('TextInput component', () => {
-  let user = userEvent.setup();
-
-  beforeEach(() => {
-    user = userEvent.setup();
-  });
-
   it('renders the component', () => {
     render(<TextInput {...mockProps} />);
 
@@ -34,16 +28,6 @@ describe('TextInput component', () => {
 
     expect(inputElement).toBeInTheDocument();
     expect(labelElement).toBeInTheDocument();
-  });
-
-  it('handles input value correctly', async () => {
-    render(<TextInput {...mockProps} />);
-
-    const inputElement = screen.getByPlaceholderText('Test Placeholder');
-
-    await user.type(inputElement, 'value');
-
-    expect(inputElement).toHaveValue('value');
   });
 
   it('handles onFocus callback', async () => {

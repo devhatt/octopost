@@ -4,6 +4,6 @@ type HtmlInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'>;
 
 export type TInputProps = HtmlInputProps & {
   error?: boolean;
-  rightIcon?: ReactElement;
+  RightIcon?: ReactElement;
   supportText?: string;
 };

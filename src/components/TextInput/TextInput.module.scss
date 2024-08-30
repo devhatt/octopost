@@ -16,6 +16,8 @@
 }
 
 .container {
+  margin-top: -1rem;
+
   &.containerError {
     color: global.$secondaryRed;
   }
@@ -24,54 +26,57 @@
     color: global.$secondaryPurple;
   }
 
-  .input {
-    width: 100%;
-
-    font-size: 1rem;
-    font-weight: 400;
-
-    border: 0;
-    letter-spacing: 0.03rem;
-
-    &.inputFocus {
-      caret-color: global.$secondaryPurple;
-    }
-
-    &.inputError {
-      caret-color: global.$secondaryRed;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  .fieldset {
+  .innerContainer {
     display: flex;
+    flex-direction: row;
 
-    justify-content: space-between;
-
-    margin: 0;
+    margin-top: -0.75rem;
     padding: 1rem;
-    border: 1px solid #7a757f;
+    border: 1px solid global.$secondaryGray;
 
     border-radius: 4px;
 
-    &.fieldsetFocus {
-      border: 2px solid global.$secondaryPurple;
+    &.innerContainerFocus {
+      border-color: global.$secondaryPurple;
     }
 
-    &.fieldsetError {
-      border: 2px solid global.$secondaryRed;
+    &.innerContainerError {
+      border-color: global.$secondaryRed;
+    }
+
+    .input {
+      width: 100%;
+
+      font-size: 1rem;
+      font-weight: 400;
+
+      border: 0;
+      letter-spacing: 0.03rem;
+
+      &.inputFocus {
+        caret-color: global.$secondaryPurple;
+      }
+
+      &.inputError {
+        caret-color: global.$secondaryRed;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
-  .legend {
+  .label {
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 0;
 
+    margin-left: 1rem + 0.25rem; //sums inner container padding + outer container
+
     padding: 0 0.25rem;
+
+    background-color: global.$primaryWhite;
   }
 
   .rightIcon {
