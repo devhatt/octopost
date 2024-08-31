@@ -8,7 +8,7 @@ import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
 import TextInput from '~components/TextInput/TextInput';
 
-import scss from './Hero.module.scss';
+import scss from './Form.module.scss';
 
 const MIN_PASSWORD_CHARACTERS = 8;
 
@@ -46,16 +46,21 @@ function Form(): ReactNode {
   const onSubmit = (_data: IInputs) => {};
 
   return (
-    <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      aria-label="sign in form"
+      className={scss.form}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <Controller
         control={control}
         name="email"
         render={({ field }) => (
           <TextInput
+            aria-label="Email"
             error={!!errors.email}
             label="Email"
             placeholder="example@gmail.com"
-            rightIcon={<Icon icon="letter" />}
+            RightIcon={<Icon icon="letter" />}
             supportText={errors.email?.message}
             {...field}
           />
@@ -67,10 +72,11 @@ function Form(): ReactNode {
         name="password"
         render={({ field }) => (
           <TextInput
+            aria-label="Password"
             error={!!errors.password}
             label="Password"
             placeholder="************"
-            rightIcon={<Icon icon="blind-eye" />}
+            RightIcon={<Icon icon="blind-eye" />}
             supportText={errors.password?.message}
             type="password"
             {...field}
