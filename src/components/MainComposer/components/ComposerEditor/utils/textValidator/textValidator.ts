@@ -16,17 +16,18 @@ export const textValidator = ({
 
   return {
     textLength: (props: ComposerEditorProps): ValidatorError => {
-      const isTextTooLong =
-        props.postMode && !textValidators.textLength(validatorRules.maxLength);
+      const isTextTooLong = !textValidators.textLength(
+        validatorRules.maxLength
+      );
 
       const payload: Payload = {
         type: TEXT_ERRORS.MAX_LENGTH_EXCEED,
       };
-      if (isTextTooLong) {
+      if (isTextTooLong && props.accountId && props.postMode) {
         payload.error = {
           accountId: props.accountId,
-          message: `Account ${props.accountId} on ${props.postMode?.id} type of post overflowed the character limit`,
-          postModeId: props.postMode?.id,
+          message: `Account ${props.accountId} on ${props.postMode.id} type of post overflowed the character limit`,
+          postModeId: props.postMode.id,
         };
       }
       return payload;

@@ -10,10 +10,10 @@ export type MainComposerChildrens = {
 };
 
 export type Error = {
-  accountId: string | undefined;
+  accountId: string;
   fileId?: string;
   message: string;
-  postModeId: string | undefined;
+  postModeId: string;
 };
 
 export type MainComposerBaseProps = {

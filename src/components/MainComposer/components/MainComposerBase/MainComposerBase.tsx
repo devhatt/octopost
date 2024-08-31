@@ -12,6 +12,8 @@ import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const hasPostModeAndValidators =
+    props.postMode && 'media' in props.postMode.validators;
 
   const errorStore = useError();
 
@@ -43,7 +45,7 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
-        {props.postMode && 'media' in props.postMode.validators ? (
+        {hasPostModeAndValidators ? (
           <PostModeInputMediaGroup
             accountId={props.accountId}
             addError={addErrors}

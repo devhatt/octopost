@@ -29,7 +29,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { updateMainContent } = useAccountStore();
   const [inputValue, setInputValue] = useState('');
   const [errors, setErrors] = useState<TextErrorMap>({});
-  const hasValidation = Boolean(props.postMode);
+  const hasPostMode = Boolean(props.postMode);
 
   const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
     const errorId = nanoid();
@@ -132,7 +132,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
           svg={null}
           value={props.value ?? inputValue}
         />
-        {!hasValidation && (
+        {hasPostMode && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (
               <CharacterLimit
