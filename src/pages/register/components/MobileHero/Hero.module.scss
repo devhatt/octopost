@@ -1,7 +1,7 @@
 @use '~styles/breakpoints.scss' as *;
 @use '~styles/global.scss' as *;
 
-.main {
+.desktopHeroWrapper {
   width: 100%;
   overflow: hidden;
 
@@ -82,4 +82,10 @@
   // work around (gambiarra) to slice the logo's bottom and right part
   margin-bottom: -2.5rem;
   margin-left: -3.25rem;
+}
+
+@include from905 {
+  .desktopHeroWrapper {
+    display: none;
+  }
 }

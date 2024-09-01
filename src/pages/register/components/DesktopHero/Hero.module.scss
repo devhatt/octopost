@@ -1,0 +1,101 @@
+@use '~styles/breakpoints.scss' as *;
+
+@use '~styles/global.scss' as *;
+
+.mobileHeroWrapper {
+  width: 100%;
+  overflow: hidden;
+
+  display: none;
+
+  background: linear-gradient(0deg, #894df6, #894df6),
+    linear-gradient(
+      109.54deg,
+      rgba(123, 80, 255, 0.2) 0%,
+      rgba(81, 202, 212, 0.2) 100%
+    );
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1.5rem 2rem;
+}
+
+.signInButton {
+  width: fit-content;
+
+  color: $primaryWhite;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  padding: 0.625rem 4.875rem;
+  border: 1px solid $primaryWhite;
+
+  border-radius: 100px;
+  letter-spacing: 0.1px;
+}
+
+.hero {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+  grid-area: 1/1;
+
+  align-items: center;
+  justify-content: center;
+
+  color: $primaryWhite;
+
+  text-align: right;
+
+  padding: 1.5rem;
+  padding-bottom: 0;
+
+  z-index: 1;
+
+  .title {
+    font-size: 3.5rem;
+    font-weight: 700;
+
+    margin: 0;
+  }
+
+  .description {
+    font-size: 1rem;
+    font-weight: 400;
+
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+.octoWrapper {
+  display: flex;
+  grid-area: 1/1;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  .octo {
+    width: 50vh;
+
+    margin-right: -45vw;
+  }
+}
+
+@include from905 {
+  .mobileHeroWrapper {
+    display: grid;
+  }
+}

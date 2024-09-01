@@ -1,5 +1,23 @@
 @use '~styles/breakpoints.scss' as *;
 
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+}
+
 .main {
   padding-top: 3rem;
+}
+
+@include from905 {
+  .wrapper {
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row;
+  }
 }

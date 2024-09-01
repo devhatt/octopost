@@ -10,7 +10,7 @@ function Hero(): ReactNode {
   const navigate = useNavigate();
 
   return (
-    <div className={scss.main}>
+    <div className={scss.desktopHeroWrapper}>
       <header className={scss.header}>
         <a aria-label="octopost logo" href="/">
           <OctopostLogo />
