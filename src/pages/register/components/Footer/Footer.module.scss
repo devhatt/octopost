@@ -21,3 +21,9 @@
     text-decoration: none;
   }
 }
+
+@include from905 {
+  .footer {
+    display: none;
+  }
+}

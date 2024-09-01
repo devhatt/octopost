@@ -2,7 +2,7 @@
 
 @use '~styles/global.scss' as *;
 
-.mobileHeroWrapper {
+.desktopHeroWrapper {
   width: 100%;
   overflow: hidden;
 
@@ -95,7 +95,7 @@
 }
 
 @include from905 {
-  .mobileHeroWrapper {
+  .desktopHeroWrapper {
     display: grid;
   }
 }

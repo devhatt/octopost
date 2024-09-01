@@ -9,7 +9,7 @@ function Hero(): ReactNode {
   const navigate = useNavigate();
 
   return (
-    <div className={scss.mobileHeroWrapper}>
+    <div className={scss.desktopHeroWrapper}>
       <section className={scss.hero}>
         <h1 className={scss.title}>Welcome back</h1>
         <h2 className={scss.description}>

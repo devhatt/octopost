@@ -1,11 +1,12 @@
 @use '~styles/breakpoints.scss' as *;
 @use '~styles/global.scss' as *;
 
-.desktopHeroWrapper {
+.mobileHeroWrapper {
   width: 100%;
   overflow: hidden;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
 
   background: linear-gradient(0deg, #894df6, #894df6),
     linear-gradient(
@@ -85,7 +86,7 @@
 }
 
 @include from905 {
-  .desktopHeroWrapper {
+  .mobileHeroWrapper {
     display: none;
   }
 }
