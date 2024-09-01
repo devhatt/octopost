@@ -16,7 +16,7 @@
 }
 
 .container {
-  margin-top: -1rem;
+  display: grid;
 
   &.containerError {
     color: global.$secondaryRed;
@@ -29,8 +29,8 @@
   .innerContainer {
     display: flex;
     flex-direction: row;
+    grid-area: 1/1;
 
-    margin-top: -0.75rem;
     padding: 1rem;
     border: 1px solid global.$secondaryGray;
 
@@ -68,13 +68,21 @@
   }
 
   .label {
+    width: fit-content;
+    height: fit-content;
+
+    grid-area: 1/1;
+
     font-size: 0.75rem;
     font-weight: 400;
-    line-height: 0;
 
-    margin-left: 1rem + 0.25rem; //sums inner container padding + outer container
+    line-height: calc(0.75 / 2);
+
+    margin-left: 1rem;
 
     padding: 0 0.25rem;
+
+    z-index: 1;
 
     background-color: global.$primaryWhite;
   }
