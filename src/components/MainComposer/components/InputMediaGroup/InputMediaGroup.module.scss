@@ -4,10 +4,10 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 1.4rem;
 
-  align-items: center;
+  align-items: start;
   justify-content: start;
 
   .imageGroup {
@@ -31,6 +31,7 @@
 
     .removeButton {
       width: 2.2rem;
+      height: 2.2rem;
 
       color: global.$tertiaryPurple;
       text-align: center;
