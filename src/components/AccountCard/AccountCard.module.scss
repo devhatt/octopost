@@ -1,6 +1,6 @@
 @use '~styles/global.scss' as *;
 
-p {
+.username {
   margin: 0;
 }
 
@@ -35,10 +35,6 @@ p {
   white-space: nowrap;
 }
 
-.star {
-  color: $tertiaryGray;
-}
-
 .favorite {
   padding: 0.6rem;
 }
@@ -49,7 +45,7 @@ p {
 
 .containerButton {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.9rem;
 }
 
 .avatar {

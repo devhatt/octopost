@@ -45,7 +45,9 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     ));
 
   const renderAccordionContent = (): ReactNode => (
-    <ul role="listitem">{renderAccordionMap()}</ul>
+    <ul className={scss.containerAccordion} role="listitem">
+      {renderAccordionMap()}
+    </ul>
   );
 
   const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
