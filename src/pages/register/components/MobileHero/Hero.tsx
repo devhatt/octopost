@@ -28,8 +28,8 @@ function Hero(): ReactNode {
           details and start your journey with us
         </h2>
       </section>
-      <div className={scss.octo} data-testId="octopost-icon">
-        <Octo />
+      <div className={scss.mobileOcto} data-testId="octopost-icon">
+        <Octo id="mobile-icon" />
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ function Hero(): ReactNode {
         </button>
       </section>
       <div className={scss.octoWrapper} data-testId="octopost-icon">
-        <Octo className={scss.octo} />
+        <Octo className={scss.desktopOcto} />
       </div>
     </div>
   );
