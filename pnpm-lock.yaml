@@ -56,12 +56,18 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: 7.53.0
+    version: 7.53.0(react@18.2.0)
   react-i18next:
     specifier: 13.5.0
     version: 13.5.0(i18next@23.9.0)(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: 6.22.1
     version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: 3.23.8
+    version: 3.23.8
   zustand:
     specifier: 4.5.1
     version: 4.5.1(@types/react@18.2.57)(react@18.2.0)
@@ -10519,6 +10525,15 @@ packages:
       react: 18.2.0
       scheduler: 0.23.2
 
+  /react-hook-form@7.53.0(react@18.2.0):
+    resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-hotkeys-hook@4.5.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Samb85GSgAWFQNvVt3PS90LPPGSf9mkH/r4au81ZP1yOIFayLC3QAvqTgGtJ8YEDMXtPmaVBs6NgipHO6h4Mug==}
     peerDependencies:
@@ -12997,6 +13012,10 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
 
   /zustand@4.5.1(@types/react@18.2.57)(react@18.2.0):
     resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}

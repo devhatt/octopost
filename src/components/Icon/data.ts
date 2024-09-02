@@ -5,6 +5,7 @@ import Circle from './icons/circle.svg?react';
 import Close from './icons/close.svg?react';
 import Discord from './icons/discord.svg?react';
 import TriangleDropArrow from './icons/drop-down.svg?react';
+import Email from './icons/email.svg?react';
 import Facebook from './icons/facebook.svg?react';
 import Hamburguer from './icons/hamburguer.svg?react';
 import Instagram from './icons/instagram.svg?react';
@@ -30,6 +31,7 @@ export const icons = {
   circle: Circle,
   close: Close,
   discord: Discord,
+  email: Email,
   facebook: Facebook,
   hamburguer: Hamburguer,
   instagram: Instagram,
