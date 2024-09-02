@@ -15,7 +15,7 @@ function SocialLogin(): ReactNode {
         </button>
 
         <button className={scss.button}>
-          <Icon aria-label="tiktok logo" icon="titktok" size={20} />
+          <Icon aria-label="tiktok logo" icon="tiktok" size={20} />
         </button>
 
         <button className={scss.button}>

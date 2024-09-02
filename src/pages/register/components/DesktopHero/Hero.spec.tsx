@@ -18,15 +18,13 @@ describe('Hero component', () => {
     it('renders its content', () => {
       render(<Hero />);
 
-      const octopostLogo = screen.getByLabelText('octopost logo');
       const signInButton = screen.getByText('Sign in');
-      const title = screen.getByText('New here?');
+      const title = screen.getByText('Welcome back');
       const description = screen.getByText(
-        /welcome to octopost. enter your personal/i
+        'To keep connected to yourself please login with your personal info'
       );
       const octopostIcon = screen.getByTestId('octopost-icon');
 
-      expect(octopostLogo).toBeInTheDocument();
       expect(signInButton).toBeInTheDocument();
       expect(title).toBeInTheDocument();
       expect(description).toBeInTheDocument();
