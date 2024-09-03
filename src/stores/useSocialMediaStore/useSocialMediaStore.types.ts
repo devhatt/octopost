@@ -11,12 +11,15 @@ export type SocialMediaState = {
     error: string;
     loading: boolean;
   };
+
   addAccount: (newAccount: NewAccount) => Promise<StoreAccount>;
 
   favoriteAccount: (
     accountId: Account['id'],
     favorite: boolean
   ) => Promise<void>;
+
+  favoritesAccounts: StoreAccount[];
 
   getAllAccounts: () => Promise<void>;
 

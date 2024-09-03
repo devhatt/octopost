@@ -39,7 +39,6 @@ describe('SocialAccordion', () => {
       <SocialAccordion
         accounts={mockDiscordData}
         error={false}
-        socialMediaId={socialMediaId}
         title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
@@ -55,7 +54,6 @@ describe('SocialAccordion', () => {
       <SocialAccordion
         accounts={mockDiscordData}
         error={false}
-        socialMediaId={socialMediaId}
         title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
@@ -75,7 +73,6 @@ describe('SocialAccordion', () => {
       <SocialAccordion
         accounts={[]}
         error
-        socialMediaId={socialMediaId}
         title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
@@ -92,7 +89,6 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockDiscordData}
           error={false}
-          socialMediaId={socialMediaId}
           title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
@@ -115,7 +111,6 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockDiscordData}
           error={false}
-          socialMediaId={socialMediaId}
           title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
@@ -142,7 +137,6 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={mockedAccounts().data.DISCORD_EXAMPLE_ID}
           error={false}
-          socialMediaId={socialMediaId}
           title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
@@ -170,7 +164,6 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={[]}
           error={false}
-          socialMediaId={socialMediaId}
           title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );
@@ -187,7 +180,6 @@ describe('SocialAccordion', () => {
         <SocialAccordion
           accounts={[{ ...account, valid: true }]}
           error={false}
-          socialMediaId={socialMediaId}
           title={mockedSocialMedias().get(socialMediaId)?.name as string}
         />
       );

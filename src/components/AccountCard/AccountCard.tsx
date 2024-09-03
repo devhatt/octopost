@@ -44,7 +44,7 @@ export function AccountCard({
   return (
     <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
-      <p className={scss.username}>{username}</p>
+      <span className={scss.username}>{username}</span>
       <Button
         circle
         className={scss.favorite}

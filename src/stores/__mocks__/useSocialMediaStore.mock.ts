@@ -179,15 +179,6 @@ export const mockedSocialMedias = vi.fn(
         },
       ],
       [
-        'FAVORITE_ACCOUNTS_ID',
-        {
-          icon: 'Icon',
-          id: 'FAVORITE_ACCOUNTS_ID',
-          name: 'Favorite',
-          postModes: [],
-        },
-      ],
-      [
         'TWITTER_EXAMPLE_ID',
         {
           icon: 'twitter',

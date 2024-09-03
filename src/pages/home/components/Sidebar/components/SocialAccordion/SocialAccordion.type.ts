@@ -6,7 +6,6 @@ export type SocialAccordionProps = {
   accounts: StoreAccount[];
   error: boolean;
   icon?: ReactElement;
-  socialMediaId: string;
   title: string;
 };
 

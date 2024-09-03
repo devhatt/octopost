@@ -19,7 +19,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     error: '',
     loading: false,
   },
-
   addAccount: async (newAccount: NewAccount): Promise<StoreAccount> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
@@ -52,35 +51,20 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
   ): Promise<void> => {
     const account = await AccountsService.favorite(accountId, favorite);
 
-    if (account?.id) {
+    if (account) {
       const favoritedAccount: StoreAccount = {
         ...account,
         favorite,
         valid: false,
       };
 
-      set((state) => {
-        const currentFavoriteAccounts =
-          state.accounts.data.FAVORITE_ACCOUNTS ?? [];
-        const currentSocialMediaAccounts =
-          state.accounts.data[account.socialMediaId] ?? [];
-
-        return {
-          accounts: {
-            ...state.accounts,
-            data: {
-              ...state.accounts.data,
-              [account.socialMediaId]: [
-                favoritedAccount,
-                ...currentSocialMediaAccounts,
-              ],
-              FAVORITE_ACCOUNTS: [favoritedAccount, ...currentFavoriteAccounts],
-            },
-          },
-        };
-      });
+      set((state) => ({
+        favoritesAccounts: [...state.favoritesAccounts, favoritedAccount],
+      }));
     }
   },
+
+  favoritesAccounts: [],
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -106,41 +90,30 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       accountsBySocialMedia.data
     );
 
-    const favoriteAccounts = fetchedAccounts
-      .filter((account) => account.favorite)
-      .map((account) => ({
-        ...account,
-        socialMediaId: 'FAVORITE_ACCOUNTS',
-        valid: false,
-      }));
-
-    accountsBySocialMedia.data.FAVORITE_ACCOUNTS = favoriteAccounts;
-
     const fetchedSocialMedias =
       await SocialMediaService.fetch(userSocialMedias);
 
     const fetchedSocialMediasMap = new Map<SocialMedia['id'], SocialMedia>();
 
-    const favoriteSocialMedia = {
-      icon: 'Icon',
-      id: 'FAVORITE_ACCOUNTS',
-      name: 'Favorite Accounts',
-      postModes: [],
-    };
-
-    fetchedSocialMediasMap.set('FAVORITE_ACCOUNTS', favoriteSocialMedia);
-
     for (const socialMedia of fetchedSocialMedias) {
       fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
     }
 
-    set(() => ({ socialMedias: fetchedSocialMediasMap }));
+    const favoritesAccounts = fetchedAccounts
+      .filter((account) => account.favorite)
+      .map((account) => ({
+        ...account,
+        valid: true,
+      }));
+
     set(() => ({
       accounts: {
         data: accountsBySocialMedia.data,
         error: '',
         loading: false,
       },
+      favoritesAccounts,
+      socialMedias: fetchedSocialMediasMap,
     }));
   },
 
