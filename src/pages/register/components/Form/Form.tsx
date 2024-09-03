@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
 
 import Button from '~components/Button/Button';
-import Icon from '~components/Icon/Icon';
 import TextInput from '~components/TextInput/TextInput';
 
 import scss from './Form.module.scss';
@@ -42,6 +41,8 @@ function Form(): ReactNode {
     handleSubmit,
   } = useForm<IInputs>({ resolver: zodResolver(schema) });
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unused-vars -- TODO: create submit action
   const onSubmit = (_data: IInputs) => {};
 
@@ -60,7 +61,7 @@ function Form(): ReactNode {
             error={!!errors.email}
             label="Email"
             placeholder="example@gmail.com"
-            RightIcon={<Icon icon="letter" />}
+            rightIcon={'letter'}
             supportText={errors.email?.message}
             {...field}
           />
@@ -74,11 +75,12 @@ function Form(): ReactNode {
           <TextInput
             aria-label="Password"
             error={!!errors.password}
+            handleRightIconClick={() => setIsPasswordVisible((old) => !old)}
             label="Password"
             placeholder="************"
-            RightIcon={<Icon icon="blind-eye" />}
+            rightIcon={isPasswordVisible ? 'blind-eye' : 'blind-eye'}
             supportText={errors.password?.message}
-            type="password"
+            type={isPasswordVisible ? 'text' : 'password'}
             {...field}
           />
         )}

@@ -94,12 +94,20 @@
 
     align-items: center;
 
-    &:hover {
-      cursor: pointer;
-    }
-
     &.rightIconError {
       color: global.$secondaryRed;
+    }
+  }
+
+  .rightIconButton {
+    width: 1.5rem;
+
+    transition: all 0.1s;
+
+    &:hover {
+      transform: scale(0.92);
+
+      cursor: pointer;
     }
   }
 

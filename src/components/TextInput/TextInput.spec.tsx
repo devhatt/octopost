@@ -5,15 +5,12 @@ import TextInput from './TextInput';
 
 const mockProps = {
   error: false,
-  handleClear: vi.fn(),
   label: 'Test Label',
   name: 'testInput',
   onChange: vi.fn(),
   onFocus: vi.fn(),
   placeholder: 'Test Placeholder',
-  readonly: false,
   required: false,
-  setValue: vi.fn(),
   supportText: 'Test Error Message',
   type: 'text',
   value: 'Value',
@@ -43,6 +40,24 @@ describe('TextInput component', () => {
     render(<TextInput {...mockProps} error />);
 
     const errorMessage = screen.getByText('Test Error Message');
+
     expect(errorMessage).toBeInTheDocument();
+  });
+
+  it('call right icon action correctly', async () => {
+    const handleRightIconClickMock = vi.fn();
+    render(
+      <TextInput
+        {...mockProps}
+        handleRightIconClick={handleRightIconClickMock}
+        rightIcon="close"
+      />
+    );
+
+    const icon = screen.getByRole('button');
+
+    await userEvent.click(icon);
+
+    expect(handleRightIconClickMock).toHaveBeenCalled();
   });
 });

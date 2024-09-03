@@ -1,9 +1,12 @@
-import { HTMLProps, ReactElement } from 'react';
+import { HTMLProps } from 'react';
+
+import { IconsType } from '~components/Icon/Icon.types';
 
 type HtmlInputProps = Omit<HTMLProps<HTMLInputElement>, 'onChange'>;
 
 export type TInputProps = HtmlInputProps & {
   error?: boolean;
-  RightIcon?: ReactElement;
+  handleRightIconClick?: () => void;
+  rightIcon?: IconsType;
   supportText?: string;
 };
