@@ -19,7 +19,7 @@ export type SocialMediaState = {
     favorite: boolean
   ) => Promise<void>;
 
-  favoritesAccounts: StoreAccount[];
+  favoriteAccounts: StoreAccount[];
 
   getAllAccounts: () => Promise<void>;
 

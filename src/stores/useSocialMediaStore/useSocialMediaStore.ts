@@ -59,12 +59,12 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       };
 
       set((state) => ({
-        favoritesAccounts: [...state.favoritesAccounts, favoritedAccount],
+        favoriteAccounts: [...state.favoriteAccounts, favoritedAccount],
       }));
     }
   },
 
-  favoritesAccounts: [],
+  favoriteAccounts: [],
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -99,7 +99,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
     }
 
-    const favoritesAccounts = fetchedAccounts
+    const favoriteAccounts = fetchedAccounts
       .filter((account) => account.favorite)
       .map((account) => ({
         ...account,
@@ -112,7 +112,7 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
         error: '',
         loading: false,
       },
-      favoritesAccounts,
+      favoriteAccounts,
       socialMedias: fetchedSocialMediasMap,
     }));
   },

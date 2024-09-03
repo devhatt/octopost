@@ -50,19 +50,6 @@ export const mockedAccounts = vi.fn(() => ({
         valid: false,
       },
     ],
-    FAVORITE_ACCOUNTS_ID: [
-      {
-        avatar: 'https://example.com/image2.jpg',
-        expiresAt: '',
-        favorite: true,
-        generatedAt: '',
-        id: '15',
-        socialMediaId: 'FAVORITE_ACCOUNTS_ID',
-        token: 'FAVORITE_EXAMPLE_TOKEN_15',
-        userName: 'Favorite User 15',
-        valid: true,
-      },
-    ],
     TWITTER_EXAMPLE_ID: [
       {
         avatar: 'https://example.com/image2.jpg',

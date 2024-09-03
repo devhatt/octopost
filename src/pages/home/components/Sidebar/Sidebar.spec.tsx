@@ -81,7 +81,6 @@ describe('Sidebar component', () => {
       accounts: {
         data: {
           DISCORD_EXAMPLE_ID: [],
-          FAVORITE_ACCOUNTS_ID: [],
           TWITTER_EXAMPLE_ID: [],
         },
         error: '',

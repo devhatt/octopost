@@ -9,12 +9,12 @@ import scss from './Sidebar.module.scss';
 import { FilteredAccountsProps } from './Sidebar.types';
 
 export function FilteredAccounts(props: FilteredAccountsProps): ReactNode {
-  const { favoritesAccounts, socialMedias } = useSocialMediaStore();
+  const { favoriteAccounts, socialMedias } = useSocialMediaStore();
 
   return (
     <div className={scss.accordionContainer}>
       <SocialAccordion
-        accounts={favoritesAccounts}
+        accounts={favoriteAccounts}
         error={false}
         title="Favorite Accounts"
       />
