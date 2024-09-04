@@ -15,7 +15,6 @@ function Hero(): ReactNode {
         <a aria-label="octopost logo" href="/">
           <OctopostLogo />
         </a>
-        {/* TODO: check route name */}
         <button className={scss.signin} onClick={() => navigate('/login')}>
           Sign in
         </button>

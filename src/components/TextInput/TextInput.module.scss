@@ -1,20 +1,6 @@
 @use '../../styles/global';
 @use '~styles/breakpoints.scss' as *;
 
-@mixin apply-color($color) {
-  &.containerFocus {
-    color: $color;
-  }
-
-  .inputWrapper {
-    .label {
-      &.labelAnimate {
-        color: $color;
-      }
-    }
-  }
-}
-
 .container {
   display: grid;
 
@@ -95,7 +81,7 @@
     align-items: center;
 
     &.rightIconError {
-      color: global.$secondaryRed;
+      fill: global.$secondaryRed;
     }
   }
 

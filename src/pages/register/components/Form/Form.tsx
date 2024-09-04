@@ -7,30 +7,9 @@ import z from 'zod';
 import Button from '~components/Button/Button';
 import TextInput from '~components/TextInput/TextInput';
 
+import { schema } from './FormSchema';
+
 import scss from './Form.module.scss';
-
-const MIN_PASSWORD_CHARACTERS = 8;
-
-const schema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'Email is required.' })
-    .email({ message: 'Must be a valid email.' }),
-  password: z
-    .string()
-    .min(MIN_PASSWORD_CHARACTERS, {
-      message: 'Must have 8 or more characters.',
-    })
-    .refine(
-      (v) => {
-        const hasNumber = /\d/.test(v);
-        const hasSpecialChar = /[!"#$%&()*,.:<>?@^{|}]/.test(v);
-
-        return hasNumber && hasSpecialChar;
-      },
-      { message: 'Must contain at least 1 number and 1 special character.' }
-    ),
-});
 
 type IInputs = z.infer<typeof schema>;
 

@@ -5,7 +5,6 @@ import Icon from '~components/Icon/Icon';
 import scss from './SocialLogin.module.scss';
 
 function SocialLogin(): ReactNode {
-  // TODO: handle social logins
   return (
     <aside className={scss.socialLogin}>
       <span className={scss.title}>or continue with</span>

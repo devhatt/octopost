@@ -10,3 +10,9 @@ export type TInputProps = HtmlInputProps & {
   rightIcon?: IconsType;
   supportText?: string;
 };
+
+export type RightIconProps = {
+  error?: boolean;
+  handleRightIconClick?: () => void;
+  rightIcon?: IconsType;
+};

@@ -12,11 +12,11 @@
 
   padding: 2rem 2rem 1rem;
 
-  p {
+  .text {
     color: global.$tertiaryGray;
   }
 
-  a {
+  .link {
     color: global.$secondaryPurple;
     text-decoration: none;
   }

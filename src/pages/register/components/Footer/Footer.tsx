@@ -6,8 +6,11 @@ import scss from './Footer.module.scss';
 function Footer(): ReactNode {
   return (
     <footer className={scss.footer}>
-      <p>
-        Already have an account <NavLink to="login">Sign In</NavLink>
+      <p className={scss.text}>
+        Already have an account{' '}
+        <NavLink className={scss.link} to="login">
+          Sign In
+        </NavLink>
       </p>
     </footer>
   );

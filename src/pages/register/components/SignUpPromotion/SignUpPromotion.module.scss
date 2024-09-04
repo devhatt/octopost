@@ -4,7 +4,7 @@
 .signUpPromotion {
   display: none;
 
-  h2 {
+  .title {
     color: $tertiaryGray;
     font-size: 3rem;
     font-weight: 700;
@@ -12,7 +12,7 @@
     margin: 0;
   }
 
-  h3 {
+  .description {
     color: $secondaryGray;
     font-size: 1rem;
     font-weight: 500;

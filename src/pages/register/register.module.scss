@@ -1,8 +1,10 @@
 @use '~styles/breakpoints.scss' as *;
 
 .wrapper {
+  height: 100vh;
+
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
   grid-auto-flow: column;
 }
@@ -14,6 +16,8 @@
   display: flex;
   flex-direction: column;
 
+  justify-content: space-between;
+
   .main {
     width: 100%;
     max-width: min(460px, calc(100% - 1.25rem));
@@ -22,7 +26,8 @@
     flex-direction: column;
     gap: 2rem;
 
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     padding-top: 3rem;
   }
 }

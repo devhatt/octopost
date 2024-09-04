@@ -13,16 +13,16 @@ import scss from './register.module.scss';
 function Home(): ReactNode {
   return (
     <div className={scss.wrapper}>
-      <DesktopHero /> {/* only on desktops */}
-      <MobileHero /> {/* only on mobiles */}
+      <DesktopHero />
+      <MobileHero />
       <section className={scss.formSection}>
         <DesktopHeader />
         <main className={scss.main}>
           <SignUpPromotion />
           <Form />
           <SocialLogin />
-          <Footer />
         </main>
+        <Footer />
       </section>
     </div>
   );
