@@ -20,24 +20,32 @@
   }
 
   .button {
+    width: 6.4rem;
+    height: 6.4rem;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    padding: 1.6rem;
+    color: global.$secondaryGray;
+
     border: 2px solid global.$primaryGray;
 
     border-radius: 100%;
 
     cursor: pointer;
 
-    fill: global.$secondaryGray;
-
     &:hover {
       transform: scale(0.95);
 
       fill: global.$primaryGray;
     }
+  }
+}
+
+@include from905 {
+  .socialLogin {
+    gap: 2rem;
   }
 }

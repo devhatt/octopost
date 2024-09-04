@@ -10,15 +10,15 @@ function SocialLogin(): ReactNode {
       <span className={scss.title}>or continue with</span>
       <div className={scss.iconsContainer}>
         <button className={scss.button}>
-          <Icon aria-label="twitter logo" icon="twitter" size={20} />
+          <Icon aria-label="twitter logo" icon="twitter" size={24} />
         </button>
 
         <button className={scss.button}>
-          <Icon aria-label="tiktok logo" icon="tiktok" size={20} />
+          <Icon aria-label="tiktok logo" icon="tiktok" size={24} />
         </button>
 
         <button className={scss.button}>
-          <Icon aria-label="instagram logo" icon="instagram" size={20} />
+          <Icon aria-label="instagram logo" icon="instagram" size={24} />
         </button>
       </div>
     </aside>
