@@ -83,7 +83,9 @@ function Sidebar(): React.ReactNode {
           />
 
           {filteredAccountsResult.length > 0 ? (
-            <FilteredAccounts socialMedia={filteredAccountsResult} />
+            <div className={scss.accountWrapper}>
+              <FilteredAccounts socialMedia={filteredAccountsResult} />
+            </div>
           ) : (
             <EmptyResult />
           )}
