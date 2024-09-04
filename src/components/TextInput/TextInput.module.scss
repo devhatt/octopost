@@ -17,7 +17,7 @@
     flex-direction: row;
     grid-area: 1/1;
 
-    padding: 1rem;
+    padding: 1.6rem;
     border: 1px solid global.$secondaryGray;
 
     border-radius: 4px;
@@ -33,11 +33,11 @@
     .input {
       width: 100%;
 
-      font-size: 1rem;
+      font-size: 1.6rem;
       font-weight: 400;
 
       border: 0;
-      letter-spacing: 0.03rem;
+      letter-spacing: 0.05rem;
 
       &.inputFocus {
         caret-color: global.$secondaryPurple;
@@ -59,14 +59,14 @@
 
     grid-area: 1/1;
 
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     font-weight: 400;
 
     line-height: calc(0.75 / 2);
 
-    margin-left: 1rem;
+    margin-left: 1.6rem;
 
-    padding: 0 0.25rem;
+    padding: 0 0.4rem;
 
     z-index: 1;
 
@@ -74,7 +74,7 @@
   }
 
   .rightIcon {
-    width: 1.5rem;
+    width: 2.4rem;
 
     display: flex;
 
@@ -86,7 +86,7 @@
   }
 
   .rightIconButton {
-    width: 1.5rem;
+    width: 2.4rem;
 
     transition: all 0.1s;
 
@@ -98,13 +98,13 @@
   }
 
   .supportText {
-    height: 1.5rem;
+    height: 2.4rem;
 
     color: global.$secondaryGray;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     font-weight: 400;
 
-    padding: 0.25rem 1rem;
+    padding: 0.4rem 1.6rem;
 
     visibility: hidden;
 

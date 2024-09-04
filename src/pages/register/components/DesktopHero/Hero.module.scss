@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 1.5rem 2rem;
+  padding: 2.4rem 3.2rem;
 }
 
 .signInButton {
@@ -32,10 +32,10 @@
 
   color: $primaryWhite;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   font-weight: 500;
 
-  padding: 0.625rem 4.875rem;
+  padding: 1rem 7.8rem;
   border: 1px solid $primaryWhite;
 
   border-radius: 100px;
@@ -57,13 +57,13 @@
 
   text-align: right;
 
-  padding: 1.5rem;
+  padding: 2.4rem;
   padding-bottom: 0;
 
   z-index: 1;
 
   .title {
-    font-size: 3.5rem;
+    font-size: 5.6rem;
     font-weight: 700;
 
     margin: 0;
@@ -74,8 +74,8 @@
     font-weight: 400;
 
     margin: 0;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-top: 1.6rem;
+    padding-bottom: 3.2rem;
     letter-spacing: 0.5px;
   }
 }
