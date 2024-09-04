@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-at */
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import isEmpty from 'lodash.isempty';
