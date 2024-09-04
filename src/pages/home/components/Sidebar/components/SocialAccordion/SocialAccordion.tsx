@@ -10,7 +10,10 @@ import Icon from '~components/Icon/Icon';
 
 import scss from './SocialAccordion.module.scss';
 
-import iconPlaceholderForIcon from './assets/facebook.svg';
+import discordIcon from './assets/discord.svg';
+import facebookIcon from './assets/facebook.svg';
+import instagramIcon from './assets/instagram.svg';
+import xIcon from './assets/x.svg';
 
 import { AccountQuantity } from './SocialAccordion.components';
 import { SocialAccordionProps } from './SocialAccordion.type';
@@ -52,6 +55,19 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
 
   const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
 
+  const iconMap = {
+    discord: discordIcon,
+    facebook: facebookIcon,
+    instagram: instagramIcon,
+    twitter: xIcon,
+    x: xIcon,
+  };
+
+  const socialMediaName = socialMedias
+    .get(props.socialMediaId)
+    ?.name.toLowerCase();
+  const iconPath = iconMap[socialMediaName as keyof typeof iconMap];
+
   return (
     <Accordion
       className={scss.wrapper}
@@ -66,11 +82,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
         >
           <div className={scss.header}>
             <div className={scss.socialInfo}>
-              <img
-                alt="social media"
-                className={scss.icon}
-                src={iconPlaceholderForIcon}
-              />
+              <img alt="social media" className={scss.icon} src={iconPath} />
               <span>{socialMedias.get(props.socialMediaId)?.name}</span>
             </div>
             {props.error && renderError()}
