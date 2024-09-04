@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
+import AlreadyHaveAnAccount from './components/AlreadyHaveAnAccount/AlreadyHaveAnAccount';
 import DesktopHeader from './components/DesktopHeader/DesktopHeader';
 import DesktopHero from './components/DesktopHero/Hero';
-import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
 import MobileHero from './components/MobileHero/Hero';
 import SignUpPromotion from './components/SignUpPromotion/SignUpPromotion';
@@ -22,7 +22,7 @@ function Home(): ReactNode {
           <Form />
           <SocialLogin />
         </main>
-        <Footer />
+        <AlreadyHaveAnAccount />
       </section>
     </div>
   );
