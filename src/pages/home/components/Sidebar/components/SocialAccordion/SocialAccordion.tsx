@@ -12,6 +12,7 @@ import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
+import { AccountQuantity } from './SocialAccordion.components';
 import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
@@ -35,6 +36,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
       <li key={account.id}>
         <AccountCard
           avatarURL={account.avatar}
+          invalid={!account.valid}
           isEnabled={account.valid}
           onEnableChange={(enable) => activateSocialTab(enable, account)}
           username={account.userName}
@@ -45,6 +47,8 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const renderAccordionContent = (): ReactNode => (
     <ul role="listitem">{renderAccordionMap()}</ul>
   );
+
+  const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
 
   return (
     <Accordion
@@ -69,9 +73,12 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
             </div>
             {props.error && renderError()}
             <div className={scss.accordionInfo}>
-              <span className={scss.accountQuantity}>
-                {props.accounts.length}+
-              </span>
+              {hasInvalidAccount ? (
+                <Icon className={scss.alertIcon} icon="alert" size={16} />
+              ) : (
+                <AccountQuantity accountQuantity={props.accounts.length} />
+              )}
+
               <Icon
                 aria-label={
                   isOpen ? 'Accordion is open' : 'Accordion is closed'

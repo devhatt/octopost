@@ -1,3 +1,5 @@
+import { IconsType } from '~components/Icon/Icon.types';
+
 export type Post = {
   data: {
     text: string;
@@ -7,7 +9,7 @@ export type Post = {
 };
 
 export type SocialMedia = {
-  icon: string;
+  icon: IconsType;
   id: string;
   name: string;
   postModes: PostMode[];

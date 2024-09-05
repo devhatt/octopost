@@ -89,7 +89,7 @@ export const mockedSocialMedias = vi.fn(
       [
         'DISCORD_EXAMPLE_ID',
         {
-          icon: 'Icon',
+          icon: 'discord',
           id: 'DISCORD_EXAMPLE_ID',
           name: 'Discord',
           postModes: [
@@ -150,7 +150,7 @@ export const mockedSocialMedias = vi.fn(
       [
         'TWITTER_EXAMPLE_ID',
         {
-          icon: 'Icon',
+          icon: 'twitter',
           id: 'TWITTER_EXAMPLE_ID',
           name: 'Twitter',
           postModes: [

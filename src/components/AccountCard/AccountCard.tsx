@@ -3,8 +3,6 @@ import { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 
 import { Avatar } from '~components/Avatar/Avatar';
-import Button from '~components/Button/Button';
-import Icon from '~components/Icon/Icon';
 import { Switch } from '~components/Switch/Switch';
 
 import scss from './AccountCard.module.scss';
@@ -15,6 +13,7 @@ export function AccountCard({
   avatarURL,
   className,
   hasError = false,
+  invalid = false,
   isEnabled = false,
   isFavorited = false,
   onEnableChange,
@@ -33,19 +32,20 @@ export function AccountCard({
     if (onEnableChange) onEnableChange(!enabled);
   };
 
+  const accountCardClassNames = classNames({
+    className,
+    [scss.container]: true,
+    [scss.invalid]: invalid,
+  });
+
   return (
-    <div className={classNames(scss.container, className)} {...props}>
+    <div className={accountCardClassNames} {...props}>
       <Avatar className={scss.avatar} image={avatarURL} username={username} />
       <p className={scss.username}>{username}</p>
-      <Button
-        circle
-        className={scss.favorite}
-        color="primary"
-        icon={<Icon icon={isFavorited ? 'star-filled' : 'star'} size={20} />}
-        onClick={handleFavoriteChange}
-      />
+      <button className={scss.star} onClick={handleFavoriteChange} />
       <Switch
         checked={enabled}
+        invalid={invalid}
         onChange={handleEnableChange}
         variant={hasError ? 'error' : 'default'}
       />

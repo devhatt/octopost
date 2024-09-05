@@ -9,7 +9,7 @@
   flex-direction: column;
 
   align-items: center;
-  justify-content: center;
+
 
   word-break: break-all;
 
@@ -18,6 +18,14 @@
   background-color: global.$tertiaryWhite;
 
   border-radius: 12px;
+}
+
+.previewContent {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: end;
 }
 
 @include from905 {
