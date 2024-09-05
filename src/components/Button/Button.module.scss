@@ -213,6 +213,10 @@
       @include text($primaryWhite, rgba(255, 255, 255, 0.15));
     }
 
+    &.gray {
+      @include text($secondaryGray, $primaryGray);
+    }
+
     &.disabled {
       &:hover {
         background: none;

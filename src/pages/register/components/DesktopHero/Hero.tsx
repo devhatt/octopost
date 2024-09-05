@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Button from '~components/Button/Button';
+
 import scss from './Hero.module.scss';
 
 import Octo from './images/octo.svg?react';
@@ -15,12 +17,13 @@ function Hero(): ReactNode {
         <h2 className={scss.description}>
           To keep connected to yourself please login with your personal info
         </h2>
-        <button
+        <Button
           className={scss.signInButton}
+          color="secondary"
           onClick={() => navigate('/login')}
         >
           Sign in
-        </button>
+        </Button>
       </section>
       <div className={scss.octoWrapper} data-testId="octopost-icon">
         <Octo className={scss.desktopOcto} />

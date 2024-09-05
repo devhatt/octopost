@@ -1,5 +1,4 @@
 @use '~styles/breakpoints.scss' as *;
-
 @use '~styles/global.scss' as *;
 
 .desktopHeroWrapper {
@@ -16,30 +15,16 @@
     );
 }
 
-.header {
-  width: 100%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 2.4rem 3.2rem;
-}
-
 .signInButton {
   width: fit-content;
 
-  color: $primaryWhite;
-  text-align: center;
   font-size: 1.4rem;
   font-weight: 500;
 
   padding: 1rem 7.8rem;
   border: 1px solid $primaryWhite;
 
-  border-radius: 100px;
-  letter-spacing: 0.1px;
+  cursor: pointer;
 }
 
 .hero {
@@ -76,7 +61,6 @@
     margin: 0;
     padding-top: 1.6rem;
     padding-bottom: 3.2rem;
-    letter-spacing: 0.5px;
   }
 }
 

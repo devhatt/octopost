@@ -28,19 +28,9 @@
     align-items: center;
     justify-content: center;
 
-    color: global.$secondaryGray;
-
     border: 2px solid global.$primaryGray;
 
     border-radius: 100%;
-
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(0.95);
-
-      fill: global.$primaryGray;
-    }
   }
 }
 
