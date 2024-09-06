@@ -24,7 +24,7 @@ function getCurrentPostModeMaxLimit(
   currentValidator: PostMode['validators'] | undefined
 ): number | null {
   let limit = null;
-  if (currentValidator && 'text' in currentValidator) {
+  if (currentValidator?.text) {
     limit = currentValidator.text.maxLength;
   }
   return limit;
