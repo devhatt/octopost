@@ -7,10 +7,10 @@ import scss from './Accordion.module.scss';
 
 import { TAccordionProps } from './Accordion.types';
 
-function computeVariants(duration: number): Record<string, Variant> {
+function computeVariants(): Record<string, Variant> {
   return {
-    collapsed: { height: 0, transition: { duration } },
-    expanded: { height: 'auto', transition: { duration } },
+    collapsed: { height: '0px' },
+    expanded: { height: 'auto' },
   };
 }
 
@@ -19,17 +19,16 @@ function Accordion({ duration = 0.3, ...props }: TAccordionProps): ReactNode {
     <section className={classNames(props.className, scss.container)}>
       <div className={scss.header}>{props.header}</div>
       <AnimatePresence>
-        {props.isOpen ? (
-          <motion.div
-            animate="expanded"
-            className={scss.content}
-            exit="collapsed"
-            initial="collapsed"
-            variants={computeVariants(duration)}
-          >
-            {props.content}
-          </motion.div>
-        ) : null}
+        <motion.div
+          animate={props.isOpen ? 'expanded' : 'collapsed'}
+          className={scss.content}
+          exit="collapsed"
+          initial="expanded"
+          transition={{ duration }}
+          variants={computeVariants()}
+        >
+          {props.content}
+        </motion.div>
       </AnimatePresence>
     </section>
   );
