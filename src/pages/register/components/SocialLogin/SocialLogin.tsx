@@ -8,7 +8,14 @@ import scss from './SocialLogin.module.scss';
 function SocialLogin(): ReactNode {
   return (
     <aside className={scss.socialLogin}>
-      <span className={scss.title}>or continue with</span>
+      <section className={scss.desktopTitleWrapper}>
+        <div className={scss.divider} />
+        <span className={scss.title}>or sign up with</span>
+        <div className={scss.divider} />
+      </section>
+      <section className={scss.mobileTitleWrapper}>
+        <span className={scss.title}>or continue with</span>
+      </section>
       <div className={scss.iconsContainer}>
         <Button
           circle
