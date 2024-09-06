@@ -1,10 +1,11 @@
-﻿@use '~styles/global';
+@use '~styles/global';
 @use '~styles/breakpoints.scss' as *;
 
 .gridContainer {
   min-height: 25rem;
 
   align-items: center;
+
   justify-content: center;
 
   padding: 2px;
@@ -15,7 +16,7 @@
 .postModesContainer {
   height: 100%;
 
-  padding: 1.5rem 1rem;
+  padding: 2.4rem 1.2rem;
 
   background-color: global.$primaryWhite;
 }
