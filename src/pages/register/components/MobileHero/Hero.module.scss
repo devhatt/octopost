@@ -79,7 +79,7 @@
 
   display: flex;
 
-  // work around (gambiarra) to slice the logo's bottom and right part
+  // Needed to slice image bottom part but keeping it relativity with the container
   margin-bottom: -5rem;
   margin-left: -3.25rem;
 }
