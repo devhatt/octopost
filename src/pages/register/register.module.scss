@@ -46,14 +46,10 @@
     display: flex;
     flex-direction: column;
 
+    gap: 1.6rem;
+
     justify-content: center;
 
     margin: auto;
-  }
-}
-
-@include from905 {
-  .main {
-    gap: 1.6rem;
   }
 }
