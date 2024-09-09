@@ -14,7 +14,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'DISCORD_EXAMPLE_ID',
         token: 'DISCORD_EXAMPLE_TOKEN_1',
         userName: 'Discord User 1',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image3.jpg',
@@ -36,7 +36,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'DISCORD_EXAMPLE_ID',
         token: 'DISCORD_EXAMPLE_TOKEN_3',
         userName: 'Discord User 3',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image6.jpg',
@@ -47,7 +47,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'DISCORD_EXAMPLE_ID',
         token: 'DISCORD_EXAMPLE_TOKEN_5',
         userName: 'Discord User 5',
-        valid: false,
+        valid: true,
       },
     ],
     TWITTER_EXAMPLE_ID: [
@@ -60,7 +60,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'TWITTER_EXAMPLE_ID',
         token: 'TWITTER_EXAMPLE_TOKEN_14',
         userName: 'Twitter User 14',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image2.jpg',
@@ -71,7 +71,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'TWITTER_EXAMPLE_ID',
         token: 'TWITTER_EXAMPLE_TOKEN_4',
         userName: 'Twitter User 4',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image2.jpg',
@@ -82,7 +82,7 @@ export const mockedAccounts = vi.fn(() => ({
         socialMediaId: 'TWITTER_EXAMPLE_ID',
         token: 'TWITTER_EXAMPLE_TOKEN_6',
         userName: 'Twitter User 6',
-        valid: false,
+        valid: true,
       },
       {
         avatar: 'https://example.com/image2.jpg',
@@ -100,6 +100,14 @@ export const mockedAccounts = vi.fn(() => ({
   error: '',
   loading: false,
 }));
+
+export const mockedFavoriteAccounts = vi.fn(() =>
+  Object.entries(mockedAccounts().data).flatMap(([socialMedia, accounts]) =>
+    accounts
+      .filter((account) => account.favorite)
+      .map((account) => ({ socialMedia, ...account }))
+  )
+);
 
 export const mockedSocialMedias = vi.fn(
   () =>

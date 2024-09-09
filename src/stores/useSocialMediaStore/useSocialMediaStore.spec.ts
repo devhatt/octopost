@@ -7,11 +7,6 @@ vi.mock('~services/api/social-media/social-media', () => ({
     fetch: vi.fn().mockResolvedValue([
       { icon: 'discord-icon', id: 'DISCORD_EXAMPLE_ID', name: 'Discord' },
       { icon: 'twitter-icon', id: 'TWITTER_EXAMPLE_ID', name: 'Twitter' },
-      {
-        icon: 'favorite-icon',
-        id: 'FAVORITE_ACCOUNTS',
-        name: 'Favorite Accounts',
-      },
     ]),
   },
 }));
@@ -81,14 +76,6 @@ describe('useSocialMediaStore', () => {
         },
       ],
       [
-        'FAVORITE_ACCOUNTS',
-        {
-          icon: 'favorite-icon',
-          id: 'FAVORITE_ACCOUNTS',
-          name: 'Favorite Accounts',
-        },
-      ],
-      [
         'TWITTER_EXAMPLE_ID',
         {
           icon: 'twitter-icon',
@@ -117,7 +104,6 @@ describe('useSocialMediaStore', () => {
           valid: true,
         },
       ],
-      FAVORITE_ACCOUNTS: [],
       TWITTER_EXAMPLE_ID: [
         {
           avatar: 'https://example.com/image2.jpg',

@@ -10,6 +10,7 @@ import { SocialMedia } from '~services/api/social-media/social-media.types';
 import {
   mockedAccounts,
   mockedAddAccount,
+  mockedFavoriteAccounts,
   mockedSocialMedias,
   mockedUseSocialMediaStore,
 } from '~stores/__mocks__/useSocialMediaStore.mock.ts';
@@ -26,6 +27,7 @@ beforeEach(() => {
     () => ({
       accounts: mockedAccounts(),
       addAccount: mockedAddAccount,
+      favoriteAccounts: mockedFavoriteAccounts(),
       socialMedias: mockedSocialMedias(),
     })
   );
@@ -69,11 +71,13 @@ describe('Sidebar component', () => {
   it('renders favorites accounts when exists in store', async () => {
     render(<Sidebar />);
 
-    const favoriteAccordion = screen.getByText('Favorite');
+    const [favoriteAccount] = mockedFavoriteAccounts();
+
+    const favoriteAccordion = screen.getByText('Favorite Accounts');
     await userEvent.click(favoriteAccordion);
 
-    const favoriteAccount = screen.getByText('Favorite User 15');
-    expect(favoriteAccount).toBeInTheDocument();
+    const favoriteAccountEvidence = screen.getByText(favoriteAccount.userName);
+    expect(favoriteAccountEvidence).toBeInTheDocument();
   });
 
   it('dont render accounts when accounts store is empty', () => {

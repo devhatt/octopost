@@ -101,7 +101,6 @@ describe('SocialAccordion', () => {
       await userEvent.click(firstAccountSwitch);
 
       expect(mockAddAccount).toHaveBeenCalled();
-
       expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
     });
     it('deactivates social tab when is disable', async () => {
