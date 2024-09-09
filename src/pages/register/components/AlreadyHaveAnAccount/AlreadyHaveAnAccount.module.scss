@@ -1,0 +1,29 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss';
+
+.alreadyHaveAnAccount {
+  display: flex;
+
+  justify-content: flex-end;
+
+  font-size: 1.6rem;
+
+  font-weight: 500;
+
+  padding: 3.2rem 3.2rem 1.6rem;
+
+  .text {
+    color: global.$tertiaryGray;
+  }
+
+  .link {
+    color: global.$secondaryPurple;
+    text-decoration: none;
+  }
+}
+
+@include from905 {
+  .alreadyHaveAnAccount {
+    display: none;
+  }
+}
