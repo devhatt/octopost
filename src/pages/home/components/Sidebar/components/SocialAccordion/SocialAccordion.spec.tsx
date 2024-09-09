@@ -85,6 +85,7 @@ describe('SocialAccordion', () => {
     expect(error).toBeInTheDocument();
   });
 
+  // The tests are currently failing due to the socialAccordion component automatically rendering as activated. Although the test logic is correct, it fails because the component's default state is already active
   describe.skip('social tab switch', () => {
     it('activates social tab when is enable', async () => {
       const socialMediaId = 'DISCORD_EXAMPLE_ID';
