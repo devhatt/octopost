@@ -10,6 +10,7 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaS
 import { TextValidators } from './utils/textValidator/textValidators';
 
 import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
+import Icon from '~components/Icon/Icon';
 
 import scss from './ComposerEditor.module.scss';
 
@@ -109,6 +110,11 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     setInputValue(newValue);
   };
 
+  const renderIcon = (socialMediaId: string): ReactNode => {
+    const icon = socialMedias.get(socialMediaId)?.icon;
+    return icon ? <Icon icon={icon} size={24} /> : null;
+  };
+
   const socialLimits = getGreatestLimitsSocial();
 
   return (
@@ -118,6 +124,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}
       />
+
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
           maxLength={props.maxCharacters ?? socialLimits.maxLimit}
@@ -130,7 +137,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
               <CharacterLimit
                 key={postMode.socialMediaId}
                 maxLength={postMode.limit}
-                svg={socialMedias.get(postMode.socialMediaId)?.icon}
+                svg={renderIcon(postMode.socialMediaId)}
                 value={props.value ?? inputValue}
               />
             ))}

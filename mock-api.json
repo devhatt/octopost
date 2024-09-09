@@ -14,7 +14,7 @@
           "data": {
             "text": "asdasd"
           },
-          "postModeId": "DISCORD__POST_POSTMODE_ID",
+          "postModeId": "DISCORD_POST_POSTMODE_ID",
           "socialMediaId": "DISCORD_EXAMPLE_ID"
         },
         {
@@ -137,7 +137,7 @@
   ],
   "social-medias": [
     {
-      "icon": "Icon",
+      "icon": "discord",
       "id": "DISCORD_EXAMPLE_ID",
       "name": "Discord",
       "postModes": [
@@ -216,7 +216,7 @@
       ]
     },
     {
-      "icon": "Icon",
+      "icon": "twitter",
       "id": "TWITTER_EXAMPLE_ID",
       "name": "Twitter",
       "postModes": [
@@ -246,6 +246,171 @@
         },
         {
           "id": "TWITTER_THREAD_POSTMODE_ID",
+          "name": "TesteThread",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "tiktok",
+      "id": "TIKTOK_EXAMPLE_ID",
+      "name": "Tiktok",
+      "postModes": [
+        {
+          "id": "TIKTOK_THREAD_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "TIKTOK_THREAD_POSTMODE_ID",
+          "name": "TesteThread",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "facebook",
+      "id": "FACEBOOK_EXAMPLE_ID",
+      "name": "Facebook",
+      "postModes": [
+        {
+          "id": "FACEBOOK_THREAD_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "FACEBOOK_THREAD_POSTMODE_ID",
+          "name": "TesteThread",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 21
+            },
+            "media": {
+              "maxSize": 20000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["4:3"],
+              "maxDuration": 1000
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "instagram",
+      "id": "INSTAGRAM_EXAMPLE_ID",
+      "name": "Instagram",
+      "postModes": [
+        {
+          "id": "INSTAGRAM_THREAD_POST_ID",
+          "name": "TestePost",
+          "previewComponent": "Teste",
+          "validators": {
+            "text": {
+              "maxLength": 15
+            },
+            "media": {
+              "maxSize": 10000,
+              "maxWidth": 700,
+              "maxHeight": 600,
+              "ar": ["16:9"],
+              "maxDuration": 500
+            }
+          },
+          "widgets": [
+            {
+              "component": "Teste",
+              "icon": "Teste",
+              "name": "Teste"
+            }
+          ]
+        },
+        {
+          "id": "INSTAGRAM_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
           "validators": {

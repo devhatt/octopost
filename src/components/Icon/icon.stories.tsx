@@ -25,6 +25,11 @@ export default {
         'star',
         'star-filled',
         'minus',
+        'facebook',
+        'instagram',
+        'tiktok',
+        'discord',
+        'twitter',
       ] as IconsType[],
     },
     size: {
