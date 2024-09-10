@@ -33,13 +33,17 @@
 
     justify-content: center;
 
-    background-color: $secondaryPurple;
+    background: $secondaryPurple;
 
     border-radius: 50%;
 
-    .arrowIcon {
-      color: $primaryWhite;
+    &:disabled {
+      background: #1d1b201f;
     }
+  }
+
+  .arrowIcon {
+    color: $primaryWhite;
   }
 
   .submit {
