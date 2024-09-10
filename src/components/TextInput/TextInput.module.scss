@@ -1,0 +1,119 @@
+@use '../../styles/global';
+@use '~styles/breakpoints.scss' as *;
+
+.container {
+  display: grid;
+
+  &.containerError {
+    color: global.$secondaryRed;
+  }
+
+  &.containerFocus {
+    color: global.$secondaryPurple;
+  }
+
+  .innerContainer {
+    display: flex;
+    flex-direction: row;
+    grid-area: 1/1;
+
+    padding: 1.6rem;
+    border: 1px solid global.$secondaryGray;
+
+    border-radius: 4px;
+
+    &.innerContainerFocus {
+      border-color: global.$secondaryPurple;
+    }
+
+    &.innerContainerError {
+      border-color: global.$secondaryRed;
+    }
+
+    .input {
+      width: 100%;
+
+      font-size: 1.6rem;
+      font-weight: 400;
+
+      border: 0;
+      letter-spacing: 0.05rem;
+
+      &.inputFocus {
+        caret-color: global.$secondaryPurple;
+      }
+
+      &.inputError {
+        caret-color: global.$secondaryRed;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .label {
+    width: fit-content;
+    height: fit-content;
+
+    grid-area: 1/1;
+
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    line-height: calc(0.75 / 2);
+
+    margin-left: 1.6rem;
+
+    padding: 0 0.4rem;
+
+    z-index: 1;
+
+    background-color: global.$primaryWhite;
+  }
+
+  .rightIcon {
+    width: 2.4rem;
+
+    display: flex;
+
+    align-items: center;
+
+    &.rightIconError {
+      color: global.$secondaryRed;
+    }
+  }
+
+  .rightIconButton {
+    width: 2.4rem;
+
+    transition: all 0.1s;
+
+    &:hover {
+      transform: scale(0.92);
+
+      cursor: pointer;
+    }
+  }
+
+  .supportText {
+    height: 2.4rem;
+
+    color: global.$secondaryGray;
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    padding: 0.4rem 1.6rem;
+
+    visibility: hidden;
+
+    &.supportTextExists {
+      visibility: visible;
+    }
+
+    &.supportTextError {
+      color: global.$secondaryRed;
+    }
+  }
+}

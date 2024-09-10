@@ -35,24 +35,20 @@ export type VideoFormats = 'avi' | 'mov' | 'mp4' | 'webm';
 export type MediaFormats = ImageFormats | VideoFormats;
 
 export type TextValidator = {
-  text: {
-    maxLength: number;
-  };
+  maxLength: number;
 };
 
 export type MediaValidator = {
-  media: {
-    allowedFormats: MediaFormats[];
-    ar: AspectRatio[];
-    maxDuration: number;
-    maxFileSize: number;
-    maxHeight: number;
-    maxWidth: number;
-    mediaQtyLimit: number;
-  };
+  allowedFormats: MediaFormats[];
+  ar: AspectRatio[];
+  maxDuration: number;
+  maxFileSize: number;
+  maxHeight: number;
+  maxWidth: number;
+  mediaQtyLimit: number;
 };
 
-export type Validators =
-  | MediaValidator
-  | TextValidator
-  | (MediaValidator & TextValidator);
+export type Validators = {
+  media?: MediaValidator;
+  text?: TextValidator;
+};

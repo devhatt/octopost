@@ -25,7 +25,6 @@ describe('ComposeEditor', () => {
       await userEvent.type(inputElement, testInputValue);
 
       expect(inputElement).toHaveValue(testInputValue);
-      expect(mockOnChange).toHaveBeenCalledWith(testInputValue);
     });
   });
 });

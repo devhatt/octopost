@@ -1,0 +1,55 @@
+@use '~styles/breakpoints.scss' as *;
+
+.wrapper {
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+}
+
+.formSection {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  .main {
+    width: 100%;
+    max-width: min(460px, calc(100% - 2rem));
+
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 6rem;
+  }
+}
+
+@include from905 {
+  .wrapper {
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.6rem;
+
+    justify-content: center;
+
+    margin: auto;
+  }
+}
