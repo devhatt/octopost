@@ -10,7 +10,10 @@ import Icon from '~components/Icon/Icon';
 
 import scss from './SocialAccordion.module.scss';
 
-import iconPlaceholderForIcon from './assets/facebook.svg';
+import discordIcon from './assets/discord.svg';
+import facebookIcon from './assets/facebook.svg';
+import instagramIcon from './assets/instagram.svg';
+import xIcon from './assets/x.svg';
 
 import { AccountQuantity } from './SocialAccordion.components';
 import { SocialAccordionProps } from './SocialAccordion.type';
@@ -45,10 +48,25 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     ));
 
   const renderAccordionContent = (): ReactNode => (
-    <ul role="listitem">{renderAccordionMap()}</ul>
+    <ul className={scss.containerAccordion} role="listitem">
+      {renderAccordionMap()}
+    </ul>
   );
 
   const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
+
+  const iconMap = {
+    discord: discordIcon,
+    facebook: facebookIcon,
+    instagram: instagramIcon,
+    twitter: xIcon,
+    x: xIcon,
+  };
+
+  const socialMediaName = socialMedias
+    .get(props.socialMediaId)
+    ?.name.toLowerCase();
+  const iconPath = iconMap[socialMediaName as keyof typeof iconMap];
 
   return (
     <Accordion
@@ -64,11 +82,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
         >
           <div className={scss.header}>
             <div className={scss.socialInfo}>
-              <img
-                alt="social media"
-                className={scss.icon}
-                src={iconPlaceholderForIcon}
-              />
+              <img alt="social media" className={scss.icon} src={iconPath} />
               <span>{socialMedias.get(props.socialMediaId)?.name}</span>
             </div>
             {props.error && renderError()}
@@ -85,7 +99,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
                 }
                 className={isOpen ? scss.rotateIconUp : scss.rotateIconDown}
                 icon={isOpen ? 'triangle-drop-arrow' : 'triangle-left-arrow'}
-                size={16}
+                size={10}
               />
             </div>
           </div>

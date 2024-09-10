@@ -1,5 +1,9 @@
 @use '~styles/global.scss' as *;
 
+.username {
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-flow: row nowrap;
@@ -9,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0.8rem 0.8rem 0.8rem 1.6rem;
+  padding: 0.8rem;
 
   border-bottom: 0.1rem solid $primaryGray;
 
@@ -22,9 +26,8 @@
 
 .username {
   width: 100%;
-  overflow: hidden;
 
-  display: flex;
+  overflow: hidden;
 
   font-size: 1.4rem;
   text-overflow: ellipsis;
@@ -40,13 +43,23 @@
   font-size: 1.4rem;
 }
 
+.containerButton {
+  display: flex;
+  gap: 0.9rem;
+}
+
 .avatar {
   width: 40px;
   height: 40px;
+
+  display: flex;
 
   flex-shrink: 0;
 
   align-items: center;
 
   justify-content: center;
+
+  background-color: $primaryPurple;
+  border-radius: 50%;
 }

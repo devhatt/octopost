@@ -9,13 +9,17 @@
   }
 }
 
+.containerAccordion {
+  width: 100%;
+}
+
 .header {
   display: flex;
 
   align-items: center;
   justify-content: space-between;
 
-  padding: 1.5rem 0.6rem;
+  padding: 1.6rem;
 
   border: 1px solid $primaryGray;
 
@@ -33,7 +37,7 @@
 
   display: flex;
 
-  gap: 1rem;
+  gap: 1.6rem;
 
   align-items: center;
 }
