@@ -1,10 +1,10 @@
-export type IUseError = {
-  errors: IError;
+export type UseError = {
+  errors: Error;
   removeError: (idToRemove: string) => void;
   setError: (newErrorMessage: string) => string;
 };
 
-export type IError = Record<
+export type Error = Record<
   string,
   {
     id: string;

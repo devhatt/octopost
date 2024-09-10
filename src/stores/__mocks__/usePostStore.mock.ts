@@ -1,21 +1,11 @@
-/* eslint-disable unicorn/no-unused-properties */
 import { PostModes } from '~stores/usePostStore/usePostStore.types';
 
 const mockAccount = {
-  avatar: 'https://example.com/image1.jpg',
-  expiresAt: '',
-  generatedAt: '',
   id: '1',
   socialMediaId: 'DISCORD_EXAMPLE_ID',
-  token: 'DISCORD_EXAMPLE_TOKEN_1',
-  userName: 'Discord User 1',
-  valid: false,
 };
 
 const mockAccountSocialMedia = {
-  icon: 'Icon',
-  id: 'DISCORD_EXAMPLE_ID',
-  name: 'Discord',
   postModes: [
     {
       id: 'DISCORD_STORY_POSTMODE_ID',

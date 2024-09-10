@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-unused-properties */
 import { act, renderHook } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 
@@ -24,9 +23,6 @@ const mockAccount = {
 };
 
 const mockAccountSocialMedia = {
-  icon: 'Icon',
-  id: 'DISCORD_EXAMPLE_ID',
-  name: 'Discord',
   postModes: [
     {
       id: 'DISCORD_STORY_POSTMODE_ID',

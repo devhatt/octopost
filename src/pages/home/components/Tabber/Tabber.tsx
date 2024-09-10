@@ -33,7 +33,8 @@ function Tabber(): ReactNode {
   const { changePostMode, tabs } = useSyncTabsWithPosts(setCurrentTab);
   const { posts, updateText } = usePostStore();
   const { socialMedias } = useSocialMediaStore();
-  const isSync = Object.keys(tabs).length === Object.keys(posts).length;
+  const tabsPostsSynced =
+    Object.keys(tabs).length === Object.keys(posts).length;
 
   if (tabs && !tabs[currentTab]) {
     const allTabs = Object.keys(tabs);
@@ -75,7 +76,7 @@ function Tabber(): ReactNode {
 
   return (
     <div>
-      {isSync && (
+      {tabsPostsSynced && (
         <Tabs
           currentTab={tabs[currentTab]}
           onChangeTab={changeCurrentTab}
@@ -92,7 +93,7 @@ function Tabber(): ReactNode {
           />
           <MainComposerBase
             accountId={accountId}
-            maxCharacters={postModeMaxCharacters}
+            maxCharacters={postModeMaxCharacters ?? undefined}
             onChange={handleContentChange}
             postModeId={tabs[currentTab].postModeId}
             socialMediaId={socialMediaId}

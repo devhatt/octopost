@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid';
 
 import { create } from '~stores/zustand';
 
-import { IUseError } from './useErrorStore.types';
+import { UseError } from './useErrorStore.types';
 
-export const useError = create<IUseError>((set) => ({
+export const useError = create<UseError>((set) => ({
   errors: {},
 
   removeError: (idToRemove: string): void => {

@@ -10,7 +10,7 @@ import { ErrorMediaInput } from '../InputMediaGroup/InputMediaGroup.type';
 
 export type MainComposerBaseProps = {
   accountId?: string;
-  maxCharacters?: number | null;
+  maxCharacters?: number;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onErrorMedia?: (error: ErrorMediaInput) => void;
   onErrorText?: (error: ErrorMapText) => void;

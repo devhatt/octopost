@@ -24,12 +24,12 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
     const socialMedia = socialMedias.get(account.socialMediaId);
-    const actualPost = Object.values(posts)
+    const currentPost = Object.values(posts)
       .flat()
       .find((post) => post.accountId === account.id);
 
     if (enabled && socialMedia?.postModes) add(account, socialMedia.postModes);
-    if (!enabled && actualPost) remove(actualPost.id);
+    if (!enabled && currentPost) remove(currentPost.id);
   };
 
   const renderError = (): ReactNode => (

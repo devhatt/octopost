@@ -80,11 +80,11 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   }, [socialMedias]);
   const getGreatestLimitsSocial = useCallback(() => {
     const socialLimits = getBiggestLimitBySocial();
-    const maxLimit = socialLimits.reduce(
+    const maxCharacters = socialLimits.reduce(
       (acc, current) => (acc > current.limit ? acc : current.limit),
       0
     );
-    return { maxLimit, socialLimits };
+    return { maxCharacters, socialLimits };
   }, [getBiggestLimitBySocial]);
 
   const setError = (newErrorMap: ErrorMapText): void => {
@@ -127,7 +127,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
 
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
-          maxLength={props.maxCharacters ?? socialLimits.maxLimit}
+          maxLength={props.maxCharacters ?? socialLimits.maxCharacters}
           svg={null}
           value={props.value ?? inputValue}
         />
