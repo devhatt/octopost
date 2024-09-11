@@ -6,6 +6,7 @@ import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScr
 import { Account } from '~services/api/accounts/accounts.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
+import Icon from '~components/Icon/Icon';
 import scss from '~components/Tabber/Tabs/Tabs.module.scss';
 
 import { Tab, TabId } from '../Tabber.types';
@@ -25,8 +26,12 @@ function Tabs(props: TabsProps): ReactNode {
   const tabClasses = (id: TabId): string =>
     classNames(scss.tab, id === props.currentTab.id && scss.active);
 
-  const renderSocialMediaIcon = (account: Account): ReactNode =>
-    socialMedias.get(account.socialMediaId)?.icon;
+  const renderSocialMediaIcon = (account: Account): ReactNode => (
+    <Icon
+      icon={socialMedias.get(account.socialMediaId)?.icon ?? 'alert'}
+      size={20}
+    />
+  );
 
   const handleTabClick = (
     tab: Tab,
