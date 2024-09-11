@@ -9,7 +9,7 @@
 
   justify-content: space-between;
 
-  padding: 1.1rem;
+  padding: 0.8rem;
   border-bottom: 1px solid $secondaryGray;
 
   .composeContainer {
@@ -18,8 +18,17 @@
 
     align-items: center;
 
+    padding-left: 1.2rem;
+
+    .closeIcon {
+      color: $tertiaryGray;
+    }
+
     .composeLabel {
       font-size: 1.6rem;
+
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -33,7 +42,7 @@
 
     justify-content: center;
 
-    background: $secondaryPurple;
+    background-color: $secondaryPurple;
 
     border-radius: 50%;
 
