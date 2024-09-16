@@ -17,7 +17,7 @@ import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const { socialMedias } = useSocialMediaStore();
+  const { favoriteAccount } = useSocialMediaStore();
   const { addAccount, removeAccount } = useAccountStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
@@ -25,6 +25,10 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
     if (enabled) addAccount(account);
     if (!enabled) removeAccount(account.id);
+  };
+
+  const favorite = (isFavorited: boolean, account: StoreAccount): void => {
+    void favoriteAccount(account.id, isFavorited);
   };
 
   const renderError = (): ReactNode => (
@@ -39,6 +43,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
           invalid={!account.valid}
           isEnabled={account.valid}
           onEnableChange={(enable) => activateSocialTab(enable, account)}
+          onFavoriteChange={(isFavorited) => favorite(isFavorited, account)}
           username={account.userName}
         />
       </li>
@@ -69,7 +74,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
                 className={scss.icon}
                 src={iconPlaceholderForIcon}
               />
-              <span>{socialMedias.get(props.socialMediaId)?.name}</span>
+              <span>{props.title}</span>
             </div>
             {props.error && renderError()}
             <div className={scss.accordionInfo}>

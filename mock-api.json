@@ -84,7 +84,8 @@
       "userName": "Discord User 1",
       "token": "DISCORD_EXAMPLE_TOKEN_1",
       "valid": true,
-      "avatar": "https://example.com/image1.jpg"
+      "avatar": "https://example.com/image1.jpg",
+      "favorite": true
     },
     {
       "id": "14",
@@ -92,7 +93,8 @@
       "userName": "Twitter User 14",
       "token": "TWITTER_EXAMPLE_TOKEN_14",
       "valid": true,
-      "avatar": "https://example.com/image2.jpg"
+      "avatar": "https://example.com/image2.jpg",
+      "favorite": false
     },
     {
       "id": "2",
@@ -100,7 +102,8 @@
       "userName": "Discord User 2",
       "token": "DISCORD_EXAMPLE_TOKEN_2",
       "valid": false,
-      "avatar": "https://example.com/image3.jpg"
+      "avatar": "https://example.com/image3.jpg",
+      "favorite": false
     },
     {
       "id": "3",
@@ -108,7 +111,8 @@
       "userName": "Discord User 3",
       "token": "DISCORD_EXAMPLE_TOKEN_3",
       "valid": true,
-      "avatar": "https://example.com/image4.jpg"
+      "avatar": "https://example.com/image4.jpg",
+      "favorite": false
     },
     {
       "id": "4",
@@ -116,7 +120,8 @@
       "userName": "Twitter User 4",
       "token": "TWITTER_EXAMPLE_TOKEN_4",
       "valid": false,
-      "avatar": "https://example.com/image2.jpg"
+      "avatar": "https://example.com/image2.jpg",
+      "favorite": false
     },
     {
       "id": "5",
@@ -124,7 +129,8 @@
       "userName": "Discord User 5",
       "token": "DISCORD_EXAMPLE_TOKEN_5",
       "valid": false,
-      "avatar": "https://example.com/image6.jpg"
+      "avatar": "https://example.com/image6.jpg",
+      "favorite": false
     },
     {
       "id": "6",
@@ -132,7 +138,8 @@
       "userName": "Twitter User 6",
       "token": "TWITTER_EXAMPLE_TOKEN_6",
       "valid": true,
-      "avatar": "https://example.com/image2.jpg"
+      "avatar": "https://example.com/image2.jpg",
+      "favorite": false
     }
   ],
   "social-medias": [
