@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import isEmpty from 'lodash.isempty';
+
 import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
 
 import Button from '~components/Button/Button';
@@ -20,7 +22,7 @@ function ActionBar(): ReactNode {
         circle
         className={scss.navigationIconContainer}
         color="secondary"
-        disabled={accounts.length === 0}
+        disabled={isEmpty(accounts.length)}
         icon={<Icon className={scss.arrowIcon} icon="arrow-right" size={12} />}
       />
       <Button className={scss.submit} variant="container">
