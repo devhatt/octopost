@@ -1,7 +1,7 @@
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
 
-export type StoreAccount = Account & { valid: boolean };
+export type StoreAccount = Account & { favorite: boolean; valid: boolean };
 
 export type NewAccount = Omit<StoreAccount, 'id'>;
 
@@ -13,6 +13,13 @@ export type SocialMediaState = {
   };
 
   addAccount: (newAccount: NewAccount) => Promise<StoreAccount>;
+
+  favoriteAccount: (
+    accountId: Account['id'],
+    favorite: boolean
+  ) => Promise<void>;
+
+  favoriteAccounts: StoreAccount[];
 
   getAllAccounts: () => Promise<void>;
 
