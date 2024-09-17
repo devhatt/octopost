@@ -8,6 +8,7 @@ const accounts: SocialAccordionProps['accounts'] = [
   {
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
+    favorite: false,
     generatedAt: '2022-01-01T00:00:00Z',
     id: '21_231',
     socialMediaId: '123',
@@ -18,6 +19,7 @@ const accounts: SocialAccordionProps['accounts'] = [
   {
     avatar: 'http://someurl.com',
     expiresAt: '2022-12-31T23:59:59Z',
+    favorite: false,
     generatedAt: '2022-01-01T00:00:00Z',
     id: '1234',
     socialMediaId: '456',
@@ -33,12 +35,11 @@ export const SocicialAccordionComponent: Story<SocialAccordionProps> = (
   <SocialAccordion
     accounts={props.accounts}
     error={props.error}
-    socialMediaId={props.socialMediaId}
+    title="Teste"
   />
 );
 
 SocicialAccordionComponent.args = {
   accounts,
   error: false,
-  socialMediaId: 'FACEBOOK_SOCIAL_MEDIA_ID',
 };
