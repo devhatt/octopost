@@ -16,6 +16,7 @@ const nanoId = nanoid();
 const mockAccount = {
   avatar: 'https://example.com/image1.jpg',
   expiresAt: '',
+  favorite: true,
   generatedAt: '',
   id: '1',
   socialMediaId: 'DISCORD_EXAMPLE_ID',
@@ -161,7 +162,7 @@ describe('usePostStore', () => {
       result.current.updateMainContent({ text: newMainContent });
     });
 
-    expect(result.current.mainContent).toBe(newMainContent);
+    expect(result.current.mainContent.text).toBe(newMainContent);
   });
 
   it('updates text', () => {

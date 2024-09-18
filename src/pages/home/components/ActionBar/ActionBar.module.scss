@@ -9,7 +9,7 @@
 
   justify-content: space-between;
 
-  padding: 1.1rem;
+  padding: 0.8rem;
   border-bottom: 1px solid $secondaryGray;
 
   .composeContainer {
@@ -18,8 +18,17 @@
 
     align-items: center;
 
+    padding-left: 1.2rem;
+
+    .closeIcon {
+      color: $tertiaryGray;
+    }
+
     .composeLabel {
       font-size: 1.6rem;
+
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -37,9 +46,15 @@
 
     border-radius: 50%;
 
-    .arrowIcon {
-      color: $primaryWhite;
+    &:disabled {
+      background-color: rgba($color: $secondaryGray, $alpha: 0.12);
+
+      cursor: not-allowed;
     }
+  }
+
+  .arrowIcon {
+    color: $primaryWhite;
   }
 
   .submit {

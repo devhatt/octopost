@@ -1,7 +1,8 @@
 import { ChangeEvent, ReactNode } from 'react';
 
+import { PreviewModeSelector } from '~pages/home/components/Tabber/PreviewModeSelector/PreviewModeSelector';
+
 import { IconsType } from '~components/Icon/Icon.types';
-import { PreviewModeSelector } from '~components/Tabber/PreviewModeSelector/PreviewModeSelector';
 
 import scss from './Preview.module.scss';
 
