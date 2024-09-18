@@ -29,9 +29,9 @@ type UpdateText = {
 
 export type PostStore = {
   add: (account: StoreAccount, postsModes: PostMode[]) => void;
-  mainContent: string;
+  mainContent: MainContent;
   posts: Record<string, DataPost>;
   remove: (postId: string) => void;
-  updateMainContent: (newContent: string) => void;
+  updateMainContent: (newContent: MainContent) => void;
   updateText: ({ postId, postModeId, text }: UpdateText) => void;
 };

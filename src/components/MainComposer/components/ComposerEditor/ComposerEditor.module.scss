@@ -24,6 +24,7 @@ textarea {
 
 .charactersLimitContainer {
   display: flex;
+  flex-wrap: wrap;
 
   justify-content: space-between;
 
@@ -32,6 +33,7 @@ textarea {
 
 .characterLimitWrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
 
   align-items: center;

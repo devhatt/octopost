@@ -1,5 +1,8 @@
 import { ChangeEvent, ReactNode, useCallback, useState } from 'react';
 
+import omit from 'lodash.omit';
+import { nanoid } from 'nanoid';
+
 import {
   PostMode,
   TextValidator,
@@ -7,59 +10,79 @@ import {
 import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
-import { TextValidators } from './utils/textValidator/textValidators';
+import { textValidator } from './utils/textValidator/textValidator';
 
 import CharacterLimit from '~components/CharacterLimitMainText/CharacterLimit';
 import Icon from '~components/Icon/Icon';
 
 import scss from './ComposerEditor.module.scss';
 
+import { Error } from '../MainComposerBase/MainComposerBase.type';
 import {
   ComposerEditorProps,
-  ErrorMapText,
-  ErrorText,
   HigherLimitSocial,
+  TEXT_ERRORS,
+  TextErrorMap,
 } from './ComposerEditor.types';
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
   const { updateMainContent } = usePostStore();
   const [inputValue, setInputValue] = useState('');
-  const [errorMap, setErrorMap] = useState<ErrorMapText>({});
+  const [errors, setErrors] = useState<TextErrorMap>({});
+  const hasPostMode = Boolean(props.postModeId);
 
-  const validatorText = (text: string): ErrorText[] => {
-    if (props.postModeId && props.socialMediaId) {
-      const postModes = socialMedias
-        .get(props.socialMediaId)
-        ?.postModes.find((postMode) => postMode.id === props.postModeId);
-      const textValidators = new TextValidators(text);
-      const validators = postModes?.validators as TextValidator;
-      const errors: ErrorText[] = [];
+  const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
+    const errorId = nanoid();
+    const error = errors[textErrors];
 
-      if (
-        props.postModeId &&
-        textValidators.textLength(validators.text.maxLength)
-      ) {
-        errors.push({
-          accountId: props.accountId,
-          message: 'text exceeded the limit',
-          postModeId: props.postModeId,
-        });
-      }
-
-      return errors;
+    if (!error) {
+      setErrors({ ...errors, [textErrors]: errorId });
+      props.addError?.(errorId, errorForAdd);
     }
+  };
 
-    return [];
+  const removeErrors = (textErrors: TEXT_ERRORS): void => {
+    const errorId = errors[textErrors];
+    const nextErrors = omit(errors, [textErrors]);
+
+    if (errorId) props.removeError?.(errorId);
+
+    setErrors(nextErrors as TextErrorMap);
+  };
+
+  const emitErrors = (text: string): void => {
+    const postModes =
+      props.socialMediaId && socialMedias.get(props.socialMediaId)?.postModes;
+    const validatorRules =
+      postModes &&
+      postModes.find((postMode) => postMode.id === props.postModeId)?.validators
+        .text;
+
+    if (validatorRules) {
+      const validators = Object.values(textValidator({ text, validatorRules }));
+      for (const validator of validators) {
+        const validate = validator(props);
+
+        if (validate.error) addErrors(validate.type, validate.error);
+        else removeErrors(validate.type);
+      }
+    }
   };
 
   const isBigger = useCallback(
     (
       currentValidator: PostMode['validators'],
       currentMax: number
-    ): currentValidator is TextValidator =>
-      'text' in currentValidator &&
-      currentValidator.text.maxLength > currentMax,
+    ): currentValidator is { text: TextValidator } => {
+      let bigger = false;
+
+      if (currentValidator.text && 'text' in currentValidator) {
+        bigger = currentValidator.text.maxLength > currentMax;
+      }
+
+      return bigger;
+    },
     [socialMedias]
   );
 
@@ -78,6 +101,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     }
     return socialLimits;
   }, [socialMedias]);
+
   const getGreatestLimitsSocial = useCallback(() => {
     const socialLimits = getBiggestLimitBySocial();
     const maxCharacters = socialLimits.reduce(
@@ -87,27 +111,15 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
     return { maxCharacters, socialLimits };
   }, [getBiggestLimitBySocial]);
 
-  const setError = (newErrorMap: ErrorMapText): void => {
-    setErrorMap((prevErrorMap) => {
-      const updatedErrorMap = { ...prevErrorMap, ...newErrorMap };
-      props.onError?.(updatedErrorMap);
-      return updatedErrorMap;
-    });
-  };
-
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-    const newValue = event.target.value;
-    const textErrors = validatorText(newValue);
-    const newErrorMap = { ...errorMap };
+    const { value } = event.target;
 
-    if (props.onChange) props.onChange(newValue);
-    if (textErrors.length > 0) {
-      newErrorMap[newValue] = textErrors;
-      setError(newErrorMap);
-    }
+    updateMainContent({ text: value });
 
-    updateMainContent(newValue);
-    setInputValue(newValue);
+    props.onChange?.(event);
+
+    emitErrors(value);
+    setInputValue(value);
   };
 
   const renderIcon = (socialMediaId: string): ReactNode => {
@@ -120,7 +132,8 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   return (
     <div className={scss.inputContainer}>
       <textarea
-        onChange={props.onChangePost ?? handleInputChange}
+        className={scss.textArea}
+        onChange={handleInputChange}
         placeholder="Digite algo aqui..."
         value={props.value ?? inputValue}
       />
@@ -131,7 +144,7 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
           svg={null}
           value={props.value ?? inputValue}
         />
-        {!props.postModeId && (
+        {!hasPostMode && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (
               <CharacterLimit

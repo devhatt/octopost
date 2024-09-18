@@ -1,44 +1,75 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
+
+import { useError } from '~stores/useErrorStore/useErrorStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 import InputMediaGroup from '../InputMediaGroup/InputMediaGroup';
 
 import scss from './MainComposerBase.module.scss';
 
-import { ErrorMapText } from '../ComposerEditor/ComposerEditor.types';
-import { ErrorMediaInput } from '../InputMediaGroup/InputMediaGroup.type';
-import { MainComposerBaseProps } from './MainComposerBase.type';
+import { PostModeInputMediaGroup } from './MainComposerBase.components';
+import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
-  const handleMediaErrors = (errors: ErrorMediaInput): void => {
-    props.onErrorMedia?.(errors);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const { socialMedias } = useSocialMediaStore();
+  let hasPostModeAndValidators;
+
+  if (props.socialMediaId) {
+    const postModes = socialMedias.get(props.socialMediaId)?.postModes;
+    const currentPostMode = postModes?.find(
+      (postMode) => postMode.id === props.postModeId
+    );
+    if (currentPostMode) {
+      hasPostModeAndValidators =
+        props.postModeId && 'media' in currentPostMode.validators;
+    }
+  }
+
+  const errorStore = useError();
+
+  const addErrors = (id: string, error: Error): void => {
+    const { message } = error;
+    const useErrorId = errorStore.addError({ message });
+
+    setErrors({ ...errors, [id]: useErrorId });
+    props.onError?.(true);
   };
 
-  const handleTextErrors = (errors: ErrorMapText): void => {
-    props.onErrorText?.(errors);
+  const errorRemover = (id: string): void => {
+    if (id) {
+      props.onError?.(false);
+      errorStore.removeError(errors[id]);
+    }
   };
 
   return (
     <div className={scss.container}>
       <ComposerEditor
         accountId={props.accountId}
+        addError={addErrors}
         maxCharacters={props.maxCharacters ?? undefined}
-        onChangePost={props.onChange}
-        onError={handleTextErrors}
+        onChange={props.onChange}
         postModeId={props.postModeId}
+        removeError={errorRemover}
         socialMediaId={props.socialMediaId}
         value={props.value}
       />
       <div className={scss.bottomWrapper}>
         <hr className={scss.divider} />
-        <div>
-          <InputMediaGroup
+        {hasPostModeAndValidators ? (
+          <PostModeInputMediaGroup
             accountId={props.accountId}
-            onError={handleMediaErrors}
+            addError={addErrors}
+            errorRemover={errorRemover}
             postModeId={props.postModeId}
             socialMediaId={props.socialMediaId}
           />
-        </div>
+        ) : (
+          <InputMediaGroup />
+        )}
+        <div />
       </div>
     </div>
   );

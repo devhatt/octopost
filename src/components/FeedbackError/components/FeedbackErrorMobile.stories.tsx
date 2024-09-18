@@ -7,9 +7,15 @@ import { useError } from '~stores/useErrorStore/useErrorStore';
 import FeedbackErrorMobile from './FeedbackErrorMobile';
 
 export const FeedbackErrorComponent: Story = () => {
-  const setErrors = useError((state) => state.setError);
+  const { addError, removeError } = useError();
+
   useEffect(() => {
-    setErrors('mensagem de erro');
-  }, [setErrors]);
+    const newErrorId = addError({ message: 'error message' });
+
+    return (): void => {
+      removeError(newErrorId);
+    };
+  }, []);
+
   return <FeedbackErrorMobile />;
 };

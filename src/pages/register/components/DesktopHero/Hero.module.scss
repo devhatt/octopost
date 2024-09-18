@@ -1,0 +1,85 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss' as *;
+
+.desktopHeroWrapper {
+  width: 100%;
+  overflow: hidden;
+
+  display: none;
+
+  background: linear-gradient(0deg, #894df6, #894df6),
+    linear-gradient(
+      109.54deg,
+      rgba(123, 80, 255, 0.2) 0%,
+      rgba(81, 202, 212, 0.2) 100%
+    );
+}
+
+.signInButton {
+  width: fit-content;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  padding: 1rem 7.8rem;
+  border: 1px solid $primaryWhite;
+
+  cursor: pointer;
+}
+
+.hero {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+  grid-area: 1/1;
+
+  align-items: center;
+  justify-content: center;
+
+  color: $primaryWhite;
+
+  text-align: center;
+
+  padding: 2.4rem;
+  padding-bottom: 0;
+
+  z-index: 1;
+
+  .title {
+    font-size: 5.6rem;
+    font-weight: 700;
+
+    margin: 0;
+  }
+
+  .description {
+    font-size: 1.6rem;
+    font-weight: 400;
+
+    margin: 0;
+    padding-top: 1.6rem;
+    padding-bottom: 3.2rem;
+  }
+}
+
+.octoWrapper {
+  display: flex;
+  grid-area: 1/1;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  .desktopOcto {
+    width: 50vh;
+
+    margin-right: -45vw;
+  }
+}
+
+@include from905 {
+  .desktopHeroWrapper {
+    display: grid;
+  }
+}

@@ -1,6 +1,9 @@
 import { ReactNode, useState } from 'react';
 
-import { MediaValidator } from '~services/api/social-media/social-media.types';
+import isEmpty from 'lodash.isempty';
+import { nanoid } from 'nanoid';
+
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
@@ -11,61 +14,99 @@ import MediaPreview from './components/MediaPreview/MediaPreview';
 import scss from './InputMediaGroup.module.scss';
 
 import { Media } from './components/InputMedia/InputMedia.types';
-import { MediaInput } from './InputMediaGroup.type';
+import {
+  ErrorMap,
+  MEDIA_ERRORS,
+  MediaErrorMap,
+  MediaInputProps,
+} from './InputMediaGroup.type';
 
-function InputMediaGroup(props: MediaInput): ReactNode {
-  const [medias, setMedias] = useState<Media[]>([]);
+function InputMediaGroup(props: MediaInputProps): ReactNode {
+  const [errors, setErrors] = useState<MediaErrorMap>({});
+  const { mainContent, updateMainContent } = usePostStore();
   const { socialMedias } = useSocialMediaStore();
+  const medias = mainContent.medias ?? [];
+  const hasValidation = Boolean(props.postModeId);
 
-  const validateFile = (file: Media): void => {
-    if (props.socialMediaId && props.postModeId) {
-      const postModes = socialMedias
-        .get(props.socialMediaId)
-        ?.postModes.find((postMode) => postMode.id === props.postModeId);
-      const media = file.file;
-      const validator = postModes?.validators as MediaValidator;
+  const setMedias = (newMedias: Media[]): void => {
+    updateMainContent({ medias: newMedias });
+  };
 
-      const fileValidator = Object.values(fileValidators({ media, validator }));
-      for (const validators of fileValidator) validators(props);
+  const removeErrors = (fileId: Media['id']): void => {
+    const errorsForFile = errors[fileId];
+    for (const error of Object.values(errorsForFile)) {
+      props.removeError?.(error);
     }
   };
 
-  const addMedia = (files: Media[]): void => {
-    if (props.postModeId) {
+  const validateFile = async (file: Media): Promise<void> => {
+    const media = file.file;
+    const postModes =
+      props.socialMediaId && socialMedias.get(props.socialMediaId)?.postModes;
+    const validatorRules =
+      postModes &&
+      postModes.find((postMode) => postMode.id === props.postModeId)?.validators
+        .media;
+
+    const fileErrors: ErrorMap = {
+      [MEDIA_ERRORS.MAX_AR_EXCEED]: '',
+      [MEDIA_ERRORS.MAX_DURATION_EXCEED]: '',
+      [MEDIA_ERRORS.MAX_RESOLUTION_EXCEED]: '',
+      [MEDIA_ERRORS.MAX_SIZE_EXCEED]: '',
+    };
+
+    if (validatorRules) {
+      const validators = Object.values(
+        fileValidators({ media, validatorRules })
+      );
+      for (const validator of validators) {
+        const validate = await validator(props, media.name);
+        const errorId = nanoid();
+
+        if (validate.error) {
+          fileErrors[validate.type] = errorId;
+          props.addError?.(errorId, validate.error);
+        }
+      }
+      if (!isEmpty(fileErrors)) {
+        setErrors({ ...errors, [file.id]: fileErrors });
+      }
+    }
+  };
+
+  const addMedia = async (files: Media[]): Promise<void> => {
+    if (hasValidation) {
       for (const file of files) {
-        validateFile(file);
+        await validateFile(file);
       }
     }
     setMedias([...medias, ...files]);
   };
 
   const removeMedia = (id: Media['id']): void => {
-    const list = Array.from(medias);
-    const indexToRemove = list.findIndex((item) => item.id === id);
+    const newMedias = medias.filter((item) => item.id !== id);
 
-    if (indexToRemove !== -1) {
-      list.splice(indexToRemove, 1);
-    }
+    if (hasValidation) removeErrors(id);
 
-    setMedias(list);
+    setMedias(newMedias);
   };
 
-  const updateMedia = (files: Media[], id: Media['id']): void => {
-    const list = Array.from(medias);
-    const indexToUpdate = list.findIndex((item) => item.id === id);
+  const updateMedia = async (
+    files: Media[],
+    id: Media['id']
+  ): Promise<void> => {
+    const newMedias = medias.flatMap((media) =>
+      media.id === id ? files : media
+    );
 
-    if (props.postModeId) {
+    if (hasValidation) {
+      removeErrors(id);
       for (const file of files) {
-        validateFile(file);
+        await validateFile(file);
       }
     }
 
-    if (indexToUpdate !== -1) {
-      list.splice(indexToUpdate, 1);
-      list.splice(indexToUpdate, 0, ...files);
-    }
-
-    setMedias(list);
+    setMedias(newMedias);
   };
 
   return (

@@ -1,6 +1,8 @@
+/* eslint-disable unicorn/no-unused-properties */
 import { act, renderHook } from '@testing-library/react';
 import { nanoid } from 'nanoid';
 
+import { SocialMedia } from '~services/api/social-media/social-media.types';
 import * as usePostStoreHook from '~stores/usePostStore/usePostStore';
 
 import { PostModes } from './usePostStore.types';
@@ -22,7 +24,10 @@ const mockAccount = {
   valid: false,
 };
 
-const mockAccountSocialMedia = {
+const mockAccountSocialMedia: SocialMedia = {
+  icon: 'alert',
+  id: '',
+  name: '',
   postModes: [
     {
       id: 'DISCORD_STORY_POSTMODE_ID',
@@ -30,11 +35,13 @@ const mockAccountSocialMedia = {
       previewComponent: 'Teste',
       validators: {
         media: {
+          allowedFormats: ['mp4', 'webm'],
           ar: ['4:3'],
           maxDuration: 1000,
           maxFileSize: 20_000_000,
           maxHeight: 600,
           maxWidth: 700,
+          mediaQtyLimit: 1,
         },
         text: {
           maxLength: 20,
@@ -54,11 +61,13 @@ const mockAccountSocialMedia = {
       previewComponent: 'Teste',
       validators: {
         media: {
+          allowedFormats: ['mp4', 'webm'],
           ar: ['16:9'],
           maxDuration: 1100,
+          maxFileSize: 10_000,
           maxHeight: 700,
-          maxSize: 10_000,
           maxWidth: 900,
+          mediaQtyLimit: 2,
         },
         text: {
           maxLength: 3,
@@ -78,11 +87,13 @@ const mockAccountSocialMedia = {
       previewComponent: 'Teste',
       validators: {
         media: {
+          allowedFormats: ['mp4', 'webm'],
           ar: ['5:3'],
           maxDuration: 5000,
+          maxFileSize: 30_000,
           maxHeight: 1080,
-          maxSize: 30_000,
           maxWidth: 1920,
+          mediaQtyLimit: 1,
         },
         text: {
           maxLength: 12,
@@ -147,7 +158,7 @@ describe('usePostStore', () => {
     const newMainContent = 'testing';
 
     act(() => {
-      result.current.updateMainContent(newMainContent);
+      result.current.updateMainContent({ text: newMainContent });
     });
 
     expect(result.current.mainContent).toBe(newMainContent);

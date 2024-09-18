@@ -1,35 +1,22 @@
-import { ChangeEvent, PropsWithChildren } from 'react';
+import { ChangeEvent } from 'react';
 
-import {
-  PostMode,
-  SocialMedia,
-} from '~services/api/social-media/social-media.types';
+import { MainComposerChildrens } from '../MainComposerBase/MainComposerBase.type';
 
-export type TInputChange = (newText: string) => void;
-export type TInputPostChange = (
-  event: ChangeEvent<HTMLTextAreaElement>
-) => void;
+export type InputChange = (event: ChangeEvent<HTMLTextAreaElement>) => void;
 
-export type ComposerEditorProps = PropsWithChildren<{
-  accountId?: string;
+export type ComposerEditorProps = MainComposerChildrens & {
   maxCharacters?: number;
-  onChange?: TInputChange;
-  onChangePost?: TInputPostChange;
-  onError?: (error: ErrorMapText) => void;
-  postModeId?: PostMode['id'];
-  socialMediaId?: SocialMedia['id'];
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   value?: string;
-}>;
-
-export type ErrorText = {
-  accountId: string | undefined;
-  message: string;
-  postModeId: string | undefined;
 };
-
-export type ErrorMapText = Record<string, ErrorText[]>;
 
 export type HigherLimitSocial = {
   limit: number;
   socialMediaId: string;
 };
+
+export enum TEXT_ERRORS {
+  MAX_LENGTH_EXCEED = 1,
+}
+
+export type TextErrorMap = Partial<Record<TEXT_ERRORS, string>>;

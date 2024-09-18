@@ -27,7 +27,10 @@ export const usePostStore = create<PostStore>((set) => ({
     }));
   },
 
-  mainContent: '',
+  mainContent: {
+    media: [],
+    text: '',
+  },
   posts: {},
 
   remove: (postId): void => {
@@ -37,8 +40,7 @@ export const usePostStore = create<PostStore>((set) => ({
     });
   },
 
-  updateMainContent: (newContent: string): void =>
-    set({ mainContent: newContent }),
+  updateMainContent: (newContent): void => set({ mainContent: newContent }),
 
   updateText: ({ postId, postModeId, text }): void => {
     set((state) => {

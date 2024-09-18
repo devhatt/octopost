@@ -5,16 +5,37 @@ import {
   SocialMedia,
 } from '~services/api/social-media/social-media.types';
 
-import { ErrorMapText } from '../ComposerEditor/ComposerEditor.types';
-import { ErrorMediaInput } from '../InputMediaGroup/InputMediaGroup.type';
+export type MainComposerChildrens = {
+  accountId?: string;
+  addError?: MainComposerErrorEmiter;
+  postModeId?: PostMode['id'];
+  removeError?: (id: string) => void;
+  socialMediaId?: SocialMedia['id'];
+};
+
+export type Error = {
+  accountId: string;
+  fileId?: string;
+  message: string;
+  postModeId: string;
+};
 
 export type MainComposerBaseProps = {
   accountId?: string;
   maxCharacters?: number;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  onErrorMedia?: (error: ErrorMediaInput) => void;
-  onErrorText?: (error: ErrorMapText) => void;
+  onError?: (hasError: boolean) => void;
   postModeId?: PostMode['id'];
   socialMediaId?: SocialMedia['id'];
   value?: string;
+};
+
+export type MainComposerErrorEmiter = (key: string, error: Error) => void;
+
+export type PostModeInputMediaGroupProps = {
+  accountId?: string;
+  addError: (id: string, error: Error) => void;
+  errorRemover: (id: string) => void;
+  postModeId?: PostMode['id'];
+  socialMediaId?: SocialMedia['id'];
 };
