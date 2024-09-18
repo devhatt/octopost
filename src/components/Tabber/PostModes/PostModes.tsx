@@ -42,25 +42,18 @@ function PostModes(props: PostModesProps): ReactNode {
     postModeId: PostMode['id'],
     isChecked: boolean
   ): void => {
-    if (isChecked) {
-      setSelectedPostModes(addPostMode(postModeId));
-    } else {
-      setSelectedPostModes(removePostMode(postModeId));
-    }
+    if (isChecked) setSelectedPostModes(addPostMode(postModeId));
+    else setSelectedPostModes(removePostMode(postModeId));
   };
 
-  const isChecked = (postModeId: PostMode['id']): boolean => {
-    let checked = false;
-
-    checked = Boolean(selectedPostModes[currentTab]?.includes(postModeId));
-
-    return checked;
-  };
+  const isChecked = (postModeId: PostMode['id']): boolean =>
+    Boolean(selectedPostModes[currentTab]?.includes(postModeId));
 
   const postModeClasses = (postModeId: PostMode['id']): string =>
     classNames({
       [scss.active]: props.currentPostModeId === postModeId,
       [scss.postModeTitle]: true,
+      [scss.selectPostMode]: true,
     });
 
   const onChangeCheckBox = (postModeId: string, isChecked: boolean): void => {
@@ -77,11 +70,12 @@ function PostModes(props: PostModesProps): ReactNode {
 
   const renderPostMode = (postMode: PostMode): ReactNode => (
     <button
-      className={`${scss.selectPostMode} ${postModeClasses(postMode.id)}`}
+      className={postModeClasses(postMode.id)}
       key={postMode.id}
       onClick={() => props.onChangePostMode(postMode)}
     >
       <Checkbox
+        aria-label={`Check the post mode ${postMode.name}`}
         checked={isChecked(postMode.id)}
         onChange={(checked) => onChangeCheckBox(postMode.id, checked)}
       />
@@ -91,7 +85,9 @@ function PostModes(props: PostModesProps): ReactNode {
 
   return (
     <div className={scss.postModesHeader}>
-      {socialMedia?.postModes.map(renderPostMode)}
+      <div className={scss.postModesWrapper}>
+        {socialMedia?.postModes.map(renderPostMode)}
+      </div>
     </div>
   );
 }
