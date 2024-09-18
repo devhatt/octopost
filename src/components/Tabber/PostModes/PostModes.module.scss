@@ -1,14 +1,23 @@
 @use '~styles/global.scss';
 
 .postModesHeader {
+  width: 100%;
+  overflow-x: auto;
+
+  margin-bottom: 1.6rem;
+  border: 0.1rem solid global.$primaryGray;
+
+  background-color: global.$quaternaryWhite;
+  border-radius: 3rem;
+}
+
+.postModesWrapper {
   width: fit-content;
+  overflow-x: scroll;
 
   display: flex;
 
   align-self: flex-end;
-
-  background-color: global.$quaternaryWhite;
-  border-radius: 3rem;
 }
 
 .postModeTitle {
@@ -40,6 +49,10 @@
 
     background-color: global.$primaryWhite;
     border-radius: 10rem;
+
+    [type='checkbox'] {
+      border-color: global.$secondaryPurple;
+    }
   }
 }
 
