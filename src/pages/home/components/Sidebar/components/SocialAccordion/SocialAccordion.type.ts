@@ -19,3 +19,9 @@ export type IAccountList = {
 export type AccountQuantityProps = {
   accountQuantity: number;
 };
+
+export type AccordionContentProps = {
+  accounts: StoreAccount[];
+  enableChange: (enabled: boolean, account: StoreAccount) => void;
+  favoriteChange: (isFavorited: boolean, account: StoreAccount) => void;
+};

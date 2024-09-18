@@ -2,7 +2,7 @@
 @use '~styles/breakpoints.scss' as *;
 
 @mixin apply-color($color) {
-  &.containerFocus {
+  &.inputSearchContainerFocus {
     color: $color;
   }
 
@@ -15,25 +15,23 @@
   }
 }
 
-.container {
+.inputSearchContainer {
   width: 100%;
 
   color: global.$secondaryGray;
   font-size: 1.4rem;
 
-  margin-top: 1rem;
-
   letter-spacing: 0;
 
-  &.containerError {
+  &.inputSearchContainerError {
     color: global.$secondaryRed;
   }
 
-  &.containerFocus {
+  &.inputSearchContainerFocus {
     color: global.$secondaryPurple;
   }
 
-  &.containerFilled {
+  &.inputSearchContainerFilled {
     color: #34495e;
   }
 
@@ -210,8 +208,8 @@
 }
 
 @include from905 {
-  .container {
-    margin-bottom: 2.4rem;
+  .inputSearchContainer {
+    // margin-bottom: 2.4rem;
 
     .inputWrapper {
       display: flex;

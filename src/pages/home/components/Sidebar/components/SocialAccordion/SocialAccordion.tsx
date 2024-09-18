@@ -5,14 +5,16 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaS
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
 import Accordion from '~components/Accordion/Accordion';
-import { AccountCard } from '~components/AccountCard/AccountCard';
 import Icon from '~components/Icon/Icon';
 
 import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
-import { AccountQuantity } from './SocialAccordion.components';
+import {
+  AccordionContent,
+  AccountQuantity,
+} from './SocialAccordion.components';
 import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
@@ -35,30 +37,20 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
     <span className={scss.error}>error!!!!</span>
   );
 
-  const renderAccordionMap = (): ReactNode =>
-    props.accounts.map((account) => (
-      <li key={account.id}>
-        <AccountCard
-          avatarURL={account.avatar}
-          invalid={!account.valid}
-          isEnabled={account.valid}
-          onEnableChange={(enable) => activateSocialTab(enable, account)}
-          onFavoriteChange={(isFavorited) => favorite(isFavorited, account)}
-          username={account.userName}
-        />
-      </li>
-    ));
-
-  const renderAccordionContent = (): ReactNode => (
-    <ul role="listitem">{renderAccordionMap()}</ul>
-  );
-
   const hasInvalidAccount = props.accounts.some(({ valid }) => !valid);
 
   return (
     <Accordion
       className={scss.wrapper}
-      content={renderAccordionContent()}
+      content={
+        <AccordionContent
+          accounts={props.accounts}
+          enableChange={(enable, account) => activateSocialTab(enable, account)}
+          favoriteChange={(isFavorite, account) =>
+            favorite(isFavorite, account)
+          }
+        />
+      }
       header={
         <button
           aria-controls="content-accordion"

@@ -50,10 +50,6 @@ function Sidebar(): React.ReactNode {
     return filtered;
   }, [accounts, inputValue]);
 
-  const handleToggleModal = (): void => {
-    setIsOpen((prev) => !prev);
-  };
-
   const handleSelectSocialMedia = (): void => {
     setIsOpen(false);
   };
@@ -67,6 +63,10 @@ function Sidebar(): React.ReactNode {
     setIsOpen(false);
   });
 
+  const handleToggleModal = (): void => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <div className={scss.container}>
       <AccordionTab
@@ -77,6 +77,7 @@ function Sidebar(): React.ReactNode {
       >
         <div className={scss.content}>
           <InputSearch
+            className={scss.inputSearch}
             error={false}
             onChange={debouncedSearch}
             placeholder="Search for social media"
@@ -90,30 +91,24 @@ function Sidebar(): React.ReactNode {
             <EmptyResult />
           )}
 
-          <div className={scss.newAccountButtonMobileContainer}>
-            <div className={scss.mobileContainer}>
-              <p className={scss.selectSocialAccountText}>
-                Select social account
-              </p>
-              <Button
-                className={scss.newAccountButton}
-                onClick={handleToggleModal}
-                variant="container"
-              >
-                <Icon icon="plus" size={12} />
-                New Account
-              </Button>
-            </div>
-
-            <div className={scss.newAccountButtonMobileContainer}>
-              <Button
-                circle
-                className={scss.newAccountButtonMobile}
-                icon={<Icon icon="plus" size={10} />}
-                onClick={handleToggleModal}
-                variant="container"
-              />
-            </div>
+          <div className={scss.openTabsMobile}>
+            <p className={scss.openTabsText}>Select social account</p>
+            <Button
+              circle
+              className={scss.openTabsButton}
+              icon={<Icon icon="plus" size={11} />}
+              variant="container"
+            />
+          </div>
+          <div className={scss.newAccountContainer}>
+            <Button
+              className={scss.newAccountButton}
+              onClick={handleToggleModal}
+              variant="container"
+            >
+              <Icon icon="plus" size={12} />
+              New Account
+            </Button>
             <Modal
               isOpen={isOpen}
               onClickOutside={() => setIsOpen(false)}

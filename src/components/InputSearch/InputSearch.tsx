@@ -24,7 +24,9 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   const inputClass = [scss.input];
   const legendClass = [scss.legend];
   const fieldsetClass = [scss.fieldset];
-  const containerClass = [scss.container];
+  const inputSearchContainer = props.className
+    ? [props.className, scss.inputSearchContainer]
+    : [scss.inputSearchContainer];
 
   const [isFocused, setIsFocused] = useState(false);
 
@@ -70,12 +72,12 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
     fieldsetClass.push(scss.fieldsetFocus);
     legendClass.push(scss.legendFocus);
     labelClass.push(scss.labelAnimate);
-    containerClass.push(scss.containerFocus);
+    inputSearchContainer.push(scss.inputSearchContainerFocus);
   };
 
   const handleErrorStyles = (): void => {
     fieldsetClass.push(scss.fieldsetError);
-    containerClass.push(scss.containerError);
+    inputSearchContainer.push(scss.inputSearchContainerError);
     labelClass.push(scss.labelError);
   };
 
@@ -92,7 +94,7 @@ function InputSearch(props: TInputProps, ref: TInputComponentRef): ReactNode {
   }));
 
   return (
-    <div className={classNames(containerClass)}>
+    <div className={classNames(inputSearchContainer)}>
       <div className={scss.inputWrapper}>
         <label className={classNames(labelClass)} htmlFor={props.name}>
           {props.placeholder}
