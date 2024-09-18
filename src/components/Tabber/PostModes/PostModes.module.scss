@@ -1,23 +1,23 @@
 @use '~styles/global.scss';
 
 .postModesHeader {
-  width: 100%;
   overflow-x: auto;
 
   margin-bottom: 1.6rem;
-  border: 0.1rem solid global.$primaryGray;
 
-  background-color: global.$quaternaryWhite;
-  border-radius: 3rem;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .postModesWrapper {
   width: fit-content;
-  overflow-x: scroll;
 
   display: flex;
-
-  align-self: flex-end;
 }
 
 .postModeTitle {
@@ -42,16 +42,33 @@
 
   color: global.$tertiaryGray;
 
-  border: 0.2rem solid transparent;
-
   &.active {
-    border-color: global.$secondaryPurple;
-
-    background-color: global.$primaryWhite;
-    border-radius: 10rem;
-
     [type='checkbox'] {
       border-color: global.$secondaryPurple;
+    }
+  }
+}
+
+@include from905 {
+  .postModesHeader {
+    border: 0.1rem solid global.$primaryGray;
+
+    background-color: global.$quaternaryWhite;
+    border-radius: 3rem;
+  }
+
+  .postModeTitle {
+    padding: 1.2rem;
+  }
+
+  .selectPostMode {
+    border: 0.2rem solid transparent;
+
+    &.active {
+      border-color: global.$secondaryPurple;
+
+      background-color: global.$primaryWhite;
+      border-radius: 10rem;
     }
   }
 }
