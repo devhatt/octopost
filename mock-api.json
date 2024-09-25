@@ -14,7 +14,7 @@
           "data": {
             "text": "asdasd"
           },
-          "postModeId": "DISCORD_REELS_POST_ID",
+          "postModeId": "DISCORD_POST_POSTMODE_ID",
           "socialMediaId": "DISCORD_EXAMPLE_ID"
         },
         {
@@ -28,7 +28,7 @@
           "data": {
             "text": "456"
           },
-          "postModeId": "TWITTER_THREAD_POST_ID",
+          "postModeId": "TWITTER_POST_POSTMODE_ID",
           "socialMediaId": "TWITTER_EXAMPLE_ID"
         },
         {
@@ -173,7 +173,7 @@
           ]
         },
         {
-          "id": "DISCORD_REELS_POST_ID",
+          "id": "DISCORD_POST_POSTMODE_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
           "validators": {
@@ -228,7 +228,7 @@
       "name": "Twitter",
       "postModes": [
         {
-          "id": "TWITTER_THREAD_POST_ID",
+          "id": "TWITTER_POST_POSTMODE_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
           "validators": {

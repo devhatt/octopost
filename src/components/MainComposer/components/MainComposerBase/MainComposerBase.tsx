@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
 
-import { useError } from '~stores/useError/useError';
+import { useError } from '~stores/useErrorStore/useErrorStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import ComposerEditor from '../ComposerEditor/ComposerEditor';
 import InputMediaGroup from '../InputMediaGroup/InputMediaGroup';
@@ -12,8 +13,19 @@ import { Error, MainComposerBaseProps } from './MainComposerBase.type';
 
 function MainComposerBase(props: MainComposerBaseProps): ReactNode {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const hasPostModeAndValidators =
-    props.postMode && 'media' in props.postMode.validators;
+  const { socialMedias } = useSocialMediaStore();
+  let hasPostModeAndValidators;
+
+  if (props.socialMediaId) {
+    const postModes = socialMedias.get(props.socialMediaId)?.postModes;
+    const currentPostMode = postModes?.find(
+      (postMode) => postMode.id === props.postModeId
+    );
+    if (currentPostMode) {
+      hasPostModeAndValidators =
+        props.postModeId && 'media' in currentPostMode.validators;
+    }
+  }
 
   const errorStore = useError();
 
@@ -37,10 +49,11 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
       <ComposerEditor
         accountId={props.accountId}
         addError={addErrors}
-        currentMaxLimit={props.currentMaxLimit ?? undefined}
+        maxCharacters={props.maxCharacters ?? undefined}
         onChange={props.onChange}
-        postMode={props.postMode}
+        postModeId={props.postModeId}
         removeError={errorRemover}
+        socialMediaId={props.socialMediaId}
         value={props.value}
       />
       <div className={scss.bottomWrapper}>
@@ -50,7 +63,8 @@ function MainComposerBase(props: MainComposerBaseProps): ReactNode {
             accountId={props.accountId}
             addError={addErrors}
             errorRemover={errorRemover}
-            postMode={props.postMode}
+            postModeId={props.postModeId}
+            socialMediaId={props.socialMediaId}
           />
         ) : (
           <InputMediaGroup />

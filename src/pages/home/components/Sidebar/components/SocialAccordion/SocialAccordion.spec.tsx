@@ -1,8 +1,12 @@
 /* eslint-disable testing-library/no-unnecessary-act -- tests asks for it when there is react states changes */
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Mock } from 'vitest';
 
+import {
+  mockAddPost,
+  mockedUsePostStore,
+  mockRemovePost,
+} from '~stores/__mocks__/usePostStore.mock';
 import {
   mockedAccounts,
   mockedSocialMedias,
@@ -11,23 +15,12 @@ import {
 
 import SocialAccordion from './SocialAccordion';
 
-const mockAddAccount = vi.fn();
-const mockRemoveAccount = vi.fn();
-
-vi.mock('~stores/useAccountStore/useAccountStore', () => ({
-  useAccountStore: (): {
-    addAccount: Mock;
-    removeAccount: Mock;
-  } => ({
-    addAccount: mockAddAccount,
-    removeAccount: mockRemoveAccount,
-  }),
-}));
-
 vi.mock(
   '~stores/useSocialMediaStore/useSocialMediaStore',
   () => mockedUseSocialMediaStore
 );
+
+vi.mock('~stores/usePostStore/usePostStore', () => mockedUsePostStore);
 
 vi.spyOn(window, 'scrollTo');
 
@@ -98,6 +91,9 @@ describe('SocialAccordion', () => {
         />
       );
 
+      const [account] = mockDiscordData;
+      const socialMedias = mockedSocialMedias().get(account.socialMediaId);
+
       const accordion = screen.getByText(/discord/i);
 
       await act(async () => {
@@ -110,8 +106,12 @@ describe('SocialAccordion', () => {
         await userEvent.click(firstAccountSwitch);
       });
 
-      expect(mockAddAccount).toHaveBeenCalled();
-      expect(mockAddAccount).toHaveBeenCalledWith(mockDiscordData[0]);
+      expect(mockAddPost).toHaveBeenCalled();
+
+      expect(mockAddPost).toHaveBeenCalledWith(
+        account,
+        socialMedias?.postModes
+      );
     });
 
     it('deactivates social tab when is disable', async () => {
@@ -137,9 +137,7 @@ describe('SocialAccordion', () => {
         await userEvent.click(firstAccountSwitch);
       });
 
-      const [firstAccount] = mockDiscordData;
-
-      expect(mockRemoveAccount).toHaveBeenLastCalledWith(firstAccount.id);
+      expect(mockRemovePost).toHaveBeenLastCalledWith('SomeNanoId');
     });
   });
 

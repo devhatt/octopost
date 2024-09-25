@@ -6,11 +6,11 @@ import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaS
 
 import FeedbackError from '~components/FeedbackError/FeedbackError';
 import MainComposer from '~components/MainComposer/MainComposer';
-import Tabber from '~components/Tabber/Tabber';
 
 import ActionBar from './components/ActionBar/ActionBar';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
+import Tabber from './components/Tabber/Tabber';
 
 import scss from './home.module.scss';
 

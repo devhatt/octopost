@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import isEmpty from 'lodash.isempty';
 
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 
 import Button from '~components/Button/Button';
 import Icon from '~components/Icon/Icon';
@@ -10,7 +10,7 @@ import Icon from '~components/Icon/Icon';
 import scss from './ActionBar.module.scss';
 
 function ActionBar(): ReactNode {
-  const { accounts } = useAccountStore();
+  const { posts } = usePostStore();
 
   return (
     <div className={scss.container}>
@@ -22,7 +22,7 @@ function ActionBar(): ReactNode {
         circle
         className={scss.navigationIconContainer}
         color="secondary"
-        disabled={isEmpty(accounts.length)}
+        disabled={isEmpty(posts)}
         icon={<Icon className={scss.arrowIcon} icon="arrow-right" size={12} />}
       />
       <Button className={scss.submit} variant="container">

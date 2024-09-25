@@ -7,7 +7,7 @@ import {
   PostMode,
   TextValidator,
 } from '~services/api/social-media/social-media.types.ts';
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { textValidator } from './utils/textValidator/textValidator';
@@ -27,10 +27,10 @@ import {
 
 function ComposerEditor(props: ComposerEditorProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const { updateMainContent } = useAccountStore();
+  const { updateMainContent } = usePostStore();
   const [inputValue, setInputValue] = useState('');
   const [errors, setErrors] = useState<TextErrorMap>({});
-  const hasPostMode = Boolean(props.postMode);
+  const hasPostMode = Boolean(props.postModeId);
 
   const addErrors = (textErrors: TEXT_ERRORS, errorForAdd: Error): void => {
     const errorId = nanoid();
@@ -52,7 +52,12 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
   };
 
   const emitErrors = (text: string): void => {
-    const validatorRules = props.postMode?.validators.text;
+    const postModes =
+      props.socialMediaId && socialMedias.get(props.socialMediaId)?.postModes;
+    const validatorRules =
+      postModes &&
+      postModes.find((postMode) => postMode.id === props.postModeId)?.validators
+        .text;
 
     if (validatorRules) {
       const validators = Object.values(textValidator({ text, validatorRules }));
@@ -99,11 +104,11 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
 
   const getGreatestLimitsSocial = useCallback(() => {
     const socialLimits = getBiggestLimitBySocial();
-    const maxLimit = socialLimits.reduce(
+    const maxCharacters = socialLimits.reduce(
       (acc, current) => (acc > current.limit ? acc : current.limit),
       0
     );
-    return { maxLimit, socialLimits };
+    return { maxCharacters, socialLimits };
   }, [getBiggestLimitBySocial]);
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -135,11 +140,11 @@ function ComposerEditor(props: ComposerEditorProps): ReactNode {
 
       <div className={scss.charactersLimitContainer}>
         <CharacterLimit
-          maxLength={props.currentMaxLimit ?? socialLimits.maxLimit}
+          maxLength={props.maxCharacters ?? socialLimits.maxCharacters}
           svg={null}
           value={props.value ?? inputValue}
         />
-        {hasPostMode && (
+        {!hasPostMode && (
           <div className={scss.characterLimitWrapper}>
             {socialLimits.socialLimits.map((postMode) => (
               <CharacterLimit

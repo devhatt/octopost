@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 
-import { useError } from './useError';
+import { useError } from './useErrorStore';
 
 describe('useError', () => {
   it('starts with an empty error object', () => {

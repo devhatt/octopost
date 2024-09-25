@@ -1,15 +1,14 @@
-import { ChangeEvent, PropsWithChildren } from 'react';
+import { ChangeEvent } from 'react';
 
 import { MainComposerChildrens } from '../MainComposerBase/MainComposerBase.type';
 
 export type InputChange = (event: ChangeEvent<HTMLTextAreaElement>) => void;
 
-export type ComposerEditorProps = MainComposerChildrens &
-  PropsWithChildren<{
-    currentMaxLimit?: number;
-    onChange?: InputChange;
-    value?: string;
-  }>;
+export type ComposerEditorProps = MainComposerChildrens & {
+  maxCharacters?: number;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  value?: string;
+};
 
 export type HigherLimitSocial = {
   limit: number;

@@ -14,30 +14,33 @@ import { PostModesProps } from './PostModes.types';
 
 function PostModes(props: PostModesProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
-  const socialMedia = socialMedias.get(props.currentTab.socialMediaId);
+
+  const postModes = socialMedias.get(props.socialMediaId)?.postModes;
 
   const postModeClasses = (
     postModeId: SocialMedia['postModes'][number]['id']
   ): string =>
     classNames({
-      [scss.active]: props.currentPostModeId === postModeId,
+      [scss.active]: props.postModeId === postModeId,
       [scss.postModeTitle]: true,
     });
+
+  const changePostMode = (postMode: PostMode): void => {
+    props.changePostModeId(postMode.id);
+  };
 
   const renderPostMode = (postMode: PostMode): ReactNode => (
     <span
       className={postModeClasses(postMode.id)}
       key={postMode.id}
-      onClick={() => props.onChangePostMode(postMode)}
+      onClick={() => changePostMode(postMode)}
     >
       {postMode.name}
     </span>
   );
 
   return (
-    <div className={scss.postModesHeader}>
-      {socialMedia?.postModes.map(renderPostMode)}
-    </div>
+    <div className={scss.postModesHeader}>{postModes?.map(renderPostMode)}</div>
   );
 }
 
