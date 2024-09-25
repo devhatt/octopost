@@ -44,13 +44,9 @@ describe('PostModes', () => {
       />
     );
     const socialMedia = mockedSocialMedias().get(mockAccount.socialMediaId);
-    if (!socialMedia?.postModes) {
-      throw new Error(
-        `Social media or post modes not found for ID ${mockAccount.socialMediaId}`
-      );
-    }
-    const { postModes } = socialMedia;
-    const firstPostModeName = postModes[0].name;
+
+    const postModes = socialMedia?.postModes;
+    const firstPostModeName = postModes ? postModes[0].name : '';
 
     const postMode = screen.getByText(firstPostModeName);
 
@@ -69,13 +65,10 @@ describe('PostModes', () => {
       const user = userEvent.setup();
 
       const socialMedia = mockedSocialMedias().get(mockAccount.socialMediaId);
-      if (!socialMedia?.postModes) {
-        throw new Error(
-          `Social media or post modes not found for ID ${mockAccount.socialMediaId}`
-        );
-      }
-      const { postModes } = socialMedia;
-      const firstPostModeName = postModes[0].name;
+
+      const postModes = socialMedia?.postModes;
+      const firstPostModeName = postModes ? postModes[0].name : '';
+
       const postMode = screen.getByText(firstPostModeName);
 
       await user.click(postMode);
@@ -95,13 +88,10 @@ describe('PostModes', () => {
       const user = userEvent.setup();
 
       const socialMedia = mockedSocialMedias().get(mockAccount.socialMediaId);
-      if (!socialMedia?.postModes) {
-        throw new Error(
-          `Social media or post modes not found for ID ${mockAccount.socialMediaId}`
-        );
-      }
-      const { postModes } = socialMedia;
-      const firstPostModeName = postModes[0].name;
+
+      const postModes = socialMedia?.postModes;
+      const firstPostModeName = postModes ? postModes[0].name : '';
+
       const postModeCheckbox = screen.getByLabelText(
         `Check the post mode ${firstPostModeName}`
       );
@@ -122,13 +112,10 @@ describe('PostModes', () => {
       const user = userEvent.setup();
 
       const socialMedia = mockedSocialMedias().get(mockAccount.socialMediaId);
-      if (!socialMedia?.postModes) {
-        throw new Error(
-          `Social media or post modes not found for ID ${mockAccount.socialMediaId}`
-        );
-      }
-      const { postModes } = socialMedia;
-      const firstPostModeName = postModes[0].name;
+
+      const postModes = socialMedia?.postModes;
+      const firstPostModeName = postModes ? postModes[0].name : '';
+
       const postModeCheckbox = screen.getByLabelText(
         `Check the post mode ${firstPostModeName}`
       );
