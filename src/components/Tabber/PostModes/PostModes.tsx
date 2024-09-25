@@ -2,13 +2,12 @@
 
 import classNames from 'classnames';
 
-import { PostMode } from '~services/api/social-media/social-media.types';
+import { PostMode as PostModeTypes } from '~services/api/social-media/social-media.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
-
-import { Checkbox } from '~components/Checkbox/Checkbox';
 
 import scss from './PostModes.module.scss';
 
+import { PostMode } from './PostModes.components';
 import { PostModesProps, SelectedPostMode } from './PostModes.types';
 
 function PostModes(props: PostModesProps): ReactNode {
@@ -20,7 +19,7 @@ function PostModes(props: PostModesProps): ReactNode {
     {}
   );
 
-  const addPostMode = (postModeId: PostMode['id']): SelectedPostMode => {
+  const addPostMode = (postModeId: PostModeTypes['id']): SelectedPostMode => {
     const previousModes = selectedPostModes[currentTab] ?? [];
     const updatedModes = [...previousModes, postModeId];
     return {
@@ -29,7 +28,9 @@ function PostModes(props: PostModesProps): ReactNode {
     };
   };
 
-  const removePostMode = (postModeId: PostMode['id']): SelectedPostMode => {
+  const removePostMode = (
+    postModeId: PostModeTypes['id']
+  ): SelectedPostMode => {
     const previousModes = selectedPostModes[currentTab] ?? [];
     const updatedModes = previousModes.filter((id) => id !== postModeId);
     return {
@@ -39,17 +40,17 @@ function PostModes(props: PostModesProps): ReactNode {
   };
 
   const onChangeCheckBox = (
-    postModeId: PostMode['id'],
+    postModeId: PostModeTypes['id'],
     isChecked: boolean
   ): void => {
     if (isChecked) setSelectedPostModes(addPostMode(postModeId));
     else setSelectedPostModes(removePostMode(postModeId));
   };
 
-  const isChecked = (postModeId: PostMode['id']): boolean =>
+  const isChecked = (postModeId: PostModeTypes['id']): boolean =>
     Boolean(selectedPostModes[currentTab]?.includes(postModeId));
 
-  const postModeClasses = (postModeId: PostMode['id']): string =>
+  const postModeClasses = (postModeId: PostModeTypes['id']): string =>
     classNames({
       [scss.active]: props.currentPostModeId === postModeId,
       [scss.postModeTitle]: true,
@@ -86,7 +87,16 @@ function PostModes(props: PostModesProps): ReactNode {
   return (
     <div className={scss.postModesHeader}>
       <div className={scss.postModesWrapper}>
-        {socialMedia?.postModes.map(renderPostMode)}
+        {socialMedia?.postModes.map((postMode) => (
+          <PostMode
+            changeCheckBox={onChangeCheckBox}
+            changePostMode={props.onChangePostMode}
+            isChecked={isChecked}
+            key={postMode.id}
+            postMode={postMode}
+            postModeClasses={postModeClasses}
+          />
+        ))}
       </div>
     </div>
   );
