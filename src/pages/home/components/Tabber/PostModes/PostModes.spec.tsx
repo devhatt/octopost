@@ -18,7 +18,6 @@ vi.mock(
 const mockAccount = {
   id: '1',
   socialMediaId: 'DISCORD_EXAMPLE_ID',
-  userName: 'Discord User 1',
 };
 const mockChangePostMode = vi.fn();
 const mockCurrentPostModeId = '1';
@@ -38,9 +37,10 @@ describe('PostModes', () => {
   it('renders correctly', () => {
     render(
       <PostModes
-        currentPostModeId={mockCurrentPostModeId}
-        currentTab={mockAccount}
-        onChangePostMode={mockChangePostMode}
+        changePostModeId={mockChangePostMode}
+        postId={mockAccount.id}
+        postModeId={mockCurrentPostModeId}
+        socialMediaId={mockAccount.socialMediaId}
       />
     );
     const socialMedia = mockedSocialMedias().get(mockAccount.socialMediaId);
@@ -57,9 +57,10 @@ describe('PostModes', () => {
     it('calls onChangePostMode when is clicked', async () => {
       render(
         <PostModes
-          currentPostModeId={mockCurrentPostModeId}
-          currentTab={mockAccount}
-          onChangePostMode={mockChangePostMode}
+          changePostModeId={mockChangePostMode}
+          postId={mockAccount.id}
+          postModeId={mockCurrentPostModeId}
+          socialMediaId={mockAccount.socialMediaId}
         />
       );
       const user = userEvent.setup();
@@ -80,9 +81,10 @@ describe('PostModes', () => {
     it('add post mode when checkbox is checked', async () => {
       render(
         <PostModes
-          currentPostModeId={mockCurrentPostModeId}
-          currentTab={mockAccount}
-          onChangePostMode={mockChangePostMode}
+          changePostModeId={mockChangePostMode}
+          postId={mockAccount.id}
+          postModeId={mockCurrentPostModeId}
+          socialMediaId={mockAccount.socialMediaId}
         />
       );
       const user = userEvent.setup();
@@ -104,9 +106,10 @@ describe('PostModes', () => {
     it('remove post mode when checkbox is not checked', async () => {
       render(
         <PostModes
-          currentPostModeId={mockCurrentPostModeId}
-          currentTab={mockAccount}
-          onChangePostMode={mockChangePostMode}
+          changePostModeId={mockChangePostMode}
+          postId={mockAccount.id}
+          postModeId={mockCurrentPostModeId}
+          socialMediaId={mockAccount.socialMediaId}
         />
       );
       const user = userEvent.setup();

@@ -8,7 +8,7 @@ export function PostMode(props: PostModeProps): ReactNode {
   return (
     <button
       className={props.postModeClasses(props.postMode.id)}
-      onClick={() => props.changePostMode(props.postMode)}
+      onClick={() => props.changePostMode(props.postMode.id)}
     >
       <Checkbox
         aria-label={`Check the post mode ${props.postMode.name}`}

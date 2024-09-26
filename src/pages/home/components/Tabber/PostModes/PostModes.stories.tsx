@@ -10,7 +10,6 @@ const mock = {
   account: {
     id: '1',
     socialMediaId: 'DISCORD_EXAMPLE_ID',
-    userName: 'Discord User 1',
   },
 };
 
@@ -18,15 +17,16 @@ export const PostmodesStories: Story = () => {
   const [postModeOnView, setPostModeOnView] = useState(
     'DISCORD_STORY_POSTMODE_ID'
   );
-  const changePostMode = (postMode: PostMode): void => {
-    setPostModeOnView(postMode.id);
+  const changePostMode = (postModeId: PostMode['id']): void => {
+    setPostModeOnView(postModeId);
   };
 
   return (
     <PostModes
-      currentPostModeId={postModeOnView}
-      currentTab={mock.account}
-      onChangePostMode={changePostMode}
+      changePostModeId={changePostMode}
+      postId={mock.account.id}
+      postModeId={postModeOnView}
+      socialMediaId={mock.account.socialMediaId}
     />
   );
 };

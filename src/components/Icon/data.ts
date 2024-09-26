@@ -13,7 +13,7 @@ import LeftArrow from './icons/left-arrow.svg?react';
 import Letter from './icons/letter.svg?react';
 import Mag from './icons/mag.svg?react';
 import Minus from './icons/minus.svg?react';
-import Mobile from './icons/Mobile.svg?react';
+import Mobile from './icons/mobile.svg?react';
 import Pc from './icons/Pc.svg?react';
 import Plus from './icons/plus.svg?react';
 import RightArrow from './icons/right-arrow.svg?react';
