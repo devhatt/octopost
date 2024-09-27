@@ -2,8 +2,6 @@
 @use '~styles/breakpoints.scss' as *;
 
 .postModesHeader {
-  max-width: 44rem;
-
   margin-bottom: 1.2rem;
 
   position: relative;
@@ -44,6 +42,8 @@
   align-items: center;
 
   color: global.$tertiaryGray;
+
+  max-width: max-content;
 
   &.active {
     [type='checkbox'] {
@@ -86,6 +86,7 @@
 
 @include from905 {
   .postModesHeader {
+    max-width: 44rem;
     border: 0.1rem solid global.$primaryGray;
 
     background-color: global.$quaternaryWhite;
