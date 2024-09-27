@@ -18,6 +18,7 @@ export type PostModeProps = {
   changeCheckBox: (postModeId: PostMode['id'], isChecked: boolean) => void;
   changePostMode: (postModeId: PostMode['id']) => void;
   isChecked: (postModeId: PostMode['id']) => boolean;
+  onClickPostMode: (tabElement: HTMLElement) => void;
   postMode: PostMode;
   postModeClasses: (postModeId: PostMode['id']) => string;
 };

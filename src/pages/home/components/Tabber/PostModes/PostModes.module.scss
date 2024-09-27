@@ -3,9 +3,16 @@
 
 .postModesHeader {
   max-width: 44rem;
+
+  margin-bottom: 1.2rem;
+
+  position: relative;
+}
+
+.postModesWrapper {
   overflow-x: auto;
 
-  margin-bottom: 1.6rem;
+  display: flex;
 
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -14,12 +21,6 @@
   &::-webkit-scrollbar {
     display: none;
   }
-}
-
-.postModesWrapper {
-  width: fit-content;
-
-  display: flex;
 }
 
 .postModeTitle {
@@ -49,6 +50,38 @@
       border-color: global.$secondaryPurple;
     }
   }
+}
+
+.firstGradient,
+.lastGradient {
+  width: 35px;
+  height: 100%;
+
+  position: absolute;
+  z-index: 1;
+
+  pointer-events: none;
+
+  content: '';
+}
+
+.firstGradient {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.lastGradient {
+  top: 0;
+  right: 0;
+
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 @include from905 {
