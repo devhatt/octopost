@@ -36,14 +36,14 @@
 }
 
 .selectPostMode {
+  max-width: max-content;
+
   display: flex;
   gap: 0.4rem;
 
   align-items: center;
 
   color: global.$tertiaryGray;
-
-  max-width: max-content;
 
   &.active {
     [type='checkbox'] {
@@ -87,6 +87,7 @@
 @include from905 {
   .postModesHeader {
     max-width: 44rem;
+
     border: 0.1rem solid global.$primaryGray;
 
     background-color: global.$quaternaryWhite;
