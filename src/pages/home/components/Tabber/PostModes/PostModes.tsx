@@ -1,46 +1,100 @@
-﻿import { ReactNode } from 'react';
+﻿import { ReactNode, useState } from 'react';
 
 import classNames from 'classnames';
 
-import {
-  PostMode,
-  SocialMedia,
-} from '~services/api/social-media/social-media.types';
+import { useHorizontalScroll } from '~hooks/useHorizontalScroll/useHorizontalScroll';
+import { PostMode as PostModeTypes } from '~services/api/social-media/social-media.types';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import scss from './PostModes.module.scss';
 
-import { PostModesProps } from './PostModes.types';
+import { PostMode } from './PostModes.components';
+import { PostModesProps, SelectedPostMode } from './PostModes.types';
 
 function PostModes(props: PostModesProps): ReactNode {
   const { socialMedias } = useSocialMediaStore();
+  const socialMedia = socialMedias.get(props.socialMediaId);
+  const currentTab = props.postId;
+  const {
+    containerRef,
+    firstGradient,
+    handleMouseEnter,
+    handleMouseLeave,
+    lastGradient,
+    scrollToElement,
+  } = useHorizontalScroll();
 
-  const postModes = socialMedias.get(props.socialMediaId)?.postModes;
+  const handlePostModeClick = (postModeElement: HTMLElement): void => {
+    scrollToElement(postModeElement);
+  };
 
-  const postModeClasses = (
-    postModeId: SocialMedia['postModes'][number]['id']
-  ): string =>
+  const [selectedPostModes, setSelectedPostModes] = useState<SelectedPostMode>(
+    {}
+  );
+
+  const addPostMode = (postModeId: PostModeTypes['id']): SelectedPostMode => {
+    const previousModes = selectedPostModes[currentTab] ?? [];
+    const updatedModes = [...previousModes, postModeId];
+    return {
+      ...selectedPostModes,
+      [currentTab]: updatedModes,
+    };
+  };
+
+  const removePostMode = (
+    postModeId: PostModeTypes['id']
+  ): SelectedPostMode => {
+    const previousModes = selectedPostModes[currentTab] ?? [];
+    const updatedModes = previousModes.filter((id) => id !== postModeId);
+    return {
+      ...selectedPostModes,
+      [currentTab]: updatedModes,
+    };
+  };
+
+  const onChangeCheckBox = (
+    postModeId: PostModeTypes['id'],
+    isChecked: boolean
+  ): void => {
+    if (isChecked) setSelectedPostModes(addPostMode(postModeId));
+    else setSelectedPostModes(removePostMode(postModeId));
+  };
+
+  const isChecked = (postModeId: PostModeTypes['id']): boolean =>
+    Boolean(selectedPostModes[currentTab]?.includes(postModeId));
+
+  const postModeClasses = (postModeId: PostModeTypes['id']): string =>
     classNames({
       [scss.active]: props.postModeId === postModeId,
       [scss.postModeTitle]: true,
+      [scss.selectPostMode]: true,
     });
 
-  const changePostMode = (postMode: PostMode): void => {
-    props.changePostModeId(postMode.id);
-  };
-
-  const renderPostMode = (postMode: PostMode): ReactNode => (
-    <span
-      className={postModeClasses(postMode.id)}
-      key={postMode.id}
-      onClick={() => changePostMode(postMode)}
-    >
-      {postMode.name}
-    </span>
-  );
-
   return (
-    <div className={scss.postModesHeader}>{postModes?.map(renderPostMode)}</div>
+    <div className={scss.postModesHeader}>
+      <span className={scss.firstGradient} ref={firstGradient} />
+      <div
+        className={scss.postModesWrapper}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        ref={containerRef}
+      >
+        {socialMedia?.postModes.map((postMode) => (
+          <PostMode
+            changeCheckBox={onChangeCheckBox}
+            changePostMode={props.changePostModeId}
+            isChecked={isChecked}
+            key={postMode.id}
+            onClickPostMode={(element: HTMLElement) =>
+              handlePostModeClick(element)
+            }
+            postMode={postMode}
+            postModeClasses={postModeClasses}
+          />
+        ))}
+      </div>
+      <span className={scss.lastGradient} ref={lastGradient} />
+    </div>
   );
 }
 

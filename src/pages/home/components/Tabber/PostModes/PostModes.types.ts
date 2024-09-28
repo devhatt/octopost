@@ -1,3 +1,4 @@
+import { Account } from '~services/api/accounts/accounts.types';
 import {
   PostMode,
   SocialMedia,
@@ -9,4 +10,15 @@ export type PostModesProps = {
   postId: DataPost['id'];
   postModeId: PostMode['id'];
   socialMediaId: SocialMedia['id'];
+};
+
+export type SelectedPostMode = Partial<Record<Account['id'], PostMode['id'][]>>;
+
+export type PostModeProps = {
+  changeCheckBox: (postModeId: PostMode['id'], isChecked: boolean) => void;
+  changePostMode: (postModeId: PostMode['id']) => void;
+  isChecked: (postModeId: PostMode['id']) => boolean;
+  onClickPostMode: (tabElement: HTMLElement) => void;
+  postMode: PostMode;
+  postModeClasses: (postModeId: PostMode['id']) => string;
 };
