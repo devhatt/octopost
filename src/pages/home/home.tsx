@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import Login from '~pages/login/login';
 import isEmpty from 'lodash.isempty';
 
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
@@ -21,6 +22,7 @@ function Home(): ReactNode {
     <>
       <div className={scss.header}>
         <Header />
+        <Login />
       </div>
       <main className={scss.content}>
         <aside className={scss.aside}>
