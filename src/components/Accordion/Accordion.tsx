@@ -9,8 +9,12 @@ import { TAccordionProps } from './Accordion.types';
 
 function computeVariants(): Record<string, Variant> {
   return {
-    collapsed: { height: '0px' },
-    expanded: { height: 'auto' },
+    collapsed: { height: 0, opacity: 0 },
+    expanded: {
+      height: 'auto',
+      opacity: 1,
+      transitionEnd: { height: 'auto' },
+    },
   };
 }
 
@@ -22,6 +26,7 @@ function Accordion({ duration = 0.3, ...props }: TAccordionProps): ReactNode {
         <motion.div
           animate={props.isOpen ? 'expanded' : 'collapsed'}
           className={scss.content}
+          data-testid="accordion-content"
           exit="collapsed"
           initial="expanded"
           transition={{ duration }}

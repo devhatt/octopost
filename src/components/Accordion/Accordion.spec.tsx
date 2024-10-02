@@ -20,12 +20,12 @@ const makeSut = ({
 
 describe('Accordion', () => {
   describe('when isOpen is false', () => {
-    it('body cannot render', () => {
+    it('body is collapsed', () => {
       makeSut({ isOpen: false });
 
-      const content = screen.queryByText('content');
+      const contentWrapper = screen.getByTestId('accordion-content');
 
-      expect(content).not.toBeInTheDocument();
+      expect(contentWrapper).toHaveStyle('height: 0px');
     });
   });
 
@@ -33,9 +33,9 @@ describe('Accordion', () => {
     it('body can render', () => {
       makeSut({ isOpen: true });
 
-      const content = screen.getByText('content');
+      const contentWrapper = screen.getByTestId('accordion-content');
 
-      expect(content).toBeVisible();
+      expect(contentWrapper).toHaveStyle('height: auto');
     });
   });
 });
