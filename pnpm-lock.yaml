@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@hookform/resolvers':
+    specifier: 3.9.0
+    version: 3.9.0(react-hook-form@7.53.0)
   '@redux-devtools/extension':
     specifier: 3.3.0
     version: 3.3.0(redux@5.0.1)
@@ -41,6 +44,9 @@ dependencies:
   lodash.isempty:
     specifier: 4.4.0
     version: 4.4.0
+  lodash.merge:
+    specifier: 4.6.2
+    version: 4.6.2
   lodash.omit:
     specifier: 4.5.0
     version: 4.5.0
@@ -56,12 +62,18 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: 7.53.0
+    version: 7.53.0(react@18.2.0)
   react-i18next:
     specifier: 13.5.0
     version: 13.5.0(i18next@23.9.0)(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: 6.22.1
     version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: 3.23.8
+    version: 3.23.8
   zustand:
     specifier: 4.5.1
     version: 4.5.1(@types/react@18.2.57)(react@18.2.0)
@@ -130,6 +142,9 @@ devDependencies:
   '@types/lodash.isempty':
     specifier: 4.4.9
     version: 4.4.9
+  '@types/lodash.merge':
+    specifier: 4.6.9
+    version: 4.6.9
   '@types/lodash.omit':
     specifier: 4.5.9
     version: 4.5.9
@@ -1652,6 +1667,14 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: true
 
+  /@hookform/resolvers@3.9.0(react-hook-form@7.53.0):
+    resolution: {integrity: sha512-bU0Gr4EepJ/EQsH/IwEzYLsT/PEj5C0ynLQ4m+GSHS+xKH4TfSelhluTgOaoc4kA5s7eCsQbM4wvZLzELmWzUg==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.53.0(react@18.2.0)
+    dev: false
+
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -2982,6 +3005,12 @@ packages:
 
   /@types/lodash.isempty@4.4.9:
     resolution: {integrity: sha512-DPSFfnT2JmZiAWNWOU8IRZws/Ha6zyGF5m06TydfsY+0dVoQqby2J61Na2QU4YtwiZ+moC6cJS6zWYBJq4wBVw==}
+    dependencies:
+      '@types/lodash': 4.17.5
+    dev: true
+
+  /@types/lodash.merge@4.6.9:
+    resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
     dependencies:
       '@types/lodash': 4.17.5
     dev: true
@@ -8675,7 +8704,6 @@ packages:
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
 
   /lodash.mergewith@4.6.2:
     resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
@@ -10518,6 +10546,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.2
+
+  /react-hook-form@7.53.0(react@18.2.0):
+    resolution: {integrity: sha512-M1n3HhqCww6S2hxLxciEXy2oISPnAzxY7gvwVPrtlczTM/1dDadXgUxDpHMrMTblDOcm/AXtXxHwZ3jpg1mqKQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-hotkeys-hook@4.5.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Samb85GSgAWFQNvVt3PS90LPPGSf9mkH/r4au81ZP1yOIFayLC3QAvqTgGtJ8YEDMXtPmaVBs6NgipHO6h4Mug==}
@@ -12997,6 +13034,10 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+    dev: false
 
   /zustand@4.5.1(@types/react@18.2.57)(react@18.2.0):
     resolution: {integrity: sha512-XlauQmH64xXSC1qGYNv00ODaQ3B+tNPoy22jv2diYiP4eoDKr9LA+Bh5Bc3gplTrFdb6JVI+N4kc1DZ/tbtfPg==}

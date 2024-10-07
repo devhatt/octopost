@@ -1,0 +1,29 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss' as *;
+
+.signUpPromotion {
+  display: none;
+
+  .title {
+    color: $tertiaryGray;
+    font-size: 4.8rem;
+    font-weight: 700;
+
+    margin: 0;
+  }
+
+  .description {
+    color: $secondaryGray;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+
+    margin: 0;
+  }
+}
+
+@include from905 {
+  .signUpPromotion {
+    display: block;
+  }
+}

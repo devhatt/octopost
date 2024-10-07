@@ -1,12 +1,16 @@
 import { ChangeEvent } from 'react';
 
-import { PostMode } from '~services/api/social-media/social-media.types';
+import {
+  PostMode,
+  SocialMedia,
+} from '~services/api/social-media/social-media.types';
 
 export type MainComposerChildrens = {
   accountId?: string;
   addError?: MainComposerErrorEmiter;
-  postMode?: PostMode;
+  postModeId?: PostMode['id'];
   removeError?: (id: string) => void;
+  socialMediaId?: SocialMedia['id'];
 };
 
 export type Error = {
@@ -18,10 +22,11 @@ export type Error = {
 
 export type MainComposerBaseProps = {
   accountId?: string;
-  currentMaxLimit?: number;
+  maxCharacters?: number;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onError?: (hasError: boolean) => void;
-  postMode?: PostMode;
+  postModeId?: PostMode['id'];
+  socialMediaId?: SocialMedia['id'];
   value?: string;
 };
 
@@ -31,5 +36,6 @@ export type PostModeInputMediaGroupProps = {
   accountId?: string;
   addError: (id: string, error: Error) => void;
   errorRemover: (id: string) => void;
-  postMode?: PostMode;
+  postModeId?: PostMode['id'];
+  socialMediaId?: SocialMedia['id'];
 };

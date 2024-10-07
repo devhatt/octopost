@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-
 import { octopostApi } from '~services/api';
 import { AccountsService } from '~services/api/accounts/accounts';
 import { Account } from '~services/api/accounts/accounts.types';
 import { SocialMediaService } from '~services/api/social-media/social-media';
 import { SocialMedia } from '~services/api/social-media/social-media.types';
+
+import { create } from '../zustand';
 
 import {
   NewAccount,
@@ -19,7 +19,6 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
     error: '',
     loading: false,
   },
-
   addAccount: async (newAccount: NewAccount): Promise<StoreAccount> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
 
@@ -45,6 +44,27 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
 
     return addedAccount;
   },
+
+  favoriteAccount: async (
+    accountId: Account['id'],
+    favorite: boolean
+  ): Promise<void> => {
+    const account = await AccountsService.favorite(accountId, favorite);
+
+    if (account) {
+      const favoritedAccount: StoreAccount = {
+        ...account,
+        favorite,
+        valid: false,
+      };
+
+      set((state) => ({
+        favoriteAccounts: [...state.favoriteAccounts, favoritedAccount],
+      }));
+    }
+  },
+
+  favoriteAccounts: [],
 
   getAllAccounts: async (): Promise<void> => {
     set((state) => ({ accounts: { ...state.accounts, loading: true } }));
@@ -79,13 +99,21 @@ export const useSocialMediaStore = create<SocialMediaState>((set) => ({
       fetchedSocialMediasMap.set(socialMedia.id, socialMedia);
     }
 
-    set(() => ({ socialMedias: fetchedSocialMediasMap }));
+    const favoriteAccounts = fetchedAccounts
+      .filter((account) => account.favorite)
+      .map((account) => ({
+        ...account,
+        valid: true,
+      }));
+
     set(() => ({
       accounts: {
         data: accountsBySocialMedia.data,
         error: '',
         loading: false,
       },
+      favoriteAccounts,
+      socialMedias: fetchedSocialMediasMap,
     }));
   },
 

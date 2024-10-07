@@ -1,0 +1,91 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss' as *;
+
+.mobileHeroWrapper {
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(0deg, #894df6, #894df6),
+    linear-gradient(
+      109.54deg,
+      rgba(123, 80, 255, 0.2) 0%,
+      rgba(81, 202, 212, 0.2) 100%
+    );
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 2.4rem 3.2rem;
+}
+
+.signin {
+  width: fit-content;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  padding: 1rem 2.4rem;
+  border: 1px solid $primaryWhite;
+
+  border-radius: 100px;
+}
+
+.hero {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+  gap: 0.8rem;
+
+  align-items: flex-end;
+
+  color: $primaryWhite;
+
+  text-align: right;
+
+  padding: 2.4rem;
+  padding-bottom: 0;
+
+  .title {
+    font-size: 3.6rem;
+    font-weight: 700;
+
+    margin: 0;
+  }
+
+  .description {
+    width: 70vw;
+
+    font-size: 1.6rem;
+    font-weight: 400;
+
+    margin: 0;
+    letter-spacing: 0.05rem;
+  }
+}
+
+.mobileOcto {
+  width: 21rem;
+
+  display: flex;
+
+  // Needed to slice image bottom part but keeping it relativity with the container
+  margin-bottom: -5rem;
+  margin-left: -3.25rem;
+}
+
+@include from905 {
+  .mobileHeroWrapper {
+    display: none;
+  }
+}

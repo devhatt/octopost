@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
 import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 import { StoreAccount } from '~stores/useSocialMediaStore/useSocialMediaStore.types';
 
@@ -12,24 +12,29 @@ import scss from './SocialAccordion.module.scss';
 
 import iconPlaceholderForIcon from './assets/facebook.svg';
 
-import { AccountQuantity } from './SocialAccordion.components';
+import { AccountQuantity, RenderError } from './SocialAccordion.components';
 import { SocialAccordionProps } from './SocialAccordion.type';
 
 function SocialAccordion(props: SocialAccordionProps): ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const { socialMedias } = useSocialMediaStore();
-  const { addAccount, removeAccount } = useAccountStore();
+  const { favoriteAccount, socialMedias } = useSocialMediaStore();
+  const { add, posts, remove } = usePostStore();
 
   const handleOpenAccordion = (): void => setIsOpen((prev) => !prev);
 
   const activateSocialTab = (enabled: boolean, account: StoreAccount): void => {
-    if (enabled) addAccount(account);
-    if (!enabled) removeAccount(account.id);
+    const socialMedia = socialMedias.get(account.socialMediaId);
+    const currentPost = Object.values(posts)
+      .flat()
+      .find((post) => post.accountId === account.id);
+
+    if (enabled && socialMedia?.postModes) add(account, socialMedia.postModes);
+    if (!enabled && currentPost) remove(currentPost.id);
   };
 
-  const renderError = (): ReactNode => (
-    <span className={scss.error}>error!!!!</span>
-  );
+  const favorite = (isFavorited: boolean, account: StoreAccount): void => {
+    void favoriteAccount(account.id, isFavorited);
+  };
 
   const renderAccordionMap = (): ReactNode =>
     props.accounts.map((account) => (
@@ -39,6 +44,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
           invalid={!account.valid}
           isEnabled={account.valid}
           onEnableChange={(enable) => activateSocialTab(enable, account)}
+          onFavoriteChange={(isFavorited) => favorite(isFavorited, account)}
           username={account.userName}
         />
       </li>
@@ -70,9 +76,9 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
                 className={scss.icon}
                 src={iconPlaceholderForIcon}
               />
-              <span>{socialMedias.get(props.socialMediaId)?.name}</span>
+              <span>{props.title}</span>
             </div>
-            {props.error && renderError()}
+            {props.error && <RenderError />}
             <div className={scss.accordionInfo}>
               {hasInvalidAccount ? (
                 <Icon className={scss.alertIcon} icon="alert" size={16} />

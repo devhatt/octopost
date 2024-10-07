@@ -23,11 +23,11 @@ export const textValidator = ({
       const payload: Payload = {
         type: TEXT_ERRORS.MAX_LENGTH_EXCEED,
       };
-      if (isTextTooLong && props.accountId && props.postMode) {
+      if (isTextTooLong && props.accountId && props.postModeId) {
         payload.error = {
           accountId: props.accountId,
-          message: `Account ${props.accountId} on ${props.postMode.id} type of post overflowed the character limit`,
-          postModeId: props.postMode.id,
+          message: `Account ${props.accountId} on ${props.postModeId} type of post overflowed the character limit`,
+          postModeId: props.postModeId,
         };
       }
       return payload;

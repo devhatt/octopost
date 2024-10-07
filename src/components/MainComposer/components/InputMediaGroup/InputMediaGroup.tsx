@@ -3,7 +3,8 @@ import { ReactNode, useState } from 'react';
 import isEmpty from 'lodash.isempty';
 import { nanoid } from 'nanoid';
 
-import { useAccountStore } from '~stores/useAccountStore/useAccountStore';
+import { usePostStore } from '~stores/usePostStore/usePostStore';
+import { useSocialMediaStore } from '~stores/useSocialMediaStore/useSocialMediaStore';
 
 import { fileValidators } from './utils/fileValidator/fileValidator';
 
@@ -22,9 +23,10 @@ import {
 
 function InputMediaGroup(props: MediaInputProps): ReactNode {
   const [errors, setErrors] = useState<MediaErrorMap>({});
-  const { mainContent, updateMainContent } = useAccountStore();
+  const { mainContent, updateMainContent } = usePostStore();
+  const { socialMedias } = useSocialMediaStore();
   const medias = mainContent.medias ?? [];
-  const hasValidation = Boolean(props.postMode);
+  const hasValidation = Boolean(props.postModeId);
 
   const setMedias = (newMedias: Media[]): void => {
     updateMainContent({ medias: newMedias });
@@ -39,7 +41,12 @@ function InputMediaGroup(props: MediaInputProps): ReactNode {
 
   const validateFile = async (file: Media): Promise<void> => {
     const media = file.file;
-    const validatorRules = props.postMode?.validators.media;
+    const postModes =
+      props.socialMediaId && socialMedias.get(props.socialMediaId)?.postModes;
+    const validatorRules =
+      postModes &&
+      postModes.find((postMode) => postMode.id === props.postModeId)?.validators
+        .media;
 
     const fileErrors: ErrorMap = {
       [MEDIA_ERRORS.MAX_AR_EXCEED]: '',

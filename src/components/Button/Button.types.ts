@@ -1,7 +1,7 @@
 ﻿import { HTMLAttributes, ReactElement } from 'react';
 
 export type IButtonProps = HTMLAttributes<HTMLButtonElement> & {
-  color?: 'primary' | 'secondary';
+  color?: 'gray' | 'primary' | 'secondary';
   disabled?: boolean;
   type?: 'button' | 'reset' | 'submit';
   variant?: 'container' | 'outlined' | 'text';

@@ -11,7 +11,7 @@ export function PostModeInputMediaGroup(
     <InputMediaGroup
       accountId={props.accountId}
       addError={props.addError}
-      postMode={props.postMode}
+      postModeId={props.postModeId}
       removeError={props.errorRemover}
     />
   );

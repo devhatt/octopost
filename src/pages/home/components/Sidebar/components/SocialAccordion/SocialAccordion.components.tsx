@@ -9,3 +9,7 @@ export function AccountQuantity({
 }: AccountQuantityProps): ReactNode {
   return <span className={scss.accountQuantity}>{accountQuantity}+</span>;
 }
+
+export function RenderError(): ReactNode {
+  return <span className={scss.error}>error!!!!</span>;
+}

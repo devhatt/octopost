@@ -35,6 +35,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@hookform/resolvers": "3.9.0",
     "@redux-devtools/extension": "3.3.0",
     "@sentry/react": "7.102.0",
     "classnames": "2.5.1",
@@ -47,13 +48,16 @@
     "lodash.first": "3.0.0",
     "lodash.groupby": "4.6.0",
     "lodash.isempty": "4.4.0",
+    "lodash.merge": "4.6.2",
     "lodash.omit": "4.5.0",
     "nanoid": "5.0.6",
     "normalize.css": "8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.53.0",
     "react-i18next": "13.5.0",
     "react-router-dom": "6.22.1",
+    "zod": "3.23.8",
     "zustand": "4.5.1"
   },
   "devDependencies": {
@@ -78,6 +82,7 @@
     "@types/lodash.first": "3.0.9",
     "@types/lodash.groupby": "4.6.9",
     "@types/lodash.isempty": "4.4.9",
+    "@types/lodash.merge": "4.6.9",
     "@types/lodash.omit": "4.5.9",
     "@types/node": "20.11.19",
     "@types/react": "18.2.57",

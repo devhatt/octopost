@@ -1,0 +1,107 @@
+@use '~styles/global';
+
+.tabsContainer {
+  width: 100%;
+  overflow-x: auto;
+
+  display: flex;
+
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tabsWrapper {
+  height: 100%;
+
+  position: relative;
+}
+
+.firstGradient,
+.lastGradient {
+  width: 35px;
+  height: 100%;
+
+  position: absolute;
+  z-index: 1;
+
+  pointer-events: none;
+
+  content: '';
+}
+
+.firstGradient {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.lastGradient {
+  top: 0;
+  right: 0;
+
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.tab {
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content) auto;
+  gap: 0.8rem;
+
+  align-items: center;
+
+  color: global.$tertiaryGray;
+
+  white-space: nowrap;
+
+  padding: 0.75rem 1rem;
+
+  position: relative;
+
+  cursor: pointer;
+
+  &.active {
+    color: global.$secondaryPurple;
+
+    &::before {
+      height: 2px;
+
+      position: absolute;
+
+      background-color: currentColor;
+
+      content: '';
+      inset: auto 0 0;
+    }
+  }
+
+  &.error {
+    color: global.$secondaryRed;
+  }
+
+  path {
+    fill: currentColor;
+  }
+
+  .tabTitle {
+    color: currentColor;
+    text-align: center;
+
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 2;
+
+    margin: 0;
+  }
+}

@@ -1,0 +1,14 @@
+@use '~styles/breakpoints.scss' as *;
+@use '~styles/global.scss';
+
+.header {
+  display: none;
+
+  padding: 3.2rem 0 0 3.2rem;
+}
+
+@include from905 {
+  .header {
+    display: block;
+  }
+}
