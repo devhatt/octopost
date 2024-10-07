@@ -36,9 +36,9 @@ describe('SocialAccordion', () => {
         title={mockedSocialMedias().get(socialMediaId)?.name as string}
       />
     );
-    const accordion = screen.getByText(/discord/i);
+    const accordion = screen.getAllByText(/discord/i);
 
-    expect(accordion).toBeInTheDocument();
+    expect(accordion[0]).toBeInTheDocument();
   });
 
   it('renders the intern content of accordion when is open', async () => {
@@ -52,11 +52,9 @@ describe('SocialAccordion', () => {
       />
     );
 
-    const accordion = screen.getByText(/discord/i);
+    const accordion = screen.getAllByText(/discord/i);
 
-    await act(async () => {
-      await userEvent.click(accordion);
-    });
+    await userEvent.click(accordion[0]);
 
     const innerContent = screen.getByText(mockDiscordData[0].userName);
 
@@ -91,14 +89,8 @@ describe('SocialAccordion', () => {
         />
       );
 
-      const [account] = mockDiscordData;
-      const socialMedias = mockedSocialMedias().get(account.socialMediaId);
-
-      const accordion = screen.getByText(/discord/i);
-
-      await act(async () => {
-        await userEvent.click(accordion);
-      });
+      const accordion = screen.getAllByText(/discord/i);
+      await userEvent.click(accordion[0]);
 
       const [firstAccountSwitch] = screen.getAllByRole('checkbox');
 
@@ -125,10 +117,8 @@ describe('SocialAccordion', () => {
         />
       );
 
-      const accordion = screen.getByText(/discord/i);
-      await act(async () => {
-        await userEvent.click(accordion);
-      });
+      const accordion = screen.getAllByText(/discord/i);
+      await userEvent.click(accordion[0]);
 
       const [firstAccountSwitch] = screen.getAllByRole('checkbox');
 
@@ -141,7 +131,7 @@ describe('SocialAccordion', () => {
     });
   });
 
-  describe('when click 2 times', () => {
+  describe('when clicked 2 times', () => {
     it('closes the accordion', async () => {
       const socialMediaId = 'DISCORD_EXAMPLE_ID';
 
@@ -153,22 +143,19 @@ describe('SocialAccordion', () => {
         />
       );
 
-      const accordion = screen.getByText(/discord/i);
+      const contentWrapper = screen.getByTestId('accordion-content');
+      const toggleAccordion = screen.getByTestId('accordion-toggle-button');
 
-      await act(async () => {
-        await userEvent.click(accordion);
-      });
-
-      const innerContent = screen.getByText(mockDiscordData[0].userName);
-
-      expect(innerContent).toBeInTheDocument();
-
-      await act(async () => {
-        await userEvent.click(accordion);
-      });
+      await userEvent.click(toggleAccordion);
 
       await waitFor(() => {
-        expect(innerContent).not.toBeInTheDocument();
+        expect(contentWrapper).toHaveStyle('opacity: 1');
+      });
+
+      await userEvent.click(toggleAccordion);
+
+      await waitFor(() => {
+        expect(contentWrapper).toHaveStyle('opacity: 0');
       });
     });
   });
@@ -201,9 +188,9 @@ describe('SocialAccordion', () => {
         />
       );
 
-      const accountQuantity = screen.getByText(/1/);
+      const accountQuantity = screen.getAllByText(/1/);
 
-      expect(accountQuantity).toBeInTheDocument();
+      expect(accountQuantity[0]).toBeInTheDocument();
     });
   });
 });

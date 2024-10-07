@@ -65,6 +65,7 @@ function SocialAccordion(props: SocialAccordionProps): ReactNode {
           aria-controls="content-accordion"
           aria-expanded={isOpen}
           className={scss.container}
+          data-testid="accordion-toggle-button"
           id="btn-accordion"
           onClick={handleOpenAccordion}
         >

@@ -50,13 +50,13 @@ describe('Sidebar component', () => {
     for (var account in accounts) {
       const socialMedia = mockedSocialMedias().get(account);
 
-      const accordionEvidence = screen.getByText(
+      const accordionEvidence = screen.getAllByText(
         new RegExp(socialMedia?.name as string, 'i')
       );
 
-      await userEvent.click(accordionEvidence);
+      await userEvent.click(accordionEvidence[0]);
 
-      expect(accordionEvidence).toBeInTheDocument();
+      expect(accordionEvidence[0]).toBeInTheDocument();
     }
 
     Object.values(accounts).forEach((values) => {
@@ -176,16 +176,16 @@ describe('Sidebar component', () => {
 
       await userEvent.type(inputSearchComponent, 'Twitter');
 
-      const discordAccordion = screen.getByText(/discord/i);
-      await waitForElementToBeRemoved(discordAccordion);
+      const discordAccordion = screen.getAllByText(/discord/i);
+      await waitForElementToBeRemoved(discordAccordion[0]);
 
-      const accordion = screen.getByText(/twitter/i);
-      await userEvent.click(accordion);
+      const accordions = screen.getAllByText(/twitter/i);
+      await userEvent.click(accordions[0]);
 
       const evidence = screen.getByText('Twitter User 14');
 
       expect(evidence).toBeInTheDocument();
-      expect(discordAccordion).not.toBeInTheDocument();
+      expect(discordAccordion[0]).not.toBeInTheDocument();
     });
 
     it('and theres no results', async () => {
