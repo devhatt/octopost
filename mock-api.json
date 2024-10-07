@@ -152,6 +152,20 @@
           "id": "DISCORD_STORY_POSTMODE_ID",
           "name": "TesteStory",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 20
@@ -176,6 +190,20 @@
           "id": "DISCORD_POST_POSTMODE_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 3
@@ -200,6 +228,20 @@
           "id": "DISCORD_REELS_POSTMODE_ID",
           "name": "TesteReels",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 12
@@ -231,6 +273,20 @@
           "id": "TWITTER_POST_POSTMODE_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 15
@@ -255,6 +311,20 @@
           "id": "TWITTER_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 21
@@ -286,6 +356,20 @@
           "id": "TIKTOK_THREAD_POST_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 15
@@ -310,6 +394,20 @@
           "id": "TIKTOK_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 21
@@ -341,6 +439,20 @@
           "id": "FACEBOOK_THREAD_POST_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 15
@@ -365,6 +477,20 @@
           "id": "FACEBOOK_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 21
@@ -396,6 +522,20 @@
           "id": "INSTAGRAM_THREAD_POST_ID",
           "name": "TestePost",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 15
@@ -420,6 +560,20 @@
           "id": "INSTAGRAM_THREAD_POSTMODE_ID",
           "name": "TesteThread",
           "previewComponent": "Teste",
+          "devices": {
+            "mobile": {
+              "width": 375,
+              "height": 667
+            },
+            "tablet": {
+              "width": 768,
+              "height": 1024
+            },
+            "desktop": {
+              "width": 1440,
+              "height": 900
+            }
+          },
           "validators": {
             "text": {
               "maxLength": 21
