@@ -7,16 +7,13 @@ import scss from './Accordion.module.scss';
 
 import { TAccordionProps } from './Accordion.types';
 
-function computeVariants(): Record<string, Variant> {
-  return {
-    collapsed: { height: 0, opacity: 0 },
-    expanded: {
-      height: 'auto',
-      opacity: 1,
-      transitionEnd: { height: 'auto' },
-    },
-  };
-}
+const accordionVariants: Record<string, Variant> = {
+  collapsed: { height: 0, opacity: 0 },
+  expanded: {
+    height: 'auto',
+    opacity: 1,
+  },
+};
 
 function Accordion({ duration = 0.3, ...props }: TAccordionProps): ReactNode {
   return (
@@ -30,7 +27,7 @@ function Accordion({ duration = 0.3, ...props }: TAccordionProps): ReactNode {
           exit="collapsed"
           initial="expanded"
           transition={{ duration }}
-          variants={computeVariants()}
+          variants={accordionVariants}
         >
           {props.content}
         </motion.div>

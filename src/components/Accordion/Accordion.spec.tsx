@@ -25,7 +25,7 @@ describe('Accordion', () => {
 
       const contentWrapper = screen.getByTestId('accordion-content');
 
-      expect(contentWrapper).toHaveStyle('height: 0px');
+      expect(contentWrapper).toHaveStyle('height: 0');
     });
   });
 
